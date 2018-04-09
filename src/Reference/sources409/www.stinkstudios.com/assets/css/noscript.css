@@ -1,0 +1,58 @@
+
+.navigation-wrapper {
+	opacity:1;
+}
+
+.page-wrapper {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tile {
+	cursor: inherit;
+}
+
+#app-projects #projects-tiles-container li {
+    display: block;
+}
+
+/*.lazyImage img
+{
+	position: absolute;
+	top:0;
+	z-index: 99;
+	width: 100%;
+}*/
+
+noscript{
+	
+	position: absolute;
+	top:0;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+}
+
+.page-wrapper{
+
+	opacity: 1;
+	visibility: visible;
+
+}
+
+.footer .clock-container .clock {
+
+	opacity: 1;
+
+}
+
+.carousel.carousel-footer .carousel-items-container .carousel-item {
+   opacity: 1;
+}
+
+.clock-objects,
+.clock-hand {
+	opacity:0;
+}
+
+.footer .clock-container .clock .clock-about {bottom:0;}
