@@ -1,5 +1,11 @@
 This project is the front-end (using the React library) of IOIO Creative's official website, which is to be launched in April, 2018. The back-end is supported by WordPress.
 
+References:
+- How to Structure Your React Project
+https://daveceddia.com/react-project-structure/?utm_campaign=welcome
+- A Simple React Router v4 Tutorial
+https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
