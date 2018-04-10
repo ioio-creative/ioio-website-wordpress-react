@@ -121,11 +121,16 @@ jQuery(document).ready(function( $ ) {
   $("#menu-close").click(function(e) {
       e.preventDefault();
       $("#sidebar").toggleClass("active");
+      $( "#menu-canvas" ).remove();
   });
 
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#sidebar").toggleClass("active");
+            $( "#menu-canvas" ).remove();
+      $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
+        menuCanvas();
+
   });
 
 });
