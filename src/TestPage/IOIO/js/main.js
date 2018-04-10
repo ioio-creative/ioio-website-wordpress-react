@@ -111,4 +111,21 @@ jQuery(document).ready(function( $ ) {
     items: 1
   });
 
+
+
+
+
+
+
+  //#Sidebar
+  $("#menu-close").click(function(e) {
+      e.preventDefault();
+      $("#sidebar").toggleClass("active");
+  });
+
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#sidebar").toggleClass("active");
+  });
+
 });
