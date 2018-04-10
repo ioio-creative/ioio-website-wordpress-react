@@ -111,12 +111,6 @@ jQuery(document).ready(function( $ ) {
     items: 1
   });
 
-
-
-
-
-
-
   //#Sidebar
   $("#menu-close").click(function(e) {
       e.preventDefault();
@@ -132,5 +126,7 @@ jQuery(document).ready(function( $ ) {
         menuCanvas();
 
   });
+
+    })
 
 });
