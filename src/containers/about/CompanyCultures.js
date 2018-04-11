@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { fetchCompanyCultures } from 'websiteApi';
 
 class CompanyCultures extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             company_cultures: []
         }
