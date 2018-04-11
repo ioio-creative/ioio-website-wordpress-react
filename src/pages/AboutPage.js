@@ -19,7 +19,7 @@ class AboutPage extends Component {
         }
     }
 
-    componentDidMount() {      
+    componentDidMount() {
         fetchAbouts((abouts) => {
             this.setState({
                 about: abouts[0]

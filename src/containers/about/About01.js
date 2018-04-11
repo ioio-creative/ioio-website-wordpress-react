@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { fetchCompanies } from 'websiteApi';
 
 class About01 extends Component {
     constructor(props) {
