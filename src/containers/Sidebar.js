@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-import HomePage from 'pages/HomePage';
-import AboutPage from 'pages/AboutPage';
-
 class Sidebar extends Component {
     render() {
         return (

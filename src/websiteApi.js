@@ -7,7 +7,6 @@ function passJsonResultToCallback(entityToFetch, callback) {
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
-            console.log(resJson);
             callback(resJson);
         });
 }

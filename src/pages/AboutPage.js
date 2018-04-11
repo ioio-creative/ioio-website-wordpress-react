@@ -15,15 +15,12 @@ class AboutPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            about: {}
+            about: null
         }
     }
 
-    componentDidMount() {
-      console.log("AAabouts : " );
+    componentDidMount() {      
         fetchAbouts((abouts) => {
-          console.log("abouts : " );
-          console.log(abouts);
             this.setState({
                 about: abouts[0]
             });
@@ -32,19 +29,17 @@ class AboutPage extends Component {
 
     render() {
         const about = this.state.about;
-        console.log("Render abouts : " );
-        console.log(about);
+        if (about === null) {
+            return null;
+        }
         return (
             <div>
-                <h2>This is a about page!</h2>
+                <h2>This is an about page!</h2>
                 <div>{about.page_title}</div>
                 <About01
-                  hotPotImg={""//about.hotpot_image.guid
-                  }
-                  meatImg={""//about.meat_image.guid
-                  }
-                  fishImg={""//about.fish_image.guid
-                  }
+                  hotPotImg={about.hotpot_image.guid}
+                  meatImg={about.meat_image.guid}
+                  fishImg={about.fish_image.guid}
                 />
                 <CompanyDnas />
                 <CompanyCultures />

@@ -5,7 +5,7 @@ class CompanyCultures extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            company: {}
+            company: null
         }
     }
 
@@ -19,6 +19,9 @@ class CompanyCultures extends Component {
 
     render() {
         const company = this.state.company;
+        if (company === null) {
+            return null;
+        }
         return (
             <div>
                 <div><strong>Company</strong></div>
