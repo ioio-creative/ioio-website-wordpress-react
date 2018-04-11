@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import About01 from 'containers/about/About01';
 import CompanyDnas from 'containers/about/CompanyDnas';
 import CompanyCultures from 'containers/about/CompanyCultures';
 import TeamMembers from 'containers/about/TeamMembers';
@@ -19,19 +20,32 @@ class AboutPage extends Component {
     }
 
     componentDidMount() {
+      console.log("AAabouts : " );
         fetchAbouts((abouts) => {
+          console.log("abouts : " );
+          console.log(abouts);
             this.setState({
                 about: abouts[0]
             });
-        });      
+        });
     }
 
     render() {
         const about = this.state.about;
+        console.log("Render abouts : " );
+        console.log(about);
         return (
             <div>
                 <h2>This is a about page!</h2>
                 <div>{about.page_title}</div>
+                <About01
+                  hotPotImg={""//about.hotpot_image.guid
+                  }
+                  meatImg={""//about.meat_image.guid
+                  }
+                  fishImg={""//about.fish_image.guid
+                  }
+                />
                 <CompanyDnas />
                 <CompanyCultures />
                 <TeamMembers />
@@ -39,9 +53,9 @@ class AboutPage extends Component {
                 <CompanyClients />
                 <PressReleases />
                 <Company />
-            </div>            
+            </div>
         );
     }
 }
-  
+
 export default AboutPage;

@@ -6,7 +6,10 @@ function passJsonResultToCallback(entityToFetch, callback) {
     let dataUrl = baseUrl + entityToFetch + defaultQuery;
     fetch(dataUrl)
         .then(res => res.json())
-        .then(resJson => callback(resJson));
+        .then(resJson => {
+            console.log(resJson);
+            callback(resJson);
+        });
 }
 
 
