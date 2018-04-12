@@ -111,8 +111,7 @@ jQuery(document).ready(function($) {
   $(".testimonials-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});
 
   //#Sidebar
-  $("#menu-close").click(function(e) {
-    e.preventDefault();
+  $(".menu-close").click(function(e) {
     $("#sidebar").toggleClass("active");
     $("#menu-canvas").remove();
   });

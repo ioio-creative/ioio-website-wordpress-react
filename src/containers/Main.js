@@ -14,12 +14,12 @@ class Main extends Component {
           <div id="scroller">
             <main id="main">
                 {/*
-                    Switch component behaves similarly to the "switch" construct 
-                    in programming. Once a Route is matched, subsequent Routes 
-                    will be ignored. So we should use "exact" keyword on more 
-                    generic paths, like "/".                                            
+                    Switch component behaves similarly to the "switch" construct
+                    in programming. Once a Route is matched, subsequent Routes
+                    will be ignored. So we should use "exact" keyword on more
+                    generic paths, like "/".
                 */}
-                <Switch>                    
+                <Switch>
                     <Route path={routes.home} component={HomePage} />
                     <Route exact path={routes.about} component={AboutPage} />
                     <Route path={routes.projects} component={ProjectsPage} />

@@ -46,10 +46,14 @@ class AboutPage extends Component {
         page_subtitle={about.page_subtitle}
         hotPotImg={about.hotpot_image.guid}
         meatImg={about.meat_image.guid}
-        fishImg={about.fish_image.guid}/>
+        fishImg={about.fish_image.guid}
+      />
 
       <About02
         //Section: video
+        feature_media={about.feature_media.guid}
+        feature_media_caption={about.feature_media_caption}
+        feature_media_desc={about.feature_media_desc}
       />
 
       <About03

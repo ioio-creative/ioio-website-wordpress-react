@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
+import routes from 'globals/routes';
+
 class Sidebar extends Component {
     render() {
         return (
@@ -11,11 +13,11 @@ class Sidebar extends Component {
              <object data="img/ioio_logo-02.svg" type="image/svg+xml" className="logo menu-transition">
              <img src="img/ioio_logo-02.png" alt="" />
              </object>
-             <Link className="menu-item menu-transition" to='/'>About</Link>
-             <Link className="menu-item menu-transition" to='/projects'>Projects</Link>
-             <Link className="menu-item menu-transition" to='/contacts'>Contacts</Link>
-             <a className="menu-item menu-transition menu-language" href="#">English</a>
-             <a className="menu-item menu-transition menu-language" href="#">中文</a>
+             <Link className="menu-item menu-transition menu-close" to={routes.about}>About</Link>
+             <Link className="menu-item menu-transition menu-close" to={routes.projects}>Projects</Link>
+             <Link className="menu-item menu-transition menu-close" to={routes.contacts}>Contacts</Link>
+             <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
+             <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
           </div>
         );
     }
