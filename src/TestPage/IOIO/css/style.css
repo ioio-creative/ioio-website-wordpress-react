@@ -25,9 +25,9 @@ body {
   background: #fff;
   color: #000;
   font-family: "FuturaLT", sans-serif;
-
   margin:0;
   position:relative;
+  white-space: pre-line;
 }
 
 a {
