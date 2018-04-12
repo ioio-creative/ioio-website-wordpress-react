@@ -49,7 +49,25 @@ function fetchCompanies(callback) {
 /* end of about page */
 
 
+/* project list page */
+
+function fetchProjects(callback) {
+    passJsonResultToCallback("projects", callback);
+}
+
+function fetchProjectCategories(callback) {
+    passJsonResultToCallback("project_categories", callback);
+}
+
+function fetchProjectTags(callback) {
+    passJsonResultToCallback("project_tags", callback);
+}
+
+/* end of project list page */
+
+
 export {
+    // about page
     fetchAbouts,
     fetchCompanyDnas,
     fetchCompanyCultures,
@@ -57,5 +75,10 @@ export {
     fetchCompanyServices,
     fetchCompanyClients,
     fetchPressReleases,
-    fetchCompanies
+    fetchCompanies,
+
+    // project list page
+    fetchProjects,
+    fetchProjectCategories,
+    fetchProjectTags,    
 };
