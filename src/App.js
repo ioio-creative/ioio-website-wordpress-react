@@ -13,7 +13,6 @@ class App extends Component {
         <Header />
         <Sidebar />
         <Main />
-
       </div>
     );
   }

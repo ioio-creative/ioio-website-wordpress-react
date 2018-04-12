@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class ProjectsPage extends Component {
+class ProjectDetailPage extends Component {
     render() {
-      console.log("PP");
         return (
             <div>
-                <h2>Projects Page</h2>
+                <h2>Project Detail Page</h2>
             </div>
         );
     }
 }
 
-export default ProjectsPage;
+export default ProjectDetailPage;
