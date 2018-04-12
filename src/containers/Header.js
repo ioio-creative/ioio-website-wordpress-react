@@ -6,8 +6,11 @@ import routes from 'globals/routes';
 class Header extends Component {
     render() {
         return (
+
+          <div>
+          {  /*
             <header>
-                <nav>                    
+                <nav>
                     <ul>
                         <li><Link to={routes.home}>Home</Link></li>
                         <li><Link to={routes.about}>About</Link></li>
@@ -16,6 +19,9 @@ class Header extends Component {
                     </ul>
                 </nav>
             </header>
+          */}
+</div>
+
         );
     }
 }

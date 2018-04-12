@@ -83,12 +83,16 @@ class AboutPage extends Component {
       <Footer
         //Section: Footer
       />
+{/*
+
       <CompanyCultures/>
       <TeamMembers/>
       <CompanyServices/>
       <CompanyClients/>
       <PressReleases/>
       <Company/>
+
+  */}
     </div>);
   }
 }
