@@ -25,9 +25,9 @@ body {
   background: #fff;
   color: #000;
   font-family: "FuturaLT", sans-serif;
-
   margin:0;
   position:relative;
+  white-space: pre-line;
 }
 
 a {
@@ -1103,9 +1103,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer {
   background: #EDEDED;
   padding: 0 0 30px 0;
-  color: #FFF;
+  color: #000;
   font-size: 14px;
-
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
@@ -1141,6 +1140,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 36px;
   height: 36px;
   transition: 0.3s;
+    color: #000;
 }
 
 #footer .footer-top .social-links a:hover {
@@ -1150,12 +1150,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer .footer-top h4 {
   font-size: 14px;
   font-weight: bold;
-  color: #fff;
+
   text-transform: uppercase;
   position: relative;
   padding-bottom: 12px;
 }
 
 #footer .footer-hotpot{
+  display: block;
+  margin: auto;
 
 }

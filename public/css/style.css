@@ -28,6 +28,7 @@ body {
 
   margin:0;
   position:relative;
+  white-space: pre-line;
 }
 
 a {
@@ -240,24 +241,24 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-#about-01
+#about01
 --------------------------------*/
 
-#about-01{
+#about01{
   background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)), url(../img/Triangle.png) fixed center center;
   background-size: auto;
   background-repeat: no-repeat;
   padding: 60px 0 20px 0;
 }
 
-#about-01 h3 {
+#about01 h3 {
   color: #fff;
   font-size: 28px;
   font-weight: bold;
   padding: 500px 0 20px 0;
 }
 
-#about-01 h1 {
+#about01 h1 {
   color: #000;
   font-size: 60px;
   font-weight: bold;
