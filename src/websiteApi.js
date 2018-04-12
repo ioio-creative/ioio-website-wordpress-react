@@ -11,6 +11,14 @@ function passJsonResultToCallback(entityToFetch, callback) {
         });
 }
 
+//Chris: do you think we should simpify this?
+/* General */
+
+function fetchFooter(callback) {
+    passJsonResultToCallback("footer", callback);
+}
+
+/* end of General */
 
 /* about page */
 
@@ -46,6 +54,8 @@ function fetchCompanies(callback) {
     passJsonResultToCallback("companies", callback);
 }
 
+
+
 /* end of about page */
 
 
@@ -67,6 +77,7 @@ function fetchProjectTags(callback) {
 
 
 export {
+    fetchFooter,
     // about page
     fetchAbouts,
     fetchCompanyDnas,
@@ -80,5 +91,5 @@ export {
     // project list page
     fetchProjects,
     fetchProjectCategories,
-    fetchProjectTags,    
+    fetchProjectTags,
 };

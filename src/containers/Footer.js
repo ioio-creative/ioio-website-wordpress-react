@@ -2,30 +2,35 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
 class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      footer: {}
+    }
+  }
   render() {
     return (<footer id="footer">
       <div className="footer-top">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-info">
-              <h3 className="footer-slogan">Bring your food,
-                <br/>Join us on the table.</h3>
+              <h3 className="footer-slogan">{this.props.footer_slogan}</h3>
             </div>
             <div className="col-lg-3 col-md-6 footer-img"></div>
             <div className="col-lg-3 col-md-6 footer-contact">
               <p>
-                Unit A802, 8/F, Tai Chiap Factory<br/>
-                Building, 17 Yuk Yat St,<br/>
-                To Kwa Wan, Kowloon<br/>
+                {this.props.footer_address}
                 <br/>
-                <strong>Tel: (852) 3709 8437</strong>
                 <br/>
-                <strong>Info@Ioiocreative.com</strong>
+                <strong>{this.props.footer_phone}</strong>
+                <br/>
+                <strong>{this.props.footer_email}</strong>
                 <br/>
               </p>
             </div>
             <div className="col-lg-3 col-md-6 footer-social">
               <div className="social-links">
+                {this.props.footer_social_media}
                 <a href="#" className="facebook">Facebook</a>
                 <a href="#" className="instagram">Instagram</a>
                 <a href="#" className="youtube">Youtube</a>

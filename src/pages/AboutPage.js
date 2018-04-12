@@ -18,6 +18,7 @@ import PressReleases from 'containers/about/PressReleases';
 import Company from 'containers/about/Company';
 
 import {fetchAbouts} from 'websiteApi';
+import {fetchFooter} from 'websiteApi';
 
 class AboutPage extends Component {
   constructor(props) {
@@ -31,11 +32,18 @@ class AboutPage extends Component {
     fetchAbouts((abouts) => {
       this.setState({about: abouts[0]});
     });
+    fetchFooter((footers) => {
+      this.setState({footer: footers[0]});
+    });
   }
 
   render() {
     const about = this.state.about;
     if (about === null) {
+      return null;
+    }
+    const footer = this.state.footer;
+    if (footer === null) {
       return null;
     }
     return (<div>
@@ -62,6 +70,7 @@ class AboutPage extends Component {
 
       <About04
         // Section: SlideShow
+
       />
 
       <About05
@@ -82,6 +91,11 @@ class AboutPage extends Component {
 
       <Footer
         //Section: Footer
+        footer_slogan = {footer.slogan}
+        footer_address = {footer.address}
+        footer_phone = {footer.phone}
+        footer_email = {footer.email}
+        footer_social_media = {footer.social_media}
       />
 {/*
 
