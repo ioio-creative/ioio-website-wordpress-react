@@ -7,6 +7,7 @@ https://daveceddia.com/react-project-structure/?utm_campaign=welcome
 https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
 - Getting line breaks with string literals in html elements using React
 https://stackoverflow.com/questions/48067930/getting-line-breaks-with-string-literals-in-html-elements-using-react
+https://reactjs.org/docs/jsx-in-depth.html
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
