@@ -1,27 +1,9 @@
 import React, {Component} from 'react';
 
-function getIndex(value, arr, prop) {
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i][prop] === value) {
-      return i;
-    }
-  }
-  return -1; //to handle the case where the value doesn't exist
-}
-
 function Slideshow(props) {
-  var id = 0;
+  let id = 0;
   const social_media_items = props.slides.map((slide) => {
-    console.log(id);
-
-    var h = '';
-    if (id == 0) {
-      h = 'arousel-item active'
-    } else {
-      h = 'arousel-item'
-    }
-
-    return (<div className={h} data-ids={id++}>
+    return (<div className={id==0 ? 'carousel-item active' : 'carousel-item'} key={id++}>
       <div className="row container-fluid">
         <div className="col-md-7 text-center">
           <img src={slide.image.guid} alt="alt" className="img-responsive slideshow-img"/>
@@ -32,13 +14,29 @@ function Slideshow(props) {
         </div>
       </div>
     </div>);
-
   });
 
-  return (<div className="carousel-inner" role="listbox">
-    {social_media_items}
-  </div>);
+  return (
+
+    <div className="intro-container">
+      <div id="introCarousel" className="carousel slide carousel-fade" data-ride="carousel">
+        <ol className="carousel-indicators text-right" />
+        <div className="carousel-inner" role="listbox">
+          {social_media_items}
+        </div>
+        <a className="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span className="carousel-control-prev-icon ion-chevron-left" aria-hidden="true" />
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span className="carousel-control-next-icon ion-chevron-right" aria-hidden="true" />
+          <span className="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+);
 }
+
 
 class About04 extends Component {
   constructor(props) {
@@ -48,24 +46,12 @@ class About04 extends Component {
     }
   }
 
+
   render() {
-    var a = this.props.about
-    var slides = a.slideshow
+    let a = this.props.about
+    let slides = a.slideshow
     return (<section id="slideshow">
-      <div className="intro-container">
-        <div id="introCarousel" className="carousel slide carousel-fade" data-ride="carousel">
-          <ol className="carousel-indicators text-right"/>
-          <Slideshow slides={slides}/>
-          <a className="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-            <span className="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"/>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-            <span className="carousel-control-next-icon ion-chevron-right" aria-hidden="true"/>
-            <span className="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
+                <Slideshow slides={slides}/>
     </section>);
   }
 }

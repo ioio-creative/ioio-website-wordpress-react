@@ -9,6 +9,8 @@ import About06 from 'containers/about/About06';
 import About07 from 'containers/about/About07';
 import About08 from 'containers/about/About08';
 import Footer from 'containers/Footer';
+import Scripts from 'containers/Scripts';
+
 import CompanyDnas from 'containers/about/CompanyDnas';
 import CompanyCultures from 'containers/about/CompanyCultures';
 import TeamMembers from 'containers/about/TeamMembers';
@@ -89,17 +91,19 @@ class AboutPage extends Component {
 
       <Footer
         //Section: Footer
-        footer={footer}
+        footer = {footer}
       />
-{/*
 
+
+
+
+{/*
       <CompanyCultures/>
       <TeamMembers/>
       <CompanyServices/>
       <CompanyClients/>
       <PressReleases/>
       <Company/>
-
   */}
     </div>);
   }

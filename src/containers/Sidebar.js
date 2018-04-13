@@ -6,8 +6,8 @@ import routes from 'globals/routes';
 class Sidebar extends Component {
     render() {
         return (
-          <div id="sidebar" className="wow fadeInUp menu-transition" >
-             <a id="menu-toggle" href="#"  className="menu-transition">
+          <div id="sidebar" className="menu-transition" >
+             <a id="menu-toggle" role="button" className="menu-transition">
                 <h3>Index</h3>
              </a>
              <object data="img/ioio_logo-02.svg" type="image/svg+xml" className="logo menu-transition">
