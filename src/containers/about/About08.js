@@ -9,6 +9,7 @@ class About08 extends Component {
   }
 
   render() {
+    var a = this.props.about
     return (<section id="press">
         <div className="container">
           <header className="section-header">

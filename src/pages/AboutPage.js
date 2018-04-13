@@ -48,54 +48,48 @@ class AboutPage extends Component {
     return (<div>
 
       <About01
+        about = {about}
         //Section: title
-        page_title={about.page_title}
-        page_subtitle={about.page_subtitle}
-        hotPotImg={about.hotpot_image.guid}
-        meatImg={about.meat_image.guid}
-        fishImg={about.fish_image.guid}
       />
 
       <About02
         //Section: video
-        feature_media={about.feature_media.guid}
-        feature_media_caption={about.feature_media_caption}
-        feature_media_desc={about.feature_media_desc}
+        about = {about}
       />
 
       <About03
         //Section: core-value
+        about = {about}
       />
 
       <About04
         // Section: SlideShow
-
+        about = {about}
       />
 
       <About05
         // Section: The-team
+        about = {about}
       />
 
       <About06
         //Section: Services
+        about = {about}
       />
 
       <About07
         //Section: Clients
+        about = {about}
       />
 
       <About08
         //Section: Press
+        about = {about}
       />
 
       <Footer
         //Section: Footer
-        footer_slogan = {footer.slogan}
-        footer_address = {footer.address}
-        footer_phone = {footer.phone}
-        footer_email = {footer.email}
-        footer_social_media_length = {footer.social_media.length}
-        footer_social_media = {footer.social_media}
+        footer={footer}
       />
 {/*
 
