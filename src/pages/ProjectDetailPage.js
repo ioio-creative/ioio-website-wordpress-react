@@ -13,7 +13,7 @@ class ProjectDetailPage extends Component {
     componentDidMount() {
         // 10 here means decimal number system
         const idFromQuery = 
-            parseInt(this.props.match.params.identifier, 10);
+            parseInt(this.props.match.params.uniqId, 10);
         fetchProjectById(
             idFromQuery,
             (aProject) => {
