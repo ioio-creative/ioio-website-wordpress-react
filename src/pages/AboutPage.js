@@ -48,8 +48,8 @@ class AboutPage extends Component {
     return (<div>
 
       <About01
-        about = {about}
         //Section: title
+        about = {about}
       />
 
       <About02

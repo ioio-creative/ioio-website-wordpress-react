@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
 function SocialMedia(props) {
-
   const social_media_items = props.items.map((item) => {
     return (
       <a href={item.link} className="youtube">{item.my_name}</a>
@@ -25,28 +24,29 @@ class Footer extends Component {
   }
 
   render() {
+    var f = this.props.footer
     return (<footer id="footer">
       <div className="footer-top">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 footer-info">
-              <h3 className="footer-slogan">{this.props.footer.slogan}</h3>
+              <h3 className="footer-slogan">{f.slogan}</h3>
             </div>
             <div className="col-lg-3 col-md-6 footer-img"></div>
             <div className="col-lg-3 col-md-6 footer-contact">
               <p>
-                {this.props.footer.address}
+                {f.address}
                 <br/>
                 <br/>
-                <strong>{this.props.footer.phone}</strong>
+                <strong>{f.phone}</strong>
                 <br/>
-                <strong>{this.props.footer.email}</strong>
+                <strong>{f.email}</strong>
                 <br/>
               </p>
             </div>
             <div className="col-lg-3 col-md-6 footer-social">
               <div className="social-links">
-                <SocialMedia items={this.props.footer.social_media}
+                <SocialMedia items={f.social_media}
                 />
               </div>
             </div>
