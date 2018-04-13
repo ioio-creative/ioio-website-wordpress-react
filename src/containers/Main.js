@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import HomePage from 'pages/HomePage';
 import AboutPage from 'pages/AboutPage';
 import ProjectListPage from 'pages/ProjectListPage';
+import ProjectDetailPage from 'pages/ProjectDetailPage';
 import ContactsPage from 'pages/ContactsPage';
 
 import routes from 'globals/routes';
@@ -23,7 +24,8 @@ class Main extends Component {
                 <Switch>
                     <Route path={routes.home} component={HomePage} />
                     <Route exact path={routes.about} component={AboutPage} />
-                    <Route path={routes.projects} component={ProjectListPage} />
+                    <Route path={routes.projectById} component={ProjectDetailPage} />
+                    <Route path={routes.projects} component={ProjectListPage} />                    
                     <Route path={routes.contacts} component={ContactsPage} />
                 </Switch>
             </main>

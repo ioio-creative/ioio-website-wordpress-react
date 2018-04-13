@@ -8,6 +8,13 @@ https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf
 - Getting line breaks with string literals in html elements using React
 https://stackoverflow.com/questions/48067930/getting-line-breaks-with-string-literals-in-html-elements-using-react
 https://reactjs.org/docs/jsx-in-depth.html
+- Data Fetching
+https://www.robinwieruch.de/react-fetching-data/
+https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount/
+https://daveceddia.com/ajax-requests-in-react/
+https://reactjs.org/community/data-fetching.html
+- Favicon & App Icon Generator
+https://www.favicon-generator.org/
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

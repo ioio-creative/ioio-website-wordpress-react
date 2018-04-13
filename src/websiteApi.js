@@ -2,8 +2,11 @@ const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
 const defaultQuery = "?_embed";
 
 
-function passJsonResultToCallback(entityToFetch, callback) {
-    let dataUrl = baseUrl + entityToFetch + defaultQuery;
+function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
+    let dataUrl = baseUrl 
+        + entityToFetch 
+        + (optionalEntityId ? "/" + optionalEntityId : "") 
+        + defaultQuery;
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
@@ -76,8 +79,18 @@ function fetchProjectTags(callback) {
 /* end of project list page */
 
 
+/* project detail page */
+
+function fetchProjectById(id, callback) {
+    passJsonResultToCallback("projects", callback, id);
+}
+
+/* end of project detail page */
+
+
 export {
     fetchFooter,
+    
     // about page
     fetchAbouts,
     fetchCompanyDnas,
@@ -92,4 +105,7 @@ export {
     fetchProjects,
     fetchProjectCategories,
     fetchProjectTags,
+
+    // project detial page
+    fetchProjectById
 };

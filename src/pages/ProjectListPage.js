@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 import { fetchProjects, fetchProjectCategories, fetchProjectTags } from 'websiteApi.js';
+import routes from 'globals/routes';
 
 // Passing Arguments to Event Handlers
 // https://reactjs.org/docs/handling-events.html
@@ -20,7 +22,7 @@ function CategoryButton(props) {
 function ProjectItem(props) {
     return (
         <div>
-            {props.projectName}
+            <Link to={routes.projectByIdWithValue(props.id)}>{props.name}</Link>            
         </div>
     );
 }
@@ -79,7 +81,8 @@ class ProjectListPage extends Component {
             .map((filteredProject) => {
                 return (
                     <ProjectItem key={filteredProject.my_name}
-                        projectName={filteredProject.my_name}
+                        id={filteredProject.id}
+                        name={filteredProject.my_name}
                     />
                 );
             });
