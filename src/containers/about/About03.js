@@ -9,6 +9,7 @@ class About03 extends Component {
   }
 
   render() {
+    var a = this.props.about
     return (<section id="core-value">
       <div className="container-fluid">
         <div className="row wow fadeInUp">

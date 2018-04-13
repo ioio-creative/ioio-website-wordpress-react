@@ -9,6 +9,7 @@ class About04 extends Component {
   }
 
   render() {
+    var a = this.props.about
     return (<section id="slideshow">
       <div className="intro-container">
         <div id="introCarousel" className="carousel slide carousel-fade" data-ride="carousel">
