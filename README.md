@@ -15,6 +15,8 @@ https://daveceddia.com/ajax-requests-in-react/
 https://reactjs.org/community/data-fetching.html
 - Favicon & App Icon Generator
 https://www.favicon-generator.org/
+- WordPress API References
+https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#embed
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

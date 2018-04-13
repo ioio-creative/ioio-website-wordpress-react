@@ -1,3 +1,8 @@
+/*
+    WordPress API References
+    - https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#embed
+*/
+
 const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
 const defaultQuery = "?_embed";
 
