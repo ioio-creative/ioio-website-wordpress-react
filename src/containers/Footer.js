@@ -8,10 +8,7 @@ class Footer extends Component {
       footer: {}
     }
   }
-  function creatHTML(){
 
-
-  }
   render() {
     return (<footer id="footer">
       <div className="footer-top">
@@ -33,21 +30,19 @@ class Footer extends Component {
               </p>
             </div>
             <div className="col-lg-3 col-md-6 footer-social">
-              <div className="social-links" >
+              <div className="social-links">
 
-
-
-              <a href="#" className="facebook">Facebook</a>
-              <a href="#" className="instagram">Instagram</a>
-              <a href="#" className="youtube">Youtube</a>
+                <a href="#" className="facebook">Facebook</a>
+                <a href="#" className="instagram">Instagram</a>
+                <a href="#" className="youtube">Youtube</a>
+              </div>
             </div>
           </div>
+          <img className="footer-hotpot" src="img/hotpot.png" alt="alt"/>
         </div>
-        <img className="footer-hotpot" src="img/hotpot.png" alt="alt"/>
       </div>
-    </div>
-  </footer>);
-}
+    </footer>);
+  }
 }
 
 export default Footer;

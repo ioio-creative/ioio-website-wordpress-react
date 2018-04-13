@@ -5,7 +5,7 @@ import { fetchProjects, fetchProjectCategories, fetchProjectTags } from 'website
 // Passing Arguments to Event Handlers
 // https://reactjs.org/docs/handling-events.html
 function CategoryButton(props) {
-    return (        
+    return (
         <button onClick={(e) => props.onClick(props.id, e)}>
             {props.value}
         </button>
@@ -31,7 +31,7 @@ class ProjectListPage extends Component {
             projectCategories: [],
             projectTags: [],
             selectedCategoryId: this.selectAllCategoryId,
-        }        
+        }
 
         // https://reactjs.org/docs/handling-events.html
         // This binding is necessary to make `this` work in the callback
@@ -63,33 +63,33 @@ class ProjectListPage extends Component {
     }
 
     render() {
-        const projects;
+        let projects;
         if (this.state.selectedCategoryId === -1) {
             projects = this.state.projects;
-        } else {        
+        } else {
             projects = this.state.projects
-                .filter((project) => project.categories.includes(selectedCategoryId))
+                .filter((project) => project.categories.includes(this.state.selectedCategoryId))
                 .map((filteredProject) => {
                     return (
                         <ProjectItem key={filteredProject.my_name}
                             projectName={filteredProject.my_name}
                         />
-                    );        
+                    );
             });
         }
 
-        const projectCategories = this.state.projectCategories.map((category) => {        
+        const projectCategories = this.state.projectCategories.map((category) => {
             return (
                 <CategoryButton key={category.name}  // key is reserved for React
                     id={category.id}  // served as id
                     value={category.is_capitalized ? category.name.toUpperCase() : category.name}  // for display
-                    onClick={this.handleCategoryButtonClick}    
+                    onClick={this.handleCategoryButtonClick}
                 />
             );
         });
 
         const projectTags = this.state.projectTags;
-        
+
         return (
             <div>
                 <h2>Project List Page</h2>
