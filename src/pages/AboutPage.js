@@ -17,8 +17,7 @@ import CompanyClients from 'containers/about/CompanyClients';
 import PressReleases from 'containers/about/PressReleases';
 import Company from 'containers/about/Company';
 
-import {fetchAbouts} from 'websiteApi';
-import {fetchFooter} from 'websiteApi';
+import { fetchAbouts, fetchFooter } from 'websiteApi';
 
 class AboutPage extends Component {
   constructor(props) {
