@@ -6,7 +6,12 @@ import { fetchProjects, fetchProjectCategories, fetchProjectTags } from 'website
 // https://reactjs.org/docs/handling-events.html
 function CategoryButton(props) {
     return (
-        <button onClick={(e) => props.onClick(props.id, e)}>
+        <button
+            className={props.isSelected ? "red-font" : "nothing"} 
+            onClick={(e) => {                            
+                props.onClick(props.id, e);
+            }}
+        >
             {props.value}
         </button>
     );
@@ -63,27 +68,38 @@ class ProjectListPage extends Component {
     }
 
     render() {
-        let projects;
-        if (this.state.selectedCategoryId === -1) {
-            projects = this.state.projects;
+        let filteredProjectList;
+        if (this.state.selectedCategoryId === this.selectAllCategoryId) {
+            filteredProjectList = this.state.projects;
         } else {
-            projects = this.state.projects
-                .filter((project) => project.categories.includes(this.state.selectedCategoryId))
-                .map((filteredProject) => {
-                    return (
-                        <ProjectItem key={filteredProject.my_name}
-                            projectName={filteredProject.my_name}
-                        />
-                    );
-            });
+            filteredProjectList = this.state.projects
+                .filter((project) => project.project_categories.includes(this.state.selectedCategoryId));
         }
-
+        const filteredProjects = filteredProjectList
+            .map((filteredProject) => {
+                return (
+                    <ProjectItem key={filteredProject.my_name}
+                        projectName={filteredProject.my_name}
+                    />
+                );
+            });
+            
+        const allButton = (
+            <CategoryButton key={this.selectAllCategoryId}  // key is reserved for React
+                id={this.selectAllCategoryId}  // served as id
+                value="All"  // for display
+                onClick={this.handleCategoryButtonClick}
+                isSelected={this.selectAllCategoryId === this.state.selectedCategoryId}
+            />
+        );
+        
         const projectCategories = this.state.projectCategories.map((category) => {
             return (
-                <CategoryButton key={category.name}  // key is reserved for React
+                <CategoryButton key={category.id}  // key is reserved for React
                     id={category.id}  // served as id
                     value={category.is_capitalized ? category.name.toUpperCase() : category.name}  // for display
                     onClick={this.handleCategoryButtonClick}
+                    isSelected={category.id === this.state.selectedCategoryId}
                 />
             );
         });
@@ -93,8 +109,9 @@ class ProjectListPage extends Component {
         return (
             <div>
                 <h2>Project List Page</h2>
+                {allButton}
                 {projectCategories}
-                {projects}
+                {filteredProjects}
             </div>
         );
     }
