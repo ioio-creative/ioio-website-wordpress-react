@@ -95,6 +95,7 @@ class AboutPage extends Component {
         footer_address = {footer.address}
         footer_phone = {footer.phone}
         footer_email = {footer.email}
+        footer_social_media_length = {footer.social_media.length}
         footer_social_media = {footer.social_media}
       />
 {/*
