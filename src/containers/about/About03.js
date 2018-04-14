@@ -1,5 +1,25 @@
 import React, {Component} from 'react';
 
+function Items(props) {
+  //let id = 0;
+  const social_media_items = props.dnas.map((dna, id) => {
+    let h
+    h = "col-lg-4 box-bg-0" + (
+    id + 1)
+    return (<div className={h} key={id}>
+      <h4 className="core-value-title text-left">{dna.my_name}</h4>
+      <div className="text-center">
+        <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
+      </div>
+      <p className="description text-center">{dna.desc}</p>
+    </div>);
+  });
+
+  return (<div className="row wow fadeInUp">
+    {social_media_items}
+  </div>);
+}
+
 class About03 extends Component {
   constructor(props) {
     super(props);
@@ -12,33 +32,7 @@ class About03 extends Component {
     var a = this.props.about
     return (<section id="core-value">
       <div className="container-fluid">
-        <div className="row wow fadeInUp">
-          <div className="col-lg-4 box-bg-01">
-            <h4 className="core-value-title text-left">Core Value</h4>
-            <div className="text-center">
-              <img src="img/fish2.png" alt="alt" className="img-fluid core-value-img"/>
-            </div>
-            <p className="description text-center">To be open-minded,
-              <br/>believe in creativity
-            </p>
-          </div>
-          <div className="col-lg-4 box-bg-02">
-            <h4 className="core-value-title text-left">Core Value</h4>
-            <div className="text-center">
-              <img src="img/meet.png" alt="alt" className="img-fluid core-value-img"/>
-            </div>
-            <p className="description text-center">To understand
-              <br/>human behaviour</p>
-          </div>
-          <div className="col-lg-4 box-bg-03">
-            <h4 className="core-value-title text-left">Core Value</h4>
-            <div className="text-center">
-              <img src="img/fish2.png" alt="alt" className="img-fluid core-value-img"/>
-            </div>
-            <p className="description text-center">To generate standard
-              <br/>for the future</p>
-          </div>
-        </div>
+        <Items dnas={a.dnas}/>
       </div>
     </section>);
   }
