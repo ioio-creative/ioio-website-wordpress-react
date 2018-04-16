@@ -3,16 +3,18 @@
 --------------------------------*/
 #portfolio {
   padding: 60px 0;
+  white-space: nowrap;
 }
 
 #portfolio #portfolio-flters {
   padding: 0;
   margin: 5px 0 35px 0;
   list-style: none;
-  text-align: center;
+  text-align: left;
 }
 
 #portfolio #portfolio-flters li {
+
   cursor: pointer;
   margin: 15px 15px 15px 0;
   display: inline-block;
@@ -28,8 +30,8 @@
 }
 
 #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
-  background: #18d26e;
-  color: #fff;
+
+  color: #FFE000;
 }
 
 #portfolio #portfolio-flters li:last-child {
@@ -37,15 +39,17 @@
 }
 
 #portfolio .portfolio-wrap {
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
   transition: 0.3s;
 }
 
 #portfolio .portfolio-wrap:hover {
+  cursor: pointer;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);
 }
 
 #portfolio .portfolio-item {
+
   position: relative;
   height: 360px;
   overflow: hidden;
@@ -114,8 +118,8 @@
 
 #portfolio .portfolio-item .portfolio-info {
   background: #fff;
-  text-align: center;
-  padding: 30px;
+  text-align: left;
+  padding: 30px 0px;
   height: 90px;
   border-radius: 0 0 3px 3px;
 }
@@ -133,7 +137,7 @@
 }
 
 #portfolio .portfolio-item .portfolio-info h4 a:hover {
-  color: #18d26e;
+  color: #FFE000;
 }
 
 #portfolio .portfolio-item .portfolio-info p {
