@@ -19,6 +19,8 @@ import Scripts from 'containers/Scripts';
 // import PressReleases from 'containers/about/PressReleases';
 // import Company from 'containers/about/Company';
 
+import './AboutPage.css';
+
 import {fetchAbouts, fetchFooter} from 'websiteApi';
 
 class AboutPage extends Component {

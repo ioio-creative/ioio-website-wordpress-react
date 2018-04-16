@@ -9,9 +9,9 @@ const defaultQuery = "";
 
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
-    let dataUrl = baseUrl 
-        + entityToFetch 
-        + (optionalEntityId ? "/" + optionalEntityId : "") 
+    let dataUrl = baseUrl
+        + entityToFetch
+        + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
     fetch(dataUrl)
         .then(res => res.json())
@@ -101,7 +101,7 @@ function fetchProjectById(id, callback) {
 
 export {
     fetchFooter,
-    
+
     // about page
     fetchAbouts,
     fetchCompanyDnas,
