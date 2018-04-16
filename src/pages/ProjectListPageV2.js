@@ -11,8 +11,8 @@ import routes from 'globals/routes';
 function CategoryButton(props) {
     return (
         <button
-            className={props.isSelected ? "red-font" : "nothing"} 
-            onClick={(e) => {                            
+            className={props.isSelected ? "red-font" : "nothing"}
+            onClick={(e) => {
                 props.onClick(props.id, e);
             }}
         >
@@ -24,7 +24,7 @@ function CategoryButton(props) {
 function ProjectItem(props) {
     return (
         <div className="theItems">
-            <Link to={routes.projectByIdWithValue(props.id)}>{props.name}</Link>            
+            <Link to={routes.projectByIdWithValue(props.id)}>{props.name}</Link>
         </div>
     );
 }
@@ -96,7 +96,7 @@ class ProjectListPage extends Component {
                     />
                 );
             });
-            
+
         const allButton = (
             <CategoryButton key={this.selectAllCategoryId}  // key is reserved for React
                 id={this.selectAllCategoryId}  // served as id
@@ -105,7 +105,7 @@ class ProjectListPage extends Component {
                 isSelected={this.selectAllCategoryId === this.state.selectedCategoryId}
             />
         );
-        
+
         const projectCategories = this.state.projectCategories.map((category) => {
             return (
                 <CategoryButton key={category.id}  // key is reserved for React
