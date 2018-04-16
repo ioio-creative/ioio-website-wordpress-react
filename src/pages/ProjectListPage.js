@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import './ProjectListPage.css';
 
 import { fetchProjects, fetchProjectCategories, fetchProjectTags } from 'websiteApi.js';
 import routes from 'globals/routes';
@@ -21,7 +23,7 @@ function CategoryButton(props) {
 
 function ProjectItem(props) {
     return (
-        <div>
+        <div className="theItems">
             <Link to={routes.projectByIdWithValue(props.id)}>{props.name}</Link>            
         </div>
     );
@@ -69,6 +71,14 @@ class ProjectListPage extends Component {
         });
     }
 
+    handleAdd() {
+
+    }
+
+    handleRemove() {
+
+    }
+
     render() {
         let filteredProjectList;
         if (this.state.selectedCategoryId === this.selectAllCategoryId) {
@@ -114,7 +124,14 @@ class ProjectListPage extends Component {
                 <h2>Project List Page</h2>
                 {allButton}
                 {projectCategories}
-                {filteredProjects}
+                <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={5000}
+                    transitionEnterTimeout={5000}
+                    transitionLeaveTimeout={5000}>
+                    {filteredProjects}
+                </ReactCSSTransitionGroup>
             </div>
         );
     }

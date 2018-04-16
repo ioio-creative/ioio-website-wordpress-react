@@ -17,6 +17,10 @@ https://reactjs.org/community/data-fetching.html
 https://www.favicon-generator.org/
 - WordPress API References
 https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#embed
+- React Animation Add-Ons
+https://reactjs.org/docs/animation.html
+https://www.youtube.com/watch?v=UTFExS3IW5Q
+https://codepen.io/anon/pen/vRoOzK/?editors=0110
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
