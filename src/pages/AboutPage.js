@@ -11,13 +11,13 @@ import About08 from 'containers/about/About08';
 import Footer from 'containers/Footer';
 import Scripts from 'containers/Scripts';
 
-import CompanyDnas from 'containers/about/CompanyDnas';
-import CompanyCultures from 'containers/about/CompanyCultures';
-import TeamMembers from 'containers/about/TeamMembers';
-import CompanyServices from 'containers/about/CompanyServices';
-import CompanyClients from 'containers/about/CompanyClients';
-import PressReleases from 'containers/about/PressReleases';
-import Company from 'containers/about/Company';
+// import CompanyDnas from 'containers/about/CompanyDnas';
+// import CompanyCultures from 'containers/about/CompanyCultures';
+// import TeamMembers from 'containers/about/TeamMembers';
+// import CompanyServices from 'containers/about/CompanyServices';
+// import CompanyClients from 'containers/about/CompanyClients';
+// import PressReleases from 'containers/about/PressReleases';
+// import Company from 'containers/about/Company';
 
 import {fetchAbouts, fetchFooter} from 'websiteApi';
 

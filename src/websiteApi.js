@@ -4,7 +4,8 @@
 */
 
 const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
-const defaultQuery = "?_embed";
+//const defaultQuery = "?_embed";
+const defaultQuery = "";
 
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
@@ -15,15 +16,20 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
-            callback(resJson);
+            if (resJson.data && resJson.data.status === 404) {
+                // 404 not found
+                callback(null);
+            } else {
+                callback(resJson);
+            }
         });
 }
 
-//Chris: do you think we should simpify this?
+
 /* General */
 
 function fetchFooter(callback) {
-    passJsonResultToCallback("footer", callback);
+    passJsonResultToCallback("footers", callback);
 }
 
 /* end of General */

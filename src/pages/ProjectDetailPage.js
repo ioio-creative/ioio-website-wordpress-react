@@ -10,10 +10,18 @@ class ProjectDetailPage extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() {       
         // 10 here means decimal number system
         const idFromQuery = 
             parseInt(this.props.match.params.uniqId, 10);
+
+        if (idFromQuery === NaN) {
+            this.setState({
+                project: null,
+            });
+            return;
+        }
+        
         fetchProjectById(
             idFromQuery,
             (aProject) => {
@@ -27,7 +35,9 @@ class ProjectDetailPage extends Component {
     render() {
         const project = this.state.project;
         if (project === null) {
-            return null;
+            return (
+                <div>404 Project Not Found!</div>
+            );
         }
         return (
             <div>

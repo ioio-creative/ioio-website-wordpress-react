@@ -24,8 +24,8 @@ class Main extends Component {
                 <Switch>
                     <Route path={routes.home} component={HomePage} />
                     <Route exact path={routes.about} component={AboutPage} />
-                    <Route path={routes.projectById} component={ProjectDetailPage} />
-                    <Route path={routes.projects} component={ProjectListPage} />                    
+                    <Route exact path={routes.projectById} component={ProjectDetailPage} />
+                    <Route path={routes.projects} component={ProjectListPage} />
                     <Route path={routes.contacts} component={ContactsPage} />
                 </Switch>
             </main>
