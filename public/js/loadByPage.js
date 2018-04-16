@@ -1,4 +1,5 @@
-jQuery(document).ready(function($) {
+//jQuery(document).ready(function($) {
+function reloadJS(){
   trying()
   function trying() {
       if (!$(".carousel-item").size()) {
@@ -116,20 +117,7 @@ jQuery(document).ready(function($) {
         // Testimonials carousel (uses the Owl Carousel library)
         $(".testimonials-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});
 
-        //#Sidebar
-        $(".menu-close").click(function(e) {
-          $("#sidebar").toggleClass("active");
-          $("#menu-canvas").remove();
-        });
 
-        $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#sidebar").toggleClass("active");
-          $("#menu-canvas").remove();
-          $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
-          menuCanvas();
-
-        });
 
         // #the-Team
         var itemsMainDiv = ('.MultiCarousel');
@@ -236,5 +224,5 @@ jQuery(document).ready(function($) {
        }
     };
 
-
-});
+}
+//});

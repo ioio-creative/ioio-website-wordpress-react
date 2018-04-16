@@ -19,7 +19,7 @@ import CompanyClients from 'containers/about/CompanyClients';
 import PressReleases from 'containers/about/PressReleases';
 import Company from 'containers/about/Company';
 
-import { fetchAbouts, fetchFooter } from 'websiteApi';
+import {fetchAbouts, fetchFooter} from 'websiteApi';
 
 class AboutPage extends Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class AboutPage extends Component {
     fetchFooter((footers) => {
       this.setState({footer: footers[0]});
     });
+    <Scripts/>
   }
 
   render() {
@@ -51,60 +52,47 @@ class AboutPage extends Component {
 
       <About01
         //Section: title
-        about = {about}
-      />
+        about={about}/>
 
       <About02
         //Section: video
-        about = {about}
-      />
+        about={about}/>
 
       <About03
         //Section: core-value
-        about = {about}
-      />
+        about={about}/>
 
       <About04
         // Section: SlideShow
-        about = {about}
-      />
+        about={about}/>
 
       <About05
         // Section: The-team
-        about = {about}
-      />
+        about={about}/>
 
       <About06
         //Section: Services
-        about = {about}
-      />
+        about={about}/>
 
       <About07
         //Section: Clients
-        about = {about}
-      />
+        about={about}/>
 
       <About08
         //Section: Press
-        about = {about}
-      />
+        about={about}/>
 
       <Footer
         //Section: Footer
-        footer = {footer}
-      />
-
-
-
-
-{/*
+        footer={footer}/> {/*
       <CompanyCultures/>
       <TeamMembers/>
       <CompanyServices/>
       <CompanyClients/>
       <PressReleases/>
       <Company/>
-  */}
+  */
+      }
     </div>);
   }
 }

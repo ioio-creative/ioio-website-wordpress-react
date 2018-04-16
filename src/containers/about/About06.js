@@ -39,7 +39,6 @@ render() {
         <h3>{a.service_section_title}</h3>
         <p>{a.service_section_desc}}</p>
       </header>
-
         <Items items={a.services}/>
     </div>
   </section>);

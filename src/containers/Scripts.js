@@ -5,6 +5,10 @@ import ReactDOM from 'react-dom';
 import routes from 'globals/routes';
 
 
+
+
+
+/*
 function new_script(src) {
   return new Promise(function(resolve, reject){
     var script = document.createElement('script');
@@ -20,7 +24,7 @@ function new_script(src) {
 };
 // Promise Interface can ensure load the script only once.
 var my_script = new_script('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js');
-
+*/
 class Scripts extends Component {
 
   constructor(props) {
@@ -30,6 +34,17 @@ class Scripts extends Component {
     };
   }
 
+  componentDidMount () {
+    /*
+          const script = document.createElement("script");
+
+          script.src = "https://use.typekit.net/foobar.js";
+          script.async = true;
+
+          document.body.appendChild(script);
+          */
+      }
+/*
   do_load = () => {
     var self = this;
     my_script.then(function() {
@@ -38,8 +53,9 @@ class Scripts extends Component {
       self.setState({'status': 'error'});
     })
   }
-
+*/
   render() {
+    /*
     var self = this;
     if (self.state.status === 'start') {
       self.state.status = 'loading';
@@ -47,9 +63,10 @@ class Scripts extends Component {
         self.do_load()
       }, 0);
     }
-
+*/
     return (
-      <div>{self.state.status}   {self.state.status === 'done' && 'here you can use the script loaded'}</div>
+<div></div>
+
     );
   }
 }
