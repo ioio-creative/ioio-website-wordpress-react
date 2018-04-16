@@ -45,11 +45,11 @@ function reloadJS(){
           } else {
             $('#scroller').removeClass('header-scrolled');
             /*
-                        $('.wow').removeClass('animated');
-                        $('.wow').removeAttr('style');
-                        new WOW().init();
-                        console.log($(this).scrollTop());
-                  */
+                  $('.wow').removeClass('animated');
+                  $('.wow').removeAttr('style');
+                  new WOW().init();
+                  console.log($(this).scrollTop());
+            */
           }
         });
 

@@ -30,7 +30,7 @@
     opacity: 0.01;
     height: 0px;
     width: 0px;
-    transition: 200ms;
+    transition: 2000ms;
     transform: translate(-300px,0px);
 }
 
