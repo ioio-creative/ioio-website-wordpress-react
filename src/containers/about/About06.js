@@ -6,7 +6,7 @@ function Items(props) {
     <div className="col-md-3 wow fadeInUp" data-wow-delay="0.3s">
       <div className="services-col">
       <div className="img">
-        <img src={item.image.guid} alt="alt" className="img-fluid"/>
+        <img src={item.image.guid} key={id} alt="alt" className="img-fluid"/>
       </div>
       <p>
         {item.desc}

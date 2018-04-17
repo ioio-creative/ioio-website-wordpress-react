@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './ProjectListPage.css';
 
-import { fetchProjects, fetchProjectCategories, fetchProjectTags } from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import routes from 'globals/routes';
 
 // Passing Arguments to Event Handlers
 // https://reactjs.org/docs/handling-events.html
+
+/*
 function CategoryButton(props) {
     return (
         <button
@@ -28,112 +30,146 @@ function ProjectItem(props) {
         </div>
     );
 }
+*/
+
+function ProjectTags(props) {
+  const tag_item = props.tags.map((tag, id) => {
+    var tagId = ".filter-" + tag.id
+    return (
+      <li data-filter={tagId}>{tag.name}</li>
+    );
+  });
+  return (<div className="col-lg-12 ">
+    <ul id="portfolio-flters">
+      <li data-filter="*" className="filter-active">All</li>
+      {tag_item}
+    </ul>
+  </div>);
+}
+
+function AllProjects(props) {
+  const tag_item = props.tags.map((tag, id) => {
+    var tt = ".filter-" + tag.id
+    return (<div>
+      <li data-filter={tt}>{tag.name}</li>
+    </div>);
+  });
+
+
+  const project_item = props.projectlist.map((project, id) => {
+    let tagIds = "col-lg-4 col-md-6 portfolio-item wow fadeInUp ";
+    for (let i = 0; i < project.project_tags.length; i++) {
+      tagIds += "filter-" + project.project_tags[i] + " "
+    }
+
+    return (<div className={tagIds}>
+      <a href={project._links.self}>
+        <div className="portfolio-wrap">
+          <figure>
+              <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
+          </figure>
+          <div className="portfolio-info">
+            <h4>
+              <a href="#">{project.my_name}</a>
+            </h4>
+            <p>tag</p>
+          </div>
+        </div>
+      </a>
+    </div>);
+  });
+
+  return (<div className="row portfolio-container">
+    {project_item}
+  </div>);
+}
 
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
 class ProjectListPage extends Component {
-    constructor(props) {
-        super(props);
-        this.selectAllCategoryId = -1;
-        this.state = {
-            projects: [],
-            projectCategories: [],
-            projectTags: [],
-            selectedCategoryId: this.selectAllCategoryId,
-        }
-
-        // https://reactjs.org/docs/handling-events.html
-        // This binding is necessary to make `this` work in the callback
-        this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
+  constructor(props) {
+    super(props);
+    this.selectAllCategoryId = -1;
+    this.state = {
+      projects: [],
+      projectCategories: [],
+      projectTags: [],
+      selectedCategoryId: this.selectAllCategoryId
     }
 
-    componentDidMount() {
-        fetchProjects((projects) => {
-            this.setState({
-                projects: projects
-            });
-        });
-        fetchProjectCategories((categories) => {
-            this.setState({
-                projectCategories: categories
-            });
-        });
-        fetchProjectTags((tags) => {
-            this.setState({
-                projectTags: tags
-            });
-        });
+    // https://reactjs.org/docs/handling-events.html
+    // This binding is necessary to make `this` work in the callback
+    this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
+  }
+
+  componentDidMount() {
+    fetchProjects((projects) => {
+      this.setState({projects: projects});
+    });
+    fetchProjectCategories((categories) => {
+      this.setState({projectCategories: categories});
+    });
+    fetchProjectTags((tags) => {
+      this.setState({projectTags: tags});
+    });
+  }
+
+  handleCategoryButtonClick(categoryId) {
+    this.setState({selectedCategoryId: categoryId});
+  }
+
+  handleAdd() {}
+
+  handleRemove() {}
+
+  render() {
+    /*
+    let filteredProjectList;
+    if (this.state.selectedCategoryId === this.selectAllCategoryId) {
+      filteredProjectList = this.state.projects;
+    } else {
+      filteredProjectList = this.state.projects.filter((project) => project.project_categories.includes(this.state.selectedCategoryId));
     }
+    const filteredProjects = filteredProjectList.map((filteredProject) => {
+      return (<ProjectItem key={filteredProject.my_name} id={filteredProject.id} name={filteredProject.my_name}/>);
+    });
 
-    handleCategoryButtonClick(categoryId) {
-        this.setState({
-            selectedCategoryId: categoryId
-        });
-    }
+    const allButton = (<CategoryButton key={this.selectAllCategoryId}
+      // key is reserved for React
+      id={this.selectAllCategoryId}
+      // served as id
+      value="All"
+      // for display
+      onClick={this.handleCategoryButtonClick} isSelected={this.selectAllCategoryId === this.state.selectedCategoryId}/>);
 
-    render() {
-        let filteredProjectList;
-        if (this.state.selectedCategoryId === this.selectAllCategoryId) {
-            filteredProjectList = this.state.projects;
-        } else {
-            filteredProjectList = this.state.projects
-                .filter((project) => project.project_categories.includes(this.state.selectedCategoryId));
-        }
-        const filteredProjects = filteredProjectList
-            .map((filteredProject) => {
-                return (
-                    <ProjectItem key={filteredProject.my_name}
-                        id={filteredProject.id}
-                        name={filteredProject.my_name}
-                    />
-                );
-            });
+    const projectCategories = this.state.projectCategories.map((category) => {
+      return (<CategoryButton key={category.id}
+        // key is reserved for React
+        id={category.id}
+        // served as id
+        value={category.is_capitalized
+          ? category.name.toUpperCase()
+          : category.name}
+        // for display
+        onClick={this.handleCategoryButtonClick} isSelected={category.id === this.state.selectedCategoryId}/>);
+    });
+*/
+    let t = this.state.projectTags;
+    let p = this.state.projects;
 
-        const allButton = (
-            <CategoryButton key={this.selectAllCategoryId}  // key is reserved for React
-                id={this.selectAllCategoryId}  // served as id
-                value="All"  // for display
-                onClick={this.handleCategoryButtonClick}
-                isSelected={this.selectAllCategoryId === this.state.selectedCategoryId}
-            />
-        );
-        
-        const projectCategories = this.state.projectCategories.map((category) => {
-            return (
-                <CategoryButton key={category.id}  // key is reserved for React
-                    id={category.id}  // served as id
-                    value={category.is_capitalized ? category.name.toUpperCase() : category.name}  // for display
-                    onClick={this.handleCategoryButtonClick}
-                    isSelected={category.id === this.state.selectedCategoryId}
-                />
-            );
-        });
+    return (<section id="portfolio" className="section-bg">
+      <div className="container-fluid">
+        <header className="section-header">
+          <h3 className="section-title">Case Studies</h3>
+        </header>
+        <div className="row">
+          <ProjectTags tags={t}/>
+        </div>
 
-        const projectTags = this.state.projectTags;
-
-        return (
-
-
-
-
-
-
-
-            <div>
-                <h2>Project List Page</h2>
-                {allButton}
-                {projectCategories}
-                <ReactCSSTransitionGroup
-                    transitionName="example"
-                    transitionAppear={true}
-                    transitionAppearTimeout={5000}
-                    transitionEnterTimeout={5000}
-                    transitionLeaveTimeout={5000}>
-                    {filteredProjects}
-                </ReactCSSTransitionGroup>
-            </div>
-        );
-    }
+        <AllProjects projectlist={p} tags={t}/>
+      </div>
+    </section>);
+  }
 }
 
 export default ProjectListPage;
