@@ -71,14 +71,6 @@ class ProjectListPage extends Component {
         });
     }
 
-    handleAdd() {
-
-    }
-
-    handleRemove() {
-
-    }
-
     render() {
         let filteredProjectList;
         if (this.state.selectedCategoryId === this.selectAllCategoryId) {
