@@ -22,6 +22,56 @@ https://reactjs.org/docs/animation.html
 https://www.youtube.com/watch?v=UTFExS3IW5Q
 https://codepen.io/anon/pen/vRoOzK/?editors=0110
 
+Steps to update website on AWS EC2 Linux:
+"""
+- log onto AWS
+- go to Lightsail
+- connect via SSH
+run the following commands:
+cd /home/bitnami/apps/ioio-website-wordpress-react
+sudo git fetch
+
+Forget the following part using nohup, use pm2 instead
+{
+  nohup npm start </dev/null &
+  Note: 
+  - The PID will be shown, record it down for killing the process later.
+  - Seems that killing the process started by npm start won't kill the web server process though ...
+
+  The last command returns the command line control to the user.
+  https://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die
+
+  See exiting jobs running in the background
+  - ps -ef | grep node
+
+  Kill background procsess
+  - kill PID
+
+  Remove text file, where nohup dumped standard output from running "npm start" process
+  - rm -rf /home/bitnami/nohup.out
+
+  References
+  - https://stackoverflow.com/questions/17385794/how-to-get-the-process-id-to-kill-a-nohup-process
+}
+
+Using pm2
+{
+  Commands
+  - pm2 start npm -- start
+  - pm2 list
+  - pm2 delete ID/NAME
+
+  References:
+  - https://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die
+  - https://mrvautin.com/running-nodejs-applications-in-production-forever-vs-supervisord-vs-pm2/
+  - http://pm2.keymetrics.io/
+  - https://stackoverflow.com/questions/31579509/can-pm2-run-an-npm-start-script
+  - https://stackoverflow.com/questions/34682035/cluster-and-fork-mode-difference-in-pm2
+}
+
+"""
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
