@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
