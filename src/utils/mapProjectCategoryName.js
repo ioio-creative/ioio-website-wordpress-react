@@ -1,20 +1,29 @@
 let productCategoryIdNamePairs = null;
+let productTagIdNamePairs = null;
 
-function fillProductCategoryIdNamePairs(categoryObjs) {
-    idNamePairs = {};
-    categoryObjs.forEach((categoryObj) => {
-        idNamePairs[categoryObj.id] = categoryObj.name;
+function createIdNamePairs(sourceObjs) {
+    let idNamePairs = {};
+    sourceObjs.forEach((targetObj) => {
+        idNamePairs[targetObj.id] = targetObj.name;
     });
-    productCategoryIdNamePairs = idNamePairs;
+    return idNamePairs;
 }
 
-function getProjectCategoryName(categoryId, categoryObjs) {
-    if (projectCategories === null) {
-        fillProductCategoryIdNamePairs(categoryObjs);
+function getProjectCategoryNameById(categoryId, categoryObjs) {
+    if (productCategoryIdNamePairs === null) {
+        productCategoryIdNamePairs = createIdNamePairs(categoryObjs);
     }
     return productCategoryIdNamePairs[categoryId];
 }
 
+function getProjectTagNameById(tagId, tagObjs) {
+    if (productTagIdNamePairs === null) {
+        productTagIdNamePairs = createIdNamePairs(tagObjs);
+    }
+    return productTagIdNamePairs[tagId];
+}
+
 export {
-    getProjectCategoryName,
+    getProjectCategoryNameById,
+    getProjectTagNameById
 };

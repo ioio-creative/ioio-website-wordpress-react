@@ -5,6 +5,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import routes from 'globals/routes';
+import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryName';
 
 // Passing Arguments to Event Handlers
 // https://reactjs.org/docs/handling-events.html
@@ -56,11 +57,19 @@ function AllProjects(props) {
   });
 
 
-  const project_item = props.projectlist.map((project, id) => {
+  const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-4 col-md-6 portfolio-item wow fadeInUp ";
     for (let i = 0; i < project.project_tags.length; i++) {
       tagIds += "filter-" + project.project_tags[i] + " "
     }
+
+    const tagsCorrespondingToProj = project.project_tags.map((tagId) => {
+        return (
+            <span>
+                {getProjectTagNameById(tagId, props.tags)}
+            </span>
+        );
+    });
 
     return (<div className={tagIds}>
       <a href={project._links.self}>
@@ -72,7 +81,7 @@ function AllProjects(props) {
             <h4>
               <a href="#">{project.my_name}</a>
             </h4>
-            <p>tag</p>
+            <p>{tagsCorrespondingToProj}</p>
           </div>
         </div>
       </a>
@@ -80,7 +89,7 @@ function AllProjects(props) {
   });
 
   return (<div className="row portfolio-container">
-    {project_item}
+    {project_items}
   </div>);
 }
 
@@ -154,8 +163,8 @@ class ProjectListPage extends Component {
         onClick={this.handleCategoryButtonClick} isSelected={category.id === this.state.selectedCategoryId}/>);
     });
 */
-    let t = this.state.projectTags;
-    let p = this.state.projects;
+    const t = this.state.projectTags;
+    const p = this.state.projects;
 
     return (<section id="portfolio" className="section-bg">
       <div className="container-fluid">
