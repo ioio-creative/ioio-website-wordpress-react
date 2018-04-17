@@ -10,6 +10,9 @@ function createIdNamePairs(sourceObjs) {
 }
 
 function getProjectCategoryNameById(categoryId, categoryObjs) {
+    // TODO: Should we include this check null?
+    // This may prevent the latest update from CMS to be shown in app
+    // if the user does not refresh the page???
     if (productCategoryIdNamePairs === null) {
         productCategoryIdNamePairs = createIdNamePairs(categoryObjs);
     }
@@ -17,6 +20,9 @@ function getProjectCategoryNameById(categoryId, categoryObjs) {
 }
 
 function getProjectTagNameById(tagId, tagObjs) {
+    // TODO: Should we include this check null?
+    // This may prevent the latest update from CMS to be shown in app
+    // if the user does not refresh the page???
     if (productTagIdNamePairs === null) {
         productTagIdNamePairs = createIdNamePairs(tagObjs);
     }
