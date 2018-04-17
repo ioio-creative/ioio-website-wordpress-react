@@ -5,7 +5,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import routes from 'globals/routes';
-import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryName';
+import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 // Passing Arguments to Event Handlers
 // https://reactjs.org/docs/handling-events.html

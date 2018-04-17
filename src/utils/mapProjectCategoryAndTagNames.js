@@ -3,8 +3,8 @@ let productTagIdNamePairs = null;
 
 function createIdNamePairs(sourceObjs) {
     let idNamePairs = {};
-    sourceObjs.forEach((targetObj) => {
-        idNamePairs[targetObj.id] = targetObj.name;
+    sourceObjs.forEach((sourceObj) => {
+        idNamePairs[sourceObj.id] = sourceObj.name;
     });
     return idNamePairs;
 }
