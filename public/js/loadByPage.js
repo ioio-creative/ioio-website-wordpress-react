@@ -1,35 +1,37 @@
 //jQuery(document).ready(function($) {
-function reloadJS(){
+function reloadJS() {
   trying()
   function trying() {
-      if (!$(".carousel-item").size()) {
-        console.log("wait for dom")
-        window.requestAnimationFrame(trying);
-      }else {
-        console.log("DOM OK!")
-        // Back to top button
-        $(window).scroll(function() {
-          if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
-          } else {
-            $('.back-to-top').fadeOut('slow');
-          }
-        });
-        $('.back-to-top').click(function() {
-          $('html, body').animate({
-            scrollTop: 0
-          }, 1500, 'easeInOutExpo');
-          return false;
-        });
+    if (!$(".carousel-item").size() && !$(".portfolio-item").size()) {
+      console.log("wait for dom")
+      window.requestAnimationFrame(trying);
+    } else {
+      console.log("DOM OK!")
+      // Back to top button
+      $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+          $('.back-to-top').fadeIn('slow');
+        } else {
+          $('.back-to-top').fadeOut('slow');
+        }
+      });
+      $('.back-to-top').click(function() {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 1500, 'easeInOutExpo');
+        return false;
+      });
 
-        // Helper function for add element box list in WOW
-        WOW.prototype.addBox = function(element) {
-          this.boxes.push(element);
-        };
+      // Helper function for add element box list in WOW
+      WOW.prototype.addBox = function(element) {
+        this.boxes.push(element);
+      };
 
-        // Init WOW.js and get instance
-        var wow = new WOW();
-        wow.init();
+      // Init WOW.js and get instance
+      var wow = new WOW();
+      wow.init();
+
+  
 
         // Attach scrollSpy to .wow elements for detect view exit events,
         // then reset elements and add again for animation
@@ -38,191 +40,187 @@ function reloadJS(){
           wow.addBox(this);
         }).scrollSpy();
 
-        $(window).scroll(function() {
+      $(window).scroll(function() {
 
-          if ($(this).scrollTop() > 100) {
-            $('#scroller').addClass('header-scrolled');
-          } else {
-            $('#scroller').removeClass('header-scrolled');
-            /*
+        if ($(this).scrollTop() > 100) {
+          $('#scroller').addClass('header-scrolled');
+        } else {
+          $('#scroller').removeClass('header-scrolled');
+          /*
                   $('.wow').removeClass('animated');
                   $('.wow').removeAttr('style');
                   new WOW().init();
                   console.log($(this).scrollTop());
             */
+        }
+      });
+
+      // Intro carousel
+      var introCarousel = $(".carousel");
+      var introCarouselIndicators = $(".carousel-indicators");
+      introCarousel.find(".carousel-inner").children(".carousel-item").each(function(index) {
+        (index === 0)
+          ? introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "' class='active'></li>")
+          : introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "'></li>");
+
+        //  $(this).css("background-image", "url('" + $(this).children('.carousel-background').children('img').attr('src') + "')");
+        //  $(this).children('.carousel-background').remove();
+      });
+
+      $(".carousel").swipe({
+        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction == 'left')
+            $(this).carousel('next');
+          if (direction == 'right')
+            $(this).carousel('prev');
           }
+        ,
+        allowPageScroll: "vertical"
+      });
+
+      // Skills section
+      $('#skills').waypoint(function() {
+        $('.progress .progress-bar').each(function() {
+          $(this).css("width", $(this).attr("aria-valuenow") + '%');
         });
+      }, {offset: '80%'});
 
-        // Intro carousel
-        var introCarousel = $(".carousel");
-        var introCarouselIndicators = $(".carousel-indicators");
-        introCarousel.find(".carousel-inner").children(".carousel-item").each(function(index) {
-          (index === 0)
-            ? introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "' class='active'></li>")
-            : introCarouselIndicators.append("<li data-target='#introCarousel' data-slide-to='" + index + "'></li>");
+      // jQuery counterUp (used in Facts section)
+      $('[data-toggle="counter-up"]').counterUp({delay: 10, time: 1000});
 
-          //  $(this).css("background-image", "url('" + $(this).children('.carousel-background').children('img').attr('src') + "')");
-          //  $(this).children('.carousel-background').remove();
-        });
+      // Porfolio isotope and filter
+      var portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
 
-        $(".carousel").swipe({
-          swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-            if (direction == 'left')
-              $(this).carousel('next');
-            if (direction == 'right')
-              $(this).carousel('prev');
-            }
-          ,
-          allowPageScroll: "vertical"
-        });
+      $('#portfolio-flters li').on('click', function() {
+        $("#portfolio-flters li").removeClass('filter-active');
+        $(this).addClass('filter-active');
 
-        // Skills section
-        $('#skills').waypoint(function() {
-          $('.progress .progress-bar').each(function() {
-            $(this).css("width", $(this).attr("aria-valuenow") + '%');
-          });
-        }, {offset: '80%'});
+        portfolioIsotope.isotope({filter: $(this).data('filter')});
+      });
 
-        // jQuery counterUp (used in Facts section)
-        $('[data-toggle="counter-up"]').counterUp({delay: 10, time: 1000});
-
-        // Porfolio isotope and filter
-        var portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
-
-        $('#portfolio-flters li').on('click', function() {
-          $("#portfolio-flters li").removeClass('filter-active');
-          $(this).addClass('filter-active');
-
-          portfolioIsotope.isotope({filter: $(this).data('filter')});
-        });
-
-        // Clients carousel (uses the Owl Carousel library)
-        $(".clients-carousel").owlCarousel({
-          autoplay: true,
-          dots: true,
-          loop: true,
-          responsive: {
-            0: {
-              items: 2
-            },
-            768: {
-              items: 4
-            },
-            900: {
-              items: 6
-            }
+      // Clients carousel (uses the Owl Carousel library)
+      $(".clients-carousel").owlCarousel({
+        autoplay: true,
+        dots: true,
+        loop: true,
+        responsive: {
+          0: {
+            items: 2
+          },
+          768: {
+            items: 4
+          },
+          900: {
+            items: 6
           }
-        });
+        }
+      });
 
-        // Testimonials carousel (uses the Owl Carousel library)
-        $(".testimonials-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});
+      // Testimonials carousel (uses the Owl Carousel library)
+      $(".testimonials-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});
 
+      // #the-Team
+      var itemsMainDiv = ('.MultiCarousel');
+      var itemsDiv = ('.MultiCarousel-inner');
+      var itemWidth = "";
 
+      $('.leftLst, .rightLst').click(function() {
+        var condition = $(this).hasClass("leftLst");
+        if (condition)
+          click(0, this);
+        else
+          click(1, this)
+      });
 
-        // #the-Team
-        var itemsMainDiv = ('.MultiCarousel');
-        var itemsDiv = ('.MultiCarousel-inner');
-        var itemWidth = "";
+      ResCarouselSize();
 
-        $('.leftLst, .rightLst').click(function() {
-          var condition = $(this).hasClass("leftLst");
-          if (condition)
-            click(0, this);
-          else
-            click(1, this)
-        });
-
+      $(window).resize(function() {
         ResCarouselSize();
+      });
 
-        $(window).resize(function() {
-          ResCarouselSize();
-        });
+      //this function define the size of the items
+      function ResCarouselSize() {
+        var incno = 0;
+        var dataItems = ("data-items");
+        var itemClass = ('.item');
+        var id = 0;
+        var btnParentSb = '';
+        var itemsSplit = '';
+        var sampwidth = $(itemsMainDiv).width();
+        var bodyWidth = $('body').width();
+        $(itemsDiv).each(function() {
+          id = id + 1;
+          var itemNumbers = $(this).find(itemClass).length;
+          btnParentSb = $(this).parent().attr(dataItems);
+          itemsSplit = btnParentSb.split(',');
+          $(this).parent().attr("id", "MultiCarousel" + id);
 
-        //this function define the size of the items
-        function ResCarouselSize() {
-          var incno = 0;
-          var dataItems = ("data-items");
-          var itemClass = ('.item');
-          var id = 0;
-          var btnParentSb = '';
-          var itemsSplit = '';
-          var sampwidth = $(itemsMainDiv).width();
-          var bodyWidth = $('body').width();
-          $(itemsDiv).each(function() {
-            id = id + 1;
-            var itemNumbers = $(this).find(itemClass).length;
-            btnParentSb = $(this).parent().attr(dataItems);
-            itemsSplit = btnParentSb.split(',');
-            $(this).parent().attr("id", "MultiCarousel" + id);
-
-            if (bodyWidth >= 1200) {
-              incno = itemsSplit[3];
-              itemWidth = sampwidth / incno;
-            } else if (bodyWidth >= 992) {
-              incno = itemsSplit[2];
-              itemWidth = sampwidth / incno;
-            } else if (bodyWidth >= 768) {
-              incno = itemsSplit[1];
-              itemWidth = sampwidth / incno;
-            } else {
-              incno = itemsSplit[0];
-              itemWidth = sampwidth / incno;
-            }
-            $(this).css({
-              'transform': 'translateX(0px)',
-              'width': itemWidth * itemNumbers
-            });
-            $(this).find(itemClass).each(function() {
-              $(this).outerWidth(itemWidth);
-            });
-
-            $(".leftLst").addClass("over");
-            $(".rightLst").removeClass("over");
-
-          });
-        }
-
-        //this function used to move the items
-        function ResCarousel(e, el, s) {
-          var leftBtn = ('.leftLst');
-          var rightBtn = ('.rightLst');
-          var translateXval = '';
-          var divStyle = $(el + ' ' + itemsDiv).css('transform');
-          var values = divStyle.match(/-?[\d\.]+/g);
-          var xds = Math.abs(values[4]);
-          if (e == 0) {
-            translateXval = parseInt(xds) - parseInt(itemWidth * s);
-            $(el + ' ' + rightBtn).removeClass("over");
-
-            if (translateXval <= itemWidth / 2) {
-              translateXval = 0;
-              $(el + ' ' + leftBtn).addClass("over");
-            }
-          } else if (e == 1) {
-            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-            translateXval = parseInt(xds) + parseInt(itemWidth * s);
-            $(el + ' ' + leftBtn).removeClass("over");
-
-            if (translateXval >= itemsCondition - itemWidth / 2) {
-              translateXval = itemsCondition;
-              $(el + ' ' + rightBtn).addClass("over");
-            }
+          if (bodyWidth >= 1200) {
+            incno = itemsSplit[3];
+            itemWidth = sampwidth / incno;
+          } else if (bodyWidth >= 992) {
+            incno = itemsSplit[2];
+            itemWidth = sampwidth / incno;
+          } else if (bodyWidth >= 768) {
+            incno = itemsSplit[1];
+            itemWidth = sampwidth / incno;
+          } else {
+            incno = itemsSplit[0];
+            itemWidth = sampwidth / incno;
           }
-          $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+          $(this).css({
+            'transform': 'translateX(0px)',
+            'width': itemWidth * itemNumbers
+          });
+          $(this).find(itemClass).each(function() {
+            $(this).outerWidth(itemWidth);
+          });
+
+          $(".leftLst").addClass("over");
+          $(".rightLst").removeClass("over");
+
+        });
+      }
+
+      //this function used to move the items
+      function ResCarousel(e, el, s) {
+        var leftBtn = ('.leftLst');
+        var rightBtn = ('.rightLst');
+        var translateXval = '';
+        var divStyle = $(el + ' ' + itemsDiv).css('transform');
+        var values = divStyle.match(/-?[\d\.]+/g);
+        var xds = Math.abs(values[4]);
+        if (e == 0) {
+          translateXval = parseInt(xds) - parseInt(itemWidth * s);
+          $(el + ' ' + rightBtn).removeClass("over");
+
+          if (translateXval <= itemWidth / 2) {
+            translateXval = 0;
+            $(el + ' ' + leftBtn).addClass("over");
+          }
+        } else if (e == 1) {
+          var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+          translateXval = parseInt(xds) + parseInt(itemWidth * s);
+          $(el + ' ' + leftBtn).removeClass("over");
+
+          if (translateXval >= itemsCondition - itemWidth / 2) {
+            translateXval = itemsCondition;
+            $(el + ' ' + rightBtn).addClass("over");
+          }
         }
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+      }
 
-        //It is used to get some elements from btn
-        function click(ell, ee) {
-          var Parent = "#" + $(ee).parent().attr("id");
-          var slide = $(Parent).attr("data-slide");
-          ResCarousel(ell, Parent, slide);
-        }
+      //It is used to get some elements from btn
+      function click(ell, ee) {
+        var Parent = "#" + $(ee).parent().attr("id");
+        var slide = $(Parent).attr("data-slide");
+        ResCarousel(ell, Parent, slide);
+      }
 
-
-
-        //footer
-       }
-    };
+      //footer
+    }
+  };
 
 }
 //});
