@@ -7,6 +7,13 @@ const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
 const defaultQuery = "";
 
+// container of WordPress generated id's of active entities,
+// used for fetching entity by id via WordPress API
+const activeEntities = {
+    about: 72,
+    footer: 263,
+};
+
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
     let dataUrl = baseUrl
@@ -32,12 +39,25 @@ function fetchFooter(callback) {
     passJsonResultToCallback("footers", callback);
 }
 
+function fetchActiveFooter(callback) {
+    passJsonResultToCallback("footers", callback, activeEntities.footer);
+}
+
 /* end of General */
+
 
 /* about page */
 
 function fetchAbouts(callback) {
     passJsonResultToCallback("abouts", callback);
+}
+
+function fetchAboutById(id, callback) {
+    passJsonResultToCallback("abouts", callback, id);
+}
+
+function fetchActiveAbout(callback) {
+    passJsonResultToCallback("abouts", callback, activeEntities.about);
 }
 
 function fetchCompanyDnas(callback) {
@@ -67,8 +87,6 @@ function fetchPressReleases(callback) {
 function fetchCompanies(callback) {
     passJsonResultToCallback("companies", callback);
 }
-
-
 
 /* end of about page */
 
@@ -100,10 +118,14 @@ function fetchProjectById(id, callback) {
 
 
 export {
+    // general
     fetchFooter,
+    fetchActiveFooter,
 
-    // about page
+    // about page    
     fetchAbouts,
+    fetchAboutById,
+    fetchActiveAbout,
     fetchCompanyDnas,
     fetchCompanyCultures,
     fetchTeamMembers,
@@ -118,5 +140,5 @@ export {
     fetchProjectTags,
 
     // project detial page
-    fetchProjectById
+    fetchProjectById,
 };

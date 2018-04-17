@@ -11,17 +11,9 @@ import About08 from 'containers/about/About08';
 import Footer from 'containers/Footer';
 import Scripts from 'containers/Scripts';
 
-// import CompanyDnas from 'containers/about/CompanyDnas';
-// import CompanyCultures from 'containers/about/CompanyCultures';
-// import TeamMembers from 'containers/about/TeamMembers';
-// import CompanyServices from 'containers/about/CompanyServices';
-// import CompanyClients from 'containers/about/CompanyClients';
-// import PressReleases from 'containers/about/PressReleases';
-// import Company from 'containers/about/Company';
-
 import './AboutPage.css';
 
-import {fetchAbouts, fetchFooter} from 'websiteApi';
+import { fetchActiveAbout, fetchActiveFooter } from 'websiteApi';
 
 class AboutPage extends Component {
   constructor(props) {
@@ -32,11 +24,11 @@ class AboutPage extends Component {
   }
 
   componentDidMount() {
-    fetchAbouts((abouts) => {
-      this.setState({about: abouts[0]});
+    fetchActiveAbout((anAbout) => {
+      this.setState({about: anAbout});
     });
-    fetchFooter((footers) => {
-      this.setState({footer: footers[0]});
+    fetchActiveFooter((aFooter) => {
+      this.setState({footer: aFooter});
     });
     <Scripts/>
   }
@@ -86,15 +78,8 @@ class AboutPage extends Component {
 
       <Footer
         //Section: Footer
-        footer={footer}/> {/*
-      <CompanyCultures/>
-      <TeamMembers/>
-      <CompanyServices/>
-      <CompanyClients/>
-      <PressReleases/>
-      <Company/>
-  */
-      }
+        footer={footer}/>
+
     </div>);
   }
 }
