@@ -5,6 +5,7 @@ Project-cover Section
 */
 
 #block2 {
+  white-space: normal;
   z-index: 1;
   width: 100%;
   height: 500px;
@@ -88,9 +89,9 @@ Project-cover Section
 
 .video-text a:hover {
   background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
-}.slideshow
+}
 
-#video-landing-caption {
+.slideshow #video-landing-caption {
   margin-left: 70px;
 }
 
@@ -101,7 +102,7 @@ Project-cover Section
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 5px 200px;
+  padding: 100px 200px 150px 200px;
 }
 
 .video-landing-text-l {
@@ -115,49 +116,92 @@ Project-cover Section
   width: 80%;
 }
 
+/*--------------------------------------------------------------
+# Section: photo-montage
+--------------------------------------------------------------*/
 
+.photo-montage {
+  white-space: normal;
+  margin: 50px 0 0 0;
+  padding: 0;
+}
+
+.photo-montage div {
+  margin: 0;
+  padding: 0;
+}
+
+.photo-montage div div {
+  object-fit: cover;
+  min-height: 500px;
+}
+
+.photo-montage-l {
+  object-fit: cover;
+  width: 100%;
+}
+
+.photo-montage-r {
+  object-fit: cover;
+  width: 100%;
+}
 
 /*--------------------------------------------------------------
 # Section: Slideshow
 --------------------------------------------------------------*/
 
-
-
+/*
 .slideshow {
-  display: table;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  top: 0px;
+  float: none;
+}
+
+.intro-container {
+  position: relative;
+  float: left;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   width: 100%;
-  height: 80vh;
-  margin: 80px 0;
+  height: 600px;
   background: url(../img/Triangle.png) left top;
   background-size: 70% 80%;
   background-repeat: no-repeat;
 }
 
-.slideshow img{
-  width: 80%;
-  padding: 0 0 0 0;
+.intro-container div {
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow img {
+  display: block;
+  padding: 0 10%;
+  object-fit: cover;
+  width: 100%;
+  max-height: 400px;
 }
 
 .slideshow h2 {
   color: #000;
   text-transform: uppercase;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 5%;
+  padding-bottom: 20px;
   font-size: 35px;
   font-weight: 700;
 }
 
-.slideshow p{
+.slideshow p {
   width: 100%;
   height: 100%;
   padding: 0 0;
   color: #000;
 }
 
-
 .slideshow .carousel-item {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -202,23 +246,20 @@ Project-cover Section
   transition-property: opacity;
 }
 
-.slideshow .carousel-fade .carousel-inner .carousel-item,
-.slideshow .carousel-fade .carousel-inner .active.carousel-item-left,
-.slideshow .carousel-fade .carousel-inner .active.carousel-item-right {
+.slideshow .carousel-fade .carousel-inner .carousel-item, .slideshow .carousel-fade .carousel-inner .active.carousel-item-left, .slideshow .carousel-fade .carousel-inner .active.carousel-item-right {
+
+     transition: 0.5s;
+
   opacity: 0;
 }
 
-.slideshow .carousel-fade .carousel-inner .active,
-.slideshow .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
-.slideshow .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+.slideshow .carousel-fade .carousel-inner .active, .slideshow .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left, .slideshow .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
   opacity: 1;
-  transition: 0.5s;
+  transition: 0.6s;
+  transition-delay: 0.8s;
 }
 
-.slideshow .carousel-fade .carousel-inner .carousel-item-next,
-.slideshow .carousel-fade .carousel-inner .carousel-item-prev,
-.slideshow .carousel-fade .carousel-inner .active.carousel-item-left,
-.slideshow .carousel-fade .carousel-inner .active.carousel-item-right {
+.slideshow .carousel-fade .carousel-inner .carousel-item-next, .slideshow .carousel-fade .carousel-inner .carousel-item-prev, .slideshow .carousel-fade .carousel-inner .active.carousel-item-left, .slideshow .carousel-fade .carousel-inner .active.carousel-item-right {
   left: 0;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -235,18 +276,20 @@ Project-cover Section
 }
 
 .slideshow .carousel-control-next-icon, .slideshow .carousel-control-prev-icon {
-background-color: black;
-  /*background: none;*/
+  background-color: black;
+
   font-size: 32px;
   line-height: 1;
 }
 
 .slideshow .carousel-indicators {
-
-  left:500px;
-  bottom: :0;
+  position: absolute;
+  bottom: 70px;
+  left: 40%;
+  height: auto;
 }
-.slideshow .carousel-indicators .active{
+
+.slideshow .carousel-indicators .active {
   background-color: #000;
 }
 
@@ -256,4 +299,90 @@ background-color: black;
   height: 12px;
   background-color: #AAA;
   cursor: pointer;
+}
+*/
+
+.slideshow {
+  white-space: normal;
+  position: relative;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  float: none;
+  top: 0;
+}
+
+.slideshow-item img {
+  display: block;
+  padding: 0 10%;
+  object-fit: cover;
+  width: 100%;
+  max-height: 500px;
+}
+
+.slideshow-item h2 {
+  color: #000;
+  text-transform: uppercase;
+  padding-top: 5%;
+  padding-bottom: 20px;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: left;
+  font-weight: bold;
+}
+
+.slideshow-item p {
+  width: 100%;
+  height: 100%;
+  padding: 0 0;
+  color: #000;
+  text-align: left;
+}
+
+.slideshow .owl-dot {
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.slideshow .owl-dot.active {
+  background-color: #18d26e;
+}
+
+.slideshow .owl-nav, .slideshow .owl-dots {
+  position: absolute;
+  bottom: 100px;
+}
+
+.slideshow-img-on-left .owl-nav, .slideshow-img-on-left .owl-dots {
+  right: 0;
+  padding-right: 20%;
+  text-align: right;
+}
+
+.slideshow-img-on-right .owl-nav, .slideshow-img-on-right .owl-dots {
+  left: 0;
+  padding-left: 20%;
+  text-align: left;
+}
+
+.slideshow-2-col div div {
+  padding: 0 200px;
+}
+
+.slideshow-2-col div div div {
+  padding: 0 0;
+}
+
+.slideshow-2-col-item img {
+  min-width: 90%;
+  max-width: 90%;
+}
+
+.slideshow-2-col-item p {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 5%;
 }
