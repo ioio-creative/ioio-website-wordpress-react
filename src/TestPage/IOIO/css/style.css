@@ -4,30 +4,32 @@
   Author: BootstrapMade.com
   License: https://bootstrapmade.com/license/
 */
+
 /*--------------------------------------------------------------
 # font
 --------------------------------------------------------------*/
+
 @font-face {
-    font-family: FuturaLT;
-    src: url(FuturaLT.ttf);
+  font-family: FuturaLT;
+  src: url(FuturaLT.ttf);
 }
 
 @font-face {
-    font-family: FuturaLT;
-    src: url(futura_lt_bold1.ttf);
-    font-weight: bold;
+  font-family: FuturaLT;
+  src: url(futura_lt_bold1.ttf);
+  font-weight: bold;
 }
 
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 body {
   background: #fff;
   color: #000;
   font-family: "FuturaLT", sans-serif;
-
-  margin:0;
-  position:relative;
+  margin: 0;
+  position: relative;
   white-space: pre-line;
 }
 
@@ -55,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Back to top button */
+
 .back-to-top {
   position: fixed;
   display: none;
@@ -84,27 +87,43 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
-
 /*--------------------------------------------------------------
 # scroller
 --------------------------------------------------------------*/
-#scroller{
-    margin-left: 70px; /*update sidebar width as well*/
+#main{
+  background-color: white;/*hack: //todo achang bg to check padding / margin*/
+  margin: -170px 0 0 0; /*hack: //todo adjust after sidebar*/
+  padding: 0 0 0 0;
+
+}
+
+section{
+  background-color: white;/*hack: //todo achang bg to check padding / margin*/
+  margin: 0 0 0 0; /*hack: //todo adjust after sidebar*/
+  padding: 0 0 0 0;
+}
+
+#scroller {
+margin: 0 0 0 70px;
+padding: 0 0 0 0;
+
+  /*update sidebar width as well*/
 }
 
 #scroller.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
-  padding: 20px 0;
-  height: 72px;
+  padding: 0 0;
+  height: 0;
   transition: all 0.5s;
 }
 
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
+
 /* Sections Header
 --------------------------------*/
+
 .section-header h3 {
   font-size: 32px;
   color: #000;
@@ -122,7 +141,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
 }
 
-
 /*--------------------------------------------------------------
 # Pages: About Page
 --------------------------------------------------------------*/
@@ -130,17 +148,16 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 #footer {
   background: #EDEDED;
   padding: 0 0 30px 0;
   color: #000;
   font-size: 14px;
-
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
   font-family: "FuturaLT", sans-serif;
-
 }
 
 #footer .footer-top {
@@ -150,14 +167,12 @@ h1, h2, h3, h4, h5, h6 {
 #footer .footer-top .footer-info {
   margin-bottom: 30px;
 }
+
 #footer .footer-slogan {
   font-weight: bold;
   line-height: 40px;
   font-size: 22px;
 }
-
-
-
 
 #footer .footer-top .social-links a {
   font-size: 18px;
@@ -186,6 +201,4 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 12px;
 }
 
-#footer .footer-hotpot{
-
-}
+#footer .footer-hotpot {}

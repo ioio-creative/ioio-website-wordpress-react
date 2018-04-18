@@ -35,9 +35,7 @@ function ProjectItem(props) {
 function ProjectTags(props) {
   const tag_item = props.tags.map((tag, id) => {
     var tagId = ".filter-" + tag.id
-    return (
-      <li data-filter={tagId}>{tag.name}</li>
-    );
+    return (<li data-filter={tagId}>{tag.name}</li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
@@ -55,26 +53,30 @@ function AllProjects(props) {
     </div>);
   });
 
-
   const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-4 col-md-6 portfolio-item wow fadeInUp ";
     for (let i = 0; i < project.project_tags.length; i++) {
       tagIds += "filter-" + project.project_tags[i] + " "
     }
 
-    const tagsCorrespondingToProj = project.project_tags.map((tagId) => {
-        return (
-            <span>
-                {getProjectTagNameById(tagId, props.tags)}
-            </span>
-        );
+    const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
+
+      let tagName = "";
+      if (index >= 1) {
+        tagName = " / " + getProjectTagNameById(tagId, props.tags)
+      } else {
+        tagName = getProjectTagNameById(tagId, props.tags)
+      }
+      return (<span>
+        {tagName}
+      </span>);
     });
 
     return (<div className={tagIds}>
       <a href={project._links.self}>
         <div className="portfolio-wrap">
           <figure>
-              <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
+            <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
           </figure>
           <div className="portfolio-info">
             <h4>
