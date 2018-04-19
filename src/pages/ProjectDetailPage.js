@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { fetchProjectById } from 'websiteApi'
 import { getProjectIdBySlug } from 'utils/mapProjectSlugNameToIds';
+import { Redirect } from 'react-router-dom'
+import routes from 'globals/routes';
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
@@ -51,7 +53,7 @@ class ProjectDetailPage extends Component {
         
         if (project === null) {
             return (
-                <div>404 Project Not Found!</div>
+                <Redirect to={routes.notFound} />
             );
         }
 

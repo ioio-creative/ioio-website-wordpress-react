@@ -12,6 +12,7 @@ const routes = {
         return "/projects/" + slugValue;
     },
     contacts: "/contacts",
+    notFound: "/notfound"
 }
 
 export default routes;
