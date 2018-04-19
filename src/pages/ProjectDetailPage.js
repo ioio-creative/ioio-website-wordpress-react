@@ -70,9 +70,8 @@ class ProjectDetailPage extends Component {
         const project = this.state.project;
 
         if (project === null) {
-            return (
-                <Redirect to={routes.notFound} />
-            );
+            return null;
+                {/*<Redirect to={routes.notFound} />*/}                
         }
 
         const projectTemplates = project.project_templates;
