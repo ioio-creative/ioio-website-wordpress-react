@@ -18,6 +18,23 @@ const projectTemplateMap = {
 };
 
 
+function VideoLanding(props) {
+  return(
+    <section id="video-landing" class="section-bg">
+      <div class="video-landing-div">
+        <div class="container-fluid ">
+          <div id="block2" data-vide-bg="mp4: video/ocean, webm: video/ocean, ogv: http://vodkabears.github.io/vide/video/ocean, poster: video/ocean" data-vide-options="position: 0% 50%">
+          </div>
+          <div class="video-text wow fadeIn">
+            <h1 class="container-fluid">Fashion Presentation & FFF Showreel</h1>
+            <h2 class="container-fluid">Fashion Presentation</h2>
+            <a href="#"><i class="ion ion-android-arrow-dropright-circle"></i> SHOWREEL</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 class ProjectDetailPage extends Component {
     constructor(props) {
         super(props);
@@ -27,8 +44,9 @@ class ProjectDetailPage extends Component {
     }
 
     componentDidMount() {               
-        const projectSlugFromQuery = 
+        const projectSlugFromQuery =
             this.props.match.params.projectSlug;
+
 
         if (projectSlugFromQuery === undefined
             || projectSlugFromQuery === null) {
@@ -50,7 +68,7 @@ class ProjectDetailPage extends Component {
 
     render() {
         const project = this.state.project;
-        
+
         if (project === null) {
             return (
                 <Redirect to={routes.notFound} />
@@ -58,16 +76,18 @@ class ProjectDetailPage extends Component {
         }
 
         const projectTemplates = project.project_templates;
-        const projectTemplateContainer = 
+        const projectTemplateContainer =
             projectTemplates.map((templateData) => {
-                const templateType = 
-                    parseInt(templateData.my_type, 10);                
+                const templateType =
+                    parseInt(templateData.my_type, 10);
                 const TemplateToUse = projectTemplateMap[templateData.my_type];
                 return <TemplateToUse {...templateData} />
             });
-        
+
         return (
+
             <div>
+          <VideoLanding />
                 <h2>Project Detail Page</h2>
                 {project.my_name}
                 {projectTemplateContainer}
