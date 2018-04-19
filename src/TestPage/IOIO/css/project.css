@@ -302,6 +302,10 @@ Project-cover Section
 }
 */
 
+
+/*==============
+.slideshow
+==============*/
 .slideshow {
   white-space: normal;
   position: relative;
@@ -367,6 +371,14 @@ Project-cover Section
   padding-left: 20%;
   text-align: left;
 }
+
+/*==============
+.slideshow-2-col
+==============*/
+.slideshow-2-col {
+  background-repeat: repeat;
+}
+
 
 .slideshow-2-col div div {
   padding: 0 200px;

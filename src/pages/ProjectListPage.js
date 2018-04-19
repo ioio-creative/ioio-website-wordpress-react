@@ -71,16 +71,25 @@ function AllProjects(props) {
         {tagName}
       </span>);
     });
+  var s = project.link;
+  cutString(s)
+    function cutString(s){
+        var cut= s.indexOf('/projects');
+        if(cut== -1) return s;
+        return s.substr(cut)
+    }
+    var d = cutString(s);
+
 
     return (<div className={tagIds}>
-      <a href={project._links.self}>
+      <a href={d}>
         <div className="portfolio-wrap">
           <figure>
             <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
           </figure>
           <div className="portfolio-info">
             <h4>
-              <a href="#">{project.my_name}</a>
+              {project.my_name}
             </h4>
             <p>{tagsCorrespondingToProj}</p>
           </div>

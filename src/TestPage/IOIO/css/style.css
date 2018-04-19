@@ -94,7 +94,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: white;/*hack: //todo achang bg to check padding / margin*/
   margin: -170px 0 0 0; /*hack: //todo adjust after sidebar*/
   padding: 0 0 0 0;
-
 }
 
 section{
@@ -106,6 +105,7 @@ section{
 #scroller {
 margin: 0 0 0 70px;
 padding: 0 0 0 0;
+
 
   /*update sidebar width as well*/
 }
@@ -158,7 +158,6 @@ padding: 0 0 0 0;
   line-height: 24px;
   margin-bottom: 0;
   font-family: "FuturaLT", sans-serif;
-  float:none;
 }
 
 #footer .footer-top {
