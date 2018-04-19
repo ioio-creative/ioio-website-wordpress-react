@@ -2,35 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
 
-import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
-// Passing Arguments to Event Handlers
-// https://reactjs.org/docs/handling-events.html
-
-/*
-function CategoryButton(props) {
-    return (
-        <button
-            className={props.isSelected ? "red-font" : "nothing"}
-            onClick={(e) => {
-                props.onClick(props.id, e);
-            }}
-        >
-            {props.value}
-        </button>
-    );
-}
-
-function ProjectItem(props) {
-    return (
-        <div className="theItems">
-            <Link to={routes.projectByIdWithValue(props.id)}>{props.name}</Link>
-        </div>
-    );
-}
-*/
+import Footer from 'containers/Footer';
 
 function ProjectTags(props) {
   const tag_item = props.tags.map((tag, id) => {
@@ -71,18 +47,18 @@ function AllProjects(props) {
         {tagName}
       </span>);
     });
-  var s = project.link;
-  cutString(s)
-    function cutString(s){
-        var cut= s.indexOf('/projects');
-        if(cut== -1) return s;
-        return s.substr(cut)
+    var s = project.link;
+    cutString(s)
+    function cutString(s) {
+      var cut = s.indexOf('/projects');
+      if (cut == -1)
+      return s;
+      return s.substr(cut)
     }
     var d = cutString(s);
 
-
     return (<div className={tagIds}>
-      <a href={d}>
+    <Link to={routes.projectByIdWithValue(project.id)}>{props.name}
         <div className="portfolio-wrap">
           <figure>
             <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
@@ -94,7 +70,7 @@ function AllProjects(props) {
             <p>{tagsCorrespondingToProj}</p>
           </div>
         </div>
-      </a>
+      </Link>
     </div>);
   });
 
@@ -113,6 +89,7 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
+      footer: null,
       selectedCategoryId: this.selectAllCategoryId
     }
 
@@ -131,6 +108,9 @@ class ProjectListPage extends Component {
     fetchProjectTags((tags) => {
       this.setState({projectTags: tags});
     });
+    fetchActiveFooter((aFooter) => {
+      this.setState({footer: aFooter});
+    });
   }
 
   handleCategoryButtonClick(categoryId) {
@@ -142,53 +122,33 @@ class ProjectListPage extends Component {
   handleRemove() {}
 
   render() {
-    /*
-    let filteredProjectList;
-    if (this.state.selectedCategoryId === this.selectAllCategoryId) {
-      filteredProjectList = this.state.projects;
-    } else {
-      filteredProjectList = this.state.projects.filter((project) => project.project_categories.includes(this.state.selectedCategoryId));
-    }
-    const filteredProjects = filteredProjectList.map((filteredProject) => {
-      return (<ProjectItem key={filteredProject.my_name} id={filteredProject.id} name={filteredProject.my_name}/>);
-    });
 
-    const allButton = (<CategoryButton key={this.selectAllCategoryId}
-      // key is reserved for React
-      id={this.selectAllCategoryId}
-      // served as id
-      value="All"
-      // for display
-      onClick={this.handleCategoryButtonClick} isSelected={this.selectAllCategoryId === this.state.selectedCategoryId}/>);
-
-    const projectCategories = this.state.projectCategories.map((category) => {
-      return (<CategoryButton key={category.id}
-        // key is reserved for React
-        id={category.id}
-        // served as id
-        value={category.is_capitalized
-          ? category.name.toUpperCase()
-          : category.name}
-        // for display
-        onClick={this.handleCategoryButtonClick} isSelected={category.id === this.state.selectedCategoryId}/>);
-    });
-*/
     const t = this.state.projectTags;
     const p = this.state.projects;
+    const footer = this.state.footer;
+    if (footer === null) {
+      return null;
+    }
 
-    return (<section id="portfolio" className="section-bg">
-      <div className="container-fluid">
-        <header className="section-header">
-          <h3 className="section-title">Case Studies</h3>
-        </header>
-        <div className="row">
-          <ProjectTags tags={t}/>
+
+    return (<div>
+      <section id="portfolio" className="section-bg">
+        <div className="container-fluid">
+          <header className="section-header">
+            <h3 className="section-title">Case Studies</h3>
+          </header>
+          <div className="row">
+            <ProjectTags tags={t}/>
+          </div>
+
+          <AllProjects projectlist={p} tags={t}/>
         </div>
-
-        <AllProjects projectlist={p} tags={t}/>
-      </div>
-    </section>);
+      </section>
+      <Footer
+        //Section: Footer
+        footer={footer}/>
+      </div>);
+    }
   }
-}
 
-export default ProjectListPage;
+  export default ProjectListPage;

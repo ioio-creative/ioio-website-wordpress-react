@@ -77,8 +77,8 @@ class AboutPage extends Component {
         about={about}/>
 
       <Footer
-        //Section: Footer
-        footer={footer}/>
+          //Section: Footer
+          footer={footer}/>
 
     </div>);
   }
