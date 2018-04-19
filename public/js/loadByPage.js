@@ -2,7 +2,7 @@
 function reloadJS() {
   trying()
   function trying() {
-    if (!$(".carousel-item").size() && !$(".portfolio-item").size()) {
+    if (!$(".carousel-item").size() && !$(".portfolio-item").size() && !$('#video-landing').size()) {
       console.log("wait for dom")
       window.requestAnimationFrame(trying);
     } else {
@@ -31,7 +31,7 @@ function reloadJS() {
       var wow = new WOW();
       wow.init();
 
-  
+
 
         // Attach scrollSpy to .wow elements for detect view exit events,
         // then reset elements and add again for animation
@@ -220,7 +220,27 @@ function reloadJS() {
 
       //footer
     }
+
+/*
+    //ProjectPage
+    if (!$('#video-landing').size()) $.loadScript('../lib/jqueryvide/jquery.vide.js', function(){
+        //Stuff to do after someScript has loaded
+        console.log("video-landing")
+    });
+*/
   };
+
 
 }
 //});
+
+/*
+jQuery.loadScript = function (url, callback) {
+    jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+    });
+}
+*/

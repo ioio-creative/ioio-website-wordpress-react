@@ -11,7 +11,7 @@ import Footer from 'containers/Footer';
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
     var tagId = ".filter-" + tag.id
-    return (<li data-filter={tagId}>{tag.name}</li>);
+    return (<li key={id} data-filter={tagId}>{tag.name}</li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
@@ -43,7 +43,7 @@ function AllProjects(props) {
       } else {
         tagName = getProjectTagNameById(tagId)
       }
-      return (<span>
+      return (<span key={index}>
         {tagName}
       </span>);
     });
@@ -57,7 +57,7 @@ function AllProjects(props) {
     }
     var d = cutString(s);
 
-    return (<div className={tagIds}>
+    return (<div className={tagIds} key={id}>
     <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
           <figure>

@@ -9,6 +9,8 @@ import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
 import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03';
 
+import './ProjectDetailPage.css';
+
 // Choosing the React Element Type at Runtime
 // https://reactjs.org/docs/jsx-in-depth.html
 const projectTemplateMap = {
@@ -17,18 +19,21 @@ const projectTemplateMap = {
     3: ProjectTemp03,
 };
 
-
 function VideoLanding(props) {
+  var video_url = props.project.showreel.guid;
+  var video_url_shorten = video_url.substring(0, video_url.length - 4);
+  var data_vid= 'mp4:'+ video_url_shorten + ', webm: video/ocean, ogv:'+ video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
+
   return(
-    <section id="video-landing" class="section-bg">
-      <div class="video-landing-div">
-        <div class="container-fluid ">
-          <div id="block2" data-vide-bg="mp4: video/ocean, webm: video/ocean, ogv: http://vodkabears.github.io/vide/video/ocean, poster: video/ocean" data-vide-options="position: 0% 50%">
+    <section id="video-landing" className="section-bg">
+      <div className="video-landing-div">
+        <div className="container-fluid ">
+          <div id="block2" data-vide-bg="">
           </div>
-          <div class="video-text wow fadeIn">
-            <h1 class="container-fluid">Fashion Presentation & FFF Showreel</h1>
-            <h2 class="container-fluid">Fashion Presentation</h2>
-            <a href="#"><i class="ion ion-android-arrow-dropright-circle"></i> SHOWREEL</a>
+          <div className="video-text wow fadeIn">
+            <h1 className="container-fluid">{props.project.my_title}</h1>
+            <h2 className="container-fluid">{props.project.subtitle}</h2>
+            <a href="#"><i className="ion ion-android-arrow-dropright-circle"></i> SHOWREEL</a>
           </div>
         </div>
       </div>
@@ -36,6 +41,28 @@ function VideoLanding(props) {
   )
 }
 
+
+function VideoLandingDesc(props) {
+
+
+return(
+
+  <section id="video-landing-caption" className="section-bg wow fadeIn">
+    <div className="container-fluid">
+      <div className="row video-landing-text text-right">
+        <div className="col-lg-6">
+          <p className="video-landing-text-l">{props.project.primary_desc}</p>
+        </div>
+        <div className="col-lg-6">
+          <p className="video-landing-text-r">{props.project.secondary_desc}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+)
+
+
+}
 class ProjectDetailPage extends Component {
     constructor(props) {
         super(props);
@@ -45,7 +72,7 @@ class ProjectDetailPage extends Component {
         }
     }
 
-    componentDidMount() {               
+    componentDidMount() {
         const projectSlugFromQuery =
             this.props.match.params.projectSlug;
         const projectId = parseInt(getProjectIdBySlug(projectSlugFromQuery), 10);
@@ -87,11 +114,11 @@ class ProjectDetailPage extends Component {
         }
 
         if (project === null) {
-            return null;                
+            return null;
         }
 
-        console.log(state.isReturnNotFound);
-        console.log(project);
+    //    console.log(state.isReturnNotFound);
+    //    console.log(project);
 
         const projectTemplates = project.project_templates;
         const projectTemplateContainer =
@@ -103,9 +130,10 @@ class ProjectDetailPage extends Component {
             });
 
         return (
-
             <div>
-          <VideoLanding />
+                <VideoLanding project={project}/>
+                <VideoLandingDesc project={project}/>
+
                 <h2>Project Detail Page</h2>
                 {project.my_name}
                 {projectTemplateContainer}
@@ -113,6 +141,5 @@ class ProjectDetailPage extends Component {
         );
     }
 }
-
 
 export default ProjectDetailPage;

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
 function SocialMedia(props) {
-  const social_media_items = props.items.map((item) => {
+  const social_media_items = props.items.map((item, index) => {
     return (
-      <a href={item.link} className="youtube">{item.my_name}</a>
+      <a href={item.link} key={index} className="youtube">{item.my_name}</a>
     );
   });
 
