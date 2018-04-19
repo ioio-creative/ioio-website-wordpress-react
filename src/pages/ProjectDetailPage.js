@@ -35,44 +35,63 @@ function VideoLanding(props) {
     </section>
   )
 }
+
 class ProjectDetailPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             project: null,
+            isReturnNotFound: false
         }
     }
 
     componentDidMount() {               
         const projectSlugFromQuery =
             this.props.match.params.projectSlug;
+        const projectId = parseInt(getProjectIdBySlug(projectSlugFromQuery), 10);
 
-
-        if (projectSlugFromQuery === undefined
-            || projectSlugFromQuery === null) {
+        // if no corresponding project id entry for the slug got from query
+        if (isNaN(projectId)) {
             this.setState({
-                project: null,
+                isReturnNotFound: true
             });
             return;
         }
 
         fetchProjectById(
-            getProjectIdBySlug(projectSlugFromQuery),
+            projectId,
             (aProject) => {
-                this.setState({
-                    project: aProject
-                });
+                if (aProject === null) {
+                    this.setState({
+                        isReturnNotFound: true
+                    });
+                } else {
+                    this.setState({
+                        project: aProject
+                    });
+                }
             }
         );
     }
 
     render() {
-        const project = this.state.project;
+        const state = this.state;
+        const project = state.project;
+
+        // should check isReturnNotFound first
+        // before checking project === null
+        if (state.isReturnNotFound) {
+            return (
+                <Redirect to={routes.notFound} />
+            );
+        }
 
         if (project === null) {
-            return null;
-                {/*<Redirect to={routes.notFound} />*/}                
+            return null;                
         }
+
+        console.log(state.isReturnNotFound);
+        console.log(project);
 
         const projectTemplates = project.project_templates;
         const projectTemplateContainer =
