@@ -3,7 +3,7 @@ import { fetchProjects } from 'websiteApi.js';
 let projectSlugIdPairs = null;
 
 fetchProjects((projects) => {
-    projectSlugIdPairs = projectSlugIdPairs(projects);
+    projectSlugIdPairs = createSlugIdPairs(projects);
 });
 
 function createSlugIdPairs(projectObjs) {

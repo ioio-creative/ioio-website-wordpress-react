@@ -6,6 +6,7 @@ import AboutPage from 'pages/AboutPage';
 import ProjectListPage from 'pages/ProjectListPage';
 import ProjectDetailPage from 'pages/ProjectDetailPage';
 import ContactsPage from 'pages/ContactsPage';
+import NotFoundPage from 'pages/NotFoundPage'
 
 import routes from 'globals/routes';
 
@@ -27,6 +28,7 @@ class Main extends Component {
                     <Route exact path={routes.projectBySlug} component={ProjectDetailPage} />
                     <Route path={routes.projects} component={ProjectListPage} />
                     <Route path={routes.contacts} component={ContactsPage} />
+                    <Route component={NotFoundPage} />
                 </Switch>
             </main>
           </div>
