@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { fetchProjectById } from 'websiteApi'
+import { getProjectIdBySlug } from 'utils/mapProjectSlugNameToIds';
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
@@ -23,12 +24,12 @@ class ProjectDetailPage extends Component {
         }
     }
 
-    componentDidMount() {       
-        // 10 here means decimal number system
-        const idFromQuery = 
-            parseInt(this.props.match.params.uniqId, 10);
+    componentDidMount() {               
+        const projectSlugFromQuery = 
+            this.props.match.params.projectSlug;
 
-        if (idFromQuery === NaN) {
+        if (projectSlugFromQuery === undefined
+            || projectSlugFromQuery === null) {
             this.setState({
                 project: null,
             });
@@ -36,7 +37,7 @@ class ProjectDetailPage extends Component {
         }
 
         fetchProjectById(
-            idFromQuery,
+            getProjectIdBySlug(projectSlugFromQuery),
             (aProject) => {
                 this.setState({
                     project: aProject

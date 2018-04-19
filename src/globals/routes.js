@@ -7,9 +7,9 @@ const routes = {
     home: "/home",
     about: "/",
     projects: "/projects",
-    projectById: "/projects/:uniqId",
-    projectByIdWithValue: (id) => {
-        return "/projects/" + id;
+    projectBySlug: "/projects/:projectSlug",
+    projectBySlugWithValue: (slugValue) => {
+        return "/projects/" + slugValue;
     },
     contacts: "/contacts",
 }

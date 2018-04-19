@@ -19,14 +19,14 @@ function createIdNamePairs(sourceObjs) {
     return idNamePairs;
 }
 
-function getProjectCategoryNameById(categoryId, categoryObjs) {
+function getProjectCategoryNameById(categoryId) {
     if (projectCategoryIdNamePairs === null) {
         return null;
     }
     return projectCategoryIdNamePairs[categoryId];
 }
 
-function getProjectTagNameById(tagId, tagObjs) {
+function getProjectTagNameById(tagId) {
     if (projectTagIdNamePairs === null) {
         return null;
     }

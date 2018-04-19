@@ -9,14 +9,14 @@ import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjec
 import Footer from 'containers/Footer';
 
 function ProjectTags(props) {
-  const tag_item = props.tags.map((tag, id) => {
+  const tag_items = props.tags.map((tag, id) => {
     var tagId = ".filter-" + tag.id
     return (<li data-filter={tagId}>{tag.name}</li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
       <li data-filter="*" className="filter-active">All</li>
-      {tag_item}
+      {tag_items}
     </ul>
   </div>);
 }
@@ -48,7 +48,7 @@ function AllProjects(props) {
       </span>);
     });
     var s = project.link;
-    cutString(s)
+    cutString(s);
     function cutString(s) {
       var cut = s.indexOf('/projects');
       if (cut == -1)
@@ -58,7 +58,7 @@ function AllProjects(props) {
     var d = cutString(s);
 
     return (<div className={tagIds}>
-    <Link to={routes.projectByIdWithValue(project.id)}>{props.name}
+    <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
           <figure>
             <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
