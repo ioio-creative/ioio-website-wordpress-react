@@ -39,9 +39,9 @@ function AllProjects(props) {
 
       let tagName = "";
       if (index >= 1) {
-        tagName = " / " + getProjectTagNameById(tagId, props.tags)
+        tagName = " / " + getProjectTagNameById(tagId)
       } else {
-        tagName = getProjectTagNameById(tagId, props.tags)
+        tagName = getProjectTagNameById(tagId)
       }
       return (<span>
         {tagName}

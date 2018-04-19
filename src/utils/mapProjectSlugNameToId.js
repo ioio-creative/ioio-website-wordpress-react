@@ -1,15 +1,5 @@
-import { fetchProjectCategories, fetchProjectTags } from 'websiteApi.js';
-
 let projectCategoryIdNamePairs = null;
 let projectTagIdNamePairs = null;
-
-fetchProjectCategories((categoryObjs) => {
-    projectCategoryIdNamePairs = createIdNamePairs(categoryObjs);
-});
-
-fetchProjectTags((tagObjs) => {
-    projectTagIdNamePairs = createIdNamePairs(tagObjs);
-});
 
 function createIdNamePairs(sourceObjs) {
     let idNamePairs = {};
@@ -20,15 +10,21 @@ function createIdNamePairs(sourceObjs) {
 }
 
 function getProjectCategoryNameById(categoryId, categoryObjs) {
+    // TODO: Should we include this check null?
+    // This may prevent the latest update from CMS to be shown in app
+    // if the user does not refresh the page???
     if (projectCategoryIdNamePairs === null) {
-        return null;
+        projectCategoryIdNamePairs = createIdNamePairs(categoryObjs);
     }
     return projectCategoryIdNamePairs[categoryId];
 }
 
 function getProjectTagNameById(tagId, tagObjs) {
+    // TODO: Should we include this check null?
+    // This may prevent the latest update from CMS to be shown in app
+    // if the user does not refresh the page???
     if (projectTagIdNamePairs === null) {
-        return null;
+        projectTagIdNamePairs = createIdNamePairs(tagObjs);
     }
     return projectTagIdNamePairs[tagId];
 }
