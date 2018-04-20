@@ -30,8 +30,8 @@ class Sidebar extends Component {
                 <a id="menu-toggle" role="button" className="menu-transition">
                     <h3>Index</h3>
                 </a>
-                <object data={sidebar.logo_svg} type="image/svg+xml" className="logo menu-transition">
-                    <img src={sidebar.logo_svg} alt="" />
+                <object data={sidebar.logo_svg.guid} type="image/svg+xml" className="logo menu-transition">
+                    <img src={sidebar.logo_image.guid} alt="" />
                 </object>
                 <Link className="menu-item menu-transition menu-close" to={routes.about}>About</Link>
                 <Link className="menu-item menu-transition menu-close" to={routes.projects}>Projects</Link>
