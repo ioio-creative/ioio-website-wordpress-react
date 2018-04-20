@@ -10,7 +10,7 @@ import NotFoundPage from 'pages/NotFoundPage'
 
 import routes from 'globals/routes';
 
-class Main extends Component {
+class Main extends Component {    
     render() {
         return (
           <div id="scroller">
