@@ -50,7 +50,7 @@ function fetchSidebars(callback) {
     passJsonResultToCallback("sidebars", callback);
 }
 
-function fetchActiveSidebar(callback) {
+function fetchActiveSidebar(callback) {    
     passJsonResultToCallback("sidebars", callback, activeEntities.sidebar);
 }
 

@@ -21,9 +21,9 @@ class Sidebar extends Component {
     }
 
     render() {
-        const sidebar = this.state.sidebar;
+        const sidebar = this.state.sidebar;        
         if (sidebar === null) {
-            return;
+            return null;
         }
         return (
             <div id="sidebar" className="menu-transition" >
