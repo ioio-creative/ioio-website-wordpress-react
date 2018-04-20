@@ -32,6 +32,16 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         });
 }
 
+async function passJsonResultAsync(entityToFetch, optionalEntityId) {
+    let dataUrl = baseUrl
+        + entityToFetch
+        + (optionalEntityId ? "/" + optionalEntityId : "")
+        + defaultQuery;
+    const response = await fetch(dataUrl);
+    const json = await response.json();
+    return json;
+}
+
 
 /* General */
 
@@ -97,6 +107,10 @@ function fetchProjects(callback) {
     passJsonResultToCallback("projects", callback);
 }
 
+async function fetchProjectsAsync() {
+    return await passJsonResultAsync("projects");
+}
+
 function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
@@ -136,6 +150,7 @@ export {
 
     // project list page
     fetchProjects,
+    fetchProjectsAsync,
     fetchProjectCategories,
     fetchProjectTags,
 

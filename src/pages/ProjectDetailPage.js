@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { fetchProjectById } from 'websiteApi'
-import { getProjectIdBySlug } from 'utils/mapProjectSlugNameToIds';
+import { getProjectIdBySlugAsync } from 'utils/mapProjectSlugNameToIds';
 import { Redirect } from 'react-router-dom'
 import routes from 'globals/routes';
 
@@ -72,13 +72,14 @@ class ProjectDetailPage extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const projectSlugFromQuery =
             this.props.match.params.projectSlug;
-        const projectId = parseInt(getProjectIdBySlug(projectSlugFromQuery), 10);
+        const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
+        const projectIdNum = parseInt(projectIdStr, 10);
 
         // if no corresponding project id entry for the slug got from query
-        if (isNaN(projectId)) {
+        if (isNaN(projectIdNum)) {
             this.setState({
                 isReturnNotFound: true
             });
@@ -86,7 +87,7 @@ class ProjectDetailPage extends Component {
         }
 
         fetchProjectById(
-            projectId,
+            projectIdNum,
             (aProject) => {
                 if (aProject === null) {
                     this.setState({
@@ -116,9 +117,6 @@ class ProjectDetailPage extends Component {
         if (project === null) {
             return null;
         }
-
-    //    console.log(state.isReturnNotFound);
-    //    console.log(project);
 
         const projectTemplates = project.project_templates;
         const projectTemplateContainer =

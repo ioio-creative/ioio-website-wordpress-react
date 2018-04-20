@@ -1,10 +1,6 @@
-import { fetchProjects } from 'websiteApi.js';
+import { fetchProjectsAsync } from 'websiteApi.js';
 
 let projectSlugIdPairs = null;
-
-fetchProjects((projects) => {
-    projectSlugIdPairs = createSlugIdPairs(projects);
-});
 
 function createSlugIdPairs(projectObjs) {
     let slugIdPairs = {};
@@ -14,13 +10,14 @@ function createSlugIdPairs(projectObjs) {
     return slugIdPairs;
 }
 
-function getProjectIdBySlug(projectSlug) {
+async function getProjectIdBySlugAsync(projectSlug) {
     if (projectSlugIdPairs === null) {
-        return null
-    }
+        const projectObjs = await fetchProjectsAsync();
+        projectSlugIdPairs = createSlugIdPairs(projectObjs);
+    }    
     return projectSlugIdPairs[projectSlug];
 }
 
 export {
-    getProjectIdBySlug
+    getProjectIdBySlugAsync
 };
