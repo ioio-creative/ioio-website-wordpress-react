@@ -10,7 +10,7 @@ class Sidebar extends Component {
              <a id="menu-toggle" role="button" className="menu-transition">
                 <h3>Index</h3>
              </a>
-             <object data="img/ioio_logo-02.svg" type="image/svg+xml" className="logo menu-transition">
+            <object data="" type="image/svg+xml" className="logo menu-transition">
              <img src="img/ioio_logo-02.png" alt="" />
              </object>
              <Link className="menu-item menu-transition menu-close" to={routes.about}>About</Link>
