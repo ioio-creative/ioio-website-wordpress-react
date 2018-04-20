@@ -12,6 +12,7 @@ const defaultQuery = "";
 const activeEntities = {
     about: 72,
     footer: 263,
+    sidebar: 351,    
 };
 
 
@@ -45,7 +46,15 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId) {
 
 /* General */
 
-function fetchFooter(callback) {
+function fetchSidebars(callback) {
+    passJsonResultToCallback("sidebars", callback);
+}
+
+function fetchActiveSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback, activeEntities.sidebar);
+}
+
+function fetchFooters(callback) {
     passJsonResultToCallback("footers", callback);
 }
 
@@ -115,8 +124,16 @@ function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
 
+async function fetchProjectCategoriesAsync(callback) {
+    return await passJsonResultAsync("project_categories");
+}
+
 function fetchProjectTags(callback) {
     passJsonResultToCallback("project_tags", callback);
+}
+
+async function fetchProjectTagsAsync(callback) {
+    return await passJsonResultAsync("project_categories");
 }
 
 /* end of project list page */
@@ -133,12 +150,10 @@ function fetchProjectById(id, callback) {
 
 export {
     // general
-    fetchFooter,
+    fetchActiveSidebar,
     fetchActiveFooter,
 
     // about page    
-    fetchAbouts,
-    fetchAboutById,
     fetchActiveAbout,
     fetchCompanyDnas,
     fetchCompanyCultures,
