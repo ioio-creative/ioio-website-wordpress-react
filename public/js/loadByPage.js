@@ -2,6 +2,9 @@
 function reloadJS() {
   trying()
   function trying() {
+
+
+
     if (!$(".carousel-item").size() && !$(".portfolio-item").size() && !$('#video-landing').size()) {
       console.log("wait for dom")
       window.requestAnimationFrame(trying);

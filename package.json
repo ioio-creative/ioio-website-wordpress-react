@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "cross-env": "^5.1.4",
+    "jquery": "^3.3.1",
     "react": "^16.3.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.3.2",
