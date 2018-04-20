@@ -9,7 +9,24 @@ import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
 import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03';
 
+
+
+import "./video-react.css"; // import css
+
+
+import { Player } from 'video-react';
+
+
+
+
+
+
 import './ProjectDetailPage.css';
+
+
+import Footer from 'containers/Footer';
+import {fetchActiveFooter } from 'websiteApi';
+
 
 // Choosing the React Element Type at Runtime
 // https://reactjs.org/docs/jsx-in-depth.html
@@ -72,6 +89,7 @@ class ProjectDetailPage extends Component {
         }
     }
 
+
     componentDidMount() {
         const projectSlugFromQuery =
             this.props.match.params.projectSlug;
@@ -99,6 +117,10 @@ class ProjectDetailPage extends Component {
                 }
             }
         );
+        fetchActiveFooter((aFooter) => {
+          this.setState({footer: aFooter});
+        });
+
     }
 
     render() {
@@ -117,6 +139,11 @@ class ProjectDetailPage extends Component {
             return null;
         }
 
+        const footer = this.state.footer;
+        if (footer === null) {
+          return null;
+        }
+
     //    console.log(state.isReturnNotFound);
     //    console.log(project);
 
@@ -133,10 +160,23 @@ class ProjectDetailPage extends Component {
             <div>
                 <VideoLanding project={project}/>
                 <VideoLandingDesc project={project}/>
-
+                <Player
+                  playsInline
+                  poster="/assets/poster.png"
+                  src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                  autoPlay="true"
+                  fluid="true"
+                  muted="true"
+                  preload="auto"
+                />
                 <h2>Project Detail Page</h2>
                 {project.my_name}
                 {projectTemplateContainer}
+
+                <Footer
+                          //Section: Footer
+                          footer={footer}/>
+
             </div>
         );
     }

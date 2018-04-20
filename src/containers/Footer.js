@@ -51,7 +51,7 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <img className="footer-hotpot" src="img/hotpot.png" alt="alt"/>
+          <img className="footer-hotpot" src={f.hotpot_image.guid} alt="alt"/>
         </div>
       </div>
     </footer>);
