@@ -10,7 +10,7 @@ import NotFoundPage from 'pages/NotFoundPage'
 
 import routes from 'globals/routes';
 
-class Main extends Component {    
+class Main extends Component {
     render() {
         return (
           <div id="scroller">
@@ -23,7 +23,7 @@ class Main extends Component {
                     later Routes in the Route list.
                 */}
                 <Switch>
-                    <Route path={routes.home} component={HomePage} />
+                    <Route exact path={routes.home} component={HomePage} />
                     <Route exact path={routes.about} component={AboutPage} />
                     <Route exact path={routes.projectBySlug} component={ProjectDetailPage} />
                     <Route path={routes.projects} component={ProjectListPage} />

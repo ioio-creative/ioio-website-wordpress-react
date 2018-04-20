@@ -1,11 +1,12 @@
 //jQuery(document).ready(function($) {
 function reloadJS() {
+  console.log("sadasdasdasd")
   trying()
   function trying() {
 
 
 
-    if (!$(".carousel-item").size() && !$(".portfolio-item").size() && !$('#video-landing').size()) {
+    if (!$(".carousel-item").size() && !$(".portfolio-item").size() && !$('.section-bg').size()) {
       console.log("wait for dom")
       window.requestAnimationFrame(trying);
     } else {

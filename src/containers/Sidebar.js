@@ -27,14 +27,21 @@ class Sidebar extends Component {
     handleMenuToggle(e) {
       console.log('OPEN MENU')
       e.preventDefault();
+            console.log('OPEN MENU1')
       $("#sidebar").toggleClass("active");
-
+      console.log('OPEN MENU2')
       $("#menu-canvas").remove();
-
+      console.log('OPEN MENU3')
       $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
+      console.log('OPEN MENU4')
+      $("#run-menu-canvas").remove();
+            console.log('OPEN MENU5')
 
-    //  $("#run-menu-canvas").remove();
-      $('body').append('<script id="run-menu-canvas">menuCanvas();</script>');
+            $("#run-reload-js").remove();
+            $('<script id="run-reload-js">reloadJS();</script>').insertAfter( '#root' );;
+
+            console.log('OPEN MENU6')
+      $('<script id="run-menu-canvas">menuCanvas();</script>').insertAfter( '#root' );;
       // $(".menu-close").click(function(e) {
       //   $("#sidebar").toggleClass("active");
       //   $("#menu-canvas").remove();

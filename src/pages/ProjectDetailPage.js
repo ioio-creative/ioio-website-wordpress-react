@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { fetchProjectById } from 'websiteApi'
 import { getProjectIdBySlugAsync } from 'utils/mapProjectSlugNameToIds';
 import { Redirect } from 'react-router-dom'
+import Script from 'react-load-script'
 import routes from 'globals/routes';
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
@@ -176,6 +177,38 @@ class ProjectDetailPage extends Component {
                 <Footer
                           //Section: Footer
                           footer={footer}/>
+
+
+
+                            <Script url="lib/jquery/jquery.min.js" />
+                            <Script url="lib/jquery/jquery-migrate.min.js" />
+                            <Script url="lib/bootstrap/js/bootstrap.bundle.min.js" />
+                            <Script url="lib/easing/easing.min.js" />
+                            <Script url="lib/superfish/hoverIntent.js" />
+                            <Script url="lib/superfish/superfish.min.js" />
+                            <Script url="lib/wow/wow.min.js" />
+                            <Script url="lib/waypoints/waypoints.min.js" />
+                            <Script url="lib/counterup/counterup.min.js" />
+                            <Script url="lib/owlcarousel/owl.carousel.min.js" />
+                            <Script url="lib/isotope/isotope.pkgd.min.js" />
+                            <Script url="lib/lightbox/js/lightbox.min.js" />
+                            <Script url="lib/touchSwipe/jquery.touchSwipe.min.js" />
+
+
+                            <Script url="js/loadByPage.js" />
+
+                            <Script url="js/sidebar.js" />
+                            <Script url='js/menu-canvas.js' />
+                            <Script url='lib/matter/matter.js' />
+
+
+
+                            <Script url="js/project.js" />
+                            <Script url="lib/jqueryvide/jquery.vide.js" />
+
+                            <Script url="https://gitcdn.xyz/repo/thesmart/jquery-scrollspy/0.1.3/scrollspy.js" />
+
+
 
             </div>
         );
