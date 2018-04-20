@@ -24,7 +24,10 @@ class Footer extends Component {
   }
 
   render() {
-    var f = this.props.footer
+    const f = this.props.footer;
+    if (f === undefined || f === null) {
+      return null;
+    }
     return (<footer id="footer">
       <div className="footer-top">
         <div className="container">
