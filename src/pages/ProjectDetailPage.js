@@ -31,6 +31,7 @@ const projectTemplateMap = {
 };
 
 function loadJSFiles() {
+  /*
   var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
   var loadScriptsDefer = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js'];
 
@@ -43,10 +44,10 @@ function loadJSFiles() {
     scriptjs.ready('bundle', function() {
       //scriptjs()
     //  scriptjs('js/loadByPage.js')
-    //  scriptjs('lib/jqueryvide/jquery.vide.js')
+      scriptjs('lib/jqueryvide/jquery.vide.js')
 
     })
-
+*/
 }
 
 function VideoLanding(props) {
@@ -149,7 +150,10 @@ class ProjectDetailPage extends Component {
     });
 
     return (<div>
-    <h2>Project Detail Page</h2>
+      <VideoLanding project={project}/>
+      <VideoLandingDesc project={project}/>
+      <Player playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto"/>
+      <h2>Project Detail Page</h2>
       {project.my_name}
       {projectTemplateContainer}
 
