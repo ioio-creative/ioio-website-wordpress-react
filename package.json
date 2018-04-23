@@ -5,8 +5,10 @@
   "dependencies": {
     "cross-env": "^5.1.4",
     "jquery": "^3.3.1",
+    "matter-js": "^0.14.1",
     "react": "^16.3.2",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-async-script-loader": "^0.3.0",
     "react-background-video-player": "^1.1.4",
     "react-dom": "^16.3.2",
     "react-ga": "^2.5.0",
@@ -14,6 +16,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "scriptjs": "^2.5.8",
     "video-react": "^0.10.4"
   },
   "scripts": {

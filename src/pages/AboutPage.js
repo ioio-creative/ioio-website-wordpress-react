@@ -9,11 +9,17 @@ import About06 from 'containers/about/About06';
 import About07 from 'containers/about/About07';
 import About08 from 'containers/about/About08';
 import Footer from 'containers/Footer';
-import Scripts from 'containers/Scripts';
+
+
+import scriptjs from 'scriptjs'
 
 import './AboutPage.css';
 
-import { fetchActiveAbout, fetchActiveFooter } from 'websiteApi';
+import {fetchActiveAbout, fetchActiveFooter} from 'websiteApi';
+
+function loadJSFiles() {
+scriptjs('js/loadByPage.js')
+}
 
 class AboutPage extends Component {
   constructor(props) {
@@ -30,7 +36,7 @@ class AboutPage extends Component {
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-    <Scripts/>
+
   }
 
   render() {
@@ -42,6 +48,7 @@ class AboutPage extends Component {
     if (footer === null) {
       return null;
     }
+
     return (<div>
 
       <About01
@@ -77,11 +84,10 @@ class AboutPage extends Component {
         about={about}/>
 
       <Footer
-          //Section: Footer
-          footer={footer}/>
-
+        //Section: Footer
+        footer={footer}/> {loadJSFiles()}
     </div>);
   }
 }
 
-export default AboutPage;
+export default(AboutPage);

@@ -1,6 +1,8 @@
 //jQuery(document).ready(function($) {
+  console.log("reloadJS Loaded")
+  reloadJS()
 function reloadJS() {
-  console.log("sadasdasdasd")
+
   trying()
   function trying() {
 
@@ -81,16 +83,6 @@ function reloadJS() {
         ,
         allowPageScroll: "vertical"
       });
-
-      // Skills section
-      $('#skills').waypoint(function() {
-        $('.progress .progress-bar').each(function() {
-          $(this).css("width", $(this).attr("aria-valuenow") + '%');
-        });
-      }, {offset: '80%'});
-
-      // jQuery counterUp (used in Facts section)
-      $('[data-toggle="counter-up"]').counterUp({delay: 10, time: 1000});
 
       // Porfolio isotope and filter
       var portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});

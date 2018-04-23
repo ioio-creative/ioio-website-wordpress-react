@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import $ from 'jquery';
+import { resetMatterJS, menuCanvas } from 'containers/SidebarMenuCanvas';
 
 import routes from 'globals/routes';
 import { fetchActiveSidebar } from 'websiteApi';
+
+
 
 class Sidebar extends Component {
     constructor(props) {
@@ -24,24 +27,30 @@ class Sidebar extends Component {
         });
     }
 
+
+    
+
     handleMenuToggle(e) {
-      console.log('OPEN MENU')
+
       e.preventDefault();
-            console.log('OPEN MENU1')
+
       $("#sidebar").toggleClass("active");
-      console.log('OPEN MENU2')
+
       $("#menu-canvas").remove();
-      console.log('OPEN MENU3')
+
       $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
-      console.log('OPEN MENU4')
-      $("#run-menu-canvas").remove();
-            console.log('OPEN MENU5')
 
-            $("#run-reload-js").remove();
-            $('<script id="run-reload-js">reloadJS();</script>').insertAfter( '#root' );;
+    //  $("#run-menu-canvas").remove();
 
-            console.log('OPEN MENU6')
-      $('<script id="run-menu-canvas">menuCanvas();</script>').insertAfter( '#root' );;
+
+        //    $("#run-reload-js").remove();
+        //    $('<script id="run-reload-js">reloadJS();</script>').insertAfter( '#root' );;
+
+
+        menuCanvas();
+
+
+      //$('<script id="run-menu-canvas">menuCanvas();</script>').insertAfter( '#root' );;
       // $(".menu-close").click(function(e) {
       //   $("#sidebar").toggleClass("active");
       //   $("#menu-canvas").remove();
@@ -61,8 +70,11 @@ class Sidebar extends Component {
             console.log('CLOSE MENU')
       $("#sidebar").toggleClass("active");
 
-      $("#run-reload-js").remove();
-      $('body').append('<script id="run-reload-js">reloadJS();</script>');
+    //  $("#run-reload-js").remove();
+    //  $('body').append('<script id="run-reload-js">reloadJS();</script>');
+
+             $("#menu-canvas").remove();
+             console.log("MENU CLOSED")
 
     }
 
