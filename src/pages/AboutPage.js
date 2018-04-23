@@ -17,9 +17,7 @@ import './AboutPage.css';
 
 import {fetchActiveAbout, fetchActiveFooter} from 'websiteApi';
 
-function loadJSFiles() {
-scriptjs('js/loadByPage.js')
-}
+
 
 class AboutPage extends Component {
   constructor(props) {
@@ -85,7 +83,8 @@ class AboutPage extends Component {
 
       <Footer
         //Section: Footer
-        footer={footer}/> {loadJSFiles()}
+        footer={footer}/>
+
     </div>);
   }
 }

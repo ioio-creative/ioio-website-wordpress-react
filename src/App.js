@@ -11,19 +11,20 @@ import scriptjs from 'scriptjs'
 
 function loadJSFiles() {
 
-var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
-var loadScriptsDefer = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','/lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'];
+  var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
+  var loadScriptsLater = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','/lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'];
 
-  scriptjs(loadScriptsAsync, () => {
-    for (let i = 0; i < loadScriptsDefer.length; i++) {
-      scriptjs(loadScriptsDefer[i],'bundle')
-    }
+    scriptjs(loadScriptsAsync, () => {
+      scriptjs(loadScriptsLater,'bundle')
 
-  });
-  scriptjs.ready('bundle', function() {
-    //scriptjs()
-  })
 
+    });
+    scriptjs.ready('bundle', function() {
+      //scriptjs()
+      scriptjs('js/loadByPage.js')
+    })
+
+    console.log("loadJSFiles");
 }
 
 class App extends Component {

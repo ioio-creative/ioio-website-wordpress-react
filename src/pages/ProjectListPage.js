@@ -7,6 +7,7 @@ import routes from 'globals/routes';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import Footer from 'containers/Footer';
+import scriptjs from 'scriptjs'
 
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
@@ -19,6 +20,22 @@ function ProjectTags(props) {
       {tag_items}
     </ul>
   </div>);
+}
+
+function loadJSFiles(){
+var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
+var loadScriptsDefer = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','/lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'];
+
+  scriptjs(loadScriptsAsync, () => {
+    for (let i = 0; i < loadScriptsDefer.length; i++) {
+      scriptjs(loadScriptsDefer[i],'bundle')
+    }
+
+  });
+  scriptjs.ready('bundle', function() {
+    //scriptjs()
+    scriptjs('js/loadByPage.js')
+  })
 }
 
 function AllProjects(props) {
@@ -147,6 +164,7 @@ class ProjectListPage extends Component {
       <Footer
         //Section: Footer
         footer={footer}/>
+      {loadJSFiles()}
       </div>);
     }
   }
