@@ -11,7 +11,7 @@ import scriptjs from 'scriptjs'
 
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
-    var tagId = ".filter-" + tag.id
+    let tagId = ".filter-" + tag.id
     return (<li key={id} data-filter={tagId}>{tag.name}</li>);
   });
   return (<div className="col-lg-12 ">
@@ -23,24 +23,32 @@ function ProjectTags(props) {
 }
 
 function loadJSFiles(){
-var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
-var loadScriptsDefer = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','/lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'];
+  // const publicUrl = process.env.PUBLIC_URL;
+  // const loadScriptsAsync = [
+  //   publicUrl + '/lib/jquery/jquery.min.js',
+  //   publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
+  //   publicUrl + '/lib/wow/wow.min.js'
+  // ];
+  // const loadScriptsLater = [
+  //   publicUrl + '/lib/jquery/jquery-migrate.min.js',
+  //   publicUrl + '/lib/owlcarousel/owl.carousel.min.js',
+  //   publicUrl + '/lib/easing/easing.min.js',
+  //   publicUrl + '/lib/superfish/hoverIntent.js',
+  //   publicUrl + '/lib/scrollspy/scrollspy.js',
+  //   publicUrl + '/lib/isotope/isotope.pkgd.min.js',
+  //   publicUrl + '/lib/touchSwipe/jquery.touchSwipe.min.js'
+  // ];
 
-  scriptjs(loadScriptsAsync, () => {
-    for (let i = 0; i < loadScriptsDefer.length; i++) {
-      scriptjs(loadScriptsDefer[i],'bundle')
-    }
-
-  });
-  scriptjs.ready('bundle', function() {
-    //scriptjs()
-    scriptjs('js/loadByPage.js')
-  })
+  // scriptjs(loadScriptsAsync, () => {
+  //   scriptjs(loadScriptsLater, () => {
+  //     scriptjs(publicUrl + '/js/loadByPage.js');
+  //   });
+  // });  
 }
 
 function AllProjects(props) {
   const tag_item = props.tags.map((tag, id) => {
-    var tt = ".filter-" + tag.id
+    let tt = ".filter-" + tag.id
     return (<div>
       <li data-filter={tt}>{tag.name}</li>
     </div>);
@@ -64,15 +72,15 @@ function AllProjects(props) {
         {tagName}
       </span>);
     });
-    var s = project.link;
+    let s = project.link;
     cutString(s);
     function cutString(s) {
-      var cut = s.indexOf('/projects');
-      if (cut == -1)
-      return s;
+      let cut = s.indexOf('/projects');
+      if (cut === -1)
+        return s;
       return s.substr(cut)
     }
-    var d = cutString(s);
+    let d = cutString(s);
 
     return (<div className={tagIds} key={id}>
     <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}

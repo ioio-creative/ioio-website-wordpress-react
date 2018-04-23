@@ -33,8 +33,6 @@ class About05 extends Component {
   }
 
   componentDidMount() {
-    console.log("about 05 component did mount");
-
     var itemsMainDiv = ('.MultiCarousel');
     var itemsDiv = ('.MultiCarousel-inner');
     var itemWidth = "";
@@ -93,7 +91,6 @@ class About05 extends Component {
 
         $(".leftLst").addClass("over");
         $(".rightLst").removeClass("over");
-
       });
     }
 

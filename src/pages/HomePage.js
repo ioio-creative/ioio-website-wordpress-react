@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
+import routes from 'globals/routes';
 
 class HomePage extends Component {
     render() {
         return (
-            <div>
-                <h2>This is a home page!</h2>
-            </div>
+            <Redirect to={routes.about}/>
         );
     }
 }

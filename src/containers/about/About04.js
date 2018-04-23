@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 function Slideshow(props) {
   const slide_items = props.slides.map((slide, id) => {
-    return (<div className={id == 0
+    return (<div className={id === 0
         ? 'carousel-item active'
         : 'carousel-item'} key={id++}>
       <div className="row container-fluid">

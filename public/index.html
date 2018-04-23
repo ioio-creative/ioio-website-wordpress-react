@@ -11,31 +11,42 @@
     <meta content="" name="description">
     <!-- Favicons -->
     <!-- https://www.favicon-generator.org/ -->
-    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicons/favicon-16x16.png">
+    <link rel="manifest" href="%PUBLIC_URL%/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    <!-- Important -->
+    <!--
+      Use absolute path from website root, i.e. "public" folder to link css and javascript files.
+      Correct example: "%PUBLIC_URL%/lib/bootstrap/css/bootstrap.min.css"
+      Incorrect example: "lib/bootstrap/css/bootstrap.min.css"
+      When user refreshes page on browser via url "http://localhost:3000/projects/fff-event-2017",
+      if absolute path is used, browser would seek css via "http://localhost:3000/lib/bootstrap/css/bootstrap.min.css";
+      if relative path is used, browser would seek css via "http://localhost:3000/projects/fff-event-2017/lib/bootstrap/css/bootstrap.min.css";
+    -->    
+
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="%PUBLIC_URL%/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <!-- Main Stylesheet File -->
     <!--link href="css/project.css" rel="stylesheet" TODO-->
 
@@ -72,31 +83,31 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!-- JavaScript Libraries //TODO by Kenny
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <!-- JavaScript Libraries //TODO by Kenny -->
+    <script src="%PUBLIC_URL%/lib/jquery/jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/jquery/jquery-migrate.min.js"></script>
 
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/superfish/hoverIntent.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
- -->
+    <script src="%PUBLIC_URL%/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/easing/easing.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/superfish/hoverIntent.js"></script>
+    <script src="%PUBLIC_URL%/lib/wow/wow.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="%PUBLIC_URL%/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+
     <!-- Template Main Javascript File
     <script defer src="js/loadByPage.js"></script>-->
 
     <!-- #sidebar
     <script defer src="js/sidebar.js"></script>
     <script defer src='js/menu-canvas.js'></script>
-    <script src='lib/matter/matter.js'></script>
+    <script src='%PUBLIC_URL%/lib/matter/matter.js'></script>
 -->
 <!-- project page
 
     <script src="js/project.js"></script>
-    <script src="lib/jqueryvide/jquery.vide.js"></script>
+    <script src="%PUBLIC_URL%/lib/jqueryvide/jquery.vide.js"></script>
   -->
 
 

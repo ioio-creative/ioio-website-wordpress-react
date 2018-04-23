@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {fetchProjectById} from 'websiteApi'
 import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
-import Script from 'react-load-script'
 import routes from 'globals/routes';
 
 import scriptjs from 'scriptjs'
@@ -31,29 +30,29 @@ const projectTemplateMap = {
 };
 
 function loadJSFiles() {
-  /*
-  var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
-  var loadScriptsDefer = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js'];
+  console.log("public url: " +  JSON.stringify(process.env));
+  // const publicUrl = process.env.PUBLIC_URL;
+  // const loadScriptsAsync = [
+  //   publicUrl + '/lib/jquery/jquery.min.js',
+  //   publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
+  //   publicUrl + '/lib/wow/wow.min.js'
+  // ];
+  // const loadScriptsLater = [
+  //   publicUrl + '/lib/jquery/jquery-migrate.min.js',
+  //   publicUrl + '/lib/owlcarousel/owl.carousel.min.js'
+  // ];
 
-    scriptjs(loadScriptsAsync, () => {
-      for (let i = 0; i < loadScriptsDefer.length; i++) {
-        scriptjs(loadScriptsDefer[i],'bundle')
-      }
-
-    });
-    scriptjs.ready('bundle', function() {
-      //scriptjs()
-    //  scriptjs('js/loadByPage.js')
-      scriptjs('lib/jqueryvide/jquery.vide.js')
-
-    })
-*/
+  // scriptjs(loadScriptsAsync, () => {
+  //   scriptjs(loadScriptsLater, () => {
+  //     scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
+  //   });
+  // });
 }
 
 function VideoLanding(props) {
-  var video_url = props.project.showreel.guid;
-  var video_url_shorten = video_url.substring(0, video_url.length - 4);
-  var data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
+  const video_url = props.project.showreel.guid;
+  const video_url_shorten = video_url.substring(0, video_url.length - 4);
+  const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
   return (<section id="video-landing" className="section-bg">
     <div className="video-landing-div">
@@ -68,11 +67,10 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>)
+  </section>);
 }
 
 function VideoLandingDesc(props) {
-
   return (<section id="video-landing-caption" className="section-bg wow fadeIn">
     <div className="container-fluid">
       <div className="row video-landing-text text-right">
@@ -84,9 +82,9 @@ function VideoLandingDesc(props) {
         </div>
       </div>
     </div>
-  </section>)
-
+  </section>);
 }
+
 class ProjectDetailPage extends Component {
   constructor(props) {
     super(props);
@@ -160,7 +158,7 @@ class ProjectDetailPage extends Component {
       <Footer
         //Section: Footer
         footer={footer}/>
-        {/*loadJSFiles()*/}
+        {loadJSFiles()}
       </div>);
   }
 }
