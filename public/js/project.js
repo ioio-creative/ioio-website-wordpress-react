@@ -28,3 +28,9 @@ $(function () {
     });
 });
 */
+
+
+
+  // Testimonials carousel (uses the Owl Carousel library)
+  console.log($(".slideshow-carousel"))
+  $(".slideshow-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});

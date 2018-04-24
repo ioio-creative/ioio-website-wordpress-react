@@ -15,19 +15,18 @@ function Slideshow(props) {
   });
 
   return (<div className="owl-carousel slideshow-carousel">
-
     {member_items}
-
   </div>);
 }
 
-class ProjectTemp02 extends Component {
+class ProjectTemp05 extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     const props = this.props;
+
     const texts = getMultipleTextsFromSingleText(props.text_areas);
     const textContainer = texts.map((text) => {
       return (<div>
@@ -37,20 +36,14 @@ class ProjectTemp02 extends Component {
         </div>
       </div>);
     });
-    return (<section className="slideshow slideshow-img-on-left section-bg wow fadeInUp">
+    return (<section className="slideshow slideshow-img-in-middle section-bg wow fadeInUp">
       <div className="row container-fluid">
-        <div className="col-md-8 text-center">
+        <div className="col-md-12 text-center">
           <Slideshow slides={props.images}/>
-        </div>
-        <div className="col-md-4 slideshow-text">
-          <h2>{props.my_title}</h2>
-          <p>
-            {props.text_areas}
-          </p>
         </div>
       </div>
     </section>);
   }
 }
 
-export default ProjectTemp02;
+export default ProjectTemp05;

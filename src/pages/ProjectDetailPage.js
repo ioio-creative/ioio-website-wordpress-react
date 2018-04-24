@@ -5,11 +5,12 @@ import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 
-import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
-import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
-import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03';
-
-import {Player} from 'video-react';
+import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01'; //photomontage - 3 images
+import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02'; //slideshow - Image on Left, Text on right
+import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03'; //slideshow - Image on Right, Text on Left
+import ProjectTemp04 from 'containers/projectDetail/ProjectTemp04'; //photomontage - One Image
+import ProjectTemp05 from 'containers/projectDetail/ProjectTemp05'; //slideshow - Image only
+import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomontage - 2-column Image and caption
 
 import './ProjectDetailPage.css';
 
@@ -19,6 +20,7 @@ import {fetchActiveFooter} from 'websiteApi';
 import scriptjs from 'scriptjs'
 import $ from 'jquery';
 
+import {Player} from 'video-react';
 import "./video-react.css"; // import css
 
 // Choosing the React Element Type at Runtime
@@ -26,7 +28,10 @@ import "./video-react.css"; // import css
 const projectTemplateMap = {
   1: ProjectTemp01,
   2: ProjectTemp02,
-  3: ProjectTemp03
+  3: ProjectTemp03,
+  4: ProjectTemp04,
+  5: ProjectTemp05,
+  6: ProjectTemp06
 };
 
 function loadJSFiles() {
@@ -34,6 +39,7 @@ function loadJSFiles() {
   const publicUrl = process.env.PUBLIC_URL;
 
   scriptjs(publicUrl+'/lib/jqueryvide/jquery.vide.js');
+  scriptjs(publicUrl+'/js/project.js');
   /*
   var loadScriptsAsync = ['lib/jqueryvide/jquery.vide.js'].map((relativeUrl) => {
     return publicUrl + "/" + relativeUrl;

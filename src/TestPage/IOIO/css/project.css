@@ -311,6 +311,7 @@ Project-cover Section
   margin: 0 0 0 0;
   float: none;
   top: 0;
+
 }
 
 .slideshow-item img {
@@ -369,6 +370,8 @@ Project-cover Section
   padding-left: 20%;
   text-align: left;
 }
+
+
 
 /*==============
 .slideshow-2-col
