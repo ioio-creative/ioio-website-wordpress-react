@@ -159,6 +159,8 @@ padding: 0 0 0 0;
   line-height: 24px;
   margin-bottom: 0;
   font-family: "FuturaLT", sans-serif;
+  height: 500px;
+  overflow: hidden;
 }
 
 #footer .footer-top {
@@ -202,4 +204,9 @@ padding: 0 0 0 0;
   padding-bottom: 12px;
 }
 
-#footer .footer-hotpot {}
+#footer .footer-hotpot-img {
+  position: absolute;
+  top:50px;
+  left:50px;
+width:600px;
+}

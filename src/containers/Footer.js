@@ -32,7 +32,9 @@ class Footer extends Component {
       <div className="footer-top">
         <div className="container">
           <div className="row">
+
             <div className="col-lg-3 col-md-6 footer-info">
+                <img className="footer-hotpot-img" src={f.hotpot_image.guid} alt="alt"/>
               <h3 className="footer-slogan">{f.slogan}</h3>
             </div>
             <div className="col-lg-3 col-md-6 footer-img"></div>
@@ -54,7 +56,6 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <img className="footer-hotpot" src={f.hotpot_image.guid} alt="alt"/>
         </div>
       </div>
     </footer>);

@@ -85,12 +85,18 @@ function VideoLanding(props) {
 function VideoLandingDesc(props) {
   return (<section id="video-landing-caption" className="section-bg wow fadeIn">
     <div className="container-fluid">
-      <div className="row video-landing-text text-right">
-        <div className="col-lg-6">
+      <div className="row video-landing-text">
+        <div className="col-lg-1">
+
+        </div>
+        <div className="col-lg-5">
           <p className="video-landing-text-l">{props.project.primary_desc}</p>
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-5">
           <p className="video-landing-text-r">{props.project.secondary_desc}</p>
+        </div>
+        <div className="col-lg-1">
+
         </div>
       </div>
     </div>

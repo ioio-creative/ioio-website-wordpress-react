@@ -100,13 +100,13 @@ Project-cover Section
 
 .video-landing-text {
   position: relative;
-  float: left;
+  float: right;
   top: 0;
   color: black;
   z-index: 2;
   width: 100%;
-  text-align: center;
-  padding: 100px 200px 100px 200px;
+  text-align: right;
+  padding: 100px 0 100px 0;
 }
 
 .video-landing-text-l {
@@ -157,7 +157,6 @@ Project-cover Section
   width: 100%;
 }
 
-
 /*==============
 .slideshow
 ==============*/
@@ -165,10 +164,17 @@ Project-cover Section
 .slideshow {
   white-space: normal;
   position: relative;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
+  margin: 100px 0 100px 0;
   float: none;
   top: 0;
+}
+
+.slideshow-img-on-right {
+  padding: 0 0 0 100px;
+}
+
+.slideshow-img-on-left {
+  padding: 0 100px 0 0px;
 }
 
 .slideshow-item img {
@@ -179,8 +185,7 @@ Project-cover Section
   max-height: 500px;
 }
 
-
-.slideshow .slideshow-text{
+.slideshow .slideshow-text {
   max-height: 500px;
 }
 
@@ -204,7 +209,7 @@ Project-cover Section
 }
 
 .slideshow .owl-dot {
-  right:0;
+  right: 0;
   display: inline-block;
   margin: 0 5px;
   width: 12px;
@@ -229,14 +234,26 @@ Project-cover Section
 }
 
 .slideshow-img-on-right .owl-nav, .slideshow-img-on-right .owl-dots {
-  left:  -30%;
+  left: -30%;
   padding-left: 0;
   text-align: left;
 }
 
 /*TODO*/
-.slideshow-img-in-middle{
 
+.slideshow-img-in-middle div{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.photo-montage-one-img {
+  margin: 50px 0 50px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.photo-montage-one-img img {
+  width: 100%;
 }
 
 /*==============
