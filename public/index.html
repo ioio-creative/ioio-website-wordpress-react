@@ -37,7 +37,7 @@
       When user refreshes page on browser via url "http://localhost:3000/projects/fff-event-2017",
       if absolute path is used, browser would seek css via "http://localhost:3000/lib/bootstrap/css/bootstrap.min.css";
       if relative path is used, browser would seek css via "http://localhost:3000/projects/fff-event-2017/lib/bootstrap/css/bootstrap.min.css";
-    -->    
+    -->
 
     <!-- Bootstrap CSS File -->
     <link href="%PUBLIC_URL%/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,6 +57,12 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!--
+
+    // `publicUrl` is just like `publicPath`, but we will provide it to our app
+    // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
+    // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
+
+
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -83,7 +89,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!-- JavaScript Libraries //TODO by Kenny -->
+    <!-- JavaScript Libraries //TODO by Kenny
     <script src="%PUBLIC_URL%/lib/jquery/jquery.min.js"></script>
     <script src="%PUBLIC_URL%/lib/jquery/jquery-migrate.min.js"></script>
 
@@ -95,7 +101,7 @@
     <script src="%PUBLIC_URL%/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="%PUBLIC_URL%/lib/lightbox/js/lightbox.min.js"></script>
     <script src="%PUBLIC_URL%/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-
+-->
     <!-- Template Main Javascript File
     <script defer src="js/loadByPage.js"></script>-->
 

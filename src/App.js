@@ -10,9 +10,14 @@ import Sidebar from 'containers/Sidebar';
 import scriptjs from 'scriptjs'
 
 function loadJSFiles() {
-
-  var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js']
-  var loadScriptsLater = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','/lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'];
+  console.log("public url: " +  JSON.stringify(process.env));
+  const publicUrl = process.env.PUBLIC_URL;
+  var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js'].map((relativeUrl) => {
+    return publicUrl + "/" + relativeUrl;
+  });
+  var loadScriptsLater = ['lib/jquery/jquery-migrate.min.js','lib/owlcarousel/owl.carousel.min.js','lib/easing/easing.min.js','lib/superfish/hoverIntent.js','lib/scrollspy/scrollspy.js','lib/isotope/isotope.pkgd.min.js','lib/touchSwipe/jquery.touchSwipe.min.js'].map((relativeUrl) => {
+    return publicUrl + "/" + relativeUrl;
+  });
 
     scriptjs(loadScriptsAsync, () => {
       scriptjs(loadScriptsLater,'bundle')
@@ -21,7 +26,7 @@ function loadJSFiles() {
     });
     scriptjs.ready('bundle', function() {
       //scriptjs()
-      scriptjs('js/loadByPage.js')
+      scriptjs(publicUrl+'/js/loadByPage.js')
     })
 
     console.log("loadJSFiles");

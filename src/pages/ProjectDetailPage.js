@@ -30,23 +30,23 @@ const projectTemplateMap = {
 };
 
 function loadJSFiles() {
-  console.log("public url: " +  JSON.stringify(process.env));
-  // const publicUrl = process.env.PUBLIC_URL;
-  // const loadScriptsAsync = [
-  //   publicUrl + '/lib/jquery/jquery.min.js',
-  //   publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
-  //   publicUrl + '/lib/wow/wow.min.js'
-  // ];
-  // const loadScriptsLater = [
-  //   publicUrl + '/lib/jquery/jquery-migrate.min.js',
-  //   publicUrl + '/lib/owlcarousel/owl.carousel.min.js'
-  // ];
+  /*console.log("public url: " +  JSON.stringify(process.env));
+  const publicUrl = process.env.PUBLIC_URL;
+  const loadScriptsAsync = [
+    publicUrl + '/lib/jquery/jquery.min.js',
+    publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
+    publicUrl + '/lib/wow/wow.min.js'
+  ];
+  const loadScriptsLater = [
+    publicUrl + '/lib/jquery/jquery-migrate.min.js',
+    publicUrl + '/lib/owlcarousel/owl.carousel.min.js'
+  ];
 
-  // scriptjs(loadScriptsAsync, () => {
-  //   scriptjs(loadScriptsLater, () => {
-  //     scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
-  //   });
-  // });
+  scriptjs(loadScriptsAsync, () => {
+    scriptjs(loadScriptsLater, () => {
+      scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
+    });
+  });*/
 }
 
 function VideoLanding(props) {
