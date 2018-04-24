@@ -42,7 +42,7 @@ class Sidebar extends Component {
     }
 */
     $("#sidebar").toggleClass("active");
-    menuCanvas()
+    menuCanvas();
   }
 
   handleMenuClose(e) {

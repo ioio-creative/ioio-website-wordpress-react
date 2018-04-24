@@ -5,14 +5,9 @@ import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 
-import scriptjs from 'scriptjs'
-
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01';
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02';
 import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03';
-
-
-import "./video-react.css"; // import css
 
 import {Player} from 'video-react';
 
@@ -20,6 +15,11 @@ import './ProjectDetailPage.css';
 
 import Footer from 'containers/Footer';
 import {fetchActiveFooter} from 'websiteApi';
+
+import scriptjs from 'scriptjs'
+import $ from 'jquery';
+
+import "./video-react.css"; // import css
 
 // Choosing the React Element Type at Runtime
 // https://reactjs.org/docs/jsx-in-depth.html
@@ -30,23 +30,29 @@ const projectTemplateMap = {
 };
 
 function loadJSFiles() {
-  /*console.log("public url: " +  JSON.stringify(process.env));
+  console.log("public url: " + JSON.stringify(process.env));
   const publicUrl = process.env.PUBLIC_URL;
-  const loadScriptsAsync = [
-    publicUrl + '/lib/jquery/jquery.min.js',
-    publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
-    publicUrl + '/lib/wow/wow.min.js'
-  ];
-  const loadScriptsLater = [
-    publicUrl + '/lib/jquery/jquery-migrate.min.js',
-    publicUrl + '/lib/owlcarousel/owl.carousel.min.js'
-  ];
 
-  scriptjs(loadScriptsAsync, () => {
-    scriptjs(loadScriptsLater, () => {
-      scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
-    });
+  scriptjs(publicUrl+'/lib/jqueryvide/jquery.vide.js');
+  /*
+  var loadScriptsAsync = ['lib/jqueryvide/jquery.vide.js'].map((relativeUrl) => {
+    return publicUrl + "/" + relativeUrl;
   });*/
+  /*
+  var loadScriptsLater = [''].map((relativeUrl) => {
+    return publicUrl + "/" + relativeUrl;
+  });
+
+    scriptjs(loadScriptsAsync, () => {
+      scriptjs(loadScriptsLater,'bundle')
+    });
+    scriptjs.ready('bundle', function() {
+      //scriptjs()
+      //scriptjs(publicUrl+'/js/loadByPage.js')
+    })
+*/
+  console.log("loadJSFiles In project detail page");
+
 }
 
 function VideoLanding(props) {
@@ -57,7 +63,7 @@ function VideoLanding(props) {
   return (<section id="video-landing" className="section-bg">
     <div className="video-landing-div">
       <div className="container-fluid ">
-        <div id="block2" data-vide-bg=""></div>
+        <div id="block2" data-vide-bg={data_vid}></div>
         <div className="video-text wow fadeIn">
           <h1 className="container-fluid">{props.project.my_title}</h1>
           <h2 className="container-fluid">{props.project.subtitle}</h2>
@@ -150,16 +156,20 @@ class ProjectDetailPage extends Component {
     return (<div>
       <VideoLanding project={project}/>
       <VideoLandingDesc project={project}/>
-      <Player playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto"/>
-      <h2>Project Detail Page</h2>
-      {project.my_name}
+
+      {
+        /*
+        <Player playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto"/>
+        */
+      }
+
       {projectTemplateContainer}
+
 
       <Footer
         //Section: Footer
-        footer={footer}/>
-        {loadJSFiles()}
-      </div>);
+        footer={footer}/> {loadJSFiles()}
+    </div>);
   }
 }
 

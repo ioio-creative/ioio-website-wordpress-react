@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
 
+
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
@@ -23,27 +24,8 @@ function ProjectTags(props) {
 }
 
 function loadJSFiles(){
-  // const publicUrl = process.env.PUBLIC_URL;
-  // const loadScriptsAsync = [
-  //   publicUrl + '/lib/jquery/jquery.min.js',
-  //   publicUrl + '/lib/bootstrap/js/bootstrap.bundle.min.js',
-  //   publicUrl + '/lib/wow/wow.min.js'
-  // ];
-  // const loadScriptsLater = [
-  //   publicUrl + '/lib/jquery/jquery-migrate.min.js',
-  //   publicUrl + '/lib/owlcarousel/owl.carousel.min.js',
-  //   publicUrl + '/lib/easing/easing.min.js',
-  //   publicUrl + '/lib/superfish/hoverIntent.js',
-  //   publicUrl + '/lib/scrollspy/scrollspy.js',
-  //   publicUrl + '/lib/isotope/isotope.pkgd.min.js',
-  //   publicUrl + '/lib/touchSwipe/jquery.touchSwipe.min.js'
-  // ];
 
-  // scriptjs(loadScriptsAsync, () => {
-  //   scriptjs(loadScriptsLater, () => {
-  //     scriptjs(publicUrl + '/js/loadByPage.js');
-  //   });
-  // });  
+
 }
 
 function AllProjects(props) {

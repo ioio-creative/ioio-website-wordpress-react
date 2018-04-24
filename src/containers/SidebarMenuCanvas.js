@@ -38,10 +38,6 @@ function rand(min, max) {
 
 function canvas_resize() {
 
-  /*
-  clearInterval(resetTimer)
-  resetTimer = setInterval(resetDrop, 6000)
-*/
   w = window.innerWidth;
   h = window.innerHeight;
 
@@ -59,7 +55,7 @@ function menuCanvas() {
   });
 
   if (!initCanvas) {
-    console.log("canvas here")
+    console.log("canvas Init")
 
     $("#menu-canvas").attr("width", w);
     $("#menu-canvas").attr("height", h);
