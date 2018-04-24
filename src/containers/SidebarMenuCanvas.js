@@ -2,130 +2,165 @@ import Matter from 'matter-js';
 import $ from 'jquery';
 
 var canvas;
-var ctx;
+var ctx;
 
 var w = window.innerWidth;
 var h = window.innerHeight;
 var deg = 0;
 
 var Engine = Matter.Engine,
-    Render = Matter.Render,
-    World = Matter.World,
-    Bodies = Matter.Bodies,
-    Body = Matter.Body,
-    Vec = Matter.Vector;
+  Render = Matter.Render,
+  World = Matter.World,
+  Bodies = Matter.Bodies,
+  Body = Matter.Body,
+  Vec = Matter.Vector;
+
+var engine;
+
+var boxA,
+  boxB,
+  ballA,
+  ballB,
+  ground,
+  groundLeft,
+  groundRight,
+  groundTop;
+
+var resetTimer
+var resetDrop
+var initCanvas = false;
+var resetCanvas = false;
+var setIntervals = false;
 
 function rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function canvas_resize(){
+function canvas_resize() {
+
+  /*
+  clearInterval(resetTimer)
+  resetTimer = setInterval(resetDrop, 6000)
+*/
   w = window.innerWidth;
   h = window.innerHeight;
 
-  $("#menu-canvas").attr("width",w);
-  $("#menu-canvas").attr("height",h);
+  $("#menu-canvas").attr("width", w);
+  $("#menu-canvas").attr("height", h);
 
-  canvas.width = w;
-  canvas.height = h;
-}
-
-function resetMatterJS(){
-  var Engine = Matter.Engine,
-      Render = Matter.Render,
-      World = Matter.World,
-      Bodies = Matter.Bodies,
-      Body = Matter.Body,
-      Vec = Matter.Vector;
-
-  //Engine.clear(Engine)
+  resetDrop()
 
 }
 
 function menuCanvas() {
 
-  console.log("canvas here")
-
-  $("#menu-canvas").attr("width",w);
-  $("#menu-canvas").attr("height",h);
-
-  canvas = document.getElementById("menu-canvas");
-  ctx = canvas.getContext("2d");
-
-  //let cvs = rough.canvas(canvas);
-
-  deg = Math.PI / 180;
-
-  var charI1 = [canvas.width / 8 * 1, 100, 160, 43];
-  var charO1 = [canvas.width / 8 * 3, 100, 80];
-  var charI2 = [canvas.width / 8 * 5, 100, 160, 43];
-  var charO2 = [canvas.width / 8 * 7, 100, 80];
-  var engine = Engine.create();
-  /*
-     var render = Render.create({
-               element: document.body,
-               engine: engine,
-               options: {
-                   width: canvas.width,
-                   height: canvas.height,
-                   wireframes: false
-               }
-            });
-  */
-  var boxA = Bodies.rectangle(charI1[0], charI1[1], charI1[2], charI1[3]);
-  var boxB = Bodies.rectangle(charI2[0], charI2[1], charI2[2], charI2[3]);
-  var ballA = Bodies.circle(charO1[0], charO1[1], charO1[2]);
-  var ballB = Bodies.circle(charO2[0], charO2[1], charO2[2]);
-  var ground = Bodies.rectangle(canvas.width / 2, canvas.height + 5, canvas.width, 10, {
-      isStatic: true
-  });
-  var groundLeft = Bodies.rectangle(-5, canvas.height / 2, 10, canvas.height, {
-      isStatic: true
-  });
-  var groundRight = Bodies.rectangle(canvas.width + 5, canvas.height / 2, 10, canvas.height, {
-      isStatic: true
-  });
-  var groundTop = Bodies.rectangle(canvas.width / 2, -5, canvas.width, 10, {
-      isStatic: true
+  $(window).resize(function() {
+    canvas_resize();
   });
 
-  ballA.friction = 0.5;
-  ballA.restitution = 0.8;
+  if (!initCanvas) {
+    console.log("canvas here")
 
-  ballB.friction = 0.5;
-  ballB.restitution = 0.8;
+    $("#menu-canvas").attr("width", w);
+    $("#menu-canvas").attr("height", h);
 
-  boxA.friction = 0.01;
-  boxA.restitution = 0.6;
+    canvas = document.getElementById("menu-canvas");
+    ctx = canvas.getContext("2d");
 
-  boxB.friction = 0.01;
-  boxB.restitution = 0.6;
+    //let cvs = rough.canvas(canvas);
 
-  Body.rotate(boxA, 90 * deg);
-  Body.rotate(boxB, 90 * deg);
+    deg = Math.PI / 180;
 
+    var charI1 = [
+      canvas.width / 8 * 1,
+      100,
+      160,
+      43
+    ];
+    var charO1 = [
+      canvas.width / 8 * 3,
+      100,
+      80
+    ];
+    var charI2 = [
+      canvas.width / 8 * 5,
+      100,
+      160,
+      43
+    ];
+    var charO2 = [
+      canvas.width / 8 * 7,
+      100,
+      80
+    ];
+    engine = Engine.create();
+    /*
+    var render = Render.create({
+    element: document.body,
+    engine: engine,
+    options: {
+    width: canvas.width,
+    height: canvas.height,
+    wireframes: false
+  }
+});
+*/
+    boxA = Bodies.rectangle(charI1[0], charI1[1], charI1[2], charI1[3]);
+    boxB = Bodies.rectangle(charI2[0], charI2[1], charI2[2], charI2[3]);
+    ballA = Bodies.circle(charO1[0], charO1[1], charO1[2]);
+    ballB = Bodies.circle(charO2[0], charO2[1], charO2[2]);
+    ground = Bodies.rectangle(canvas.width / 2, canvas.height + 5, canvas.width, 10, {isStatic: true});
+    groundLeft = Bodies.rectangle(-5, canvas.height / 2, 10, canvas.height, {isStatic: true});
+    groundRight = Bodies.rectangle(canvas.width + 5, canvas.height / 2, 10, canvas.height, {isStatic: true});
+    groundTop = Bodies.rectangle(canvas.width / 2, -5, canvas.width, 10, {isStatic: true});
 
-  var MouseConstraint = Matter.MouseConstraint
-  var Mouse = Matter.Mouse
-  // add mouse control
-  var mouse = Mouse.create(canvas),
+    ballA.friction = 0.5;
+    ballA.restitution = 0.8;
+
+    ballB.friction = 0.5;
+    ballB.restitution = 0.8;
+
+    boxA.friction = 0.01;
+    boxA.restitution = 0.6;
+
+    boxB.friction = 0.01;
+    boxB.restitution = 0.6;
+
+    Body.rotate(boxA, 90 * deg);
+    Body.rotate(boxB, 90 * deg);
+
+    var MouseConstraint = Matter.MouseConstraint;
+    var Mouse = Matter.Mouse;
+    // add mouse control
+    var mouse = Mouse.create(canvas),
       mouseConstraint = MouseConstraint.create(engine, {
-          mouse: mouse,
-          constraint: {
-              stiffness: 0.05,
-              render: {
-                  visible: false
-              }
+        mouse: mouse,
+        constraint: {
+          stiffness: 0.05,
+          render: {
+            visible: false
           }
+        }
       });
 
-  World.add(engine.world, mouseConstraint);
+    World.add(engine.world, mouseConstraint);
 
-  World.add(engine.world, [boxA, boxB, ballA, ballB, ground, groundLeft, groundRight, groundTop]);
+    World.add(engine.world, [
+      boxA,
+      boxB,
+      ballA,
+      ballB,
+      ground,
+      groundLeft,
+      groundRight,
+      groundTop
+    ]);
 
-  Engine.run(engine);
-
-  setInterval(function() {
+    Engine.run(engine);
+    initCanvas = true;
+  }
+  if (!setIntervals) {
+    setInterval(function() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -175,52 +210,46 @@ function menuCanvas() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  }, 20)
+    }, 20)
 
+    resetTimer = setInterval(resetDrop, 6000)
+    setIntervals = true;
+  }
 
+}
 
-  setInterval(function() {
+function resetDrop() {
 
-    w = window.innerWidth;
-    h = window.innerHeight;
+  w = window.innerWidth;
+  h = window.innerHeight;
 
-    canvas.width = w;
-    canvas.height = h;
+  canvas.width = w;
+  canvas.height = h;
 
-    engine.world.bounds.max.x = w;
-    engine.world.bounds.max.y = h;
+  engine.world.bounds.max.x = w;
+  engine.world.bounds.max.y = h;
 
-    ground.vertices[0].x = 0;
-    ground.vertices[0].y = h-10;
-    ground.vertices[1].x = w*2;
-    ground.vertices[1].y = h-10;
-    ground.vertices[2].x = w*2;
-    ground.vertices[2].y = h;
-    ground.vertices[3].x = 0;
-    ground.vertices[3].y = h;
+  Body.setPosition(ground, (Vec.create(canvas.width / 2, h + 5)));
+  //Body.setPosition(groundLeft, (Vec.create(canvas.width / 2, h+5))); TODO
+  //  Body.setPosition(groundRight, (Vec.create(canvas.width / 2, h+5)));  TODO
 
-    Body.setVertices(ground, ground.vertices);
+  //Body.setVertices(ground, ground.vertices);
 
-    Body.setPosition(boxA, (Vec.create(canvas.width / 8 * 1, 100)));
-    Body.setPosition(ballA, (Vec.create(canvas.width / 8 * 3, 100)));
-    Body.setPosition(boxB, (Vec.create(canvas.width / 8 * 5, 100)));
-    Body.setPosition(ballB, (Vec.create(canvas.width / 8 * 7, 100)));
+  Body.setPosition(boxA, (Vec.create(canvas.width / 8 * 1, 100)));
+  Body.setPosition(ballA, (Vec.create(canvas.width / 8 * 3, 100)));
+  Body.setPosition(boxB, (Vec.create(canvas.width / 8 * 5, 100)));
+  Body.setPosition(ballB, (Vec.create(canvas.width / 8 * 7, 100)));
 
-    Body.setAngle(boxA, 90 * deg);
-    Body.setAngle(boxB, 90 * deg);
-    Body.setVelocity(ballB, (Vec.create(rand(-5, 5), rand(-5, 5))));
-    Body.setVelocity(ballA, (Vec.create(rand(-5, 5), rand(-5, 5))));
-    Body.setVelocity(boxA, (Vec.create(rand(-5, 5), rand(-5, 5))));
-    Body.setVelocity(boxB, (Vec.create(rand(-5, 5), rand(-5, 5))));
-
-  }, 6000)
-
-
+  Body.setAngle(boxA, 90 * deg);
+  Body.setAngle(boxB, 90 * deg);
+  Body.setVelocity(ballB, (Vec.create(rand(-5, 5), rand(-5, 5))));
+  Body.setVelocity(ballA, (Vec.create(rand(-5, 5), rand(-5, 5))));
+  Body.setVelocity(boxA, (Vec.create(rand(-5, 5), rand(-5, 5))));
+  Body.setVelocity(boxB, (Vec.create(rand(-5, 5), rand(-5, 5))));
 
 }
 
 export {
-  resetMatterJS,
   canvas_resize,
   menuCanvas
 };

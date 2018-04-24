@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
-import {resetMatterJS, menuCanvas} from 'containers/SidebarMenuCanvas';
+import {menuCanvas} from 'containers/SidebarMenuCanvas';
 
 import routes from 'globals/routes';
 import {fetchActiveSidebar} from 'websiteApi';
@@ -31,25 +31,25 @@ class Sidebar extends Component {
 
     let attr = $("#sidebar[class*='active']")
     console.log(attr.length)
-
+/*
     if (attr.length == 0) {
       console.log("has acitve")
       resetMatterJS();
     } else {
       console.log("not acitve")
       //
-      menuCanvas()
+
     }
-
+*/
     $("#sidebar").toggleClass("active");
-
+    menuCanvas()
   }
 
   handleMenuClose(e) {
 
     $("#sidebar").toggleClass("active");
 
-    resetMatterJS();
+    //resetMatterJS();
   }
 
   render() {
