@@ -31,10 +31,21 @@ function canvas_resize(){
 }
 
 function resetMatterJS(){
-  Engine.events = {}
+  var Engine = Matter.Engine,
+      Render = Matter.Render,
+      World = Matter.World,
+      Bodies = Matter.Bodies,
+      Body = Matter.Body,
+      Vec = Matter.Vector;
+
+  //Engine.clear(Engine)
+
 }
 
 function menuCanvas() {
+
+  console.log("canvas here")
+
   $("#menu-canvas").attr("width",w);
   $("#menu-canvas").attr("height",h);
 
@@ -166,7 +177,6 @@ function menuCanvas() {
 
   }, 20)
 
-  console.log("MENUCANVAS" + rand(0,500))
 
 
   setInterval(function() {
