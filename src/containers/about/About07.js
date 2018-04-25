@@ -21,7 +21,7 @@ class About07 extends Component {
             <div className="col-md-12 wow fadeInUp">
               <div className="about-col">
                 <div className="img">
-                  <img src="img/about/Clients.jpg" alt className="img-fluid" />
+                  <img src="img/about/Clients.jpg" alt="" className="img-fluid" />
                 </div>
                 <p>
                 </p>

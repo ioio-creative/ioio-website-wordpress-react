@@ -5,13 +5,11 @@ import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
 
 function loadJSFiles() {
-  console.log("public url: " + JSON.stringify(process.env));
-  const publicUrl = process.env.PUBLIC_URL;
-
-
+  //console.log("public url: " + JSON.stringify(process.env));
+  //const publicUrl = process.env.PUBLIC_URL;
 //  scriptjs(publicUrl + '/js/slideshow-carousel.js');
 
-  console.log("loadJSFiles In project detail page");
+  //console.log("loadJSFiles In project detail page");
 
 }
 
@@ -19,7 +17,7 @@ function loadJSFiles() {
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
-    return (<div className="item">
+    return (<div className="item" key={id}>
       <div className="row container-fluid">
         <div className="col-md-8 text-center">
           <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
