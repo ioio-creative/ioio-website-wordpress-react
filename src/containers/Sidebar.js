@@ -58,7 +58,11 @@ class Sidebar extends Component {
     if (sidebar === null) {
       return null;
     }
-    return (<div id="sidebar" className="menu-transition">
+    return (<nav id="sidebar" className="menu-transition" role="navigation">
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <h3>Index</h3>
 
@@ -74,7 +78,7 @@ class Sidebar extends Component {
       <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
       <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
-    </div>);
+    </nav>);
   }
 }
 

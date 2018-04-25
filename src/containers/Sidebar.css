@@ -55,8 +55,8 @@
   font-family: "FuturaLT", sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 80px;
   margin-left: 150px;
+    font-size: 80px;
 }
 
 #sidebar.active .menu-language {
@@ -113,3 +113,81 @@
 #sidebar #menu-canvas {
   display: none;
 }
+
+/*
+/* Extra small devices (phones, less than 768px) */
+
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+
+
+
+@media only screen and (max-width: 767px) {
+    /*--[ Mobile styles go here]---------------------------*/
+  #sidebar {
+    height: 70px;
+    width: 100%;
+    /*update scroller margin-left as well*/
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    color: #000;
+    padding-top: 0;
+    border-bottom: 2px solid #E6E6E6;
+  }
+
+  #sidebar.active {
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    height: 100%;
+    padding-top: 100px;
+  }
+
+  #sidebar h3 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    /*text-transform: uppercase;*/
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+    line-height: 24px;
+    /* Abs positioning makes it not take up vert space */
+    position: absolute;
+    top: 20px;
+    left: 55%;
+    background: none;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+
+  #sidebar.active h3 {
+    top: 25px;
+  }
+
+  #sidebar.active .menu-item {
+    font-size: 40px;
+  margin-left: 100px;
+  }
+
+  #sidebar.active .menu-language {
+    display: inline;
+    font-size: 18px;
+  }
+
+}
+
+/*
+/* .....NavBar: Icon only with coloring/layout.....*/
+
+/*small/medium side display*/
+
+@media (min-width: 768px) {}
+
+/* .....NavBar: Fully showing nav bar..... */
+
+@media (min-width: 1330px) {}
