@@ -35,7 +35,7 @@
   padding-top: 5%;
   padding-bottom: 20px;
   font-size: 35px;
-  font-weight: 700;
+  font-weight: bold;
   text-align: left;
   font-weight: bold;
 }
@@ -66,7 +66,54 @@
 
 }
 
+.slideshow .the-team-text img {
+width: 100%;
+}
 
+.slideshow .the-team-text h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.slideshow .the-team-text p {
+  text-align: center;
+  font-size: 15px;
+}
+
+
+@media (max-width: 767px) {
+  .slideshow {
+    margin: 50px 0 50px 0;
+    padding: 0 0 0 0;
+  }
+
+  .slideshow div{
+    margin: 0 0 0 0;
+
+  }
+
+  .slideshow img {
+    display: block;
+    padding: 0 0;
+    object-fit: cover;
+    min-width: 100%;
+    max-height: 500px;
+  }
+
+  .slideshow h2 {
+
+    padding-top: 5%;
+    padding-bottom: 5px;
+    font-size: 20px;
+
+  }
+
+
+  .slideshow p {
+
+  }
+}
 
 
 /*

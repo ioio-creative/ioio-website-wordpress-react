@@ -14,15 +14,15 @@ function loadJS(props) {
 function Slideshow(props) {
   const member_items = props.members.map((member, id) => {
     return (<div className="item" key={id}>
-      <div className="pad15">
+      <div className="the-team-text">
         <img className="the-team-img" alt="alt" src={member.image.guid}/>
-        <h3 className="lead">{member.my_name}</h3>
-        <p>{member.my_title}</p>
+        <h3 className="the-team-name">{member.my_name}</h3>
+        <p className="the-team-title">{member.my_title}</p>
       </div>
     </div>);
   });
 
-  return (<OwlCarousel className="owl-theme" loop nav={false} autoplay={true} dots={true} dotsEach={true} loop={true} items={4.5} margin={20} slideBy={1} autoplayTimeout={2500} >
+  return (<OwlCarousel className="slideshow owl-theme" loop nav={false} autoplay={true} dots={true} dotsEach={true} loop={true} items={4.5} margin={20} slideBy={1} autoplayTimeout={2500} >
     {member_items}
   </OwlCarousel>);
 }

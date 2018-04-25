@@ -59,13 +59,10 @@ class Sidebar extends Component {
       return null;
     }
     return (<nav id="sidebar" className="menu-transition" role="navigation">
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <h3>Index</h3>
-
       </a>
       <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> {/*  <object data={sidebar.logo_svg.guid} type="image/svg+xml" className="logo menu-transition">
 
