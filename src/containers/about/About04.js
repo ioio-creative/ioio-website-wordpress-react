@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import scriptjs from 'scriptjs'
 
+import OwlCarousel from 'react-owl-carousel';
+import 'containers/slideshow.css';
 
 function loadJSFiles() {
   console.log("public url: " + JSON.stringify(process.env));
   const publicUrl = process.env.PUBLIC_URL;
 
 
-  scriptjs(publicUrl + '/js/slideshow-carousel.js');
+//  scriptjs(publicUrl + '/js/slideshow-carousel.js');
 
   console.log("loadJSFiles In project detail page");
 
@@ -17,10 +19,10 @@ function loadJSFiles() {
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
-    return (<div className="slideshow-item">
+    return (<div className="item">
       <div className="row container-fluid">
         <div className="col-md-8 text-center">
-          <img src={slide.image.guid} className="testimonial-img" alt="alt"/>
+          <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
         </div>
         <div className="col-md-4 slideshow-text">
           <h2>{slide.my_title}</h2>
@@ -32,9 +34,9 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<div className="owl-carousel slideshow-carousel">
+  return (<OwlCarousel className="owl-theme" loop autoplay={true} dots={true} loop={true} items={1}>
     {member_items}
-  </div>);
+  </OwlCarousel>);
 }
 
 class About04 extends Component {
@@ -43,6 +45,9 @@ class About04 extends Component {
     this.state = {
       about: {}
     }
+  }
+  componentDidMount() {
+      loadJSFiles()
   }
 
   render() {
@@ -53,7 +58,6 @@ class About04 extends Component {
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <Slideshow slides={slides}/>
-          {loadJSFiles()}
         </div>
       </div>
     </section>);

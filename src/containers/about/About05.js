@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
 
+import OwlCarousel from 'react-owl-carousel';
+import 'containers/slideshow.css';
+
 function loadJS(props) {
 
   return (<script>
@@ -19,9 +22,9 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<div className="MultiCarousel-inner">
+  return (<OwlCarousel className="owl-theme" loop nav={false} autoplay={true} dots={true} dotsEach={true} loop={true} items={4.5} margin={20} slideBy={1} autoplayTimeout={2500} >
     {member_items}
-  </div>);
+  </OwlCarousel>);
 }
 
 class About05 extends Component {
@@ -33,6 +36,7 @@ class About05 extends Component {
   }
 
   componentDidMount() {
+    /*
     var itemsMainDiv = ('.MultiCarousel');
     var itemsDiv = ('.MultiCarousel-inner');
     var itemWidth = "";
@@ -129,7 +133,7 @@ class About05 extends Component {
       var slide = $(Parent).attr("data-slide");
       ResCarousel(ell, Parent, slide);
     }
-
+*/
   }
 
   render() {
@@ -142,18 +146,11 @@ class About05 extends Component {
           <p>{a.team_section_desc}</p>
         </header>
         <div className="row">
-          {/* Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6" Change data slide for slides per click Ex:data-slide="1"  */}
-          <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>
+          {/* Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6" Change data slide for slides per click Ex:data-slide="1"
+          <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>*/}
             <Slideshow members={members}/>
-            <button className="btn btn-primary leftLst">&lt;</button>
-            <button className="btn btn-primary rightLst">&gt;</button>
           </div>
         </div>
-      </div>
-      <script>
-        console.log("LOADED EVERYTIME");
-        reloadJS();
-      </script>
     </section>);
   }
 }

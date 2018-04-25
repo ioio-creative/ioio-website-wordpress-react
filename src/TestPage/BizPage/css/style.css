@@ -1048,7 +1048,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
 }
 
-#testimonials .testimonial-item .testimonial-img {
+#testimonials .testimonial-item .slideshow-img {
   width: 120px;
   border-radius: 50%;
   border: 4px solid #fff;

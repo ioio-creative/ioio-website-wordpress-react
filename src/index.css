@@ -1,0 +1,213 @@
+/*
+Theme Name: BizPage
+Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+Author: BootstrapMade.com
+License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# font
+--------------------------------------------------------------*/
+
+
+
+@font-face {
+  font-family: FuturaLT;
+  src: url(/src/fonts/FuturaLT.ttf);
+}
+
+@font-face {
+  font-family: FuturaLT;
+  src: url(/src/fonts/futura_lt_bold1.ttf);
+  font-weight: bold;
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+body {
+  background: #fff;
+  color: #000;
+
+  margin: 0 auto;
+  position: relative;
+  white-space: pre-line;
+  font-family: "FuturaLT", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #000;
+  transition: 0.5s;
+}
+
+a:hover, a:active, a:focus {
+  color: #FFE000;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "FuturaLT", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+
+/* Back to top button */
+
+.back-to-top {
+  position: fixed;
+  display: none;
+  background: #18d26e;
+  color: #fff;
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  line-height: 1;
+  font-size: 16px;
+  border-radius: 50%;
+  right: 15px;
+  bottom: 15px;
+  transition: background 0.5s;
+  z-index: 11;
+}
+
+.back-to-top i {
+  padding-top: 12px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+  }
+}
+
+/*--------------------------------------------------------------
+# scroller
+--------------------------------------------------------------*/
+#main{
+  background-color: white;/*hack: //todo achang bg to check padding / margin*/
+  margin: -170px 0 0 0; /*hack: //todo adjust after sidebar*/
+  padding: 0 0 0 0;
+  display: block;
+}
+
+section{
+  background-color: white;/*hack: //todo achang bg to check padding / margin*/
+  margin: 0 0 0 0; /*hack: //todo adjust after sidebar*/
+  padding: 0 0 0 0;
+}
+
+#scroller {
+  margin: 0 0 0 70px;
+  padding: 0 0 0 0;
+
+
+  /*update sidebar width as well*/
+}
+
+#scroller.header-scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0 0;
+  height: 0;
+  transition: all 0.5s;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+
+/* Sections Header
+--------------------------------*/
+
+.section-header h3 {
+  font-size: 32px;
+  color: #000;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-header p {
+  text-align: left;
+  padding-bottom: 30px;
+  width: 60%;
+  color: #000;
+}
+
+/*--------------------------------------------------------------
+# Pages: About Page
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#footer {
+  background: #EDEDED;
+  padding: 0 0 30px 0;
+  color: #000;
+  font-size: 14px;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "FuturaLT", sans-serif;
+  height: 500px;
+  overflow: hidden;
+}
+
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+}
+
+#footer .footer-top .footer-info {
+  margin-bottom: 30px;
+}
+
+#footer .footer-slogan {
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 22px;
+}
+
+#footer .footer-top .social-links a {
+  font-size: 18px;
+  display: block;
+  text-decoration: underline;
+  line-height: 1;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .footer-top .social-links a:hover {
+  color: #fff;
+}
+
+#footer .footer-top h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-hotpot-img {
+  position: absolute;
+  top:50px;
+  left:50px;
+  width:600px;
+}

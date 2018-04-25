@@ -157,103 +157,20 @@ Project-cover Section
   width: 100%;
 }
 
+
 /*==============
-.slideshow
+.photo-montage-one-img
 ==============*/
 
-.slideshow {
-  white-space: normal;
-  position: relative;
-  margin: 100px 0 100px 0;
-  float: none;
-  top: 0;
-}
-
-.slideshow-img-on-right {
-  padding: 0 0 0 100px;
-}
-
-.slideshow-img-on-left {
-  padding: 0 100px 0 0px;
-}
-
-.slideshow-item img {
-  display: block;
-  padding: 0 10%;
-  object-fit: cover;
-  width: 100%;
-  max-height: 500px;
-}
-
-.slideshow .slideshow-text {
-  max-height: 500px;
-}
-
-.slideshow .slideshow-text h2 {
-  color: #000;
-  text-transform: uppercase;
-  padding-top: 5%;
-  padding-bottom: 20px;
-  font-size: 35px;
-  font-weight: 700;
-  text-align: left;
-  font-weight: bold;
-}
-
-.slideshow .slideshow-text p {
-  width: 100%;
-  height: 100%;
-  padding: 0 0;
-  color: #000;
-  text-align: left;
-}
-
-.slideshow .owl-dot {
-  right: 0;
-  display: inline-block;
-  margin: 0 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #ddd;
-}
-
-.slideshow .owl-dot.active {
-  background-color: #18d26e;
-}
-
-.slideshow .owl-nav, .slideshow .owl-dots {
-  position: absolute;
-  bottom: 10px;
-}
-
-.slideshow-img-on-left .owl-nav, .slideshow-img-on-left .owl-dots {
-  right: -30%;
-  padding-right: 0;
-  text-align: right;
-}
-
-.slideshow-img-on-right .owl-nav, .slideshow-img-on-right .owl-dots {
-  left: -30%;
-  padding-left: 0;
-  text-align: left;
-}
-
-/*TODO*/
-
-.slideshow-img-in-middle div{
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
 
 .photo-montage-one-img {
   margin: 50px 0 50px 0;
   text-align: center;
-  width: 100%;
+  min-width: 100%;
 }
 
 .photo-montage-one-img img {
-  width: 100%;
+  min-width: 100%;
 }
 
 /*==============

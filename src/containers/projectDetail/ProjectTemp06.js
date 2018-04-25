@@ -9,7 +9,7 @@ function SlideshowLeft(props) {
 
       return (<div className="slideshow-2-col-item">
         <img src={slide.guid} className="img-fluid wow fadeInUp" alt=""/>
-        <p>Say sth</p>
+        <p>{slide.post_excerpt}</p>
       </div>);
     }
   );
@@ -26,7 +26,7 @@ function SlideshowRight(props) {
 
       return (<div className="slideshow-2-col-item">
         <img src={slide.guid} className="img-fluid  wow slideInUp" alt=""/>
-        <p>Say sth</p>
+        <p>{slide.post_excerpt}</p>
       </div>);
     }
   );
@@ -43,6 +43,7 @@ class ProjectTemp06 extends Component {
 
   render() {
     const props = this.props;
+    console.log(props)
     let styleText = {
       background: 'url(img/Triangle.png) center top'
     };

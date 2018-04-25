@@ -1,22 +1,25 @@
 import React, {Component} from 'react';
 
+import OwlCarousel from 'react-owl-carousel';
+import 'containers/slideshow.css';
+
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
     return (<div className="slideshow-item">
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
-          <img src={slide.guid} className="testimonial-img" alt="alt"/>
+          <img src={slide.guid} className="slideshow-img" alt="alt"/>
         </div>
       </div>
     </div>);
   });
 
-  return (<div className="owl-carousel slideshow-carousel">
+  return (<OwlCarousel className="owl-theme" loop autoplay={true} dots={true} loop={true} items={1}>
 
     {member_items}
 
-  </div>);
+  </OwlCarousel>);
 }
 
 class ProjectTemp02 extends Component {

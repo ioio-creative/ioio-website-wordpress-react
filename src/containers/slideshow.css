@@ -1,0 +1,106 @@
+
+/*==============
+.slideshow
+==============*/
+
+.slideshow {
+  white-space: normal;
+  position: relative;
+  margin: 100px 0 100px 0;
+}
+
+.slideshow-img-on-right {
+/*  padding: 0 0 0 100px;*/
+}
+
+.slideshow-img-on-left {
+/*  padding: 0 100px 0 0px;*/
+}
+
+
+.slideshow img {
+  display: block;
+  padding: 0 10%;
+  object-fit: cover;
+  min-width: 100%;
+  max-height: 500px;
+}
+.slideshow .slideshow-text {
+  max-height: 500px;
+}
+
+.slideshow h2 {
+  color: #000;
+  text-transform: uppercase;
+  padding-top: 5%;
+  padding-bottom: 20px;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: left;
+  font-weight: bold;
+}
+
+
+.slideshow p {
+  width: 100%;
+  height: 100%;
+  padding: 0 0;
+  color: #000;
+  text-align: left;
+}
+
+.slideshow .owl-dot {
+
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+}
+
+.slideshow .owl-dot.active {
+  color: #18d26e;
+}
+.slideshow .owl-nav, .slideshow .owl-dots {
+
+}
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slideshow-img-on-left .owl-nav, .slideshow-img-on-left .owl-dots {
+  right: -30%;
+  padding-right: 0;
+  text-align: right;
+}
+
+.slideshow-img-on-right .owl-nav, .slideshow-img-on-right .owl-dots {
+  left: -30%;
+  padding-left: 0;
+  text-align: left;
+}
+
+
+
+.slideshow-img-in-middle div {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+
+*/

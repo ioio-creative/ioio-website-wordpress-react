@@ -39,7 +39,6 @@ function loadJSFiles() {
   const publicUrl = process.env.PUBLIC_URL;
 
   scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
-  scriptjs(publicUrl + '/js/slideshow-carousel.js');
 
   console.log("loadJSFiles In project detail page");
 
@@ -47,7 +46,7 @@ function loadJSFiles() {
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
-  const video_url_shorten = video_url.substring(0, video_url.length - 4); //TODO use replace ''
+  const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
   return (<section id="video-landing" className="section-bg">
@@ -157,7 +156,8 @@ class ProjectDetailPage extends Component {
 
       <Footer
         //Section: Footer
-        footer={footer}/> {loadJSFiles()}
+        footer={footer}/>
+        {loadJSFiles()}
     </div>);
   }
 }
