@@ -38,25 +38,9 @@ function loadJSFiles() {
   console.log("public url: " + JSON.stringify(process.env));
   const publicUrl = process.env.PUBLIC_URL;
 
-  scriptjs(publicUrl+'/lib/jqueryvide/jquery.vide.js');
-  scriptjs(publicUrl+'/js/project.js');
-  /*
-  var loadScriptsAsync = ['lib/jqueryvide/jquery.vide.js'].map((relativeUrl) => {
-    return publicUrl + "/" + relativeUrl;
-  });*/
-  /*
-  var loadScriptsLater = [''].map((relativeUrl) => {
-    return publicUrl + "/" + relativeUrl;
-  });
+  scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
+  scriptjs(publicUrl + '/js/slideshow-carousel.js');
 
-    scriptjs(loadScriptsAsync, () => {
-      scriptjs(loadScriptsLater,'bundle')
-    });
-    scriptjs.ready('bundle', function() {
-      //scriptjs()
-      //scriptjs(publicUrl+'/js/loadByPage.js')
-    })
-*/
   console.log("loadJSFiles In project detail page");
 
 }
@@ -83,21 +67,17 @@ function VideoLanding(props) {
 }
 
 function VideoLandingDesc(props) {
-  return (<section id="video-landing-caption" className="section-bg wow fadeIn">
+  return (<section id="video-landing-caption" className="section-bg">
     <div className="container-fluid">
       <div className="row video-landing-text">
-        <div className="col-lg-1">
-
-        </div>
-        <div className="col-lg-5">
+        <div className="col-lg-1"></div>
+        <div className="col-lg-5 wow fadeInUp">
           <p className="video-landing-text-l">{props.project.primary_desc}</p>
         </div>
-        <div className="col-lg-5">
+        <div className="col-lg-5 wow fadeInUp">
           <p className="video-landing-text-r">{props.project.secondary_desc}</p>
         </div>
-        <div className="col-lg-1">
-
-        </div>
+        <div className="col-lg-1"></div>
       </div>
     </div>
   </section>);
@@ -167,16 +147,13 @@ class ProjectDetailPage extends Component {
 
     return (<div>
       <VideoLanding project={project}/>
-      <VideoLandingDesc project={project}/>
-
-      {
+      <VideoLandingDesc project={project}/> {
         /*
         <Player playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto"/>
         */
       }
 
       {projectTemplateContainer}
-
 
       <Footer
         //Section: Footer

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
-import 'css/style.css';
-import 'css/sidebar.css';
+import 'css/Main.css';
+
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/Sidebar';
@@ -10,7 +10,7 @@ import Sidebar from 'containers/Sidebar';
 import scriptjs from 'scriptjs'
 
 function loadJSFiles() {
-  console.log("public url: " +  JSON.stringify(process.env));
+
   const publicUrl = process.env.PUBLIC_URL;
   var loadScriptsAsync = ['lib/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.bundle.min.js','lib/wow/wow.min.js'].map((relativeUrl) => {
     return publicUrl + "/" + relativeUrl;
@@ -21,15 +21,12 @@ function loadJSFiles() {
 
     scriptjs(loadScriptsAsync, () => {
       scriptjs(loadScriptsLater,'bundle')
-
-
     });
     scriptjs.ready('bundle', function() {
-      //scriptjs()
       scriptjs(publicUrl+'/js/loadByPage.js')
     })
 
-    console.log("loadJSFiles");
+    console.log("Global JS Files Loaded");
 }
 
 class App extends Component {
@@ -38,7 +35,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-
+      loadJSFiles()
   }
 
   render() {
@@ -46,7 +43,7 @@ class App extends Component {
     return (<div>
       <Sidebar/>
       <Main/>
-      {loadJSFiles()}
+
     </div>);
   }
 }

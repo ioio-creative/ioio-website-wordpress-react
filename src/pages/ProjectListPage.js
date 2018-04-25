@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
 
-
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
@@ -23,10 +22,7 @@ function ProjectTags(props) {
   </div>);
 }
 
-function loadJSFiles(){
-
-
-}
+function loadJSFiles() {}
 
 function AllProjects(props) {
   const tag_item = props.tags.map((tag, id) => {
@@ -37,7 +33,7 @@ function AllProjects(props) {
   });
 
   const project_items = props.projectlist.map((project, id) => {
-    let tagIds = "col-lg-4 col-md-6 portfolio-item wow fadeInUp ";
+    let tagIds = "col-lg-6 col-md-6 portfolio-item ";
     for (let i = 0; i < project.project_tags.length; i++) {
       tagIds += "filter-" + project.project_tags[i] + " "
     }
@@ -59,13 +55,13 @@ function AllProjects(props) {
     function cutString(s) {
       let cut = s.indexOf('/projects');
       if (cut === -1)
-        return s;
+      return s;
       return s.substr(cut)
     }
     let d = cutString(s);
 
     return (<div className={tagIds} key={id}>
-    <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
+      <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
           <figure>
             <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
@@ -81,7 +77,7 @@ function AllProjects(props) {
     </div>);
   });
 
-  return (<div className="row portfolio-container">
+  return (<div className="row portfolio-container wow fadeInUp">
     {project_items}
   </div>);
 }
@@ -137,7 +133,6 @@ class ProjectListPage extends Component {
       return null;
     }
 
-
     return (<div>
       <section id="portfolio" className="section-bg">
         <div className="container-fluid">
@@ -153,8 +148,7 @@ class ProjectListPage extends Component {
       </section>
       <Footer
         //Section: Footer
-        footer={footer}/>
-      {loadJSFiles()}
+        footer={footer}/> {loadJSFiles()}
       </div>);
     }
   }

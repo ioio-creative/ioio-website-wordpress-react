@@ -8,7 +8,7 @@ function SlideshowLeft(props) {
     if (id % 2 == 1)
 
       return (<div className="slideshow-2-col-item">
-        <img src={slide.guid} className="img-fluid" alt=""/>
+        <img src={slide.guid} className="img-fluid wow fadeInUp" alt=""/>
         <p>Say sth</p>
       </div>);
     }
@@ -25,7 +25,7 @@ function SlideshowRight(props) {
     if (id % 2 == 0)
 
       return (<div className="slideshow-2-col-item">
-        <img src={slide.guid} className="img-fluid" alt=""/>
+        <img src={slide.guid} className="img-fluid  wow slideInUp" alt=""/>
         <p>Say sth</p>
       </div>);
     }

@@ -11,6 +11,7 @@
   margin: 5px 0 35px 0;
   list-style: none;
   text-align: left;
+
 }
 
 #portfolio #portfolio-flters li {
@@ -38,12 +39,16 @@
 }
 
 #portfolio .portfolio-wrap {
+
   /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
+
   transition: 0.3s;
 }
 
 #portfolio .portfolio-wrap:hover {
   cursor: pointer;
+
+    transition: 0.2s linear;
   /*box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);*/
 }
 
@@ -54,11 +59,15 @@
 }
 
 #portfolio .portfolio-item figure {
-  background: #000;
+
   overflow: hidden;
   height: 240px;
   position: relative;
   margin: 0;
+}
+
+#portfolio .portfolio-item figure img {
+  width: 100%;
 }
 
 #portfolio .portfolio-item figure:hover img {
@@ -66,55 +75,15 @@
   transition: 0.3s;
 }
 
-#portfolio .portfolio-item figure .link-preview, #portfolio .portfolio-item figure .link-details {
-  position: absolute;
-  display: inline-block;
-  opacity: 0;
-  line-height: 1;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  background: #fff;
-  border-radius: 50%;
-  transition: 0.2s linear;
-}
 
-#portfolio .portfolio-item figure .link-preview i, #portfolio .portfolio-item figure .link-details i {
-  padding-top: 6px;
-  font-size: 22px;
-  color: #333;
-}
 
-#portfolio .portfolio-item figure .link-preview:hover, #portfolio .portfolio-item figure .link-details:hover {
-  background: #18d26e;
-}
-
-#portfolio .portfolio-item figure .link-preview:hover i, #portfolio .portfolio-item figure .link-details:hover i {
-  color: #fff;
-}
-
-#portfolio .portfolio-item figure .link-preview {
-  left: calc(50% - 38px);
-  top: calc(50% - 18px);
-}
-
-#portfolio .portfolio-item figure .link-details {
-  right: calc(50% - 38px);
-  top: calc(50% - 18px);
-}
-
-#portfolio .portfolio-item figure:hover .link-preview {
+#portfolio .portfolio-item a:hover  {
   opacity: 1;
   left: calc(50% - 44px);
 }
 
-#portfolio .portfolio-item figure:hover .link-details {
-  opacity: 1;
-  right: calc(50% - 44px);
-}
 
 #portfolio .portfolio-item .portfolio-info {
-  background: #fff;
   text-align: left;
   padding: 30px 0px;
   height: 90px;
@@ -129,13 +98,7 @@
   padding-bottom: 0;
 }
 
-#portfolio .portfolio-item .portfolio-info h4 a {
-  color: #333;
-}
 
-#portfolio .portfolio-item .portfolio-info h4 a:hover {
-  color: #FFE000;
-}
 
 #portfolio .portfolio-item .portfolio-info p {
   padding: 0;
@@ -144,4 +107,9 @@
   font-weight: 500;
   font-size: 14px;
   text-transform: uppercase;
+}
+
+#portfolio {
+  margin: 0 auto;
+  max-width: 1500px;
 }

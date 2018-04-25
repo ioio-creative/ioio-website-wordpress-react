@@ -14,15 +14,15 @@ class ProjectTemp01 extends Component {
     return (<section className="photo-montage">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-6 photo-montage-l">
+          <div className="col-lg-6 photo-montage-l wow fadeInLeft">
             <img src={imageSrcs[0]} className="img-fluid" alt=""/>
           </div>
-          <div className="col-lg-6 photo-montage-r">
+          <div className="col-lg-6 photo-montage-r wow fadeInLeft">
             <img src={imageSrcs[1]} className="img-fluid" alt=""/>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-12 photo-montage-l">
+          <div className="col-lg-12 photo-montage-l wow fadeInLeft">
             <img src={imageSrcs[2]} className="img-fluid" alt=""/>
           </div>
         </div>

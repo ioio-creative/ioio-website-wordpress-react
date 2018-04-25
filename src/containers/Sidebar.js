@@ -5,6 +5,7 @@ import {menuCanvas} from 'containers/SidebarMenuCanvas';
 
 import routes from 'globals/routes';
 import {fetchActiveSidebar} from 'websiteApi';
+import 'containers/Sidebar.css';
 
 class Sidebar extends Component {
   constructor(props) {

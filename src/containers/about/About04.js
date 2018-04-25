@@ -1,37 +1,39 @@
 import React, {Component} from 'react';
+import scriptjs from 'scriptjs'
+
+
+function loadJSFiles() {
+  console.log("public url: " + JSON.stringify(process.env));
+  const publicUrl = process.env.PUBLIC_URL;
+
+
+  scriptjs(publicUrl + '/js/slideshow-carousel.js');
+
+  console.log("loadJSFiles In project detail page");
+
+}
+
 
 function Slideshow(props) {
-  const slide_items = props.slides.map((slide, id) => {
-    return (<div className={id === 0
-        ? 'carousel-item active'
-        : 'carousel-item'} key={id++}>
+  const member_items = props.slides.map((slide, id) => {
+
+    return (<div className="slideshow-item">
       <div className="row container-fluid">
-        <div className="col-md-7 text-center">
-          <img src={slide.image.guid} alt="alt" className="img-responsive slideshow-img"/>
+        <div className="col-md-8 text-center">
+          <img src={slide.image.guid} className="testimonial-img" alt="alt"/>
         </div>
-        <div className="col-md-5 text-left">
+        <div className="col-md-4 slideshow-text">
           <h2>{slide.my_title}</h2>
-          <p>{slide.desc}</p>
+          <p>
+            {slide.desc}
+          </p>
         </div>
       </div>
     </div>);
   });
 
-  return (<div className="intro-container">
-    <div id="introCarousel" className="carousel slide carousel-fade" data-ride="carousel">
-      <ol className="carousel-indicators text-right"/>
-      <div className="carousel-inner" role="listbox">
-        {slide_items}
-      </div>
-      <a className="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-        <span className="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"/>
-        <span className="sr-only">Previous</span>
-      </a>
-      <a className="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-        <span className="carousel-control-next-icon ion-chevron-right" aria-hidden="true"/>
-        <span className="sr-only">Next</span>
-      </a>
-    </div>
+  return (<div className="owl-carousel slideshow-carousel">
+    {member_items}
   </div>);
 }
 
@@ -46,8 +48,14 @@ class About04 extends Component {
   render() {
     let a = this.props.about
     let slides = a.slideshow
-    return (<section id="slideshow">
-      <Slideshow slides={slides}/>
+
+    return (<section className="slideshow slideshow-img-and-text section-bg wow fadeInUp">
+      <div className="row container-fluid">
+        <div className="col-md-12 text-center">
+          <Slideshow slides={slides}/>
+          {loadJSFiles()}
+        </div>
+      </div>
     </section>);
   }
 }
