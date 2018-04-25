@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import {getMultipleTextsFromSingleText} from 'utils/textAreaDelimiter';
-
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
@@ -27,15 +25,6 @@ class ProjectTemp05 extends Component {
   render() {
     const props = this.props;
 
-    const texts = getMultipleTextsFromSingleText(props.text_areas);
-    const textContainer = texts.map((text) => {
-      return (<div>
-        <br/>
-        <div>
-          {text}
-        </div>
-      </div>);
-    });
     return (<section className="slideshow slideshow-img-in-middle section-bg wow fadeInUp">
       <div className="row container-fluid">
         <div className="col-md-12 text-center">

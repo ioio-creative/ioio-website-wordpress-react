@@ -64,11 +64,11 @@ function AllProjects(props) {
       <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
           <figure>
-            <img src={project.cover_image.guid} className="img-fluid" alt="alt"/>
+            <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
           </figure>
           <div className="portfolio-info">
             <h4>
-              {project.my_name}
+              {project.project_name}
             </h4>
             <p>{tagsCorrespondingToProj}</p>
           </div>

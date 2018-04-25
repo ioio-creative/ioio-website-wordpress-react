@@ -46,8 +46,8 @@ function loadJSFiles() {
 }
 
 function VideoLanding(props) {
-  const video_url = props.project.showreel.guid;
-  const video_url_shorten = video_url.substring(0, video_url.length - 4);
+  const video_url = props.project.cover_video.guid;
+  const video_url_shorten = video_url.substring(0, video_url.length - 4); //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
   return (<section id="video-landing" className="section-bg">
@@ -55,8 +55,8 @@ function VideoLanding(props) {
       <div className="container-fluid ">
         <div id="block2" data-vide-bg={data_vid}></div>
         <div className="video-text wow fadeIn">
-          <h1 className="container-fluid">{props.project.my_title}</h1>
-          <h2 className="container-fluid">{props.project.subtitle}</h2>
+          <h1 className="container-fluid">{props.project.project_title}</h1>
+          <h2 className="container-fluid">{props.project.project_subtitle}</h2>
           <a href="#">
             <i className="ion ion-android-arrow-dropright-circle"></i>
             SHOWREEL</a>
@@ -72,10 +72,10 @@ function VideoLandingDesc(props) {
       <div className="row video-landing-text">
         <div className="col-lg-1"></div>
         <div className="col-lg-5 wow fadeInUp">
-          <p className="video-landing-text-l">{props.project.primary_desc}</p>
+          <p className="video-landing-text-l">{props.project.key_message}</p>
         </div>
         <div className="col-lg-5 wow fadeInUp">
-          <p className="video-landing-text-r">{props.project.secondary_desc}</p>
+          <p className="video-landing-text-r">{props.project.overview}</p>
         </div>
         <div className="col-lg-1"></div>
       </div>
@@ -138,10 +138,10 @@ class ProjectDetailPage extends Component {
     //    console.log(state.isReturnNotFound);
     //    console.log(project);
 
-    const projectTemplates = project.project_templates;
+    const projectTemplates = project.project_sections;
     const projectTemplateContainer = projectTemplates.map((templateData) => {
-      const templateType = parseInt(templateData.my_type, 10);
-      const TemplateToUse = projectTemplateMap[templateData.my_type];
+      const templateType = parseInt(templateData.template_type, 10);
+      const TemplateToUse = projectTemplateMap[templateData.template_type];
       return <TemplateToUse {...templateData}/>
     });
 
