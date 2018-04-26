@@ -144,7 +144,7 @@ Project-cover Section
 
 .photo-montage div div {
   object-fit: cover;
-  min-height: 500px;
+
 }
 
 .photo-montage-l {
@@ -156,6 +156,15 @@ Project-cover Section
   object-fit: cover;
   width: 100%;
 }
+
+
+@media only screen and (max-width: 767px) {
+    /*--[ Mobile styles go here]---------------------------*/
+
+}
+
+
+
 
 
 /*==============
@@ -198,4 +207,22 @@ Project-cover Section
   text-align: left;
   padding-top: 10px;
   padding-left: 5%;
+}
+
+@media only screen and (max-width: 767px) {
+    /*--[ Mobile styles go here]---------------------------*/
+
+    .slideshow-2-col div div {
+      padding: 0 0;
+    }
+    .slideshow-2-col-item img {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .slideshow-2-col-item p {
+      text-align: left;
+      padding-top: 10px;
+      padding-left: 5%;
+    }
 }
