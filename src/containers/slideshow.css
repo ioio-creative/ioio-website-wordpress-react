@@ -113,7 +113,32 @@ width: 100%;
   .slideshow p {
 
   }
+
+
+  .slideshow .the-team-text img {
+  width: 100%;
+  }
+
+  .slideshow .the-team-text h3 {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 0px;
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .slideshow .the-team-text p {
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 5px;
+    font-size: 12px;
+  }
+
 }
+
+
 
 
 /*

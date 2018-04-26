@@ -130,17 +130,13 @@ section{
 
 @media only screen and (max-width: 767px) {
     /*--[ Mobile styles go here]---------------------------*/
-
     #main{
-
       margin: 0 0 0 0; /*hack: //TODO adjust after sidebar, check this*/
-
     }
     #scroller {
       margin: 0 0 0 0;
       /*update sidebar width as well*/
     }
-
 }
 
 
@@ -258,4 +254,29 @@ section{
 
   }
 
+}
+
+
+@media only screen and (max-width: 992px) {
+    /*--[ Mobile styles go here]---------------------------*/
+    #footer .footer-hotpot-img {
+      position: relative;
+      top:0;
+      right:50px;
+      width:300px;
+    }
+
+
+    #footer {
+      background: #EDEDED;
+      padding: 0 0 30px 0;
+      color: #000;
+      font-size: 14px;
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 0;
+      font-family: "FuturaLT", sans-serif;
+      height: 100%;
+
+    }
 }

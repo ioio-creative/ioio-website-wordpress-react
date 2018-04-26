@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
 
+import scriptjs from 'scriptjs'
+
 import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
 
-function loadJS(props) {
+function loadJSFiles(props) {
 
-  return (<script>
-    reloadJS()
-  </script>);
+
+/*
+  var owl = $('.the-team');
+  owl.owlCarousel();
+  // Listen to owl events:
+  owl.on('resized.owl.carousel', function(event) {
+    console.log('ss')
+  })
+  */
 }
 
 function Slideshow(props) {
@@ -22,7 +30,7 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<OwlCarousel className="slideshow owl-theme" loop nav={false} autoplay={true} dots={true} dotsEach={true} loop={true} items={4.5} margin={20} slideBy={1} autoplayTimeout={2500} >
+  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={true} dots={true} dotsEach={true} items={3.5} margin={20} slideBy={1} autoplayTimeout={2500}>
     {member_items}
   </OwlCarousel>);
 }
@@ -134,6 +142,7 @@ class About05 extends Component {
       ResCarousel(ell, Parent, slide);
     }
 */
+      loadJSFiles();
   }
 
   render() {
@@ -147,10 +156,12 @@ class About05 extends Component {
         </header>
         <div className="row">
           {/* Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6" Change data slide for slides per click Ex:data-slide="1"
-          <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>*/}
-            <Slideshow members={members}/>
-          </div>
+          <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>*/
+          }
+          <Slideshow members={members}/>
         </div>
+      </div>
+
     </section>);
   }
 }

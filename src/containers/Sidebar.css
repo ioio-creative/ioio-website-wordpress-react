@@ -126,7 +126,7 @@
 @media only screen and (max-width: 767px) {
     /*--[ Mobile styles go here]---------------------------*/
   #sidebar {
-    height: 70px;
+    height: 55px;
     width: 100%;
     /*update scroller margin-left as well*/
     position: fixed;
@@ -134,7 +134,7 @@
     top: 0;
     left: 0;
     background-color: #fff;
-    overflow-x: hidden;
+    overflow-y: hidden;
     color: #000;
     padding-top: 0;
     border-bottom: 2px solid #E6E6E6;
@@ -156,17 +156,19 @@
     line-height: 24px;
     /* Abs positioning makes it not take up vert space */
     position: absolute;
-    top: 20px;
-    left: 55%;
+    top: 12px;
+    left: 50%;
+    text-align: center;
     background: none;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
+
   }
 
   #sidebar.active h3 {
-    top: 25px;
+    top: 12px;
   }
 
   #sidebar.active .menu-item {
@@ -179,14 +181,30 @@
     font-size: 18px;
   }
 
+
+  #sidebar .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+  }
 }
+
+
+
+
+
+@media only screen and (max-width: 992px) {
+    /*--[ Mobile styles go here]---------------------------*/
+
+}
+
 
 /*
 /* .....NavBar: Icon only with coloring/layout.....*/
 
 /*small/medium side display*/
 
-@media (min-width: 768px) {}
 
 /* .....NavBar: Fully showing nav bar..... */
 
