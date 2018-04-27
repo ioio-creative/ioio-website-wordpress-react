@@ -90,7 +90,15 @@ function VideoLanding(props) {
   return (<section id="video-landing" className="section-bg">
     <div className="video-landing-div">
       <div className="container-fluid ">
-        <div className="player-wrapper"><ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url}/></div>
+        <div className="player-wrapper">
+          <video className="react-player" width={'100%'} height={'auto'} poster="https://media.giphy.com/media/5CIRqPOk0141W/giphy.gif" autoplay={"autoplay"} loop={"loop"} muted playsinline={"playsinline"}>
+          <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/mp4_1080/71439ccd73c74ecc8bbab7abd3bb98bc_mp4_1080.mp4" type="video/mp4" />
+          <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm" />
+
+          </video>
+        </div>
+        {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} />*/}
+
         <div className="video-text wow fadeIn">
           <h1 className="container-fluid">{props.project.project_title}</h1>
           <h2 className="container-fluid">{props.project.project_subtitle}</h2>
