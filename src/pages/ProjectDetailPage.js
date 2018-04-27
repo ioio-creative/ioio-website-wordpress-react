@@ -83,14 +83,14 @@ Modal.setAppElement('#root');
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
-  const full_url = video_url;
+  const full_url = [video_url,'https://i.gifer.com/3hmW.gif'];
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
   return (<section id="video-landing" className="section-bg">
     <div className="video-landing-div">
       <div className="container-fluid ">
-        <div className="player-wrapper"><ReactPlayer className='react-player' playing="true" loop="true" playsinline="true" volume='0' muted="true" width='100%' height='auto' url={full_url}/></div>
+        <div className="player-wrapper"><ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url}/></div>
         <div className="video-text wow fadeIn">
           <h1 className="container-fluid">{props.project.project_title}</h1>
           <h2 className="container-fluid">{props.project.project_subtitle}</h2>
@@ -220,7 +220,7 @@ class ProjectDetailPage extends Component {
           <i className="ion ion-android-close"></i>
         </button>
         <div className="vid-player">
-          <Player  poster="/assets/poster.png" src={project.showreel.guid} autoPlay="true" fluid="true" volume="1" preload="auto"/>
+          <Player  poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
 
         </div>
       </Modal>
