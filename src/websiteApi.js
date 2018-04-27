@@ -12,7 +12,7 @@ const defaultQuery = "";
 const activeEntities = {
     about: 72,
     footer: 263,
-    sidebar: 351,    
+    sidebar: 351,
 };
 
 
@@ -50,7 +50,7 @@ function fetchSidebars(callback) {
     passJsonResultToCallback("sidebars", callback);
 }
 
-function fetchActiveSidebar(callback) {    
+function fetchActiveSidebar(callback) {
     passJsonResultToCallback("sidebars", callback, activeEntities.sidebar);
 }
 
@@ -116,6 +116,10 @@ function fetchProjects(callback) {
     passJsonResultToCallback("projects", callback);
 }
 
+function fetchHighlightedProjects(callback) {
+    passJsonResultToCallback("highlighted_projects", callback);
+}
+
 async function fetchProjectsAsync() {
     return await passJsonResultAsync("projects");
 }
@@ -153,7 +157,7 @@ export {
     fetchActiveSidebar,
     fetchActiveFooter,
 
-    // about page    
+    // about page
     fetchActiveAbout,
     fetchCompanyDnas,
     fetchCompanyCultures,
@@ -165,6 +169,7 @@ export {
 
     // project list page
     fetchProjects,
+    fetchHighlightedProjects,
     fetchProjectsAsync,
     fetchProjectCategories,
     fetchProjectTags,

@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #main{
   background-color: white;/*hack: //todo achang bg to check padding / margin*/
-  margin: -170px 0 0 0; /*hack: //todo adjust after sidebar*/
+  margin: -70px 0 0 0; /*hack: //todo adjust after sidebar*/
   padding: 0 0 0 0;
   display: block;
 }

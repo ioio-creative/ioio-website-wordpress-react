@@ -1,0 +1,109 @@
+#homepage-canvas {
+  margin: 50px 0 0 0;
+  padding: 0 0 0 0;
+  background: white;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
+
+#homepage-canvas canvas {
+  background: white;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+}
+
+#homepage-selected-project {
+  margin: 0 0 0 0;
+  padding: 100px 0 0 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+#homepage-selected-project div {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+#homepage-selected-project .portfolio-wrap {
+  height: 500px;
+  overflow-y: hidden;
+  transition: 0.3s;
+}
+
+#homepage-selected-project .portfolio-wrap:hover {
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+#homepage-selected-project .portfolio-wrap {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+}
+
+#homepage-selected-project .portfolio-wrap figure {
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+
+#homepage-selected-project .portfolio-wrap figure img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%
+}
+
+#homepage-selected-project .portfolio-wrap figure:hover img {
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+#homepage-selected-project .portfolio-wrap a:hover {
+  opacity: 1;
+  left: calc(50% - 44px);
+}
+
+#homepage-selected-project .portfolio-wrap .portfolio-info {
+  text-align: left;
+  padding: 30px 30px;
+  z-index: 10;
+  /*border-radius: 0 0 3px 3px;*/
+}
+
+#homepage-selected-project .portfolio-wrap .portfolio-info h4 {
+  position: absolute;
+  bottom: 20px;
+  font-size: 18px;
+  line-height: 1px;
+  font-weight: bold;
+  margin-bottom: 55px;
+  padding-bottom: 0;
+  color: white;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+#homepage-selected-project .portfolio-wrap .portfolio-info p {
+  position: absolute;
+  bottom: 20px;
+  padding: 0;
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px #000;
+}
+
+#homepage-lab p {
+  font-weight: bold;
+  text-align: left;
+  font-size: 12ch;
+  width: 90%;
+}

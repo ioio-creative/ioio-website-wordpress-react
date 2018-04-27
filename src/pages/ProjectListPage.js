@@ -142,7 +142,6 @@ class ProjectListPage extends Component {
           <div className="row">
             <ProjectTags tags={t}/>
           </div>
-
           <AllProjects projectlist={p} tags={t}/>
         </div>
       </section>
