@@ -37,7 +37,11 @@ display: block;
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
 }
+
+
+
 
 /*
 ==================================
@@ -105,14 +109,6 @@ Project-cover Section
   text-align: left;
 }
 
-.video-text h2 {
-  position: relative;
-  top: 320px;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 16px;
-  text-align: left;
-}
 
 .video-text a {
   position: absolute;
@@ -152,6 +148,57 @@ Project-cover Section
 .video-landing-text-r {
   text-align: left;
   width: 80%;
+}
+
+@media only screen and (max-width: 767px) {
+  /*--[ Mobile styles go here]---------------------------*/
+  #video-landing {
+
+    height: 400px;
+  }
+
+  #video-landing div {
+
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+
+  }
+
+  .video-text {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 400px;
+    color: white;
+  }
+  .video-text h1 {
+    top: 250px;
+    font-size: 22px;
+
+  }
+
+  .video-text h2 {
+
+    top: 250px;
+    font-size: 14px;
+  }
+
+
+  .video-text a {
+    position: absolute;
+    bottom: 50px;
+    right: 25px;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    z-index: 2;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+  }
+
 }
 
 /*--------------------------------------------------------------

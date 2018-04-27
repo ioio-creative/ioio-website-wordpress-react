@@ -90,13 +90,11 @@ function VideoLanding(props) {
   return (<section id="video-landing" className="section-bg">
     <div className="video-landing-div">
       <div className="container-fluid ">
-        <div className="player-wrapper"><ReactPlayer className='react-player' playing="playing" loop="loop" playsinline="playsinline" volume='0' muted="muted" width='100%' height='auto' url={full_url}/></div>
+        <div className="player-wrapper"><ReactPlayer className='react-player' playing="true" loop="true" playsinline="true" volume='0' muted="true" width='100%' height='auto' url={full_url}/></div>
         <div className="video-text wow fadeIn">
           <h1 className="container-fluid">{props.project.project_title}</h1>
           <h2 className="container-fluid">{props.project.project_subtitle}</h2>
-
           <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-
             <i className="ion ion-android-arrow-dropright-circle"></i>
             SHOWREEL</Link>
         </div>
@@ -222,7 +220,7 @@ class ProjectDetailPage extends Component {
           <i className="ion ion-android-close"></i>
         </button>
         <div className="vid-player">
-          <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src={project.showreel.guid} autoPlay="true" fluid="true" volume="1" preload="auto"/>
+          <Player  poster="/assets/poster.png" src={project.showreel.guid} autoPlay="true" fluid="true" volume="1" preload="auto"/>
 
         </div>
       </Modal>
