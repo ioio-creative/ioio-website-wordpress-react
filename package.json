@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.4.0",
+    "ajv-keywords": "^3.1.0",
     "cross-env": "^5.1.4",
     "jquery": "^3.3.1",
     "matter-js": "^0.14.1",
@@ -12,9 +14,12 @@
     "react-background-video-player": "^1.1.4",
     "react-dom": "^16.3.2",
     "react-ga": "^2.5.0",
+    "react-modal": "^3.4.4",
     "react-owl-carousel": "^2.2.0",
+    "react-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-video-cover": "^1.2.0",
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",
     "video-react": "^0.10.4"

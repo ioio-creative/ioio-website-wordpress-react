@@ -22,6 +22,8 @@ function loadJSFiles() {
     });
     scriptjs.ready('bundle', function() {
       scriptjs(publicUrl+'/js/loadByPage.js')
+      scriptjs(publicUrl+'/lib/jqueryvide/jquery.vide.js')
+
     })
 
     console.log("Global JS Files Loaded");
