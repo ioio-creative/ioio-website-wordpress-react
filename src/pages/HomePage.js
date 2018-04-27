@@ -112,6 +112,20 @@ class HomePage extends Component {
       this.setState({footer: aFooter});
     });
 
+
+    /*
+    const publicUrl = process.env.PUBLIC_URL;
+
+    scriptjs(publicUrl + '/canvas/hello/sketch.js')
+    */
+    console.log('script loaded')
+
+    window.addEventListener('load', this.handleLoad);
+  }
+
+  handleLoad() {
+
+    $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
     const publicUrl = process.env.PUBLIC_URL;
     var loadScriptsAsync = ['canvas/hello/p5.min.js'].map((relativeUrl) => {
       return publicUrl + "/" + relativeUrl;
@@ -127,20 +141,6 @@ class HomePage extends Component {
       scriptjs(publicUrl + "/" + 'canvas/hello/sketch.js');
     })
 
-    /*
-    const publicUrl = process.env.PUBLIC_URL;
-
-    scriptjs(publicUrl + '/canvas/hello/sketch.js')
-    */
-    console.log('script loaded')
-
-    window.addEventListener('load', this.handleLoad);
-  }
-
-  handleLoad() {
-    console.log($("#contents").html("foo bar"))
-    $("#contents").html("foo bar");
-    $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
   }
   render() {
 
