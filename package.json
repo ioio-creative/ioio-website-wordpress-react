@@ -16,6 +16,7 @@
     "react-ga": "^2.5.0",
     "react-modal": "^3.4.4",
     "react-owl-carousel": "^2.2.0",
+    "react-p5-wrapper": "0.0.4",
     "react-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",

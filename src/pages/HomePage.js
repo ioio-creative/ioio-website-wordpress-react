@@ -7,10 +7,15 @@ import Footer from 'containers/Footer';
 import scriptjs from 'scriptjs';
 import $ from 'jquery'
 
+import P5Wrapper from 'react-p5-wrapper';
+
 import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import './HomePage.css';
+import sketch from './sketch';
+
+
 
 function HighlightedProjects(props) {
 
@@ -127,6 +132,7 @@ class HomePage extends Component {
 
     $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
     const publicUrl = process.env.PUBLIC_URL;
+    /*
     var loadScriptsAsync = ['canvas/hello/p5.min.js'].map((relativeUrl) => {
       return publicUrl + "/" + relativeUrl;
     });
@@ -140,7 +146,7 @@ class HomePage extends Component {
     scriptjs.ready('bundle', function() {
       scriptjs(publicUrl + "/" + 'canvas/hello/sketch.js');
     })
-
+*/
   }
   render() {
 
@@ -158,12 +164,15 @@ class HomePage extends Component {
     }
 
     console.log(p[0])
+const publicUrl = process.env.PUBLIC_URL;
 
+const finalURL = publicUrl + '/canvas/hello2/index.html'
     console.log(p[0].projects)
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
         <div className="row container-fluid">
-          <div className="col-md-12 text-center" id="homepage-canvas"></div>
+          <div className="col-md-12 text-center" id="homepage-canvas"><P5Wrapper sketch={sketch} /></div>
+          <iframe className="iframe-p5" src={finalURL} height="500" width="500"/>,
         </div>
       </section>
 
