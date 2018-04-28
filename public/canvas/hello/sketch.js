@@ -44,7 +44,7 @@ function initSetup() {
 
   fontSize = map(windowWidth, 0, 2000, 25, 400)
   letterSpacing = map(windowWidth, 0, 2000, 20, 70)
-  textPosX = map(windowWidth, 0, 2000, -60, 420)
+  textPosX = map(windowWidth, 0, 2000, -55, 420)
   textPosY = map(windowWidth, 0, 2000,250 , 0)
   maxBlur = map(windowWidth, 0, 2000,12 , 28)
 
