@@ -9,6 +9,11 @@ p{
   font-weight: bold;
 }
 
+.text{
+  font-family: "FuturaLT",Gadget, sans-serif;
+  font-weight: bold;
+}
+
 html, body {
   font-family: "FuturaLT",Gadget, sans-serif;
   font-weight: bold;
