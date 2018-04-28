@@ -5,17 +5,17 @@
 }
 
 p{
-  font-family: "FuturaLT",Gadget, sans-serif;
+  font-family: "FuturaLT","Trebuchet MS", Arial, sans-serif;
   font-weight: bold;
 }
 
 .text{
-  font-family: "FuturaLT",Gadget, sans-serif;
+  font-family: "FuturaLT","Trebuchet MS", Arial, sans-serif;
   font-weight: bold;
 }
 
 html, body {
-  font-family: "FuturaLT",Gadget, sans-serif;
+  font-family: "FuturaLT","Trebuchet MS", Arial, sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 0;
