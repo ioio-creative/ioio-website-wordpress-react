@@ -5,12 +5,12 @@
 }
 
 p{
-  font-family: "FuturaLT";
+  font-family: "FuturaLT",Gadget, sans-serif;
   font-weight: bold;
 }
 
 html, body {
-  font-family: "FuturaLT";
+  font-family: "FuturaLT",Gadget, sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 0;
