@@ -3,6 +3,12 @@ var w,
   h,
   textPosX,
   textPosY;
+
+  var x=0;
+  var y=0;
+  var px=0;
+  var py=0;
+  var easing = 0.08;
 var text;
 var letterSpacing = 70;
 var smallScreen = false;
@@ -62,19 +68,28 @@ function setup() {
 function draw() {
   background(255);
 
-  //textPosX = w / 2 - w / 4 + letterSpacing / 2 - 200;
+  //var targetX = mouseX;
+   x += (mouseX - px)*easing;
+   //var targetY = mouseY;
+   y += (mouseY - py)*easing;
 
-  var distance = dist(mouseX, mouseY, w / 2, h / 2);
+   py = y;
+   px = x;
+
+
+  var distance = dist(x, y, w / 2, h / 2);
   stroke(126)
   //line(mouseX, mouseY, w/2, h/2);
   a = a + .01;
   var n = noise(a);
 
   text.position(textPosX, textPosY)
-  var x = map(mouseX, 0, w, 5, -5);
-  var y = map(mouseY, 0, h, 5, -5);
+  var xx = map(x, 0, w, 5, -5);
+  var yy = map(y, 0, h, 5, -5);
   var blur = map(distance, 0, w / 2, 0, 28)
 
-  text.style("text-shadow", x + "px " + y + "px " + blur + "px #000000");
+  text.style("text-shadow", xx + "px " + yy + "px " + blur + "px #000000");
+//  fill(0);
+//    ellipse(x,y,59);
 
 }
