@@ -13,6 +13,7 @@ var text;
 var letterSpacing = 70;
 var smallScreen = false;
 var fontSize = 400;
+var maxBlur =28;
 function windowResized() {
   w = windowWidth;
   h = 500;
@@ -45,8 +46,12 @@ function initSetup() {
   letterSpacing = map(windowWidth, 0, 2000, 20, 70)
   textPosX = map(windowWidth, 0, 2000, -60, 420)
   textPosY = map(windowWidth, 0, 2000,250 , 0)
+  maxBlur = map(windowWidth, 0, 2000,12 , 28)
+
   text.style("font-size", fontSize + "px");
   text.style("letter-spacing", letterSpacing + "px");
+
+
 }
 function setup() {
   w = windowWidth;
@@ -91,10 +96,10 @@ function draw() {
   text.position(textPosX, textPosY)
   var xx = map(x, 0, w, 5, -5);
   var yy = map(y, 0, h, 5, -5);
-  var blur = map(distance, 0, w / 2, 0, 25)
-
+  var blur = map(distance, 0, w / 2, 0, maxBlur)
+  console.log(maxBlur)
   var op = 1-abs(map(x, 0, w, -0.9, 0.9));
-  console.log(op)
+
   text.style("text-shadow", xx + "px " + yy + "px " + blur + "px rgba(0,0,0,"+op +")");
 //  fill(0);
 //    ellipse(x,y,59);
