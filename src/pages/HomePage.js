@@ -131,6 +131,16 @@ class HomePage extends Component {
   handleLoad() {
 
     $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
+
+/*
+        $(document).ready(function(){
+          console.log($('.iframe-p5').attr("width"))
+          $('.iframe-p5').attr("width","2500");
+          $('.iframe-p5').attr("height","500");
+          console.log($('.iframe-p5').attr("width"))
+
+    });
+*/
     const publicUrl = process.env.PUBLIC_URL;
     /*
     var loadScriptsAsync = ['canvas/hello/p5.min.js'].map((relativeUrl) => {
@@ -170,9 +180,8 @@ const finalURL = publicUrl + '/canvas/hello2/index.html'
     console.log(p[0].projects)
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
-        <div className="row container-fluid">
-          <div className="col-md-12 text-center" id="homepage-canvas"><P5Wrapper sketch={sketch} /></div>
-          <iframe className="iframe-p5" src={finalURL} height="500" width="500"/>,
+        <div className="iframe-p5-div container-fluid">
+        <iframe className="iframe-p5" frameborder={0} src={finalURL}/>
         </div>
       </section>
 

@@ -5,9 +5,13 @@
  * From <a href="http://natureofcode.com">natureofcode.com</a>.
  */
 var boids = [];
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 
 function setup() {
-  createCanvas(720, 400);
+  createCanvas(windowWidth, windowHeight);
 
   // Add an initial set of boids into the system
   for (var i = 0; i < 100; i++) {
@@ -31,6 +35,7 @@ function draw() {
   rect(mouseX + 200, mouseY, 40, 120);
 
   ellipse(mouseX + 340, mouseY + 60, 80, 80);
+  rect(windowWidth/2, windowHeight/2, 40, 120);
 }
 
 
