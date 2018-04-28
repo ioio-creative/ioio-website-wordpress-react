@@ -181,7 +181,7 @@ const finalURL = publicUrl + '/canvas/hello/index.html'
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
         <div className="iframe-p5-div container-fluid">
-        <iframe className="iframe-p5" frameborder={0} src={finalURL}/>
+        <iframe className="iframe-p5" frameBorder={0} src={finalURL}/>
         </div>
       </section>
 

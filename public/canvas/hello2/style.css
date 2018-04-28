@@ -4,6 +4,10 @@
     src: url('assets/futura_lt_bold1.ttf');
 }
 
+p{
+  font-family: "FuturaLT";
+  font-weight: bold;
+}
 
 html, body {
   font-family: "FuturaLT";
