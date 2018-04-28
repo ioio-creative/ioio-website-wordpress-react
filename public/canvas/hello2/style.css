@@ -1,4 +1,13 @@
+
+@font-face {
+    font-family: "FuturaLT";
+    src: url('assets/futura_lt_bold1.ttf');
+}
+
+
 html, body {
+  font-family: "FuturaLT";
+  font-weight: bold;
   margin: 0;
   padding: 0;
   overflow: hidden;

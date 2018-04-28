@@ -176,7 +176,7 @@ class HomePage extends Component {
     console.log(p[0])
 const publicUrl = process.env.PUBLIC_URL;
 
-const finalURL = publicUrl + '/canvas/hello2/index.html'
+const finalURL = publicUrl + '/canvas/hello/index.html'
     console.log(p[0].projects)
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
