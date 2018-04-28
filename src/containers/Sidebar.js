@@ -48,7 +48,7 @@ class Sidebar extends Component {
 
   handleMenuClose(e) {
 
-    $("#sidebar").toggleClass("active");
+    $("#sidebar").removeClass("active");
 
     //resetMatterJS();
   }
@@ -64,10 +64,13 @@ class Sidebar extends Component {
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <h3>Index</h3>
       </a>
-      <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> {/*  <object data={sidebar.logo_svg.guid} type="image/svg+xml" className="logo menu-transition">
+      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+        <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> {/*  <object data={sidebar.logo_svg.guid} type="image/svg+xml" className="logo menu-transition">
 
-            </object> */
-      }
+              </object> */
+        }
+      </Link>
+
       <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
       <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
       <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contacts</Link>

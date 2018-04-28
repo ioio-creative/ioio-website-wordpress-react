@@ -21,6 +21,7 @@
     "react-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-simple-contact-form": "0.0.1",
     "react-video-cover": "^1.2.0",
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",

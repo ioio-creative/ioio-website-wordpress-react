@@ -197,12 +197,12 @@ class HomePage extends Component {
       </section>
       <section id="homepage-lab" className="section-bg wow fadeInUp">
         <div className="row container-fluid">
-          <div className="col-md-4 text-center">
+          <div className="col-md-4 text-left">
             <a href="#">
               <p>Tapping</p>
             </a>
           </div>
-          <div className="col-md-8 text-center">
+          <div className="col-md-8 text-left">
             <a href="#">
               <p>Bible Consipiracy</p>
             </a>

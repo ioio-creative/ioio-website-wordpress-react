@@ -8,6 +8,8 @@ import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjec
 
 import Footer from 'containers/Footer';
 
+import scriptjs from 'scriptjs'
+
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
     let tagId = ".filter-" + tag.id
@@ -52,7 +54,7 @@ function AllProjects(props) {
     function cutString(s) {
       let cut = s.indexOf('/projects');
       if (cut === -1)
-      return s;
+        return s;
       return s.substr(cut)
     }
     let d = cutString(s);
@@ -111,6 +113,31 @@ class ProjectListPage extends Component {
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
+
+    window.addEventListener('load', this.handleLoad);
+  }
+
+  handleLoad() {
+
+    const publicUrl = process.env.PUBLIC_URL;
+
+    var loadScriptsAsync = ['js/portfolio.js'].map((relativeUrl) => {
+      return publicUrl + "/" + relativeUrl;
+    });
+    /*
+    var loadScriptsLater = ['canvas/hello/p5.sound.min.js', 'canvas/hello/p5.dom.min.js'].map((relativeUrl) => {
+      return publicUrl + "/" + relativeUrl;
+    });
+*/
+    scriptjs(loadScriptsAsync, () => {
+      //scriptjs(loadScriptsLater, 'bundle')
+    });
+    /*
+    scriptjs.ready('bundle', function() {
+    //  scriptjs(publicUrl + "/" + 'canvas/hello/sketch.js');
+    })
+*/
+
   }
 
   handleCategoryButtonClick(categoryId) {
@@ -145,8 +172,8 @@ class ProjectListPage extends Component {
       <Footer
         //Section: Footer
         footer={footer}/>
-      </div>);
-    }
+    </div>);
   }
+}
 
-  export default ProjectListPage;
+export default ProjectListPage;

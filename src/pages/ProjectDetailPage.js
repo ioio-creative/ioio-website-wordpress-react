@@ -55,7 +55,7 @@ function VideoLanding(props) {
   const video_webm_url = props.project.cover_video.guid;
   const poster_url = props.project.thumbnail.guid;
 
-  const full_url = [video_url,'https://i.gifer.com/3hmW.gif'];
+  const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
@@ -63,12 +63,12 @@ function VideoLanding(props) {
     <div className="video-landing-div">
       <div className="container-fluid ">
         <div className="player-wrapper">
-          <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoplay={"autoplay"} loop={"loop"} muted playsinline={"playsinline"}>
-          <source src={video_url} type="video/mp4" />
-          <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm" />
+          <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoplay={"autoplay"} loop={"loop"} muted="muted" playsinline={"playsinline"}>
+            <source src={video_url} type="video/mp4"/>
+            <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/>
           </video>
         </div>
-        {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} />*/}
+        {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
 
         <div className="video-text wow fadeIn">
           <h1 className="container-fluid">{props.project.project_title}</h1>
@@ -198,7 +198,7 @@ class ProjectDetailPage extends Component {
           <i className="ion ion-android-close"></i>
         </button>
         <div className="vid-player">
-          <Player  poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
+          <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
 
         </div>
       </Modal>
