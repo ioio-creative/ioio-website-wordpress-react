@@ -97,7 +97,7 @@ function draw() {
   var xx = map(x, 0, w, 5, -5);
   var yy = map(y, 0, h, 5, -5);
   var blur = map(distance, 0, w / 2, 0, maxBlur)
-  console.log(maxBlur)
+  //console.log(maxBlur)
   var op = 1-abs(map(x, 0, w, -0.9, 0.9));
 
   text.style("text-shadow", xx + "px " + yy + "px " + blur + "px rgba(0,0,0,"+op +")");
