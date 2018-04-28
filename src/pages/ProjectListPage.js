@@ -7,7 +7,6 @@ import routes from 'globals/routes';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import Footer from 'containers/Footer';
-import scriptjs from 'scriptjs'
 
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
@@ -21,8 +20,6 @@ function ProjectTags(props) {
     </ul>
   </div>);
 }
-
-function loadJSFiles() {}
 
 function AllProjects(props) {
   const tag_item = props.tags.map((tag, id) => {
@@ -147,7 +144,7 @@ class ProjectListPage extends Component {
       </section>
       <Footer
         //Section: Footer
-        footer={footer}/> {loadJSFiles()}
+        footer={footer}/>
       </div>);
     }
   }

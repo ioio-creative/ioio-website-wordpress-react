@@ -10,9 +10,6 @@ import About07 from 'containers/about/About07';
 import About08 from 'containers/about/About08';
 import Footer from 'containers/Footer';
 
-
-import scriptjs from 'scriptjs'
-
 import './AboutPage.css';
 
 import {fetchActiveAbout, fetchActiveFooter} from 'websiteApi';

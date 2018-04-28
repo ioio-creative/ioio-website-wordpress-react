@@ -1,23 +1,8 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
 
-import scriptjs from 'scriptjs'
-
 import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
-
-function loadJSFiles(props) {
-
-
-/*
-  var owl = $('.the-team');
-  owl.owlCarousel();
-  // Listen to owl events:
-  owl.on('resized.owl.carousel', function(event) {
-    console.log('ss')
-  })
-  */
-}
 
 function Slideshow(props) {
   const member_items = props.members.map((member, id) => {
@@ -142,7 +127,6 @@ class About05 extends Component {
       ResCarousel(ell, Parent, slide);
     }
 */
-      loadJSFiles();
   }
 
   render() {

@@ -1,18 +1,7 @@
 import React, {Component} from 'react';
-import scriptjs from 'scriptjs'
 
 import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
-
-function loadJSFiles() {
-  //console.log("public url: " + JSON.stringify(process.env));
-  //const publicUrl = process.env.PUBLIC_URL;
-//  scriptjs(publicUrl + '/js/slideshow-carousel.js');
-
-  //console.log("loadJSFiles In project detail page");
-
-}
-
 
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
@@ -43,9 +32,6 @@ class About04 extends Component {
     this.state = {
       about: {}
     }
-  }
-  componentDidMount() {
-      loadJSFiles()
   }
 
   render() {

@@ -1,14 +1,39 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
-
-import HomePage from 'pages/HomePage';
-import AboutPage from 'pages/AboutPage';
-import ProjectListPage from 'pages/ProjectListPage';
-import ProjectDetailPage from 'pages/ProjectDetailPage';
-import ContactsPage from 'pages/ContactsPage';
-import NotFoundPage from 'pages/NotFoundPage'
+import { Switch, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
 import routes from 'globals/routes';
+
+// Code Splitting and React Router v4
+// https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
+const AsyncHomePage = asyncLoadingComponent(() => import("pages/HomePage"));
+const AsyncAboutPage = asyncLoadingComponent(() => import("pages/AboutPage"));
+const AsyncProjectListPage = asyncLoadingComponent(() => import("pages/ProjectListPage"));
+const AsyncProjectDetailPage = asyncLoadingComponent(() => import("pages/ProjectDetailPage"));
+const AsyncContactsPage = asyncLoadingComponent(() => import("pages/ContactsPage"));
+const AsyncNotFoundPage = asyncLoadingComponent(() => import("pages/NotFoundPage"));
+
+function asyncLoadingComponent(funcToImportPage) {
+    return Loadable({
+        loader: funcToImportPage,
+        loading: LoadingComponent
+    });
+}
+
+function LoadingComponent(props) {
+    const { isLoading, error } = props;
+    // Handle the loading state
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+    // Handle the error state
+    else if (error) {
+        return <div>Sorry, there was a problem loading the page.</div>;
+    }
+    else {
+        return null;
+    }
+}
 
 class Main extends Component {
     render() {
@@ -23,12 +48,12 @@ class Main extends Component {
                     later Routes in the Route list.
                 */}
                 <Switch>
-                    <Route exact path={routes.home} component={HomePage} />
-                    <Route exact path={routes.about} component={AboutPage} />
-                    <Route exact path={routes.projectBySlug} component={ProjectDetailPage} />
-                    <Route path={routes.projects} component={ProjectListPage} />
-                    <Route path={routes.contacts} component={ContactsPage} />
-                    <Route component={NotFoundPage} />
+                    <Route exact path={routes.home} component={AsyncHomePage} />
+                    <Route path={routes.about} component={AsyncAboutPage} />
+                    <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
+                    <Route path={routes.projects} component={AsyncProjectListPage} />
+                    <Route path={routes.contacts} component={AsyncContactsPage} />
+                    <Route component={AsyncNotFoundPage} />
                 </Switch>
             </main>
           </div>

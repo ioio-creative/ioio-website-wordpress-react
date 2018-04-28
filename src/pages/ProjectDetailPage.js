@@ -6,7 +6,6 @@ import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 import {Link} from 'react-router-dom'
 
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 import ReactPlayer from 'react-player'
@@ -23,7 +22,6 @@ import './ProjectDetailPage.css';
 import Footer from 'containers/Footer';
 import {fetchActiveFooter} from 'websiteApi';
 
-import scriptjs from 'scriptjs'
 import $ from 'jquery';
 
 import {Player} from 'video-react'; //todo Remove video-react
@@ -39,35 +37,6 @@ const projectTemplateMap = {
   5: ProjectTemp05,
   6: ProjectTemp06
 };
-
-function loadJSFiles() {
-  /*
-  console.log("public url: " + JSON.stringify(process.env));
-  const publicUrl = process.env.PUBLIC_URL;
-
-  //const publicUrl = process.env.PUBLIC_URL;
-  var loadScriptsAsync = ['lib/jquery/jquery.min.js'].map((relativeUrl) => {
-    return publicUrl + "/" + relativeUrl;
-  });
-  var loadScriptsLater = ['/lib/jqueryvide/jquery.vide.js'].map((relativeUrl) => {
-    return publicUrl + "/" + relativeUrl;
-  });
-  scriptjs(loadScriptsAsync, () => {
-    scriptjs(loadScriptsLater,'bundle')
-  });
-
-*/
-  /*
-  console.log("public url: " + JSON.stringify(process.env));
-  const publicUrl = process.env.PUBLIC_URL;
-
-  scriptjs(publicUrl + '/lib/jqueryvide/jquery.vide.js');
-  scriptjs(publicUrl + 'lib/lightbox/js/lightbox.min.js');
-
-*/
-  console.log("loadJSFiles In project detail page");
-
-}
 
 const customStyles = {
   content: {
@@ -180,7 +149,6 @@ class ProjectDetailPage extends Component {
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-    loadJSFiles()
   }
 
   render() {
