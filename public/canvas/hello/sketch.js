@@ -36,6 +36,11 @@ function initSetup() {
     letterSpacing = 70;
   }
 
+  x = w/2;
+  y = w/2;
+  px = w/2;
+  py = w/2;
+
   fontSize = map(windowWidth, 0, 2000, 25, 400)
   letterSpacing = map(windowWidth, 0, 2000, 20, 70)
   textPosX = map(windowWidth, 0, 2000, -60, 420)
