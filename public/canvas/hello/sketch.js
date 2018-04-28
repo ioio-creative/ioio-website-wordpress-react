@@ -86,9 +86,11 @@ function draw() {
   text.position(textPosX, textPosY)
   var xx = map(x, 0, w, 5, -5);
   var yy = map(y, 0, h, 5, -5);
-  var blur = map(distance, 0, w / 2, 0, 28)
+  var blur = map(distance, 0, w / 2, 0, 25)
 
-  text.style("text-shadow", xx + "px " + yy + "px " + blur + "px #000000");
+  var op = 1-abs(map(x, 0, w, -0.9, 0.9));
+  console.log(op)
+  text.style("text-shadow", xx + "px " + yy + "px " + blur + "px rgba(0,0,0,"+op +")");
 //  fill(0);
 //    ellipse(x,y,59);
 

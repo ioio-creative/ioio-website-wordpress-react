@@ -12,8 +12,8 @@ License: https://bootstrapmade.com/license/
 
 
 @font-face {
-  font-family: FuturaLT;
-  src: url(/src/fonts/FuturaLT.ttf);
+  font-family: "FuturaLT";
+  src: url('/src/fonts/FuturaLT.ttf');
   /*
   to fix warnings
   https://stackoverflow.com/questions/30442319/failed-to-decode-downloaded-font
@@ -21,8 +21,8 @@ License: https://bootstrapmade.com/license/
 }
 
 @font-face {
-  font-family: FuturaLT;
-  src: url(/src/fonts/futura_lt_bold1.ttf);
+  font-family: "FuturaLT";
+  src: url('/src/fonts/futura_lt_bold1.ttf');
   font-weight: bold;
 }
 
