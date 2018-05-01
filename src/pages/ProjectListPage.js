@@ -4,6 +4,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
+import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import Footer from 'containers/Footer';
@@ -25,7 +26,7 @@ function ProjectTags(props) {
 
 function AllProjects(props) {
   const tag_item = props.tags.map((tag, id) => {
-    let tt = ".filter-" + tag.id
+    const tt = ".filter-" + tag.id
     return (<div>
       <li data-filter={tt}>{tag.name}</li>
     </div>);
@@ -33,9 +34,9 @@ function AllProjects(props) {
 
   const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-6 col-md-6 portfolio-item ";
-    for (let i = 0; i < project.project_tags.length; i++) {
-      tagIds += "filter-" + project.project_tags[i] + " "
-    }
+    project.project_tags.forEach((projectTag) => {
+      tagIds += "filter-" + projectTag + " ";
+    });
 
     const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
 
@@ -117,27 +118,8 @@ class ProjectListPage extends Component {
     window.addEventListener('load', this.handleLoad);
   }
 
-  handleLoad() {
-
-    const publicUrl = process.env.PUBLIC_URL;
-
-    var loadScriptsAsync = ['js/portfolio.js'].map((relativeUrl) => {
-      return publicUrl + "/" + relativeUrl;
-    });
-    /*
-    var loadScriptsLater = ['canvas/hello/p5.sound.min.js', 'canvas/hello/p5.dom.min.js'].map((relativeUrl) => {
-      return publicUrl + "/" + relativeUrl;
-    });
-*/
-    scriptjs(loadScriptsAsync, () => {
-      //scriptjs(loadScriptsLater, 'bundle')
-    });
-    /*
-    scriptjs.ready('bundle', function() {
-    //  scriptjs(publicUrl + "/" + 'canvas/hello/sketch.js');
-    })
-*/
-
+  handleLoad() {    
+    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
   }
 
   handleCategoryButtonClick(categoryId) {

@@ -1,3 +1,5 @@
+import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime'
+
 /*
     WordPress API References
     - https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#_embed
@@ -41,6 +43,18 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId) {
     const response = await fetch(dataUrl);
     const json = await response.json();
     return json;
+}
+
+function orderProjectsByDateAscending(projects) {
+    return projects.sort((project1, project2) => {
+        return compareForDatesAscending(project1.project_date, project2.project_date);
+    });
+}
+
+function orderProjectsByDateDecending(projects) {
+    return projects.sort((project1, project2) => {
+        return compareForDatesDescending(project1.project_date, project2.project_date);
+    });
 }
 
 
@@ -113,15 +127,18 @@ function fetchCompanies(callback) {
 /* project list page */
 
 function fetchProjects(callback) {
-    passJsonResultToCallback("projects", callback);
+    passJsonResultToCallback("projects", (projects) => {
+        callback(orderProjectsByDateAscending(projects));        
+    });        
 }
 
 function fetchHighlightedProjects(callback) {
     passJsonResultToCallback("highlighted_projects", callback);
 }
 
-async function fetchProjectsAsync() {
-    return await passJsonResultAsync("projects");
+async function fetchProjectsAsync() {    
+    const unorderedProjects = await passJsonResultAsync("projects");
+    return orderProjectsByDateAscending(unorderedProjects);
 }
 
 function fetchProjectCategories(callback) {
