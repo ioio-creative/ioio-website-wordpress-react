@@ -47,11 +47,11 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId) {
 
 function orderProjectsByDateAscending(projects) {
     return projects.sort((project1, project2) => {
-        return compareForDatesAscending(project1.project_date, project2.project_date);
+        return compareForDatesDescending(project1.project_date, project2.project_date);
     });
 }
 
-function orderProjectsByDateDecending(projects) {
+function orderProjectsByDateDescending(projects) {
     return projects.sort((project1, project2) => {
         return compareForDatesDescending(project1.project_date, project2.project_date);
     });
@@ -128,7 +128,7 @@ function fetchCompanies(callback) {
 
 function fetchProjects(callback) {
     passJsonResultToCallback("projects", (projects) => {
-        callback(orderProjectsByDateAscending(projects));        
+        callback(orderProjectsByDateDescending(projects));        
     });        
 }
 
@@ -138,7 +138,7 @@ function fetchHighlightedProjects(callback) {
 
 async function fetchProjectsAsync() {    
     const unorderedProjects = await passJsonResultAsync("projects");
-    return orderProjectsByDateAscending(unorderedProjects);
+    return orderProjectsByDateDescending(unorderedProjects);
 }
 
 function fetchProjectCategories(callback) {
