@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import ContactForm from 'react-simple-contact-form'
+
+import './ContactsPage.css';
+
 var dict = {
-        "header":"Contact",
-        "mailAddress":"your mail",
-        "message":"your message",
+        "header":"Send Us A Mail",
+        "mailAddress":"Yout Email",
+        "message":"Your Message",
         "sendMessage":"Mail send",
-        "sendButton":"Send message"
+        "sendButton":"Send"
       }
 class ContactsPage extends Component {
 
@@ -23,10 +26,11 @@ class ContactsPage extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Contacts Page</h2>
+          <section id="contact-form" className="container-fluid">
+            <div className="container">
                 <ContactForm data={dict} ></ContactForm>
             </div>
+          </section>
         );
     }
 }

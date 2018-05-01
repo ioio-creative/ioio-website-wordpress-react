@@ -46,7 +46,7 @@ function initSetup() {
   letterSpacing = map(windowWidth, 0, 2000, 20, 70)
   textPosX = map(windowWidth, 0, 2000, -55, 420)
   textPosY = map(windowWidth, 0, 2000,250 , 0)
-  maxBlur = map(windowWidth, 0, 2000,12 , 28)
+  maxBlur = map(windowWidth, 0, 2000,6 , 12)
 
   text.style("font-size", fontSize + "px");
   text.style("letter-spacing", letterSpacing + "px");
@@ -60,7 +60,7 @@ function setup() {
 
   text = createDiv('IOIO').addClass('text');;
   text.style("font-family", '"FuturaLT",Gadget, sans-serif');
-  text.style("color", "#FFFFFF");
+  text.style("color", "#000000");
   text.style("text-align", "center");
 
   text.style("align-items", "center");
@@ -94,11 +94,11 @@ function draw() {
   var n = noise(a);
 
   text.position(textPosX, textPosY)
-  var xx = map(x, 0, w, 5, -5);
-  var yy = map(y, 0, h, 5, -5);
+  var xx = map(x, 0, w, 8, -8);
+  var yy = map(y, 0, h, 8, -8);
   var blur = map(distance, 0, w / 2, 0, maxBlur)
   //console.log(maxBlur)
-  var op = 1-abs(map(x, 0, w, -0.9, 0.9));
+  var op = 1-abs(map(x, 0, w, -0.5, 0.5));
 
   text.style("text-shadow", xx + "px " + yy + "px " + blur + "px rgba(0,0,0,"+op +")");
 //  fill(0);

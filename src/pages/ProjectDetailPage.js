@@ -52,8 +52,8 @@ Modal.setAppElement('#root');
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
-  const video_webm_url = props.project.cover_video.guid;
   const poster_url = props.project.thumbnail.guid;
+  const video_webm_url = props.project.cover_video.guid;
 
   const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
@@ -65,7 +65,8 @@ function VideoLanding(props) {
         <div className="player-wrapper">
           <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoplay={"autoplay"} loop={"loop"} muted="muted" playsinline={"playsinline"}>
             <source src={video_url} type="video/mp4"/>
-            <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/>
+          {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/>*/}
+            <img src={poster_url} title="Your browser does not support the <video> tag" />
           </video>
         </div>
         {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
