@@ -9,7 +9,7 @@ import $ from 'jquery'
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
+import {fetchHighlightedProjects,fetchHomePage, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import './HomePage.css';
@@ -46,10 +46,10 @@ function HighlightedProjects(props) {
     }
     let d = cutString(s);
     */
-
+    console.log(project.id)
     if (id == 0) {
       return (<div className="col-md-12" key={id}>
-        <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
+        <Link to={routes.projectBySlugWithValue(project.id)}>{props.name}
           <div className="portfolio-wrap">
             <figure>
               <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
@@ -88,6 +88,27 @@ function HighlightedProjects(props) {
   </div>);
 }
 
+
+function Items(props) {
+  //let id = 0;
+  const social_media_items = props.dnas.map((dna, id) => {
+    let h
+    h = "col-lg-4 box-bg-0" + (
+    id + 1)
+    return (<div className={h} key={id}>
+      <h4 className="core-value-title text-left">{dna.my_name}</h4>
+      <div className="text-center">
+        <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
+      </div>
+      <p className="description text-center">{dna.desc}</p>
+    </div>);
+  });
+
+  return (<div className="row wow fadeInUp">
+    {social_media_items}
+  </div>);
+}
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +116,7 @@ class HomePage extends Component {
     this.state = {
       projects: [],
       projectCategories: [],
-
+      homepage: [],
       footer: null,
       selectedCategoryId: this.selectAllCategoryId
     }
@@ -105,6 +126,10 @@ class HomePage extends Component {
   componentDidMount() {
     fetchHighlightedProjects((projects) => {
       this.setState({projects: projects});
+    });
+
+    fetchHighlightedProjects((homepage) => {
+      this.setState({homepage: homepage});
     });
 
     fetchProjectCategories((categories) => {
@@ -158,6 +183,7 @@ class HomePage extends Component {
   render() {
 
     const p = this.state.projects;
+    const h = this.state.homepage;
     const footer = this.state.footer;
 
     if (footer === null) {
@@ -169,22 +195,34 @@ class HomePage extends Component {
     if (p.length == 0) {
       return null;
     }
+    if (h.length == 0) {
+      return null;
+    }
 
-    console.log(p[0])
+
+    console.log(h[0])
     const publicUrl = process.env.PUBLIC_URL;
 
     const finalURL = publicUrl + '/canvas/hello/index.html'
-    console.log(p[0].projects)
+
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
         <div className="iframe-p5-div container-fluid">
           <iframe className="iframe-p5" frameBorder={0} src={finalURL}/>
         </div>
+        <div>
+          <Link to="#" id="pop-up-vid">
+            <h4 className="homepage-showreel">TO IDENTIFY THE ALTERNATIVES&nbsp;
+              <i className="ion ion-android-arrow-dropright-circle"></i>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </h4>
+          </Link>
+        </div>
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
 
-        <HighlightedProjects projectlist={p[0].projects}/>
+        <HighlightedProjects projectlist={h[0].projects}/>
 
       </section>
       <section id="homepage-core-val" className="section-bg wow fadeInUp">
@@ -193,6 +231,12 @@ class HomePage extends Component {
           <div className="col-md-6 text-center"></div>
           <div className="col-md-6 text-center"></div>
 
+        </div>
+      </section>
+
+      <section id="core-value">
+        <div className="container-fluid">
+          {/*<Items dnas={h.dnas}/>*/}
         </div>
       </section>
       <section id="homepage-lab" className="section-bg wow fadeInUp">

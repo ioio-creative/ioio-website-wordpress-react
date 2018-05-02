@@ -77,8 +77,14 @@ function fetchActiveFooter(callback) {
 }
 
 /* end of General */
-
-
+/* home page */
+function fetchHighlightedProjects(callback) {
+    passJsonResultToCallback("highlighted_projects", callback);
+}
+function fetchHomePage(callback) {
+    passJsonResultToCallback("homepage", callback);
+}
+/* end of home page */
 /* about page */
 
 function fetchAbouts(callback) {
@@ -128,15 +134,13 @@ function fetchCompanies(callback) {
 
 function fetchProjects(callback) {
     passJsonResultToCallback("projects", (projects) => {
-        callback(orderProjectsByDateDescending(projects));        
-    });        
+        callback(orderProjectsByDateDescending(projects));
+    });
 }
 
-function fetchHighlightedProjects(callback) {
-    passJsonResultToCallback("highlighted_projects", callback);
-}
 
-async function fetchProjectsAsync() {    
+
+async function fetchProjectsAsync() {
     const unorderedProjects = await passJsonResultAsync("projects");
     return orderProjectsByDateDescending(unorderedProjects);
 }
@@ -174,6 +178,8 @@ export {
     fetchActiveSidebar,
     fetchActiveFooter,
 
+    // home page
+    fetchHomePage,
     // about page
     fetchActiveAbout,
     fetchCompanyDnas,
