@@ -143,4 +143,16 @@ iframe-p5-div {
       padding: 10px 0 0 0;
 
     }
+
+    iframe-p5-div {
+      margin: 20px 0 0 0;
+
+      height: 400px;
+
+    }
+
+    .iframe-p5 {
+
+      height: 400px;
+    }
 }

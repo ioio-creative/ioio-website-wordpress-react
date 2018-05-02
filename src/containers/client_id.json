@@ -1,0 +1,10 @@
+{
+  "web": {
+    "client_id": "667654600946-8m5qekr9sce6t0u5a9qodormm0disdt5.apps.googleusercontent.com",
+    "project_id": "contactformnodemailer",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "hop2M9l-vqDS-DbwOOgY-nDn"
+  }
+}
