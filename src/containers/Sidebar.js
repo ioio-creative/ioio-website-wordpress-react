@@ -73,7 +73,7 @@ class Sidebar extends Component {
 
       <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
       <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
-      <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contacts</Link>
+      <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
       <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
       <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
       <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
