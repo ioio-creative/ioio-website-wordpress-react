@@ -23,7 +23,6 @@ iframe-p5-div {
   position: absolute;
   top: 370px;
   font-size: 25px;
-
   font-weight: bold;
   width: 100%;
   text-align: center;
@@ -32,9 +31,8 @@ iframe-p5-div {
 
 #homepage-top span {
   padding-left: 10px;
- text-decoration: line-through;
+  text-decoration: line-through;
 }
-
 
 .homepage-showreel-hr {}
 
@@ -126,12 +124,54 @@ iframe-p5-div {
 }
 
 #homepage-lab p {
-  display: none; /*TODO*/
+  display: none;
+  /*TODO*/
   font-weight: bold;
   text-align: left;
   font-size: 80px;
   width: 100%;
   padding: 0 100px;
+}
+
+#homepage-core-value {
+  text-align: center;
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+#homepage-core-value div {
+  padding: 0 0;
+  margin: 0 auto;
+}
+
+#homepage-core-value h4 {
+  position: absolute;
+  padding: 20px 20px;
+  color: white;
+}
+
+#homepage-core-value img {
+  width: 100%;
+}
+
+.about-section-right img {
+  height: 50%;
+}
+
+.about-section-right-p-div {
+  position: absolute;
+  background: white;
+  width: 100%;
+  height: 50%;
+  top: 50%;
+
+}
+
+.about-section-right p {
+  padding-top: 50px;
+  font-weight: bold;
+  text-align: left;
+  font-size: 30px;
 }
 
 @media only screen and (max-width: 1500px) {

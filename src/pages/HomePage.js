@@ -3,19 +3,22 @@ import {Redirect} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import routes from 'globals/routes';
 
+import {getProjectIdSlugPairs} from 'utils/mapProjectIdToSlugNames';
+
 import Footer from 'containers/Footer';
 import scriptjs from 'scriptjs';
 import $ from 'jquery'
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchHighlightedProjects,fetchHomePage, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
+import {fetchHighlightedProjects, fetchHomePage, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import './HomePage.css';
 import sketch from './sketch';
 
 function HighlightedProjects(props) {
+  const projectIdSlugPairs = props.projIdSlugPairs;
 
   const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-6 col-md-6 portfolio-item ";
@@ -46,10 +49,12 @@ function HighlightedProjects(props) {
     }
     let d = cutString(s);
     */
-    console.log(project.id)
+
+    const projectDetailRoutePath = routes.projectBySlugWithValue(projectIdSlugPairs[project.id]);
+
     if (id == 0) {
       return (<div className="col-md-12" key={id}>
-        <Link to={routes.projectBySlugWithValue(project.id)}>{props.name}
+        <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
             <figure>
               <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
@@ -65,7 +70,7 @@ function HighlightedProjects(props) {
       </div>);
     } else {
       return (<div className="col-md-6 wrap-this" key={id}>
-        <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
+        <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
             <figure>
               <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
@@ -86,26 +91,29 @@ function HighlightedProjects(props) {
   return (<div className="row container-fluid">
     {project_items}
   </div>);
+
 }
 
-
 function Items(props) {
-  //let id = 0;
-  const social_media_items = props.dnas.map((dna, id) => {
-    let h
-    h = "col-lg-4 box-bg-0" + (
-    id + 1)
-    return (<div className={h} key={id}>
-      <h4 className="core-value-title text-left">{dna.my_name}</h4>
+  console.log(props.abouts)
+  let a = props.abouts
+  return (<div className="row">
+    <div className="col-md-6 about-section-left">
+      <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
       <div className="text-center">
-        <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
+        <img src={a.about_section_picture_left.guid} alt="alt" className="img-fluid core-value-img"/>
       </div>
-      <p className="description text-center">{dna.desc}</p>
-    </div>);
-  });
-
-  return (<div className="row wow fadeInUp">
-    {social_media_items}
+      <p className="description text-center"></p>
+    </div>
+    <div className="col-md-6 about-section-right">
+      <h4 className="core-value-title  text-left">{a.about_section_title_right}</h4>
+      <div className="text-center">
+        <img src={a.about_section_picture_right.guid} alt="alt" className="img-fluid core-value-img"/>
+      </div>
+      <div className="text-center about-section-right-p-div">
+      <p className="description text-center">{a.about_section_desc}</p>
+      </div>
+    </div>
   </div>);
 }
 
@@ -118,17 +126,18 @@ class HomePage extends Component {
       projectCategories: [],
       homepage: [],
       footer: null,
-      selectedCategoryId: this.selectAllCategoryId
+      selectedCategoryId: this.selectAllCategoryId,
+      projectIdSlugPairs: null
     }
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     fetchHighlightedProjects((projects) => {
       this.setState({projects: projects});
     });
 
-    fetchHighlightedProjects((homepage) => {
+    fetchHomePage((homepage) => {
       this.setState({homepage: homepage});
     });
 
@@ -139,6 +148,9 @@ class HomePage extends Component {
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
+
+    const projIdSlugPairs = await getProjectIdSlugPairs(); //TODO
+    this.setState({projectIdSlugPairs: projIdSlugPairs});
 
     /*
     const publicUrl = process.env.PUBLIC_URL;
@@ -199,11 +211,14 @@ class HomePage extends Component {
       return null;
     }
 
+    if (this.state.projectIdSlugPairs === null) {
+      return null;
+    }
 
     console.log(h[0])
     const publicUrl = process.env.PUBLIC_URL;
 
-    const finalURL = publicUrl + '/canvas/hello/index.html'
+    const finalURL = publicUrl + '/canvas/hello/index.html';
 
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
@@ -211,8 +226,8 @@ class HomePage extends Component {
           <iframe className="iframe-p5" frameBorder={0} src={finalURL}/>
         </div>
         <div>
-          <Link to="#" id="pop-up-vid">
-            <h4 className="homepage-showreel">TO IDENTIFY THE ALTERNATIVES&nbsp;
+          <Link to={h[0].showreel_video.guid} id="pop-up-vid">
+            <h4 className="homepage-showreel wow slideInLeft">TO IDENTIFY THE ALTERNATIVES&nbsp;
               <i className="ion ion-android-arrow-dropright-circle"></i>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </h4>
@@ -222,7 +237,7 @@ class HomePage extends Component {
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
 
-        <HighlightedProjects projectlist={h[0].projects}/>
+        <HighlightedProjects projectlist={h[0].highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
 
       </section>
       <section id="homepage-core-val" className="section-bg wow fadeInUp">
@@ -234,9 +249,9 @@ class HomePage extends Component {
         </div>
       </section>
 
-      <section id="core-value">
-        <div className="container-fluid">
-          {/*<Items dnas={h.dnas}/>*/}
+      <section id="homepage-core-value">
+        <div className="container">
+          <Items abouts={h[0]}/>
         </div>
       </section>
       <section id="homepage-lab" className="section-bg wow fadeInUp">

@@ -31,16 +31,27 @@ function reloadJS() {
   };
 
   // Init WOW.js and get instance
-  var wow = new WOW();
+  //var wow = new WOW();
+  var wow = new WOW(
+                        {
+                        boxClass:     'wow',      // default
+                        animateClass: 'animated', // default
+                        offset:       0,          // default
+                        mobile:       true,       // default
+                        live:         true        // default
+                      }
+                      )
+
   wow.init();
 
+/*
   // Attach scrollSpy to .wow elements for detect view exit events,
   // then reset elements and add again for animation
   $('.wow').on('scrollSpy:exit', function() {
     $(this).css({'visibility': 'hidden', 'animation-name': 'none'}).removeClass('animated');
     wow.addBox(this);
   }).scrollSpy();
-
+*/
   $(window).scroll(function() {
 
     if ($(this).scrollTop() > 100) {
