@@ -255,6 +255,15 @@ Project-cover Section
   min-width: 100%;
 }
 
+
+/*==============
+.slideshow-img-in-middle
+==============*/
+.slideshow-img-in-middle{
+  padding: 80px 0;
+}
+
+
 /*==============
 .slideshow-2-col
 ==============*/
@@ -286,6 +295,11 @@ Project-cover Section
 /*==============
 .photo-montage-one-img
 ==============*/
+
+.photo-montage-one-vid {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+}
 .photo-montage-one-vid div{
 margin: 0 0 0 0;
 padding: 0 0 0 0;
