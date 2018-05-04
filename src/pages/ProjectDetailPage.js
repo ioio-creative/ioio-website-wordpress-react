@@ -16,6 +16,7 @@ import ProjectTemp03 from 'containers/projectDetail/ProjectTemp03'; //slideshow 
 import ProjectTemp04 from 'containers/projectDetail/ProjectTemp04'; //photomontage - One Image
 import ProjectTemp05 from 'containers/projectDetail/ProjectTemp05'; //slideshow - Image only
 import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomontage - 2-column Image and caption
+import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
 
 import './ProjectDetailPage.css';
 
@@ -35,7 +36,8 @@ const projectTemplateMap = {
   3: ProjectTemp03,
   4: ProjectTemp04,
   5: ProjectTemp05,
-  6: ProjectTemp06
+  6: ProjectTemp06,
+  7: ProjectTemp07
 };
 
 const customStyles = {
@@ -63,7 +65,7 @@ function VideoLanding(props) {
     <div className="video-landing-div">
       <div className="container-fluid ">
         <div className="player-wrapper">
-          <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoplay={"autoplay"} loop={"loop"} muted="muted" playsinline={"playsinline"}>
+          <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
             <source src={video_url} type="video/mp4"/>
           {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/>*/}
             <img src={poster_url} title="Your browser does not support the <video> tag" />
