@@ -3,7 +3,7 @@
 --------------------------------*/
 
 #about01 {
-  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)), url(Triangle.png) fixed center center;
+  background: rgba(255, 255, 255, 1), url(Triangle.png) fixed center center;
   background-size: auto;
   background-repeat: no-repeat;
   padding: 60px 0 20px 0;

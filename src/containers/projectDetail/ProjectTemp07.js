@@ -13,7 +13,7 @@ class ProjectTemp07 extends Component {
       };
 
         return (
-          <section className="photo-montage-one-vid section-bg wow fadeInUp">
+          <section className="photo-montage-one-vid project-section-bg wow fadeInUp">
             <div className="container-fluid" style={bg}>
               <video className="photo-montage-one-vid-inside" width={'100%'} height={'auto'} poster={props.images[0].guid} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
                 <source src={props.video.guid} type="video/mp4"/>

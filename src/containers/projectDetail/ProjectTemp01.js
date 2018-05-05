@@ -10,8 +10,10 @@ class ProjectTemp01 extends Component {
     const imageSrcs = props.images.map((image,index) => {
       return image.guid;
     });
-
-    return (<section className="photo-montage">
+    const bg = {
+      backgroundColor: props.background_mood_color,
+    };
+    return (<section className="photo-montage project-section-bg" style={bg}>
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-6 photo-montage-l wow fadeInLeft">

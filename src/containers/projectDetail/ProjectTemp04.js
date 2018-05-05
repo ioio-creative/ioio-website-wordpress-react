@@ -7,9 +7,11 @@ class ProjectTemp04 extends Component {
 
     render() {
       const props = this.props;
-
+      const bg = {
+        backgroundColor: props.background_mood_color,
+      };
         return (
-          <section className="photo-montage-one-img section-bg wow fadeInUp">
+          <section className="photo-montage-one-img project-section-bg wow fadeInUp" style={bg}>
             <div className="container">
             <img src={props.images[0].guid} className="img-fluid" alt="alt"/>
             </div>
