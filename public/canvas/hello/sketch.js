@@ -59,7 +59,7 @@ function setup() {
   var canvas = createCanvas(w, h);
 
   text = createDiv('IOIO').addClass('text');;
-  text.style("font-family", '"FuturaLT-Bold",Gadget, sans-serif');
+  text.style("font-family", '"FuturaLT",Gadget, sans-serif');
   text.style("color", "#000000");
   text.style("text-align", "center");
 
