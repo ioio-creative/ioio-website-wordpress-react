@@ -66,9 +66,8 @@ function VideoLanding(props) {
       <div className="container-fluid ">
         <div className="player-wrapper">
           <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
-            <source src={video_url} type="video/mp4"/>
-          {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/>*/}
-            <img src={poster_url} title="Your browser does not support the <video> tag" />
+            <source src={video_url} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+            <img src={poster_url} title="Your browser does not support the <video> tag"/>
           </video>
         </div>
         {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
@@ -82,24 +81,28 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>);
-}
+  </section>); }
 
-function VideoLandingDesc(props) {
-  return (<section id="video-landing-caption" className="section-bg">
-    <div className="container-fluid">
-      <div className="row video-landing-text">
-        <div className="col-lg-1"></div>
-        <div className="col-lg-5 wow fadeInUp">
-          <p className="video-landing-text-l">{props.project.key_message}</p>
+  function VideoLandingDesc(props) {
+    console.log("backgroundColor" + props.project.background_mood_color)
+    console.log(props.project)
+    const bg = {
+      backgroundColor: props.project.background_mood_color,
+    };
+    return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
+      <div className="container-fluid">
+        <div className="row video-landing-text">
+          <div className="col-lg-1"></div>
+          <div className="col-lg-5 wow fadeInUp">
+            <p className="video-landing-text-l">{props.project.key_message}</p>
+          </div>
+          <div className="col-lg-5 wow fadeInUp">
+            <p className="video-landing-text-r">{props.project.overview}</p>
+          </div>
+          <div className="col-lg-1"></div>
         </div>
-        <div className="col-lg-5 wow fadeInUp">
-          <p className="video-landing-text-r">{props.project.overview}</p>
-        </div>
-        <div className="col-lg-1"></div>
       </div>
-    </div>
-  </section>);
+    </section>);
 }
 
 class ProjectDetailPage extends Component {
@@ -184,25 +187,20 @@ class ProjectDetailPage extends Component {
     });
 
     return (<div>
-
       <VideoLanding project={project} modalClick={this.openModal}/>
       <VideoLandingDesc project={project}/> {/*
-  <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+            <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
 
-        <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
-*/
+            <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
+            */
       }
-
       {projectTemplateContainer}
-
       <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Example Modal">
-
         <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
           <i className="ion ion-android-close"></i>
         </button>
         <div className="vid-player">
           <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
-
         </div>
       </Modal>
 

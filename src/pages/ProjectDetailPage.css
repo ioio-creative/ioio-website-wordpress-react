@@ -1,25 +1,39 @@
-.project-section-bg{
+/*
+General
+*/
+
+.project-section-bg {
   margin: 0 0;
   padding: 40px 0;
 }
 
+/*
+==================================
+Project-cover Section
+==================================
+*/
 
-.ReactModalPortal  {
+/*
+Video Cover Section
+*/
 
-}
+/*
+pop-up
+*/
+
+.ReactModalPortal {}
+
 .ReactModalPortal div {
-  z-index: 999;
+  z-index: 1999;
 }
 
-.vid-player div video{
-
-position: relative;
-display: block;
+.vid-player div video {
+  position: relative;
+  display: block;
   width: 80% !important;
- height: 90% !important;
- margin: 1% 10%;
+  height: 90% !important;
+  margin: 1% 10%;
 }
-
 
 .video-close-btn {
   border-radius: 50%;
@@ -30,29 +44,10 @@ display: block;
   height: 35px;
   right: 10px;
   top: 10px;
-  z-index: 1000;
-}
-
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25%/* Player ratio: 100 / (1280 / 720) */
-}
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  z-index: 2000;
 }
 
 
-
-
-/*
-==================================
-Project-cover Section
-==================================
-*/
 
 #video-landing {
   position: relative;
@@ -65,6 +60,7 @@ Project-cover Section
   font-size: 14px;
   line-height: 24px;
   font-family: "FuturaLT", sans-serif;
+  width: 100%;
 }
 
 #video-landing div {
@@ -86,6 +82,7 @@ Project-cover Section
   position: relative;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+
 }
 
 .video-text {
@@ -113,7 +110,6 @@ Project-cover Section
   font-size: 16px;
   text-align: left;
 }
-
 
 .video-text a {
   position: absolute;
@@ -155,20 +151,59 @@ Project-cover Section
   width: 80%;
 }
 
+
+/*
+-------------- cover --------------
+*/
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  /* Player ratio: 100 / (1280 / 720) */
+  z-index: 0;
+  width: 100%;
+}
+
+/*
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+min-width: 100%;
+
+}
+*/
+
+.react-player {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  z-index: -100;
+  background-size: cover;
+
+}
+
+video {
+
+  display: block;
+}
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   #video-landing {
-
     height: 400px;
   }
-
   #video-landing div {
-
     height: 400px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
-
   }
-
   .video-text {
     position: absolute;
     top: 0;
@@ -180,16 +215,11 @@ Project-cover Section
   .video-text h1 {
     top: 250px;
     font-size: 22px;
-
   }
-
   .video-text h2 {
-
     top: 250px;
     font-size: 14px;
   }
-
-
   .video-text a {
     position: absolute;
     bottom: 50px;
@@ -203,7 +233,6 @@ Project-cover Section
     padding: 5px 10px;
     border-radius: 25px;
   }
-
 }
 
 /*--------------------------------------------------------------
@@ -260,14 +289,13 @@ Project-cover Section
   min-width: 100%;
 }
 
-
 /*==============
 .slideshow-img-in-middle
 ==============*/
-.slideshow-img-in-middle{
+
+.slideshow-img-in-middle {
   padding: 80px 0;
 }
-
 
 /*==============
 .slideshow-2-col
@@ -296,18 +324,18 @@ Project-cover Section
   padding-left: 5%;
 }
 
-
 /*==============
 .photo-montage-one-img
 ==============*/
 
 .photo-montage-one-vid {
-margin: 0 0 0 0;
-padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
-.photo-montage-one-vid div{
-margin: 0 0 0 0;
-padding: 0 0 0 0;
+
+.photo-montage-one-vid div {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
 @media only screen and (max-width: 767px) {
