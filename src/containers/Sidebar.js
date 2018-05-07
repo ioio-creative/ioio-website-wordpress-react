@@ -44,12 +44,6 @@ class Sidebar extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-    /*
-
-$('html, body').animate({
-  scrollTop: 0
-}, 1500, 'easeInOutExpo');
-*/
 
   }
 
@@ -64,8 +58,8 @@ $('html, body').animate({
         <h3>Index</h3>
       </a>
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
-        {/* <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> */}
-        <object data="img/ioio_logo-02.svg" type="image/svg+xml" className="logo menu-transition"></object>
+         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
+
 
       </Link>
 

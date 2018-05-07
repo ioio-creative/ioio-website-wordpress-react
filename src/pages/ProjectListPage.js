@@ -63,9 +63,7 @@ function AllProjects(props) {
     return (<div className={tagIds} key={id}>
       <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
-          <figure>
             <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-          </figure>
           <div className="portfolio-info">
             <h4>
               {project.project_name}
@@ -118,7 +116,7 @@ class ProjectListPage extends Component {
     window.addEventListener('load', this.handleLoad);
   }
 
-  handleLoad() {    
+  handleLoad() {
     const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
   }
 

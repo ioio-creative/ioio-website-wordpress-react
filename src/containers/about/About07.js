@@ -1,5 +1,28 @@
 import React, {Component} from 'react';
 
+
+
+function Items(props) {
+  const member_items = props.items.map((item, id) => {
+    return (
+      <div className="col-md-3 wow fadeInUp">
+        <div className="img">
+          <img src={item.image.guid} alt={item.my_name} className="img-fluid" />
+        </div>
+    </div>
+    );
+  });
+
+  return (
+        <div className="row services-cols">
+
+    {member_items}
+  </div>);
+
+}
+
+
+
 class About07 extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +33,7 @@ class About07 extends Component {
 
   render() {
     var a = this.props.about
+
     return ( <section id="clients">
         <div className="container">
           <header className="section-header">
@@ -18,15 +42,11 @@ class About07 extends Component {
               formidable production studios, agencies and startups.</p>
           </header>
           <div className="row about-cols">
-            <div className="col-md-12 wow fadeInUp">
+
               <div className="about-col">
-                <div className="img">
-                  <img src="img/about/Clients.jpg" alt="" className="img-fluid" />
-                </div>
-                <p>
-                </p>
+                <Items items={a.clients}/>
               </div>
-            </div>
+
           </div>
         </div>
       </section>);

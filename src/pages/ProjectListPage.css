@@ -2,7 +2,7 @@
 --------------------------------*/
 
 #portfolio {
-  padding: 150px 0 0 0;
+  padding: 75px 0 0 0;
   white-space: nowrap;
 }
 
@@ -11,7 +11,6 @@
   margin: 5px 0 35px 0;
   list-style: none;
   text-align: left;
-
 }
 
 #portfolio #portfolio-flters li {
@@ -39,50 +38,45 @@
 }
 
 #portfolio .portfolio-wrap {
-
   /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
-
   transition: 0.3s;
+    height: 360px;
 }
 
 #portfolio .portfolio-wrap:hover {
   cursor: pointer;
-    transition: 0.2s linear;
+  transition: 0.2s linear;
   /*box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);*/
 }
 
+
 #portfolio .portfolio-item {
-  position: relative;
-  height: 360px;
   overflow: hidden;
-}
-
-#portfolio .portfolio-item figure {
-
-  overflow: hidden;
-  height: 240px;
   position: relative;
   margin: 0;
+  height: 360px;
+  padding: 20px 20px;
 }
 
-#portfolio .portfolio-item figure img {
+
+#portfolio .portfolio-item img {
+  height: 250px;
+  object-fit: cover;
   width: 100%;
 }
 
-#portfolio .portfolio-item figure:hover img {
+#portfolio .portfolio-item img:hover {
   opacity: 0.4;
   transition: 0.3s;
 }
 
-
-
-#portfolio .portfolio-item a:hover  {
+#portfolio .portfolio-item a:hover {
   opacity: 1;
   left: calc(50% - 44px);
 }
 
-
 #portfolio .portfolio-item .portfolio-info {
+  position: relative;
   text-align: left;
   padding: 30px 0px;
   height: 90px;
@@ -96,8 +90,6 @@
   margin-bottom: 18px;
   padding-bottom: 0;
 }
-
-
 
 #portfolio .portfolio-item .portfolio-info p {
   padding: 0;
@@ -113,33 +105,23 @@
   max-width: 1500px;
 }
 
-
 @media only screen and (max-width: 767px) {
-    /*--[ Mobile styles go here]---------------------------*/
-    #portfolio {
-      padding: 30px 0 0 0;
-
-    }
-
-    #portfolio #portfolio-flters li {
-      margin: 0 15px 0 0;
-      display:flex;
-      width: 100%;
-      padding: 5px 5px 0 0;
-      font-size: 16px;
-    }
-
-    #portfolio .portfolio-item {
-
-      height: 300px;
-
-    }
-
-    #portfolio .portfolio-item figure {
-
-      overflow: hidden;
-      height: 200px;
-
-    }
-
+  /*--[ Mobile styles go here]---------------------------*/
+  #portfolio {
+    padding: 30px 0 0 0;
+  }
+  #portfolio #portfolio-flters li {
+    margin: 0 15px 0 0;
+    display: flex;
+    width: 100%;
+    padding: 5px 5px 0 0;
+    font-size: 16px;
+  }
+  #portfolio .portfolio-item {
+    height: 300px;
+  }
+  #portfolio .portfolio-item img {
+    overflow: hidden;
+    height: 200px;
+  }
 }

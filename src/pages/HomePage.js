@@ -55,9 +55,7 @@ function HighlightedProjects(props) {
       return (<div className="col-md-12" key={id}>
         <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
-            <figure>
               <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-            </figure>
             <div className="portfolio-info">
               <h4>
                 {project.project_name}
@@ -71,9 +69,7 @@ function HighlightedProjects(props) {
       return (<div className="col-md-6 wrap-this" key={id}>
         <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
-            <figure>
               <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-            </figure>
             <div className="portfolio-info">
               <h4>
                 {project.project_name}
@@ -110,7 +106,7 @@ function Items(props) {
         <img src={a.about_section_picture_right.guid} alt="alt" className="img-fluid core-value-img"/>
       </div>
       <div className="text-center about-section-right-p-div">
-      <p className="description text-center">{a.about_section_desc}</p>
+        <p className="description text-center">{a.about_section_desc}</p>
       </div>
     </div>
   </div>);
@@ -198,19 +194,22 @@ class HomePage extends Component {
       return null;
     }
 
-
     const publicUrl = process.env.PUBLIC_URL;
 
-    const finalURL = publicUrl + '/canvas/hello/index.html'
-
+    const canvasURL = publicUrl + '/canvas/hello/index.html'
+    const home = h[0];
 
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
+        <div className="homepage-top-logo-div">
+          <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
+        </div>
         <div className="iframe-p5-div container-fluid">
-          <iframe className="iframe-p5" frameBorder={0} src={finalURL}/>
+
+          <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
         </div>
         <div>
-          <Link to={h[0].showreel_video.guid} id="pop-up-vid">
+          <Link to={home.showreel_video.guid} id="pop-up-vid">
             <h4 className="homepage-showreel wow slideInLeft">TO IDENTIFY THE ALTERNATIVES&nbsp;
               <i className="ion ion-android-arrow-dropright-circle"></i>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -221,22 +220,17 @@ class HomePage extends Component {
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
 
-        <HighlightedProjects projectlist={h[0].highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
+        <HighlightedProjects projectlist={home.highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
 
       </section>
-      <section id="homepage-core-val" className="section-bg wow fadeInUp">
-        <div className="row container">
-
-          <div className="col-md-6 text-center"></div>
-          <div className="col-md-6 text-center"></div>
-
-        </div>
-      </section>
-
       <section id="homepage-core-value">
+
         <div className="container">
-          <Items abouts={h[0]}/>
+          <Link to={routes.about}>
+            <Items abouts={home}/>
+          </Link>
         </div>
+
       </section>
       <section id="homepage-lab" className="section-bg wow fadeInUp">
         <div className="row container-fluid">
