@@ -70,7 +70,7 @@ function setup() {
   initSetup();
 
   text.center();
-  console.log(canvas)
+  console.log("canvas loaded")
   smooth();
 
 }

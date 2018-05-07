@@ -31,26 +31,26 @@ class Sidebar extends Component {
     e.preventDefault();
 
     let attr = $("#sidebar[class*='active']")
-    console.log(attr.length)
-/*
-    if (attr.length == 0) {
-      console.log("has acitve")
-      resetMatterJS();
-    } else {
-      console.log("not acitve")
-      //
+    //console.log(attr.length)
 
-    }
-*/
     $("#sidebar").toggleClass("active");
     menuCanvas();
   }
 
   handleMenuClose(e) {
-
     $("#sidebar").removeClass("active");
 
-    //resetMatterJS();
+    window.setTimeout(function() {
+      //$('html, body').scrollTop(0);
+      $('html, body').animate({ scrollTop: "0" });
+    }, 0);
+/*
+
+$('html, body').animate({
+  scrollTop: 0
+}, 1500, 'easeInOutExpo');
+*/
+
   }
 
   render() {
@@ -59,7 +59,6 @@ class Sidebar extends Component {
       return null;
     }
     return (<nav id="sidebar" className="menu-transition" role="navigation">
-
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <h3>Index</h3>

@@ -84,8 +84,7 @@ function VideoLanding(props) {
   </section>); }
 
   function VideoLandingDesc(props) {
-    console.log("backgroundColor" + props.project.background_mood_color)
-    console.log(props.project)
+
     const bg = {
       backgroundColor: props.project.background_mood_color,
     };

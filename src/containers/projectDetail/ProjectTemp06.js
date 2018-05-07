@@ -45,8 +45,7 @@ class ProjectTemp06 extends Component {
     const props = this.props;
 
     const url = "url('" + props.background_image.guid + "')"
-    console.log(props);
-    console.log(url);
+
     const bg = {
       backgroundImage: url,
       backgroundColor: props.background_mood_color,

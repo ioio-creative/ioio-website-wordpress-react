@@ -94,7 +94,7 @@ function HighlightedProjects(props) {
 }
 
 function Items(props) {
-  console.log(props.abouts)
+
   let a = props.abouts
   return (<div className="row">
     <div className="col-md-6 about-section-left">
@@ -198,11 +198,11 @@ class HomePage extends Component {
       return null;
     }
 
-    console.log(p[0]);
+
     const publicUrl = process.env.PUBLIC_URL;
 
     const finalURL = publicUrl + '/canvas/hello/index.html'
-    console.log(p[0].projects);
+
 
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
