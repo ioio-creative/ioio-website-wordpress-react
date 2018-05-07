@@ -20,6 +20,5 @@ export default function sketch (p) {
     p.rotateY(rotation);
     p.box(100);
     p.pop();
-
   };
 };

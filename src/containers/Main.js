@@ -4,6 +4,8 @@ import Loadable from 'react-loadable';
 
 import routes from 'globals/routes';
 
+import P5SketchTrialPage from 'pages/P5SketchTrialPage';
+
 // Code Splitting and React Router v4
 // https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 const AsyncHomePage = asyncLoadingComponent(() => import("pages/HomePage"));
@@ -53,6 +55,7 @@ class Main extends Component {
                     <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
                     <Route path={routes.projects} component={AsyncProjectListPage} />
                     <Route path={routes.contacts} component={AsyncContactsPage} />
+                    <Route path='/trial' component={P5SketchTrialPage} />
                     <Route component={AsyncNotFoundPage} />
                 </Switch>
             </main>

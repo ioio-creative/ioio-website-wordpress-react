@@ -137,26 +137,10 @@ class HomePage extends Component {
           console.log($('.iframe-p5').attr("width"))
 
     });
-*/
-    const publicUrl = process.env.PUBLIC_URL;
-    /*
-    var loadScriptsAsync = ['canvas/hello/p5.min.js'].map((relativeUrl) => {
-      return publicUrl + "/" + relativeUrl;
-    });
-    var loadScriptsLater = ['canvas/hello/p5.sound.min.js', 'canvas/hello/p5.dom.min.js'].map((relativeUrl) => {
-      return publicUrl + "/" + relativeUrl;
-    });
-
-    scriptjs(loadScriptsAsync, () => {
-      scriptjs(loadScriptsLater, 'bundle')
-    });
-    scriptjs.ready('bundle', function() {
-      scriptjs(publicUrl + "/" + 'canvas/hello/sketch.js');
-    })
-*/
+    */
   }
-  render() {
 
+  render() {
     const p = this.state.projects;
     const footer = this.state.footer;
 
@@ -170,11 +154,11 @@ class HomePage extends Component {
       return null;
     }
 
-    console.log(p[0])
+    console.log(p[0]);
     const publicUrl = process.env.PUBLIC_URL;
 
     const finalURL = publicUrl + '/canvas/hello/index.html'
-    console.log(p[0].projects)
+    console.log(p[0].projects);
     return (<div>
       <section id="homepage-top" className="section-bg wow fadeInUp">
         <div className="iframe-p5-div container-fluid">
