@@ -10,7 +10,7 @@ import $ from 'jquery'
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter} from 'websiteApi';
+import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter, fetchHomePage} from 'websiteApi';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import './HomePage.css';
