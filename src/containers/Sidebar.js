@@ -42,9 +42,9 @@ class Sidebar extends Component {
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
-      $('html, body').animate({ scrollTop: "0" });
+      $('html, body').animate({scrollTop: "0"});
     }, 0);
-/*
+    /*
 
 $('html, body').animate({
   scrollTop: 0
@@ -64,10 +64,9 @@ $('html, body').animate({
         <h3>Index</h3>
       </a>
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
-        <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> {/*  <object data={sidebar.logo_svg.guid} type="image/svg+xml" className="logo menu-transition">
+        {/* <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/> */}
+        <object data="img/ioio_logo-02.svg" type="image/svg+xml" className="logo menu-transition"></object>
 
-              </object> */
-        }
       </Link>
 
       <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>

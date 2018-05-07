@@ -187,12 +187,11 @@ class ProjectDetailPage extends Component {
 
     return (<div>
       <VideoLanding project={project} modalClick={this.openModal}/>
-      <VideoLandingDesc project={project}/> {/*
-            <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-
-            <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
-            */
-      }
+      <VideoLandingDesc project={project}/>
+      {/*
+          <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+          <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
+      */}
       {projectTemplateContainer}
       <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Example Modal">
         <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>

@@ -16,7 +16,7 @@
 
 #sidebar {
   height: 100%;
-  width: 70px;
+  width: 55px;
   /*update scroller margin-left as well*/
   position: fixed;
   z-index: 999;
@@ -26,7 +26,7 @@
   color: #000;
   overflow-x: hidden;
   padding-top: 20px;
-  border-right: 2px solid #E6E6E6;
+  border-right: 1px solid #E6E6E6;
 }
 
 #sidebar.active {
@@ -56,7 +56,7 @@
   text-transform: uppercase;
   font-weight: bold;
   margin-left: 150px;
-    font-size: 80px;
+  font-size: 80px;
 }
 
 #sidebar.active .menu-language {
@@ -80,7 +80,7 @@
   font-size: 16px;
   letter-spacing: 2px;
   /*text-transform: uppercase;*/
-  padding: 5px 10px;
+  padding: 5px 5px;
   margin: 0 0 10px 0;
   line-height: 24px;
   /* Abs positioning makes it not take up vert space */
@@ -96,9 +96,9 @@
 
 #sidebar .logo {
   position: absolute;
-  top: 20px;
-  left: 10px;
-  width: 50px;
+  top: 15px;
+  left: 8px;
+  width: 40px;
 }
 
 #sidebar.active #menu-canvas {
@@ -122,10 +122,8 @@
 
 /* Small devices (tablets, 768px and up) */
 
-
-
 @media only screen and (max-width: 767px) {
-    /*--[ Mobile styles go here]---------------------------*/
+  /*--[ Mobile styles go here]---------------------------*/
   #sidebar {
     height: 55px;
     width: 100%;
@@ -140,14 +138,12 @@
     padding-top: 0;
     border-bottom: 2px solid #E6E6E6;
   }
-
   #sidebar.active {
     background: rgba(0, 0, 0, 0.9);
     color: #fff;
     height: 100%;
     padding-top: 100px;
   }
-
   #sidebar h3 {
     font-size: 16px;
     letter-spacing: 2px;
@@ -165,47 +161,34 @@
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-
   }
-
   #sidebar.active h3 {
     top: 12px;
   }
-
   #sidebar.active .menu-item {
     font-size: 40px;
-  margin-left: 100px;
+    margin-left: 100px;
   }
-
   #sidebar.active .menu-language {
     display: inline;
     font-size: 18px;
   }
-
-
   #sidebar .logo {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 50px;
+
   }
 }
 
-
-
-
-
 @media only screen and (max-width: 992px) {
-    /*--[ Mobile styles go here]---------------------------*/
-
+  /*--[ Mobile styles go here]---------------------------*/
 }
-
 
 /*
 /* .....NavBar: Icon only with coloring/layout.....*/
 
 /*small/medium side display*/
-
 
 /* .....NavBar: Fully showing nav bar..... */
 
