@@ -1,30 +1,5 @@
-/*
-Theme Name: BizPage
-Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# font
---------------------------------------------------------------*/
 
 
-
-@font-face {
-  font-family: "FuturaLT";
-  src: url('/src/fonts/FuturaLT.ttf');
-  /*
-  to fix warnings
-  https://stackoverflow.com/questions/30442319/failed-to-decode-downloaded-font
-  */
-}
-
-@font-face {
-  font-family: "FuturaLT";
-  src: url('/src/fonts/futura_lt_bold1.ttf');
-  font-weight: bold;
-}
 
 /*--------------------------------------------------------------
 # General

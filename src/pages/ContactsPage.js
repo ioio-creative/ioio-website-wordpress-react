@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ContactForm from 'react-simple-contact-form'
+//import ContactForm from 'react-simple-contact-form'
 
 import './ContactsPage.css';
+import ContactForm from 'containers/ContactForm'
 
 var dict = {
         "header":"Send Us A Mail",
@@ -28,7 +29,9 @@ class ContactsPage extends Component {
         return (
           <section id="contact-form" className="container-fluid">
             <div className="container">
-                <ContactForm data={dict} ></ContactForm>
+
+                {/*<ContactForm data={dict} ></ContactForm>*/}
+                <ContactForm />
             </div>
           </section>
         );

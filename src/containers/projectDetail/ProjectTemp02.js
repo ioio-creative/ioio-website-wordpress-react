@@ -6,7 +6,7 @@ import 'containers/slideshow.css';
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
-    return (<div className="slideshow-item">
+    return (<div className="slideshow-item" key={id}>
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <img src={slide.guid} className="slideshow-img" alt="alt"/>
@@ -29,8 +29,10 @@ class ProjectTemp02 extends Component {
 
   render() {
     const props = this.props;
-
-    return (<section className="slideshow slideshow-img-on-left section-bg wow fadeInUp">
+    const bg = {
+      backgroundColor: props.background_mood_color,
+    };
+    return (<section className="slideshow slideshow-img-on-left project-section-bg wow fadeInUp" style={bg}>
       <div className="row container-fluid">
         <div className="col-md-8 text-center">
           <Slideshow slides={props.images}/>

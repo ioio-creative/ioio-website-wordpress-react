@@ -1,3 +1,8 @@
+.project-section-bg{
+  margin: 0 0;
+  padding: 40px 0;
+}
+
 
 .ReactModalPortal  {
 
@@ -255,6 +260,15 @@ Project-cover Section
   min-width: 100%;
 }
 
+
+/*==============
+.slideshow-img-in-middle
+==============*/
+.slideshow-img-in-middle{
+  padding: 80px 0;
+}
+
+
 /*==============
 .slideshow-2-col
 ==============*/
@@ -280,6 +294,20 @@ Project-cover Section
   text-align: left;
   padding-top: 10px;
   padding-left: 5%;
+}
+
+
+/*==============
+.photo-montage-one-img
+==============*/
+
+.photo-montage-one-vid {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+}
+.photo-montage-one-vid div{
+margin: 0 0 0 0;
+padding: 0 0 0 0;
 }
 
 @media only screen and (max-width: 767px) {
