@@ -9,18 +9,13 @@ import 'containers/Sidebar.css';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
-    return (
-      <a href={item.link} key={index} className="youtube">{item.my_name}</a>
-    );
+    return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
   });
 
-  return (
-    <div>
-      {social_media_items}
-    </div>
-  );
+  return (<div>
+    {social_media_items}
+  </div>);
 }
-
 
 class Sidebar extends Component {
   constructor(props) {
@@ -73,7 +68,7 @@ class Sidebar extends Component {
         <h3>Index</h3>
       </a>
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
-         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
+        <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
       </Link>
 
       <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
@@ -83,34 +78,48 @@ class Sidebar extends Component {
       <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
       <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
-      <div className="container info-section">
+      <div className="container-fluid info-section">
         <div className="row">
           <div className="col-lg-3 col-md-3 sidebar-info">
-              <p>
-                {sidebar.address}
-                  </p>
+            <h4>
+              {sidebar.bottom_section_left_title}
+            </h4>
           </div>
-          <div className="col-lg-3 col-md-3 sidebar-img">
+          <div className="col-lg-3 col-md-3 sidebar-contact-method"></div>
+          <div className="col-lg-3 col-md-3 "></div>
+          <div className="col-lg-3 col-md-3 sidebar-social">
+            <h4>
+              {sidebar.hiring_title}
+            </h4>
+          </div>
+        </div>
 
+        <div className="row">
+          <div className="col-lg-3 col-md-3 sidebar-info">
             <p>
-                <strong>{sidebar.phone}</strong>
-                <br/>
-                <strong>{sidebar.email}</strong>
-                <br/>
-              </p>
+              {sidebar.address}
+            </p>
           </div>
-  <div className="col-lg-3 col-md-3 ">
-  </div>
-          <div className="social-links">
-            <SocialMedia items={sidebar.social_media}
-            />
+          <div className="col-lg-3 col-md-3 sidebar-contact-method">
+            <p>
+              <strong>{sidebar.phone}</strong>
+              <br/>
+              <strong>{sidebar.email}</strong>
+              <br/>
+            </p>
+          </div>
+          <div className="col-lg-3 col-md-3 ">
+            <div className="social-links">
+              <SocialMedia items={sidebar.social_media}/>
+            </div>
           </div>
           <div className="col-lg-3 col-md-3 sidebar-social">
-
+            <p>
+              {sidebar.hiring_description}
+            </p>
           </div>
         </div>
       </div>
-
 
     </nav>);
   }

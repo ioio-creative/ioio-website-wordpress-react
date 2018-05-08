@@ -115,13 +115,24 @@
   display: none;
 }
 
-#sidebar.active .info-section{
-display:none;
+#sidebar.active .info-section {
+  display: inline;
+  position: fixed;
+  bottom: 0;
+  margin-left: 55px;
+  padding-right: 55px;
 }
 
-#sidebar .info-section{
-display: none;
+#sidebar.active .info-section h4 {
+  font-weight: bold;
+}
 
+#sidebar.active .info-section .social-links a{
+  display: block;
+}
+
+#sidebar .info-section {
+  display: none;
 }
 
 /*
@@ -186,7 +197,6 @@ display: none;
     position: absolute;
     top: 10px;
     left: 10px;
-
   }
 }
 
