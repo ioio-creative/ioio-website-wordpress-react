@@ -86,23 +86,21 @@ class Sidebar extends Component {
       <div className="container info-section">
         <div className="row">
           <div className="col-lg-3 col-md-3 sidebar-info">
-
-          </div>
-          <div className="col-lg-3 col-md-3 sidebar-img">
-            <div className="col-lg-3 col-md-3 sidebar-contact">
               <p>
                 {sidebar.address}
-                <br/>
-                <br/>
+                  </p>
+          </div>
+          <div className="col-lg-3 col-md-3 sidebar-img">
+
+            <p>
                 <strong>{sidebar.phone}</strong>
                 <br/>
                 <strong>{sidebar.email}</strong>
                 <br/>
               </p>
-
-            </div>
           </div>
-
+  <div className="col-lg-3 col-md-3 ">
+  </div>
           <div className="social-links">
             <SocialMedia items={sidebar.social_media}
             />
