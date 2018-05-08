@@ -30,7 +30,7 @@ class About03 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="core-value">
+    return (<section id="core-value" className="">
       <div className="container-fluid">
         <Items dnas={a.dnas}/>
       </div>

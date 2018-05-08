@@ -33,11 +33,11 @@ constructor(props) {
 
 render() {
   var a = this.props.about
-  return (<section id="services">
+  return (<section id="services" className="about-section-bg">
     <div className="container">
       <header className="section-header">
         <h3>{a.service_section_title}</h3>
-        <p>{a.service_section_desc}}</p>
+        <p>{a.service_section_desc}</p>
       </header>
         <Items items={a.services}/>
     </div>

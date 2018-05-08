@@ -10,7 +10,7 @@ class About02 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="media" className="wow fadeIn">
+    return (<section id="media" className="wow fadeIn about-section-bg">
       <div className="container text-left">
         <h1>{a.feature_media_caption}
         </h1>

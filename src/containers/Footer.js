@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import './Footer.css'
+import $ from 'jquery'
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -22,6 +23,11 @@ class Footer extends Component {
     this.state = {
       footer: {}
     }
+  }
+
+
+  componentDidMount() {
+
   }
 
   render() {
@@ -67,7 +73,7 @@ class Footer extends Component {
             <div className="col-lg-3 col-md-3 footer-bottom-links">
               <a>TERMS & CONDITIONS</a>
               <a>JOIN US</a>
-              <a><i className="ion ion-android-arrow-up"></i></a>
+              <a className="footer-back-to-top"><i className="ion ion-android-arrow-up"></i></a>
             </div>
           </div>
         </div>

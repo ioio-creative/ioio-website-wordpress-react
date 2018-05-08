@@ -1,4 +1,38 @@
 /*--------------------------------------------------------------
+#about general
+--------------------------------*/
+.about-section-bg{
+  padding: 30px 0 30px 0;
+}
+
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+
+/* Sections Header
+--------------------------------*/
+
+.section-header h3 {
+  font-size: 30px;
+  padding: 5px 0 5px 0;
+  color: #000;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: bold;
+  position: relative;
+
+}
+
+.section-header p {
+  text-align: left;
+  padding: 5px 0 5px 0;
+  width: 40%;
+  color: #000;
+}
+
+
+/*--------------------------------------------------------------
 #about01
 --------------------------------*/
 
@@ -132,7 +166,6 @@
 
 #media {
   background-color: #FFE000;
-  padding: 60px 0 20px 0;
 }
 
 #media h1 {
@@ -159,7 +192,7 @@
 --------------------------------*/
 
 #core-value {
-  background: #000;
+  background: #FFF;
 }
 
 #core-value .box {
@@ -211,7 +244,29 @@
 # The-team
 --------------------------------------------------------------*/
 
+
+
 #the-team .container {
   position: relative;
   z-index: 10;
+}
+
+
+#about-press{
+  display: none;
+}
+
+
+/*---------------------------
+Serivce
+--------------------------- */
+
+.services-col{
+  text-align: center;
+}
+
+
+
+.client-col{
+  padding: 30px 30px;
 }

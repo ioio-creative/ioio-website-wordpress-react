@@ -15,7 +15,7 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={true} dots={true} dotsEach={true} items={3.5} margin={20} slideBy={1} autoplayTimeout={2500}>
+  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={true} dots={true} dotsEach={true} items={3.5} margin={5} slideBy={1} autoplayTimeout={2500}>
     {member_items}
   </OwlCarousel>);
 }
@@ -132,7 +132,7 @@ class About05 extends Component {
   render() {
     let a = this.props.about
     let members = a.team_members
-    return (<section id="the-team">
+    return (<section id="the-team" className="about-section-bg">
       <div className="container">
         <header className="section-header">
           <h3>{a.team_section_title}</h3>

@@ -10,11 +10,11 @@ class About08 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="press">
+    return (<section id="about-press" className="about-section-bg">
         <div className="container">
           <header className="section-header">
-            <h3>Press</h3>
-            <p>From products with commercial applications to bespoke tools that we utilize for our clients, our technology team has created a suite of.</p>
+            <h3>{a.press_section_title}</h3>
+            <p>{a.press_section_desc}</p>
           </header>
           <div className="row about-cols">
             <div className="col-md-12 wow fadeInUp">

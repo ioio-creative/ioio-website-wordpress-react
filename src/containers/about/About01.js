@@ -10,7 +10,7 @@ class About01 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="about01" className="wow">
+    return (<section id="about01" className="wow about-section-bg">
       <div className="container text-left">
         <div className="about01-img text-right">
           <img id="img-hotpot" src={a.hotpot_image.guid} alt="" className="img-fluid"/>

@@ -2,7 +2,6 @@
 # General
 --------------------------------------------------------------*/
 
-
 #loading-screen {
   position: fixed;
   left: 50%;
@@ -151,30 +150,6 @@ section {
   }
 }
 
-/*--------------------------------------------------------------
-# Sections General
---------------------------------------------------------------*/
-
-/* Sections Header
---------------------------------*/
-
-.section-header h3 {
-  font-size: 32px;
-  color: #000;
-  text-transform: uppercase;
-  text-align: left;
-  font-weight: bold;
-  position: relative;
-  padding-bottom: 15px;
+.owl-item {
+  cursor: ew-resize;
 }
-
-.section-header p {
-  text-align: left;
-  padding-bottom: 30px;
-  width: 60%;
-  color: #000;
-}
-
-/*--------------------------------------------------------------
-# Pages: About Page
---------------------------------------------------------------*/

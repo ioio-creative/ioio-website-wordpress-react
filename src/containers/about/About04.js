@@ -38,7 +38,7 @@ class About04 extends Component {
     let a = this.props.about
     let slides = a.slideshow
 
-    return (<section className="slideshow slideshow-img-and-text section-bg wow fadeInUp">
+    return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInUp">
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <Slideshow slides={slides}/>
