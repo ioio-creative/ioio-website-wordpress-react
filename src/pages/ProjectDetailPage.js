@@ -17,6 +17,7 @@ import ProjectTemp04 from 'containers/projectDetail/ProjectTemp04'; //photomonta
 import ProjectTemp05 from 'containers/projectDetail/ProjectTemp05'; //slideshow - Image only
 import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomontage - 2-column Image and caption
 import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
+import ProjectTemp08 from 'containers/projectDetail/ProjectTemp07'; //centre text
 
 import './ProjectDetailPage.css';
 
@@ -37,7 +38,8 @@ const projectTemplateMap = {
   4: ProjectTemp04,
   5: ProjectTemp05,
   6: ProjectTemp06,
-  7: ProjectTemp07
+  7: ProjectTemp07,
+  8: ProjectTemp08
 };
 
 const customStyles = {
