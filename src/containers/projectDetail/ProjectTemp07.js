@@ -12,7 +12,11 @@ class ProjectTemp07 extends Component {
         backgroundColor: props.background_mood_color,
       };
       
-      const image0 = props.images[0].guid || '';
+      let image0 = '';
+      if (props.images)
+      {
+        image0 = props.images[0].guid;
+      }      
 
         return (
           <section className="photo-montage-one-vid project-section-bg wow fadeInUp">
