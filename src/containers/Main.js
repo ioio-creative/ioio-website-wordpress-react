@@ -26,7 +26,7 @@ function LoadingComponent(props) {
     const { isLoading, error } = props;
     // Handle the loading state
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div id="loading-screen"></div>;
     }
     // Handle the error state
     else if (error) {
