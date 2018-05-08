@@ -32,19 +32,17 @@ function reloadJS() {
 
   // Init WOW.js and get instance
   //var wow = new WOW();
-  var wow = new WOW(
-                        {
-                        boxClass:     'wow',      // default
-                        animateClass: 'animated', // default
-                        offset:       0,          // default
-                        mobile:       true,       // default
-                        live:         true        // default
-                      }
-                      )
+  var wow = new WOW({
+    boxClass: 'wow', // default
+    animateClass: 'animated', // default
+    offset: 0, // default
+    mobile: true, // default
+    live: true // default
+  })
 
   wow.init();
 
-/*
+  /*
   // Attach scrollSpy to .wow elements for detect view exit events,
   // then reset elements and add again for animation
   $('.wow').on('scrollSpy:exit', function() {
@@ -66,35 +64,8 @@ function reloadJS() {
             */
     }
   });
-
-
-
-
-  // Clients carousel (uses the Owl Carousel library)
-  $(".clients-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 2
-      },
-      768: {
-        items: 4
-      },
-      900: {
-        items: 6
-      }
-    }
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({autoplay: true, dots: true, loop: true, items: 1});
-
-
-
-
-  //footer
+  
+  /* ===============  //footer =============== */
 
   $('.footer-back-to-top').click(function() {
     $('html, body').animate({
@@ -102,7 +73,6 @@ function reloadJS() {
     }, 1500, 'easeInOutExpo');
     return false;
   });
-
 
 }
 

@@ -21,7 +21,7 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<OwlCarousel className="owl-theme" loop autoplay={true} dots={true} loop={true} items={1}>
+  return (<OwlCarousel className="owl-theme" loop={true} nav={false} autoplay={true} dots={true} dotsEach={true} items={1} slideBy={1} autoplayTimeout={8000}>
     {member_items}
   </OwlCarousel>);
 }
@@ -37,8 +37,17 @@ class About04 extends Component {
   render() {
     let a = this.props.about
     let slides = a.slideshow
+    console.log(a.slideshow_background_image.guid)
 
-    return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInUp">
+    const url = "url('" + a.slideshow_background_image.guid + "')"
+
+    const bg = {
+      backgroundImage: url,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center top',
+    };
+
+    return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInUp" style={bg}>
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <Slideshow slides={slides}/>
