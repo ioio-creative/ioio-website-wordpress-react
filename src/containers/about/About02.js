@@ -10,12 +10,12 @@ class About02 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="media" className="wow fadeIn about-section-bg">
+    return (<section id="media" className="wow fadeIn about-section-bg" >
       <div className="container text-left">
         <h1>{a.feature_media_caption}
         </h1>
         <div className="media-video text-center">
-          <video className="media-video text-center" controls>
+          <video className="media-video text-center" controls poster={a.feature_media_preview_photo.guid}>
             <source src={a.feature_media.guid} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
