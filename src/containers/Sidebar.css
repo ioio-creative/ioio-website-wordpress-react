@@ -115,6 +115,20 @@
   display: none;
 }
 
+#sidebar.active .info-section{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  top:100px;
+  display:inline;
+}
+
+#sidebar .info-section{
+display: none;
+}
+
 /*
 /* Extra small devices (phones, less than 768px) */
 

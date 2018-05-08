@@ -210,7 +210,7 @@ class HomePage extends Component {
         </div>
         <div>
           <Link to={home.showreel_video.guid} id="pop-up-vid">
-            <h4 className="homepage-showreel wow slideInLeft">TO IDENTIFY THE ALTERNATIVES&nbsp;
+            <h4 className="homepage-showreel wow slideInLeft">{home.page_title}&nbsp;
               <i className="ion ion-android-arrow-dropright-circle"></i>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </h4>
