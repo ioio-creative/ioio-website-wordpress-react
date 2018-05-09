@@ -8,9 +8,9 @@
   top: 50%;
   height: 18em;
   margin-top: -9em;
-  /*set to a negative number 1/2 of your height*/
+
   margin-left: -15em;
-  /*set to a negative number 1/2 of your width*/
+
   border: 3px solid #f3f3f3;
   border-radius: 50%;
   border-top: 3px solid #000000;
@@ -18,7 +18,7 @@
   height: 25px;
   margin: 0 auto;
   -webkit-animation: spin 1s linear infinite;
-  /* Safari */
+
   animation: spin 1s linear infinite;
 }
 
@@ -40,6 +40,8 @@
   }
 }
 
+
+
 body {
   background: #fff;
   color: #000;
@@ -48,7 +50,11 @@ body {
   white-space: pre-line;
   font-family: "FuturaLT", sans-serif;
   -webkit-font-smoothing: antialiased;
+
 }
+
+
+
 
 a {
   color: #000;
@@ -151,5 +157,15 @@ section {
 }
 
 .owl-item {
-  cursor: ew-resize;
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.owl-item:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
