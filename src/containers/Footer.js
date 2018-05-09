@@ -45,7 +45,7 @@ class Footer extends Component {
                 <img className="footer-hotpot-img" src={f.hotpot_image.guid} alt="alt"/>
               <h3 className="footer-slogan">{f.slogan}</h3>
             </div>
-            <div className="col-md-1 footer-img"></div>
+            <div className="col-md-2 footer-img"></div>
             <div className="col-md-3 footer-contact">
               <p>
                 {f.address}
@@ -57,7 +57,8 @@ class Footer extends Component {
                 <br/>
               </p>
             </div>
-            <div className="col-md-3 footer-social">
+
+            <div className="col-md-2 footer-social">
               <div className="social-links">
                 <SocialMedia items={f.social_media}
                 />
@@ -74,9 +75,9 @@ class Footer extends Component {
                 <span>ALL RIGHTS RESERVED</span>
             </div>
             <div className="col-md-3"></div>
-            <div className="col-md-1">
+            <div className="col-md-2">
             </div>
-            <div className="col-md-3 footer-bottom-links">
+            <div className="col-md-2 footer-bottom-links">
               <a>TERMS & CONDITIONS</a>
               <a>JOIN US</a>
               <a className="footer-back-to-top"><i className="ion ion-android-arrow-up"></i></a>

@@ -8,16 +8,18 @@ function Slideshow(props) {
 
     return (<div className="item" key={id}>
       <div className="row container-fluid">
-        <div className="col-md-8 text-center">
+        <div className="col-md-1"></div>
+        <div className="col-md-7 text-center">
           <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
         </div>
-        <div className="col-md-4 slideshow-text">
+        <div className="col-md-3 slideshow-text">
           <h2>{slide.my_title}</h2>
           <p>
             {slide.desc}
           </p>
         </div>
       </div>
+              <div className="col-md-1"></div>
     </div>);
   });
 

@@ -26,7 +26,7 @@
 .section-header p {
   text-align: left;
   padding: 5px 0 5px 0;
-  width: 40%;
+  width: 50%;
   color: #000;
 }
 
@@ -59,12 +59,12 @@
   position: absolute;
   right: 40%;
   top: 1%;
-  max-width: 30%;
+  max-width: 45%;
 }
 
 #img-meet {
   position: absolute;
-  right: 20%;
+  right: 10%;
   margin-top: 300px;
   width: 20%;
 }
@@ -73,7 +73,7 @@
   position: absolute;
   right: 20%;
   margin-top: 600px;
-  z-index: 50;
+  z-index: 30;
   width: 20%;
 }
 
@@ -156,7 +156,6 @@
 #media h1 {
   font-weight: bold;
   font-size: 25px;
-  max-width: 600px;
 }
 
 .media-video {
@@ -170,9 +169,19 @@
 
 #media p {
   font-size: 18px;
-  max-width: 600px;
+
 }
 
+
+
+
+
+/*
+slideshow
+*/
+.slideshow-img-and-text img{
+  padding: 0 100px 0 0;
+}
 /* Core-Value
 --------------------------------*/
 
@@ -229,6 +238,8 @@
   margin: 10px 0 10px 0;
 }
 
+
+
 /*--------------------------------------------------------------
 # The-team
 --------------------------------------------------------------*/
@@ -238,6 +249,28 @@
   z-index: 10;
 }
 
+.the-team-name{ }
+
+.slideshow .the-team-text img {
+width: 100%;
+}
+
+.slideshow .the-team-text h3 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0px;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.slideshow .the-team-text p {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 5px;
+  font-size: 14px;
+}
 #about-press {
   display: none;
 }

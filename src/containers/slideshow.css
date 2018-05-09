@@ -122,64 +122,6 @@ width: 100%;
   }
 
 
-  .slideshow .the-team-text img {
-  width: 100%;
-  }
 
-  .slideshow .the-team-text h3 {
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 0px;
-    padding-top: 5px;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-
-  .slideshow .the-team-text p {
-    text-align: center;
-    margin-top: 0px;
-    padding-top: 5px;
-    font-size: 12px;
-  }
 
 }
-
-
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-.slideshow-img-on-left .owl-nav, .slideshow-img-on-left .owl-dots {
-  right: -30%;
-  padding-right: 0;
-  text-align: right;
-}
-
-.slideshow-img-on-right .owl-nav, .slideshow-img-on-right .owl-dots {
-  left: -30%;
-  padding-left: 0;
-  text-align: left;
-}
-
-
-
-.slideshow-img-in-middle div {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-
-
-*/
