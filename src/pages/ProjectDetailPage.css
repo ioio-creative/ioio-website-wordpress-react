@@ -21,31 +21,6 @@ Video Cover Section
 pop-up
 */
 
-.ReactModalPortal {}
-
-.ReactModalPortal div {
-  z-index: 1999;
-}
-
-.vid-player div video {
-  position: relative;
-  display: block;
-  width: 80% !important;
-  height: 90% !important;
-  margin: 1% 10%;
-}
-
-.video-close-btn {
-  border-radius: 50%;
-  border-width: 1;
-  cursor: pointer;
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  right: 10px;
-  top: 10px;
-  z-index: 2000;
-}
 
 #video-landing {
   position: relative;

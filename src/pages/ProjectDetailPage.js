@@ -6,7 +6,7 @@ import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 import {Link} from 'react-router-dom'
 
-import Modal from 'react-modal';
+
 
 import ReactPlayer from 'react-player'
 
@@ -26,9 +26,12 @@ import {fetchActiveFooter} from 'websiteApi';
 
 import $ from 'jquery';
 
+import Modal from 'react-modal';
+
 import {Player} from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
 
+Modal.setAppElement('#root');
 // Choosing the React Element Type at Runtime
 // https://reactjs.org/docs/jsx-in-depth.html
 const projectTemplateMap = {
@@ -52,7 +55,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
@@ -90,7 +93,9 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>); } function VideoLandingDesc(props) {
+  </section>); }
+
+  function VideoLandingDesc(props) {
 
     const bg = {
       backgroundColor: props.project.background_mood_color
@@ -123,6 +128,7 @@ function VideoLanding(props) {
       this.openModal = this.openModal.bind(this);
       this.afterOpenModal = this.afterOpenModal.bind(this);
       this.closeModal = this.closeModal.bind(this);
+
       this.state = {
         project: null,
         isReturnNotFound: false
@@ -142,6 +148,7 @@ function VideoLanding(props) {
     closeModal() {
       this.setState({modalIsOpen: false});
     }
+
     async componentDidMount() {
       const projectSlugFromQuery = this.props.match.params.projectSlug;
       const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
