@@ -17,6 +17,18 @@ input:focus {
   border: 1px solid #000;
 }
 
+textarea{
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-size: 16px;
+
+}
+
 .contact-form .label-content {
   margin-bottom: 15px;
 }
@@ -28,7 +40,6 @@ label{
 }
 
 .form-l{
-
     padding-right: 10px;
 }
 

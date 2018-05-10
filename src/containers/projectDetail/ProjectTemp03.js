@@ -31,7 +31,7 @@ class ProjectTemp03 extends Component {
     const bg = {
       backgroundColor: props.background_mood_color,
     };
-    return (<section className="slideshow slideshow-img-on-right project-section-bg wow fadeInUp" style={bg}>
+    return (<section className="slideshow slideshow-img-on-right project-section-bg wow fadeInRight" style={bg}>
       <div className="row container-fluid">
                 <div className="col-md-1 ">
                 </div>

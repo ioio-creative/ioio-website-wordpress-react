@@ -71,7 +71,7 @@ function VideoLanding(props) {
       <div className="container-fluid">
         <div className="player-wrapper">
           <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
-            <source src={video_url} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+            <source className="wow fadeIn" src={video_url} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
             <img src={poster_url} title="Your browser does not support the <video> tag"/>
           </video>
         </div>
@@ -207,7 +207,7 @@ function VideoLanding(props) {
         return <TemplateToUse {...templateData}/>
       });
 
-      return (<div>
+      return (<div className="wow fadeIn">
         <VideoLanding project={project} modalClick={this.openModal}/>
         <VideoLandingDesc project={project}/> {/*
           <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
