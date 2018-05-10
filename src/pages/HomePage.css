@@ -167,6 +167,7 @@ iframe-p5-div {
   position: absolute;
   padding: 20px 20px;
   color: white;
+  font-size: 24px;
 }
 
 #homepage-core-value img {
@@ -186,10 +187,10 @@ iframe-p5-div {
 }
 
 .about-section-right p {
-  padding: 50px 15px 0 15px;
+  padding: 50px 20px 0 20px;
   font-weight: bold;
   text-align: left;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 @media only screen and (max-width: 1500px) {
