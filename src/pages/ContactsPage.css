@@ -71,7 +71,9 @@
 /* contact-form
 --------------------------------*/
 
-
+#contact-form{
+  margin: 0 0 50px 0;
+}
 #contact-form h2{
   font-weight: bold;
   font-size: 40px;

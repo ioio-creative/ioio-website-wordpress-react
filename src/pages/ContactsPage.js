@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 
 import './ContactsPage.css';
 import ContactForm from 'containers/ContactForm'
+
+import Footer from 'containers/Footer';
 import {fetchActiveContact, fetchActiveFooter} from 'websiteApi';
 
 var dict = {
@@ -78,8 +80,7 @@ class ContactsPage extends Component {
     if (footer === null) {
       return null;
     }
-
-    console.log(contact)
+    console.log(footer)
     return (<div>
       <section id="contact-top" className="wow contact-section-bg">
         <div className="container-fluid row text-left">
@@ -121,6 +122,9 @@ class ContactsPage extends Component {
           </div>
         </div>
       </section>
+      <Footer
+        //Section: Footer
+        footer={footer}/>
     </div>);
   }
 }
