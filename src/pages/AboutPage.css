@@ -98,8 +98,8 @@
   #img-hotpot {
     position: absolute;
     left: 0px;
-    top: 10px;
-    max-width: 500px;
+    top: 0px;
+    max-width: 300px;
   }
   #img-meet {
     right: 1%;
@@ -129,19 +129,19 @@
   }
   #img-hotpot {
     left: -25%;
-    top: -5px;
+    top: -55px;
     max-width: 400px;
   }
   #img-meet {
-    right: 10%;
-    margin-top: -100px;
-    width: 40%;
+    right: -20px;
+    margin-top: -50px;
+    width: 50%;
   }
   #img-fish {
-    right: 10%;
-    margin-top: 200px;
+    right: 5%;
+    margin-top: 280px;
     z-index: 50;
-    width: 30%;
+    width: 40%;
   }
 }
 
@@ -181,6 +181,12 @@ slideshow
 */
 .slideshow-img-and-text img{
   padding: 0 100px 0 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .slideshow-img-and-text img{
+    padding: 0 0 0 0;
+  }
 }
 /* Core-Value
 --------------------------------*/
