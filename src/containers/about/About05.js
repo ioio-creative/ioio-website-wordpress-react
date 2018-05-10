@@ -132,7 +132,7 @@ class About05 extends Component {
   render() {
     let a = this.props.about
     let members = a.team_members
-    return (<section id="the-team" className="about-section-bg">
+    return (<section id="the-team" className="about-section-bg wow fadeIn">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-1"></div>
@@ -141,8 +141,7 @@ class About05 extends Component {
               <h3>{a.team_section_title}</h3>
               <p>{a.team_section_desc}</p>
             </header>
-            <div className="row">
-            </div>
+            <div className="row"></div>
           </div>
           <div className="col-md-1"></div>
         </div>

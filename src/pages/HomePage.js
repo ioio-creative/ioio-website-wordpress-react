@@ -227,7 +227,7 @@ class HomePage extends Component {
 
     return (<div>
 
-      <section id="homepage-top" className="section-bg wow fadeInUp">
+      <section id="homepage-top" className="section-bg wow fadeIn">
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
         </div>

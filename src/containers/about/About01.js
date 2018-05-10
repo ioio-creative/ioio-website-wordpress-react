@@ -10,7 +10,7 @@ class About01 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="about01" className="wow about-section-bg">
+    return (<section id="about01" className="wow fadeIn about-section-bg">
       <div className="container-fluid row text-left">
         <div className="col-md-1"></div>
         <div className="col-md-10">

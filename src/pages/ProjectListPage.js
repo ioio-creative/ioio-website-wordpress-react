@@ -77,7 +77,7 @@ function AllProjects(props) {
     </div>);
   });
 
-  return (<div className="row portfolio-container wow fadeInUp">
+  return (<div className="row portfolio-container wow fadeIn">
     {project_items}
   </div>);
 }
@@ -142,15 +142,21 @@ class ProjectListPage extends Component {
     }
 
     return (<div>
-      <section id="portfolio" className="section-bg">
+      <section id="portfolio" className="section-bg wow fadeIn">
         <div className="container-fluid">
-          <header className="section-header">
+          <div className="row">
+<div className="col-md-1"></div>
+<div className="col-md-10">          <header className="section-header">
             <h3 className="section-title">Case Studies</h3>
           </header>
           <div className="row">
             <ProjectTags tags={t}/>
           </div>
-          <AllProjects projectlist={p} tags={t}/>
+          <AllProjects projectlist={p} tags={t}/></div>
+<div className="col-md-1"></div>
+
+          </div>
+
         </div>
       </section>
       <Footer

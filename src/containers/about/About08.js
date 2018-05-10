@@ -17,7 +17,7 @@ class About08 extends Component {
             <p>{a.press_section_desc}</p>
           </header>
           <div className="row about-cols">
-            <div className="col-md-12 wow fadeInUp">
+            <div className="col-md-12 wow fadeInDown">
               <div className="about-col">
                 <div className="img">
                   <img src="img.jpg" alt="" className="img-fluid" />

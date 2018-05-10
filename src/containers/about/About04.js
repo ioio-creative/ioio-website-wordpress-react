@@ -49,7 +49,7 @@ class About04 extends Component {
       backgroundPosition: 'center top',
     };
 
-    return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInUp" style={bg}>
+    return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInLeft" style={bg}>
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <Slideshow slides={slides}/>
