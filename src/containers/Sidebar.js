@@ -66,7 +66,10 @@ class Sidebar extends Component {
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div"><h3>Index</h3></div>
+            <div className="close-symbol"></div>
       </a>
+
+
 
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>

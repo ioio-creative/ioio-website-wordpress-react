@@ -4,13 +4,10 @@
 
 #menu-toggle-div {
   position: fixed;
-
   bottom: 0;
   width: 55px;
   height: 100%;
 }
-
-
 
 .menu-transition {
   -webkit-transition: all 0.4s ease 0s;
@@ -45,8 +42,6 @@
   width: 100%;
   padding-top: 100px;
 }
-
-
 
 #sidebar.active .logo {
   -webkit-filter: invert(100%);
@@ -144,6 +139,87 @@
   display: none;
 }
 
+#sidebar.active .close-symbol {
+  position: fixed;
+  left: 15px;
+  top: 70%;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  z-index: 999;
+}
+
+#sidebar .close-symbol {
+  z-index: 999;
+
+}
+
+#sidebar .close-symbol:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+#sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
+  position: fixed;
+  left: 30px;
+  content: ' ';
+  width: 2px;
+  height: 28px;
+
+  background-color: white;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar .close-symbol:before {
+  position: absolute;
+  left: 25px;
+  content: ' ';
+  width: 2px;
+  height: 28px;
+  top: 75%;
+  background-color: black;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar .close-symbol:after {
+  position: fixed;
+  left: 32px;
+  content: ' ';
+  width: 2px;
+  height: 28px;
+  top: 75%;
+  background-color: black;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar.active .close-symbol:before {
+  transform: rotate(45deg);
+}
+
+#sidebar.active .close-symbol:after {
+  transform: rotate(-45deg);
+}
+
+#sidebar .close-symbol:before {
+  transform: rotate(0deg);
+}
+
+#sidebar .close-symbol:after {
+  transform: rotate(-0deg);
+}
+
 /*
 /* Extra small devices (phones, less than 768px) */
 
@@ -160,7 +236,6 @@
     height: 55px;
     width: 100%;
   }
-
   #sidebar {
     height: 55px;
     width: 100%;
