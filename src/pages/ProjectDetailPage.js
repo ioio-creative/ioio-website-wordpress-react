@@ -163,6 +163,12 @@ function VideoLanding(props) {
       fetchActiveFooter((aFooter) => {
         this.setState({footer: aFooter});
       });
+
+      window.setTimeout(function() {
+        //$('html, body').scrollTop(0);
+        $('html, body').animate({scrollTop: "0"});
+      }, 0);
+
     }
 
     render() {

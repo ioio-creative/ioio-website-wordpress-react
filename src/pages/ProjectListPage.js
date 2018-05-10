@@ -11,6 +11,8 @@ import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
 
+
+
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
     let tagId = ".filter-" + tag.id
@@ -114,6 +116,8 @@ class ProjectListPage extends Component {
     });
 
     window.addEventListener('load', this.handleLoad);
+
+
   }
 
   handleLoad() {
