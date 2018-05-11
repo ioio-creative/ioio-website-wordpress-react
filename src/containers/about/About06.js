@@ -31,6 +31,7 @@ class About06 extends Component {
 
   render() {
     var a = this.props.about
+
     return (<section id="services" className="about-section-bg">
       <div className="container-fluid">
         <div className="row">

@@ -14,11 +14,6 @@ class About02 extends Component {
 
   }
 
-
-
-
-
-
   render() {
     var a = this.props.about
 
