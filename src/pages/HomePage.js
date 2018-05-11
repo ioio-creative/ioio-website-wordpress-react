@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import routes from 'globals/routes';
 
 import {getProjectIdSlugPairs} from 'utils/mapProjectIdToSlugNames';
 
 import Footer from 'containers/Footer';
 import scriptjs from 'scriptjs';
-import $ from 'jquery'
+import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
