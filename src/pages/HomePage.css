@@ -46,8 +46,13 @@ iframe-p5-div {
 }
 
 #homepage-top span {
+  display: none;
   padding-left: 10px;
   text-decoration: line-through;
+}
+
+#homepage-top img {
+  width: 35px;
 }
 
 .homepage-showreel-hr {}
@@ -58,6 +63,38 @@ iframe-p5-div {
   width: 100%;
   left: 0;
   right: 0;
+}
+
+#homepage-selected-project li {
+  font-weight: bold;
+  /*cursor: pointer;*/
+  margin: 0 15px 0 0;
+  display: inline-block;
+  padding: 5px 20px 0 0;
+  font-size: 16px;
+  color: #000;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #fff;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#homepage-selected-project li span {
+  display: none;
+  font-weight: 100;
+  font-size: 11px;
+  position: absolute;
+  margin-bottom: 8px;
+}
+
+#homepage-selected-project li:hover, #homepage-selected-project li.filter-active {
+  /*  color: #FFE000;
+  background: #FFF;*/
+}
+
+#homepage-selected-project li:last-child {
+  margin-right: 0;
 }
 
 #homepage-selected-project div {
@@ -104,7 +141,6 @@ iframe-p5-div {
 }
 
 #homepage-selected-project .portfolio-wrap img:hover {
-
   transition: 0.3s;
 }
 
@@ -126,10 +162,10 @@ iframe-p5-div {
   font-size: 18px;
   line-height: 1px;
   font-weight: bold;
-  margin-bottom: 55px;
+  margin-bottom: 45px;
   padding-bottom: 0;
   color: white;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.7);
+
 }
 
 #homepage-selected-project .portfolio-wrap .portfolio-info p {
@@ -141,7 +177,7 @@ iframe-p5-div {
   font-size: 14px;
   text-transform: uppercase;
   color: white;
-  text-shadow: 1px 1px #000;
+
 }
 
 #homepage-lab p {
@@ -167,14 +203,17 @@ iframe-p5-div {
 
 #homepage-core-value h4 {
   position: absolute;
-  padding: 20px 20px;
+  padding: 20px 40px;
   color: white;
   font-size: 24px;
 }
 
 #homepage-core-value img {
   width: 100%;
+    padding: 0 20px;
 }
+
+
 
 .about-section-right img {
   height: 50%;
@@ -189,10 +228,10 @@ iframe-p5-div {
 }
 
 .about-section-right p {
-  padding: 50px 20px 0 20px;
+  padding: 40px 40px 0 20px;
   font-weight: bold;
   text-align: left;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 1500px) {

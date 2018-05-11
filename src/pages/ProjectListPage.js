@@ -11,8 +11,6 @@ import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
 
-
-
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
     let tagId = ".filter-" + tag.id
@@ -26,18 +24,31 @@ function ProjectTags(props) {
   </div>);
 }
 
+function ProjectCategories(props) {
+  const tag_items = props.categories.map((tag, id) => {
+    let tagId = ".filter-" + tag.id
+    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span></li>);
+  });
+  return (<div className="col-lg-12 ">
+    <ul id="portfolio-flters">
+      <li data-filter="*" className="filter-active">All</li>
+      {tag_items}
+    </ul>
+  </div>);
+}
+
 function AllProjects(props) {
-  const tag_item = props.tags.map((tag, id) => {
-    const tt = ".filter-" + tag.id
+  const tag_item = props.categories.map((category, id) => {
+    const tt = ".filter-" + category.id
     return (<div>
-      <li data-filter={tt}>{tag.name}</li>
+      <li data-filter={tt}>{category.name}</li>
     </div>);
   });
 
   const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-6 col-md-6 portfolio-item ";
-    project.project_tags.forEach((projectTag) => {
-      tagIds += "filter-" + projectTag + " ";
+    project.project_categories.forEach((project_category) => {
+      tagIds += "filter-" + project_category + " ";
     });
 
     const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
@@ -65,7 +76,7 @@ function AllProjects(props) {
     return (<div className={tagIds} key={id}>
       <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
-            <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+          <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
           <div className="portfolio-info">
             <h4>
               {project.project_name}
@@ -117,7 +128,6 @@ class ProjectListPage extends Component {
 
     window.addEventListener('load', this.handleLoad);
 
-
   }
 
   handleLoad() {
@@ -135,25 +145,34 @@ class ProjectListPage extends Component {
   render() {
 
     const t = this.state.projectTags;
+    const pC = this.state.projectCategories;
     const p = this.state.projects;
     const footer = this.state.footer;
     if (footer === null) {
       return null;
     }
 
+    if (pC === null) {
+      return null;
+    }
+
+    console.log(t)
+
     return (<div>
       <section id="portfolio" className="section-bg wow fadeIn">
         <div className="container-fluid">
           <div className="row">
-<div className="col-md-1"></div>
-<div className="col-md-10">          <header className="section-header">
-            <h3 className="section-title">Case Studies</h3>
-          </header>
-          <div className="row">
-            <ProjectTags tags={t}/>
-          </div>
-          <AllProjects projectlist={p} tags={t}/></div>
-<div className="col-md-1"></div>
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <header className="section-header">
+                <h3 className="section-title">Case Studies</h3>
+              </header>
+              <div className="row">
+                {/*<ProjectTags tags={t}/>*/}
+                <ProjectCategories categories={pC}/>
+              </div>
+              <AllProjects projectlist={p} categories={pC}/></div>
+            <div className="col-md-1"></div>
 
           </div>
 

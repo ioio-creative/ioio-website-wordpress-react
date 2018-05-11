@@ -50,8 +50,7 @@ body {
   white-space: pre-line;
   font-family: "FuturaLT", sans-serif;
   -webkit-font-smoothing: antialiased;
-
-      overflow-x: hidden;
+  overflow-x: hidden; /* //TODO */
 }
 
 a {
@@ -60,9 +59,10 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  color: #FFE000;
+  /*color: #FFE000;*/
+  color: #000000;
   outline: none;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 p {

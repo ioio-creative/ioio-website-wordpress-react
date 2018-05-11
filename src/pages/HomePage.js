@@ -23,6 +23,22 @@ import "./video-react.css";
 
 Modal.setAppElement('#root');
 
+
+function ProjectCategories(props) {
+  const tag_items = props.categories.map((tag, id) => {
+    let tagId = ".filter-" + tag.id
+    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span></li>);
+  });
+  return (<div className="col-lg-12 ">
+    <ul id="portfolio-flters">
+      <li data-filter="*" className="filter-active">All</li>
+      {tag_items}
+    </ul>
+  </div>);
+}
+
+
+
 function HighlightedProjects(props) {
   const projectIdSlugPairs = props.projIdSlugPairs;
 
@@ -100,21 +116,25 @@ function Items(props) {
 
   let a = props.abouts
   return (<div className="row">
-    <div className="col-md-6 about-section-left">
+    <div className="col-md-1">
+    </div>
+    <div className="col-md-5 about-section-left">
       <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
       <div className="text-center">
         <img src={a.about_section_picture_left.guid} alt="alt" className="img-fluid core-value-img"/>
       </div>
       <p className="description text-center"></p>
     </div>
-    <div className="col-md-6 about-section-right">
+    <div className="col-md-5 about-section-right">
       <h4 className="core-value-title  text-left">{a.about_section_title_right}</h4>
       <div className="text-center">
         <img src={a.about_section_picture_right.guid} alt="alt" className="img-fluid core-value-img"/>
       </div>
       <div className="text-center about-section-right-p-div">
-        <p className="description text-center">{a.about_section_desc}</p>
+        <p className="description">{a.about_section_desc}</p>
       </div>
+    </div>
+    <div className="col-md-1">
     </div>
   </div>);
 }
@@ -198,11 +218,16 @@ class HomePage extends Component {
     */
   }
 
+
   render() {
     const p = this.state.projects;
     const h = this.state.homepage;
     const footer = this.state.footer;
+    const pC = this.state.projectCategories;
 
+    if (pC === null) {
+      return null;
+    }
     if (footer === null) {
       return null;
     }
@@ -223,6 +248,7 @@ class HomePage extends Component {
     const publicUrl = process.env.PUBLIC_URL;
 
     const canvasURL = publicUrl + '/canvas/hello/index.html'
+    const svgURL = publicUrl + '/img/Play_btn-14.svg'
     const home = h[0];
 
     return (<div>
@@ -239,8 +265,8 @@ class HomePage extends Component {
                 <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
               </div>
               <Link to="#" onClick={this.openModal} id="pop-up-vid">
-                <h4 className="homepage-showreel wow slideInLeft">{home.page_title}&nbsp;
-                  <i className="ion ion-android-arrow-dropright-circle"></i>
+                <h4 className="homepage-showreel wow slideInLeft">{home.page_title}
+                  <img className="homepage-showreel-img" src={svgURL} alt="showreel"/>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </h4>
               </Link>
@@ -252,7 +278,7 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-
+              <ProjectCategories categories={pC}/>
         <HighlightedProjects projectlist={home.highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
 
       </section>

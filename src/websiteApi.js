@@ -155,7 +155,7 @@ async function fetchProjectCategoriesAsync(callback) {
 }
 
 function fetchProjectTags(callback) {
-    passJsonResultToCallback("project_tags", callback);
+    passJsonResultToCallback("project_tags/?per_page=20", callback);  // TODO
 }
 
 async function fetchProjectTagsAsync(callback) {

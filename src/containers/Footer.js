@@ -60,8 +60,8 @@ class Footer extends Component {
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-3 footer-bottom-copyright">
-              <span>&copy;2018 IOIO CREATIVE LIMITED</span>
-              <span>ALL RIGHTS RESERVED</span>
+              <span>&copy;2018 IOIO LIMITED</span>
+
             </div>
             <div className="col-md-3"></div>
             <div className="col-md-2"></div>

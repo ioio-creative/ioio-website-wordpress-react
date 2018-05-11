@@ -67,7 +67,7 @@ pop-up
   top: 0;
   z-index: 2;
   height: 500px;
-  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
+  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
 }
 
 .video-text .pop-up-vid-div {
@@ -103,9 +103,7 @@ pop-up
   top: 400px;
 }
 
-.video-text a:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 1));
-}
+
 
 .video-landing-text {
   position: relative;

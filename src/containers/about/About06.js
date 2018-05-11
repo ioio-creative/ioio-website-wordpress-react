@@ -7,9 +7,11 @@ function Items(props) {
         <div className="img">
           <img src={item.image.guid} alt="alt" className="img-fluid"/>
         </div>
+        <div className="item-desc">
         <p>
           {item.desc}
         </p>
+      </div>
       </div>
     </div>);
   });

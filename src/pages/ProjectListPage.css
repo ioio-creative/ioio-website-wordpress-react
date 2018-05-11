@@ -2,7 +2,7 @@
 --------------------------------*/
 
 #portfolio {
-  padding: 75px 0 0 0;
+  padding: 75px 0 50px 0;
   white-space: nowrap;
 }
 
@@ -26,6 +26,17 @@
   background: #fff;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
+}
+
+#portfolio #portfolio-flters  li span{
+
+  display: none;
+  font-weight: 100;
+
+  font-size: 11px;
+  position: absolute;
+  margin-bottom: 8px;
+
 }
 
 #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
