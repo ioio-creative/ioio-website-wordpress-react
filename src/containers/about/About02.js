@@ -11,7 +11,6 @@ class About02 extends Component {
     this.state = {
       about: {}
     }
-
   }
 
   render() {
