@@ -102,9 +102,15 @@
 
 #portfolio {
   margin: 0 auto;
-  max-width: 1500px;
+
 }
 
+
+#portfolio .section-title{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 45px;
+}
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   #portfolio {

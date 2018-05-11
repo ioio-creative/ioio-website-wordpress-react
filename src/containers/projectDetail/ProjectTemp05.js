@@ -15,7 +15,7 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<OwlCarousel className="owl-theme" loop autoplay={true} dots={true} loop={true} items={1}>
+  return (<OwlCarousel className="owl-theme" loop={true} autoplay={true} dots={true} items={1}>
     {member_items}
   </OwlCarousel>);
 }
@@ -28,9 +28,9 @@ class ProjectTemp05 extends Component {
   render() {
     const props = this.props;
     const bg = {
-      backgroundColor: props.background_mood_color,
+      backgroundColor: props.background_mood_color
     };
-    return (<section className="slideshow slideshow-img-in-middle project-section-bg wow fadeInUp" style={bg}>
+    return (<section className="slideshow slideshow-img-in-middle project-section-bg wow fadeInDown" style={bg}>
       <div className="row container-fluid">
         <div className="col-md-12 text-center">
           <Slideshow slides={props.images}/>

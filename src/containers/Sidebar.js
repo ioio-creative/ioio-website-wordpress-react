@@ -65,62 +65,58 @@ class Sidebar extends Component {
     return (<nav id="sidebar" className="menu-transition" role="navigation">
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
-        <h3>Index</h3>
+        <div id="menu-toggle-div"><h3>Index</h3></div>
+            <div className="close-symbol"></div>
       </a>
+
+
+
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
       </Link>
+      <div className="container-fluid ">
+        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
+        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
+        <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
+        <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
-      <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
-      <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
-      <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
-      <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
-      <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
-      <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
-
-      <div className="container-fluid info-section">
-        <div className="row">
-          <div className="col-lg-3 col-md-3 sidebar-info">
-            <h4>
-              {sidebar.bottom_section_left_title}
-            </h4>
-          </div>
-          <div className="col-lg-3 col-md-3 sidebar-contact-method"></div>
-          <div className="col-lg-3 col-md-3 "></div>
-          <div className="col-lg-3 col-md-3 sidebar-social">
-            <h4>
-              {sidebar.hiring_title}
-            </h4>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-lg-3 col-md-3 sidebar-info">
-            <p>
-              {sidebar.address}
-            </p>
-          </div>
-          <div className="col-lg-3 col-md-3 sidebar-contact-method">
-            <p>
-              <strong>{sidebar.phone}</strong>
-              <br/>
-              <strong>{sidebar.email}</strong>
-              <br/>
-            </p>
-          </div>
-          <div className="col-lg-3 col-md-3 ">
-            <div className="social-links">
-              <SocialMedia items={sidebar.social_media}/>
+        <div className="info-section">
+          <div className="row">
+            <div className="col-lg-3 col-md-3 sidebar-info">
+              <h4>
+                {sidebar.bottom_section_left_title}
+              </h4>
+              <p>
+                {sidebar.address}
+              </p>
+            </div>
+            <div className="col-lg-3 col-md-3 sidebar-contact-method">
+              <p>
+                <strong>{sidebar.phone}</strong>
+                <br/>
+                <strong>{sidebar.email}</strong>
+                <br/>
+              </p>
+            </div>
+            <div className="col-lg-3 col-md-3 ">
+              <div className="social-links">
+                <SocialMedia items={sidebar.social_media}/>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-3 sidebar-social">
+              <h4>
+                {sidebar.hiring_title}
+              </h4>
+              <p>
+                {sidebar.hiring_description}
+              </p>
             </div>
           </div>
-          <div className="col-lg-3 col-md-3 sidebar-social">
-            <p>
-              {sidebar.hiring_description}
-            </p>
-          </div>
         </div>
-      </div>
 
+      </div>
     </nav>);
   }
 }

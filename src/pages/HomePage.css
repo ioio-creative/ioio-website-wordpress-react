@@ -1,19 +1,17 @@
-#homepage-top-logo{
+#homepage-top-logo {
   position: relative;
-    font-weight: bold;
-    top:25px;
-    left:25px;
-    font-size: 15px;
-    text-transform: uppercase;
+  font-weight: bold;
+  top: 25px;
+  left: 25px;
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
-
-.homepage-top-logo-div{
+.homepage-top-logo-div {
   position: absolute;
-  top:0;
+  top: 0;
   z-index: 5;
   width: 100%;
-
 }
 
 iframe-p5-div {
@@ -83,6 +81,7 @@ iframe-p5-div {
   height: 550px;
   overflow: hidden;
 }
+
 /*
 #homepage-selected-project .portfolio-wrap figure {
   overflow: hidden;
@@ -94,6 +93,7 @@ iframe-p5-div {
   overflow: hidden;
 }
 */
+
 #homepage-selected-project .portfolio-wrap img {
   overflow: hidden;
   min-width: 100%;
@@ -167,6 +167,7 @@ iframe-p5-div {
   position: absolute;
   padding: 20px 20px;
   color: white;
+  font-size: 24px;
 }
 
 #homepage-core-value img {
@@ -186,10 +187,10 @@ iframe-p5-div {
 }
 
 .about-section-right p {
-  padding: 50px 15px 0 15px;
+  padding: 50px 20px 0 20px;
   font-weight: bold;
   text-align: left;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -207,11 +208,15 @@ iframe-p5-div {
     padding-top: 20px;
     font-size: 20px;
   }
-
 }
 
 @media only screen and (max-width: 767px) {
-  /*--[ Mobile styles go here]---------------------------*/
+  /*----------------------------
+  [ Mobile styles go here]
+  ---------------------------*/
+  .homepage-top-logo-div {
+    top: 50px;
+  }
   #homepage-lab p {
     font-weight: bold;
     text-align: left;

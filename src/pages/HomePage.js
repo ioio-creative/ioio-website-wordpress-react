@@ -16,6 +16,13 @@ import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjec
 import './HomePage.css';
 import sketch from './sketch';
 
+import Modal from 'react-modal';
+
+import {Player} from 'video-react';
+import "./video-react.css";
+
+Modal.setAppElement('#root');
+
 function HighlightedProjects(props) {
   const projectIdSlugPairs = props.projIdSlugPairs;
 
@@ -115,6 +122,14 @@ function Items(props) {
 class HomePage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalIsOpen: false
+    };
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
     this.selectAllCategoryId = -1;
     this.state = {
       projects: [],
@@ -126,7 +141,18 @@ class HomePage extends Component {
     }
 
   }
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
 
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
   async componentDidMount() {
     fetchHighlightedProjects((projects) => {
       this.setState({projects: projects});
@@ -200,7 +226,8 @@ class HomePage extends Component {
     const home = h[0];
 
     return (<div>
-      <section id="homepage-top" className="section-bg wow fadeInUp">
+
+      <section id="homepage-top" className="section-bg wow fadeIn">
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
         </div>
@@ -209,7 +236,7 @@ class HomePage extends Component {
           <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
         </div>
         <div>
-          <Link to={home.showreel_video.guid} id="pop-up-vid">
+          <Link to="#" onClick={this.openModal} id="pop-up-vid">
             <h4 className="homepage-showreel wow slideInLeft">{home.page_title}&nbsp;
               <i className="ion ion-android-arrow-dropright-circle"></i>
               <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -246,6 +273,16 @@ class HomePage extends Component {
           </div>
         </div>
       </section>
+
+      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Example Modal">
+        <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
+          <i className="ion ion-android-close"></i>
+        </button>
+        <div className="vid-player">
+          <Player poster="/assets/poster.png" src={home.showreel_video.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
+        </div>
+      </Modal>
+
       <Footer
         //Section: Footer
         footer={footer}/>

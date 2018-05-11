@@ -15,6 +15,7 @@ const activeEntities = {
     about: 72,
     footer: 263,
     sidebar: 351,
+    contact: 1008,
 };
 
 
@@ -172,6 +173,14 @@ function fetchProjectById(id, callback) {
 
 /* end of project detail page */
 
+/* project contact page */
+function fetchActiveContact(callback) {
+    passJsonResultToCallback("contact", callback, activeEntities.contact);
+}
+function fetchContact(callback) {
+    passJsonResultToCallback("contact", callback);
+}
+/* end of contact detail page */
 
 export {
     // general
@@ -199,4 +208,7 @@ export {
 
     // project detial page
     fetchProjectById,
+    // contact page
+    fetchActiveContact,
+    fetchContact,
 };
