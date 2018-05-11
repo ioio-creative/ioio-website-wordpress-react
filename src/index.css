@@ -50,8 +50,7 @@ body {
   white-space: pre-line;
   font-family: "FuturaLT", sans-serif;
   -webkit-font-smoothing: antialiased;
-
-      overflow-x: hidden;
+  overflow-x: hidden; /* //TODO */
 }
 
 a {

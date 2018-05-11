@@ -23,6 +23,22 @@ import "./video-react.css";
 
 Modal.setAppElement('#root');
 
+
+function ProjectCategories(props) {
+  const tag_items = props.categories.map((tag, id) => {
+    let tagId = ".filter-" + tag.id
+    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span></li>);
+  });
+  return (<div className="col-lg-12 ">
+    <ul id="portfolio-flters">
+      <li data-filter="*" className="filter-active">All</li>
+      {tag_items}
+    </ul>
+  </div>);
+}
+
+
+
 function HighlightedProjects(props) {
   const projectIdSlugPairs = props.projIdSlugPairs;
 
@@ -198,11 +214,16 @@ class HomePage extends Component {
     */
   }
 
+
   render() {
     const p = this.state.projects;
     const h = this.state.homepage;
     const footer = this.state.footer;
+    const pC = this.state.projectCategories;
 
+    if (pC === null) {
+      return null;
+    }
     if (footer === null) {
       return null;
     }
@@ -252,7 +273,7 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-
+              <ProjectCategories categories={pC}/>
         <HighlightedProjects projectlist={home.highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
 
       </section>

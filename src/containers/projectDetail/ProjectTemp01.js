@@ -29,7 +29,6 @@ class ProjectTemp01 extends Component {
           </div>
         </div>
       </div>
-
     </section>);
   }
 }
