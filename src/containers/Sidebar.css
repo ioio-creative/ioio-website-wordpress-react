@@ -175,7 +175,7 @@
 }
 
 #sidebar .close-symbol:before {
-  position: absolute;
+  position: fixed;
   left: 25px;
   content: ' ';
   width: 2px;
@@ -220,6 +220,10 @@
   transform: rotate(-0deg);
 }
 
+
+#sidebar .sidebar-hiring{
+
+}
 /*
 /* Extra small devices (phones, less than 768px) */
 
@@ -307,6 +311,38 @@
     text-align: left;
     bottom: 0;
   }
+  #sidebar .sidebar-hiring{
+    display:none;
+  }
+
+
+
+  #sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
+    right: 30px;
+    width: 2px;
+    height: 28px;
+  }
+
+  #sidebar .close-symbol:before {
+    right: 25px;
+    width: 2px;
+    height: 28px;
+    top: 10px;
+
+  }
+
+  #sidebar .close-symbol:after {
+    right: 32px;
+    width: 2px;
+    height: 28px;
+    top: 10px;
+  }
+
+
+
+
+
+
 }
 
 @media only screen and (max-width: 992px) {

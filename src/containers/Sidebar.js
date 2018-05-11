@@ -105,7 +105,7 @@ class Sidebar extends Component {
                 <SocialMedia items={sidebar.social_media}/>
               </div>
             </div>
-            <div className="col-lg-3 col-md-3 sidebar-social">
+            <div className="col-lg-3 col-md-3 sidebar-hiring">
               <h4>
                 {sidebar.hiring_title}
               </h4>
