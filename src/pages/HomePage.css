@@ -74,6 +74,8 @@ iframe-p5-div {
 #homepage-selected-project .portfolio-wrap:hover {
   cursor: pointer;
   transition: 0.2s linear;
+  opacity: 0.8;
+  background: linear-gradient(rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0));
 }
 
 #homepage-selected-project .portfolio-wrap {
@@ -102,7 +104,7 @@ iframe-p5-div {
 }
 
 #homepage-selected-project .portfolio-wrap img:hover {
-  opacity: 0.4;
+
   transition: 0.3s;
 }
 

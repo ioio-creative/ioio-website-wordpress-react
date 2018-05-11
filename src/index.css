@@ -51,6 +51,7 @@ body {
   font-family: "FuturaLT", sans-serif;
   -webkit-font-smoothing: antialiased;
 
+      overflow-x: hidden;
 }
 
 a {
@@ -151,6 +152,7 @@ Modal
   /*hack: //todo adjust after sidebar*/
   padding: 0 0 0 0;
   display: block;
+
 }
 
 section {
@@ -164,11 +166,11 @@ section {
 #scroller {
   margin: 0 0 0 55px;
   padding: 0 0 0 0;
+
   /*update sidebar width as well*/
 }
 
 #scroller.header-scrolled {
-  background: rgba(0, 0, 0, 0.9);
   padding: 0 0;
   height: 0;
   transition: all 0.5s;

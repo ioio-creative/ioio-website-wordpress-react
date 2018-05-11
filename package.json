@@ -26,7 +26,7 @@
     "react-video-cover": "^1.2.0",
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",
-    "video-react": "^0.10.4"
+    "video-react": "^0.10.5"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src PORT=3000 react-scripts start",

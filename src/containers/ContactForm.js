@@ -48,7 +48,7 @@ const ContactForm = () => (<form className="contact-form" method="POST" action="
 
   <div className="form-field">
     <label htmlFor="message" className="form-full">
-      <div className="label-content">Message:</div>
+      <div className="label-content">Message</div>
       <textarea className="stretch" name="message" rows="5" placeholder="Please tell us a bit about what you're looking to collaborate on." required="required"/>
     </label>
   </div>

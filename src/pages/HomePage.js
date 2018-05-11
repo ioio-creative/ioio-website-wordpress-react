@@ -231,18 +231,24 @@ class HomePage extends Component {
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
         </div>
-        <div className="iframe-p5-div container-fluid">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <div className="iframe-p5-div container-fluid">
+                <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
+              </div>
+              <Link to="#" onClick={this.openModal} id="pop-up-vid">
+                <h4 className="homepage-showreel wow slideInLeft">{home.page_title}&nbsp;
+                  <i className="ion ion-android-arrow-dropright-circle"></i>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </h4>
+              </Link>
+            </div>
+              <div className="col-md-1"></div>
 
-          <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
-        </div>
-        <div>
-          <Link to="#" onClick={this.openModal} id="pop-up-vid">
-            <h4 className="homepage-showreel wow slideInLeft">{home.page_title}&nbsp;
-              <i className="ion ion-android-arrow-dropright-circle"></i>
-              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </h4>
-          </Link>
-        </div>
+          </div>
+</div>
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
