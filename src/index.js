@@ -14,3 +14,6 @@ ReactDOM.render((
 ), document.getElementById('root'));
 
 registerServiceWorker();
+
+//TODO
+//load new page on soical links

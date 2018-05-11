@@ -29,6 +29,8 @@
 }
 
 #portfolio #portfolio-flters  li span{
+
+  display: none;
   font-weight: 100;
 
   font-size: 11px;
