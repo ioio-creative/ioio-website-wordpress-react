@@ -59,9 +59,10 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  color: #FFE000;
+  /*color: #FFE000;*/
+  color: #000000;
   outline: none;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 p {
