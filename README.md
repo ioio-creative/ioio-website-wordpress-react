@@ -23,6 +23,7 @@ https://www.youtube.com/watch?v=UTFExS3IW5Q
 https://codepen.io/anon/pen/vRoOzK/?editors=0110
 
 Steps to update website on AWS EC2 Linux:
+
 """
 - log onto AWS
 - go to Lightsail
@@ -60,6 +61,10 @@ Using pm2
   - pm2 start npm -- start
   - pm2 list
   - pm2 delete ID/NAME
+
+  If running server on port 80,
+  use root account
+  - sudo -i
 
   References:
   - https://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die

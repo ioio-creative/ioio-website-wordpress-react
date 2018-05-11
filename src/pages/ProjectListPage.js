@@ -109,7 +109,7 @@ class ProjectListPage extends Component {
       this.setState({projectCategories: categories});
     });
     fetchProjectTags((tags) => {
-      this.setState({projectTags: tags});
+      this.setState({projectTags: tags});      
     });
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
