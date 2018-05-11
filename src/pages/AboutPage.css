@@ -176,7 +176,7 @@ slideshow
 */
 
 .slideshow-img-and-text img {
-  padding: 0 100px 0 0;
+  padding: 30px 100px 30px 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -230,7 +230,7 @@ slideshow
   font-size: 20px;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 50px 0;
+  margin-bottom: 70px;
 }
 
 /*--------------------------------------------------------------
@@ -295,9 +295,11 @@ Serivce
   text-align: center;
   vertical-align: middle;
   opacity: 0;
+  cursor: pointer;
 }
 
 .services-col:hover .item-desc {
+
   display: block;
   position: absolute;
   top: 20%;

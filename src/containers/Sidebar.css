@@ -121,14 +121,16 @@
 #sidebar.active .info-section {
   display: inline;
   position: fixed;
-  bottom: 25px;
+  bottom: 20px;
   margin-left: 100px;
   padding-right: 55px;
+    font-size: 14px;
 }
 
 #sidebar.active .info-section h4 {
   font-weight: bold;
-  margin-top: -50px;
+  margin-top: -20px;
+  font-size: 14px;
 }
 
 #sidebar.active .info-section .social-links a {
@@ -221,7 +223,8 @@
 }
 
 
-#sidebar .sidebar-hiring{
+#sidebar .sidebar-hiring p{
+width: 350px;
 
 }
 /*

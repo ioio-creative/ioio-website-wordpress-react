@@ -82,7 +82,7 @@ class Sidebar extends Component {
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
-        <div className="info-section">
+        <div className="info-section container-fluid">
           <div className="row">
             <div className="col-lg-3 col-md-3 sidebar-info">
               <h4>
