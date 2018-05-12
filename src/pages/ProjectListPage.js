@@ -96,15 +96,6 @@ function AllProjects(props) {
   </div>);
 }
 
-function LoadThis(){
-
-    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
-    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
-    scriptjs(loadScriptsAsync, () => {
-      scriptjs(loadScriptsLater, () => {})
-    })
-
-}
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
 class ProjectListPage extends Component {

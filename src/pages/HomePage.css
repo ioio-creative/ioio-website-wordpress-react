@@ -278,7 +278,13 @@ iframe-p5-div {
     padding: 0 0;
     margin: 0 auto;
   }
+
+  #homepage-core-value  {
+    padding: 0 0;
+    margin: 50px 0 100px 0;
+  }
   .about-section-right p {
-    font-size: 20px;
+    font-size: 15px;
+
   }
 }
