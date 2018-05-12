@@ -11,7 +11,7 @@ import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
 import $ from 'jquery'
-import 'isotope-layout'; //https://isotope.metafizzy.co/
+
 
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
@@ -92,9 +92,7 @@ function AllProjects(props) {
   });
 
   return (<div className="row portfolio-container wow fadeIn">
-    {project_items}{LoadThis()}      <Footer
-            //Section: Footer
-            footer={footer}/>
+    {project_items}{LoadThis()}
   </div>);
 }
 
@@ -194,7 +192,9 @@ class ProjectListPage extends Component {
 
         </div>
       </section>
-
+      <Footer
+        //Section: Footer
+        footer={footer}/>
     </div>);
   }
 }
