@@ -92,7 +92,9 @@ function AllProjects(props) {
   });
 
   return (<div className="row portfolio-container wow fadeIn">
-    {project_items}{LoadThis()}
+    {project_items}{LoadThis()}      <Footer
+            //Section: Footer
+            footer={footer}/>
   </div>);
 }
 
@@ -192,9 +194,7 @@ class ProjectListPage extends Component {
 
         </div>
       </section>
-      <Footer
-        //Section: Footer
-        footer={footer}/>
+
     </div>);
   }
 }
