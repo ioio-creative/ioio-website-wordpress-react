@@ -906,3 +906,18 @@ body.video-react-full-window {
   width: 2em;
   border-radius: 50%;
 }
+
+@media only screen and (max-width: 767px) {
+  /*--[ Mobile styles go here]---------------------------*/
+  .video-react .video-react-big-play-button{
+    left: 52%;
+    top: 48%;
+    margin-top: -0.75em;
+    margin-left: -1.5em;
+    font-size: 3em;
+    line-height: 1.9em;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+  }
+}

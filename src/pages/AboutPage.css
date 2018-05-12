@@ -250,7 +250,7 @@ slideshow
   z-index: 10;
 }
 
-.the-team-name {}
+
 
 .slideshow .the-team-text img {
   width: 100%;
@@ -277,6 +277,18 @@ slideshow
   display: none;
 }
 
+@media only screen and (max-width: 767px) {
+  .slideshow .the-team-text h3 {
+
+    font-size: 12px;
+
+  }
+
+  .slideshow .the-team-text p {
+
+    font-size: 11px;
+  }
+}
 /*---------------------------
 Serivce
 --------------------------- */

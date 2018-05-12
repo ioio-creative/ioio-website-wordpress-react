@@ -10,6 +10,8 @@ import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjec
 import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
+import $ from 'jquery'
+import 'isotope-layout'; //https://isotope.metafizzy.co/
 
 function ProjectTags(props) {
   const tag_items = props.tags.map((tag, id) => {
@@ -27,7 +29,8 @@ function ProjectTags(props) {
 function ProjectCategories(props) {
   const tag_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
-    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span></li>);
+    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
+    </li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
@@ -89,10 +92,19 @@ function AllProjects(props) {
   });
 
   return (<div className="row portfolio-container wow fadeIn">
-    {project_items}
+    {project_items}{LoadThis()}
   </div>);
 }
 
+function LoadThis(){
+
+    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
+    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
+    scriptjs(loadScriptsAsync, () => {
+      scriptjs(loadScriptsLater, () => {})
+    })
+
+}
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
 class ProjectListPage extends Component {
@@ -120,18 +132,22 @@ class ProjectListPage extends Component {
       this.setState({projectCategories: categories});
     });
     fetchProjectTags((tags) => {
-      this.setState({projectTags: tags});      
+      this.setState({projectTags: tags});
     });
+
+  //  window.addEventListener('load', this.handleLoad)
+
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-
-    window.addEventListener('load', this.handleLoad);
-
   }
 
   handleLoad() {
-    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
+    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
+    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
+    scriptjs(loadScriptsAsync, () => {
+      scriptjs(loadScriptsLater, () => {})
+    })
   }
 
   handleCategoryButtonClick(categoryId) {
@@ -156,8 +172,6 @@ class ProjectListPage extends Component {
       return null;
     }
 
-    console.log(t)
-
     return (<div>
       <section id="portfolio" className="section-bg wow fadeIn">
         <div className="container-fluid">
@@ -168,7 +182,7 @@ class ProjectListPage extends Component {
                 <h3 className="section-title">Case Studies</h3>
               </header>
               <div className="row">
-                {/*<ProjectTags tags={t}/>*/}
+                {/* <ProjectTags tags={t}/> */}
                 <ProjectCategories categories={pC}/>
               </div>
               <AllProjects projectlist={p} categories={pC}/></div>

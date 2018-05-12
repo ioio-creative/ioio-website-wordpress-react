@@ -10,7 +10,6 @@ function Items(props) {
   });
 
   return (<div className="row client-cols">
-
     {member_items}
   </div>);
 
