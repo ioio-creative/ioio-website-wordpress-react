@@ -1,5 +1,5 @@
 //jQuery(document).ready(function($) {
-console.log("portfolioJS Loaded")
+
 
 trying()
 function trying() {
@@ -7,6 +7,7 @@ function trying() {
     console.log("wait for dom")
     window.requestAnimationFrame(trying);
   } else {
+    console.log("portfolioJS Loaded")
     portfolioJS()
   }
 }

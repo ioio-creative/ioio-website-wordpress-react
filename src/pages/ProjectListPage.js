@@ -92,7 +92,7 @@ function AllProjects(props) {
   });
 
   return (<div className="row portfolio-container wow fadeIn">
-    {project_items}{LoadThis()}
+    {project_items}
   </div>);
 }
 
@@ -135,7 +135,7 @@ class ProjectListPage extends Component {
       this.setState({projectTags: tags});
     });
 
-  //  window.addEventListener('load', this.handleLoad)
+    window.addEventListener('load', this.handleLoad)
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
