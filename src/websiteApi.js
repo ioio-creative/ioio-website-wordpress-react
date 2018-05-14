@@ -5,7 +5,8 @@ import { compareForDatesAscending, compareForDatesDescending } from 'utils/datet
     - https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#_embed
 */
 
-const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
+//const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
+const baseUrl = "https://admin.ioiocreative.com/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
 const defaultQuery = "";
 
