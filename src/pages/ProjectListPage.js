@@ -128,17 +128,20 @@ class ProjectListPage extends Component {
 
     window.addEventListener('load', this.handleLoad)
 
+    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
+    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
+    scriptjs(loadScriptsAsync, () => {
+      scriptjs(loadScriptsLater, () => {})
+    })
+
+
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
   }
 
   handleLoad() {
-    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
-    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
-    scriptjs(loadScriptsAsync, () => {
-      scriptjs(loadScriptsLater, () => {})
-    })
+
   }
 
   handleCategoryButtonClick(categoryId) {
