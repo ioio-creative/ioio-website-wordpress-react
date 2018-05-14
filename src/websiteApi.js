@@ -6,6 +6,11 @@ import { compareForDatesAscending, compareForDatesDescending } from 'utils/datet
 */
 
 //const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
+/*
+    !!! Important !!!
+    To avoid "Blocked loading mixed active content" error,
+    we have to use HTTPS.
+*/
 const baseUrl = "https://admin.ioiocreative.com/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
 const defaultQuery = "";
