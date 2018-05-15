@@ -23,6 +23,50 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#coming-soon {
+  display: none;
+}
+
+#coming-soon p {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  #sidebar {
+    display: none;
+  }
+  #scroller {
+    display: none;
+  }
+  #coming-soon {
+    display: block;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #coming-soon span {
+    display: block;
+    top: 50%;
+    text-align: center;
+    font-size: 50px;
+  }
+  #coming-soon-img {
+    display: block;
+    position: fixed;
+    width: 80%;
+    margin: 0 10%;
+    top: 40%;
+  }
 }

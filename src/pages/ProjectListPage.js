@@ -12,32 +12,64 @@ import Footer from 'containers/Footer';
 import scriptjs from 'scriptjs'
 import $ from 'jquery'
 
+class ProjectTag extends Component {
+  constructor(props) {
+    super(props);
+    this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
+    this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);
+    console.log("clicked erere");
+  }
 
-function ProjectTags(props) {
-  const tag_items = props.tags.map((tag, id) => {
-    let tagId = ".filter-" + tag.id
-    return (<li key={id} data-filter={tagId}>{tag.name}</li>);
-  });
-  return (<div className="col-lg-12 ">
-    <ul id="portfolio-flters">
-      <li data-filter="*" className="filter-active">All</li>
-      {tag_items}
-    </ul>
-  </div>);
+  handleProjectCategoryClick(e) {
+    console.log("clicked" + e);
+    $("#portfolio-flters li").removeClass('filter-active');
+    $(this).addClass('filter-active');
+
+    this.portfolioIsotope.isotope({filter: $(this).data('filter')});
+  }
+
+  render() {
+    const tag_items = this.props.tags.map((tag, id) => {
+      let tagId = ".filter-" + tag.id
+      return (<li key={id} data-filter={tagId} onClick={this.handleProjectCategoryClick}>{tag.name}</li>);
+    });
+    return (<div className="col-lg-12 ">
+      <ul id="portfolio-flters">
+        <li data-filter="*" className="filter-active" onClick={this.handleProjectCategoryClick}>All</li>
+        {tag_items}
+      </ul>
+    </div>);
+  }
 }
 
-function ProjectCategories(props) {
-  const tag_items = props.categories.map((tag, id) => {
-    let tagId = ".filter-" + tag.id
-    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
-    </li>);
-  });
-  return (<div className="col-lg-12 ">
-    <ul id="portfolio-flters">
-      <li data-filter="*" className="filter-active">All</li>
-      {tag_items}
-    </ul>
-  </div>);
+class ProjectCategories extends Component {
+  constructor(props) {
+    super(props);
+  //  this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
+    this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);
+    console.log("clicked erere");
+  }
+
+  handleProjectCategoryClick(e) {
+    console.log("clicked" + e);
+  //  $("#portfolio-flters li").removeClass('filter-active');
+  //  $(this).addClass('filter-active');
+
+  //  this.portfolioIsotope.isotope({filter: $(this).data('filter')});
+  }
+  render() {
+    const tag_items = this.props.categories.map((tag, id) => {
+      let tagId = ".filter-" + tag.id
+      return (<li key={id} data-filter={tagId} onClick={this.handleProjectCategoryClick}>{tag.name}<span>{tag.count}</span>
+      </li>);
+    });
+    return (<div className="col-lg-12 ">
+      <ul id="portfolio-flters">
+        <li data-filter="*" className="filter-active" onClick={this.handleProjectCategoryClick}>All</li>
+        {tag_items}
+      </ul>
+    </div>);
+  }
 }
 
 function AllProjects(props) {
@@ -96,6 +128,14 @@ function AllProjects(props) {
   </div>);
 }
 
+function loadSortingJS() {
+  const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
+  //const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
+  scriptjs(loadScriptsAsync, () => {
+    //scriptjs(loadScriptsLater, () => {})
+  })
+
+}
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
 class ProjectListPage extends Component {
@@ -110,6 +150,7 @@ class ProjectListPage extends Component {
       selectedCategoryId: this.selectAllCategoryId
     }
 
+    // TODO: remove
     // https://reactjs.org/docs/handling-events.html
     // This binding is necessary to make `this` work in the callback
     this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
@@ -118,6 +159,9 @@ class ProjectListPage extends Component {
   componentDidMount() {
     fetchProjects((projects) => {
       this.setState({projects: projects});
+      fetchActiveFooter((aFooter) => {
+        this.setState({footer: aFooter});
+      });
     });
     fetchProjectCategories((categories) => {
       this.setState({projectCategories: categories});
@@ -126,23 +170,14 @@ class ProjectListPage extends Component {
       this.setState({projectTags: tags});
     });
 
-    window.addEventListener('load', this.handleLoad)
-
-    const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/isotope/isotope.pkgd.min.js']);
-    const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls(['js/portfolio.js']);
-    scriptjs(loadScriptsAsync, () => {
-      scriptjs(loadScriptsLater, () => {})
-    })
-
+    //window.addEventListener('load', this.handleLoad)
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
   }
 
-  handleLoad() {
-
-  }
+  handleLoad() {}
 
   handleCategoryButtonClick(categoryId) {
     this.setState({selectedCategoryId: categoryId});
