@@ -3,6 +3,7 @@ General
 */
 
 .project-section-bg {
+  position: relative;
   margin: 0 0;
   padding: 40px 0;
 }
@@ -29,7 +30,6 @@ pop-up
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   color: #000;
-  font-size: 14px;
   font-size: 14px;
   line-height: 24px;
   font-family: "FuturaLT", sans-serif;

@@ -117,7 +117,7 @@
 }
 
 #portfolio .portfolio-item .portfolio-info h4 {
-  font-size: 1.3vw;
+  font-size: 24px;
   line-height: 1px;
   font-weight: 700;
   margin-bottom: 18px;
@@ -129,7 +129,7 @@
   margin: 0;
   color: #000;
   font-weight: 500;
-  font-size: 0.85vw;
+  font-size: 16px;
   text-transform: uppercase;
 }
 
@@ -144,6 +144,36 @@
   text-transform: uppercase;
   font-size: 45px;
 }
+
+
+@media only screen and (max-width: 1279px) {
+  #portfolio .portfolio-item .portfolio-info h4 {
+    font-size: 18px;
+
+  }
+
+  #portfolio .portfolio-item .portfolio-info p {
+    font-size: 12px;
+
+  }
+}
+
+
+
+@media only screen and (max-width: 1023px) {
+  #portfolio .portfolio-item .portfolio-info h4 {
+    font-size: 14px;
+
+  }
+
+  #portfolio .portfolio-item .portfolio-info p {
+
+    font-size: 12px;
+
+  }
+}
+
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   #portfolio {

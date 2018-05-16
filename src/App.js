@@ -46,9 +46,13 @@ class App extends Component {
 
     return (<div>
       <div id="coming-soon">
-            <span className="align-middle text-center">Still preparing the pod...for your mobile</span>
-            <span className="align-middle text-center">But our new site is out already in desktop view!</span>
-              <img id="coming-soon-img" src="https://admin.ioiocreative.com/wp-content/uploads/2018/04/ezgif-5-4816e291c9.gif" alt="alt"/>
+        <span className="align-middle text-center">Still preparing the pod...for your mobile</span>
+        <span className="align-middle text-center">But our new site is out already in desktop view!</span>
+        <br />
+        <span className="align-middle contact text-center">(852) 3709-8437</span>
+        <span className="align-middle contact text-center">info@ioiocreative.com</span>
+
+        <img id="coming-soon-img" src="https://admin.ioiocreative.com/wp-content/uploads/2018/04/ezgif-5-4816e291c9.gif" alt="alt"/>
       </div>
 
       <Sidebar/>
