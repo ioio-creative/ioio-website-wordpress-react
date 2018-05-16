@@ -4,7 +4,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
-import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
+import {getAbsoluteUrlFromRelativeUrl, getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
 import Footer from 'containers/Footer';
@@ -45,28 +45,30 @@ class ProjectTag extends Component {
 class ProjectCategories extends Component {
   constructor(props) {
     super(props);
-    //  this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
-    this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);
-    console.log("clicked erere");
+    //this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
   }
 
-  handleProjectCategoryClick(e) {
-    console.log("clicked" + e);
-    //  $("#portfolio-flters li").removeClass('filter-active');
-    //  $(this).addClass('filter-active');
+  handleProjectCategoryClick(categoryId) {
+    console.log("clicked");
 
-    //  this.portfolioIsotope.isotope({filter: $(this).data('filter')});
+    // if (this.portfolioIsotope) {
+    //   $("#portfolio-flters li").removeClass('filter-active');
+    //   //$(this).addClass('filter-active');
+    //   $("#" + categoryId).addClass('filter-active');
+
+    //   this.portfolioIsotope.isotope({filter: $("#" + categoryId).data('filter')});
+    // }
   }
   render() {
-    const tag_items = this.props.categories.map((tag, id) => {
-      let tagId = ".filter-" + tag.id
-      return (<li key={id} data-filter={tagId} onClick={this.handleProjectCategoryClick}>{tag.name}<span>{tag.count}</span>
+    const categoryItems = this.props.categories.map((category) => {
+      let categoryFilterId = ".filter-" + category.id
+      return (<li key={category.id} id={category.id} data-filter={categoryFilterId} onClick={() => this.handleProjectCategoryClick(category.id)}>{category.name}<span>{category.count}</span>
       </li>);
     });
     return (<div className="col-lg-12 ">
       <ul id="portfolio-flters">
         <li data-filter="*" className="filter-active" onClick={this.handleProjectCategoryClick}>All</li>
-        {tag_items}
+        {categoryItems}
       </ul>
     </div>);
   }
