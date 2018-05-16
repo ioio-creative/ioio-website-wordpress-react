@@ -45,17 +45,17 @@ class ProjectTag extends Component {
 class ProjectCategories extends Component {
   constructor(props) {
     super(props);
-  //  this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
+    //  this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
     this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);
     console.log("clicked erere");
   }
 
   handleProjectCategoryClick(e) {
     console.log("clicked" + e);
-  //  $("#portfolio-flters li").removeClass('filter-active');
-  //  $(this).addClass('filter-active');
+    //  $("#portfolio-flters li").removeClass('filter-active');
+    //  $(this).addClass('filter-active');
 
-  //  this.portfolioIsotope.isotope({filter: $(this).data('filter')});
+    //  this.portfolioIsotope.isotope({filter: $(this).data('filter')});
   }
   render() {
     const tag_items = this.props.categories.map((tag, id) => {
@@ -111,7 +111,9 @@ function AllProjects(props) {
     return (<div className={tagIds} key={id}>
       <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
         <div className="portfolio-wrap">
-          <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            <div className="img-container">
+              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            </div>
           <div className="portfolio-info">
             <h4>
               {project.project_name}

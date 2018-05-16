@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProjectTemp08 extends Component {
+class ProjectTemp09 extends Component {
     constructor(props) {
         super(props);
     }
@@ -18,13 +18,19 @@ class ProjectTemp08 extends Component {
       }
 
         return (
-          <section className="photo-montage-one-img project-section-bg wow fadeInUp">
+
+          <section className="photo-montage-one-text project-section-bg wow fadeInUp">
             <div className="container-fluid" style={bg}>
-              <img src={image0} alt="" />
+              <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4"><p>{props.description}</p></div>
+                <div className="col-md-4"></div>
+              </div>
+              <p></p>
             </div>
           </section>
         );
     }
 }
 
-export default ProjectTemp08;
+export default ProjectTemp09;

@@ -38,7 +38,7 @@ iframe-p5-div {
 #homepage-top .homepage-showreel {
   position: relative;
   top: -40px;
-  font-size: 25px;
+  font-size: 1.7vw;
   font-weight: bold;
   width: 100%;
   text-align: center;
@@ -97,13 +97,21 @@ iframe-p5-div {
   margin-right: 0;
 }
 
-#homepage-selected-project div {
+#homepage-selected-project .row {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
 
+#homepage-selected-project .row div {
+  display: block;
+  height: auto;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
 #homepage-selected-project .portfolio-wrap {
-  height: 500px;
+  width: 100%;
   overflow-y: hidden;
   transition: 0.3s;
 }
@@ -117,7 +125,7 @@ iframe-p5-div {
 
 #homepage-selected-project .portfolio-wrap {
   position: relative;
-  height: 550px;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -133,6 +141,28 @@ iframe-p5-div {
 }
 */
 
+.img-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding: 56.25% 0 0 0;
+  /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*
 #homepage-selected-project .portfolio-wrap img {
   overflow: hidden;
   min-width: 100%;
@@ -143,6 +173,7 @@ iframe-p5-div {
 #homepage-selected-project .portfolio-wrap img:hover {
   transition: 0.3s;
 }
+*/
 
 #homepage-selected-project .portfolio-wrap a:hover {
   opacity: 1;
@@ -151,33 +182,31 @@ iframe-p5-div {
 
 #homepage-selected-project .portfolio-wrap .portfolio-info {
   text-align: left;
-  padding: 30px 30px;
+  padding: 0 30px;
   z-index: 10;
   /*border-radius: 0 0 3px 3px;*/
 }
 
 #homepage-selected-project .portfolio-wrap .portfolio-info h4 {
   position: absolute;
-  bottom: 20px;
+  bottom: 90px;
   font-size: 18px;
   line-height: 1px;
   font-weight: bold;
-  margin-bottom: 45px;
-  padding-bottom: 0;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   color: white;
-
 }
 
 #homepage-selected-project .portfolio-wrap .portfolio-info p {
   position: absolute;
-  bottom: 20px;
-  padding: 0;
-  margin: 0;
+  bottom: 40px;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
   color: #000;
   font-size: 14px;
   text-transform: uppercase;
   color: white;
-
 }
 
 #homepage-lab p {
@@ -210,10 +239,8 @@ iframe-p5-div {
 
 #homepage-core-value img {
   width: 100%;
-    padding: 0 20px;
+  padding: 0 20px;
 }
-
-
 
 .about-section-right img {
   height: 50%;
@@ -278,13 +305,11 @@ iframe-p5-div {
     padding: 0 0;
     margin: 0 auto;
   }
-
-  #homepage-core-value  {
+  #homepage-core-value {
     padding: 0 0;
     margin: 50px 0 100px 0;
   }
   .about-section-right p {
     font-size: 15px;
-
   }
 }

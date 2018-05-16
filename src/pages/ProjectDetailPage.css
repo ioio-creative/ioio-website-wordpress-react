@@ -298,8 +298,9 @@ video {
   padding-left: 5%;
 }
 
+
 /*==============
-.photo-montage-one-img
+.photo-montage-one-vid
 ==============*/
 
 .photo-montage-one-vid {
@@ -311,6 +312,39 @@ video {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
+
+
+/*==============
+.photo-montage-one-img
+==============*/
+
+.photo-montage-one-img {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.photo-montage-one-img div {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+
+/*==============
+.photo-montage-one-text
+==============*/
+
+.photo-montage-one-text {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.photo-montage-one-text div {
+  margin: 0 0 0 0;
+  padding: 20px 0 20px 0;
+  font-weight: bold;
+}
+
+
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/

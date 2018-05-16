@@ -46,7 +46,8 @@ class App extends Component {
 
     return (<div>
       <div id="coming-soon">
-            <span className="align-middle text-center">Coming Soon!!!!</span>
+            <span className="align-middle text-center">Still preparing the pod...for your mobile</span>
+            <span className="align-middle text-center">But our new site is out already in desktop view!</span>
               <img id="coming-soon-img" src="https://admin.ioiocreative.com/wp-content/uploads/2018/04/ezgif-5-4816e291c9.gif" alt="alt"/>
       </div>
 

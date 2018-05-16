@@ -49,7 +49,7 @@
   #coming-soon {
     display: block;
     position: fixed;
-    top: 30%;
+    top: 15%;
     left: 0;
     right: 0;
     bottom: 0;
@@ -60,13 +60,13 @@
     display: block;
     top: 50%;
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
   }
   #coming-soon-img {
     display: block;
     position: fixed;
     width: 80%;
     margin: 0 10%;
-    top: 40%;
+    bottom: 20%;
   }
 }

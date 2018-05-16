@@ -52,7 +52,7 @@
 #portfolio .portfolio-wrap {
   /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
   transition: 0.3s;
-    height: 360px;
+    width: 100%;
 }
 
 #portfolio .portfolio-wrap:hover {
@@ -66,11 +66,11 @@
   overflow: hidden;
   position: relative;
   margin: 0;
-  height: 360px;
+
   padding: 20px 20px;
 }
 
-
+/*
 #portfolio .portfolio-item img {
   height: 250px;
   object-fit: cover;
@@ -80,6 +80,27 @@
 #portfolio .portfolio-item img:hover {
   opacity: 0.4;
   transition: 0.3s;
+}
+*/
+
+.img-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding: 56.25% 0 0 0; /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+}
+
+.img-container img {
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #portfolio .portfolio-item a:hover {
@@ -96,7 +117,7 @@
 }
 
 #portfolio .portfolio-item .portfolio-info h4 {
-  font-size: 18px;
+  font-size: 1.3vw;
   line-height: 1px;
   font-weight: 700;
   margin-bottom: 18px;
@@ -108,7 +129,7 @@
   margin: 0;
   color: #000;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.85vw;
   text-transform: uppercase;
 }
 

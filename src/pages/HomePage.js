@@ -78,7 +78,9 @@ function HighlightedProjects(props) {
       return (<div className="col-md-12" key={id}>
         <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            <div className="img-container">
+              <img src={project.thumbnail.guid} alt="alt"/>
+            </div>
             <div className="portfolio-info">
               <h4>
                 {project.project_name}
@@ -92,7 +94,9 @@ function HighlightedProjects(props) {
       return (<div className="col-md-6 wrap-this" key={id}>
         <Link to={projectDetailRoutePath}>{props.name}
           <div className="portfolio-wrap">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            <div className="img-container">
+              <img src={project.thumbnail.guid} alt="alt"/>
+            </div>
             <div className="portfolio-info">
               <h4>
                 {project.project_name}
