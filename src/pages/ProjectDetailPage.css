@@ -256,11 +256,11 @@ video {
 .photo-montage-one-img {
   margin: 50px 0 50px 0;
   text-align: center;
-  min-width: 100%;
+  width: 100%;
 }
 
 .photo-montage-one-img img {
-  min-width: 100%;
+  width: 100%;
 }
 
 /*==============
