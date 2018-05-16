@@ -19,7 +19,7 @@ class ProjectTemp09 extends Component {
 
         return (
 
-          <section className="photo-montage-one-text project-section-bg wow fadeInUp">
+          <section className="photo-montage-one-text project-section-bg wow fadeIn">
             <div className="container-fluid" style={bg}>
               <div className="row">
                 <div className="col-md-4"></div>
