@@ -24,7 +24,7 @@ function Slideshow(props) {
 class ProjectTemp03 extends Component {
   constructor(props) {
     super(props);
-  }
+  }Y
 
   render() {
     const props = this.props;
@@ -34,8 +34,8 @@ class ProjectTemp03 extends Component {
     };
     return (<section className="slideshow slideshow-img-on-right project-section-bg wow fadeInRight" style={bg}>
       <div className="row container-fluid">
-                <div className="col-md-1 ">
-                </div>
+        <div className="col-md-1 ">
+        </div>
         <div className="col-md-3 slideshow-text">
           <h2>{props.section_title}</h2>
           <p>

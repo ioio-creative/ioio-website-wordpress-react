@@ -7,12 +7,12 @@
   position: relative;
 }
 
-.slideshow-img-on-right .slideshow-text {
+.slideshow-img-on-right .slideshow-text {  
   padding: 0 0 0 50px;
 }
 
-.slideshow-img-on-left .slideshow-text {
-  padding: 0 50px 0 0px;
+.slideshow-img-on-left .slideshow-text {  
+  padding: 0 50px 0 0;
 }
 
 .slideshow-img-on-right img {
@@ -20,7 +20,7 @@
 }
 
 .slideshow-img-on-left img {
-  padding: 0 0 0 0px;
+  padding: 0 0 0 0;
 }
 
 .slideshow img {
