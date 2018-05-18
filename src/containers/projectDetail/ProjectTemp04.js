@@ -12,9 +12,17 @@ class ProjectTemp04 extends Component {
       };
         return (
           <section className="photo-montage-one-img project-section-bg wow fadeInUp" style={bg}>
-            <div className="container">
-            <img src={props.images[0].guid} className="img-fluid" alt="alt"/>
+            {/* TODO: modified by Chris */}
+            {/* <div className="container"> */}
+            <div className="row container-fluid">
+              <div className="col-md-1 ">
+
+              </div>
+              <div className="col-md-10">
+                <img src={props.images[0].guid} className="img-fluid" alt="alt"/>
+              </div>
             </div>
+            {/* </div> */}
           </section>
         );
     }

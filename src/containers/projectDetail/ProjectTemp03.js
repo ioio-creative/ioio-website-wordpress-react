@@ -15,7 +15,8 @@ function Slideshow(props) {
     </div>);
   });
 
-  return (<OwlCarousel className="owl-theme" loop autoplay={true} dots={true} loop={true} items={1}>
+  // TODO: autoplay changed to false by Chris
+  return (<OwlCarousel className="owl-theme" loop autoplay={false} dots={true} loop={true} items={1}>
     {member_items}
   </OwlCarousel>);
 }
