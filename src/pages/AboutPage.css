@@ -38,43 +38,57 @@
   background: rgba(255, 255, 255, 1), url(Triangle.png) fixed center center;
   background-size: auto;
   background-repeat: no-repeat;
-  padding: 60px 0 20px 0;
+
+  height: 80vh;
+
 }
 
 #about01 h3 {
   color: #c6c6c6;
   font-size: 28px;
   font-weight: bold;
-  padding: 500px 0 20px 0;
+  position: absolute;
+  top: 45vh;
 }
 
 #about01 h1 {
   color: #000;
   font-size: 60px;
   font-weight: bold;
-  padding: 0 0 20px 0;
+  position: absolute;
+  top: 53vh;
 }
 
 #img-hotpot {
   position: absolute;
   right: 40%;
-  top: 1%;
-  max-width: 45%;
+  top: 1vh;
+  max-width: 50vh;
 }
 
 #img-meet {
   position: absolute;
   right: 10%;
-  margin-top: 300px;
+  margin-top: 15vh;
   width: 20%;
 }
 
 #img-fish {
   position: absolute;
   right: 20%;
-  margin-top: 600px;
+  margin-top: 60vh;
   z-index: 30;
   width: 20%;
+}
+
+@media (max-height: 630px) {
+  #about01 h3 {
+    font-size: 3.5vh;
+  }
+
+  #about01 h1 {
+    font-size: 7vh;
+  }
 }
 
 /*
@@ -85,32 +99,25 @@
 
 @media only screen and (max-width: 992px) {
   #about01 h3 {
-    margin-top: 550px;
-    font-size: 30px;
-    padding: 0 0 20px 0;
+    font-size: 25px;
   }
   #about01 h1 {
-    color: #000;
     font-size: 50px;
-    font-weight: bold;
-    padding: 20px 0 20px 0;
   }
   #img-hotpot {
     position: absolute;
     left: 0px;
     top: 0px;
-    max-width: 300px;
+
   }
   #img-meet {
     right: 1%;
-    margin-top: -350px;
+
     width: 30%;
   }
   #img-fish {
     right: 5%;
-    margin-top: 100px;
-    z-index: 50;
-    width: 30%;
+  width: 20%;
   }
 }
 
