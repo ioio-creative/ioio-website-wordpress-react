@@ -38,9 +38,7 @@
   background: rgba(255, 255, 255, 1), url(Triangle.png) fixed center center;
   background-size: auto;
   background-repeat: no-repeat;
-
-  height: 80vh;
-
+  height: 85vh;
 }
 
 #about01 h3 {
@@ -63,7 +61,7 @@
   position: absolute;
   right: 40%;
   top: 1vh;
-  max-width: 50vh;
+  height: 60vh;
 }
 
 #img-meet {
@@ -85,7 +83,6 @@
   #about01 h3 {
     font-size: 3.5vh;
   }
-
   #about01 h1 {
     font-size: 7vh;
   }
@@ -108,16 +105,14 @@
     position: absolute;
     left: 0px;
     top: 0px;
-
   }
   #img-meet {
     right: 1%;
-
     width: 30%;
   }
   #img-fish {
     right: 5%;
-  width: 20%;
+    width: 20%;
   }
 }
 
@@ -200,7 +195,7 @@ slideshow
 }
 
 #core-value {
-  background: #FFF;
+  background: #FFE000;
 }
 
 #core-value .box {
@@ -234,10 +229,16 @@ slideshow
 }
 
 #core-value p {
+  position: relative;
   font-size: 20px;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 70px;
+  text-align: center;
+  bottom: 0;
+}
+
+#core-value div {
+  text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -256,8 +257,6 @@ slideshow
   position: relative;
   z-index: 10;
 }
-
-
 
 .slideshow .the-team-text img {
   width: 100%;
@@ -286,16 +285,13 @@ slideshow
 
 @media only screen and (max-width: 767px) {
   .slideshow .the-team-text h3 {
-
     font-size: 12px;
-
   }
-
   .slideshow .the-team-text p {
-
     font-size: 11px;
   }
 }
+
 /*---------------------------
 Serivce
 --------------------------- */
@@ -318,7 +314,6 @@ Serivce
 }
 
 .services-col:hover .item-desc {
-
   display: block;
   position: absolute;
   top: 20%;
@@ -338,7 +333,10 @@ Serivce
 
 .client-col {
   padding: 0px 10px;
+  text-align: center;
 }
+
+.client-col img {}
 
 /*---------------------------
 Serivce

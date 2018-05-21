@@ -78,17 +78,18 @@ pop-up
   position: relative;
   top: 320px;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 40px;
   text-align: left;
 }
 
 .video-text h2 {
   position: relative;
   top: 320px;
-  font-weight: 100;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 16px;
   text-align: left;
+  letter-spacing: 0.05em;
 }
 
 .video-text a {
@@ -113,7 +114,13 @@ pop-up
   z-index: 2;
   width: 100%;
   text-align: left;
+  font-size: 18px;
   padding: 100px 0 100px 0;
+}
+
+
+.video-landing-text div{
+  padding: 0 0;
 }
 
 .video-landing-text-l {
@@ -285,6 +292,10 @@ video {
 }
 
 
+.slideshow-2-col-right{
+  padding-top: 200px;
+}
+
 /*==============
 .photo-montage-one-vid
 ==============*/
@@ -305,7 +316,7 @@ video {
 
 .photo-montage-one-img {
   margin: 0 0 0 0;
-  padding: 50px 0 50px 0;
+  padding: 0 0 0 0;
   text-align: center;
   width: 100%;
 }
@@ -327,6 +338,13 @@ video {
 .photo-montage-one-text {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
+}
+
+.photo-montage-one-text p{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  text-align: center;
+  line-height: 1.7em;
 }
 
 .photo-montage-one-text div {

@@ -7,12 +7,20 @@
   position: relative;
 }
 
-.slideshow-img-on-right .slideshow-text {  
-  padding: 0 0 0 50px;
+.slideshow-img-on-right .slideshow-item div {
+  padding: 0 0;
 }
 
-.slideshow-img-on-left .slideshow-text {  
-  padding: 0 50px 0 0;
+.slideshow-img-on-left .slideshow-item div {
+  padding: 0 0;
+}
+
+.slideshow-img-on-right .slideshow-item div div {
+  padding: 0 0;
+}
+
+.slideshow-img-on-left .slideshow-item div div {
+  padding: 0 0;
 }
 
 .slideshow-img-on-right img {

@@ -106,12 +106,12 @@ function VideoLanding(props) {
       <div className="container-fluid">
         <div className="row video-landing-text">
           <div className="col-md-1"></div>
-          <div className="col-md-4 wow fadeInUp">
+          <div className="col-md-4 wow fadeIn">
             <p className="video-landing-text-l">{props.project.key_message}</p>
           </div>
 
           <div className="col-md-2"></div>
-          <div className="col-md-4 wow fadeInUp">
+          <div className="col-md-4 wow fadeIn">
             <p className="video-landing-text-r">{props.project.overview}</p>
           </div>
           <div className="col-md-1"></div>

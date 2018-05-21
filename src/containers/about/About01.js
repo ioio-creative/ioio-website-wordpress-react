@@ -10,7 +10,16 @@ class About01 extends Component {
 
   render() {
     var a = this.props.about
-    return (<section id="about01" className="wow fadeIn about-section-bg">
+
+    const url = "url('" + a.about_top_section_background_image.guid + "')"
+
+    const bg = {
+      backgroundImage: url,
+      backgroundSize: 'auto',
+      backgroundPosition: 'center'
+    };
+
+    return (<section id="about01" className="wow fadeIn about-section-bg" style={bg}>
       <div className="container-fluid row text-left">
         <div className="col-md-1"></div>
         <div className="col-md-10">

@@ -9,10 +9,10 @@ function Slideshow(props) {
     return (<div className="item" key={id}>
       <div className="row container-fluid">
         <div className="col-md-1"></div>
-        <div className="col-md-7 text-center">
+        <div className="col-md-6 text-center">
           <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
         </div>
-        <div className="col-md-3 slideshow-text">
+        <div className="col-md-4 slideshow-text">
           <h2>{slide.my_title}</h2>
           <p>
             {slide.desc}
@@ -46,8 +46,9 @@ class About04 extends Component {
 
     const bg = {
       backgroundImage: url,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center top',
+      backgroundSize: 'auto',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'left top',
     };
 
     return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInLeft" style={bg}>
