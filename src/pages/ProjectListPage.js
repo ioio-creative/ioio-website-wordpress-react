@@ -11,7 +11,7 @@ import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
 import $ from 'jquery'
-import Shuffle from 'shufflejs'
+//import Shuffle from 'shufflejs'
 
 class ProjectTag extends Component {
   constructor(props) {
