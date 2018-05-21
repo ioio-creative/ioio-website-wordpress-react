@@ -37,8 +37,6 @@
   }
 }
 
-
-
 body {
   background: #fff;
   color: #000;
@@ -47,7 +45,8 @@ body {
   white-space: pre-line;
   font-family: "FuturaLT", sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; /* //TODO */
+  overflow-x: hidden;
+  /* //TODO */
 }
 
 a {
@@ -105,23 +104,37 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 /*
 Modal
 */
+
 .ReactModalPortal {}
 
 .ReactModalPortal div {
   z-index: 1999;
+
 }
 
+.vid-player {
+
+
+  /*width: calc(80vh*16/9);*/
+  max-width: 100vw;
+max-height: 100vh;
+min-width: 80vw;
+min-height: 80vh;
+}
+
+/*
 .vid-player div video {
   position: relative;
   display: block;
   width: 80% !important;
   height: 90% !important;
   margin: 1% 10%;
+
 }
+*/
 
 .video-close-btn {
   border-radius: 50%;
@@ -135,9 +148,6 @@ Modal
   z-index: 2000;
 }
 
-
-
-
 /*--------------------------------------------------------------
 # scroller
 --------------------------------------------------------------*/
@@ -149,7 +159,6 @@ Modal
   /*hack: //todo adjust after sidebar*/
   padding: 0 0 0 0;
   display: block;
-
 }
 
 section {
@@ -163,7 +172,6 @@ section {
 #scroller {
   margin: 0 0 0 55px;
   padding: 0 0 0 0;
-
   /*update sidebar width as well*/
 }
 

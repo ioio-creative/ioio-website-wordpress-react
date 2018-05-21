@@ -194,6 +194,16 @@ function VideoLanding(props) {
         return null;
       }
 
+      const customStyles = {
+        content : {
+          top                   : '50%',
+          left                  : '50%',
+          right                 : 'auto',
+          bottom                : 'auto',
+          marginRight           : '-50%',
+          transform             : 'translate(-50%, -50%)'
+        }
+      };
       //    console.log(state.isReturnNotFound);
       //    console.log(project);
 
@@ -212,7 +222,7 @@ function VideoLanding(props) {
       */
         }
         {projectTemplateContainer}
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Example Modal">
+        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
           <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
             <i className="ion ion-android-close"></i>
           </button>
