@@ -141,7 +141,7 @@ iframe-p5-div {
 }
 */
 
-.img-container {
+#homepage-selected-project .portfolio-wrap .img-container {
   display: block;
   width: 100%;
   height: auto;
@@ -151,7 +151,7 @@ iframe-p5-div {
   /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
 }
 
-.img-container img {
+#homepage-selected-project .portfolio-wrap .img-container img {
   display: block;
   width: 100%;
   height: auto;

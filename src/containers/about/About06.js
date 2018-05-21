@@ -12,6 +12,7 @@ function Items(props) {
           {item.desc}
         </p>
       </div>
+      <h3>{item.my_name}</h3>
       </div>
     </div>);
   });

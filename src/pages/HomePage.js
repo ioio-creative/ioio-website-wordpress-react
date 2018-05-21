@@ -23,11 +23,11 @@ import "./video-react.css";
 
 Modal.setAppElement('#root');
 
-
 function ProjectCategories(props) {
   const tag_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
-    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span></li>);
+    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
+    </li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
@@ -36,8 +36,6 @@ function ProjectCategories(props) {
     </ul>
   </div>);
 }
-
-
 
 function HighlightedProjects(props) {
   const projectIdSlugPairs = props.projIdSlugPairs;
@@ -120,8 +118,7 @@ function Items(props) {
 
   let a = props.abouts
   return (<div className="row">
-    <div className="col-md-1">
-    </div>
+    <div className="col-md-1"></div>
     <div className="col-md-5 about-section-left">
       <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
       <div className="text-center">
@@ -138,8 +135,7 @@ function Items(props) {
         <p className="description">{a.about_section_desc}</p>
       </div>
     </div>
-    <div className="col-md-1">
-    </div>
+    <div className="col-md-1"></div>
   </div>);
 }
 
@@ -222,7 +218,6 @@ class HomePage extends Component {
     */
   }
 
-
   render() {
     const p = this.state.projects;
     const h = this.state.homepage;
@@ -275,14 +270,14 @@ class HomePage extends Component {
                 </h4>
               </Link>
             </div>
-              <div className="col-md-1"></div>
+            <div className="col-md-1"></div>
 
           </div>
-</div>
+        </div>
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-              <ProjectCategories categories={pC}/>
+        <ProjectCategories categories={pC}/>
         <HighlightedProjects projectlist={home.highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
 
       </section>

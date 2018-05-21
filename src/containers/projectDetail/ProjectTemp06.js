@@ -49,8 +49,10 @@ class ProjectTemp06 extends Component {
     const bg = {
       backgroundImage: url,
       backgroundColor: props.background_mood_color,
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      color: props.text_color,
     };
+
     return (<section className="slideshow-2-col project-section-bg" style={bg}>
       <div className="container-fluid">
         <div className="row">

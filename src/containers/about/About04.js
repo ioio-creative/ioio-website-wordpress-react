@@ -10,7 +10,9 @@ function Slideshow(props) {
       <div className="row container-fluid">
         <div className="col-md-1"></div>
         <div className="col-md-6 text-center">
-          <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
+          <div className="img-container">
+            <img src={slide.image.guid} className="slideshow-img" alt="alt"/>
+          </div>
         </div>
         <div className="col-md-4 slideshow-text">
           <h2>{slide.my_title}</h2>
@@ -19,7 +21,7 @@ function Slideshow(props) {
           </p>
         </div>
       </div>
-              <div className="col-md-1"></div>
+      <div className="col-md-1"></div>
     </div>);
   });
 
@@ -48,7 +50,7 @@ class About04 extends Component {
       backgroundImage: url,
       backgroundSize: 'auto',
       backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'left top',
+      backgroundPosition: 'left top'
     };
 
     return (<section className="slideshow slideshow-img-and-text about-section-bg wow fadeInLeft" style={bg}>

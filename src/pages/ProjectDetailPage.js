@@ -6,8 +6,6 @@ import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 import {Link} from 'react-router-dom'
 
-
-
 import ReactPlayer from 'react-player'
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01'; //photomontage - 3 images
@@ -58,7 +56,6 @@ const customStyles = {
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
-
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
   const poster_url = props.project.thumbnail.guid;
@@ -68,13 +65,13 @@ function VideoLanding(props) {
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
-  return (<section id="video-landing" className="section-bg">
+  return (<section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
     <div className="video-landing-div">
       <div className="container-fluid">
         <div className="player-wrapper">
           <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
             <source className="wow fadeIn" src={video_url} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
-            <img src={poster_url} title="Your browser does not support the <video> tag"/>
+            <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag"/>
           </video>
         </div>
         {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
@@ -95,9 +92,7 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>); }
-
-  function VideoLandingDesc(props) {
+  </section>); } function VideoLandingDesc(props) {
 
     const bg = {
       backgroundColor: props.project.background_mood_color
@@ -225,7 +220,6 @@ function VideoLanding(props) {
             <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
           </div>
         </Modal>
-
         <Footer
           //Section: Footer
           footer={footer}/>

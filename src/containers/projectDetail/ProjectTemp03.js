@@ -7,10 +7,8 @@ function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
     return (<div className="slideshow-item" key={id}>
-      <div className="row container-fluid">
-        <div className="col-md-12 text-center">
+      <div className="img-container">
           <img src={slide.guid} className="slideshow-img" alt="alt"/>
-        </div>
       </div>
     </div>);
   });

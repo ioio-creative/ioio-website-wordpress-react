@@ -11,7 +11,7 @@ import Footer from 'containers/Footer';
 
 import scriptjs from 'scriptjs'
 import $ from 'jquery'
-import Shuffle from 'shufflejs'
+
 
 class ProjectTag extends Component {
   constructor(props) {
@@ -128,7 +128,7 @@ function AllProjects(props) {
     </div>);
   });
 
-  return (<div className="row portfolio-container wow fadeIn my-shuffle">
+  return (<div className="row portfolio-container wow fadeIn">
     {project_items}
   </div>);
 }
