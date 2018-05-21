@@ -13,7 +13,7 @@ import { compareForDatesAscending, compareForDatesDescending } from 'utils/datet
 */
 const baseUrl = "https://admin.ioiocreative.com/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
-const defaultQuery = "";
+const defaultQuery = "?per_page=20";
 
 // container of WordPress generated id's of active entities,
 // used for fetching entity by id via WordPress API
@@ -161,7 +161,7 @@ async function fetchProjectCategoriesAsync(callback) {
 }
 
 function fetchProjectTags(callback) {
-    passJsonResultToCallback("project_tags/?per_page=20", callback);  // TODO
+    passJsonResultToCallback("project_tags", callback);
 }
 
 async function fetchProjectTagsAsync(callback) {
