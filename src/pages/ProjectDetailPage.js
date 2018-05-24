@@ -89,7 +89,7 @@ function VideoLanding(props) {
             <div className="col-md-5 pop-up-vid-div">
               <Link to="#" onClick={props.modalClick} id="pop-up-vid">
                 <img className="projectlist-showreel-img" src={svgURL} alt="showreel"/>
-                SHOWREEL</Link>
+                SHOWREEL&nbsp;</Link>
             </div>
             <div className="col-md-1"></div>
           </div>

@@ -112,17 +112,14 @@ Modal
 
 .ReactModalPortal div {
   z-index: 1999;
-
 }
 
 .vid-player {
-
-
   /*width: calc(80vh*16/9);*/
   max-width: 100vw;
-max-height: 100vh;
-min-width: 80vw;
-min-height: 80vh;
+  max-height: 100vh;
+  min-width: 80vw;
+  min-height: 80vh;
 }
 
 /*

@@ -147,7 +147,7 @@ iframe-p5-div {
   height: auto;
   position: relative;
   overflow: hidden;
-  padding: 43.75% 0 0 0;
+  padding: 50% 0 0 0;
   /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
 }
 
@@ -235,7 +235,7 @@ iframe-p5-div {
   position: absolute;
   padding: 20px 40px;
   color: white;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 #homepage-core-value img {

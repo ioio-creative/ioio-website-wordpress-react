@@ -57,10 +57,10 @@ function initSetup() {
   /* textPosX = map(windowWidth, 0, 2000, 200, 420)
 textPosY = map(windowHeight, 0, 526, 0, 100)
 maxBlur = map(changeFactor, 0, 2000, 6, 12) */
-  letterSpacing = map(changeFactor, 0, 2000, 20, 180)
-  fontSize = map(changeFactor, 0, 2000, 25, 700)
+  letterSpacing = map(changeFactor, 0, 2000, 20, 40)
+  fontSize = map(changeFactor, 0, 2000, 25, 600)
   text.style("font-size", fontSize + "px");
-  //text.style("letter-spacing", letterSpacing + "px");
+  text.style("letter-spacing", letterSpacing + "px");
 
 }
 function setup() {

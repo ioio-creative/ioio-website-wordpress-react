@@ -112,6 +112,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-color: #000;
 }
 
 #sidebar #menu-canvas {
@@ -224,7 +225,7 @@
 
 
 #sidebar .sidebar-hiring p{
-width: 100%;
+width: 80%;
 
 }
 /*

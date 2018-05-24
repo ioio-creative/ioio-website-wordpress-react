@@ -250,6 +250,17 @@ class HomePage extends Component {
     const svgURL = publicUrl + '/img/Play_btn-14.svg'
     const home = h[0];
 
+    const customStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+      }
+    };
+
     return (<div>
 
       <section id="homepage-top" className="section-bg wow fadeIn">
@@ -305,7 +316,7 @@ class HomePage extends Component {
         </div>
       </section>
 
-      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Example Modal">
+      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
         <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
           <i className="ion ion-android-close"></i>
         </button>

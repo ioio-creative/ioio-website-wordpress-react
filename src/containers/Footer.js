@@ -3,9 +3,13 @@ import {Link} from 'react-router-dom'
 import './Footer.css'
 import $ from 'jquery'
 
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
+
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
-    return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
+    return (<a href={item.link} key={index} className="youtube"><img className="social-media-img" src={item.icon.guid} alt={item.my_name} /></a>);
   });
 
   return (<div>
@@ -16,9 +20,32 @@ function SocialMedia(props) {
 class Footer extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalIsOpen: false
+    };
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
     this.state = {
       footer: {}
     }
+  }
+
+
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   componentDidMount() {}
@@ -28,6 +55,20 @@ class Footer extends Component {
     if (f === undefined || f === null) {
       return null;
     }
+
+    const customStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        width                 : '60%',
+        height                : '80vh',
+      }
+    };
+
     return (<footer id="footer" className="wow fadeIn" data-wow-delay="0.5s">
       <div className="footer-top">
         <div className="container-fluid">
@@ -66,7 +107,9 @@ class Footer extends Component {
             <div className="col-md-3"></div>
             <div className="col-md-2"></div>
             <div className="col-md-2 footer-bottom-links">
-              <a>TERMS & CONDITIONS</a>
+              <Link to="#" onClick={this.openModal} id="pop-up-terms">
+                TERMS & CONDITIONS
+              </Link>
               <a>JOIN US</a>
               <a className="footer-back-to-top">
                 <i className="ion ion-android-arrow-up"></i>
@@ -76,6 +119,14 @@ class Footer extends Component {
           </div>
         </div>
       </div>
+      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Terms Modal" style={customStyles}>
+        <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
+          <i className="ion ion-android-close"></i>
+        </button>
+        <div className="terms-div">
+          {f.terms_and_condition}
+        </div>
+      </Modal>
     </footer>);
   }
 }

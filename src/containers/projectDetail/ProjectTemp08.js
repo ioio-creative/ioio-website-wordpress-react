@@ -18,7 +18,7 @@ class ProjectTemp08 extends Component {
       }
 
         return (
-          <section className="photo-montage-one-img project-section-bg wow fadeInUp">
+          <section className="photo-montage-one-img-full-width project-section-bg wow fadeInUp">
             <div className="container-fluid" style={bg}>
               <img src={image0} alt="" />
             </div>

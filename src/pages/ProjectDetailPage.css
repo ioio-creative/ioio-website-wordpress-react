@@ -74,16 +74,16 @@ pop-up
 }
 
 .video-text h1 {
-  position: relative;
+  position: absolute;
   top: 30vh;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 36px;
   text-align: left;
 }
 
 .video-text h2 {
-  position: relative;
-  top: 30vh;
+  position: absolute;
+  top: 43vh;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 16px;
@@ -135,11 +135,11 @@ margin-top:  -5px;
 
 @media (max-height: 700px) {
   .video-text h1 {
-    top: 20vh;
-    font-size: 40px;
+    top: 25vh;
+    font-size: 36px;
   }
   .video-text h2 {
-    top: 20vh;
+    top: 40vh;
     font-size: 16px;
   }
   .video-text a {
@@ -147,13 +147,13 @@ margin-top:  -5px;
   }
 }
 
-@media (max-height: 350px) {
+@media (max-height: 600px) {
   .video-text h1 {
-        top: 15vh;
+    top: 30vh;
     font-size: 30px;
   }
   .video-text h2 {
-    top: 15vh;
+    top: 45vh;
     font-size: 12px;
   }
   .video-text a {
@@ -407,7 +407,7 @@ video {
 .photo-montage-one-img
 ==============*/
 
-.photo-montage-one-img {
+.photo-montage-one-img-full-width {
   margin: 0 0 0 0;
   padding: 0 0 40px 0;
   text-align: center;
