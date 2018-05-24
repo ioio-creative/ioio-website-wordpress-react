@@ -65,6 +65,10 @@ function VideoLanding(props) {
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
+
+  const publicUrl = process.env.PUBLIC_URL;
+  const svgURL = publicUrl + '/img/Play_btn-14.svg'
+
   return (<section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
     <div className="video-landing-div">
       <div className="container-fluid">
@@ -84,7 +88,7 @@ function VideoLanding(props) {
             </div>
             <div className="col-md-5 pop-up-vid-div">
               <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-                <i className="ion ion-android-arrow-dropright-circle"></i>
+                <img className="projectlist-showreel-img" src={svgURL} alt="showreel"/>
                 SHOWREEL</Link>
             </div>
             <div className="col-md-1"></div>
@@ -178,6 +182,8 @@ function VideoLanding(props) {
     render() {
       const state = this.state;
       const project = state.project;
+
+
 
       // should check isReturnNotFound first
       // before checking project === null

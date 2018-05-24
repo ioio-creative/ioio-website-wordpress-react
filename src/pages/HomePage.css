@@ -19,7 +19,7 @@ iframe-p5-div {
   padding: 0 0 0 0;
   position: absolute;
   width: 100%;
-  height: 500px;
+  height: 75vh;
   overflow: hidden;
 }
 
@@ -32,7 +32,7 @@ iframe-p5-div {
   right: 0;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 75vh;
 }
 
 #homepage-top .homepage-showreel {

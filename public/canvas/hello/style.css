@@ -3,4 +3,10 @@ html, body {
   padding: 0;
   overflow: hidden;
   font-family: 'FuturaLT-Bold';
+  width: 100%;
+  text-align: center;
+}
+
+#defaultCanvas0 {
+  display: inline;
 }
