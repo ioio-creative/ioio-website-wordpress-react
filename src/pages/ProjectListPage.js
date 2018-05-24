@@ -101,6 +101,20 @@ function AllProjects(props) {
         {tagName}
       </span>);
     });
+    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+
+      let categoryName = "";
+      if (index >= 1) {
+        categoryName = " / " + getProjectCategoryNameById(categoryId)
+      } else {
+        categoryName = getProjectCategoryNameById(categoryId)
+      }
+      return (<span key={index}>
+        {categoryName}
+      </span>);
+    });
+
+
     let s = project.link;
     cutString(s);
     function cutString(s) {
@@ -121,7 +135,7 @@ function AllProjects(props) {
             <h4>
               {project.project_name}
             </h4>
-            <p>{tagsCorrespondingToProj}</p>
+            <p>{categoryCorrespondingToProj}</p>
           </div>
         </div>
       </Link>
