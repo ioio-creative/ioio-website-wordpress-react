@@ -35,9 +35,11 @@ class ProjectTemp05 extends Component {
     };
     return (<section className="slideshow slideshow-img-in-middle project-section-bg wow fadeInUp" style={bg}>
       <div className="row container-fluid">
-        <div className="col-md-12 text-center">
+        <div className="col-md-1"></div>
+        <div className="col-md-10 text-center">
           <Slideshow slides={props.images}/>
         </div>
+        <div className="col-md-1"></div>
       </div>
     </section>);
   }

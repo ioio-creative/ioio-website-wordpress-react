@@ -327,12 +327,15 @@ video {
 ==============*/
 
 .slideshow-img-in-middle {
-  padding: 80px 0;
+  padding: 40px 0;
   text-align: center;
 }
 
-.slideshow-img-in-middle .row {
-  margin-left: -0px;
+.slideshow-img-in-middle div .col-md-1{ padding: 0 0;}
+
+.slideshow-img-in-middle div div div{
+  margin: 0 0;
+
 }
 
 .slideshow-img-in-middle .img-container {
@@ -365,14 +368,6 @@ video {
   background-repeat: repeat;
 }
 
-.slideshow-2-col div div {
-  padding: 0 200px;
-}
-
-.slideshow-2-col div div div {
-  padding: 0 0;
-}
-
 .slideshow-2-col-item img {
   min-width: 90%;
   max-width: 90%;
@@ -385,8 +380,12 @@ video {
   font-size: 14px;
 }
 
-.slideshow-2-col-right {
-  padding-top: 200px;
+.two-col-left{
+    padding-top: 0;
+}
+
+.two-col-right{
+    padding-top: 200px;
 }
 
 /*==============
@@ -409,15 +408,33 @@ video {
 
 .photo-montage-one-img-full-width {
   margin: 0 0 0 0;
-  padding: 0 0 40px 0;
+  padding: 0 0 0 0;
   text-align: center;
+  width: 100%;
+}
+
+
+.photo-montage-one-img-full-width div{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+
+.photo-montage-one-img-full-width img{
   width: 100%;
 }
 
 /* TODO: commented out by Chris */
 
-.photo-montage-one-img div {
+.photo-montage-one-img {
   margin: 0 0 0 0;
+  padding: 40px 0 40px 0;
+  text-align: center;
+  width: 100%;
+}
+
+
+.photo-montage-one-img div {
   padding: 0 0 0 0;
 }
 

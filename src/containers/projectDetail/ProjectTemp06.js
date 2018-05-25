@@ -14,7 +14,7 @@ function SlideshowLeft(props) {
     }
   );
 
-  return (<div className="col-lg-6 text-center">
+  return (<div className="col-lg-6 text-center two-col-left">
     {member_items}
   </div>);
 }
@@ -31,7 +31,7 @@ function SlideshowRight(props) {
     }
   );
 
-  return (<div className="col-lg-6 text-center">
+  return (<div className="col-lg-6 text-center two-col-right">
     {member_items}
   </div>);
 }
