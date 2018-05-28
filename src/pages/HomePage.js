@@ -22,7 +22,7 @@ import {Player} from 'video-react';
 import "./video-react.css";
 
 Modal.setAppElement('#root');
-
+Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 function ProjectCategories(props) {
   const tag_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
@@ -257,7 +257,9 @@ class HomePage extends Component {
         right                 : 'auto',
         bottom                : 'auto',
         marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+        transform             : 'translate(-50%, -50%)',
+        backgroundColor       : 'rgba(0,0,0,0)',
+        border                : '0px'
       }
     };
 

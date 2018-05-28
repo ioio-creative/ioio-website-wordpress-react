@@ -108,11 +108,21 @@ h1, h2, h3, h4, h5, h6 {
 Modal
 */
 
-.ReactModalPortal {}
+.ReactModalPortal {
+      background: rgba(0,0,0,0.75);
+}
+
 
 .ReactModalPortal div {
+
   z-index: 1999;
 }
+
+.ReactModalPortal div div{
+  background: rgba(0,0,0,0.75);
+}
+
+
 
 .vid-player {
   /*width: calc(80vh*16/9);*/

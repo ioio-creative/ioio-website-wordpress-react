@@ -14,7 +14,7 @@ function SlideshowLeft(props) {
     }
   );
 
-  return (<div className="col-lg-6 text-center two-col-left">
+  return (<div className="col-md-5 text-center two-col-left">
     {member_items}
   </div>);
 }
@@ -31,7 +31,8 @@ function SlideshowRight(props) {
     }
   );
 
-  return (<div className="col-lg-6 text-center two-col-right">
+  return (
+    <div className="col-md-5 text-center two-col-right">
     {member_items}
   </div>);
 }
@@ -56,8 +57,12 @@ class ProjectTemp06 extends Component {
     return (<section className="slideshow-2-col project-section-bg" style={bg}>
       <div className="container-fluid">
         <div className="row">
+          <div className="col-md-1">
+          </div>
           <SlideshowLeft slides={props.images}/>
           <SlideshowRight slides={props.images}/>
+          <div className="col-md-1">
+          </div>
         </div>
       </div>
     </section>);

@@ -207,7 +207,9 @@ function VideoLanding(props) {
           right                 : 'auto',
           bottom                : 'auto',
           marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)'
+          transform             : 'translate(-50%, -50%)',
+          backgroundColor       : 'rgba(0,0,0,0)',
+          border                : '0px'
         }
       };
       //    console.log(state.isReturnNotFound);

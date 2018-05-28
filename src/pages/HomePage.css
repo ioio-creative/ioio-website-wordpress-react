@@ -36,9 +36,9 @@ iframe-p5-div {
 }
 
 #homepage-top .homepage-showreel {
-  position: relative;
-  top: -40px;
-  font-size: 1.7vw;
+  position: absolute;
+  top: 55vh;
+  font-size: 25px;
   font-weight: bold;
   width: 100%;
   text-align: center;
