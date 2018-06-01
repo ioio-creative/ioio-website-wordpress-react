@@ -99,7 +99,7 @@ function ProjectGrid(props) {
       <div key={project.id}
           className={projItemClassName}           
           data-project-category-ids={project.project_categories.join(',')}
-          data-groups={'["' + project.slug + '"]'}>
+          data-groups={'["' + project.project_categories.map((id) => ('cat_' + id)).join(', ') + '"]'}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
             <div className="img-container">
@@ -192,8 +192,6 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-  /* event handlers */
-
   handleFilterTxtChange(event) {
     this.setState({filterTxt: event.target.value});
   }
@@ -208,22 +206,65 @@ class ProjectListWithShuffle extends Component {
     event.preventDefault();
   }
 
-  /* end of event handlers */
+  handleFilterButtonClick(categoryId, tagId) {
+    //this.setState({selectedCategoryId: categoryId});
 
+
+    this.shuffle.filter('cat_' + categoryId);
+
+    // if (categoryId === this.selectAllCategoryId) {
+    //   this.shuffle.filter(Shuffle.ALL_ITEMS);
+    // } else {
+    //   // https://vestride.github.io/Shuffle/#advanced-filters
+    //   this.shuffle.filter((projectItem) => {
+    //     const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
+    //     return projItemCategoryIds.includes(categoryId);
+    //   });
+    // }
+  }
+  
   setShuffleRef(element) {
     this.shuffleRef = element;
   }
 
   render() {
+    const selectedItemClass = 'filter-active';
+
+    const categoryItems = this.props.categories.map((category) => {
+      let categoryItemClassName = '';
+      if (category.id === this.selectedCategoryId) {
+        categoryItemClassName += ' ' + selectedItemClass;
+      }
+      return (
+        <li key={category.id} 
+            className={categoryItemClassName}         
+            onClick={(event) => {
+              this.handleFilterButtonClick(category.id);
+              event.preventDefault();
+            }}>
+            {category.name}<span>{category.count}</span>
+        </li>
+      );
+    });
+
     return (
       <div>
-        <form onSubmit={this.handleFilter}>
+        
+        <div className="col-lg-12 ">
+          <ul>
+            {categoryItems}
+          </ul>
+        </div>
+        
+        
+        {/* <form onSubmit={this.handleFilter}>
           <label>
             Search:
             <input type="text" value={this.state.filterTxt} onChange={this.handleFilterTxtChange} />
           </label>
           <input type="submit" value="Submit" />
-        </form>
+        </form> */}
+        
         <ProjectGrid projects={this.props.projects}
                      projectShuffleSelectorClass={this.projectShuffleSelectorClass} 
                      setShuffleRefFunc={this.setShuffleRef} />
