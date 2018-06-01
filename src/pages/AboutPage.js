@@ -14,8 +14,6 @@ import './AboutPage.css';
 
 import {fetchActiveAbout, fetchActiveFooter} from 'websiteApi';
 
-
-
 class AboutPage extends Component {
   constructor(props) {
     super(props);
