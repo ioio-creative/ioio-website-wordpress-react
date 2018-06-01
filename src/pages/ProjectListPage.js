@@ -265,7 +265,46 @@ class ProjectListWithShuffle extends Component {
           <input type="submit" value="Submit" />
         </form>
         <div ref={element => this.shuffleRef = element} className="row portfolio-container wow fadeIn my-shuffle">
-          {this.props.projects.map((project) => (
+          { 
+            this.props.projects.map((project) => {
+              let projItemClassName = 'col-lg-6 col-md-6 ' + this.projectShuffleSelectorClass + ' ';
+    
+              const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+                let categoryName = '';
+                if (index >= 1) {
+                  categoryName = ' / ' + getProjectCategoryNameById(categoryId)
+                } else {
+                  categoryName = getProjectCategoryNameById(categoryId)
+                }
+                return (<span key={index}>
+                  {categoryName}
+                </span>);
+              });
+          
+              return (
+                // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
+                <div key={project.id}
+                    className={projItemClassName}           
+                    data-project-category-ids={project.project_categories.join(',')}
+                    data-groups={'["' + project.slug + '"]'}>
+                  <Link to={routes.projectBySlugWithValue(project.slug)}>
+                    <div className="portfolio-wrap">
+                      <div className="img-container">
+                        <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+                      </div>
+                      <div className="portfolio-info">
+                        <h4>
+                          {project.project_name}
+                        </h4>
+                        <p>{categoryCorrespondingToProj}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })
+          }
+          {/*this.props.projects.map((project) => (
             <div key={project.id} className={'col-3@xs col-4@sm ' + this.projectShuffleSelectorClass}
               data-groups={'["' + project.slug + '"]'}>
               <div className="aspect aspect--4x3">
@@ -274,7 +313,7 @@ class ProjectListWithShuffle extends Component {
                 </div>
               </div>
             </div>
-          ))}          
+          ))*/}          
         </div>
       </div>
     );

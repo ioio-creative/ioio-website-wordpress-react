@@ -116,17 +116,7 @@ function ProjectGrid(props) {
         {categoryName}
       </span>);
     });
-
-    let s = project.link;
-    cutString(s);
-    function cutString(s) {
-      let cut = s.indexOf('/projects');
-      if (cut === -1)
-        return s;
-      return s.substr(cut)
-    }
-    let d = cutString(s);
-
+    
     return (
       // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
       <div key={project.id}
