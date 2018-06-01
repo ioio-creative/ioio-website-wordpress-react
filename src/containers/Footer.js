@@ -110,7 +110,7 @@ class Footer extends Component {
               <Link to="#" onClick={this.openModal} id="pop-up-terms">
                 TERMS & CONDITIONS
               </Link>
-              <a>JOIN US</a>
+              <a id="footer-join-us">JOIN US</a>
               <a className="footer-back-to-top">
                 <i className="ion ion-android-arrow-up"></i>
               </a>

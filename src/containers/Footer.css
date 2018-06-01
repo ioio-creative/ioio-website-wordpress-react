@@ -1,11 +1,8 @@
-
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 
 #footer {
-
-
   background: #EDEDED;
   padding: 0 0 30px 0;
   color: #000;
@@ -16,22 +13,7 @@
   font-family: "FuturaLT", sans-serif;
   height: 500px;
   overflow: hidden;
-
-/*
-      opacity: 0;
-
-  -webkit-transition: opacity 2s ease-in;
-     -moz-transition: opacity 2s ease-in;
-      -ms-transition: opacity 2s ease-in;
-       -o-transition: opacity 2s ease-in;
-          transition: opacity 2s ease-in;
-          */
 }
-/*
-#footer.load {
-    opacity: 1;
-}
-*/
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
@@ -52,18 +34,17 @@
 }
 
 #footer .footer-top .social-links {
-    text-align: left;
+  text-align: left;
 }
 
-
-#footer .social-media-img{
+#footer .social-media-img {
   width: 30px;
   margin: 0 0 0 15px;
 }
 
 #footer .footer-top .social-links a {
   font-size: 16px;
-  display:inline-block;
+  display: inline-block;
   text-decoration: underline;
   line-height: 1;
   transition: 0.3s;
@@ -101,50 +82,37 @@
   height: 50px;
 }
 
-#footer .footer-bottom-links a{
- padding: 5px;
- width: 100%;
- cursor: pointer;
- white-space: nowrap;
+#footer .footer-bottom-links a {
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-#footer .back-to-top-button{
+#footer .back-to-top-button {}
 
-}
-
-#footer .terms-div{
+#footer .terms-div {
   overflow: scroll;
 }
 
-
-@media only screen and (max-width: 767px) {
-  #footer .footer-hotpot-img {
-    position: relative;
-    top: 0;
-    right: 50px;
-    width: 300px;
-  }
-  #footer {
-    background: #EDEDED;
-    padding: 0 0 30px 0;
-    color: #000;
-    font-size: 14px;
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 0;
-    font-family: "FuturaLT", sans-serif;
-    height: 100%;
-  }
+#footer #footer-join-us{
+  display: none;
 }
 
 @media only screen and (max-width: 992px) {
   /*--[ Mobile styles go here]---------------------------*/
+}
+
+@media only screen and (max-width: 767px) {
+  #footer {
+    min-height: 750px;
+  }
   #footer .footer-hotpot-img {
-    position: relative;
-    top: -60px;
+    position: absolute;
+    top: 330px;
     right: 50px;
     width: 350px;
-    left:30px;
+    left: 30px;
   }
   #footer {
     background: #EDEDED;
@@ -157,4 +125,20 @@
     font-family: "FuturaLT", sans-serif;
     height: 100%;
   }
+  #footer .social-media-img {
+    width: 40px;
+    margin: 0 0 0 20px;
+  }
+  #footer .footer-bottom-copyright {
+    position: relative;
+    top: 280px;
+    height: 50px;
+  }
+  #footer .footer-bottom-links {
+    position: relative;
+    top: 250px;
+    height: 50px;
+  }
+  #footer .footer-bottom-links a {}
+  #footer .back-to-top-button {}
 }

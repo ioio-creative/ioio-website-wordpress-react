@@ -193,9 +193,11 @@ section {
   #main {
     margin: 0 0 0 0;
     /*hack: //TODO adjust after sidebar, check this*/
+
   }
   #scroller {
     margin: 0 0 0 0;
+
     /*update sidebar width as well*/
   }
 }

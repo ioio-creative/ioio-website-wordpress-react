@@ -15,10 +15,11 @@ var smallScreen = false;
 var fontSize = 400;
 var maxBlur = 28;
 function windowResized() {
+
   h = windowHeight;
   w = windowHeight * 16 / 9;
-  resizeCanvas(w, h);
   initSetup();
+  resizeCanvas(w, h);
 
 }
 
@@ -29,17 +30,12 @@ function initSetup() {
   } else {
     smallScreen = false;
   }
-  if (smallScreen) {
-    fontSize = 100;
-    var letterSpacing = 35;
-  } else {
-    fontSize = 400;
-    letterSpacing = 70;
-  }
+  if (smallScreen) {} else {}
 
   var changeFactor = windowHeight;
-  if (windowWidth < 800) {
-    changeFactor = windowWidth;
+
+  if (windowWidth < 600) {
+    changeFactor = windowWidth * 0.85;
   }
   x = w / 2;
   y = h / 2;
@@ -80,7 +76,6 @@ function setup() {
   text.style("font-weight", "bold");
   initSetup();
 
-
   console.log("canvas loaded")
   smooth();
 
@@ -88,9 +83,16 @@ function setup() {
 
 function draw() {
   background(255);
+  /*
+ console.log("windowHeight")
+ console.log(windowHeight)
 
-  console.log("windowHeight")
-  console.log(windowHeight)
+ console.log("windowWidth")
+  console.log(windowWidth)
+
+  console.log("w")
+  console.log(w)
+  */
   //var targetX = mouseX;
   x += (mouseX - px) * easing;
   //var targetY = mouseY;

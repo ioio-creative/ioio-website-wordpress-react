@@ -125,7 +125,7 @@
   bottom: 20px;
   margin-left: 100px;
   padding-right: 55px;
-    font-size: 14px;
+  font-size: 14px;
 }
 
 #sidebar.active .info-section h4 {
@@ -154,7 +154,6 @@
 
 #sidebar .close-symbol {
   z-index: 999;
-
 }
 
 #sidebar .close-symbol:hover {
@@ -168,7 +167,6 @@
   content: ' ';
   width: 2px;
   height: 28px;
-
   background-color: white;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
@@ -223,11 +221,10 @@
   transform: rotate(-0deg);
 }
 
-
-#sidebar .sidebar-hiring p{
-width: 80%;
-
+#sidebar .sidebar-hiring p {
+  width: 80%;
 }
+
 /*
 /* Extra small devices (phones, less than 768px) */
 
@@ -247,7 +244,6 @@ width: 80%;
 /* .....NavBar: Fully showing nav bar..... */
 
 @media (min-width: 1330px) {}
-
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
@@ -331,32 +327,30 @@ width: 80%;
     text-align: left;
     bottom: 0;
   }
-  #sidebar .sidebar-hiring{
-    display:none;
+  #sidebar .sidebar-hiring {
+    display: none;
   }
-
-
-
   #sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
     left: 91%;
     width: 2px;
     height: 22px;
     top: 17px;
   }
-
   #sidebar .close-symbol:before {
     left: 90%;
     height: 22px;
     top: 17px;
-
   }
-
   #sidebar .close-symbol:after {
-
     left: 92%;
     height: 22px;
     top: 17px;
   }
+  #sidebar .close-symbol:before {
+    transform: rotate(90deg);
+  }
 
-
+  #sidebar .close-symbol:after {
+    transform: rotate(-90deg);
+  }
 }

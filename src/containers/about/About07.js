@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 function Items(props) {
   const member_items = props.items.map((item, id) => {
-    return (<div className="col-md-3 wow fadeIn" key={id}>
+    return (<div className="col-md-3 col-xs-4 col-sm-4 wow fadeIn" key={id}>
       <div className="img client-col">
         <img src={item.image.guid} alt={item.my_name} className="img-fluid"/>
       </div>
