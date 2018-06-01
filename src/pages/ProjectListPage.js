@@ -13,68 +13,59 @@ import Footer from 'containers/Footer';
 import Shuffle from 'shufflejs'
 
 
-// class ProjectTag extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
-//     this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);    
-//   }
-
-//   handleProjectCategoryClick(e) {    
-//     $("#portfolio-flters li").removeClass('filter-active');
-//     $(this).addClass('filter-active');
-
-//     this.portfolioIsotope.isotope({filter: $(this).data('filter')});
-//   }
-
-//   render() {
-//     const tag_items = this.props.tags.map((tag, id) => {
-//       let tagId = ".filter-" + tag.id
-//       return (<li key={id} data-filter={tagId} onClick={this.handleProjectCategoryClick}>{tag.name}</li>);
-//     });
-//     return (<div className="col-lg-12 ">
-//       <ul id="portfolio-flters">
-//         <li data-filter="*" className="filter-active" onClick={this.handleProjectCategoryClick}>All</li>
-//         {tag_items}
-//       </ul>
-//     </div>);
-//   }
-// }
-
-
-function ProjectCategories(props) {
-  const selectedItemClass = 'filter-active';
-
-  const categoryItems = props.categories.map((category) => {
-    let categoryItemClassName = '';
-    if (category.id === props.selectedCategoryId) {
-      categoryItemClassName += ' ' + selectedItemClass;
-    }
-    return (
-      <li key={category.id} 
-          className={categoryItemClassName}         
-          onClick={() => props.handleFilterClick(category.id)}>
-          {category.name}<span>{category.count}</span>
-      </li>
-    );
-  });
-
-  let allCategoryClassName = '';
-  if (props.selectedCategoryId === props.selectAllCategoryId) {
-    allCategoryClassName += ' ' + selectedItemClass;
+class ProjectCategories extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCategoryId: props.selectAllCategoryId
+    };
+    this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
   }
 
-  return (
-    <div className="col-lg-12 ">
-      <ul id="portfolio-flters">
-        <li className={allCategoryClassName}
-            onClick={() => props.handleFilterClick(props.selectAllCategoryId)}>
-            All
+  handleCategoryButtonClick(categoryId) {
+    this.props.handleFilterClick(categoryId);
+    this.setState({
+      selectedCategoryId: categoryId
+    });
+  }
+  
+  render() {
+    const state = this.state;
+    const props = this.props;
+
+    const selectedItemClass = 'filter-active';
+
+    const categoryItems = props.categories.map((category) => {
+      let categoryItemClassName = '';
+      if (state.selectedCategoryId === category.id) {
+        categoryItemClassName += ' ' + selectedItemClass;
+      }
+      return (
+        <li key={category.id} 
+            className={categoryItemClassName}         
+            onClick={() => this.handleCategoryButtonClick(category.id)}>
+            {category.name}<span>{category.count}</span>
         </li>
-        {categoryItems}
-      </ul>
-    </div>
-  );
+      );
+    });
+
+    let allCategoryClassName = '';
+    if (state.selectedCategoryId === props.selectAllCategoryId) {
+      allCategoryClassName += ' ' + selectedItemClass;
+    }
+
+    return (
+      <div className="col-lg-12 ">
+        <ul id="portfolio-flters">
+          <li className={allCategoryClassName}
+              onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)}>
+              All
+          </li>
+          {categoryItems}
+        </ul>
+      </div>
+    );
+  }
 }
 
 
@@ -98,8 +89,7 @@ function ProjectGrid(props) {
       // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
       <div key={project.id}
           className={projItemClassName}           
-          data-project-category-ids={project.project_categories.join(',')}
-          data-groups={'["' + project.project_categories.map((id) => ('cat_' + id)).join(', ') + '"]'}>
+          data-project-category-ids={project.project_categories.join(',')}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
             <div className="img-container">
@@ -135,19 +125,7 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
-    this.state = {
-      photos: [
-        { id: 1, src: '' },
-        { id: 2, src: '' },
-        { id: 3, src: '' },
-      ],
-      filterTxt: null,
-      selectedCategoryId: this.selectAllCategoryId
-    };
-
-    this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
-    this.handleFilter = this.handleFilter.bind(this);
-
+    this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
     this.setShuffleRef = this.setShuffleRef.bind(this);
   }
 
@@ -192,35 +170,16 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-  handleFilterTxtChange(event) {
-    this.setState({filterTxt: event.target.value});
-  }
-
-  handleFilter(event) {
-    //alert('A name was submitted: ' + this.state.filterTxt);
-    if (this.state.filterTxt) {
-      this.shuffle.filter(this.state.filterTxt);
-    } else {
-      this.shuffle.filter(Shuffle.ALL_ITEMS); // or .filter()
-    }
-    event.preventDefault();
-  }
-
   handleFilterButtonClick(categoryId, tagId) {
-    //this.setState({selectedCategoryId: categoryId});
-
-
-    this.shuffle.filter('cat_' + categoryId);
-
-    // if (categoryId === this.selectAllCategoryId) {
-    //   this.shuffle.filter(Shuffle.ALL_ITEMS);
-    // } else {
-    //   // https://vestride.github.io/Shuffle/#advanced-filters
-    //   this.shuffle.filter((projectItem) => {
-    //     const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
-    //     return projItemCategoryIds.includes(categoryId);
-    //   });
-    // }
+    if (categoryId === this.selectAllCategoryId) {
+      this.shuffle.filter(Shuffle.ALL_ITEMS);
+    } else {
+      // https://vestride.github.io/Shuffle/#advanced-filters
+      this.shuffle.filter((projectItem) => {
+        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
+        return projItemCategoryIds.includes(categoryId);
+      });
+    }
   }
   
   setShuffleRef(element) {
@@ -249,25 +208,31 @@ class ProjectListWithShuffle extends Component {
 
     return (
       <div>
-        
-        <div className="col-lg-12 ">
-          <ul>
-            {categoryItems}
-          </ul>
-        </div>
-        
-        
-        {/* <form onSubmit={this.handleFilter}>
-          <label>
-            Search:
-            <input type="text" value={this.state.filterTxt} onChange={this.handleFilterTxtChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form> */}
-        
-        <ProjectGrid projects={this.props.projects}
-                     projectShuffleSelectorClass={this.projectShuffleSelectorClass} 
-                     setShuffleRefFunc={this.setShuffleRef} />
+        <section id="portfolio" className="section-bg wow fadeIn">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-1" />
+              <div className="col-md-10">
+                <header className="section-header">
+                  <h3 className="section-title">Case Studies</h3>
+                </header>
+                <div className="row">
+                  {/* <ProjectTags tags={t}/> */}
+                  <ProjectCategories categories={this.props.categories}
+                                     selectAllCategoryId={this.selectAllCategoryId}
+                                     handleFilterClick={this.handleFilterButtonClick} />
+                </div>
+                <ProjectGrid projects={this.props.projects}
+                             projectShuffleSelectorClass={this.projectShuffleSelectorClass} 
+                             setShuffleRefFunc={this.setShuffleRef} />
+              </div>
+              <div className="col-md-1" />
+            </div>
+          </div>
+        </section>
+        <Footer
+          //Section: Footer
+          footer={this.props.footerInfo} />
       </div>
     );
   }
