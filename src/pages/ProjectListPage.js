@@ -264,7 +264,7 @@ class ProjectListWithShuffle extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <div ref={element => this.shuffleRef = element} className="row my-shuffle">
+        <div ref={element => this.shuffleRef = element} className="row portfolio-container wow fadeIn my-shuffle">
           {this.props.projects.map((project) => (
             <div key={project.id} className={'col-3@xs col-4@sm ' + this.projectShuffleSelectorClass}
               data-groups={'["' + project.slug + '"]'}>
