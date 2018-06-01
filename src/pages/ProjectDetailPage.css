@@ -225,14 +225,21 @@ video {
     max-height: 60vh;
   }
   .video-text h1 {
-    left: 10px;
+    text-align: center;
     font-size: 22px;
   }
   .video-text h2 {
-    left: 10px;
+    text-align: center;
     font-size: 14px;
+    top:45vh;
+  }
+  .video-text .pop-up-vid-div {
+    text-align: center;
+    position: absolute;
+
   }
   .video-text a {
+    top:53vh;
     font-size: 12px;
   }
   .video-landing-text {
@@ -469,6 +476,9 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  .project-section-bg {
+    padding: 20px 0;
+  }
   .slideshow-2-col div div {
     padding: 0 0;
   }
@@ -481,4 +491,20 @@ video {
     padding-top: 10px;
     padding-left: 5%;
   }
+  .photo-montage-one-vid{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  .photo-montage-one-vid div{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  .photo-montage-one-text{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+  .photo-montage-one-img-full-width{
+    padding: 0 0;
+  }
+
 }
