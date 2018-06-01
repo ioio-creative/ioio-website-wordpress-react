@@ -127,7 +127,7 @@ function Items(props) {
       <p className="description text-center"></p>
     </div>
     <div className="col-md-5 about-section-right">
-      <h4 className="core-value-title  text-left">{a.about_section_title_right}</h4>
+      <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
       <div className="text-center">
         <img src={a.about_section_picture_right.guid} alt="alt" className="img-fluid core-value-img"/>
       </div>
@@ -269,18 +269,23 @@ class HomePage extends Component {
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid iframe-p5-div-mobile">
+          <h1>IOIO</h1>
+        </div>
+        <div className="container-fluid iframe-p5-div">
           <div className="row">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-              <div className="iframe-p5-div container-fluid">
+              <div className="iframe-p5-inside-div container-fluid">
                 <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
               </div>
               <Link to="#" onClick={this.openModal} id="pop-up-vid">
-                <h4 className="homepage-showreel wow slideInLeft">{home.page_title}
-                  <img className="homepage-showreel-img" src={svgURL} alt="showreel"/>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <div className="homepage-showreel">
+                <h4 className="homepage-showreel-text wow slideInLeft">{home.page_title}
                 </h4>
+                <img className="homepage-showreel-img" src={svgURL} alt="showreel"/>
+                  <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
               </Link>
             </div>
             <div className="col-md-1"></div>

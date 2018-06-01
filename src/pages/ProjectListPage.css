@@ -6,7 +6,8 @@
   white-space: nowrap;
 }
 
-#portfolio #portfolio-flters {
+#portfolio #portfolio-flters{
+  white-space: pre-line;
   display: block;
   padding: 0;
   margin: 5px 0 35px 0;
@@ -29,15 +30,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-#portfolio #portfolio-flters li span{
-
+#portfolio #portfolio-flters li span {
   display: none;
   font-weight: 100;
-
   font-size: 11px;
   position: absolute;
   margin-bottom: 8px;
-
 }
 
 #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
@@ -53,7 +51,7 @@
 #portfolio .portfolio-wrap {
   /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
   transition: 0.3s;
-    width: 100%;
+  width: 100%;
 }
 
 #portfolio .portfolio-wrap:hover {
@@ -62,12 +60,10 @@
   /*box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);*/
 }
 
-
 #portfolio .portfolio-item {
   overflow: hidden;
   position: relative;
   margin: 0;
-
   padding: 20px 20px;
 }
 
@@ -90,7 +86,8 @@
   height: auto;
   position: relative;
   overflow: hidden;
-  padding: 60% 0 0 0; /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+  padding: 60% 0 0 0;
+  /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
 }
 
 .portfolio-container .img-container img {
@@ -136,62 +133,32 @@
 
 #portfolio {
   margin: 0 auto;
-
 }
 
-
-#portfolio .section-title{
+#portfolio .section-title {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 45px;
 }
 
-
 @media only screen and (max-width: 1279px) {
   #portfolio .portfolio-item .portfolio-info h4 {
     font-size: 18px;
-
   }
-
   #portfolio .portfolio-item .portfolio-info p {
     font-size: 12px;
-
   }
 }
-
-
 
 @media only screen and (max-width: 1023px) {
   #portfolio .portfolio-item .portfolio-info h4 {
     font-size: 14px;
-
   }
-
   #portfolio .portfolio-item .portfolio-info p {
-
     font-size: 12px;
-
   }
 }
 
-
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  #portfolio {
-    padding: 30px 0 0 0;
-  }
-  #portfolio #portfolio-flters li {
-    margin: 0 15px 0 0;
-    display: flex;
-    width: 100%;
-    padding: 5px 5px 0 0;
-    font-size: 16px;
-  }
-  #portfolio .portfolio-item {
-    height: 300px;
-  }
-  #portfolio .portfolio-item img {
-    overflow: hidden;
-    height: 200px;
-  }
 }
