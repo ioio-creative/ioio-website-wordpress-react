@@ -110,14 +110,19 @@
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   #img-hotpot {
-    height: 50vh;
+    display: block;
+max-width:45vh;
+max-height:45vh;
+width: auto;
+height: auto;
+
   }
   #img-meet {
-    width: 25vh;
-    right: 1%;
+    width: 20vh;
+    right: -10%;
   }
   #img-fish {
-    width: 25vh;
+    width: 20vh;
   }
   #about01 h3 {
     font-size: 28px;
