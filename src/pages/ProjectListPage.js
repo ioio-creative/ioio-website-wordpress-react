@@ -79,81 +79,47 @@ function ProjectCategories(props) {
 
 
 function ProjectGrid(props) {
-  const project_items = props.projectList.map((project) => {
-    // return (
-    //   <div key={project.id} className="col-3@xs col-4@sm photo-item"
-    //     data-groups={'["' + project.project_categories.join(',') + '"]'}>
-    //     <div className="aspect aspect--4x3">
-    //       <div className="aspect__inner">
-    //         <img src={project.thumbnail.guid} />            
-    //       </div>
-    //     </div>
-    //   </div>
-    // );    
-
-    let projItemClassName = 'col-lg-6 col-md-6 ' + props.shuffleSelectorClass + ' ';
-
-    // const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
-    //   let tagName = '';
-    //   if (index >= 1) {
-    //     tagName = ' / ' + getProjectTagNameById(tagId)
-    //   } else {
-    //     tagName = getProjectTagNameById(tagId)
-    //   }
-    //   return (<span key={index}>
-    //     {tagName}
-    //   </span>);
-    // });
-
-    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
-      let categoryName = '';
-      if (index >= 1) {
-        categoryName = ' / ' + getProjectCategoryNameById(categoryId)
-      } else {
-        categoryName = getProjectCategoryNameById(categoryId)
-      }
-      return (<span key={index}>
-        {categoryName}
-      </span>);
-    });
-
-    let s = project.link;
-    cutString(s);
-    function cutString(s) {
-      let cut = s.indexOf('/projects');
-      if (cut === -1)
-        return s;
-      return s.substr(cut)
-    }
-    let d = cutString(s);
-
-    return (
-      // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
-      <div key={project.id}
-           className={projItemClassName}           
-           data-project-category-ids={project.project_categories.join(',')}>
-        <Link to={routes.projectBySlugWithValue(project.slug)}>{props.name}
-          <div className="portfolio-wrap">
-            <div className="img-container">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-            </div>
-            <div className="portfolio-info">
-              <h4>
-                {project.project_name}
-              </h4>
-              <p>{categoryCorrespondingToProj}</p>
-            </div>
-          </div>
-        </Link>
-      </div>
-    );
-  });
-
   return (
-    // this ref must be direct parent of {project_items} for shuffle to work
-    <div className="row portfolio-container wow fadeIn my-shuffle"
-         ref={props.setShuffleRefFunc}>
-      {project_items}
+    <div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
+      { 
+        props.projects.map((project) => {
+          let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
+
+          const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+            let categoryName = '';
+            if (index >= 1) {
+              categoryName = ' / ' + getProjectCategoryNameById(categoryId)
+            } else {
+              categoryName = getProjectCategoryNameById(categoryId)
+            }
+            return (<span key={index}>
+              {categoryName}
+            </span>);
+          });
+      
+          return (
+            // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
+            <div key={project.id}
+                className={projItemClassName}           
+                data-project-category-ids={project.project_categories.join(',')}
+                data-groups={'["' + project.slug + '"]'}>
+              <Link to={routes.projectBySlugWithValue(project.slug)}>
+                <div className="portfolio-wrap">
+                  <div className="img-container">
+                    <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+                  </div>
+                  <div className="portfolio-info">
+                    <h4>
+                      {project.project_name}
+                    </h4>
+                    <p>{categoryCorrespondingToProj}</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          );
+        })
+      }         
     </div>
   );
 }
@@ -180,6 +146,8 @@ class ProjectListWithShuffle extends Component {
 
     this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+
+    this.setShuffleRef = this.setShuffleRef.bind(this);
   }
 
   componentDidMount() {
@@ -241,6 +209,10 @@ class ProjectListWithShuffle extends Component {
 
   /* end of event handlers */
 
+  setShuffleRef(element) {
+    this.shuffleRef = element;
+  }
+
   render() {
     return (
       <div>
@@ -264,57 +236,9 @@ class ProjectListWithShuffle extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <div ref={element => this.shuffleRef = element} className="row portfolio-container wow fadeIn my-shuffle">
-          { 
-            this.props.projects.map((project) => {
-              let projItemClassName = 'col-lg-6 col-md-6 ' + this.projectShuffleSelectorClass + ' ';
-    
-              const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
-                let categoryName = '';
-                if (index >= 1) {
-                  categoryName = ' / ' + getProjectCategoryNameById(categoryId)
-                } else {
-                  categoryName = getProjectCategoryNameById(categoryId)
-                }
-                return (<span key={index}>
-                  {categoryName}
-                </span>);
-              });
-          
-              return (
-                // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
-                <div key={project.id}
-                    className={projItemClassName}           
-                    data-project-category-ids={project.project_categories.join(',')}
-                    data-groups={'["' + project.slug + '"]'}>
-                  <Link to={routes.projectBySlugWithValue(project.slug)}>
-                    <div className="portfolio-wrap">
-                      <div className="img-container">
-                        <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-                      </div>
-                      <div className="portfolio-info">
-                        <h4>
-                          {project.project_name}
-                        </h4>
-                        <p>{categoryCorrespondingToProj}</p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })
-          }
-          {/*this.props.projects.map((project) => (
-            <div key={project.id} className={'col-3@xs col-4@sm ' + this.projectShuffleSelectorClass}
-              data-groups={'["' + project.slug + '"]'}>
-              <div className="aspect aspect--4x3">
-                <div className="aspect__inner">
-                  <img src={project.thumbnail.guid} />
-                </div>
-              </div>
-            </div>
-          ))*/}          
-        </div>
+        <ProjectGrid projects={this.props.projects}
+                     projectShuffleSelectorClass={this.projectShuffleSelectorClass} 
+                     setShuffleRefFunc={this.setShuffleRef} />
       </div>
     );
   }
