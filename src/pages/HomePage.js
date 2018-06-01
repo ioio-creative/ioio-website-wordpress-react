@@ -24,15 +24,15 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 function ProjectCategories(props) {
-  const tag_items = props.categories.map((tag, id) => {
+  const category_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
     return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
     </li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
-      <li data-filter="*" className="filter-active">All</li>
-      {tag_items}
+      <li data-filter="*" className="filter-active">We Do</li>
+      {category_items}
     </ul>
   </div>);
 }
@@ -265,7 +265,7 @@ class HomePage extends Component {
 
     return (<div>
 
-      <section id="homepage-top" className="section-bg wow fadeIn">
+      <section id="homepage-top" className="section-bg wow fadeIn" data-wow-delay="0.5s">
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
         </div>
@@ -279,9 +279,9 @@ class HomePage extends Component {
               <div className="iframe-p5-inside-div container-fluid">
                 <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
               </div>
-              <Link to="#" onClick={this.openModal} id="pop-up-vid">
+              <Link to="#" onClick={this.openModal} id="pop-up-vid" >
                 <div className="homepage-showreel">
-                <h4 className="homepage-showreel-text wow slideInLeft">{home.page_title}
+                <h4 className="homepage-showreel-text">{home.page_title}
                 </h4>
                 <img className="homepage-showreel-img" src={svgURL} alt="showreel"/>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
