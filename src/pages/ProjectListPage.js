@@ -79,50 +79,51 @@ function ProjectCategories(props) {
 
 
 function ProjectGrid(props) {
+  const project_items = props.projects.map((project) => {
+    let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
+
+    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+      let categoryName = '';
+      if (index >= 1) {
+        categoryName = ' / ' + getProjectCategoryNameById(categoryId)
+      } else {
+        categoryName = getProjectCategoryNameById(categoryId)
+      }
+      return (<span key={index}>
+        {categoryName}
+      </span>);
+    });
+
+    return (
+      // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
+      <div key={project.id}
+          className={projItemClassName}           
+          data-project-category-ids={project.project_categories.join(',')}
+          data-groups={'["' + project.slug + '"]'}>
+        <Link to={routes.projectBySlugWithValue(project.slug)}>
+          <div className="portfolio-wrap">
+            <div className="img-container">
+              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            </div>
+            <div className="portfolio-info">
+              <h4>
+                {project.project_name}
+              </h4>
+              <p>{categoryCorrespondingToProj}</p>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  });
+
   return (
     <div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
-      { 
-        props.projects.map((project) => {
-          let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
-
-          const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
-            let categoryName = '';
-            if (index >= 1) {
-              categoryName = ' / ' + getProjectCategoryNameById(categoryId)
-            } else {
-              categoryName = getProjectCategoryNameById(categoryId)
-            }
-            return (<span key={index}>
-              {categoryName}
-            </span>);
-          });
-      
-          return (
-            // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
-            <div key={project.id}
-                className={projItemClassName}           
-                data-project-category-ids={project.project_categories.join(',')}
-                data-groups={'["' + project.slug + '"]'}>
-              <Link to={routes.projectBySlugWithValue(project.slug)}>
-                <div className="portfolio-wrap">
-                  <div className="img-container">
-                    <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
-                  </div>
-                  <div className="portfolio-info">
-                    <h4>
-                      {project.project_name}
-                    </h4>
-                    <p>{categoryCorrespondingToProj}</p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          );
-        })
-      }         
+      {project_items}        
     </div>
   );
 }
+
 
 class ProjectListWithShuffle extends Component {
   constructor(props) {
@@ -216,19 +217,6 @@ class ProjectListWithShuffle extends Component {
   render() {
     return (
       <div>
-        <div>
-          References:<br />
-          Shuffle with React: https://vestride.github.io/Shuffle/shuffle-with-react<br />
-          Shuffle Filters: https://vestride.github.io/Shuffle/<br />
-          The only real important thing here is the data-groups attribute.<br />
-          Please enter one of the following authors in the textbox.<br />
-          Sticker Mule<br />
-          Roman Logov<br />
-          Richard Nolan<br />
-          Wexor Tmg<br />
-          Denys Nevozhai<br />
-          Aron Van de Pol<br />    
-        </div>
         <form onSubmit={this.handleFilter}>
           <label>
             Search:
