@@ -171,6 +171,12 @@ class ProjectListWithShuffle extends Component {
   }
 
   handleFilterButtonClick(categoryId, tagId) {
+    /* 
+      Important: Do not call this.setState() here.
+      Calling this.setState() here would make the animation effect 
+      of this.shuffle.filter() not working.
+    */
+
     if (categoryId === this.selectAllCategoryId) {
       this.shuffle.filter(Shuffle.ALL_ITEMS);
     } else {
