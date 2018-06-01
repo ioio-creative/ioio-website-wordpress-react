@@ -28,7 +28,7 @@ class ProjectCategories extends Component {
       selectedCategoryId: categoryId
     });
   }
-  
+
   render() {
     const state = this.state;
     const props = this.props;
@@ -41,8 +41,8 @@ class ProjectCategories extends Component {
         categoryItemClassName += ' ' + selectedItemClass;
       }
       return (
-        <li key={category.id} 
-            className={categoryItemClassName}         
+        <li key={category.id}
+            className={categoryItemClassName}
             onClick={() => this.handleCategoryButtonClick(category.id)}>
             {category.name}<span>{category.count}</span>
         </li>
@@ -88,7 +88,7 @@ function ProjectGrid(props) {
     return (
       // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
       <div key={project.id}
-          className={projItemClassName}           
+          className={projItemClassName}
           data-project-category-ids={project.project_categories.join(',')}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
@@ -109,7 +109,7 @@ function ProjectGrid(props) {
 
   return (
     <div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
-      {project_items}        
+      {project_items}
     </div>
   );
 }
@@ -119,8 +119,8 @@ class ProjectListWithShuffle extends Component {
   constructor(props) {
     super(props);
 
-    this.selectAllCategoryId = -1;    
-    
+    this.selectAllCategoryId = -1;
+
     this.shuffleRef = null;
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
@@ -135,7 +135,7 @@ class ProjectListWithShuffle extends Component {
       // https://vestride.github.io/Shuffle/#options
       // overrideable options
       itemSelector: '.' + this.projectShuffleSelectorClass,
-      
+
       buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
       columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
       columnWidth: 0, // A static number or function that returns a number which tells the plugin how wide the columns are (in pixels).
@@ -171,9 +171,9 @@ class ProjectListWithShuffle extends Component {
   }
 
   handleFilterButtonClick(categoryId, tagId) {
-    /* 
+    /*
       Important: Do not call this.setState() here.
-      Calling this.setState() here would make the animation effect 
+      Calling this.setState() here would make the animation effect
       of this.shuffle.filter() not working.
     */
 
@@ -187,31 +187,12 @@ class ProjectListWithShuffle extends Component {
       });
     }
   }
-  
+
   setShuffleRef(element) {
     this.shuffleRef = element;
   }
 
   render() {
-    const selectedItemClass = 'filter-active';
-
-    const categoryItems = this.props.categories.map((category) => {
-      let categoryItemClassName = '';
-      if (category.id === this.selectedCategoryId) {
-        categoryItemClassName += ' ' + selectedItemClass;
-      }
-      return (
-        <li key={category.id} 
-            className={categoryItemClassName}         
-            onClick={(event) => {
-              this.handleFilterButtonClick(category.id);
-              event.preventDefault();
-            }}>
-            {category.name}<span>{category.count}</span>
-        </li>
-      );
-    });
-
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
@@ -229,7 +210,7 @@ class ProjectListWithShuffle extends Component {
                                      handleFilterClick={this.handleFilterButtonClick} />
                 </div>
                 <ProjectGrid projects={this.props.projects}
-                             projectShuffleSelectorClass={this.projectShuffleSelectorClass} 
+                             projectShuffleSelectorClass={this.projectShuffleSelectorClass}
                              setShuffleRefFunc={this.setShuffleRef} />
               </div>
               <div className="col-md-1" />
@@ -255,32 +236,32 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
-      footer: null,      
+      footer: null,
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
   }
 
-  componentDidMount() {  
+  componentDidMount() {
     fetchProjects((projects) => {
       this._whenProjectsLoaded(projects)
         .then((loadedProjects) => {
           this.setState({projects: loadedProjects});
-        })      
-    });    
+        })
+    });
 
     fetchProjectCategories((categories) => {
       this.setState({projectCategories: categories});
     });
 
-    fetchProjectTags((tags) => {      
+    fetchProjectTags((tags) => {
       this.setState({projectTags: tags});
     });
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-  }  
+  }
 
   // https://vestride.github.io/Shuffle/shuffle-with-react
   /**

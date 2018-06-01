@@ -24,15 +24,15 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 function ProjectCategories(props) {
-  const tag_items = props.categories.map((tag, id) => {
+  const category_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
     return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
     </li>);
   });
   return (<div className="col-lg-12 ">
     <ul id="portfolio-flters">
-      <li data-filter="*" className="filter-active">All</li>
-      {tag_items}
+      <li data-filter="*" className="filter-active">We Do</li>
+      {category_items}
     </ul>
   </div>);
 }
