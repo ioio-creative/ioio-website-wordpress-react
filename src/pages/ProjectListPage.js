@@ -162,6 +162,12 @@ class ProjectListWithShuffle extends Component {
   constructor(props) {
     super(props);
 
+    this.selectAllCategoryId = -1;    
+    
+    this.shuffleRef = null;
+    this.projectShuffleSelectorClass = 'portfolio-item';
+    this.shuffle = null;
+
     this.state = {
       photos: [
         { id: 1, src: '' },
@@ -169,6 +175,7 @@ class ProjectListWithShuffle extends Component {
         { id: 3, src: '' },
       ],
       filterTxt: null,
+      selectedCategoryId: this.selectAllCategoryId
     };
 
     this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
@@ -177,8 +184,10 @@ class ProjectListWithShuffle extends Component {
 
   componentDidMount() {
     // The elements are in the DOM, initialize a shuffle instance.
-    this.shuffle = new Shuffle(this.element, {
-      itemSelector: '.photo-item',
+    this.shuffle = new Shuffle(this.shuffleRef, {
+      // https://vestride.github.io/Shuffle/#options
+      // overrideable options
+      itemSelector: '.' + this.projectShuffleSelectorClass,
       
       buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
       columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
@@ -255,9 +264,9 @@ class ProjectListWithShuffle extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <div ref={element => this.element = element} className="row my-shuffle">
+        <div ref={element => this.shuffleRef = element} className="row my-shuffle">
           {this.props.projects.map((project) => (
-            <div key={project.id} className="col-3@xs col-4@sm photo-item"
+            <div key={project.id} className={'col-3@xs col-4@sm ' + this.projectShuffleSelectorClass}
               data-groups={'["' + project.slug + '"]'}>
               <div className="aspect aspect--4x3">
                 <div className="aspect__inner">
