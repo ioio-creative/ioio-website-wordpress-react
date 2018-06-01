@@ -16,7 +16,8 @@
 
 #portfolio #portfolio-flters li {
   font-weight: bold;
-  /*cursor: pointer;*/
+  /* TODO: uncommmented by Chris */
+  cursor: pointer;
   margin: 0 15px 0 0;
   display: inline-block;
   padding: 5px 20px 0 0;
@@ -26,7 +27,7 @@
   text-transform: uppercase;
   background: #fff;
   margin-bottom: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;  
 }
 
 #portfolio #portfolio-flters li span{

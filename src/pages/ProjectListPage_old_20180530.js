@@ -208,7 +208,6 @@ class ProjectListPage extends Component {
   handleRemove() {}
 
   render() {
-
     const t = this.state.projectTags;
     const pC = this.state.projectCategories;
     const p = this.state.projects;
