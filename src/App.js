@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    loadJSFiles()
+    loadJSFiles();
   }
 
   render() {
