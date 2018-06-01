@@ -292,6 +292,7 @@
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -o-transform: rotate(0deg);
+    display: none;
   }
   #sidebar.active h3 {
     top: 12px;
@@ -331,25 +332,24 @@
     display: none;
   }
   #sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
-    left: 91%;
+    left: 92%;
     width: 2px;
     height: 22px;
     top: 17px;
   }
   #sidebar .close-symbol:before {
-    left: 90%;
+    left: 92%;
     height: 22px;
-    top: 17px;
+    top: 12px;
   }
   #sidebar .close-symbol:after {
     left: 92%;
     height: 22px;
-    top: 17px;
+    top: 20px;
   }
   #sidebar .close-symbol:before {
     transform: rotate(90deg);
   }
-
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
