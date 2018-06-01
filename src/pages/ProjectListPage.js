@@ -193,25 +193,6 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
-    const selectedItemClass = 'filter-active';
-
-    const categoryItems = this.props.categories.map((category) => {
-      let categoryItemClassName = '';
-      if (category.id === this.selectedCategoryId) {
-        categoryItemClassName += ' ' + selectedItemClass;
-      }
-      return (
-        <li key={category.id} 
-            className={categoryItemClassName}         
-            onClick={(event) => {
-              this.handleFilterButtonClick(category.id);
-              event.preventDefault();
-            }}>
-            {category.name}<span>{category.count}</span>
-        </li>
-      );
-    });
-
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
