@@ -168,7 +168,6 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
-    // TODO: remove
     // https://reactjs.org/docs/handling-events.html
     // This binding is necessary to make `this` work in the callback
     this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
@@ -264,9 +263,9 @@ class ProjectListWithShuffle extends Component {
                     handleFilterClick={this.handleFilterButtonClick} />
                 </div>
                 <ProjectGrid projectList={props.projects}
-                              categories={props.categories}
-                              shuffleSelectorClass={this.projectShuffleSelectorClass} 
-                              setShuffleRefFunc={this.setShuffleRef} />
+                             categories={props.categories}
+                             shuffleSelectorClass={this.projectShuffleSelectorClass} 
+                             setShuffleRefFunc={this.setShuffleRef} />
               </div>
               <div className="col-md-1" />
             </div>

@@ -162,63 +162,17 @@ class ProjectListWithShuffle extends Component {
   constructor(props) {
     super(props);
 
-    // Initialize with some "photos" that are cached (or none at all). Maybe you
-    // have a service worker that cached the last API response and you can
-    // use that here while waiting on a network request.
-    const grayPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
-    const blackPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
-    const greenPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO02Vz4HwAE9AJhcLBN6AAAAABJRU5ErkJggg==';
-
     this.state = {
       photos: [
-        { id: 1, src: grayPixel },
-        { id: 2, src: blackPixel },
-        { id: 3, src: greenPixel },
+        { id: 1, src: '' },
+        { id: 2, src: '' },
+        { id: 3, src: '' },
       ],
       filterTxt: null,
     };
 
     this.handleFilterTxtChange = this.handleFilterTxtChange.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
-  }
-
-  /**
-   * Fake and API request for a set of images.
-   * @return {Promise<Object[]>} A promise which resolves with an array of objects.
-   */
-  _fetchPhotos() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve([
-          { id: 4, username: '@stickermule', name: 'Sticker Mule', src: 'https://images.unsplash.com/photo-1484244233201-29892afe6a2c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=14d236624576109b51e85bd5d7ebfbfc' },
-          { id: 5, username: '@prostoroman', name: 'Roman Logov', src: 'https://images.unsplash.com/photo-1465414829459-d228b58caf6e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=7a7080fc0699869b1921cb1e7047c5b3' },
-          { id: 6, username: '@richienolan', name: 'Richard Nolan', src: 'https://images.unsplash.com/photo-1478033394151-c931d5a4bdd6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=3c74d594a86e26c5a319f4e17b36146e' },
-          { id: 7, username: '@wexor', name: 'Wexor Tmg', src: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=11ff283143c782980861a442a957da8e' },
-          { id: 8, username: '@dnevozhai', name: 'Denys Nevozhai', src: 'https://images.unsplash.com/photo-1465447142348-e9952c393450?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=ea06c0f0700ec469fdcb32e0d4c2928e' },
-          { id: 9, username: '@aronvandepol', name: 'Aron Van de Pol', src: 'https://images.unsplash.com/photo-1469719847081-4757697d117a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&s=9a568bc48e42d3bb60c97c0eb3dc20ac' },
-        ]);
-      }, 300);
-    });
-  }
-
-  /**
-   * Resolve a promise when all the photos in an array have loaded.
-   * @param {Object[]} photos Photos to load.
-   * @return {Promise.<Object[]>} Loaded images.
-   */
-  _whenPhotosLoaded(photos) {
-    return Promise.all(photos.map(photo => new Promise((resolve) => {
-      const image = document.createElement('img');
-      image.src = photo.src;
-
-      if (image.naturalWidth > 0 || image.complete) {
-        resolve(photo);
-      } else {
-        image.onload = () => {
-          resolve(photo);
-        };
-      }
-    })));
   }
 
   componentDidMount() {
@@ -246,13 +200,6 @@ class ProjectListWithShuffle extends Component {
       throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
       useTransforms: true, // Whether to use transforms or absolute positioning.
     });
-
-    // Kick off the network request and update the state once it returns.
-    this._fetchPhotos()
-      .then(this._whenPhotosLoaded.bind(this))
-      .then((photos) => {
-        this.setState({ photos });
-      });
   }
 
   componentDidUpdate() {
@@ -309,13 +256,12 @@ class ProjectListWithShuffle extends Component {
           <input type="submit" value="Submit" />
         </form>
         <div ref={element => this.element = element} className="row my-shuffle">
-          {this.state.photos.map((image) => (
-            <div key={image.id} className="col-3@xs col-4@sm photo-item"
-              data-groups={'["' + image.name + '"]'}>
+          {this.props.projects.map((project) => (
+            <div key={project.id} className="col-3@xs col-4@sm photo-item"
+              data-groups={'["' + project.slug + '"]'}>
               <div className="aspect aspect--4x3">
                 <div className="aspect__inner">
-                  <img src={image.src} />
-                  {/* <PhotoAttribution username={image.username} name={image.name} /> */}
+                  <img src={project.thumbnail.guid} />
                 </div>
               </div>
             </div>
