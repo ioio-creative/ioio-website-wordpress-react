@@ -12,6 +12,8 @@ const AsyncHomePage = asyncLoadingComponent(() => import("pages/HomePage"));
 const AsyncAboutPage = asyncLoadingComponent(() => import("pages/AboutPage"));
 const AsyncProjectListPage = asyncLoadingComponent(() => import("pages/ProjectListPage"));
 const AsyncProjectDetailPage = asyncLoadingComponent(() => import("pages/ProjectDetailPage"));
+const AsyncLabListPage = asyncLoadingComponent(() => import("pages/LabListPage"));
+const AsyncLabDetailPage = asyncLoadingComponent(() => import("pages/LabDetailPage"));
 const AsyncContactsPage = asyncLoadingComponent(() => import("pages/ContactsPage"));
 const AsyncNotFoundPage = asyncLoadingComponent(() => import("pages/NotFoundPage"));
 
@@ -54,6 +56,8 @@ class Main extends Component {
                     <Route path={routes.about} component={AsyncAboutPage} />
                     <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
                     <Route path={routes.projects} component={AsyncProjectListPage} />
+                    <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
+                    <Route path={routes.labs} component={AsyncLabListPage} />
                     <Route path={routes.contacts} component={AsyncContactsPage} />
                     <Route path='/trial' component={P5SketchTrialPage} />
                     <Route component={AsyncNotFoundPage} />

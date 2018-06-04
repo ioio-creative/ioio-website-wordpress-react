@@ -54,6 +54,7 @@ const customStyles = {
   }
 };
 
+
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
 function VideoLanding(props) {
@@ -96,154 +97,154 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>); } function VideoLandingDesc(props) {
+  </section>); 
+} 
 
-    const bg = {
-      backgroundColor: props.project.background_mood_color
-    };
-    return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
-      <div className="container-fluid">
-        <div className="row video-landing-text">
-          <div className="col-md-1"></div>
-          <div className="col-md-4 wow fadeIn">
-            <p className="video-landing-text-l">{props.project.key_message}</p>
-          </div>
 
-          <div className="col-md-2"></div>
-          <div className="col-md-4 wow fadeIn">
-            <p className="video-landing-text-r">{props.project.overview}</p>
-          </div>
-          <div className="col-md-1"></div>
+function VideoLandingDesc(props) {
+  const bg = {
+    backgroundColor: props.project.background_mood_color
+  };
+  return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
+    <div className="container-fluid">
+      <div className="row video-landing-text">
+        <div className="col-md-1"></div>
+        <div className="col-md-4 wow fadeIn">
+          <p className="video-landing-text-l">{props.project.key_message}</p>
         </div>
+
+        <div className="col-md-2"></div>
+        <div className="col-md-4 wow fadeIn">
+          <p className="video-landing-text-r">{props.project.overview}</p>
+        </div>
+        <div className="col-md-1"></div>
       </div>
-    </section>);
+    </div>
+  </section>);
+}
+
+
+class ProjectDetailPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
+    this.state = {
+      modalIsOpen: false,
+      project: null,
+      isReturnNotFound: false
+    };
   }
 
-  class ProjectDetailPage extends Component {
-    constructor(props) {
-      super(props);
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
 
-      this.state = {
-        modalIsOpen: false
-      };
-      this.openModal = this.openModal.bind(this);
-      this.afterOpenModal = this.afterOpenModal.bind(this);
-      this.closeModal = this.closeModal.bind(this);
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //this.subtitle.style.color = '#f00';
+  }
 
-      this.state = {
-        project: null,
-        isReturnNotFound: false
-      }
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
 
+  async componentDidMount() {
+    const projectSlugFromQuery = this.props.match.params.projectSlug;
+    const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
+    const projectIdNum = parseInt(projectIdStr, 10);
+
+    // if no corresponding project id entry for the slug got from query
+    if (isNaN(projectIdNum)) {
+      this.setState({isReturnNotFound: true});
+      return;
     }
 
-    openModal() {
-      this.setState({modalIsOpen: true});
-    }
-
-    afterOpenModal() {
-      // references are now sync'd and can be accessed.
-      //this.subtitle.style.color = '#f00';
-    }
-
-    closeModal() {
-      this.setState({modalIsOpen: false});
-    }
-
-    async componentDidMount() {
-      const projectSlugFromQuery = this.props.match.params.projectSlug;
-      const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
-      const projectIdNum = parseInt(projectIdStr, 10);
-
-      // if no corresponding project id entry for the slug got from query
-      if (isNaN(projectIdNum)) {
+    fetchProjectById(projectIdNum, (aProject) => {
+      if (aProject === null) {
         this.setState({isReturnNotFound: true});
-        return;
+      } else {
+        this.setState({project: aProject});
       }
+    });
 
-      fetchProjectById(projectIdNum, (aProject) => {
-        if (aProject === null) {
-          this.setState({isReturnNotFound: true});
-        } else {
-          this.setState({project: aProject});
-        }
-      });
-      fetchActiveFooter((aFooter) => {
-        this.setState({footer: aFooter});
-      });
+    fetchActiveFooter((aFooter) => {
+      this.setState({footer: aFooter});
+    });
 
-      window.setTimeout(function() {
-        //$('html, body').scrollTop(0);
-        $('html, body').animate({scrollTop: "0"});
-      }, 0);
+    window.setTimeout(function() {
+      //$('html, body').scrollTop(0);
+      $('html, body').animate({scrollTop: "0"});
+    }, 0);
 
-    }
-
-    render() {
-      const state = this.state;
-      const project = state.project;
-
-
-
-      // should check isReturnNotFound first
-      // before checking project === null
-      if (state.isReturnNotFound) {
-        return (<Redirect to={routes.notFound}/>);
-      }
-
-      if (project === null) {
-        return null;
-      }
-
-      const footer = this.state.footer;
-      if (footer === null) {
-        return null;
-      }
-
-      const customStyles = {
-        content : {
-          top                   : '50%',
-          left                  : '50%',
-          right                 : 'auto',
-          bottom                : 'auto',
-          marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)',
-          backgroundColor       : 'rgba(0,0,0,0)',
-          border                : '0px'
-        }
-      };
-      //    console.log(state.isReturnNotFound);
-      //    console.log(project);
-
-      const projectTemplates = project.project_sections;
-      const projectTemplateContainer = projectTemplates.map((templateData) => {
-        const templateType = parseInt(templateData.template_type, 10);
-        const TemplateToUse = projectTemplateMap[templateData.template_type];
-        return <TemplateToUse {...templateData}/>
-      });
-
-      return (<div className="wow fadeIn">
-        <VideoLanding project={project} modalClick={this.openModal}/>
-        <VideoLandingDesc project={project}/> {/*
-          <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-          <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
-      */
-        }
-        {projectTemplateContainer}
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
-          <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
-            <i className="ion ion-android-close"></i>
-          </button>
-          <div className="vid-player">
-            <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
-          </div>
-        </Modal>
-        <Footer
-          //Section: Footer
-          footer={footer}/>
-
-      </div>);
-    }
   }
 
-  export default ProjectDetailPage;
+  render() {
+    const state = this.state;
+    const project = state.project;
+
+    // should check isReturnNotFound first
+    // before checking project === null
+    if (state.isReturnNotFound) {
+      return (<Redirect to={routes.notFound} />);
+    }
+
+    if (project === null) {
+      return null;
+    }
+
+    const footer = this.state.footer;
+    if (footer === null) {
+      return null;
+    }
+
+    const customStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+        backgroundColor       : 'rgba(0,0,0,0)',
+        border                : '0px'
+      }
+    };
+    //    console.log(state.isReturnNotFound);
+    //    console.log(project);
+
+    const projectTemplates = project.project_sections;
+    const projectTemplateContainer = projectTemplates.map((templateData) => {
+      const templateType = parseInt(templateData.template_type, 10);
+      const TemplateToUse = projectTemplateMap[templateData.template_type];
+      return <TemplateToUse {...templateData}/>
+    });
+
+    return (<div className="wow fadeIn">
+      <VideoLanding project={project} modalClick={this.openModal}/>
+      <VideoLandingDesc project={project}/> {/*
+        <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+        <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
+    */
+      }
+      {projectTemplateContainer}
+      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
+        <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
+          <i className="ion ion-android-close"></i>
+        </button>
+        <div className="vid-player">
+          <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
+        </div>
+      </Modal>
+      <Footer
+        //Section: Footer
+        footer={footer}/>
+
+    </div>);
+  }
+}
+
+export default ProjectDetailPage;
