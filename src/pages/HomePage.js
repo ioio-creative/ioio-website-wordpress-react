@@ -11,7 +11,7 @@ import $ from 'jquery';
 import P5Wrapper from 'react-p5-wrapper';
 
 import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter, fetchHomePage} from 'websiteApi';
-import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
+import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
 
 import './HomePage.css';
 import sketch from './sketch';
@@ -23,6 +23,7 @@ import "./video-react.css";
 
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
+
 function ProjectCategories(props) {
   const category_items = props.categories.map((tag, id) => {
     let tagId = ".filter-" + tag.id
@@ -39,6 +40,7 @@ function ProjectCategories(props) {
 
 function HighlightedProjects(props) {
   const projectIdSlugPairs = props.projIdSlugPairs;
+  const projectTagIdNamePairs = props.projTagIdNamePairs;
 
   const project_items = props.projectlist.map((project, id) => {
     let tagIds = "col-lg-6 col-md-6 portfolio-item ";
@@ -50,14 +52,15 @@ function HighlightedProjects(props) {
 
       let tagName = "";
       if (index >= 1) {
-        tagName = " / " + getProjectTagNameById(tagId)
+        tagName = " / " + projectTagIdNamePairs[tagId];
       } else {
-        tagName = getProjectTagNameById(tagId)
+        tagName = projectTagIdNamePairs[tagId];
       }
       return (<span key={index}>
         {tagName}
       </span>);
     });
+
     /*
     let s = project.link;
     cutString(s);
@@ -111,11 +114,9 @@ function HighlightedProjects(props) {
   return (<div className="row container-fluid">
     {project_items}
   </div>);
-
 }
 
 function Items(props) {
-
   let a = props.abouts
   return (<div className="row">
     <div className="col-md-1"></div>
@@ -157,7 +158,8 @@ class HomePage extends Component {
       homepage: [],
       footer: null,
       selectedCategoryId: this.selectAllCategoryId,
-      projectIdSlugPairs: null
+      projectIdSlugPairs: [],
+      projectTagIdNamePairs: []
     }
 
   }
@@ -173,7 +175,8 @@ class HomePage extends Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   }
-  async componentDidMount() {
+
+  componentDidMount() {
     fetchHighlightedProjects((projects) => {
       this.setState({projects: projects});
     });
@@ -182,16 +185,21 @@ class HomePage extends Component {
       this.setState({homepage: homepage});
     });
 
-    fetchProjectCategories((categories) => {
-      this.setState({projectCategories: categories});
+    getProjectCategoriesAndItsIdNamePairs((projectCategories, projectCategoryIdNamePairs) => {
+      this.setState({projectCategories: projectCategories});
     });
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 
-    const projIdSlugPairs = await getProjectIdSlugPairs(); //TODO
-    this.setState({projectIdSlugPairs: projIdSlugPairs});
+    getProjectIdSlugPairs((projectIdSlugPairs) => {
+      this.setState({projectIdSlugPairs: projectIdSlugPairs});
+    });
+    
+    getProjectTagsAndItsProjectTagIdNamePairs((projectTags, projectTagIdNamePairs) => {
+      this.setState({projectTagIdNamePairs: projectTagIdNamePairs});
+    });
 
     /*
     const publicUrl = process.env.PUBLIC_URL;
@@ -204,7 +212,6 @@ class HomePage extends Component {
   }
 
   handleLoad() {
-
     $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
 
     /*
@@ -212,9 +219,8 @@ class HomePage extends Component {
           console.log($('.iframe-p5').attr("width"))
           $('.iframe-p5').attr("width","2500");
           $('.iframe-p5').attr("height","500");
-          console.log($('.iframe-p5').attr("width"))
-
-    });
+          console.log($('.iframe-p5').attr("width"));
+        });
     */
   }
 
@@ -223,24 +229,30 @@ class HomePage extends Component {
     const h = this.state.homepage;
     const footer = this.state.footer;
     const pC = this.state.projectCategories;
+    const projectIdSlugPairs = this.state.projectIdSlugPairs;
+    const projectTagIdNamePairs = this.state.projectTagIdNamePairs;
 
-    if (pC === null) {
+    if (pC.length === 0) {
       return null;
     }
+
     if (footer === null) {
       return null;
     }
-    if (p === null) {
-      return null;
-    }
+    
     if (p.length == 0) {
       return null;
     }
+
     if (h.length == 0) {
       return null;
     }
 
-    if (this.state.projectIdSlugPairs === null) {
+    if (projectIdSlugPairs.length === 0) {
+      return null;
+    }
+
+    if (projectTagIdNamePairs.length === 0) {
       return null;
     }
 
@@ -296,8 +308,9 @@ class HomePage extends Component {
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
         <ProjectCategories categories={pC}/>
-        <HighlightedProjects projectlist={home.highlighted_projects} projIdSlugPairs={this.state.projectIdSlugPairs}/>
-
+        <HighlightedProjects projectlist={home.highlighted_projects} 
+          projIdSlugPairs={projectIdSlugPairs}
+          projTagIdNamePairs={projectTagIdNamePairs} />
       </section>
       <section id="homepage-core-value">
 

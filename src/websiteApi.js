@@ -145,8 +145,6 @@ function fetchProjects(callback) {
     });
 }
 
-
-
 async function fetchProjectsAsync() {
     const unorderedProjects = await passJsonResultAsync("projects");
     return orderProjectsByDateDescending(unorderedProjects);
@@ -210,7 +208,9 @@ export {
     fetchHighlightedProjects,
     fetchProjectsAsync,
     fetchProjectCategories,
+    fetchProjectCategoriesAsync,
     fetchProjectTags,
+    fetchProjectTagsAsync,
 
     // project detial page
     fetchProjectById,

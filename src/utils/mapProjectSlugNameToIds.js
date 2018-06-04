@@ -1,23 +1,33 @@
-import { fetchProjectsAsync } from 'websiteApi.js';
+import { fetchProjects, fetchProjectsAsync } from 'websiteApi.js'; 
+import { createSlugIdPairs } from 'utils/generalMapper.js'
 
 let projectSlugIdPairs = null;
 
-function createSlugIdPairs(projectObjs) {
-    let slugIdPairs = {};
-    projectObjs.forEach((projectObj) => {
-        slugIdPairs[projectObj.slug] = projectObj.id;
-    });
-    return slugIdPairs;
+function getProjectSlugIdPairs(callback) {
+  if (projectSlugIdPairs === null) {
+    fetchProjects((projects) => {
+      projectSlugIdPairs = createSlugIdPairs(projects);
+      callback(projectSlugIdPairs);
+    });     
+  } else {
+    callback(projectSlugIdPairs);
+  }
+}
+
+async function getProjectSlugIdPairsAsync() {
+  if (projectSlugIdPairs === null) {
+    const projectObjs = await fetchProjectsAsync(); 
+    projectSlugIdPairs = createSlugIdPairs(projectObjs); 
+  }
+  return projectSlugIdPairs;
 }
 
 async function getProjectIdBySlugAsync(projectSlug) {
-    if (projectSlugIdPairs === null) {
-        const projectObjs = await fetchProjectsAsync();
-        projectSlugIdPairs = createSlugIdPairs(projectObjs);
-    }    
-    return projectSlugIdPairs[projectSlug];
+  return (await getProjectSlugIdPairsAsync())[projectSlug]; 
 }
 
 export {
-    getProjectIdBySlugAsync
-};
+  getProjectSlugIdPairs,
+  getProjectSlugIdPairsAsync,
+  getProjectIdBySlugAsync
+}; 

@@ -3,14 +3,25 @@ import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
+import {fetchProjects, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
-import {getAbsoluteUrlFromRelativeUrl, getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
-import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
+import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
 
 import Footer from 'containers/Footer';
 
 import Shuffle from 'shufflejs'
+
+
+function ProjectCategoryButton(props) {
+  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
+  return (
+    <li
+        className={props.categoryItemClassName}
+        onClick={props.onClick}>
+        {props.categoryName}<span>{props.categoryCount}</span>
+    </li>
+  );
+}
 
 
 class ProjectCategories extends Component {
@@ -41,11 +52,11 @@ class ProjectCategories extends Component {
         categoryItemClassName += ' ' + selectedItemClass;
       }
       return (
-        <li key={category.id}
-            className={categoryItemClassName}
-            onClick={() => this.handleCategoryButtonClick(category.id)}>
-            {category.name}<span>{category.count}</span>
-        </li>
+        <ProjectCategoryButton key={category.id} 
+          categoryItemClassName={categoryItemClassName} 
+          onClick={() => this.handleCategoryButtonClick(category.id)}
+          categoryName={category.name}
+          categoryCount={category.count} />
       );
     });
 
@@ -56,11 +67,12 @@ class ProjectCategories extends Component {
 
     return (
       <div className="col-lg-12 ">
-        <ul id="portfolio-flters">
-          <li className={allCategoryClassName}
-              onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)}>
-              All
-          </li>
+        <ul id="portfolio-flters">          
+          <ProjectCategoryButton
+            categoryItemClassName={allCategoryClassName} 
+            onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} 
+            categoryName='ALL'
+            categoryCount={null} />
           {categoryItems}
         </ul>
       </div>
@@ -70,15 +82,16 @@ class ProjectCategories extends Component {
 
 
 function ProjectGrid(props) {
+  const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
+  const projectTagIdNamePairs = props.projTagIdNamePairs;
+
   const project_items = props.projects.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
 
     const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
-      let categoryName = '';
+      let categoryName = projectCategoryIdNamePairs[categoryId];
       if (index >= 1) {
-        categoryName = ' / ' + getProjectCategoryNameById(categoryId)
-      } else {
-        categoryName = getProjectCategoryNameById(categoryId)
+        categoryName = ' / ' + categoryName;
       }
       return (<span key={index}>
         {categoryName}
@@ -211,7 +224,9 @@ class ProjectListWithShuffle extends Component {
                 </div>
                 <ProjectGrid projects={this.props.projects}
                              projectShuffleSelectorClass={this.projectShuffleSelectorClass}
-                             setShuffleRefFunc={this.setShuffleRef} />
+                             setShuffleRefFunc={this.setShuffleRef}
+                             projCategoryIdNamePairs={this.props.projCategoryIdNamePairs}
+                             projTagIdNamePairs={this.props.projTagIdNamePairs} />
               </div>
               <div className="col-md-1" />
             </div>
@@ -235,8 +250,10 @@ class ProjectListPage extends Component {
     this.state = {
       projects: [],
       projectCategories: [],
+      projectCategoryIdNamePairs: [], 
       projectTags: [],
-      footer: null,
+      projectTagIdNamePairs: [],
+      footer: null,      
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
@@ -250,12 +267,18 @@ class ProjectListPage extends Component {
         })
     });
 
-    fetchProjectCategories((categories) => {
-      this.setState({projectCategories: categories});
+    getProjectCategoriesAndItsIdNamePairs((projCategories, projCategoryIdNamePairs) => {
+      this.setState({
+        projectCategories: projCategories,
+        projectCategoryIdNamePairs: projCategoryIdNamePairs
+      });
     });
 
-    fetchProjectTags((tags) => {
-      this.setState({projectTags: tags});
+    getProjectTagsAndItsProjectTagIdNamePairs((projTags, projTagIdNamePairs) => {
+      this.setState({
+        projectTags: projTags,
+        projectTagIdNamePairs: projTagIdNamePairs,
+      });
     });
 
     fetchActiveFooter((aFooter) => {
@@ -287,21 +310,35 @@ class ProjectListPage extends Component {
   }
 
   render() {
-    const t = this.state.projectTags;
-    const pC = this.state.projectCategories;
-    const p = this.state.projects;
-    const footer = this.state.footer;
+    const state = this.state;    
+    const pC = state.projectCategories;
+    const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;
+    const pT = state.projectTags;
+    const projectTagIdNamePairs = state.projectTagIdNamePairs;
+    const p = state.projects;
+    const footer = state.footer;
 
     // not working if using p === []
     if (p.length === 0) {
       return null;
     }
-
-    // not working if using pC === []
+    
     if (pC.length === 0) {
       return null;
     }
 
+    if (projectCategoryIdNamePairs.length === 0) {
+      return null;
+    }
+
+    if (pT.length === 0) {
+      return null;
+    }
+
+    if (projectTagIdNamePairs.length === 0) {
+      return null;
+    }
+    
     if (footer === null) {
       return null;
     }
@@ -309,7 +346,9 @@ class ProjectListPage extends Component {
     return (
       <ProjectListWithShuffle projects={p}
         categories={pC}
-        tags={t}
+        projCategoryIdNamePairs={projectCategoryIdNamePairs}
+        tags={pT}
+        projTagIdNamePairs={projectTagIdNamePairs}
         footerInfo={footer} />
     );
   }
