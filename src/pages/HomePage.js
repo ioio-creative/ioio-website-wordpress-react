@@ -49,12 +49,9 @@ function HighlightedProjects(props) {
     }
 
     const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
-
-      let tagName = "";
-      if (index >= 1) {
-        tagName = " / " + projectTagIdNamePairs[tagId];
-      } else {
-        tagName = projectTagIdNamePairs[tagId];
+      let tagName = projectTagIdNamePairs[tagId];
+      if (index > 0) {
+        tagName = " / " + tagName;
       }
       return (<span key={index}>
         {tagName}

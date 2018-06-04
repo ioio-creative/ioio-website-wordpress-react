@@ -90,24 +90,19 @@ function AllProjects(props) {
     });
 
     const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
-
-      let tagName = "";
-      if (index >= 1) {
-        tagName = " / " + getProjectTagNameById(tagId)
-      } else {
-        tagName = getProjectTagNameById(tagId)
+      let tagName = getProjectTagNameById(tagId);
+      if (index > 0) {
+        tagName = " / " + tagName;
       }
       return (<span key={index}>
         {tagName}
       </span>);
     });
-    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
 
-      let categoryName = "";
-      if (index >= 1) {
-        categoryName = " / " + getProjectCategoryNameById(categoryId)
-      } else {
-        categoryName = getProjectCategoryNameById(categoryId)
+    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+      let categoryName = getProjectCategoryNameById(categoryId);
+      if (index > 0) {
+        categoryName = " / " + categoryName;
       }
       return (<span key={index}>
         {categoryName}
