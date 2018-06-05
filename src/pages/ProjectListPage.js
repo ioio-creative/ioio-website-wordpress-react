@@ -65,6 +65,10 @@ class ProjectCategories extends Component {
       allCategoryClassName += ' ' + selectedItemClass;
     }
 
+    const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
+      return sum + currentCategory.count;
+    }, 0);
+
     return (
       <div className="col-lg-12 ">
         <ul id="portfolio-flters">          
@@ -72,7 +76,7 @@ class ProjectCategories extends Component {
             categoryItemClassName={allCategoryClassName} 
             onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} 
             categoryName='ALL'
-            categoryCount={null} />
+            categoryCount={allCategoryProjectCount} />
           {categoryItems}
         </ul>
       </div>
