@@ -193,7 +193,7 @@ class HomePage extends Component {
     getProjectIdSlugPairs((projectIdSlugPairs) => {
       this.setState({projectIdSlugPairs: projectIdSlugPairs});
     });
-    
+
     getProjectTagsAndItsProjectTagIdNamePairs((projectTags, projectTagIdNamePairs) => {
       this.setState({projectTagIdNamePairs: projectTagIdNamePairs});
     });
@@ -236,7 +236,7 @@ class HomePage extends Component {
     if (footer === null) {
       return null;
     }
-    
+
     if (p.length == 0) {
       return null;
     }
@@ -305,7 +305,7 @@ class HomePage extends Component {
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
         <ProjectCategories categories={pC}/>
-        <HighlightedProjects projectlist={home.highlighted_projects} 
+        <HighlightedProjects projectlist={home.highlighted_projects}
           projIdSlugPairs={projectIdSlugPairs}
           projTagIdNamePairs={projectTagIdNamePairs} />
       </section>
@@ -343,7 +343,6 @@ class HomePage extends Component {
       </Modal>
 
       <Footer
-        //Section: Footer
         footer={footer}/>
     </div>);
   }
