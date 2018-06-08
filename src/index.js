@@ -9,11 +9,12 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render((
     <BrowserRouter>
-        <App />
+      {console.log(this.props.location.pathname)}
+      <App />
     </BrowserRouter>
 ), document.getElementById('root'));
 
 registerServiceWorker();
 
 //TODO
-//load new page on soical links
+//load new page on social links
