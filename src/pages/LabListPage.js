@@ -45,13 +45,13 @@ class LabListPage extends Component {
           <div className="container-fluid row text-left">
             <div className="col-md-1"></div>
             <div className="col-md-10">
-              <div className="about01-img text-right">
-                <img id="img-hotpot" src={a.hotpot_image.guid} alt="" className="img-fluid"/>
-                <img id="img-meet" src={a.meat_image.guid} alt="" className="img-fluid"/>
-                <img id="img-fish" src={a.fish_image.guid} alt="" className="img-fluid"/>
+              <div className="lab-top-img text-right">
+                <img id="lab-top-img1" src={/**/} alt="" className="img-fluid"/>
+                <img id="lab-top-img2" src={/**/} alt="" className="img-fluid"/>
+                <img id="lab-top-img3" src={/**/} alt="" className="img-fluid"/>
               </div>
-              <h3>{a.page_title}</h3>
-              <h1>{a.page_subtitle}</h1>
+              <h3>{/**/}</h3>
+              <h1>{/**/}</h1>
             </div>
             <div className="col-md-1"></div>
           </div>
