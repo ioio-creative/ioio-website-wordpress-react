@@ -28,7 +28,7 @@ class Sidebar extends Component {
     this.handleMenuClose = this.handleMenuClose.bind(this);
   }
 
-  componentDidMount() {
+   componentDidMount() {
     fetchActiveSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
     });
@@ -63,7 +63,7 @@ class Sidebar extends Component {
       return null;
     }
     return (<nav id="sidebar" className="menu-transition" role="navigation">
-
+      <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div"><h3>Index</h3></div>
             <div className="close-symbol"></div>

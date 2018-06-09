@@ -5,6 +5,7 @@
   left: 25px;
   font-size: 15px;
   text-transform: uppercase;
+  opacity: 1;
 }
 
 #homepage-top {
@@ -318,6 +319,9 @@
   /*----------------------------
   [ Mobile styles go here]
   ---------------------------*/
+  #homepage-top-logo {
+opacity: 0;
+  }
   .homepage-top-logo-div {
     top: 50px;
   }
@@ -396,7 +400,7 @@
     margin-left: 0;
   }
   #homepage-selected-project .portfolio-wrap .portfolio-info h4 {
-    
+
     word-wrap: break-word;
 
   }
