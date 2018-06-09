@@ -2,7 +2,7 @@
 # Sidebar
 --------------------------------------------------------------*/
 #sidebar-top-logo-text{
-  position: relative;
+  position: absolute;
   font-weight: bold;
   top: 25px;
   left: 25px;
@@ -10,6 +10,7 @@
   text-transform: uppercase;
   opacity:0;
 }
+
 
 
 #menu-toggle-div {
