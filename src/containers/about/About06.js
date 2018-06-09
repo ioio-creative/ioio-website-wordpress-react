@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+import OwlCarousel from 'react-owl-carousel';
+import 'containers/slideshow.css';
+
 function Items(props) {
   const member_items = props.items.map((item, id) => {
     return (<div className="col-md-3 col-xs-6 col-sm-6 wow fadeInRight" key={id} data-wow-delay="0.3s">
@@ -8,18 +11,39 @@ function Items(props) {
           <img src={item.image.guid} alt="alt" className="img-fluid"/>
         </div>
         <div className="item-desc">
-        <p>
-          {item.desc}
-        </p>
-      </div>
-      <h3>{item.my_name}</h3>
+          <p>
+            {item.desc}
+          </p>
+        </div>
+        <h3>{item.my_name}</h3>
       </div>
     </div>);
   });
 
-  return (<div className="row services-cols">
 
-    {member_items}
+  const member_items_mobile = props.items.map((item, id) => {
+    return (<div className="services-cols-mobile col-md-12 col-xs-12 col-sm-12 wow fadeInRight" key={id} data-wow-delay="0.3s">
+      <div className="services-col services-cols-mobile">
+        <div className="img">
+          <img src={item.image.guid} alt="alt" className="img-fluid"/>
+        </div>
+        <div className="item-desc">
+          <p>
+            {item.desc}
+          </p>
+        </div>
+        <h3>{item.my_name}</h3>
+      </div>
+    </div>);
+  });
+
+  return (<div className="">
+    <div className="row services-cols">
+      {member_items}
+    </div>
+    <OwlCarousel className="services-cols-mobile-slideshow slideshow owl-theme the-team" center={true} loop={true} nav={false} autoplay={false} dots={true} dotsEach={true} items={2} margin={5} slideBy={1} autoplayTimeout={2500}>
+      {member_items_mobile}
+    </OwlCarousel>
   </div>);
 
 }
