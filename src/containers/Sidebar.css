@@ -1,6 +1,17 @@
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
+#sidebar-top-logo-text{
+  position: absolute;
+  font-weight: bold;
+  top: 25px;
+  left: 25px;
+  font-size: 15px;
+  text-transform: uppercase;
+  opacity:0;
+}
+
+
 
 #menu-toggle-div {
   position: fixed;
@@ -247,6 +258,10 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  #sidebar-top-logo-text{
+    left: 15px;
+    opacity:1;
+  }
   #menu-toggle-div {
     position: fixed;
     left: auto;
@@ -267,7 +282,7 @@
     overflow-y: hidden;
     color: #000;
     padding-top: 0;
-    border-bottom: 2px solid #E6E6E6;
+    border-bottom: 0px solid #E6E6E6;
   }
   #sidebar.active {
     /*background: rgba(0, 0, 0, 0.9);*/
@@ -311,7 +326,8 @@
   #sidebar .logo {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 15px;
+    opacity: 0;
   }
   #sidebar.active .info-section h4 {
     margin-top: 0px;
