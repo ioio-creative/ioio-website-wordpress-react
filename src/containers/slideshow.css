@@ -86,4 +86,8 @@
     padding-left: 0;
     padding-right: 0;
   }
+  .owl-theme .owl-dots .owl-dot span {
+    width: 8px;
+    height: 8px;
+  }
 }

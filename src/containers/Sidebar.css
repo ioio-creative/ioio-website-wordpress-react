@@ -1,17 +1,6 @@
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
-#sidebar-top-logo-text{
-  position: absolute;
-  font-weight: bold;
-  top: 25px;
-  left: 25px;
-  font-size: 15px;
-  text-transform: uppercase;
-  opacity:0;
-}
-
-
 
 #menu-toggle-div {
   position: fixed;
@@ -258,10 +247,6 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  #sidebar-top-logo-text{
-
-    opacity:1;
-  }
   #menu-toggle-div {
     position: fixed;
     left: auto;
@@ -282,7 +267,7 @@
     overflow-y: hidden;
     color: #000;
     padding-top: 0;
-    border-bottom: 0px solid #E6E6E6;
+    border-bottom: 2px solid #E6E6E6;
   }
   #sidebar.active {
     /*background: rgba(0, 0, 0, 0.9);*/
@@ -315,7 +300,7 @@
   }
   #sidebar.active .menu-item {
     font-size: 40px;
-    margin-left: 50px;
+    margin-left: 0px;
     margin-top: 0;
   }
   #sidebar.active .menu-language {
@@ -326,8 +311,7 @@
   #sidebar .logo {
     position: absolute;
     top: 10px;
-    left: 15px;
-    opacity: 0;
+    left: 10px;
   }
   #sidebar.active .info-section h4 {
     margin-top: 0px;
@@ -344,7 +328,7 @@
     margin-left: 0px;
     top: 55%;
     text-align: left;
-    padding-left: 65px;
+    padding-left: 15px;
     padding-right: 65px;
     bottom: 0;
   }

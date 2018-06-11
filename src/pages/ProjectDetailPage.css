@@ -241,10 +241,9 @@ video {
     position: static;
     text-align: center;
     font-size: 25px;
-    width: 50%;
+    width: 75%;
     padding: 0;
-    margin: 23vh auto 15px;
-    /*top: 20vh;*/
+    margin: 21vh auto 15px;
   }
   .video-text .row {
     margin: 0;
@@ -273,6 +272,7 @@ video {
     width: 50%;
     display: block;
     margin: 0 auto;
+    transition: none;
   }
   .video-landing-text {
     padding-top: 50px;

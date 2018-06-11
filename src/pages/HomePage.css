@@ -5,7 +5,6 @@
   padding-left: 25px;
   font-size: 15px;
   text-transform: uppercase;
-  opacity: 1;
 }
 
 #homepage-top {
@@ -320,9 +319,6 @@
   /*----------------------------
   [ Mobile styles go here]
   ---------------------------*/
-  #homepage-top-logo {
-opacity: 0;
-  }
   .homepage-top-logo-div {
     top: 0px;
     bottom: 0px;
@@ -436,7 +432,7 @@ opacity: 0;
     padding-right: 10px;
   }
   #homepage-selected-project .portfolio-wrap .portfolio-info h4 {
-
+    
     word-wrap: break-word;
     line-height: normal;
 

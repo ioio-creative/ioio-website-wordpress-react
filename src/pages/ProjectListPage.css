@@ -165,6 +165,9 @@
   #portfolio .section-title {
     font-size: 30px;
   }
+  #portfolio .portfolio-item .portfolio-info p {
+    letter-spacing: 0.05em;
+  }
   #portfolio a {
     text-decoration: none;
   }
