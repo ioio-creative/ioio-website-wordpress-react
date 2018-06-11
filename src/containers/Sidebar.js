@@ -65,14 +65,15 @@ class Sidebar extends Component {
     return (<nav id="sidebar" className="menu-transition" role="navigation">
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
-        <div id="menu-toggle-div"><h3>Index</h3></div>
-            <div className="close-symbol"></div>
+        <div id="menu-toggle-div">
+          <h3>Index</h3>
+        </div>
+        <div className="close-symbol"></div>
       </a>
-
-
 
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
+        <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
       <div className="container-fluid ">
         <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>

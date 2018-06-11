@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render((
     <BrowserRouter>
-      {console.log(this.props.location.pathname)}
+      {/*console.log(this.props.location.pathname)*/}
       <App />
     </BrowserRouter>
 ), document.getElementById('root'));

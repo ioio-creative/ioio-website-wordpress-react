@@ -57,7 +57,7 @@ class Main extends Component {
                     <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
                     <Route path={routes.projects} component={AsyncProjectListPage} />
                     <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
-                    <Route path={routes.labs} component={AsyncLabListPage} />
+                    <Route path={routes.lab} component={AsyncLabListPage} />
                     <Route path={routes.contacts} component={AsyncContactsPage} />
                     <Route path='/trial' component={P5SketchTrialPage} />
                     <Route component={AsyncNotFoundPage} />
