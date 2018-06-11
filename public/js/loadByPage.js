@@ -57,22 +57,46 @@ function reloadJS() {
 
     if ($(window).width() <= 767) {
 
-      console.log("here")
+
 
       $(window).scroll(function() {
         let scrollVal = $(this).scrollTop();
         let val = convertRange(scrollVal, [
-          0, 100
+          0, 400
         ], [0, 1])
+
         if (val >= 1) {
           val = 1;
         }
+
+        let val2 = convertRange(scrollVal, [
+          0, 180
+        ], [0, 1])
+        if (val2 >= 1) {
+          val2 = 1;
+        }else if (val2 <= 0){
+          val2 = 0;
+        }
+
+        let val3 = convertRange(scrollVal, [
+          120, 300
+        ], [0, 1])
+        if (val3 >= 1) {
+          val3 = 1;
+        }else if (val3 <= 0){
+          val3 = 0;
+        }
+
+
+              $('#sidebar .logo').css("transition","none");
+              $('#sidebar-top-logo-text').css("transition","none");
+
         $('#sidebar .logo').css("top", (val * 10) + "px");
 
-        $('#sidebar .logo').css("opacity", val);
-        $('#sidebar-top-logo-text').css("opacity", 1 - val);
+        $('#sidebar .logo').css("opacity", val3);
+        $('#sidebar-top-logo-text').css("opacity", 1 - val2);
         $('#sidebar-top-logo-text').css("top", ((1 - val) * 20) + "px");
-        if (scrollVal < 100) {
+        if (scrollVal < 200) {
           $('#sidebar').css("border-bottom", "0px solid #FFFFFF");
         } else {
           $('#sidebar').css("border-bottom", "2px solid #E6E6E6");
