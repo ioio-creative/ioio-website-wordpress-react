@@ -200,7 +200,7 @@ video {
   align-items: center;
   /* align vertical */
   width: 100%;
-  height: auto;
+  height: 60vh;
   background-color: black;
 }
 
@@ -210,10 +210,16 @@ video {
 
 #video-landing video {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  #video-landing .player-wrapper {
+    overflow: hidden;
+  }
   #video-landing .react-player {
     width: auto;
     min-height: 60vh;
@@ -224,27 +230,55 @@ video {
     min-height: 60vh;
     max-height: 60vh;
   }
+  #video-landing .col-md-5 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    top: 0;
+  }
   .video-text h1 {
+    position: static;
     text-align: center;
-    font-size: 22px;
+    font-size: 25px;
+    width: 50%;
+    padding: 0;
+    margin: 23vh auto 15px;
+    /*top: 20vh;*/
+  }
+  .video-text .row {
+    margin: 0;
   }
   .video-text h2 {
+    position: static;
     text-align: center;
     font-size: 14px;
-    top:45vh;
+    /*top: 40vh;*/
+    width: 50%;
+    padding: 0;
+    margin: 0 auto;
+    line-height: 1.4em;
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
   }
   .video-text .pop-up-vid-div {
     text-align: center;
     position: absolute;
-
+    bottom: 25px;
+    left: 0;
   }
   .video-text a {
-    top:53vh;
+    /*top: 0;*/
     font-size: 12px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
   }
   .video-landing-text {
+    padding-top: 50px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 50px;
   }
 }
 
@@ -269,7 +303,6 @@ video {
   padding: 0;
   width: 100%;
 }
-
 .photo-montage div div {
   object-fit: cover;
 }
@@ -286,6 +319,10 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+
+  .photo-montage-one-text div {
+    padding: 0;
+  }
 }
 
 /*==============
@@ -482,6 +519,9 @@ video {
   .slideshow-2-col div div {
     padding: 0 0;
   }
+  .slideshow-2-col div div.slideshow-2-col-item {
+    padding: 0 15px;
+  }
   .slideshow-2-col-item img {
     min-width: 100%;
     max-width: 100%;
@@ -489,7 +529,7 @@ video {
   .slideshow-2-col-item p {
     text-align: left;
     padding-top: 10px;
-    padding-left: 5%;
+    padding-left: 0;
   }
   .photo-montage-one-vid{
     padding: 0 0 0 0;
@@ -499,12 +539,45 @@ video {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
+  .photo-montage-one-vid video {
+    vertical-align: top;
+  }
+  .photo-montage-one-img {
+    padding: 0;
+  }
+  .photo-montage-one-img div {
+    margin: 0;
+  }
   .photo-montage-one-text{
     margin: 0 0 0 0;
     padding: 0 0 0 0;
   }
+  .photo-montage-one-text div {
+    padding: 0;
+  }
+  .photo-montage-one-text .col-md-4 {
+    padding: 15px 30px;
+  }
   .photo-montage-one-img-full-width{
     padding: 0 0;
   }
-
-}
+  .slideshow.slideshow-img-on-left > div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .slideshow .owl-dot {
+    width: 8px;
+    height: 8px;
+  }
+  .owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+  }
+  .slideshow {
+    margin: 0;
+  }
+  .slideshow-img-in-middle .img-container img {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+} 

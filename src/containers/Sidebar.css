@@ -249,10 +249,11 @@
   /*--[ Mobile styles go here]---------------------------*/
   #menu-toggle-div {
     position: fixed;
-    left: 55px;
+    left: auto;
     top: 0;
     height: 55px;
-    width: 100%;
+    width: 55px;
+    right: 0;
   }
   #sidebar {
     height: 55px;
@@ -313,19 +314,22 @@
     left: 10px;
   }
   #sidebar.active .info-section h4 {
-    margin-top: -50px;
-    font-size: 15px;
+    margin-top: 0px;
+    font-size: 14px;
   }
   #sidebar.active .info-section p {
-    font-size: 10px;
+    font-size: 14px;
   }
   #sidebar.active .info-section a {
-    font-size: 10px;
+    font-size: 14px;
   }
   #sidebar.active .info-section {
-    left: 50px;
-    margin-left: 15px;
+    left: 0px;
+    margin-left: 0px;
+    top: 55%;
     text-align: left;
+    padding-left: 65px;
+    padding-right: 65px;
     bottom: 0;
   }
   #sidebar .sidebar-hiring {
