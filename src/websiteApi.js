@@ -22,6 +22,7 @@ const activeEntities = {
     footer: 263,
     sidebar: 351,
     contact: 1008,
+    lab: 1348,
 };
 
 
@@ -30,6 +31,7 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
+        console.log(dataUrl)
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
@@ -186,6 +188,16 @@ function fetchContact(callback) {
 }
 /* end of contact detail page */
 
+
+/* lab page */
+function fetchActiveLab(callback) {
+    passJsonResultToCallback("lab", callback, activeEntities.lab);
+}
+function fetchLab(callback) {
+    passJsonResultToCallback("lab", callback);
+}
+/* end of lab page */
+
 export {
     // general
     fetchActiveSidebar,
@@ -217,4 +229,8 @@ export {
     // contact page
     fetchActiveContact,
     fetchContact,
+
+    // lab page
+    fetchActiveLab,
+    fetchLab,
 };
