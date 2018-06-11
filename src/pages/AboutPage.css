@@ -109,27 +109,41 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  #about01 {
+    background-position: 65% center !important;
+  }
   #img-hotpot {
     display: block;
-    max-width: 45vh;
-    max-height: 45vh;
+    max-width:45vh;
+    max-height:45vh;
     width: auto;
     height: auto;
+    left: 50%;
+    margin-left: -20vh;
+    right: auto;
   }
   #img-meet {
     width: 20vh;
-    right: -10%;
+    right: -30px;
+    margin-top: 40vh;
   }
   #img-fish {
     width: 20vh;
   }
   #about01 h3 {
-    font-size: 28px;
-    top: 45vh;
+    font-size: 20px;
+    top: 47vh;
   }
   #about01 h1 {
-    font-size: 36px;
+    font-size: 30px;
+    line-height: 1.5em;
     top: 53vh;
+  }
+  .about-col {
+    padding: 0 15px;
+  }
+  .client-cols > div {
+    width: 50%;
   }
 }
 
@@ -145,9 +159,12 @@
   padding-top: 50px;
   font-weight: bold;
   font-size: 25px;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
-
+#media > div {
+  margin: 0;
+  padding: 0;
+}
 .media-video {
   padding: 30px 0;
   width: 100%;
@@ -296,6 +313,9 @@ slideshow
 }
 
 @media only screen and (max-width: 767px) {
+  #the-team .section-header p {
+    width: auto;
+  }
   .slideshow .the-team-text h3 {
     font-size: 12px;
   }
