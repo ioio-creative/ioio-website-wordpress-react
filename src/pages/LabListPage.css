@@ -1,8 +1,33 @@
-
-#lab-list {
-
+.lab-bg {
+  background-color: #000000;
+  color: white;
 }
+
+.video-text h3 {
+  color: #888;
+  z-index: 10;
+  font-size: 30px;
+  padding: 5px 0 5px 0;
+  text-transform: uppercase;
+  text-align: left;
+  position: absolute;
+  bottom: 180px;
+}
+
+.video-text h1 {
+  color: white;
+  font-weight: bold;
+  z-index: 10;
+  font-size: 50px;
+  text-align: left;
+  padding: 5px 0 5px 0;
+  position: absolute;
+  text-transform: uppercase;
+  bottom: 50px;
+}
+
+#lab-list {}
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-
 }

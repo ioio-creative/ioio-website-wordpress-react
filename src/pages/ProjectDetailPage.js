@@ -97,8 +97,8 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>); 
-} 
+  </section>);
+}
 
 
 function VideoLandingDesc(props) {
