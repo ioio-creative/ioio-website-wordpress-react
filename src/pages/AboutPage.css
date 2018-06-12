@@ -112,6 +112,8 @@
   #about01 {
     background-position: 65% center !important;
     height: 78vh;
+    position: relative;
+    z-index: 2;
   }
   #img-hotpot {
     display: block;
@@ -213,8 +215,13 @@ slideshow
 }
 
 @media only screen and (max-width: 767px) {
+  #media {
+    position: relative;
+    z-index: 1;
+  }
   #media h1 {
     padding-top: 30px;
+    width: 95%;
   }
   .slideshow-img-and-text img {
     padding: 0 0 0 0;
@@ -430,6 +437,7 @@ Serivce
   .client-col img {}
   .services-col h3 {
     margin-top: 0;
+    font-weight: bold;
   }
   .section-header p {
     width: 80%;

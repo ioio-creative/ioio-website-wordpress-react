@@ -894,3 +894,17 @@ body.video-react-full-window {
   to {
     opacity: 0;
     transform: scale(2); } }
+
+@media screen and (max-width: 767px) {
+  .video-react .video-react-big-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 2em;
+    margin-left: -1em;
+    margin-top: -1em;
+  }
+}

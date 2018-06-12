@@ -203,6 +203,15 @@ section {
   .ReactModalPortal div div.terms-div {
     background-color: white;
   }
+  #msg404 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    text-align: center;
+
+  }
 }
 
 .owl-item {
