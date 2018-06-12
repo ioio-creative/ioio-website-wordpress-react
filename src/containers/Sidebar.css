@@ -259,7 +259,7 @@
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   #sidebar-top-logo-text{
-
+    left: 15px;
     opacity:1;
   }
   #menu-toggle-div {
@@ -315,7 +315,7 @@
   }
   #sidebar.active .menu-item {
     font-size: 40px;
-    margin-left: 50px;
+    margin-left: 0px;
     margin-top: 0;
   }
   #sidebar.active .menu-language {
@@ -344,7 +344,7 @@
     margin-left: 0px;
     top: 55%;
     text-align: left;
-    padding-left: 65px;
+    padding-left: 15px;
     padding-right: 65px;
     bottom: 0;
   }

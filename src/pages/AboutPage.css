@@ -111,6 +111,7 @@
   /*--[ Mobile styles go here]---------------------------*/
   #about01 {
     background-position: 65% center !important;
+    height: 78vh;
   }
   #img-hotpot {
     display: block;
@@ -129,6 +130,7 @@
   }
   #img-fish {
     width: 20vh;
+    margin-top: 65vh;
   }
   #about01 h3 {
     font-size: 20px;
@@ -211,6 +213,9 @@ slideshow
 }
 
 @media only screen and (max-width: 767px) {
+  #media h1 {
+    padding-top: 30px;
+  }
   .slideshow-img-and-text img {
     padding: 0 0 0 0;
   }
@@ -423,4 +428,24 @@ Serivce
 @media only screen and (max-width: 767px) {
   .client-col {}
   .client-col img {}
+  .services-col h3 {
+    margin-top: 0;
+  }
+  .section-header p {
+    width: 80%;
+    position: relative;
+    opacity: 1;
+    height: auto;
+  }
+  .services-col .item-desc {
+    position: static;
+    height: auto;
+    opacity: 1;
+  }
+  .services-col:hover .item-desc {
+    position: static;
+  }
+  .services-cols-mobile p {
+    position: relative;
+  }
 }
