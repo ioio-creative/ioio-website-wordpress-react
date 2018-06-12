@@ -162,6 +162,7 @@
   font-weight: bold;
   font-size: 25px;
   line-height: 1.4em;
+  width: 600px;
 }
 #media > div {
   margin: 0;

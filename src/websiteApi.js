@@ -31,7 +31,6 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
-        console.log(dataUrl)
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
@@ -196,6 +195,9 @@ function fetchActiveLab(callback) {
 function fetchLab(callback) {
     passJsonResultToCallback("lab", callback);
 }
+function fetchLabItems(callback) {
+    passJsonResultToCallback("lab_items", callback);
+}
 /* end of lab page */
 
 export {
@@ -233,4 +235,5 @@ export {
     // lab page
     fetchActiveLab,
     fetchLab,
+    fetchLabItems
 };

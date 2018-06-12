@@ -3,12 +3,32 @@ import React, {Component} from 'react';
 //Footer
 import Footer from 'containers/Footer';
 
-import {fetchActiveLab, fetchActiveFooter} from 'websiteApi';
+import {fetchActiveLab, fetchLabItems, fetchActiveFooter} from 'websiteApi';
 
 import './LabListPage.css';
 
 import ReactPlayer from 'react-player'
 import {Link} from 'react-router-dom'
+
+function LabItems(props) {
+  const items = props.labItems.map((item, id) => {
+    let gridSize;
+    if(item.template_type != 5){
+      gridSize = 3;
+    }else{
+      gridSize = 6;
+    }
+    let gridSizeClassName = "span" + gridSize;
+    const itemBg = {
+      background: item.background_mood_color,
+    };
+    return (<div className="gridSizeClassName" key={id} style={itemBg}></div>)
+  });
+
+  return (<section className="">
+    {items}
+  </section>);
+}
 
 class LabListPage extends Component {
   constructor(props) {
@@ -16,11 +36,18 @@ class LabListPage extends Component {
     this.state = {
       lab: null
     }
+    this.state = {
+      labItems: null
+    }
   }
 
   async componentDidMount() {
     fetchActiveLab((aLab) => {
       this.setState({lab: aLab});
+    });
+
+    fetchLabItems((aLabItems) => {
+      this.setState({labItems: aLabItems});
     });
 
     fetchActiveFooter((aFooter) => {
@@ -47,7 +74,12 @@ class LabListPage extends Component {
     if (lab === null) {
       return null;
     }
-    console.log(lab)
+
+    const labItems = this.state.labItems;
+    if (labItems === null) {
+      return null;
+    }
+    console.log(labItems)
     return (<div>
       <section id="video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
         <div className="video-landing-div">
@@ -84,26 +116,25 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-list" className="lab-bg wow fadeIn">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              1 of 2
-            </div>
-            <div class="col">
+        <div className="container">
+          <LabItems labItems={labItems}/>
+          <div className="row">
+            <div className="col"></div>
+            <div className="col">
               2 of 2
             </div>
           </div>
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               1 of 3
             </div>
-            <div class="col">
+            <div className="col">
               2 of 3
             </div>
-            <div class="col">
+            <div className="col">
               3 of 3
             </div>
-            <div class="col">
+            <div className="col">
               3 of 3
             </div>
           </div>

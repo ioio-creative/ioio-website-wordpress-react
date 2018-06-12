@@ -210,10 +210,11 @@ video {
 
 #video-landing video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 
+  object-fit: cover;
 }
+
+
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
@@ -581,4 +582,4 @@ video {
     top: 50%;
     transform: translateY(-50%);
   }
-} 
+}
