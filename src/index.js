@@ -14,7 +14,7 @@ ReactDOM.render((
     </BrowserRouter>
 ), document.getElementById('root'));
 
-registerServiceWorker();
+//registerServiceWorker();
 
 //TODO
 //load new page on social links
