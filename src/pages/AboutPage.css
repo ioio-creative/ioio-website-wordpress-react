@@ -187,11 +187,11 @@
 slideshow
 */
 
-/*
-.slideshow-img-and-text img {
-  padding: 30px 100px 30px 0;
+
+.slideshow-img-and-text {
+  padding: 50px 0 0 0;
 }
-*/
+
 
 .slideshow-img-and-text .img-container {
   display: block;

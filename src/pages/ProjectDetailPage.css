@@ -79,6 +79,7 @@ pop-up
   font-weight: bold;
   font-size: 36px;
   text-align: left;
+  line-height: 1.4em;
 }
 
 .video-text h2 {
@@ -139,7 +140,7 @@ pop-up
     font-size: 36px;
   }
   .video-text h2 {
-    top: 50vh;
+    top: 52vh;
     font-size: 16px;
   }
   .video-text a {
@@ -446,13 +447,14 @@ video {
 }
 
 .photo-montage-one-vid div {
-  margin: 0 0 0 0;
+  margin: 0 0 -6px 0;
   padding: 0 0 0 0;
 }
 
 .photo-montage-one-vid video {
   width: 100%;
   height: auto;
+
 }
 
 /*==============
