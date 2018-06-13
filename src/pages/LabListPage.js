@@ -18,16 +18,17 @@ function LabItems(props) {
     }else{
       gridSize = 6;
     }
-    let gridSizeClassName = "span" + gridSize;
+    let gridSizeClassName = "col-md-" + gridSize;
     const itemBg = {
       background: item.background_mood_color,
+      color: 'black',
     };
-    return (<div className="gridSizeClassName" key={id} style={itemBg}></div>)
+    return (<div className={gridSizeClassName + " lab-item"}key={id} style={itemBg}><h1>ITEM</h1><h3>SUB</h3><img className="lab-thumb" src={item.thumbnail.guid} alt="" /></div>)
   });
 
-  return (<section className="">
+  return (<div className="row">
     {items}
-  </section>);
+  </div>);
 }
 
 class LabListPage extends Component {
@@ -118,26 +119,6 @@ class LabListPage extends Component {
       <section id="lab-list" className="lab-bg wow fadeIn">
         <div className="container">
           <LabItems labItems={labItems}/>
-          <div className="row">
-            <div className="col"></div>
-            <div className="col">
-              2 of 2
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              1 of 3
-            </div>
-            <div className="col">
-              2 of 3
-            </div>
-            <div className="col">
-              3 of 3
-            </div>
-            <div className="col">
-              3 of 3
-            </div>
-          </div>
         </div>
       </section>
       <Footer footer={footer}/>

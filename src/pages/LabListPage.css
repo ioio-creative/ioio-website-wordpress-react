@@ -26,7 +26,45 @@
   bottom: 50px;
 }
 
-#lab-list {}
+.lab-item{
+  width: 100%;
+
+  margin-left: 20px;
+  margin-right: 20px;
+    height: 200px;
+
+}
+
+.lab-item .lab-thumb{
+  position: absolute;
+
+  left: 0;
+  width: 100%;
+padding: 0 0;
+margin: 0 0;
+}
+
+.lab-item h1{
+
+position: absolute;
+bottom: 20px;
+font-weight: bold;
+
+}
+
+.lab-item h3{
+  position: absolute;
+  bottom: 40px;
+
+
+}
+
+
+
+#lab-list {
+  padding-bottom: 20px;
+}
+
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
