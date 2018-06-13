@@ -1,0 +1,7 @@
+/*** iphone 5/SE ***/
+@media screen and (max-width:320px) {
+    #footer .footer-bottom-copyright,
+    #footer .footer-bottom-links {
+        font-size: 12px;
+    }
+}
