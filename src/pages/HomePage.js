@@ -24,18 +24,48 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
+function ProjectCategoryButton(props) {
+  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
+
+  let projectsByCategoryRoute = routes.projectsAll();
+  if (props.categorySlug) {
+    projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
+  } 
+
+  return (
+    <li>
+      <Link to={projectsByCategoryRoute}>
+        {props.categoryName}<span>{props.categoryCount}</span>
+      </Link>
+    </li>
+  );
+}
+
 function ProjectCategories(props) {
-  const category_items = props.categories.map((tag, id) => {
-    let tagId = ".filter-" + tag.id
-    return (<li key={id} data-filter={tagId}>{tag.name}<span>{tag.count}</span>
-    </li>);
+  const categoryItems = props.categories.map((category) => {
+    return (
+      <ProjectCategoryButton key={category.id} 
+        categorySlug={category.slug}
+        categoryName={category.name}
+        categoryCount={category.count} />
+    );
   });
-  return (<div className="col-lg-12 ">
-    <ul id="portfolio-flters">
-      <li data-filter="*" className="filter-active">We Do</li>
-      {category_items}
-    </ul>
-  </div>);
+
+  const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
+    return sum + currentCategory.count;
+  }, 0);
+
+  return (
+    <div className="col-lg-12 ">
+      <ul id="portfolio-flters">
+        <ProjectCategoryButton
+          categorySlug={null}
+          categoryName='We Do'
+          categoryCount={allCategoryProjectCount} />
+        {categoryItems}
+      </ul>
+    </div>
+  );
 }
 
 function HighlightedProjects(props) {

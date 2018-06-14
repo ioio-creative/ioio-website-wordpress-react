@@ -10,6 +10,7 @@ import {fetchProjects, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js'
 import routes from 'globals/routes';
 import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
 import {createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
+import history from 'utils/history';
 
 import Footer from 'containers/Footer';
 
@@ -49,8 +50,12 @@ class ProjectCategories extends Component {
   handleCategoryButtonClick(categoryId) {
     this.props.handleFilterClick(categoryId);
 
-    const categoryFilterSlug = this.getProjectCategoryIdSlugPairs()[categoryId] || 'all';
-    //this.props.history.push(routes.projectsByCategory(categoryFilterSlug));
+    const categoryFilterSlug = this.getProjectCategoryIdSlugPairs()[categoryId];
+    let projectsByCategoryRoute = routes.projectsAll();
+    if (categoryFilterSlug) {
+      projectsByCategoryRoute = routes.projectsByCategory(categoryFilterSlug);
+    }
+    history.push(projectsByCategoryRoute);
     
     this.setState({
       selectedCategoryId: categoryId
@@ -274,8 +279,7 @@ class ProjectListWithShuffle extends Component {
                                      selectAllCategoryId={this.selectAllCategoryId}
                                      handleFilterClick={this.handleFilterButtonClick}
                                      categoryFilterSlug={this.props.categoryFilterSlug}
-                                     oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery}
-                                     history={this.props.history} />
+                                     oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery} />
                 </div>
                 <ProjectGrid projects={this.props.projects}
                              projectShuffleSelectorClass={this.projectShuffleSelectorClass}
@@ -410,8 +414,7 @@ class ProjectListPage extends Component {
         projCategoryIdNamePairs={projectCategoryIdNamePairs}
         tags={pT}
         projTagIdNamePairs={projectTagIdNamePairs}
-        footerInfo={footer}
-        history={props.history} />
+        footerInfo={footer} />
     );
   }
 }

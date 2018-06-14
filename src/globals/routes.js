@@ -1,13 +1,17 @@
 /*
     Notes:
     - Do not set route as "/route/:id" as id is reserved keyword in React Router
+    - Do not use lambda expression to define function as routes's members. Somehow 'this' keyword won't work if lambda was used instead of 'function'.
 */
 
 const routes = {
   home: "/",
   about: "/about",
   projects: "/projects",
-  projectsByCategory: (categorySlug) => {
+  projectsAll: function () {
+    return this.projectsByCategory('all');
+  },
+  projectsByCategory: function (categorySlug) {
     return "/projects?category=" + categorySlug;
   },
   projectBySlug: "/projects/:projectSlug",
