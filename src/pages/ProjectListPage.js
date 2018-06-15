@@ -34,9 +34,11 @@ import Footer from 'containers/Footer';
 
 function ProjectCategoryButton(props) {
   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-  return (<li className={props.categoryItemClassName} onClick={props.onClick}>
-    {props.categoryName}<span>{props.categoryCount}</span>
-  </li>);
+  return (
+    <li className={props.categoryItemClassName} onClick={props.onClick}>
+      {props.categoryName}<span>{props.categoryCount}</span>
+    </li>
+  );
 }
 
 class ProjectCategories extends Component {
@@ -259,6 +261,8 @@ class ProjectListWithShuffle extends Component {
       Calling this.setState() here would make the animation effect
       of this.shuffle.filter() not working.
     */
+
+    console.log(categoryId);
 
     if (categoryId === this.selectAllCategoryId) {
       this.shuffle.filter(Shuffle.ALL_ITEMS);

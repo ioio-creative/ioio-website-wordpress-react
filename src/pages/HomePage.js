@@ -5,7 +5,6 @@ import routes from 'globals/routes';
 import {getProjectIdSlugPairs} from 'utils/mapProjectIdToSlugNames';
 
 import Footer from 'containers/Footer';
-import scriptjs from 'scriptjs';
 import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
