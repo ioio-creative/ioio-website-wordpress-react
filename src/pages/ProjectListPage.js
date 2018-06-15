@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
+import {fetchProjects, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
 import {createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
@@ -14,6 +14,23 @@ import history from 'utils/history';
 
 import Footer from 'containers/Footer';
 
+
+// function ProjectCategoryButton(props) {
+//   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
+
+//   let projectsByCategoryRoute = routes.projectsAll();
+//   if (props.categorySlug) {
+//     projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
+//   } 
+
+//   return (
+//     <li>
+//       <Link to={projectsByCategoryRoute}>
+//         {props.categoryName}<span>{props.categoryCount}</span>
+//       </Link>
+//     </li>
+//   );
+// }
 
 function ProjectCategoryButton(props) {
   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
@@ -84,6 +101,7 @@ class ProjectCategories extends Component {
         <ProjectCategoryButton key={category.id} 
           categoryItemClassName={categoryItemClassName} 
           onClick={() => this.handleCategoryButtonClick(category.id)}
+          categorySlug={category.slug}
           categoryName={category.name}
           categoryCount={category.count} />
       );
@@ -104,7 +122,8 @@ class ProjectCategories extends Component {
           <ProjectCategoryButton
             categoryItemClassName={allCategoryClassName} 
             onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} 
-            categoryName='ALL'
+            categorySlug={null}
+            categoryName='All'
             categoryCount={allCategoryProjectCount} />
           {categoryItems}
         </ul>
@@ -116,7 +135,7 @@ class ProjectCategories extends Component {
 
 function ProjectGrid(props) {
   const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
-  const projectTagIdNamePairs = props.projTagIdNamePairs;
+  //const projectTagIdNamePairs = props.projTagIdNamePairs;
 
   const project_items = props.projects.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
@@ -171,11 +190,14 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
+    this.projectCategorySlugIdPairs = [];
+
     this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
     this.setShuffleRef = this.setShuffleRef.bind(this);
 
     this.setFirstFilterFromQuery = this.setFirstFilterFromQuery.bind(this);
+    this.getProjectCategorySlugIdPairs = this.getProjectCategorySlugIdPairs.bind(this);
 
     this.state = {
       oneTimeCategoryFilterIdFromQuery: null
@@ -187,7 +209,7 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = new Shuffle(this.shuffleRef, {
       // https://vestride.github.io/Shuffle/#options
       // overrideable options
-      itemSelector: '.' + this.projectShuffleSelectorClass,
+      itemSelector: '.' + this.projectShuffleSelectorClass, // e.g. '.picture-item'.
 
       buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
       columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
@@ -199,7 +221,6 @@ class ProjectListWithShuffle extends Component {
       gutterWidth: 0, // A static number or function that tells the plugin how wide the gutters between columns are (in pixels).
       initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method.
       isCentered: false, // Attempt to center grid items in each row.
-      itemSelector: '*', // e.g. '.picture-item'.
       roundTransforms: true, // Whether to round pixel values used in translate(x, y). This usually avoids blurriness.
       sizer: null, // Element or selector string. Use an element to determine the size of columns and gutters.
       speed: 250, // Transition/animation speed (milliseconds).
@@ -225,9 +246,19 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-  setFirstFilterFromQuery() {
-    const projectCategorySlugIdPairs = createSlugIdPairs(this.props.categories);      
-    const categoryIdToFilter = projectCategorySlugIdPairs[this.props.categoryFilterSlugFromQuery];
+  componentWillReceiveProps(nextProps) {
+
+  }
+
+  getProjectCategorySlugIdPairs() {
+    if (this.projectCategorySlugIdPairs.length === 0) {
+      this.projectCategorySlugIdPairs = createSlugIdPairs(this.props.categories);
+    }
+    return this.projectCategorySlugIdPairs;
+  }
+
+  setFirstFilterFromQuery() {   
+    const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
     if (categoryIdToFilter) {
       this.filterProjects(categoryIdToFilter);
       this.setState({
@@ -252,7 +283,7 @@ class ProjectListWithShuffle extends Component {
     } else {
       // https://vestride.github.io/Shuffle/#advanced-filters
       this.shuffle.filter((projectItem) => {
-        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
+        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id, 10); });
         return projItemCategoryIds.includes(categoryId);
       });
     }
@@ -263,6 +294,7 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
+    console.log(this.props.categoryFilterSlugFromQuery);
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
@@ -278,7 +310,6 @@ class ProjectListWithShuffle extends Component {
                   <ProjectCategories categories={this.props.categories}
                                      selectAllCategoryId={this.selectAllCategoryId}
                                      handleFilterClick={this.handleFilterButtonClick}
-                                     categoryFilterSlug={this.props.categoryFilterSlug}
                                      oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery} />
                 </div>
                 <ProjectGrid projects={this.props.projects}
@@ -370,7 +401,7 @@ class ProjectListPage extends Component {
 
   render() {
     const state = this.state;
-    const props = this.props;
+    //const props = this.props;
     
     const pC = state.projectCategories;
     const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;

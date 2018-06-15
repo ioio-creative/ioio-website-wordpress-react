@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import $ from 'jquery'
 
 import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
