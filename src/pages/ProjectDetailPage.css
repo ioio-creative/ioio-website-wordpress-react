@@ -235,9 +235,8 @@ video {
   #video-landing .col-md-5 {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    top: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   .video-text h1 {
     position: static;
@@ -245,8 +244,15 @@ video {
     font-size: 25px;
     width: 75%;
     padding: 0;
-    margin: 22vh auto 15px;
+    margin: 0 auto 15px;
     /*top: 20vh;*/
+  }
+  #video-landing .pop-up-vid-div {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    transform: none;
   }
   .video-text .row {
     margin: 0;
@@ -276,6 +282,7 @@ video {
     display: block;
     margin: 0 auto;
     transition: none;
+    top: 0;
   }
   .video-landing-text {
     padding-top: 50px;

@@ -89,17 +89,20 @@
   /*--[ Mobile styles go here]---------------------------*/
   #contact-top .contactpage-title {
     font-size: 20px;
+    padding: 25px 0 10px 0;
   }
   #contact-top h1 {
     font-size: 30px;
     line-height: 1.4em;
+    padding-bottom: 0;
   }
   #contact-core-value h4 {
     font-size: 14px;
     margin-bottom: 10px;
+    margin-top: 15px;
   }
   #contact-core-value .col-lg-4 {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
   #contact-core-value .text-center {
     display: inline-block;
