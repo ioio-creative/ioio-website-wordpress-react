@@ -14,7 +14,6 @@ import history from 'utils/history';
 
 import Footer from 'containers/Footer';
 
-<<<<<<< HEAD
 
 // function ProjectCategoryButton(props) {
 //   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
@@ -33,8 +32,6 @@ import Footer from 'containers/Footer';
 //   );
 // }
 
-=======
->>>>>>> origin/master
 function ProjectCategoryButton(props) {
   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
   return (<li className={props.categoryItemClassName} onClick={props.onClick}>
@@ -233,7 +230,6 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-<<<<<<< HEAD
   componentWillReceiveProps(nextProps) {
 
   }
@@ -247,11 +243,6 @@ class ProjectListWithShuffle extends Component {
 
   setFirstFilterFromQuery() {   
     const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
-=======
-  setFirstFilterFromQuery() {
-    const projectCategorySlugIdPairs = createSlugIdPairs(this.props.categories);
-    const categoryIdToFilter = projectCategorySlugIdPairs[this.props.categoryFilterSlugFromQuery];
->>>>>>> origin/master
     if (categoryIdToFilter) {
       this.filterProjects(categoryIdToFilter);
       this.setState({oneTimeCategoryFilterIdFromQuery: categoryIdToFilter})
@@ -274,13 +265,7 @@ class ProjectListWithShuffle extends Component {
     } else {
       // https://vestride.github.io/Shuffle/#advanced-filters
       this.shuffle.filter((projectItem) => {
-<<<<<<< HEAD
         const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id, 10); });
-=======
-        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => {
-          return parseInt(id);
-        });
->>>>>>> origin/master
         return projItemCategoryIds.includes(categoryId);
       });
     }
@@ -291,8 +276,6 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    console.log(this.props.categoryFilterSlugFromQuery);
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
@@ -315,31 +298,17 @@ class ProjectListWithShuffle extends Component {
                              setShuffleRefFunc={this.setShuffleRef}
                              projCategoryIdNamePairs={this.props.projCategoryIdNamePairs}
                              projTagIdNamePairs={this.props.projTagIdNamePairs} />
-=======
-    return (<div>
-      <section id="portfolio" className="section-bg wow fadeIn">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1"/>
-            <div className="col-md-10">
-              <header className="section-header">
-                <h3 className="section-title">Case Studies</h3>
-              </header>
-              <div className="row">
-                {/* <ProjectTags tags={t}/> */}
-                <ProjectCategories categories={this.props.categories} selectAllCategoryId={this.selectAllCategoryId} handleFilterClick={this.handleFilterButtonClick} categoryFilterSlug={this.props.categoryFilterSlug} oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery}/>
->>>>>>> origin/master
               </div>
               <ProjectGrid projects={this.props.projects} projectShuffleSelectorClass={this.projectShuffleSelectorClass} setShuffleRefFunc={this.setShuffleRef} projCategoryIdNamePairs={this.props.projCategoryIdNamePairs} projTagIdNamePairs={this.props.projTagIdNamePairs}/>
             </div>
             <div className="col-md-1"/>
           </div>
-        </div>
-      </section>
-      <Footer
-        //Section: Footer
-        footer={this.props.footerInfo}/>
-    </div>);
+        </section>
+        <Footer
+          //Section: Footer
+          footer={this.props.footerInfo}/>
+      </div>
+    );
   }
 }
 
@@ -406,13 +375,8 @@ class ProjectListPage extends Component {
 
   render() {
     const state = this.state;
-<<<<<<< HEAD
     //const props = this.props;
     
-=======
-    const props = this.props;
-
->>>>>>> origin/master
     const pC = state.projectCategories;
     const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;
     const pT = state.projectTags;
