@@ -9,123 +9,13 @@ import './ProjectListPageProjectGrid.css';
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
-import history from 'utils/history';
 
 import Footer from 'containers/Footer';
-
-
-// function ProjectCategoryButton(props) {
-//   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-
-//   let projectsByCategoryRoute = routes.projectsAll();
-//   if (props.categorySlug) {
-//     projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
-//   } 
-
-//   return (
-//     <li>
-//       <Link to={projectsByCategoryRoute}>
-//         {props.categoryName}<span>{props.categoryCount}</span>
-//       </Link>
-//     </li>
-//   );
-// }
-
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-  return (
-    <li
-        className={props.categoryItemClassName}
-        onClick={props.onClick}>
-        {props.categoryName}<span>{props.categoryCount}</span>
-    </li>
-  );
-}
-
-
-class ProjectCategories extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedCategoryId: props.selectAllCategoryId
-    };
-    this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
-  }
-
-  // http://busypeoples.github.io/post/react-component-lifecycle/
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.oneTimeCategoryFilterIdFromQuery) {
-      this.setState({
-        selectedCategoryId: nextProps.oneTimeCategoryFilterIdFromQuery
-      });
-    }
-  }
-
-  handleCategoryButtonClick(categoryId) {
-    this.props.handleFilterClick(categoryId);
-
-    const categoryFilterSlug = this.props.categoryIdSlugPairs[categoryId];
-    let projectsByCategoryRoute = routes.projectsAll();
-    if (categoryFilterSlug) {
-      projectsByCategoryRoute = routes.projectsByCategory(categoryFilterSlug);
-    }
-    history.push(projectsByCategoryRoute);
-    
-    this.setState({
-      selectedCategoryId: categoryId
-    });
-  } 
-
-  render() {
-    const state = this.state;
-    const props = this.props;
-
-    const selectedItemClass = 'filter-active';
-
-    const categoryItems = props.categories.map((category) => {
-      let categoryItemClassName = '';
-      if (state.selectedCategoryId === category.id) {
-        categoryItemClassName += ' ' + selectedItemClass;
-      }
-      return (
-        <ProjectCategoryButton key={category.id} 
-          categoryItemClassName={categoryItemClassName} 
-          onClick={() => this.handleCategoryButtonClick(category.id)}
-          categorySlug={category.slug}
-          categoryName={category.name}
-          categoryCount={category.count} />
-      );
-    });
-
-    let allCategoryClassName = '';
-    if (state.selectedCategoryId === props.selectAllCategoryId) {
-      allCategoryClassName += ' ' + selectedItemClass;
-    }
-
-    const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
-      return sum + currentCategory.count;
-    }, 0);
-
-    return (
-      <div className="col-lg-12 ">
-        <ul id="portfolio-flters">          
-          <ProjectCategoryButton
-            categoryItemClassName={allCategoryClassName} 
-            onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} 
-            categorySlug={null}
-            categoryName='All'
-            categoryCount={allCategoryProjectCount} />
-          {categoryItems}
-        </ul>
-      </div>
-    );
-  }
-}
+import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 
 
 function ProjectGrid(props) {
   const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
-  //const projectTagIdNamePairs = props.projTagIdNamePairs;
 
   const project_items = props.projects.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
@@ -180,11 +70,9 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
-    this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
+    this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
-    this.setShuffleRef = this.setShuffleRef.bind(this);
-
-    this.setFirstFilterFromQuery = this.setFirstFilterFromQuery.bind(this);
+    this.setShuffleRef = this.setShuffleRef.bind(this);    
 
     this.getProjectCategoryIdNamePairs = this.getProjectCategoryIdNamePairs.bind(this);
     this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
@@ -192,11 +80,7 @@ class ProjectListWithShuffle extends Component {
 
     this.projectCategoryIdNamePairs = [];
     this.projectCategoryIdSlugPairs = [];
-    this.projectCategorySlugIdPairs = [];
-
-    this.state = {
-      oneTimeCategoryFilterIdFromQuery: null,            
-    };
+    this.projectCategorySlugIdPairs = []; 
   }
 
   componentDidMount() {
@@ -226,30 +110,24 @@ class ProjectListWithShuffle extends Component {
       useTransforms: true, // Whether to use transforms or absolute positioning.
     });
 
-    this.setFirstFilterFromQuery();
+    // for first visiting of the page
+    this.filterProjectsByQueryFromUrl();
   }
 
+  // http://busypeoples.github.io/post/react-component-lifecycle/
   componentDidUpdate() {
     // Notify shuffle to dump the elements it's currently holding and consider
     // all elements matching the `itemSelector` as new.
-    this.shuffle.resetItems();
+    this.shuffle.resetItems();    
+
+    this.filterProjectsByQueryFromUrl();
   }
 
   componentWillUnmount() {
     // Dispose of shuffle when it will be removed from the DOM.
     this.shuffle.destroy();
     this.shuffle = null;
-  }
-
-  setFirstFilterFromQuery() {   
-    const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
-    if (categoryIdToFilter) {
-      this.filterProjects(categoryIdToFilter);
-      this.setState({
-        oneTimeCategoryFilterIdFromQuery: categoryIdToFilter
-      })
-    }
-  }
+  }  
 
   getProjectCategoryIdNamePairs() {
     if (this.projectCategoryIdNamePairs.length === 0) {
@@ -272,8 +150,12 @@ class ProjectListWithShuffle extends Component {
     return this.projectCategorySlugIdPairs;
   }
 
-  handleFilterButtonClick(categoryId, tagId) {
-    this.filterProjects(categoryId, tagId);
+  filterProjectsByQueryFromUrl() {
+    // cater for filter ALL case
+    const categoryIdToFilter =
+      this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery]
+      || this.selectAllCategoryId;
+    this.filterProjects(categoryIdToFilter);
   }
 
   filterProjects(categoryId, tagId) {
@@ -299,7 +181,7 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
-    console.log(this.props.categoryFilterSlugFromQuery);
+    const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
 
     return (
       <div>
@@ -314,16 +196,14 @@ class ProjectListWithShuffle extends Component {
                 <div className="row">
                   {/* <ProjectTags tags={t}/> */}
                   <ProjectCategories categories={this.props.categories}
-                                     categoryIdSlugPairs={this.getProjectCategoryIdSlugPairs()}
                                      selectAllCategoryId={this.selectAllCategoryId}
-                                     handleFilterClick={this.handleFilterButtonClick}
-                                     oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery} />
+                                     categoryFilterId={categoryIdToFilter}
+                                     allCategoryName='All' />
                 </div>
                 <ProjectGrid projects={this.props.projects}
                              projectShuffleSelectorClass={this.projectShuffleSelectorClass}
                              setShuffleRefFunc={this.setShuffleRef}
-                             projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()}
-                             projTagIdNamePairs={this.props.projTagIdNamePairs} />
+                             projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
               </div>
               <div className="col-md-1" />
             </div>
@@ -408,7 +288,6 @@ class ProjectListPage extends Component {
     
     const pC = state.projectCategories;
     const pT = state.projectTags;
-    const projectTagIdNamePairs = state.projectTagIdNamePairs;
     const p = state.projects;
     const footer = state.footer;
 
@@ -437,7 +316,6 @@ class ProjectListPage extends Component {
         categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
         categories={pC}        
         tags={pT}
-        projTagIdNamePairs={projectTagIdNamePairs}
         footerInfo={footer} />
     );
   }

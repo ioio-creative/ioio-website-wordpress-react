@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+
 import routes from 'globals/routes';
+import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
 import Footer from 'containers/Footer';
+import ProjectCategories from 'containers/projectCategories/ProjectCategories';
+
 import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
@@ -21,49 +25,6 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-
-  let projectsByCategoryRoute = routes.projectsAll();
-  if (props.categorySlug) {
-    projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
-  } 
-
-  return (
-    <li>
-      <Link to={projectsByCategoryRoute}>
-        {props.categoryName}<span>{props.categoryCount}</span>
-      </Link>
-    </li>
-  );
-}
-
-function ProjectCategories(props) {
-  const categoryItems = props.categories.map((category) => {
-    return (
-      <ProjectCategoryButton key={category.id} 
-        categorySlug={category.slug}
-        categoryName={category.name}
-        categoryCount={category.count} />
-    );
-  });
-
-  const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
-    return sum + currentCategory.count;
-  }, 0);
-
-  return (
-    <div className="col-lg-12 ">
-      <ul id="portfolio-flters">
-        <ProjectCategoryButton
-          categorySlug={null}
-          categoryName='We Do'
-          categoryCount={allCategoryProjectCount} />
-        {categoryItems}
-      </ul>
-    </div>
-  );
-}
 
 function HighlightedProjects(props) {  
   const projectIdSlugPairs = createIdSlugPairs(props.projects);
@@ -152,7 +113,6 @@ class HomePage extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.selectAllCategoryId = -1;
     this.state = {
       projects: [],
       projectCategories: [],
@@ -237,10 +197,8 @@ class HomePage extends Component {
       return null;
     }
 
-    const publicUrl = process.env.PUBLIC_URL;
-
-    const canvasURL = publicUrl + '/canvas/hello/index.html'
-    const svgURL = publicUrl + '/img/Play_btn-14.svg'
+    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/hello/index.html');
+    const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
 
     const customStyles = {
       content : {
@@ -287,7 +245,8 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-        <ProjectCategories categories={pC}/>
+        <ProjectCategories categories={pC}
+          allCategoryName='We Do' />
         <HighlightedProjects projects={home.highlighted_projects} />
       </section>
 
