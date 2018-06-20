@@ -3,35 +3,35 @@ import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
 
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
+class ProjectCategoryButton extends Component {
+  render() {
+    /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
 
-  const selectedItemClass = 'filter-active';
+    const props = this.props;    
 
-  let projectsByCategoryRoute = routes.projectsAll();
-  if (props.categorySlug) {
-    projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
+    const selectedItemClass = 'filter-active';
+
+    let projectsByCategoryRoute = routes.projectsAll();
+    if (props.categorySlug) {
+      projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
+    }  
+
+    let categoryBtnClassName = '';
+    if (props.isSelected) {
+      categoryBtnClassName = selectedItemClass;
+    }
+
+    return (
+      <li className={categoryBtnClassName}>
+        <Link to={projectsByCategoryRoute}>
+          {props.categoryName}<span>{props.categoryCount}</span>
+        </Link>
+      </li>
+    );
   }  
-
-  let categoryBtnClassName = '';
-  if (props.isSelected) {
-    categoryBtnClassName = selectedItemClass;
-  }
-
-  return (
-    <li className={categoryBtnClassName}>
-      <Link to={projectsByCategoryRoute}>
-        {props.categoryName}<span>{props.categoryCount}</span>
-      </Link>
-    </li>
-  );
 }
 
 class ProjectCategories extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {  
     const props = this.props;    
 
