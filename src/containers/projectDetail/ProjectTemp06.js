@@ -22,7 +22,7 @@ function SlideshowLeft(props) {
 function SlideshowRight(props) {
   const member_items = props.slides.map((slide, id) => {
 
-    if (id % 2 == 0)
+    if (id % 2 === 0)
 
       return (<div className="slideshow-2-col-item" key={id}>
         <img src={slide.guid} className="img-fluid  wow slideInUp" alt=""/>

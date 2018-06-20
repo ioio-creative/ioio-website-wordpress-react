@@ -6,110 +6,16 @@ import queryString from 'query-string';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchActiveFooter} from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
-import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
-import {createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
-import history from 'utils/history';
+import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 
 import Footer from 'containers/Footer';
+import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 
-// function ProjectCategoryButton(props) {
-//   /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-
-//   let projectsByCategoryRoute = routes.projectsAll();
-//   if (props.categorySlug) {
-//     projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
-//   }
-
-//   return (
-//     <li>
-//       <Link to={projectsByCategoryRoute}>
-//         {props.categoryName}<span>{props.categoryCount}</span>
-//       </Link>
-//     </li>
-//   );
-// }
-
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-  return (<li className={props.categoryItemClassName} onClick={props.onClick}>
-    {props.categoryName}<span>{props.categoryCount}</span>
-  </li>);
-}
-
-class ProjectCategories extends Component {
-  constructor(props) {
-    super(props);
-    this.projectCategoryIdSlugPairs = [];
-    this.state = {
-      selectedCategoryId: props.selectAllCategoryId
-    };
-    this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
-    this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
-  }
-
-  // http://busypeoples.github.io/post/react-component-lifecycle/
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.oneTimeCategoryFilterIdFromQuery) {
-      this.setState({selectedCategoryId: nextProps.oneTimeCategoryFilterIdFromQuery});
-    }
-  }
-
-  handleCategoryButtonClick(categoryId) {
-    this.props.handleFilterClick(categoryId);
-
-    const categoryFilterSlug = this.getProjectCategoryIdSlugPairs()[categoryId];
-    let projectsByCategoryRoute = routes.projectsAll();
-    if (categoryFilterSlug) {
-      projectsByCategoryRoute = routes.projectsByCategory(categoryFilterSlug);
-    }
-    history.push(projectsByCategoryRoute);
-
-    this.setState({selectedCategoryId: categoryId});
-  }
-
-  getProjectCategoryIdSlugPairs() {
-    if (this.projectCategoryIdSlugPairs.length === 0) {
-      this.projectCategoryIdSlugPairs = createIdSlugPairs(this.props.categories);
-    }
-    return this.projectCategoryIdSlugPairs;
-  }
-
-  render() {
-    const state = this.state;
-    const props = this.props;
-
-    const selectedItemClass = 'filter-active';
-
-    const categoryItems = props.categories.map((category) => {
-      let categoryItemClassName = '';
-      if (state.selectedCategoryId === category.id) {
-        categoryItemClassName += ' ' + selectedItemClass;
-      }
-      return (<ProjectCategoryButton key={category.id} categoryItemClassName={categoryItemClassName} onClick={() => this.handleCategoryButtonClick(category.id)} categorySlug={category.slug} categoryName={category.name} categoryCount={category.count}/>);
-    });
-
-    let allCategoryClassName = '';
-    if (state.selectedCategoryId === props.selectAllCategoryId) {
-      allCategoryClassName += ' ' + selectedItemClass;
-    }
-
-    const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
-      return sum + currentCategory.count;
-    }, 0);
-
-    return (<div className="col-lg-12 ">
-      <ul id="portfolio-flters">
-        <ProjectCategoryButton categoryItemClassName={allCategoryClassName} onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} categorySlug={null} categoryName='All' categoryCount={allCategoryProjectCount}/> {categoryItems}
-      </ul>
-    </div>);
-  }
-}
 
 function ProjectGrid(props) {
   const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
-  //const projectTagIdNamePairs = props.projTagIdNamePairs;
 
   const project_items = props.projects.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
@@ -125,28 +31,34 @@ function ProjectGrid(props) {
     });
 
     return (
-    // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
-    <div key={project.id} className={projItemClassName} data-project-category-ids={project.project_categories.join(',')}>
-      <Link to={routes.projectBySlugWithValue(project.slug)}>
-        <div className="portfolio-wrap">
-          <div className="img-container">
-            <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+      // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
+      <div key={project.id}
+          className={projItemClassName}
+          data-project-category-ids={project.project_categories.join(',')}>
+        <Link to={routes.projectBySlugWithValue(project.slug)}>
+          <div className="portfolio-wrap">
+            <div className="img-container">
+              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+            </div>
+            <div className="portfolio-info">
+              <h4>
+                {project.project_name}
+              </h4>
+              <p>{categoryCorrespondingToProj}</p>
+            </div>
           </div>
-          <div className="portfolio-info">
-            <h4>
-              {project.project_name}
-            </h4>
-            <p>{categoryCorrespondingToProj}</p>
-          </div>
-        </div>
-      </Link>
-    </div>);
+        </Link>
+      </div>
+    );
   });
 
-  return (<div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
-    {project_items}
-  </div>);
+  return (
+    <div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
+      {project_items}
+    </div>
+  );
 }
+
 
 class ProjectListWithShuffle extends Component {
   constructor(props) {
@@ -158,18 +70,17 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
-    this.projectCategorySlugIdPairs = [];
-
-    this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
+    this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
     this.setShuffleRef = this.setShuffleRef.bind(this);
 
-    this.setFirstFilterFromQuery = this.setFirstFilterFromQuery.bind(this);
+    this.getProjectCategoryIdNamePairs = this.getProjectCategoryIdNamePairs.bind(this);
+    this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
     this.getProjectCategorySlugIdPairs = this.getProjectCategorySlugIdPairs.bind(this);
 
-    this.state = {
-      oneTimeCategoryFilterIdFromQuery: null
-    };
+    this.projectCategoryIdNamePairs = [];
+    this.projectCategoryIdSlugPairs = [];
+    this.projectCategorySlugIdPairs = [];
   }
 
   componentDidMount() {
@@ -194,18 +105,22 @@ class ProjectListWithShuffle extends Component {
       speed: 250, // Transition/animation speed (milliseconds).
       staggerAmount: 15, // Transition delay offset for each item in milliseconds.
       staggerAmountMax: 150, // Maximum stagger delay in milliseconds.
-      //throttle: throttle,  By default, shuffle will throttle resize events. This can be changed or removed.
+      //throttle: throttle, // By default, shuffle will throttle resize events. This can be changed or removed.
       throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
       useTransforms: true, // Whether to use transforms or absolute positioning.
     });
 
-    this.setFirstFilterFromQuery();
+    // for first visiting of the page
+    this.filterProjectsByQueryFromUrl();
   }
 
+  // http://busypeoples.github.io/post/react-component-lifecycle/
   componentDidUpdate() {
     // Notify shuffle to dump the elements it's currently holding and consider
     // all elements matching the `itemSelector` as new.
     this.shuffle.resetItems();
+
+    this.filterProjectsByQueryFromUrl();
   }
 
   componentWillUnmount() {
@@ -214,7 +129,19 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-  componentWillReceiveProps(nextProps) {}
+  getProjectCategoryIdNamePairs() {
+    if (this.projectCategoryIdNamePairs.length === 0) {
+      this.projectCategoryIdNamePairs = createIdNamePairs(this.props.categories);
+    }
+    return this.projectCategoryIdNamePairs;
+  }
+
+  getProjectCategoryIdSlugPairs() {
+    if (this.projectCategoryIdSlugPairs.length === 0) {
+      this.projectCategoryIdSlugPairs = createIdSlugPairs(this.props.categories);
+    }
+    return this.projectCategoryIdSlugPairs;
+  }
 
   getProjectCategorySlugIdPairs() {
     if (this.projectCategorySlugIdPairs.length === 0) {
@@ -223,16 +150,12 @@ class ProjectListWithShuffle extends Component {
     return this.projectCategorySlugIdPairs;
   }
 
-  setFirstFilterFromQuery() {
-    const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
-    if (categoryIdToFilter) {
-      this.filterProjects(categoryIdToFilter);
-      this.setState({oneTimeCategoryFilterIdFromQuery: categoryIdToFilter})
-    }
-  }
-
-  handleFilterButtonClick(categoryId, tagId) {
-    this.filterProjects(categoryId, tagId);
+  filterProjectsByQueryFromUrl() {
+    // cater for filter ALL case
+    const categoryIdToFilter =
+      this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery]
+      || this.selectAllCategoryId;
+    this.filterProjects(categoryIdToFilter);
   }
 
   filterProjects(categoryId, tagId) {
@@ -241,8 +164,6 @@ class ProjectListWithShuffle extends Component {
       Calling this.setState() here would make the animation effect
       of this.shuffle.filter() not working.
     */
-
-    console.log(categoryId);
 
     if (categoryId === this.selectAllCategoryId) {
       this.shuffle.filter(Shuffle.ALL_ITEMS);
@@ -262,32 +183,42 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
-    return (<div>
-      <section id="portfolio" className="section-bg wow fadeIn">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1"/>
-            <div className="col-md-10">
-              <header className="section-header">
-                <h3 className="section-title">Case Studies</h3>
-              </header>
-              <div className="row">
-                {/* <ProjectTags tags={t}/> */}
-                <ProjectCategories categories={this.props.categories} selectAllCategoryId={this.selectAllCategoryId} handleFilterClick={this.handleFilterButtonClick} oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery}/>
+    const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
+
+    return (
+      <div>
+        <section id="portfolio" className="section-bg wow fadeIn">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-1" />
+              <div className="col-md-10">
+                <header className="section-header">
+                  <h3 className="section-title">Case Studies</h3>
+                </header>
+                <div className="row">
+                  {/* <ProjectTags tags={t}/> */}
+                  <ProjectCategories categories={this.props.categories}
+                                     selectAllCategoryId={this.selectAllCategoryId}
+                                     categoryFilterId={categoryIdToFilter}
+                                     allCategoryName='All' />
+                </div>
+                <ProjectGrid projects={this.props.projects}
+                             projectShuffleSelectorClass={this.projectShuffleSelectorClass}
+                             setShuffleRefFunc={this.setShuffleRef}
+                             projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
               </div>
-              <ProjectGrid projects={this.props.projects} projectShuffleSelectorClass={this.projectShuffleSelectorClass} setShuffleRefFunc={this.setShuffleRef} projCategoryIdNamePairs={this.props.projCategoryIdNamePairs} projTagIdNamePairs={this.props.projTagIdNamePairs}/>
+              <div className="col-md-1" />
             </div>
-            <ProjectGrid projects={this.props.projects} projectShuffleSelectorClass={this.projectShuffleSelectorClass} setShuffleRefFunc={this.setShuffleRef} projCategoryIdNamePairs={this.props.projCategoryIdNamePairs} projTagIdNamePairs={this.props.projTagIdNamePairs}/>
           </div>
-          <div className="col-md-1"/>
-        </div>
-      </section>
-      <Footer
-        //Section: Footer
-        footer={this.props.footerInfo}/>
-    </div>);
+        </section>
+        <Footer
+          //Section: Footer
+          footer={this.props.footerInfo} />
+      </div>
+    );
   }
 }
+
 
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
@@ -298,10 +229,8 @@ class ProjectListPage extends Component {
     this.state = {
       projects: [],
       projectCategories: [],
-      projectCategoryIdNamePairs: [],
       projectTags: [],
-      projectTagIdNamePairs: [],
-      footer: null
+      footer: null,
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
@@ -309,17 +238,22 @@ class ProjectListPage extends Component {
 
   componentDidMount() {
     fetchProjects((projects) => {
-      this._whenProjectsLoaded(projects).then((loadedProjects) => {
-        this.setState({projects: loadedProjects});
-      })
+      this._whenProjectsLoaded(projects)
+        .then((loadedProjects) => {
+          this.setState({projects: loadedProjects});
+        })
     });
 
-    getProjectCategoriesAndItsIdNamePairs((projCategories, projCategoryIdNamePairs) => {
-      this.setState({projectCategories: projCategories, projectCategoryIdNamePairs: projCategoryIdNamePairs});
+    fetchProjectCategories((projCategories) => {
+      this.setState({
+        projectCategories: projCategories
+      });
     });
 
-    getProjectTagsAndItsProjectTagIdNamePairs((projTags, projTagIdNamePairs) => {
-      this.setState({projectTags: projTags, projectTagIdNamePairs: projTagIdNamePairs});
+    fetchProjectTags((projTags) => {
+      this.setState({
+        projectTags: projTags
+      });
     });
 
     fetchActiveFooter((aFooter) => {
@@ -355,9 +289,7 @@ class ProjectListPage extends Component {
     //const props = this.props;
 
     const pC = state.projectCategories;
-    const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;
     const pT = state.projectTags;
-    const projectTagIdNamePairs = state.projectTagIdNamePairs;
     const p = state.projects;
     const footer = state.footer;
 
@@ -370,15 +302,7 @@ class ProjectListPage extends Component {
       return null;
     }
 
-    if (projectCategoryIdNamePairs.length === 0) {
-      return null;
-    }
-
     if (pT.length === 0) {
-      return null;
-    }
-
-    if (projectTagIdNamePairs.length === 0) {
       return null;
     }
 
@@ -389,7 +313,13 @@ class ProjectListPage extends Component {
     const parsedQuery = queryString.parse(this.props.history.location.search);
     const categoryFilterSlugFromQuery = parsedQuery.category || null;
 
-    return (<ProjectListWithShuffle projects={p} categoryFilterSlugFromQuery={categoryFilterSlugFromQuery} categories={pC} projCategoryIdNamePairs={projectCategoryIdNamePairs} tags={pT} projTagIdNamePairs={projectTagIdNamePairs} footerInfo={footer}/>);
+    return (
+      <ProjectListWithShuffle projects={p}
+        categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+        categories={pC}
+        tags={pT}
+        footerInfo={footer} />
+    );
   }
 }
 

@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import routes from 'globals/routes';
 
-import {getProjectIdSlugPairs} from 'utils/mapProjectIdToSlugNames';
+import routes from 'globals/routes';
+import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
 import Footer from 'containers/Footer';
+import ProjectCategories from 'containers/projectCategories/ProjectCategories';
+
 import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter, fetchHomePage} from 'websiteApi';
-import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
+import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter, fetchActiveHomePage} from 'websiteApi';
+import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
 import sketch from './sketch';
@@ -23,123 +25,57 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
 
-  let projectsByCategoryRoute = routes.projectsAll();
-  if (props.categorySlug) {
-    projectsByCategoryRoute = routes.projectsByCategory(props.categorySlug);
-  } 
+function HighlightedProjects(props) {  
+  const projectIdSlugPairs = createIdSlugPairs(props.projects);
 
-  return (
-    <li>
-      <Link to={projectsByCategoryRoute}>
-        {props.categoryName}<span>{props.categoryCount}</span>
-      </Link>
-    </li>
-  );
-}
-
-function ProjectCategories(props) {
-  const categoryItems = props.categories.map((category) => {
-    return (
-      <ProjectCategoryButton key={category.id} 
-        categorySlug={category.slug}
-        categoryName={category.name}
-        categoryCount={category.count} />
-    );
-  });
-
-  const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
-    return sum + currentCategory.count;
-  }, 0);
-
-  return (
-    <div className="col-lg-12 ">
-      <ul id="portfolio-flters">
-        <ProjectCategoryButton
-          categorySlug={null}
-          categoryName='We Do'
-          categoryCount={allCategoryProjectCount} />
-        {categoryItems}
-      </ul>
-    </div>
-  );
-}
-
-function HighlightedProjects(props) {
-  const projectIdSlugPairs = props.projIdSlugPairs;
-  const projectTagIdNamePairs = props.projTagIdNamePairs;
-
-  const project_items = props.projectlist.map((project, id) => {
-    let tagIds = "col-lg-6 col-md-6 portfolio-item ";
-    for (let i = 0; i < project.project_tags.length; i++) {
-      tagIds += "filter-" + project.project_tags[i] + " "
-    }
-
-    const tagsCorrespondingToProj = project.project_tags.map((tagId, index) => {
-      let tagName = projectTagIdNamePairs[tagId];
-      if (index > 0) {
-        tagName = " / " + tagName;
-      }
-      return (<span key={index}>
-        {tagName}
-      </span>);
-    });
-
-    /*
-    let s = project.link;
-    cutString(s);
-    function cutString(s) {
-      let cut = s.indexOf('/projects');
-      if (cut === -1)
-        return s;
-      return s.substr(cut)
-    }
-    let d = cutString(s);
-    */
-
+  const projectItems = props.projects.map((project, idx) => {
     const projectDetailRoutePath = routes.projectBySlugWithValue(projectIdSlugPairs[project.id]);
 
-    if (id == 0) {
-      return (<div className="col-md-12" key={id}>
-        <Link to={projectDetailRoutePath}>{props.name}
-          <div className="portfolio-wrap">
-            <div className="img-container">
-              <img src={project.thumbnail.guid} alt="alt"/>
+    if (idx === 0) {
+      return (
+        <div className="col-md-12" key={project.id}>
+          <Link to={projectDetailRoutePath}>{props.name}
+            <div className="portfolio-wrap">
+              <div className="img-container">
+                <img src={project.thumbnail.guid} alt="alt"/>
+              </div>
+              <div className="portfolio-info">
+                <h4>
+                  {project.project_name}
+                </h4>
+                <p>{project.project_short_description}</p>
+              </div>
             </div>
-            <div className="portfolio-info">
-              <h4>
-                {project.project_name}
-              </h4>
-              <p>{project.project_short_description}</p>
-            </div>
-          </div>
-        </Link>
-      </div>);
+          </Link>
+        </div>
+      );
     } else {
-      return (<div className="col-md-6 wrap-this" key={id}>
-        <Link to={projectDetailRoutePath}>{props.name}
-          <div className="portfolio-wrap">
-            <div className="img-container">
-              <img src={project.thumbnail.guid} alt="alt"/>
+      return (
+        <div className="col-md-6 wrap-this" key={project.id}>
+          <Link to={projectDetailRoutePath}>{props.name}
+            <div className="portfolio-wrap">
+              <div className="img-container">
+                <img src={project.thumbnail.guid} alt="alt"/>
+              </div>
+              <div className="portfolio-info">
+                <h4>
+                  {project.project_name}
+                </h4>
+                <p>{project.project_short_description}</p>
+              </div>
             </div>
-            <div className="portfolio-info">
-              <h4>
-                {project.project_name}
-              </h4>
-              <p>{project.project_short_description}</p>
-            </div>
-          </div>
-        </Link>
-      </div>);
+          </Link>
+        </div>
+      );
     }
-
   });
 
-  return (<div className="row container-fluid">
-    {project_items}
-  </div>);
+  return (
+    <div className="row container-fluid">
+      {projectItems}
+    </div>
+  );
 }
 
 function Items(props) {
@@ -177,18 +113,14 @@ class HomePage extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.selectAllCategoryId = -1;
     this.state = {
       projects: [],
       projectCategories: [],
-      homepage: [],
-      footer: null,
-      selectedCategoryId: this.selectAllCategoryId,
-      projectIdSlugPairs: [],
-      projectTagIdNamePairs: []
+      homepage: null,
+      footer: null    
     }
-
   }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -204,35 +136,28 @@ class HomePage extends Component {
 
   componentDidMount() {
     fetchHighlightedProjects((projects) => {
-      this.setState({projects: projects});
+      this.setState({
+        projects: projects
+      });
     });
 
-    fetchHomePage((homepage) => {
+    fetchActiveHomePage((homepage) => {
       this.setState({homepage: homepage});
     });
 
-    getProjectCategoriesAndItsIdNamePairs((projectCategories, projectCategoryIdNamePairs) => {
+    fetchProjectCategories((projectCategories) => {
       this.setState({projectCategories: projectCategories});
     });
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-
-    getProjectIdSlugPairs((projectIdSlugPairs) => {
-      this.setState({projectIdSlugPairs: projectIdSlugPairs});
-    });
-
-    getProjectTagsAndItsProjectTagIdNamePairs((projectTags, projectTagIdNamePairs) => {
-      this.setState({projectTagIdNamePairs: projectTagIdNamePairs});
-    });
-
+    
     /*
-    const publicUrl = process.env.PUBLIC_URL;
-
-    scriptjs(publicUrl + '/canvas/hello/sketch.js')
-    */
-    console.log('script loaded')
+      const publicUrl = process.env.PUBLIC_URL;
+      scriptjs(publicUrl + '/canvas/hello/sketch.js');
+      console.log('script loaded');
+    */    
 
     window.addEventListener('load', this.handleLoad);
   }
@@ -241,22 +166,20 @@ class HomePage extends Component {
     $('.wrap-this').wrapAll('<div class="row container-fluid"></div>');
 
     /*
-        $(document).ready(function(){
-          console.log($('.iframe-p5').attr("width"))
-          $('.iframe-p5').attr("width","2500");
-          $('.iframe-p5').attr("height","500");
-          console.log($('.iframe-p5').attr("width"));
-        });
+      $(document).ready(function(){
+        console.log($('.iframe-p5').attr("width"))
+        $('.iframe-p5').attr("width","2500");
+        $('.iframe-p5').attr("height","500");
+        console.log($('.iframe-p5').attr("width"));
+      });
     */
   }
 
   render() {
     const p = this.state.projects;
-    const h = this.state.homepage;
+    const home = this.state.homepage;
     const footer = this.state.footer;
     const pC = this.state.projectCategories;
-    const projectIdSlugPairs = this.state.projectIdSlugPairs;
-    const projectTagIdNamePairs = this.state.projectTagIdNamePairs;
 
     if (pC.length === 0) {
       return null;
@@ -266,27 +189,16 @@ class HomePage extends Component {
       return null;
     }
 
-    if (p.length == 0) {
+    if (p.length === 0) {
       return null;
     }
 
-    if (h.length == 0) {
+    if (home === null) {
       return null;
     }
 
-    if (projectIdSlugPairs.length === 0) {
-      return null;
-    }
-
-    if (projectTagIdNamePairs.length === 0) {
-      return null;
-    }
-
-    const publicUrl = process.env.PUBLIC_URL;
-
-    const canvasURL = publicUrl + '/canvas/hello/index.html'
-    const svgURL = publicUrl + '/img/Play_btn-14.svg'
-    const home = h[0];
+    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/hello/index.html');
+    const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
 
     const customStyles = {
       content : {
@@ -333,20 +245,19 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-        <ProjectCategories categories={pC}/>
-        <HighlightedProjects projectlist={home.highlighted_projects}
-          projIdSlugPairs={projectIdSlugPairs}
-          projTagIdNamePairs={projectTagIdNamePairs} />
+        <ProjectCategories categories={pC}
+          allCategoryName='We Do' />
+        <HighlightedProjects projects={home.highlighted_projects} />
       </section>
-      <section id="homepage-core-value">
 
+      <section id="homepage-core-value">
         <div className="container">
           <Link to={routes.about}>
             <Items abouts={home}/>
           </Link>
         </div>
-
       </section>
+
       <section id="homepage-lab" className="section-bg wow fadeInUp">
         <div className="row container-fluid">
           <div className="col-md-4 text-left">
@@ -371,8 +282,7 @@ class HomePage extends Component {
         </div>
       </Modal>
 
-      <Footer
-        footer={footer}/>
+      <Footer footer={footer} />
     </div>);
   }
 }

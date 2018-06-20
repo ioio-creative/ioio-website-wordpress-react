@@ -18,11 +18,12 @@ const defaultQuery = "?per_page=20";
 // container of WordPress generated id's of active entities,
 // used for fetching entity by id via WordPress API
 const activeEntities = {
-    about: 72,
-    footer: 263,
-    sidebar: 351,
-    contact: 1008,
-    lab: 1348,
+  homepage: 637,
+  about: 72,
+  footer: 263,
+  sidebar: 351,
+  contact: 1008,
+  lab: 1348,
 };
 
 
@@ -85,14 +86,25 @@ function fetchActiveFooter(callback) {
 }
 
 /* end of General */
+
+
 /* home page */
+
 function fetchHighlightedProjects(callback) {
     passJsonResultToCallback("highlighted_projects", callback);
 }
-function fetchHomePage(callback) {
+
+function fetchHomePages(callback) {
     passJsonResultToCallback("homepage", callback);
 }
+
+function fetchActiveHomePage(callback) {
+  passJsonResultToCallback("homepage", callback, activeEntities.homepage);
+}
+
 /* end of home page */
+
+
 /* about page */
 
 function fetchAbouts(callback) {
@@ -206,7 +218,10 @@ export {
     fetchActiveFooter,
 
     // home page
-    fetchHomePage,
+    fetchHighlightedProjects,
+    fetchHomePages,
+    fetchActiveHomePage,
+
     // about page
     fetchActiveAbout,
     fetchCompanyDnas,
@@ -219,15 +234,15 @@ export {
 
     // project list page
     fetchProjects,
-    fetchHighlightedProjects,
     fetchProjectsAsync,
     fetchProjectCategories,
     fetchProjectCategoriesAsync,
     fetchProjectTags,
     fetchProjectTagsAsync,
 
-    // project detial page
+    // project detail page
     fetchProjectById,
+    
     // contact page
     fetchActiveContact,
     fetchContact,
