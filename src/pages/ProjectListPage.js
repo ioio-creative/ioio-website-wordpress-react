@@ -6,10 +6,9 @@ import queryString from 'query-string';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchActiveFooter} from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
-import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
-import {createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
+import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 import history from 'utils/history';
 
 import Footer from 'containers/Footer';
@@ -47,12 +46,10 @@ function ProjectCategoryButton(props) {
 class ProjectCategories extends Component {
   constructor(props) {
     super(props);
-    this.projectCategoryIdSlugPairs = [];
     this.state = {
       selectedCategoryId: props.selectAllCategoryId
     };
     this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
-    this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
   }
 
   // http://busypeoples.github.io/post/react-component-lifecycle/
@@ -67,7 +64,7 @@ class ProjectCategories extends Component {
   handleCategoryButtonClick(categoryId) {
     this.props.handleFilterClick(categoryId);
 
-    const categoryFilterSlug = this.getProjectCategoryIdSlugPairs()[categoryId];
+    const categoryFilterSlug = this.props.categoryIdSlugPairs[categoryId];
     let projectsByCategoryRoute = routes.projectsAll();
     if (categoryFilterSlug) {
       projectsByCategoryRoute = routes.projectsByCategory(categoryFilterSlug);
@@ -77,14 +74,7 @@ class ProjectCategories extends Component {
     this.setState({
       selectedCategoryId: categoryId
     });
-  }
-
-  getProjectCategoryIdSlugPairs() {
-    if (this.projectCategoryIdSlugPairs.length === 0) {
-      this.projectCategoryIdSlugPairs = createIdSlugPairs(this.props.categories);
-    }
-    return this.projectCategoryIdSlugPairs;
-  }
+  } 
 
   render() {
     const state = this.state;
@@ -190,17 +180,22 @@ class ProjectListWithShuffle extends Component {
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
 
-    this.projectCategorySlugIdPairs = [];
-
     this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
     this.setShuffleRef = this.setShuffleRef.bind(this);
 
     this.setFirstFilterFromQuery = this.setFirstFilterFromQuery.bind(this);
+
+    this.getProjectCategoryIdNamePairs = this.getProjectCategoryIdNamePairs.bind(this);
+    this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
     this.getProjectCategorySlugIdPairs = this.getProjectCategorySlugIdPairs.bind(this);
 
+    this.projectCategoryIdNamePairs = [];
+    this.projectCategoryIdSlugPairs = [];
+    this.projectCategorySlugIdPairs = [];
+
     this.state = {
-      oneTimeCategoryFilterIdFromQuery: null
+      oneTimeCategoryFilterIdFromQuery: null,            
     };
   }
 
@@ -246,17 +241,6 @@ class ProjectListWithShuffle extends Component {
     this.shuffle = null;
   }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
-
-  getProjectCategorySlugIdPairs() {
-    if (this.projectCategorySlugIdPairs.length === 0) {
-      this.projectCategorySlugIdPairs = createSlugIdPairs(this.props.categories);
-    }
-    return this.projectCategorySlugIdPairs;
-  }
-
   setFirstFilterFromQuery() {   
     const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
     if (categoryIdToFilter) {
@@ -265,6 +249,27 @@ class ProjectListWithShuffle extends Component {
         oneTimeCategoryFilterIdFromQuery: categoryIdToFilter
       })
     }
+  }
+
+  getProjectCategoryIdNamePairs() {
+    if (this.projectCategoryIdNamePairs.length === 0) {
+      this.projectCategoryIdNamePairs = createIdNamePairs(this.props.categories);
+    }
+    return this.projectCategoryIdNamePairs;
+  }
+  
+  getProjectCategoryIdSlugPairs() {
+    if (this.projectCategoryIdSlugPairs.length === 0) {
+      this.projectCategoryIdSlugPairs = createIdSlugPairs(this.props.categories);
+    }
+    return this.projectCategoryIdSlugPairs;
+  }
+
+  getProjectCategorySlugIdPairs() {
+    if (this.projectCategorySlugIdPairs.length === 0) {
+      this.projectCategorySlugIdPairs = createSlugIdPairs(this.props.categories);
+    }
+    return this.projectCategorySlugIdPairs;
   }
 
   handleFilterButtonClick(categoryId, tagId) {
@@ -295,6 +300,7 @@ class ProjectListWithShuffle extends Component {
 
   render() {
     console.log(this.props.categoryFilterSlugFromQuery);
+
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
@@ -308,6 +314,7 @@ class ProjectListWithShuffle extends Component {
                 <div className="row">
                   {/* <ProjectTags tags={t}/> */}
                   <ProjectCategories categories={this.props.categories}
+                                     categoryIdSlugPairs={this.getProjectCategoryIdSlugPairs()}
                                      selectAllCategoryId={this.selectAllCategoryId}
                                      handleFilterClick={this.handleFilterButtonClick}
                                      oneTimeCategoryFilterIdFromQuery={this.state.oneTimeCategoryFilterIdFromQuery} />
@@ -315,7 +322,7 @@ class ProjectListWithShuffle extends Component {
                 <ProjectGrid projects={this.props.projects}
                              projectShuffleSelectorClass={this.projectShuffleSelectorClass}
                              setShuffleRefFunc={this.setShuffleRef}
-                             projCategoryIdNamePairs={this.props.projCategoryIdNamePairs}
+                             projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()}
                              projTagIdNamePairs={this.props.projTagIdNamePairs} />
               </div>
               <div className="col-md-1" />
@@ -340,9 +347,7 @@ class ProjectListPage extends Component {
     this.state = {
       projects: [],
       projectCategories: [],
-      projectCategoryIdNamePairs: [], 
       projectTags: [],
-      projectTagIdNamePairs: [],
       footer: null,      
     }
 
@@ -357,17 +362,15 @@ class ProjectListPage extends Component {
         })
     });
 
-    getProjectCategoriesAndItsIdNamePairs((projCategories, projCategoryIdNamePairs) => {
+    fetchProjectCategories((projCategories) => {
       this.setState({
-        projectCategories: projCategories,
-        projectCategoryIdNamePairs: projCategoryIdNamePairs
+        projectCategories: projCategories        
       });
     });
 
-    getProjectTagsAndItsProjectTagIdNamePairs((projTags, projTagIdNamePairs) => {
+    fetchProjectTags((projTags) => {
       this.setState({
-        projectTags: projTags,
-        projectTagIdNamePairs: projTagIdNamePairs,
+        projectTags: projTags        
       });
     });
 
@@ -404,7 +407,6 @@ class ProjectListPage extends Component {
     //const props = this.props;
     
     const pC = state.projectCategories;
-    const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;
     const pT = state.projectTags;
     const projectTagIdNamePairs = state.projectTagIdNamePairs;
     const p = state.projects;
@@ -419,18 +421,10 @@ class ProjectListPage extends Component {
       return null;
     }
 
-    if (projectCategoryIdNamePairs.length === 0) {
-      return null;
-    }
-
     if (pT.length === 0) {
       return null;
     }
 
-    if (projectTagIdNamePairs.length === 0) {
-      return null;
-    }
-    
     if (footer === null) {
       return null;
     }
@@ -441,8 +435,7 @@ class ProjectListPage extends Component {
     return (
       <ProjectListWithShuffle projects={p}
         categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
-        categories={pC}
-        projCategoryIdNamePairs={projectCategoryIdNamePairs}
+        categories={pC}        
         tags={pT}
         projTagIdNamePairs={projectTagIdNamePairs}
         footerInfo={footer} />

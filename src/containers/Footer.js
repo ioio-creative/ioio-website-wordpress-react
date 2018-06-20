@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import './Footer.css'
-import $ from 'jquery'
 
 import Modal from 'react-modal';
 
