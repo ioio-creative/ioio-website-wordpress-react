@@ -10,34 +10,137 @@ import './LabListPage.css';
 import ReactPlayer from 'react-player'
 import {Link} from 'react-router-dom'
 
-function LabItems(props) {
-  const items = props.labItems.map((item, id) => {
-    let gridSize;
-    if(item.template_type != 5){
-      gridSize = 3;
-    }else{
-      gridSize = 6;
-    }
-    let gridSizeClassName = "col-md-" + gridSize;
-    const itemBg = {
-      background: item.background_mood_color,
-      color: 'black',
+import Measure from 'react-measure'
+import withContentRect from 'react-measure'
+
+import classNames from 'classnames'
+
+class LabItems extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dimensions: null
     };
-    return (<div className={gridSizeClassName + " lab-item"}key={id} style={itemBg}><h1>ITEM</h1><h3>SUB</h3><img className="lab-thumb" src={item.thumbnail.guid} alt="" /></div>)
+
+    this.handleMeasureResize = this.handleMeasureResize.bind(this);
+  }
+
+  handleMeasureResize(contentRect) {
+    this.setState({dimensions: contentRect.bounds});
+  }
+
+  render() {
+    const props = this.props;
+    const state = this.state;
+
+    const styleFrame = props.styleFrame;
+    const items = props.labItems.map((item, id) => {
+
+      let itemClassNames = classNames("template-type-"+item.template_type)
+
+      let marginLeftRightTotal = 40;
+      /* 1.Image/GIF
+      2.video
+      3.Portrait Image/GIF
+      4.Instagram
+      5.Research 0
+      6. medium post */
+      //default
+      //let styleWidth = state.dimensions? state.dimensions.width: '';
+      let styleWidth = state.dimensions
+      ? state.dimensions.width
+      : '';
+      let gridSize = 3;
+
+      let background_color = item.background_mood_color ? item.background_mood_color
+      : 'white';
+
+      let itemBg2 = {
+        background: background_color
+      };
+      let itemBg = {
+        background: 'rgba(0,0,0,0)',
+        color: 'black',
+        width: styleWidth,
+        height: styleWidth
+      };
+
+      let imgStyle = {
+        height: styleWidth
+      };
+
+      if (item.template_type == 1) {} else if (item.template_type == 2) {} else if (item.template_type == 3) {
+
+        itemBg = {
+          background: background_color,
+          color: 'black',
+          width: styleWidth,
+          height: 'auto'
+        };
+
+        imgStyle = {
+          width: '100%',
+          height: '100%'
+        };
+
+      } else if (item.template_type == 4) {
+
+      } else if (item.template_type == 5) {
+        gridSize = 6;
+
+        let styleHeight = styleWidth/2 + marginLeftRightTotal;
+
+        itemBg = {
+          background: 'rgba(0,0,0,0)',
+          color: 'black',
+          width: styleWidth + marginLeftRightTotal,
+          height: styleHeight
+        };
+
+
+
+        imgStyle = {
+          width: '100%',
+          height: styleHeight,
+        };
+
+      } else if (item.template_type == 6) {
+
+      }
+
+      let gridSizeClassName = "col-md-" + gridSize;
+
+      return (<div className={gridSizeClassName + " lab-item " +  itemClassNames} key={id} style={itemBg}>
+        <Measure bounds onResize={(contentRect) => {
+          this.handleMeasureResize(contentRect)
+        }}>
+        {
+          ({measureRef}) => (<div ref={measureRef}>
+            <h1>{item.subcaption}</h1>
+            <h3>{item.caption}</h3>
+            <div className="img-container" style={imgStyle}>
+              <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
+
+            </div>
+          </div>)
+        }
+      </Measure>
+
+    </div>)
   });
 
   return (<div className="row">
     {items}
   </div>);
 }
+}
 
 class LabListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lab: null
-    }
-    this.state = {
+      lab: null,
       labItems: null
     }
   }
@@ -58,14 +161,6 @@ class LabListPage extends Component {
 
   render() {
 
-    const bg = {
-      //backgroundImage: url,
-      /*
-      backgroundSize: 'auto',
-      backgroundPosition: 'center'
-      */
-    };
-
     const footer = this.state.footer;
     if (footer === null) {
       return null;
@@ -80,13 +175,21 @@ class LabListPage extends Component {
     if (labItems === null) {
       return null;
     }
-    console.log(labItems)
+
+    const bg = {
+      //backgroundImage: url,
+      /*
+      backgroundSize: 'auto',
+      backgroundPosition: 'center'
+      */
+    };
+
     return (<div>
       <section id="video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
         <div className="video-landing-div">
           <div className="container-fluid">
             <div className="player-wrapper">
-              <video className="react-player" width={'100%'} height={'auto'} poster={lab.top_video_preload_image.guid} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
+              <video className="react-player" width={'100%'} height={'auto'} poster={lab.top_video_preload_image.guid} autoPlay={"autoPlay"} loop={"loop"} muted={"muted"} playsInline={"playsInline"}>
                 <source className="wow fadeIn" src={lab.top_video.guid} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
                 <img className="wow fadeIn" src={lab.top_video_preload_image.guid} title="Your browser does not support the <video> tag"/>
               </video>
@@ -111,7 +214,6 @@ class LabListPage extends Component {
             <div className="lab-top-img text-right">
               <img id="lab-top-img3" src={lab.top_image_3.guid} alt="" className="img-fluid"/>
             </div>
-
           </div>
           <div className="col-md-1"></div>
         </div>
@@ -123,8 +225,8 @@ class LabListPage extends Component {
       </section>
       <Footer footer={footer}/>
     </div>
-    );
-  }
+  );
+}
 }
 
 export default LabListPage;

@@ -28,28 +28,49 @@
 
 .lab-item {
   width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
-  height: 200px;
-}
-
-.lab-item .lab-thumb {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  padding: 0 0;
   margin: 0 0;
+  background: rgba(0,0,0,0);
+  padding: 20px;
 }
 
 .lab-item h1 {
+  margin: 0 0;
+  padding: 0 0;
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   font-weight: bold;
+  font-size: 30px;
+  z-index: 2;
 }
 
 .lab-item h3 {
   position: absolute;
+  font-size: 20px;
   bottom: 40px;
+  z-index: 2;
+}
+
+.lab-item .img-container {
+  /*display: table;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  padding: 50% 0 0 0;*/
+  /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+}
+
+.lab-item .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /*  padding: 50% 0 0 0;*/
+}
+
+.img-container-child img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 #lab-list {
