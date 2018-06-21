@@ -19,6 +19,7 @@ class Sidebar extends Component {
                 later Routes in the Route list.
             */}
             <Route path={routes.lab} component={AsyncDarkSidebar} />
+            <Route path={routes.aboutLab} component={AsyncDarkSidebar} />
             <Route component={AsyncBrightSidebar} />
           </Switch>
         );

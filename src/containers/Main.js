@@ -10,6 +10,7 @@ import P5SketchTrialPage from 'pages/P5SketchTrialPage';
 // https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
 const AsyncHomePage = asyncLoadingComponent(() => import("pages/HomePage"));
 const AsyncAboutPage = asyncLoadingComponent(() => import("pages/AboutPage"));
+const AsyncAboutLabPage = asyncLoadingComponent(() => import("pages/AboutLabPage"));
 const AsyncProjectListPage = asyncLoadingComponent(() => import("pages/ProjectListPage"));
 const AsyncProjectDetailPage = asyncLoadingComponent(() => import("pages/ProjectDetailPage"));
 const AsyncLabListPage = asyncLoadingComponent(() => import("pages/LabListPage"));
@@ -32,6 +33,7 @@ class Main extends Component {
                 <Switch>
                   <Route exact path={routes.home} component={AsyncHomePage} />
                   <Route path={routes.about} component={AsyncAboutPage} />
+                  <Route path={routes.aboutLab} component={AsyncAboutLabPage} />
                   <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
                   <Route path={routes.projects} component={AsyncProjectListPage} />
                   <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />

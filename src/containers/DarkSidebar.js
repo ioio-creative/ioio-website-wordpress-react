@@ -4,8 +4,8 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 
 import routes from 'globals/routes';
-import {fetchActiveSidebar} from 'websiteApi';
-import 'containers/Sidebar.css';
+import {fetchActiveDarkSidebar} from 'websiteApi';
+import 'containers/DarkSidebar.css';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -29,7 +29,7 @@ class DarkSidebar extends Component {
   }
 
   componentDidMount() {
-    fetchActiveSidebar((aSidebar) => {
+    fetchActiveDarkSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
     });
     //  $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
@@ -73,13 +73,15 @@ class DarkSidebar extends Component {
         <div className="close-symbol"></div>
       </a>
 
-      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>Dark Side</Link>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.aboutLab} onClick={this.handleMenuClose}>About</Link>{/*
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link>
+        */}
         <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
         <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
