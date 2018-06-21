@@ -11,6 +11,7 @@ import ReactPlayer from 'react-player'
 import {Link} from 'react-router-dom'
 
 import Measure from 'react-measure'
+import {SizeMe} from 'react-sizeme'
 import withContentRect from 'react-measure'
 
 import classNames from 'classnames'
@@ -37,103 +38,147 @@ class LabItems extends Component {
     const styleFrame = props.styleFrame;
     const items = props.labItems.map((item, id) => {
 
-      let itemClassNames = classNames("template-type-"+item.template_type)
+      let itemClassNames = classNames("template-type-" + item.template_type)
 
-      let marginLeftRightTotal = 40;
       /* 1.Image/GIF
       2.video
       3.Portrait Image/GIF
       4.Instagram
       5.Research 0
       6. medium post */
+
       //default
       //let styleWidth = state.dimensions? state.dimensions.width: '';
+      /*
       let styleWidth = state.dimensions
       ? state.dimensions.width
       : '';
-      let gridSize = 3;
 
-      let background_color = item.background_mood_color ? item.background_mood_color
+
+
+      let background_color = item.background_mood_color
+      ? item.background_mood_color
       : 'white';
 
-      let itemBg2 = {
-        background: background_color
-      };
-      let itemBg = {
-        background: 'rgba(0,0,0,0)',
+
+      let squareStyle = {
+        background: 'transparent',
         color: 'black',
         width: styleWidth,
         height: styleWidth
       };
 
-      let imgStyle = {
+      let researchZeroStyle = {
+        background: 'transparent',
+        color: 'black',
+        width: styleWidth,
+        height: styleWidth/2
+      };
+
+      let itemSquareBg = {
+        background: background_color,
         height: styleWidth
       };
 
-      if (item.template_type == 1) {} else if (item.template_type == 2) {} else if (item.template_type == 3) {
+      let itemResearchZeroBg = {
+        background: background_color,
+        height: styleWidth/2
+      };
 
-        itemBg = {
-          background: background_color,
-          color: 'black',
-          width: styleWidth,
-          height: 'auto'
-        };
+      let imgSquareStyle = {
+        height: styleWidth,
+      };
 
-        imgStyle = {
-          width: '100%',
-          height: '100%'
-        };
+      let imgResearchZeroStyle = {
+        height: styleWidth,
+      };
 
-      } else if (item.template_type == 4) {
+*/
+      let gridSize = 3;
 
-      } else if (item.template_type == 5) {
-        gridSize = 6;
-
-        let styleHeight = styleWidth/2 + marginLeftRightTotal;
-
-        itemBg = {
-          background: 'rgba(0,0,0,0)',
-          color: 'black',
-          width: styleWidth + marginLeftRightTotal,
-          height: styleHeight
-        };
-
-
-
-        imgStyle = {
-          width: '100%',
-          height: styleHeight,
-        };
-
-      } else if (item.template_type == 6) {
-
+      if(item.template_type == 5){
+        gridSize = 8;
+      }
+      else{
+        gridSize = 4;
       }
 
       let gridSizeClassName = "col-md-" + gridSize;
 
-      return (<div className={gridSizeClassName + " lab-item " +  itemClassNames} key={id} style={itemBg}>
-        <Measure bounds onResize={(contentRect) => {
-          this.handleMeasureResize(contentRect)
-        }}>
-        {
-          ({measureRef}) => (<div ref={measureRef}>
-            <h1>{item.subcaption}</h1>
-            <h3>{item.caption}</h3>
-            <div className="img-container" style={imgStyle}>
-              <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
+      return (<div className={gridSizeClassName + " lab-item " + itemClassNames} key={id}>
+        <SizeMe>{
+            ({size}) => {
+              let containerWidth = size.width;
+              let containerresearchZeroHeight = containerWidth/2-20;
+              let templateType = item.template_type;
 
-            </div>
-          </div>)
-        }
-      </Measure>
+              let imgStyle;
+              let itemStyle;
+              let squareStyle = {
+                background: 'transparent',
+                color: 'black',
+                width: size.width,
+                height: size.width
+              };
 
-    </div>)
-  });
+              let longRectStyle = {
+                background: 'transparent',
+                color: 'black',
+                width: size.width,
+                height: 'auto'
+              };
 
-  return (<div className="row">
-    {items}
-  </div>);
-}
+              let researchZeroStyle = {
+                background: 'transparent',
+                color: 'black',
+                width: containerWidth,
+                height: containerresearchZeroHeight,
+              };
+
+              let imgSquareStyle = {
+                height: containerWidth,
+              };
+
+              let imgLongRectStyle = {
+                width : "100%",
+                height: 'auto'
+              };
+
+              let imgResearchZeroStyle = {
+                width: '100%',
+                height: containerresearchZeroHeight,
+              };
+
+              if(templateType == 3){
+                itemStyle = longRectStyle;
+                imgStyle = imgLongRectStyle;
+              }
+              else if(templateType == 5){
+                itemStyle = researchZeroStyle;
+                imgStyle = imgResearchZeroStyle;
+              }
+              else{
+                itemStyle = squareStyle;
+                imgStyle = imgSquareStyle;
+              }
+
+              return (<div style={itemStyle}>
+                <h1>{item.subcaption} width: {containerWidth} height: {itemStyle.height}</h1>
+                <h3>{item.caption} T: {templateType}</h3>
+                <div className="img-container" style={imgStyle}>
+                  <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
+                </div>
+              </div>)
+            }
+          }
+        </SizeMe>
+      </div>)
+    });
+
+    return (<div className="row">
+      {items}
+    </div>);
+  }
 }
 
 class LabListPage extends Component {
@@ -225,7 +270,7 @@ class LabListPage extends Component {
       </section>
       <Footer footer={footer}/>
     </div>
-  );
+    );
 }
 }
 

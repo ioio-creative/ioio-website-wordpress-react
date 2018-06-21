@@ -29,7 +29,6 @@
 .lab-item {
   width: 100%;
   margin: 0 0;
-  background: rgba(0,0,0,0);
   padding: 20px;
 }
 
@@ -67,7 +66,7 @@
   /*  padding: 50% 0 0 0;*/
 }
 
-.img-container-child img {
+.lab-item img {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
