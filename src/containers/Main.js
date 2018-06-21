@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Loadable from 'react-loadable';
+import { asyncLoadingComponent } from 'components/AsyncLoadingComponent';
 
 import routes from 'globals/routes';
 
@@ -17,28 +17,6 @@ const AsyncLabDetailPage = asyncLoadingComponent(() => import("pages/LabDetailPa
 const AsyncContactsPage = asyncLoadingComponent(() => import("pages/ContactsPage"));
 const AsyncNotFoundPage = asyncLoadingComponent(() => import("pages/NotFoundPage"));
 
-function asyncLoadingComponent(funcToImportPage) {
-    return Loadable({
-        loader: funcToImportPage,
-        loading: LoadingComponent
-    });
-}
-
-function LoadingComponent(props) {
-    const { isLoading, error } = props;
-    // Handle the loading state
-    if (isLoading) {
-        return <div id="loading-screen"></div>;
-    }
-    // Handle the error state
-    else if (error) {
-        return <div>Sorry, there was a problem loading the page.</div>;
-    }
-    else {
-        return null;
-    }
-}
-
 class Main extends Component {
     render() {
         return (
@@ -52,15 +30,15 @@ class Main extends Component {
                     later Routes in the Route list.
                 */}
                 <Switch>
-                    <Route exact path={routes.home} component={AsyncHomePage} />
-                    <Route path={routes.about} component={AsyncAboutPage} />
-                    <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
-                    <Route path={routes.projects} component={AsyncProjectListPage} />
-                    <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
-                    <Route path={routes.lab} component={AsyncLabListPage} />
-                    <Route path={routes.contacts} component={AsyncContactsPage} />
-                    <Route path='/trial' component={P5SketchTrialPage} />
-                    <Route component={AsyncNotFoundPage} />
+                  <Route exact path={routes.home} component={AsyncHomePage} />
+                  <Route path={routes.about} component={AsyncAboutPage} />
+                  <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
+                  <Route path={routes.projects} component={AsyncProjectListPage} />
+                  <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
+                  <Route path={routes.lab} component={AsyncLabListPage} />
+                  <Route path={routes.contacts} component={AsyncContactsPage} />
+                  <Route path='/trial' component={P5SketchTrialPage} />
+                  <Route component={AsyncNotFoundPage} />
                 </Switch>
             </main>
           </div>
