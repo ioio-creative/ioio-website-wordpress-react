@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactGA from 'react-ga';
 //import logo from '../images/logo.svg';
 import './App.css';
 
@@ -34,6 +35,16 @@ function loadJSFiles() {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    // https://golightlyplus.com/setup-google-analytics-react-js-apps/
+    // Add your tracking ID created from https://analytics.google.com/analytics/web/#home/
+    ReactGA.initialize('UA-66792466-2');
+    // This just needs to be called once since we have no routes in this case.
+    ReactGA.pageview(window.location.pathname);
+  }
+
   componentDidMount() {
     loadJSFiles();
   }
