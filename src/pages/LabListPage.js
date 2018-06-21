@@ -47,53 +47,6 @@ class LabItems extends Component {
       5.Research 0
       6. medium post */
 
-      //default
-      //let styleWidth = state.dimensions? state.dimensions.width: '';
-      /*
-      let styleWidth = state.dimensions
-      ? state.dimensions.width
-      : '';
-
-
-
-      let background_color = item.background_mood_color
-      ? item.background_mood_color
-      : 'white';
-
-
-      let squareStyle = {
-        background: 'transparent',
-        color: 'black',
-        width: styleWidth,
-        height: styleWidth
-      };
-
-      let researchZeroStyle = {
-        background: 'transparent',
-        color: 'black',
-        width: styleWidth,
-        height: styleWidth/2
-      };
-
-      let itemSquareBg = {
-        background: background_color,
-        height: styleWidth
-      };
-
-      let itemResearchZeroBg = {
-        background: background_color,
-        height: styleWidth/2
-      };
-
-      let imgSquareStyle = {
-        height: styleWidth,
-      };
-
-      let imgResearchZeroStyle = {
-        height: styleWidth,
-      };
-
-*/
       let gridSize = 3;
 
       if(item.template_type == 5){
