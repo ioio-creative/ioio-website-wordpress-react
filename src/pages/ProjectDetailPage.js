@@ -217,10 +217,10 @@ class ProjectDetailPage extends Component {
     //    console.log(project);
 
     const projectTemplates = project.project_sections;
-    const projectTemplateContainer = projectTemplates.map((templateData) => {
+    const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = projectTemplateMap[templateData.template_type];
-      return <TemplateToUse {...templateData}/>
+      return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
     });
 
     return (<div className="wow fadeIn">

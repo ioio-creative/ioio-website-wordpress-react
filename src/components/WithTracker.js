@@ -11,6 +11,7 @@ function withTracker(WrappedComponent, options = {}) {
       page,
       ...options
     });
+    ReactGA.pageview(page);
   };
 
   const HOC = class extends Component {
