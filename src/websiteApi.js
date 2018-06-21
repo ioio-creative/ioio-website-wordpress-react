@@ -20,8 +20,10 @@ const defaultQuery = "?per_page=20";
 const activeEntities = {
   homepage: 637,
   about: 72,
+  aboutLab: 1480,
   footer: 263,
-  sidebar: 351,
+  brightSidebar: 351,
+  darkSidebar: 1424,
   contact: 1008,
   lab: 1348,
 };
@@ -69,12 +71,20 @@ function orderProjectsByDateDescending(projects) {
 
 /* General */
 
-function fetchSidebars(callback) {
+function fetchBrightSidebar(callback) {
     passJsonResultToCallback("sidebars", callback);
 }
 
-function fetchActiveSidebar(callback) {
-    passJsonResultToCallback("sidebars", callback, activeEntities.sidebar);
+function fetchActiveBrightSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback, activeEntities.brightSidebar);
+}
+
+function fetchDarkSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback);
+}
+
+function fetchActiveDarkSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback, activeEntities.darkSidebar);
 }
 
 function fetchFooters(callback) {
@@ -117,6 +127,10 @@ function fetchAboutById(id, callback) {
 
 function fetchActiveAbout(callback) {
     passJsonResultToCallback("abouts", callback, activeEntities.about);
+}
+
+function fetchActiveAboutLab(callback) {
+    passJsonResultToCallback("abouts", callback, activeEntities.aboutLab);
 }
 
 function fetchCompanyDnas(callback) {
@@ -214,7 +228,10 @@ function fetchLabItems(callback) {
 
 export {
     // general
-    fetchActiveSidebar,
+    fetchBrightSidebar,
+    fetchActiveBrightSidebar,
+    fetchDarkSidebar,
+    fetchActiveDarkSidebar,
     fetchActiveFooter,
 
     // home page
@@ -224,6 +241,7 @@ export {
 
     // about page
     fetchActiveAbout,
+    fetchActiveAboutLab,
     fetchCompanyDnas,
     fetchCompanyCultures,
     fetchTeamMembers,
@@ -242,7 +260,7 @@ export {
 
     // project detail page
     fetchProjectById,
-    
+
     // contact page
     fetchActiveContact,
     fetchContact,

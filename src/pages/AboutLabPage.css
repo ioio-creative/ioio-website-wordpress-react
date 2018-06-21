@@ -1,0 +1,28 @@
+/*--------------------------------------------------------------
+#about general
+--------------------------------*/
+#lab-about{
+
+  background-color: #000000;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+#lab-about .container{
+  display: table;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+
+}
+
+#lab-about span{
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #000000;
+  color: white;
+  font-size: 40px;
+  line-height: 1.5em;
+  font-weight: bold;
+}

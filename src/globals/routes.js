@@ -19,6 +19,7 @@ const routes = {
     return "/projects/" + slugValue;
   },
   lab: "/lab",
+  aboutLab: "/aboutLab",
   labBySlug: "/lab/:labSlug",
   labBySlugWithValue: (slugValue) => {
     return "/lab/" + slugValue;

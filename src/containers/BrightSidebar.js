@@ -4,8 +4,8 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 
 import routes from 'globals/routes';
-import {fetchActiveSidebar} from 'websiteApi';
-import 'containers/Sidebar.css';
+import {fetchActiveBrightSidebar} from 'websiteApi';
+import 'containers/BrightSidebar.css';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -29,7 +29,7 @@ class BrightSidebar extends Component {
   }
 
   componentDidMount() {
-    fetchActiveSidebar((aSidebar) => {
+    fetchActiveBrightSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
     });
     //  $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
