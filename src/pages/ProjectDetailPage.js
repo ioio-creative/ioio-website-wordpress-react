@@ -223,29 +223,27 @@ class ProjectDetailPage extends Component {
       return <TemplateToUse {...templateData}/>
     });
 
-    return
-     (
-      <div className="wow fadeIn">
-        <VideoLanding project={project} modalClick={this.openModal}/>
-        <VideoLandingDesc project={project}/> 
-        {
-          /*
-            <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-            <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
-          */
-        }
-        {projectTemplateContainer}
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
-          <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
-            <i className="ion ion-android-close"></i>
-          </button>
-          <div className="vid-player">
-            <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
-          </div>
-        </Modal>
-        <Footer footer={footer} />         
-      </div>
-    );
+    return (<div className="wow fadeIn">
+      <VideoLanding project={project} modalClick={this.openModal}/>
+      <VideoLandingDesc project={project}/> {/*
+        <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+        <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
+    */
+      }
+      {projectTemplateContainer}
+      <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
+        <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
+          <i className="ion ion-android-close"></i>
+        </button>
+        <div className="vid-player">
+          <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
+        </div>
+      </Modal>
+      <Footer
+        //Section: Footer
+        footer={footer}/>
+
+    </div>);
   }
 }
 
