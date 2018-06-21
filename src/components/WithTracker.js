@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 
-export default function withTracker(WrappedComponent, options = {}) {
+function withTracker(WrappedComponent, options = {}) {
   const trackPage = (page) => {
     ReactGA.set({
       page,
@@ -35,3 +35,7 @@ export default function withTracker(WrappedComponent, options = {}) {
 
   return HOC;
 }
+
+export {
+  withTracker
+};

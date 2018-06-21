@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { asyncLoadingComponent } from 'components/AsyncLoadingComponent';
+import { asyncLoadingComponentWithTracker } from 'components/AsyncLoadingComponentWithTracker';
 
 import routes from 'globals/routes';
 
@@ -8,14 +8,14 @@ import P5SketchTrialPage from 'pages/P5SketchTrialPage';
 
 // Code Splitting and React Router v4
 // https://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
-const AsyncHomePage = asyncLoadingComponent(() => import("pages/HomePage"));
-const AsyncAboutPage = asyncLoadingComponent(() => import("pages/AboutPage"));
-const AsyncProjectListPage = asyncLoadingComponent(() => import("pages/ProjectListPage"));
-const AsyncProjectDetailPage = asyncLoadingComponent(() => import("pages/ProjectDetailPage"));
-const AsyncLabListPage = asyncLoadingComponent(() => import("pages/LabListPage"));
-const AsyncLabDetailPage = asyncLoadingComponent(() => import("pages/LabDetailPage"));
-const AsyncContactsPage = asyncLoadingComponent(() => import("pages/ContactsPage"));
-const AsyncNotFoundPage = asyncLoadingComponent(() => import("pages/NotFoundPage"));
+const AsyncHomePage = asyncLoadingComponentWithTracker(() => import("pages/HomePage"));
+const AsyncAboutPage = asyncLoadingComponentWithTracker(() => import("pages/AboutPage"));
+const AsyncProjectListPage = asyncLoadingComponentWithTracker(() => import("pages/ProjectListPage"));
+const AsyncProjectDetailPage = asyncLoadingComponentWithTracker(() => import("pages/ProjectDetailPage"));
+const AsyncLabListPage = asyncLoadingComponentWithTracker(() => import("pages/LabListPage"));
+const AsyncLabDetailPage = asyncLoadingComponentWithTracker(() => import("pages/LabDetailPage"));
+const AsyncContactsPage = asyncLoadingComponentWithTracker(() => import("pages/ContactsPage"));
+const AsyncNotFoundPage = asyncLoadingComponentWithTracker(() => import("pages/NotFoundPage"));
 
 class Main extends Component {
     render() {
