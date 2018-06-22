@@ -4,14 +4,14 @@ import {Link} from 'react-router-dom';
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/BrightFooter';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 
 import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchProjectCategories, fetchActiveFooter, fetchActiveHomePage} from 'websiteApi';
+import {fetchProjectCategories, fetchActiveBrightFooter, fetchActiveHomePage} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
@@ -142,7 +142,7 @@ class HomePage extends Component {
       this.setState({projectCategories: projectCategories});
     });
 
-    fetchActiveFooter((aFooter) => {
+    fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 
@@ -184,6 +184,8 @@ class HomePage extends Component {
     if (home === null) {
       return null;
     }
+
+    console.log(footer)
 
     const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/hello/index.html');
     const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');

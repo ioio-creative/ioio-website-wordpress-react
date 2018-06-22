@@ -20,8 +20,8 @@ import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre tex
 
 import './ProjectDetailPage.css';
 
-import Footer from 'containers/Footer';
-import {fetchActiveFooter} from 'websiteApi';
+import Footer from 'containers/BrightFooter';
+import {fetchActiveBrightFooter} from 'websiteApi';
 
 import $ from 'jquery';
 
@@ -171,7 +171,7 @@ class ProjectDetailPage extends Component {
       }
     });
 
-    fetchActiveFooter((aFooter) => {
+    fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 
@@ -239,9 +239,7 @@ class ProjectDetailPage extends Component {
           <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
         </div>
       </Modal>
-      <Footer
-        //Section: Footer
-        footer={footer}/>
+      <Footer/>
 
     </div>);
   }

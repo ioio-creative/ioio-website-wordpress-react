@@ -6,11 +6,11 @@ import queryString from 'query-string';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveBrightFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/BrightFooter';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 
 
@@ -256,7 +256,7 @@ class ProjectListPage extends Component {
       });
     });
 
-    fetchActiveFooter((aFooter) => {
+    fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
   }
