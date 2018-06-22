@@ -21,7 +21,8 @@ const activeEntities = {
   homepage: 637,
   about: 72,
   aboutLab: 1480,
-  footer: 263,
+  brightFooter: 263,
+  darkFooter: 1518,
   brightSidebar: 351,
   darkSidebar: 1424,
   contact: 1008,
@@ -34,6 +35,7 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
+      console.log(dataUrl);
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
@@ -91,8 +93,12 @@ function fetchFooters(callback) {
     passJsonResultToCallback("footers", callback);
 }
 
-function fetchActiveFooter(callback) {
-    passJsonResultToCallback("footers", callback, activeEntities.footer);
+function fetchActiveBrightFooter(callback) {
+    passJsonResultToCallback("footers", callback, activeEntities.brightFooter);
+}
+
+function fetchActiveDarkFooter(callback) {
+    passJsonResultToCallback("footers", callback, activeEntities.darkFooter);
 }
 
 /* end of General */
@@ -228,7 +234,8 @@ export {
     fetchActiveBrightSidebar,
     fetchDarkSidebar,
     fetchActiveDarkSidebar,
-    fetchActiveFooter,
+    fetchActiveBrightFooter,
+    fetchActiveDarkFooter,
 
     // home page
     fetchHomePages,

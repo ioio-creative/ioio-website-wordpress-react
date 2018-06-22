@@ -8,7 +8,7 @@ import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl, getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/BrightFooter';
 
 import Shuffle from 'shufflejs'
 
@@ -17,10 +17,10 @@ import Shuffle from 'shufflejs'
 //   constructor(props) {
 //     super(props);
 //     this.portfolioIsotope = $('.portfolio-container').isotope({itemSelector: '.portfolio-item', layoutMode: 'fitRows'});
-//     this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);    
+//     this.handleProjectCategoryClick = this.handleProjectCategoryClick.bind(this);
 //   }
 
-//   handleProjectCategoryClick(e) {    
+//   handleProjectCategoryClick(e) {
 //     $("#portfolio-flters li").removeClass('filter-active');
 //     $(this).addClass('filter-active');
 
@@ -51,8 +51,8 @@ function ProjectCategories(props) {
       categoryItemClassName += ' ' + selectedItemClass;
     }
     return (
-      <li key={category.id} 
-          className={categoryItemClassName}         
+      <li key={category.id}
+          className={categoryItemClassName}
           onClick={() => props.handleFilterClick(category.id)}>
           {category.name}<span>{category.count}</span>
       </li>
@@ -97,7 +97,7 @@ function ProjectGrid(props) {
     return (
       // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
       <div key={project.id}
-           className={projItemClassName}           
+           className={projItemClassName}
            data-project-category-ids={project.project_categories.join(',')}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
@@ -129,8 +129,8 @@ class ProjectListWithShuffle extends Component {
   constructor(props) {
     super(props);
 
-    this.selectAllCategoryId = -1;    
-    
+    this.selectAllCategoryId = -1;
+
     this.shuffleRef = null;
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
@@ -171,7 +171,7 @@ class ProjectListWithShuffle extends Component {
       //throttle: throttle, // By default, shuffle will throttle resize events. This can be changed or removed.
       throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
       useTransforms: true, // Whether to use transforms or absolute positioning.
-    });    
+    });
   }
 
   componentDidUpdate() {
@@ -211,7 +211,7 @@ class ProjectListWithShuffle extends Component {
   render() {
     const props = this.props;
     const state = this.state;
-    
+
     return (
       <div>
         <section id="portfolio" className="section-bg wow fadeIn">
@@ -231,7 +231,7 @@ class ProjectListWithShuffle extends Component {
                 </div>
                 <ProjectGrid projectList={props.projects}
                              categories={props.categories}
-                             shuffleSelectorClass={this.projectShuffleSelectorClass} 
+                             shuffleSelectorClass={this.projectShuffleSelectorClass}
                              setShuffleRefFunc={this.setShuffleRef} />
               </div>
               <div className="col-md-1" />
@@ -257,32 +257,32 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
-      footer: null,      
+      footer: null,
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
   }
 
-  componentDidMount() {  
+  componentDidMount() {
     fetchProjects((projects) => {
       this._whenProjectsLoaded(projects)
         .then((loadedProjects) => {
           this.setState({projects: loadedProjects});
-        })      
-    });    
+        })
+    });
 
     fetchProjectCategories((categories) => {
       this.setState({projectCategories: categories});
     });
 
-    fetchProjectTags((tags) => {      
+    fetchProjectTags((tags) => {
       this.setState({projectTags: tags});
     });
 
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-  }  
+  }
 
   // https://vestride.github.io/Shuffle/shuffle-with-react
   /**

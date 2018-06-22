@@ -4,8 +4,8 @@ import React, {Component} from 'react';
 import './ContactsPage.css';
 import ContactForm from 'containers/ContactForm'
 
-import Footer from 'containers/Footer';
-import {fetchActiveContact, fetchActiveFooter} from 'websiteApi';
+import Footer from 'containers/BrightFooter';
+import {fetchActiveContact, fetchActiveBrightFooter} from 'websiteApi';
 
 var dict = {
   "header": "Send Us A Mail",
@@ -63,7 +63,7 @@ class ContactsPage extends Component {
       this.setState({contact: cContact});
     });
 
-    fetchActiveFooter((aFooter) => {
+    fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 

@@ -94,6 +94,10 @@
   z-index: 10;
 }
 
+.sub-lab-item {
+  cursor: pointer;
+}
+
 .sub-lab-item.active {
   z-index: 10;
   -webkit-transition: all 0.6s;

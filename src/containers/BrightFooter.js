@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
-import './Footer.css'
+import './BrightFooter.css'
 
 import Modal from 'react-modal';
 
@@ -16,7 +16,7 @@ function SocialMedia(props) {
   </div>);
 }
 
-class Footer extends Component {
+class BrightFooter extends Component {
   constructor(props) {
     super(props);
 
@@ -50,6 +50,7 @@ class Footer extends Component {
   componentDidMount() {}
 
   render() {
+    console.log(this.props.footer)
     const f = this.props.footer;
     if (f === undefined || f === null) {
       return null;
@@ -130,4 +131,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default BrightFooter;

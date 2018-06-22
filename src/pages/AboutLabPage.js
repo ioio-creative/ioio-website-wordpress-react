@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/DarkFooter';
 
 import './AboutLabPage.css';
 
-import {fetchActiveAboutLab, fetchActiveFooter} from 'websiteApi';
+import {fetchActiveAboutLab, fetchActiveDarkFooter} from 'websiteApi';
 
 class AboutLabPage extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class AboutLabPage extends Component {
     fetchActiveAboutLab((anAbout) => {
       this.setState({about: anAbout});
     });
-    fetchActiveFooter((aFooter) => {
+    fetchActiveDarkFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 

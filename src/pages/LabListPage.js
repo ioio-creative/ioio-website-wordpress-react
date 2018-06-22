@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
 //Footer
-import Footer from 'containers/Footer';
+import Footer from 'containers/DarkFooter';
 
-import {fetchActiveLab, fetchLabItems, fetchActiveFooter} from 'websiteApi';
+import {fetchActiveLab, fetchLabItems, fetchActiveDarkFooter} from 'websiteApi';
 
 import './LabListPage.css';
 
@@ -75,7 +75,7 @@ class LabItems extends Component {
     const styleFrame = props.styleFrame;
 
     const items = props.labItems.map((item, id) => {
-      
+
       let itemClassNames = classNames("template-type-" + item.template_type)
 
       /* 1.Image/GIF
@@ -193,7 +193,7 @@ class LabListPage extends Component {
       this.setState({labItems: aLabItems});
     });
 */
-    fetchActiveFooter((aFooter) => {
+    fetchActiveDarkFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
 

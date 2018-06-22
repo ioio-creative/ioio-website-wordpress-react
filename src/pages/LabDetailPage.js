@@ -7,7 +7,7 @@ import routes from 'globals/routes';
 import {Player} from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/DarkFooter';
 import {fetchActiveFooter} from 'websiteApi';
 
 import LabTemp01 from 'containers/labDetail/LabTemp01'; //photomontage - 3 images
