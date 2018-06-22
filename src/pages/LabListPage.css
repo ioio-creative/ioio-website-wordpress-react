@@ -86,23 +86,24 @@
 
 #lab-list.active {}
 
+.lab-item {
+  padding: 20px;
+}
+
 .lab-item.active {
   z-index: 10;
-
 }
 
 .sub-lab-item.active {
   z-index: 10;
-  background: white;
-}
-.img-container {
-
   -webkit-transition: all 0.6s;
   -moz-transition: all 0.6s;
   -o-transition: all 0.6s;
   transition: all 0.6s;
-  border: 3px solid rgba(0,0,0,0);
+  border: 3px solid rgba(255, 255, 255, 1);
 }
+
+.img-container {}
 
 .img-container.active {
   z-index: 10;
@@ -110,10 +111,8 @@
   -moz-transition: all 0.6s;
   -o-transition: all 0.6s;
   transition: all 0.6s;
-  border: 3px solid #ffffff;
+  border: 3px solid rgba(255, 255, 255, 1);
 }
-
-
 
 .lab-item h1 {
   color: white;
@@ -129,14 +128,14 @@
 }
 
 .lab-item h3 {
-    color: white;
+  color: white;
   position: absolute;
   margin: 0 0;
-  padding-left:25px;
+  padding-left: 25px;
   font-size: 20px;
   bottom: 40px;
   z-index: 2;
-    text-align: left;
+  text-align: left;
 }
 
 .lab-item .img-container {
@@ -161,8 +160,6 @@
   min-width: 100%;
   min-height: 100%;
 }
-
-
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/

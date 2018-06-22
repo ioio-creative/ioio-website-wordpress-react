@@ -41,6 +41,8 @@ class LabItems extends Component {
     $(thisTarget).closest('.img-container').addClass('active')
     $('#hover-cover').addClass('active')
 
+
+
     //  $(thisTarget).addClass('active')
 
     //$('#hover-cover').addClass('active')
@@ -72,8 +74,8 @@ class LabItems extends Component {
 
     const styleFrame = props.styleFrame;
 
-    const items = props.labItems.map((item) => {
-
+    const items = props.labItems.map((item, id) => {
+      
       let itemClassNames = classNames("template-type-" + item.template_type)
 
       /* 1.Image/GIF
@@ -150,7 +152,7 @@ class LabItems extends Component {
                 imgStyle = imgSquareStyle;
               }
 
-              return (<div className="sub-lab-item" style={itemStyle} onMouseOver={(e) => {
+              return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
                   this.handleMouseOver(e);
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
@@ -180,7 +182,6 @@ class LabListPage extends Component {
       lab: null,
       labItems: null
     }
-
   }
 
   async componentDidMount() {
@@ -196,27 +197,6 @@ class LabListPage extends Component {
       this.setState({footer: aFooter});
     });
 
-    /*
-    $('.img-container').hover(function() { // Mouse over
-      $(this).siblings().stop().fadeTo(300, 0.6);
-      $(this).parent().siblings().stop().fadeTo(300, 0.3);
-      console.log("hello")
-    }, function() { // Mouse out
-      $(this).siblings().stop().fadeTo(300, 1);
-      $(this).parent().siblings().stop().fadeTo(300, 1);
-      console.log("bye")
-    });
-
-    $('#lab-list').hover(function() {
-      // hover code
-      console.log("hello")
-    }, function() {
-      // unhover code
-      console.log("byeee")
-    });
-
-    this.handleHover(this)
-    */
   }
 
   render() {
@@ -230,12 +210,7 @@ class LabListPage extends Component {
     if (lab === null) {
       return null;
     }
-    /*
-    let labItems = this.state.labItems;
-    if (labItems === null) {
-      return null;
-    }
-*/
+
     const labItems = lab.lab_item;
 
     const bg = {
@@ -271,7 +246,6 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-top" className="wow fadeIn lab-bg" style={bg}>
-
         <div className="container-fluid row text-left">
           <div className="col-md-1"></div>
           <div className="col-md-10">
@@ -283,7 +257,6 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-list" className="lab-bg wow fadeIn">
-
         <div className="container-fluid row text-center">
           <div className="col-md-1"></div>
           <div className="col-md-10">
@@ -293,7 +266,6 @@ class LabListPage extends Component {
         </div>
       </section>
       <Footer footer={footer}/>
-
     </div>
     );
 }
