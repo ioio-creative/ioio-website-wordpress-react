@@ -32,19 +32,34 @@ class LabItems extends Component {
 
   }
 
-  handleMouseOver() {
-    console.log("hello")
+  handleMouseOver(e) {
+    let thisTarget = e.target;
 
-    $('#lab-list').css('background', 'white');
-    $('.lab-item').css('background', 'white');
-    $('.row').css('background', 'white');
+    $('#lab-list').addClass('active')
+
+    $(thisTarget).closest('.lab-item').addClass('active')
+    $(thisTarget).closest('.img-container').addClass('active')
+    $('#hover-cover').addClass('active')
+
+    //  $(thisTarget).addClass('active')
+
+    //$('#hover-cover').addClass('active')
+    //  $('#lab-list').addClass('active')
+
   }
 
-  handleMouseOut() {
-    console.log("bye")
-    $('#lab-list').css('background', 'black');
-    $('.lab-item').css('background', 'black');
-    $('.row').css('background', 'black');
+  handleMouseOut(e) {
+    let thisTarget = e.target;
+
+    $('#lab-list').removeClass('active')
+    $(thisTarget).closest('.lab-item').removeClass('active')
+    $(thisTarget).closest('.img-container').removeClass('active')
+    $('#hover-cover').removeClass('active')
+    //    $(thisTarget).parent().removeClass('active')
+    //  $(thisTarget).removeClass('active')
+
+    //  $('#hover-cover').removeClass('active')
+
   }
 
   handleMeasureResize(contentRect) {
@@ -56,10 +71,6 @@ class LabItems extends Component {
     const state = this.state;
 
     const styleFrame = props.styleFrame;
-
-
-
-
 
     const items = props.labItems.map((item) => {
 
@@ -85,7 +96,6 @@ class LabItems extends Component {
       return (<div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
         <SizeMe>{
             ({size}) => {
-
 
               let containerWidth = size.width;
               let containerresearchZeroHeight = containerWidth / 2 * 1.3;
@@ -140,14 +150,13 @@ class LabItems extends Component {
                 imgStyle = imgSquareStyle;
               }
 
-              return (<div className="sub-lab-item" style={itemStyle}
-                onMouseOver={() => { this.handleMouseOver(); }}
-                onMouseOut={() => { this.handleMouseOut(); }}>
-                <h1>{item.subcaption}
-                  width: {containerWidth}
-                  height: {itemStyle.height}</h1>
-                <h3>{item.caption}
-                  T: {templateType}</h3>
+              return (<div className="sub-lab-item" style={itemStyle} onMouseOver={(e) => {
+                  this.handleMouseOver(e);
+                }} onMouseOut={(e) => {
+                  this.handleMouseOut(e);
+                }}>
+                <h1>{item.subcaption}</h1>
+                <h3>{item.caption}</h3>
                 <div className="img-container" style={imgStyle}>
                   <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
                 </div>
@@ -187,9 +196,7 @@ class LabListPage extends Component {
       this.setState({footer: aFooter});
     });
 
-
-
-/*
+    /*
     $('.img-container').hover(function() { // Mouse over
       $(this).siblings().stop().fadeTo(300, 0.6);
       $(this).parent().siblings().stop().fadeTo(300, 0.3);
@@ -210,25 +217,6 @@ class LabListPage extends Component {
 
     this.handleHover(this)
     */
-  }
-
-
-
-  handleHover(){
-    console.log("ssss: " + JSON.stringify($('.sub-lab-item')));
-
-    $('.sub-lab-item').hover(function() { // Mouse over
-      console.log("hello")
-
-      $('#lab-list').css('background', 'white');
-      $('.lab-item').css('background', 'white');
-      $('.row').css('background', 'white');
-    }, function() { // Mouse out
-      console.log("bye")
-      $('#lab-list').css('background', 'black');
-      $('.lab-item').css('background', 'black');
-      $('.row').css('background', 'black');
-    });
   }
 
   render() {
@@ -258,10 +246,9 @@ class LabListPage extends Component {
       */
     };
 
-
-
     return (<div>
-      <section id="video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
+      <div id="hover-cover"></div>
+      <section id="lab-video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
         <div className="video-landing-div">
           <div className="container-fluid">
             <div className="player-wrapper">
@@ -284,6 +271,7 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-top" className="wow fadeIn lab-bg" style={bg}>
+
         <div className="container-fluid row text-left">
           <div className="col-md-1"></div>
           <div className="col-md-10">
@@ -295,6 +283,7 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-list" className="lab-bg wow fadeIn">
+
         <div className="container-fluid row text-center">
           <div className="col-md-1"></div>
           <div className="col-md-10">
@@ -304,6 +293,7 @@ class LabListPage extends Component {
         </div>
       </section>
       <Footer footer={footer}/>
+
     </div>
     );
 }
