@@ -100,10 +100,6 @@ function fetchActiveFooter(callback) {
 
 /* home page */
 
-function fetchHighlightedProjects(callback) {
-    passJsonResultToCallback("highlighted_projects", callback);
-}
-
 function fetchHomePages(callback) {
     passJsonResultToCallback("homepage", callback);
 }
@@ -235,7 +231,6 @@ export {
     fetchActiveFooter,
 
     // home page
-    fetchHighlightedProjects,
     fetchHomePages,
     fetchActiveHomePage,
 

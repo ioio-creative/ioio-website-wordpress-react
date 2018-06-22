@@ -11,7 +11,7 @@ import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchHighlightedProjects, fetchProjectCategories, fetchActiveFooter, fetchActiveHomePage} from 'websiteApi';
+import {fetchProjectCategories, fetchActiveFooter, fetchActiveHomePage} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
@@ -114,7 +114,6 @@ class HomePage extends Component {
     this.closeModal = this.closeModal.bind(this);
 
     this.state = {
-      projects: [],
       projectCategories: [],
       homepage: null,
       footer: null
@@ -135,12 +134,6 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    fetchHighlightedProjects((projects) => {
-      this.setState({
-        projects: projects
-      });
-    });
-
     fetchActiveHomePage((homepage) => {
       this.setState({homepage: homepage});
     });
@@ -176,7 +169,6 @@ class HomePage extends Component {
   }
 
   render() {
-    const p = this.state.projects;
     const home = this.state.homepage;
     const footer = this.state.footer;
     const pC = this.state.projectCategories;
@@ -186,10 +178,6 @@ class HomePage extends Component {
     }
 
     if (footer === null) {
-      return null;
-    }
-
-    if (p.length === 0) {
       return null;
     }
 
