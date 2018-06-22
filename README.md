@@ -64,7 +64,9 @@ Using pm2
 
   If running server on port 80,
   use root account
-  - sudo -i
+  https://askubuntu.com/questions/617850/changing-from-user-to-superuser
+  - sudo -s
+  - exit
 
   References:
   - https://stackoverflow.com/questions/4797050/how-to-run-process-as-background-and-never-die
