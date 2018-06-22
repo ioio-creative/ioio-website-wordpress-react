@@ -16,15 +16,35 @@ import withContentRect from 'react-measure'
 
 import classNames from 'classnames'
 
+import $ from 'jquery'
+
 class LabItems extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      dimensions: null
+      dimensions: null,
+      hover: false
     };
 
-    this.handleMeasureResize = this.handleMeasureResize.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+
+  }
+
+  handleMouseOver() {
+    console.log("hello")
+
+    $('#lab-list').css('background', 'white');
+    $('.lab-item').css('background', 'white');
+    $('.row').css('background', 'white');
+  }
+
+  handleMouseOut() {
+    console.log("bye")
+    $('#lab-list').css('background', 'black');
+    $('.lab-item').css('background', 'black');
+    $('.row').css('background', 'black');
   }
 
   handleMeasureResize(contentRect) {
@@ -36,7 +56,12 @@ class LabItems extends Component {
     const state = this.state;
 
     const styleFrame = props.styleFrame;
-    const items = props.labItems.map((item, id) => {
+
+
+
+
+
+    const items = props.labItems.map((item) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
 
@@ -49,24 +74,26 @@ class LabItems extends Component {
 
       let gridSize = 3;
 
-      if(item.template_type == 5){
+      if (item.template_type == 5) {
         gridSize = 8;
-      }
-      else{
+      } else {
         gridSize = 4;
       }
 
       let gridSizeClassName = "col-md-" + gridSize;
 
-      return (<div className={gridSizeClassName + " lab-item " + itemClassNames} key={id}>
+      return (<div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
         <SizeMe>{
             ({size}) => {
+
+
               let containerWidth = size.width;
-              let containerresearchZeroHeight = containerWidth/2-20;
+              let containerresearchZeroHeight = containerWidth / 2 * 1.3;
               let templateType = item.template_type;
 
               let imgStyle;
               let itemStyle;
+
               let squareStyle = {
                 background: 'transparent',
                 color: 'black',
@@ -85,39 +112,42 @@ class LabItems extends Component {
                 background: 'transparent',
                 color: 'black',
                 width: containerWidth,
-                height: containerresearchZeroHeight,
+                height: containerresearchZeroHeight
               };
 
               let imgSquareStyle = {
-                height: containerWidth,
+                height: containerWidth
               };
 
               let imgLongRectStyle = {
-                width : "100%",
+                width: "100%",
                 height: 'auto'
               };
 
               let imgResearchZeroStyle = {
                 width: '100%',
-                height: containerresearchZeroHeight,
+                height: 'auto'
               };
 
-              if(templateType == 3){
+              if (templateType == 3) {
                 itemStyle = longRectStyle;
                 imgStyle = imgLongRectStyle;
-              }
-              else if(templateType == 5){
+              } else if (templateType == 5) {
                 itemStyle = researchZeroStyle;
                 imgStyle = imgResearchZeroStyle;
-              }
-              else{
+              } else {
                 itemStyle = squareStyle;
                 imgStyle = imgSquareStyle;
               }
 
-              return (<div style={itemStyle}>
-                <h1>{item.subcaption} width: {containerWidth} height: {itemStyle.height}</h1>
-                <h3>{item.caption} T: {templateType}</h3>
+              return (<div className="sub-lab-item" style={itemStyle}
+                onMouseOver={() => { this.handleMouseOver(); }}
+                onMouseOut={() => { this.handleMouseOut(); }}>
+                <h1>{item.subcaption}
+                  width: {containerWidth}
+                  height: {itemStyle.height}</h1>
+                <h3>{item.caption}
+                  T: {templateType}</h3>
                 <div className="img-container" style={imgStyle}>
                   <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
                 </div>
@@ -141,19 +171,63 @@ class LabListPage extends Component {
       lab: null,
       labItems: null
     }
+
   }
 
   async componentDidMount() {
     fetchActiveLab((aLab) => {
       this.setState({lab: aLab});
     });
-
+    /*
     fetchLabItems((aLabItems) => {
       this.setState({labItems: aLabItems});
     });
-
+*/
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
+    });
+
+
+
+/*
+    $('.img-container').hover(function() { // Mouse over
+      $(this).siblings().stop().fadeTo(300, 0.6);
+      $(this).parent().siblings().stop().fadeTo(300, 0.3);
+      console.log("hello")
+    }, function() { // Mouse out
+      $(this).siblings().stop().fadeTo(300, 1);
+      $(this).parent().siblings().stop().fadeTo(300, 1);
+      console.log("bye")
+    });
+
+    $('#lab-list').hover(function() {
+      // hover code
+      console.log("hello")
+    }, function() {
+      // unhover code
+      console.log("byeee")
+    });
+
+    this.handleHover(this)
+    */
+  }
+
+
+
+  handleHover(){
+    console.log("ssss: " + JSON.stringify($('.sub-lab-item')));
+
+    $('.sub-lab-item').hover(function() { // Mouse over
+      console.log("hello")
+
+      $('#lab-list').css('background', 'white');
+      $('.lab-item').css('background', 'white');
+      $('.row').css('background', 'white');
+    }, function() { // Mouse out
+      console.log("bye")
+      $('#lab-list').css('background', 'black');
+      $('.lab-item').css('background', 'black');
+      $('.row').css('background', 'black');
     });
   }
 
@@ -168,11 +242,13 @@ class LabListPage extends Component {
     if (lab === null) {
       return null;
     }
-
-    const labItems = this.state.labItems;
+    /*
+    let labItems = this.state.labItems;
     if (labItems === null) {
       return null;
     }
+*/
+    const labItems = lab.lab_item;
 
     const bg = {
       //backgroundImage: url,
@@ -181,6 +257,8 @@ class LabListPage extends Component {
       backgroundPosition: 'center'
       */
     };
+
+
 
     return (<div>
       <section id="video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
@@ -217,8 +295,12 @@ class LabListPage extends Component {
         </div>
       </section>
       <section id="lab-list" className="lab-bg wow fadeIn">
-        <div className="container">
-          <LabItems labItems={labItems}/>
+        <div className="container-fluid row text-center">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            <LabItems labItems={labItems}/>
+          </div>
+          <div className="col-md-1"></div>
         </div>
       </section>
       <Footer footer={footer}/>

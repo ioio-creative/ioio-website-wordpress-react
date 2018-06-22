@@ -141,6 +141,7 @@ function reloadJS() {
     return false;
   });
 
+
 }
 
 function convertRange(value, r1, r2) {

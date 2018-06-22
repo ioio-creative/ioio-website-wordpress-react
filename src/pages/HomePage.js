@@ -26,7 +26,7 @@ Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
 
-function HighlightedProjects(props) {  
+function HighlightedProjects(props) {
   const projectIdSlugPairs = createIdSlugPairs(props.projects);
 
   const projectItems = props.projects.map((project, idx) => {
@@ -117,7 +117,7 @@ class HomePage extends Component {
       projects: [],
       projectCategories: [],
       homepage: null,
-      footer: null    
+      footer: null
     }
   }
 
@@ -152,12 +152,12 @@ class HomePage extends Component {
     fetchActiveFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-    
+
     /*
       const publicUrl = process.env.PUBLIC_URL;
       scriptjs(publicUrl + '/canvas/hello/sketch.js');
       console.log('script loaded');
-    */    
+    */
 
     window.addEventListener('load', this.handleLoad);
   }
