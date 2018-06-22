@@ -211,57 +211,67 @@ function fetchContact(callback) {
 
 
 /* lab page */
+
 function fetchActiveLab(callback) {
-    passJsonResultToCallback("lab", callback, activeEntities.lab);
+  passJsonResultToCallback("lab", callback, activeEntities.lab);
 }
+
 function fetchLab(callback) {
-    passJsonResultToCallback("lab", callback);
+  passJsonResultToCallback("lab", callback);
 }
+
 function fetchLabItems(callback) {
-    passJsonResultToCallback("lab_items", callback);
+  passJsonResultToCallback("lab_items", callback);
 }
+
+function fetchLabCategories(callback) {
+  passJsonResultToCallback("lab_categories", callback);
+}
+
 /* end of lab page */
 
+
 export {
-    // general
-    fetchBrightSidebar,
-    fetchActiveBrightSidebar,
-    fetchDarkSidebar,
-    fetchActiveDarkSidebar,
-    fetchActiveFooter,
+  // general
+  fetchBrightSidebar,
+  fetchActiveBrightSidebar,
+  fetchDarkSidebar,
+  fetchActiveDarkSidebar,
+  fetchActiveFooter,
 
-    // home page
-    fetchHomePages,
-    fetchActiveHomePage,
+  // home page
+  fetchHomePages,
+  fetchActiveHomePage,
 
-    // about page
-    fetchActiveAbout,
-    fetchActiveAboutLab,
-    fetchCompanyDnas,
-    fetchCompanyCultures,
-    fetchTeamMembers,
-    fetchCompanyServices,
-    fetchCompanyClients,
-    fetchPressReleases,
-    fetchCompanies,
+  // about page
+  fetchActiveAbout,
+  fetchActiveAboutLab,
+  fetchCompanyDnas,
+  fetchCompanyCultures,
+  fetchTeamMembers,
+  fetchCompanyServices,
+  fetchCompanyClients,
+  fetchPressReleases,
+  fetchCompanies,
 
-    // project list page
-    fetchProjects,
-    fetchProjectsAsync,
-    fetchProjectCategories,
-    fetchProjectCategoriesAsync,
-    fetchProjectTags,
-    fetchProjectTagsAsync,
+  // project list page
+  fetchProjects,
+  fetchProjectsAsync,
+  fetchProjectCategories,
+  fetchProjectCategoriesAsync,
+  fetchProjectTags,
+  fetchProjectTagsAsync,
 
-    // project detail page
-    fetchProjectById,
+  // project detail page
+  fetchProjectById,
 
-    // contact page
-    fetchActiveContact,
-    fetchContact,
+  // contact page
+  fetchActiveContact,
+  fetchContact,
 
-    // lab page
-    fetchActiveLab,
-    fetchLab,
-    fetchLabItems
+  // lab page
+  fetchActiveLab,
+  fetchLab,
+  fetchLabItems,
+  fetchLabCategories,
 };
