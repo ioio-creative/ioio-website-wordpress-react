@@ -41,8 +41,6 @@ class LabItems extends Component {
     $(thisTarget).closest('.img-container').addClass('active')
     $('#hover-cover').addClass('active')
 
-
-
     //  $(thisTarget).addClass('active')
 
     //$('#hover-cover').addClass('active')
@@ -52,7 +50,6 @@ class LabItems extends Component {
 
   handleMouseOut(e) {
     let thisTarget = e.target;
-
     $('#lab-list').removeClass('active')
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
@@ -157,6 +154,14 @@ class LabItems extends Component {
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
+                <div className="lab-item-detail">
+                  <h3>
+                    Lab Categories
+                  </h3>
+                  <p>
+                    {item.hover_description}
+                  </p>
+                </div>
                 <h1>{item.subcaption}</h1>
                 <h3>{item.caption}</h3>
                 <div className="img-container" style={imgStyle}>

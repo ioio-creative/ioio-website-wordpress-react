@@ -78,14 +78,13 @@
 }
 
 #footer .footer-bottom-links {
-
   position: relative;
   top: 220px;
   height: 50px;
 }
 
 #footer .footer-bottom-links a {
-    color: white;
+  color: white;
   padding: 5px;
   width: 100%;
   cursor: pointer;
@@ -98,11 +97,11 @@
   overflow: scroll;
 }
 
-#footer #footer-join-us{
+#footer #footer-join-us {
   display: none;
 }
 
-.ReactModalPortal div div{
+.ReactModalPortal div div {
   background: white;
 }
 
