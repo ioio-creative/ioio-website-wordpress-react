@@ -11,7 +11,7 @@ import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchProjectCategories, fetchActiveBrightFooter, fetchActiveHomePage} from 'websiteApi';
+import {fetchActiveHomePage, fetchProjectCategories, fetchProjects, fetchActiveBrightFooter} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
@@ -27,10 +27,14 @@ Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
 
 function HighlightedProjects(props) {
-  const projectIdSlugPairs = createIdSlugPairs(props.projects);
+  // Important notes:
+  // the WordPress projects api contains slug names of each project,
+  // the WordPress homepage.highlightedProjects api do not
 
-  const projectItems = props.projects.map((project, idx) => {
-    const projectDetailRoutePath = routes.projectBySlugWithValue(projectIdSlugPairs[project.id]);
+  const allProjectIdSlugPairs = createIdSlugPairs(props.allProjects);
+
+  const projectItems = props.highlightedProjects.map((project, idx) => {
+    const projectDetailRoutePath = routes.projectBySlugWithValue(allProjectIdSlugPairs[project.id]);
 
     if (idx === 0) {
       return (
@@ -113,10 +117,11 @@ class HomePage extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.state = {
-      projectCategories: [],
+    this.state = {            
       homepage: null,
-      footer: null
+      projectCategories: [],
+      allProjects: [],
+      footer: null,
     }
   }
 
@@ -142,10 +147,14 @@ class HomePage extends Component {
       this.setState({projectCategories: projectCategories});
     });
 
+    fetchProjects((projects) => {
+      this.setState({allProjects: projects});
+    });
+
     fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-
+    
     /*
       const publicUrl = process.env.PUBLIC_URL;
       scriptjs(publicUrl + '/canvas/hello/sketch.js');
@@ -172,6 +181,11 @@ class HomePage extends Component {
     const home = this.state.homepage;
     const footer = this.state.footer;
     const pC = this.state.projectCategories;
+    const allProjects = this.state.allProjects;
+
+    if (allProjects.length === 0) {
+      return null;
+    }
 
     if (pC.length === 0) {
       return null;
@@ -184,8 +198,6 @@ class HomePage extends Component {
     if (home === null) {
       return null;
     }
-
-    console.log(footer)
 
     const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/hello/index.html');
     const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
@@ -237,7 +249,7 @@ class HomePage extends Component {
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
         <ProjectCategories categories={pC}
           allCategoryName='We Do' />
-        <HighlightedProjects projects={home.highlighted_projects} />
+        <HighlightedProjects highlightedProjects={home.highlighted_projects} allProjects={allProjects} />
       </section>
 
       <section id="homepage-core-value">
