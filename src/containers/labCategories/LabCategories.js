@@ -4,11 +4,11 @@ import CategoryList from 'components/CategoryList';
 import routes from 'globals/routes';
 
 class LabCategories extends Component {
-  render() {  
-    const props = this.props;    
+  render() {
+    const props = this.props;
 
     const labItemLinkPathCreator = (lab) => {
-      return '';  //routes.projectsByCategory(lab.slug);
+      return routes.labByCategory(lab.slug);
     };
 
     const labItemPropertyToShowSelector = (lab) => {
@@ -29,7 +29,7 @@ class LabCategories extends Component {
         itemLinkToCreator={labItemLinkPathCreator}
         itemPropertyToShowSelector={labItemPropertyToShowSelector}
         allItemsAggregateFunc={allCategoryLabItemCountFunc}
-        allItemLinkTo={''}
+        allItemLinkTo={routes.labAll}
         allItemName={props.allCategoryName}
         />
     );

@@ -57,16 +57,81 @@ Cover Video Part
 /* =======================
 Lab List
  ======================= */
-#hover-cover {
-  opacity: 0;
+
+#portfolio-flters {
+  white-space: pre-line;
+  display: block;
+  padding: 0;
+  margin: 5px 0 35px 0;
+  padding-left: 0;
+  list-style: none;
+  text-align: left;
+}
+
+#portfolio-flters div {
+  padding-left: 5px;
+}
+
+.lab-categories #portfolio-flters li {
+  font-weight: bold;
+  /* TODO: uncommmented by Chris */
+  cursor: pointer;
+  margin: 0 15px 0 0;
+  display: inline-block;
+  padding: 5px 10px 0 0;
+  font-size: 16px;
+  color: #FFF;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #000;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/*
+ .lab-categories #portfolio-flters li:first-child {
+   padding: 5px 10px 0 0;
+   margin: 0 15px 0 0;
+ }
+*/
+
+.lab-categories #portfolio-flters li span {
   display: none;
+  font-weight: 100;
+  font-size: 11px;
+  position: absolute;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.lab-categories #portfolio-flters li a {
+  color: white;
+}
+
+.lab-categories #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
+  /*color: #FFE000;*/
+  text-decoration: underline;
+  background: #000;
+}
+
+.lab-categories #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+#hover-cover {
+  display: block;
+  position: fixed;
+  opacity: 0;
+  transition-delay: 2s;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+  bottom: 0;
 }
 
 #hover-cover.active {
+  z-index: 10;
   display: block;
   position: fixed;
   opacity: 1;
@@ -75,8 +140,6 @@ Lab List
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.9);
-  width: 100%;
-  height: 100vh;
   z-index: 9;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -84,17 +147,28 @@ Lab List
   transition: all 0.3s;
 }
 
-
-#hover-cover div{
-    position: relative;
-    padding: 20px;
+#hover-cover.active div {
+  opacity: 1;
+  position: relative;
+  padding: 20px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.hover-text{
+#hover-cover.active .hover-text {
   position: relative;
   z-index: 10;
+  opacity: 1;
   color: white;
+}
 
+#hover-cover .hover-text {
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  color: white;
 }
 
 #lab-list {
@@ -104,6 +178,13 @@ Lab List
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+#lab-list div .col-md-1 {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -20px;
+  /*balance out padding 20 in lab-item*/
 }
 
 #lab-list.active {}
@@ -123,10 +204,10 @@ Lab List
 
 .lab-item.active .sub-lab-item {
   z-index: 10;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .lab-item .lab-item-detail {
@@ -134,10 +215,10 @@ Lab List
   opacity: 0;
   color: white;
   z-index: 1;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .lab-item.active .lab-item-detail {
@@ -148,28 +229,44 @@ Lab List
   position: fixed;
   top: 0;
   left: 0;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.lab-item.active .lab-item-detail h3 {
+.lab-item-cat {
   font-weight: bold;
-  color: yellow;
+  font-size: 16px;
+  color: #fccd05;
 }
 
-.lab-item.active .lab-item-detail h3 {
+.lab-item-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.lab-item-desc {
   color: white;
 }
 
 .lab-item.active .img-container {
   z-index: 10;
-  -webkit-transition: all 0.6s;
-  -moz-transition: all 0.6s;
-  -o-transition: all 0.6s;
-  transition: all 0.6s;
-  border: 3px solid rgba(255, 255, 255, 1);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 1);
+}
+
+.lab-item .img-container {
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 0);
 }
 
 .lab-item h1 {
@@ -183,6 +280,10 @@ Lab List
   text-transform: uppercase;
   z-index: 2;
   text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .lab-item h3 {
@@ -194,6 +295,10 @@ Lab List
   bottom: 40px;
   z-index: 2;
   text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .lab-item .img-container {
@@ -218,7 +323,6 @@ Lab List
   min-width: 100%;
   min-height: 100%;
 }
-
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/

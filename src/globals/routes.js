@@ -19,6 +19,12 @@ const routes = {
     return "/projects/" + slugValue;
   },
   lab: "/lab",
+  labAll: function () {
+    return this.labByCategory('all');
+  },
+  labByCategory: function (categorySlug) {
+    return "/lab?category=" + categorySlug;
+  },
   aboutLab: "/aboutLab",
   labBySlug: "/lab/:labSlug",
   labBySlugWithValue: (slugValue) => {
