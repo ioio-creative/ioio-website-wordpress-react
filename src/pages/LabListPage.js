@@ -59,7 +59,7 @@ class LabItems extends Component {
     $('#lab-list').addClass('active')
 
     $(thisTarget).closest('.lab-item').addClass('active')
-    $(thisTarget).closest('.img-container').addClass('active')
+    $(thisTarget).closest('.img-container').addClass('active');
     $('#hover-cover').addClass('active')
 
     var el = $('#hover-cover')
@@ -89,6 +89,7 @@ class LabItems extends Component {
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
     $('#hover-cover').removeClass('active')
+
   }
 
   handleMeasureResize(contentRect) {
@@ -184,10 +185,10 @@ class LabItems extends Component {
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
-                <h1>{item.subcaption}</h1>
-                <h3>{item.caption}</h3>
+                <h1>{item.description}</h1>
+                <h3>{item.lab_item_title}</h3>
                 <div className="img-container" style={imgStyle}>
-                  <img className="lab-thumb" src={item.thumbnail.guid} alt="" style={imgStyle}/>
+                  <img className="lab-thumb" src={item.image.guid} alt="" style={imgStyle}/>
                 </div>
               </div>)
             }
