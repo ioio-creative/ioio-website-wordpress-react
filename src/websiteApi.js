@@ -35,7 +35,6 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
-      console.log(dataUrl);
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
