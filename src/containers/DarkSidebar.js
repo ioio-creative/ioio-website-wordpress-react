@@ -23,7 +23,6 @@ class DarkSidebar extends Component {
     this.state = {
       sidebar: null
     }
-
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.handleMenuClose = this.handleMenuClose.bind(this);
   }
@@ -58,7 +57,6 @@ class DarkSidebar extends Component {
   }
 
   render() {
-    console.log('dark side');
 
     const sidebar = this.state.sidebar;
     if (sidebar === null) {
@@ -81,7 +79,8 @@ class DarkSidebar extends Component {
         <Link className="menu-item menu-transition menu-close" to={routes.aboutLab} onClick={this.handleMenuClose}>About</Link>{/*
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link>
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link>
-        */}
+        */
+        }
         <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
         <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
@@ -120,7 +119,6 @@ class DarkSidebar extends Component {
             </div>
           </div>
         </div>
-
       </div>
     </nav>);
   }

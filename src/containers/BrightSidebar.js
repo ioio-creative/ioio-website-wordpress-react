@@ -58,7 +58,6 @@ class BrightSidebar extends Component {
   }
 
   render() {
-    console.log('bright side');
 
     const sidebar = this.state.sidebar;
     if (sidebar === null) {

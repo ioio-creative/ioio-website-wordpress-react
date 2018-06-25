@@ -18,6 +18,27 @@ import classNames from 'classnames'
 
 import $ from 'jquery'
 
+function tick(txt, pos) {
+
+  let thisTarget;
+  if (pos == 2) {
+    thisTarget = '.hover-middle';
+  } else if (pos == 3) {
+    thisTarget = '.hover-right';
+  } else {
+    thisTarget = '.hover-left'
+  }
+
+  let item_hover_description = txt;
+
+  const element = "<div className='lab-item-detail'><h3>Lab Categories</h3><p>" + item_hover_description + "</p></div>";
+  $('.hover-middle').html('')
+  $('.hover-left').html('')
+  $('.hover-right').html('')
+  $(thisTarget).html(element);
+
+}
+
 class LabItems extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +53,7 @@ class LabItems extends Component {
 
   }
 
-  handleMouseOver(e) {
+  handleMouseOver(e, w, txt) {
     let thisTarget = e.target;
 
     $('#lab-list').addClass('active')
@@ -41,11 +62,25 @@ class LabItems extends Component {
     $(thisTarget).closest('.img-container').addClass('active')
     $('#hover-cover').addClass('active')
 
-    //  $(thisTarget).addClass('active')
+    var el = $('#hover-cover')
+    var offsets = $(thisTarget).closest('.lab-item').offset();
 
-    //$('#hover-cover').addClass('active')
-    //  $('#lab-list').addClass('active')
+    console.log("offsets left" + (
+    offsets.left) + " lab-list-frame left" + (
+    $("#lab-list-frame").offset().left));
 
+    if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
+      console.log("l1")
+      tick(txt, 1)
+    } else {
+      if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
+        console.log("l3 ")
+        tick(txt, 3)
+      } else {
+        tick(txt, 2)
+        console.log("l2 ")
+      }
+    }
   }
 
   handleMouseOut(e) {
@@ -54,11 +89,6 @@ class LabItems extends Component {
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
     $('#hover-cover').removeClass('active')
-    //    $(thisTarget).parent().removeClass('active')
-    //  $(thisTarget).removeClass('active')
-
-    //  $('#hover-cover').removeClass('active')
-
   }
 
   handleMeasureResize(contentRect) {
@@ -150,18 +180,10 @@ class LabItems extends Component {
               }
 
               return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e);
+                  this.handleMouseOver(e, containerWidth, item.hover_description);
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
-                <div className="lab-item-detail">
-                  <h3>
-                    Lab Categories
-                  </h3>
-                  <p>
-                    {item.hover_description}
-                  </p>
-                </div>
                 <h1>{item.subcaption}</h1>
                 <h3>{item.caption}</h3>
                 <div className="img-container" style={imgStyle}>
@@ -227,7 +249,19 @@ class LabListPage extends Component {
     };
 
     return (<div>
-      <div id="hover-cover"></div>
+      <div id="hover-cover">
+        <div className="row">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            <div className="row hover-text">
+              <div className="col-md-4 hover-left"></div>
+              <div className="col-md-4 hover-middle"></div>
+              <div className="col-md-4 hover-right"></div>
+            </div>
+          </div>
+          <div className="col-md-1"></div>
+        </div>
+      </div>
       <section id="lab-video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
         <div className="video-landing-div">
           <div className="container-fluid">
@@ -264,7 +298,7 @@ class LabListPage extends Component {
       <section id="lab-list" className="lab-bg wow fadeIn">
         <div className="container-fluid row text-center">
           <div className="col-md-1"></div>
-          <div className="col-md-10">
+          <div className="col-md-10" id="lab-list-frame">
             <LabItems labItems={labItems}/>
           </div>
           <div className="col-md-1"></div>
