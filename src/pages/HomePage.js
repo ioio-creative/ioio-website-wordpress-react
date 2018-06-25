@@ -27,6 +27,10 @@ Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
 
 function HighlightedProjects(props) {
+  // Important notes:
+  // the WordPress projects api contains slug names of each project,
+  // the WordPress homepage.highlightedProjects api do not
+
   const allProjectIdSlugPairs = createIdSlugPairs(props.allProjects);
 
   const projectItems = props.highlightedProjects.map((project, idx) => {
