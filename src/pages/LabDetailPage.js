@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {fetchLabDetailPageById, fetchActiveBrightFooter} from 'websiteApi';
+import {fetchLabDetailPageById, fetchActiveDarkFooter} from 'websiteApi';
 
 import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds';
 import {Link} from 'react-router-dom'
@@ -125,6 +125,11 @@ class LabDetailPage extends Component {
       return;
     }
 
+    fetchActiveDarkFooter((aFooter) => {
+      this.setState({footer: aFooter});
+    });
+
+
     fetchLabDetailPageById(labIdNum, (aLab) => {
       if (aLab === null) {
         this.setState({isReturnNotFound: true});
@@ -175,8 +180,7 @@ class LabDetailPage extends Component {
       const TemplateToUse = labTemplateMap[templateData.template_type];
       return <TemplateToUse {...templateData}/>
     });
-    console.log(lab)
-    console.log(lab.cover_thumbnail.guid)
+
     return (<div className="wow fadeIn">
       <VideoLanding lab={lab}/>
       <VideoLandingDesc lab={lab}/>
