@@ -236,6 +236,24 @@ function fetchLabCategories(callback) {
 
 /* end of lab page */
 
+/* lab detail page */
+
+async function fetchLabDetailPagesAsync() {
+    return await passJsonResultAsync("lab_detail_pages");
+}
+
+function fetchLabDetailPages(callback) {
+  passJsonResultToCallback("lab_detail_pages", callback);
+}
+
+
+function fetchLabDetailPageById(id, callback) {
+    passJsonResultToCallback("lab_detail_pages", callback, id);
+}
+
+/* end of lab detail page */
+
+
 
 export {
   // general
@@ -281,4 +299,9 @@ export {
   fetchLab,
   fetchLabItems,
   fetchLabCategories,
+
+  // lab detail page
+  fetchLabDetailPagesAsync,
+  fetchLabDetailPages,
+  fetchLabDetailPageById,
 };

@@ -290,11 +290,11 @@ class ProjectListPage extends Component {
 
     const pC = state.projectCategories;
     const pT = state.projectTags;
-    const p = state.projects;
+    const projects = state.projects;
     const footer = state.footer;
 
     // not working if using p === []
-    if (p.length === 0) {
+    if (projects.length === 0) {
       return null;
     }
 
@@ -314,7 +314,7 @@ class ProjectListPage extends Component {
     const categoryFilterSlugFromQuery = parsedQuery.category || null;
 
     return (
-      <ProjectListWithShuffle projects={p}
+      <ProjectListWithShuffle projects={projects}
         categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
         categories={pC}
         tags={pT}
