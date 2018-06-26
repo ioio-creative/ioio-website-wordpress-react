@@ -6,7 +6,7 @@ https://codesandbox.io/s/owQ8Wrk3
 */
 
 
-import createBrowserHistory from 'history/createBrowserHistory'
+import createBrowserHistory from 'history/createBrowserHistory';
 
-const customHistory = createBrowserHistory()
+const customHistory = createBrowserHistory();
 export default customHistory;
