@@ -247,7 +247,7 @@ class LabItems extends Component {
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
-                <a className="lab-item-click" href={item.link} target="_blank" onClick={this.handleMenuClose}>
+                <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
 
                   <h1 style={textColor}>{item.description}</h1>
                   <h3 style={textColor}>{item.lab_item_title}</h3>
