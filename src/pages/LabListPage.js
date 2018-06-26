@@ -69,7 +69,7 @@ class LabItems extends Component {
     $('#lab-list').addClass('active')
 
     $(thisTarget).closest('.lab-item').addClass('active')
-    $(thisTarget).closest('.img-container').addClass('active');
+    $(thisTarget).closest('.img-container').addClass('active')
     $('#hover-cover').addClass('active')
 
     $(".lab-item.active").removeClass('fade')
@@ -213,7 +213,6 @@ class LabItems extends Component {
                 };
                 let imgNoImageStyle = {
                   height: containerWidth,
-                  opacity: 'auto'
                 };
 
                 let imgResearchZeroStyle = {
