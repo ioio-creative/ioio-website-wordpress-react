@@ -65,7 +65,7 @@ class LabItems extends Component {
 
   }
 
-  handleMouseOver(e, w, txt) {
+  handleMouseOver(e, w, template, txt) {
     let thisTarget = e.target;
 
     $('#lab-list').addClass('active')
@@ -81,7 +81,12 @@ class LabItems extends Component {
 
     if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
       //console.log("l1")
-      tick(txt, 1, offsets.top)
+      if(template == 5){
+          tick(txt, 1, offsets.top)
+      }else{
+        tick(txt, 2, offsets.top)
+      }
+
     } else {
       if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
         //console.log("l3 ")
@@ -202,7 +207,7 @@ class LabItems extends Component {
                 }
 
                 return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e, containerWidth, item.hover_description);
+                  this.handleMouseOver(e, containerWidth, templateType ,item.hover_description);
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>

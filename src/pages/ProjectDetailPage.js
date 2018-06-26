@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import {fetchProjectById} from 'websiteApi'
+import {fetchProjectById,fetchActiveBrightFooter} from 'websiteApi';
+
 import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
@@ -21,7 +22,7 @@ import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre tex
 import './ProjectDetailPage.css';
 
 import Footer from 'containers/BrightFooter';
-import {fetchActiveBrightFooter} from 'websiteApi';
+
 
 import $ from 'jquery';
 
@@ -239,7 +240,7 @@ class ProjectDetailPage extends Component {
           <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
         </div>
       </Modal>
-      <Footer/>
+      <Footer footer={footer}/>
 
     </div>);
   }

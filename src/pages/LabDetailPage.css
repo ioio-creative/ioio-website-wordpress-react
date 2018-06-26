@@ -59,7 +59,7 @@ pop-up
   padding: 0 0 0 0;
 }
 
-.video-text {
+.cover-bg {
   color: white;
   width: 100%;
   position: absolute;
@@ -69,45 +69,43 @@ pop-up
   background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
 }
 
-.video-text .pop-up-vid-div {
-  text-align: right;
+.additional-info {
+  display: inline-block;
 }
 
-.video-text h1 {
-  position: absolute;
-  top: 40vh;
+.additional-info ul{
+  list-style-type: none;
+}
+
+
+
+.cover-text {
+  color: black;
+  padding: 0;
+}
+
+.cover-text h1 {
+  position: relative;
+  text-transform: uppercase;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 45px;
   text-align: left;
   line-height: 1.4em;
+  padding-left: 0;
 }
 
-.video-text h2 {
-  position: absolute;
-  top: 53vh;
+.cover-text h2 {
+  padding-left: 0;
+  position: relative;
   font-weight: 700;
-  text-transform: uppercase;
   font-size: 16px;
   text-align: left;
   letter-spacing: 0.05em;
 }
 
-.video-text a {
-  position: relative;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 16px;
-  z-index: 2;
-  background: white;
-  padding: 10px 15px;
-  border-radius: 25px;
-  top: 52vh;
-}
-
 .video-landing-text {
   position: relative;
   float: left;
-  top: 0;
   color: black;
   z-index: 2;
   width: 100%;
@@ -116,18 +114,7 @@ pop-up
   padding: 100px 0 100px 0;
 }
 
-.video-landing-text div {
-  padding: 0 0;
-}
 
-.video-landing-text-l {
-  font-weight: bold;
-  text-align: left;
-}
-
-.video-landing-text-r {
-  text-align: left;
-}
 
 .projectlist-showreel-img {
   width: 25px;
@@ -209,12 +196,10 @@ video {
   width: 100%;
 }
 
-#video-landing video, #video-landing img  {
+#video-landing video, #video-landing img {
   width: 100%;
   object-fit: cover;
 }
-
-
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
@@ -313,6 +298,7 @@ video {
   padding: 0;
   width: 100%;
 }
+
 .photo-montage div div {
   object-fit: cover;
 }
@@ -329,7 +315,6 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-
   .photo-montage-one-text div {
     padding: 0;
   }
@@ -460,7 +445,6 @@ video {
 .photo-montage-one-vid video {
   width: 100%;
   height: auto;
-
 }
 
 /*==============
@@ -542,11 +526,11 @@ video {
     padding-top: 10px;
     padding-left: 0;
   }
-  .photo-montage-one-vid{
+  .photo-montage-one-vid {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
-  .photo-montage-one-vid div{
+  .photo-montage-one-vid div {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
   }
@@ -559,7 +543,7 @@ video {
   .photo-montage-one-img div {
     margin: 0;
   }
-  .photo-montage-one-text{
+  .photo-montage-one-text {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
   }
@@ -569,10 +553,10 @@ video {
   .photo-montage-one-text .col-md-4 {
     padding: 15px 30px;
   }
-  .photo-montage-one-img-full-width{
+  .photo-montage-one-img-full-width {
     padding: 0 0;
   }
-  .slideshow.slideshow-img-on-left > div {
+  .slideshow.slideshow-img-on-left>div {
     display: flex;
     flex-direction: column-reverse;
   }
