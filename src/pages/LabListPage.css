@@ -191,6 +191,7 @@ Lab List
 
 .lab-item {
   padding: 20px;
+
 }
 
 .lab-item.active {
@@ -199,10 +200,26 @@ Lab List
 
 .sub-lab-item {
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.lab-item.fade .sub-lab-item{
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .lab-item.active .sub-lab-item {
+  opacity: 1;
   z-index: 10;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -349,6 +366,7 @@ Lab List
 
 #lab-bottom-detail-desc{
   font-weight: bold;
+padding-right: 70px;
 }
 
 @media only screen and (max-width: 767px) {

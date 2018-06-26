@@ -67,12 +67,15 @@ class LabItems extends Component {
 
   handleMouseOver(e, w, template, txt) {
     let thisTarget = e.target;
-
+    $(".lab-item").addClass('fade')
     $('#lab-list').addClass('active')
 
     $(thisTarget).closest('.lab-item').addClass('active')
     $(thisTarget).closest('.img-container').addClass('active');
     $('#hover-cover').addClass('active')
+
+    $(".lab-item.active").removeClass('fade')
+
 
     var el = $('#hover-cover')
     var offsets = $(thisTarget).closest('.lab-item').offset();
@@ -100,6 +103,7 @@ class LabItems extends Component {
 
   handleMouseOut(e) {
     let thisTarget = e.target;
+        $(".lab-item").removeClass('fade')
     $('#lab-list').removeClass('active')
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
@@ -157,6 +161,7 @@ class LabItems extends Component {
                 let containerresearchZeroHeight = containerWidth / 2 * 1.3;
                 let templateType = item.template_type;
 
+                let containerStyle;
                 let imgStyle;
                 let itemStyle;
 
@@ -215,7 +220,7 @@ class LabItems extends Component {
 
                 <h1>{item.description}</h1>
                 <h3>{item.lab_item_title}</h3>
-                <div className="img-container" style={imgStyle}>
+                <div className="img-container" style={containerStyle}>
                   <img className="lab-thumb" src={item.image.guid} alt="" style={imgStyle}/>
                 </div>
               </a>
