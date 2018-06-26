@@ -54,9 +54,7 @@ function reloadJS() {
   /* Sidebar */
 
   function sideBarLogoTransistion() {
-    if ($(window).width() <= 767) {
-
-    } else {
+    if ($(window).width() <= 767) {} else {
       $('#sidebar-top-logo-text').css("opacity", 0);
       $('#sidebar .logo').css("opacity", 1);
       $('#sidebar .logo').css("top", "15px");
@@ -130,6 +128,18 @@ function reloadJS() {
                   console.log($(this).scrollTop());
             */
     }
+
+    if ($(this).scrollTop() < 1000) {
+      let rangeToScroll = convertRange($(this).scrollTop(), [
+        0, 1000
+      ], [0, 1])
+      $('#img-hotpot').css('top', rangeToScroll * 15 + 'vh')
+      $('#img-meet').css('top', rangeToScroll * 55 + 'vh')
+      $('#img-fish').css('top', -rangeToScroll * 15 + 'vh')
+            $('#about01').css('background-size', (1-rangeToScroll) * 80 + '%')
+
+
+    }
   });
 
   /* ===============  //footer =============== */
@@ -140,7 +150,6 @@ function reloadJS() {
     }, 1500, 'easeInOutExpo');
     return false;
   });
-
 
 }
 

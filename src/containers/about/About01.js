@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class About01 extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,7 @@ class About01 extends Component {
 
     const bg = {
       backgroundImage: url,
-      backgroundSize: 'auto',
+      backgroundSize: '80%',
       backgroundPosition: 'center'
     };
 
