@@ -12,9 +12,12 @@ import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/gen
 
 import Footer from 'containers/BrightFooter';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 
 function ProjectGrid(props) {
+  console.log('ProjectGrid: render');
+
   const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
 
   const project_items = props.projects.map((project) => {
@@ -183,6 +186,8 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
+    console.log('ProjectListWithShuffle: render');
+
     const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
 
     return (
@@ -285,6 +290,8 @@ class ProjectListPage extends Component {
   }
 
   render() {
+    console.log('ProjectListPage: render');
+
     const state = this.state;
     //const props = this.props;
 
@@ -293,21 +300,24 @@ class ProjectListPage extends Component {
     const projects = state.projects;
     const footer = state.footer;
 
-    // not working if using p === []
     if (projects.length === 0) {
-      return null;
+      console.log('ProjectListPage: projects length === 0');
+      return (<MyFirstLoadingComponent />);
     }
-
+      
     if (pC.length === 0) {
-      return null;
+      console.log('ProjectListPage: projectCategories length === 0');
+      return (<MyFirstLoadingComponent />);
     }
 
     if (pT.length === 0) {
-      return null;
+      console.log('ProjectListPage: projectTags length === 0');
+      return (<MyFirstLoadingComponent />);
     }
-
+    
     if (footer === null) {
-      return null;
+      console.log('ProjectListPage: footer === null');
+      return (<MyFirstLoadingComponent />);
     }
 
     const parsedQuery = queryString.parse(this.props.history.location.search);
