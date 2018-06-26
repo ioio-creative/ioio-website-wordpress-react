@@ -1,4 +1,4 @@
-import { asyncLoadingComponent } from 'components/AsyncLoadingComponent';
+import { asyncLoadingComponent } from './AsyncLoadingComponent';
 import { withTracker } from 'components/WithTracker';
 
 function asyncLoadingComponentWithTracker(funcToImportPage) {

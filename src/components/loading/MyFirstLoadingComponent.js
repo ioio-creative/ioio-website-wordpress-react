@@ -1,14 +1,6 @@
 import React from 'react';
-import Loadable from 'react-loadable';
 
-function asyncLoadingComponent(funcToImportPage) {
-  return Loadable({
-    loader: funcToImportPage,
-    loading: LoadingComponent
-  });
-}
-
-function LoadingComponent(props) {
+function MyFirstLoadingComponent(props) {
   const { isLoading, error } = props;
   // Handle the loading state
   if (isLoading) {
@@ -23,7 +15,4 @@ function LoadingComponent(props) {
   }
 }
 
-export {
-  asyncLoadingComponent,
-  LoadingComponent
-}
+export default MyFirstLoadingComponent;
