@@ -129,7 +129,7 @@ pop-up
   text-align: left;
 }
 
-.projectlist-showreel-img {
+#video-landing .projectlist-showreel-img {
   width: 25px;
   margin-top: -5px;
 }
