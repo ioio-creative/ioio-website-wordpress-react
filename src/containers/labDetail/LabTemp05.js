@@ -23,7 +23,7 @@ function Slideshow(props) {
   </OwlCarousel>);
 }
 
-class ProjectTemp05 extends Component {
+class LabTemp05 extends Component {
   constructor(props) {
     super(props);
   }
@@ -45,4 +45,4 @@ class ProjectTemp05 extends Component {
   }
 }
 
-export default ProjectTemp05;
+export default LabTemp05;

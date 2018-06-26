@@ -9,8 +9,9 @@
   font-size: 15px;
   text-transform: uppercase;
   opacity:0;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
 }
-
 
 #menu-toggle-div {
   position: fixed;
@@ -43,7 +44,7 @@
   color: #fff;
   overflow-x: hidden;
   padding-top: 20px;
-  border-right: 1px solid #E6E6E6;
+  border-right: 1px solid #656565;
 }
 
 #sidebar.active {
@@ -262,6 +263,7 @@
   #sidebar-top-logo-text{
     left: 15px;
     opacity:1;
+
   }
   #menu-toggle-div {
     position: fixed;
@@ -279,11 +281,11 @@
     z-index: 999;
     top: 0;
     left: 0;
-    background-color: #fff;
+
     overflow-y: hidden;
     color: #000;
     padding-top: 0;
-    border-bottom: 0px solid #E6E6E6;
+    border-bottom: 0px solid #656565;
   }
   #sidebar.active {
     /*background: rgba(0, 0, 0, 0.9);*/

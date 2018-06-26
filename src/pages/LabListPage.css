@@ -122,12 +122,14 @@ Lab List
   display: block;
   position: fixed;
   opacity: 0;
-  transition-delay: 2s;
+  top: -100%;
+  left: 55px;
+  bottom: 0;
+  right: 0;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  bottom: 0;
 }
 
 #hover-cover.active {

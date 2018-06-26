@@ -19,7 +19,7 @@ import classNames from 'classnames'
 
 import $ from 'jquery'
 
-function tick(txt, pos, topPos) {
+function tick(title, txt, pos, topPos) {
 
   let thisTarget;
   if (pos == 2) {
@@ -32,7 +32,7 @@ function tick(txt, pos, topPos) {
 
   let item_hover_description = txt;
 
-  const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>Lab Categories</h3><h2 class='lab-item-title'>Lab Categories</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
+  const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>Lab Categories</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
   $('.hover-middle').html('')
   $('.hover-left').html('')
   $('.hover-right').html('')
@@ -58,14 +58,12 @@ class LabItems extends Component {
       hover: false,
     };
 
-
-
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
 
   }
 
-  handleMouseOver(e, w, template, txt) {
+  handleMouseOver(e, w, template, title,txt) {
     let thisTarget = e.target;
     $(".lab-item").addClass('fade')
     $('#lab-list').addClass('active')
@@ -85,17 +83,17 @@ class LabItems extends Component {
     if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
       //console.log("l1")
       if(template == 5){
-          tick(txt, 1, offsets.top)
+        tick(title,txt, 1, offsets.top)
       }else{
-        tick(txt, 2, offsets.top)
+        tick(title,txt, 2, offsets.top)
       }
 
     } else {
       if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
         //console.log("l3 ")
-        tick(txt, 3, offsets.top)
+        tick(title,txt, 3, offsets.top)
       } else {
-        tick(txt, 2, offsets.top)
+        tick(title,txt, 2, offsets.top)
         //console.log("l2 ")
       }
     }
@@ -103,7 +101,7 @@ class LabItems extends Component {
 
   handleMouseOut(e) {
     let thisTarget = e.target;
-        $(".lab-item").removeClass('fade')
+    $(".lab-item").removeClass('fade')
     $('#lab-list').removeClass('active')
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
@@ -164,6 +162,25 @@ class LabItems extends Component {
                 let containerStyle;
                 let imgStyle;
                 let itemStyle;
+                let textColor;
+
+                let mediumContainerStyle = {
+                  background: 'yellow',
+                  height: containerWidth,
+                };
+
+                let sharingContainerStyle = {
+                  background: 'white',
+                  height: containerWidth,
+                };
+
+                let blackText = {
+                  color: 'black',
+                };
+                let whiteText = {
+                  color: 'white',
+                };
+
 
                 let squareStyle = {
                   background: 'transparent',
@@ -194,36 +211,51 @@ class LabItems extends Component {
                   width: "100%",
                   height: 'auto'
                 };
+                let imgNoImageStyle = {
+                  height: containerWidth,
+                  opacity: 'auto'
+                };
 
                 let imgResearchZeroStyle = {
                   width: '100%',
                   height: 'auto'
+
                 };
 
                 if (templateType == 3) {
                   itemStyle = longRectStyle;
                   imgStyle = imgLongRectStyle;
+                  textColor = whiteText;
                 } else if (templateType == 5) {
                   itemStyle = researchZeroStyle;
                   imgStyle = imgResearchZeroStyle;
-                } else {
+                  textColor = whiteText;
+                } else if (templateType == 6) {
+                  containerStyle = mediumContainerStyle;
+                  textColor = blackText;
+                }else if (templateType == 7) {
+                  containerStyle = sharingContainerStyle;
+                  textColor = blackText;
+                  imgStyle = imgNoImageStyle;
+                }else {
                   itemStyle = squareStyle;
                   imgStyle = imgSquareStyle;
+                  textColor = whiteText;
                 }
 
                 return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e, containerWidth, templateType ,item.hover_description);
+                  this.handleMouseOver(e, containerWidth, templateType ,item.lab_item_title, item.hover_description);
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
                 <a className="lab-item-click" href={item.link} target="_blank" onClick={this.handleMenuClose}>
 
-                <h1>{item.description}</h1>
-                <h3>{item.lab_item_title}</h3>
-                <div className="img-container" style={containerStyle}>
-                  <img className="lab-thumb" src={item.image.guid} alt="" style={imgStyle}/>
-                </div>
-              </a>
+                  <h1 style={textColor}>{item.description}</h1>
+                  <h3 style={textColor}>{item.lab_item_title}</h3>
+                  <div className="img-container" style={containerStyle}>
+                    <img className="lab-thumb" src={item.image.guid} alt="" style={imgStyle}/>
+                  </div>
+                </a>
               </div>)
             }
           }
@@ -372,10 +404,8 @@ render() {
       </div>
     </section>
     <section id="lab-list" className="lab-bg wow fadeIn">
-
       <div className="container-fluid row text-center">
         <div className="col-md-1"></div>
-
         <div className="col-md-10" id="lab-list-frame">
           <div className="lab-categories container-fluid" id="portfolio-flters">
             <LabCategories categories={labCategories}
@@ -384,22 +414,21 @@ render() {
               allCategoryName='All' />
             </div>
             <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} />
-
           </div>
           <div className="col-md-1"></div>
         </div>
       </section>
       <section id="lab-bottom">
         <div className="container-fluid">
-        <div className="row lab-bottom-detail">
-          <div className="col-md-1"></div>
-          <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
-          <div className="col-md-5 " id="lab-bottom-detail-desc">
-            <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
+          <div className="row lab-bottom-detail">
+            <div className="col-md-1"></div>
+            <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
+            <div className="col-md-5 " id="lab-bottom-detail-desc">
+              <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
+            </div>
+            <div className="col-md-1"></div>
           </div>
-          <div className="col-md-1"></div>
         </div>
-      </div>
       </section>
       <Footer footer={footer}/>
     </div>

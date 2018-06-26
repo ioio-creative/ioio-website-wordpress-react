@@ -54,21 +54,30 @@ function VideoLandingDesc(props) {
   const bg = {
     backgroundColor: props.lab.background_mood_color
   };
-  return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
+  var str = props.lab.project_date;
+  var res = str.split("-");
 
+  return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
 
     <div className="container-fluid">
       <div className="row video-landing-title">
         <div className="col-md-1"></div>
         <div className="col-md-2 additional-info">
-
+          <ul>
+            <li className="date">
+              {res[1]}/{res[2]}
+            </li>
+            <li className="year">
+              {res[0]}
+            </li>
+          </ul>
         </div>
         <div className="col-md-8">
           <div className="cover-text">
             <h1 className="container-fluid">{props.lab.project_short_desc}</h1>
             <h2 className="container-fluid">{props.lab.project_name}</h2>
           </div>
-      </div>
+        </div>
         <div className="col-md-1"></div>
       </div>
       <div className="row video-landing-detail">
@@ -87,9 +96,9 @@ function VideoLandingDesc(props) {
           </ul>
         </div>
         <div className="col-md-8">
-          <p className="video-landing-text-l">{props.lab.key_message}</p>
-        <p className="video-landing-text-r">{props.lab.overview}</p>
-      </div>
+          <p className="lab-key-message">{props.lab.key_message}</p>
+          <p className="lab-overview">{props.lab.overview}</p>
+        </div>
         <div className="col-md-1"></div>
       </div>
     </div>
@@ -171,7 +180,16 @@ class LabDetailPage extends Component {
     return (<div className="wow fadeIn">
       <VideoLanding lab={lab}/>
       <VideoLandingDesc lab={lab}/>
-      {labTemplateContainer}
+      <div className="container-fluid">
+        <div className="row ">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            {labTemplateContainer}
+          </div>
+          <div className="col-md-1"></div>
+        </div>
+      </div>
+
       <Footer footer={footer}/>
     </div>);
   }

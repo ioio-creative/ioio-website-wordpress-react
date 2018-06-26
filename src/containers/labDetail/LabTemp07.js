@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProjectTemp07 extends Component {
+class LabTemp07 extends Component {
     constructor(props) {
         super(props);
     }
@@ -11,12 +11,12 @@ class ProjectTemp07 extends Component {
       const bg = {
         backgroundColor: props.background_mood_color,
       };
-      
+
       let image0 = '';
       if (props.images)
       {
         image0 = props.images[0].guid;
-      }      
+      }
 
         return (
           <section className="photo-montage-one-vid project-section-bg wow fadeInUp">
@@ -32,4 +32,4 @@ class ProjectTemp07 extends Component {
     }
 }
 
-export default ProjectTemp07;
+export default LabTemp07;

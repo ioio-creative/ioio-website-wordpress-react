@@ -37,7 +37,7 @@ function SlideshowRight(props) {
   </div>);
 }
 
-class ProjectTemp06 extends Component {
+class LabTemp06 extends Component {
   constructor(props) {
     super(props);
   }
@@ -69,4 +69,4 @@ class ProjectTemp06 extends Component {
   }
 }
 
-export default ProjectTemp06;
+export default LabTemp06;

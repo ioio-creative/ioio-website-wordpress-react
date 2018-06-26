@@ -73,15 +73,27 @@ pop-up
   display: inline-block;
 }
 
-.additional-info ul{
+.additional-info ul {
   list-style-type: none;
 }
 
-
+.video-landing-title{
+    padding: 100px 0 50px 0;
+}
 
 .cover-text {
+
   color: black;
-  padding: 0;
+}
+
+.additional-info .date{
+font-size: 40px;
+  font-weight: bold;
+}
+
+.additional-info .year{
+font-size: 18px;
+font-weight:normal;
 }
 
 .cover-text h1 {
@@ -103,18 +115,17 @@ pop-up
   letter-spacing: 0.05em;
 }
 
-.video-landing-text {
-  position: relative;
-  float: left;
-  color: black;
-  z-index: 2;
-  width: 100%;
-  text-align: left;
-  font-size: 18px;
-  padding: 100px 0 100px 0;
+
+.video-landing-detail{
+  padding: 50px 0 50px 0;
+}
+.lab-key-message {
+  font-weight: bold;
 }
 
-
+.lab-overview {
+  font-weight: normal;
+}
 
 .projectlist-showreel-img {
   width: 25px;

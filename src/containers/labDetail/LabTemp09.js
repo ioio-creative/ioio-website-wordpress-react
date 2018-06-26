@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProjectTemp09 extends Component {
+class LabTemp09 extends Component {
     constructor(props) {
         super(props);
     }
@@ -33,4 +33,4 @@ class ProjectTemp09 extends Component {
     }
 }
 
-export default ProjectTemp09;
+export default LabTemp09;
