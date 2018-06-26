@@ -384,7 +384,18 @@ render() {
           <div className="col-md-1"></div>
         </div>
       </section>
-
+      <section id="lab-bottom">
+        <div className="container-fluid">
+        <div className="row lab-bottom-detail">
+          <div className="col-md-1"></div>
+          <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
+          <div className="col-md-5 " id="lab-bottom-detail-desc">
+            <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
+          </div>
+          <div className="col-md-1"></div>
+        </div>
+      </div>
+      </section>
       <Footer footer={footer}/>
     </div>
   );

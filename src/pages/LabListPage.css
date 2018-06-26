@@ -324,6 +324,33 @@ Lab List
   min-height: 100%;
 }
 
+#lab-bottom {
+  background-color: black;
+  color: white;
+  padding: 100px 0 100px 0;
+}
+
+#ioio-text-l {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  font-size: 60px;
+  padding: 10px;
+}
+
+#ioio-text-r {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+  font-size: 60px;
+  padding: 10px;
+  text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
+}
+
+#lab-bottom-detail-desc{
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
 }
