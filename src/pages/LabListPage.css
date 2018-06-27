@@ -141,7 +141,7 @@ Lab List
   left: 55px;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 9;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -153,6 +153,7 @@ Lab List
   opacity: 1;
   position: relative;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -213,7 +214,7 @@ Lab List
 .lab-item.fade .sub-lab-item{
   cursor: pointer;
   z-index: 10;
-  opacity: 0;
+  opacity: 0.3;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -299,6 +300,24 @@ Lab List
   text-transform: uppercase;
   z-index: 2;
   text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item span {
+  color: #fccd05;
+  position: absolute;
+  margin: 0 0;
+
+  top: 25px;
+  bottom: 100px;
+  font-weight: bold;
+  font-size: 20px;
+
+  z-index: 2;
+
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;

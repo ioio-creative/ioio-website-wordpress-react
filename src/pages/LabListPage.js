@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 //Footer
 import Footer from 'containers/DarkFooter';
 import LabCategories from 'containers/labCategories/LabCategories';
+import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 
 import {fetchActiveLab, fetchLabCategories, fetchActiveDarkFooter} from 'websiteApi';
 
@@ -19,7 +20,7 @@ import classNames from 'classnames'
 
 import $ from 'jquery'
 
-function tick(title, txt, pos, topPos) {
+function tick(title, txt, cat, pos, topPos) {
 
   let thisTarget;
   if (pos == 2) {
@@ -32,7 +33,7 @@ function tick(title, txt, pos, topPos) {
 
   let item_hover_description = txt;
 
-  const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>Lab Categories</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
+  const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
   $('.hover-middle').html('')
   $('.hover-left').html('')
   $('.hover-right').html('')
@@ -63,7 +64,7 @@ class LabItems extends Component {
 
   }
 
-  handleMouseOver(e, w, template, title,txt) {
+  handleMouseOver(e, w, template, title, txt, cat) {
     let thisTarget = e.target;
     $(".lab-item").addClass('fade')
     $('#lab-list').addClass('active')
@@ -83,17 +84,17 @@ class LabItems extends Component {
     if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
       //console.log("l1")
       if(template == 5){
-        tick(title,txt, 1, offsets.top)
+        tick(title,txt,cat, 1, offsets.top)
       }else{
-        tick(title,txt, 2, offsets.top)
+        tick(title,txt,cat, 2, offsets.top)
       }
 
     } else {
       if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
         //console.log("l3 ")
-        tick(title,txt, 3, offsets.top)
+        tick(title,txt,cat, 3, offsets.top)
       } else {
-        tick(title,txt, 2, offsets.top)
+        tick(title,txt,cat, 2, offsets.top)
         //console.log("l2 ")
       }
     }
@@ -118,8 +119,8 @@ class LabItems extends Component {
     const state = this.state;
 
     const styleFrame = props.styleFrame;
-    const w = props.w;
-    const h = props.h;
+
+    const idNamePairs = props.labCategoriesIdNamePairs;
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
@@ -163,6 +164,20 @@ class LabItems extends Component {
                 let imgStyle;
                 let itemStyle;
                 let textColor;
+                let categoryColor;
+
+                let hasCategoryColor = {
+                  opacity : '1',
+                  right:'25px',
+                }
+                let hasMediumCategoryColor = {
+                  color:'black',
+                  opacity : '1',
+                  left:'25px',
+                }
+                let hasNoCategoryColor = {
+                  opacity : '0'
+                }
 
                 let mediumContainerStyle = {
                   background: 'yellow',
@@ -222,33 +237,38 @@ class LabItems extends Component {
                 };
 
                 if (templateType == 3) {
+                  categoryColor = hasNoCategoryColor;
                   itemStyle = longRectStyle;
                   imgStyle = imgLongRectStyle;
                   textColor = whiteText;
                 } else if (templateType == 5) {
+                  categoryColor = hasCategoryColor;
                   itemStyle = researchZeroStyle;
                   imgStyle = imgResearchZeroStyle;
                   textColor = whiteText;
                 } else if (templateType == 6) {
+                  categoryColor = hasMediumCategoryColor;
                   containerStyle = mediumContainerStyle;
                   textColor = blackText;
                 }else if (templateType == 7) {
+                  categoryColor = hasNoCategoryColor;
                   containerStyle = sharingContainerStyle;
                   textColor = blackText;
                   imgStyle = imgNoImageStyle;
                 }else {
+                  categoryColor = hasNoCategoryColor;
                   itemStyle = squareStyle;
                   imgStyle = imgSquareStyle;
                   textColor = whiteText;
                 }
 
                 return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e, containerWidth, templateType ,item.lab_item_title, item.hover_description);
+                  this.handleMouseOver(e, containerWidth, templateType ,item.lab_item_title, item.hover_description, item.lab_categories[0].name);
                 }} onMouseOut={(e) => {
                   this.handleMouseOut(e);
                 }}>
                 <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
-
+                  <span style={categoryColor}>{item.lab_categories[0].name}</span>
                   <h1 style={textColor}>{item.description}</h1>
                   <h3 style={textColor}>{item.lab_item_title}</h3>
                   <div className="img-container" style={containerStyle}>
@@ -277,6 +297,8 @@ class LabListPage extends Component {
       labCategories: [],
 
     }
+
+
   }
   handleResize(){
     this.setState({
@@ -323,8 +345,15 @@ componentWillMount(){
   //this.handleResize();
 }
 
+getProjectCategoryIdNamePairs() {
+  if (this.projectCategoryIdNamePairs.length === 0) {
+    this.projectCategoryIdNamePairs = createIdNamePairs(this.props.categories);
+  }
+  return this.projectCategoryIdNamePairs;
+}
 
 render() {
+
 
   const footer = this.state.footer;
   if (footer === null) {
@@ -342,6 +371,9 @@ render() {
   if (labCategories.length === 0) {
     return null;
   }
+
+  const idNamePairs = createIdNamePairs(labCategories)
+
 
   const bg = {
     //backgroundImage: url,
@@ -412,7 +444,7 @@ render() {
               categoryFilterId={1}//categoryIdToFilter}
               allCategoryName='All' />
             </div>
-            <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} />
+            <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
           </div>
           <div className="col-md-1"></div>
         </div>
