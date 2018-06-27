@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import Shuffle from 'shufflejs'
+import queryString from 'query-string';
 
 //Footer
 import Footer from 'containers/DarkFooter';
@@ -9,19 +12,17 @@ import {fetchActiveLab, fetchLabCategories, fetchActiveDarkFooter} from 'website
 
 import './LabListPage.css';
 
-import ReactPlayer from 'react-player'
-import {Link} from 'react-router-dom'
+import ReactPlayer from 'react-player';
 
-import Measure from 'react-measure'
-import {SizeMe} from 'react-sizeme'
-import withContentRect from 'react-measure'
+import Measure from 'react-measure';
+import {SizeMe} from 'react-sizeme';
+import withContentRect from 'react-measure';
 
-import classNames from 'classnames'
+import classNames from 'classnames';
 
-import $ from 'jquery'
+import $ from 'jquery';
 
 function tick(title, txt, cat, pos, topPos) {
-
   let thisTarget;
   if (pos == 2) {
     thisTarget = '.hover-middle';
@@ -47,7 +48,6 @@ function tick(title, txt, cat, pos, topPos) {
     topPosition = '10%';
   }
   $(thisTarget).html(element).css('top',topPosition);
-
 }
 
 class LabItems extends Component {
@@ -61,7 +61,6 @@ class LabItems extends Component {
 
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
-
   }
 
   handleMouseOver(e, w, template, title, txt, cat) {
@@ -74,9 +73,6 @@ class LabItems extends Component {
     $('#hover-cover').addClass('active')
 
     $(".lab-item.active").removeClass('fade')
-
-
-
 
     var el = $('#hover-cover')
     var offsets = $(thisTarget).closest('.lab-item').offset();
@@ -103,14 +99,12 @@ class LabItems extends Component {
   }
 
   handleMouseOut(e,template) {
-
     let thisTarget = e.target;
     $(".lab-item").removeClass('fade')
     $('#lab-list').removeClass('active')
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
     $('#hover-cover').removeClass('active')
-
   }
 
   handleMeasureResize(contentRect) {
@@ -149,14 +143,16 @@ class LabItems extends Component {
 
       let gridSizeClassName = "col-md-" + gridSize;
 
-      return (<div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
-        <SizeMe
-          monitorHeight monitorWidth
-          refreshRate={32}
-          render={({ size }) => {sz = size
-            return(<div >
-            </div>)}}
+      return (
+        <div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
+          <SizeMe
+            monitorHeight monitorWidth
+            refreshRate={32}
+            render={({ size }) => {sz = size
+              return(<div >
+              </div>)}}
           />
+          
           <SizeMe monitorHeight
             refreshRate={32} render={
               ({size}) => {
@@ -264,13 +260,13 @@ class LabItems extends Component {
                   containerStyle = mediumContainerStyle;
                   textColor = blackText;
                   imgStyle = imgNoImageStyle;
-                }else if (templateType == 7) {
+                } else if (templateType == 7) {
                   categoryColor = hasCategoryColor;
                   containerStyle = sharingContainerStyle;
                   textColor = blackText;
                   imgStyle = imgSharingStyle;
                   classNameImg = "lab-thumb sharing";
-                }else {
+                } else {
                   categoryColor = hasNoCategoryColor;
                   itemStyle = squareStyle;
                   imgStyle = imgSquareStyle;
@@ -278,31 +274,34 @@ class LabItems extends Component {
 
                 }
 
-
-
-                return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
-                }} onMouseOut={(e) => {
-                  this.handleMouseOut(e,templateType);
-                }}>
-                <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
-                  <span style={categoryColor}>{item.lab_categories[0].name}</span>
-                  <h1 style={textColor}>{item.description}</h1>
-                  <h3 style={textColor}>{item.lab_item_title}</h3>
-                  <div className="img-container" style={containerStyle}>
-                    <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
+                return (
+                  <div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
+                    this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
+                    }} onMouseOut={(e) => {
+                    this.handleMouseOut(e,templateType);
+                    }}>
+                    <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
+                      <span style={categoryColor}>{item.lab_categories[0].name}</span>
+                      <h1 style={textColor}>{item.description}</h1>
+                      <h3 style={textColor}>{item.lab_item_title}</h3>
+                      <div className="img-container" style={containerStyle}>
+                        <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle} />
+                      </div>
+                    </a>
                   </div>
-                </a>
-              </div>)
+                );
+              }
             }
-          }
-        />
-      </div>)
+          />
+        </div>
+      );
     });
 
-    return (<div className="row">
-      {items}
-    </div>);
+    return (
+      <div className="row">
+        {items}
+      </div>
+    );
   }
 }
 
@@ -313,21 +312,18 @@ class LabListPage extends Component {
     this.state = {
       lab: null,
       labCategories: [],
-
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth,
+      footer: null
     }
-
-
   }
+  
   handleResize(){
     this.setState({
-
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth
     })
-
   }
-
-
 
   async componentDidMount() {
     fetchActiveLab((aLab) => {
@@ -335,154 +331,143 @@ class LabListPage extends Component {
     });
     /*
     fetchLabItems((aLabItems) => {
-    this.setState({labItems: aLabItems});
-  });
-  */
-
-  fetchLabCategories((categories) => {
-    this.setState({labCategories: categories});
-  });
-
-  fetchActiveDarkFooter((aFooter) => {
-    this.setState({footer: aFooter});
-  });
-
-  window.addEventListener("resize", this.handleResize.bind(this));
-
-}
-
-/**
-* Remove event listener
-*/
-componentWillUnmount() {
-  window.removeEventListener("resize", this.handleResize.bind(this));
-}
-
-
-componentWillMount(){
-  //this.handleResize();
-}
-
-getProjectCategoryIdNamePairs() {
-  if (this.projectCategoryIdNamePairs.length === 0) {
-    this.projectCategoryIdNamePairs = createIdNamePairs(this.props.categories);
-  }
-  return this.projectCategoryIdNamePairs;
-}
-
-render() {
-
-
-  const footer = this.state.footer;
-  if (footer === null) {
-    return null;
-  }
-
-  const lab = this.state.lab;
-  if (lab === null) {
-    return null;
-  }
-
-  const labItems = lab.lab_item;
-
-  const labCategories = this.state.labCategories;
-  if (labCategories.length === 0) {
-    return null;
-  }
-
-  const idNamePairs = createIdNamePairs(labCategories)
-
-
-  const bg = {
-    //backgroundImage: url,
-    /*
-    backgroundSize: 'auto',
-    backgroundPosition: 'center'
+      this.setState({labItems: aLabItems});
+    });
     */
-  };
 
-  const blackBg = {
-    background: 'black'
-  };
+    fetchLabCategories((categories) => {
+      this.setState({labCategories: categories});
+    });
 
-  return (<div style={blackBg}>
-    <div id="hover-cover">
-      <div className="row">
-        <div className="col-md-1"></div>
-        <div className="col-md-10">
-          <div className="row hover-text">
-            <div className="col-md-4 hover-left"></div>
-            <div className="col-md-4 hover-middle"></div>
-            <div className="col-md-4 hover-right"></div>
+    fetchActiveDarkFooter((aFooter) => {
+      this.setState({footer: aFooter});
+    });
+
+    window.addEventListener("resize", this.handleResize.bind(this));
+  }
+
+  /**
+  * Remove event listener
+  */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize.bind(this));
+  }
+
+  componentWillMount(){
+    //this.handleResize();
+  }
+
+  render() {
+    const footer = this.state.footer;
+    if (footer === null) {
+      return null;
+    }
+
+    const lab = this.state.lab;
+    if (lab === null) {
+      return null;
+    }
+
+    const labItems = lab.lab_item;
+
+    const labCategories = this.state.labCategories;
+    if (labCategories.length === 0) {
+      return null;
+    }
+
+    const idNamePairs = createIdNamePairs(labCategories);
+
+    const bg = {
+      //backgroundImage: url,
+      /*
+      backgroundSize: 'auto',
+      backgroundPosition: 'center'
+      */
+    };
+
+    const blackBg = {
+      background: 'black'
+    };
+    
+    return (
+      <div style={blackBg}>
+        <div id="hover-cover">
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <div className="row hover-text">
+                <div className="col-md-4 hover-left"></div>
+                <div className="col-md-4 hover-middle"></div>
+                <div className="col-md-4 hover-right"></div>
+              </div>
+            </div>
+            <div className="col-md-1"></div>
           </div>
         </div>
-        <div className="col-md-1"></div>
-      </div>
-    </div>
-    <section id="lab-video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
-      <div className="video-landing-div">
-        <div className="container-fluid">
-          <div className="player-wrapper">
-            <video className="react-player" width={'100%'} height={'auto'} poster={lab.top_video_preload_image.guid} autoPlay={"autoPlay"} loop={"loop"} muted={"muted"} playsInline={"playsInline"}>
-              <source className="wow fadeIn" src={lab.top_video.guid} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
-              <img className="wow fadeIn" src={lab.top_video_preload_image.guid} title="Your browser does not support the <video> tag"/>
-            </video>
+        <section id="lab-video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
+          <div className="video-landing-div">
+            <div className="container-fluid">
+              <div className="player-wrapper">
+                <video className="react-player" width={'100%'} height={'auto'} poster={lab.top_video_preload_image.guid} autoPlay={"autoPlay"} loop={"loop"} muted={"muted"} playsInline={"playsInline"}>
+                  <source className="wow fadeIn" src={lab.top_video.guid} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+                  <img className="wow fadeIn" src={lab.top_video_preload_image.guid} title="Your browser does not support the <video> tag"/>
+                </video>
+              </div>
+              <div className="video-text wow fadeIn">
+                <div className="row">
+                  <div className="col-md-1"></div>
+                  <div className="col-md-10">
+                    <h3>{lab.subcaption}</h3>
+                    <h1>{lab.caption}</h1>
+                  </div>
+                  <div className="col-md-1"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="video-text wow fadeIn">
-            <div className="row">
+        </section>
+        <section id="lab-top" className="wow fadeIn lab-bg" style={bg}>
+          <div className="container-fluid row text-left">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <div className="lab-top-img text-right">
+                <img id="lab-top-img3" src={lab.top_image_3.guid} alt="" className="img-fluid"/>
+              </div>
+            </div>
+            <div className="col-md-1"></div>
+          </div>
+        </section>
+        <section id="lab-list" className="lab-bg wow fadeIn">
+          <div className="container-fluid row text-center">
+            <div className="col-md-1"></div>
+            <div className="col-md-10" id="lab-list-frame">
+              <div className="lab-categories container-fluid" id="portfolio-flters">
+                <LabCategories categories={labCategories}
+                  selectAllCategoryId={this.selectAllCategoryId}
+                  categoryFilterId={1}//categoryIdToFilter}
+                  allCategoryName='All' />
+              </div>
+              <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
+            </div>
+            <div className="col-md-1"></div>
+          </div>
+        </section>
+        <section id="lab-bottom">
+          <div className="container-fluid">
+            <div className="row lab-bottom-detail">
               <div className="col-md-1"></div>
-              <div className="col-md-10">
-                <h3>{lab.subcaption}</h3>
-                <h1>{lab.caption}</h1>
+              <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
+              <div className="col-md-5 " id="lab-bottom-detail-desc">
+                <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
               </div>
               <div className="col-md-1"></div>
             </div>
           </div>
-        </div>
+        </section>
+        <Footer footer={footer}/>
       </div>
-    </section>
-    <section id="lab-top" className="wow fadeIn lab-bg" style={bg}>
-      <div className="container-fluid row text-left">
-        <div className="col-md-1"></div>
-        <div className="col-md-10">
-          <div className="lab-top-img text-right">
-            <img id="lab-top-img3" src={lab.top_image_3.guid} alt="" className="img-fluid"/>
-          </div>
-        </div>
-        <div className="col-md-1"></div>
-      </div>
-    </section>
-    <section id="lab-list" className="lab-bg wow fadeIn">
-      <div className="container-fluid row text-center">
-        <div className="col-md-1"></div>
-        <div className="col-md-10" id="lab-list-frame">
-          <div className="lab-categories container-fluid" id="portfolio-flters">
-            <LabCategories categories={labCategories}
-              selectAllCategoryId={this.selectAllCategoryId}
-              categoryFilterId={1}//categoryIdToFilter}
-              allCategoryName='All' />
-            </div>
-            <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
-          </div>
-          <div className="col-md-1"></div>
-        </div>
-      </section>
-      <section id="lab-bottom">
-        <div className="container-fluid">
-          <div className="row lab-bottom-detail">
-            <div className="col-md-1"></div>
-            <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
-            <div className="col-md-5 " id="lab-bottom-detail-desc">
-              <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
-            </div>
-            <div className="col-md-1"></div>
-          </div>
-        </div>
-      </section>
-      <Footer footer={footer}/>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default LabListPage;

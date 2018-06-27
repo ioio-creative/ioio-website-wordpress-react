@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Shuffle from 'shufflejs'
-import queryString from 'query-string';
 
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
@@ -9,6 +8,7 @@ import './ProjectListPageProjectGrid.css';
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveBrightFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import Footer from 'containers/BrightFooter';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
@@ -320,8 +320,7 @@ class ProjectListPage extends Component {
       return (<MyFirstLoadingComponent />);
     }
 
-    const parsedQuery = queryString.parse(this.props.history.location.search);
-    const categoryFilterSlugFromQuery = parsedQuery.category || null;
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
       <ProjectListWithShuffle projects={projects}
