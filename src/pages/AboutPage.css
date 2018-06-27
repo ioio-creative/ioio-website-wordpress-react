@@ -46,6 +46,7 @@
   background-size: auto;
   background-repeat: no-repeat;
   height: 85vh;
+
 }
 
 #about01 h3 {
@@ -66,7 +67,7 @@
 
 #img-hotpot {
   position: absolute;
-  right: 40%;
+  right: 30%;
   top: 1vh;
   height: 60vh;
 }
@@ -250,7 +251,7 @@ slideshow
 }
 
 #core-value .box-bg-02 {
-  background-color: #E296BA;
+  background-color: #E896BB;
   /*background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);*/
 }
 

@@ -76,13 +76,13 @@ class DarkSidebar extends Component {
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link>{/*
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>{/*
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
         */
         }
-        <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link>
-        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
+        <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>
+        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a><br/>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 

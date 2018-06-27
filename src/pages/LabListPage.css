@@ -22,7 +22,8 @@ Cover Video Part
 #lab-video-landing .video-text h3 {
   color: #888;
   z-index: 10;
-  font-size: 30px;
+  font-size: 24px;
+  letter-spacing: 0.05em;
   padding: 5px 0 5px 0;
   text-transform: uppercase;
   text-align: left;
@@ -34,12 +35,13 @@ Cover Video Part
   color: white;
   font-weight: bold;
   z-index: 10;
+  line-height: 1.4em;
   font-size: 50px;
   text-align: left;
   padding: 5px 0 5px 0;
   position: absolute;
   text-transform: uppercase;
-  bottom: 50px;
+  bottom: 24px;
 }
 
 #lab-video-landing .lab-item {
@@ -230,10 +232,10 @@ Lab List
 }
 
 .lab-item .lab-item-detail {
-  display: none;
   opacity: 0;
-  color: white;
-  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -246,8 +248,8 @@ Lab List
   color: white;
   z-index: 10;
   position: fixed;
-  top: 0;
-  left: 0;
+  width: 100%;
+  height: 100vh;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -276,7 +278,7 @@ Lab List
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .lab-item .img-container {
@@ -288,8 +290,6 @@ Lab List
   border: 2px solid rgba(255, 255, 255, 0);
 }
 
-
-
 .lab-item span {
   color: #fccd05;
   position: absolute;
@@ -297,7 +297,7 @@ Lab List
   top: 25px;
   bottom: 100px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 14px;
   z-index: 2;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -305,30 +305,30 @@ Lab List
   transition: all 0.3s;
 }
 
-.lab-desc-from-top{
+.lab-desc-from-top {
   top: 150px;
 }
 
-.lab-title-from-top{
-top: 90px;
+.lab-title-from-top {
+  width: 80%;
+  top: 90px;
 }
 
-.lab-desc-from-bottom{
-bottom: 50px;
+.lab-desc-from-bottom {
+  bottom: 50px;
 }
 
-.lab-title-from-bottom{
-
-    bottom: 100px;
+.lab-title-from-bottom {
+  bottom: 90px;
 }
+
 .lab-item h1 {
   color: white;
   position: absolute;
   margin: 0 0;
   padding-left: 25px;
-
-  font-weight: bold;
-  font-size: 25px;
+  letter-spacing: 0.05em;
+  font-size: 16px;
   text-transform: uppercase;
   z-index: 2;
   text-align: left;
@@ -344,8 +344,8 @@ bottom: 50px;
   position: absolute;
   margin: 0 0;
   padding-left: 25px;
-  font-size: 40px;
-
+  font-size: 20px;
+  line-height: 1.5em;
   z-index: 2;
   text-align: left;
   -webkit-transition: all 0.3s;

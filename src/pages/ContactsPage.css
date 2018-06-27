@@ -1,13 +1,13 @@
 .contactpage-title {
   color: #c6c6c6;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
-  padding: 50px 0 20px 0;
+  padding: 50px 0 0 0;
 }
 
 #contact-top h1 {
   color: #000;
-  font-size: 60px;
+  font-size: 45px;
   font-weight: bold;
   padding: 0 0 20px 0;
 }
@@ -32,7 +32,7 @@
 }
 
 #contact-core-value .box-bg-01 {
-  background-color: #183c47;
+  background-color: #1f444e;
   /*background-image: linear-gradient(0deg, #000000 0%, #242323 50%, #000000 100%);*/
 }
 
@@ -59,10 +59,11 @@
 
 #contact-core-value p {
   position:relative;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #fff;
   bottom: 0;
+  padding-bottom: 20px;
   text-align: center;
 }
 

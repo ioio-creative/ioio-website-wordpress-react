@@ -75,11 +75,11 @@ pop-up
 
 .video-text h1 {
   position: absolute;
-  top: 40vh;
+  top: 39vh;
   font-weight: bold;
   font-size: 36px;
   text-align: left;
-  line-height: 1.4em;
+  line-height: 1.2em;
 }
 
 .video-text h2 {
@@ -520,6 +520,12 @@ video {
   margin: 0 0 0 0;
   padding: 20px 0 20px 0;
   font-weight: bold;
+}
+
+
+#project-detail-page-space-buffer{
+  width: 100%;
+  height: 40px;
 }
 
 @media only screen and (max-width: 767px) {

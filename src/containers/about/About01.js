@@ -16,7 +16,7 @@ class About01 extends Component {
 
     const bg = {
       backgroundImage: url,
-      backgroundSize: '80%',
+      backgroundSize: '50%',
       backgroundPosition: 'center'
     };
 

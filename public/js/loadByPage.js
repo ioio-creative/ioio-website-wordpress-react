@@ -133,11 +133,15 @@ function reloadJS() {
       let rangeToScroll = convertRange($(this).scrollTop(), [
         0, 1500
       ], [0, 1])
+            $('#about01').css('background-size', 50 + (rangeToScroll) * 700 + '%')
       $('#img-hotpot').css('top', rangeToScroll * 15 + 'vh')
       $('#img-meet').css('top', rangeToScroll * 55 + 'vh')
-      $('#img-fish').css('top', -rangeToScroll * 15 + 'vh')
-      $('#about01').css('background-size', (1-rangeToScroll) * 80 + '%')
+      $('#img-fish').css('top', -rangeToScroll * 25 + 'vh')
 
+      $('#img-fish').css('-webkit-transform','rotate('+ (rangeToScroll) * 360 + 'deg)')
+      $('#img-fish').css('transform', 'rotate('+ (rangeToScroll) * 360 + 'deg)')
+      $('#img-fish').css('z-index', '100')
+$('#media').css('z-index', '1')
 
     }
   });

@@ -232,6 +232,7 @@ class ProjectDetailPage extends Component {
     */
       }
       {projectTemplateContainer}
+      <div id="project-detail-page-space-buffer"></div>
       <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
         <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
           <i className="ion ion-android-close"></i>

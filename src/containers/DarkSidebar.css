@@ -64,7 +64,6 @@
 }
 
 #sidebar.active .menu-item {
-  display: block;
   color: #fff;
   font-family: "FuturaLT", sans-serif;
   text-transform: uppercase;

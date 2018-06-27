@@ -193,7 +193,7 @@ class LabItems extends Component {
                   }
 
                   let mediumContainerStyle = {
-                    background: 'yellow',
+                    background: '#ffe000',
                     height: containerWidth,
                   };
 
