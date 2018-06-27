@@ -23,11 +23,11 @@ const routes = {
     return this.labByCategory('all');
   },
   labByCategory: function (categorySlug) {
-    return "/lab/labs?category=" + categorySlug;
+    return "/lab?category=" + categorySlug;
   },
   labAbout: "/lab/about",
   labContacts: "/lab/contacts",
-  labBySlug: "/lab/:labSlug",
+  labBySlug: "/lab/labs/:labSlug",
   labBySlugWithValue: (slugValue) => {
     return "/lab/" + slugValue;
   },
