@@ -67,7 +67,7 @@
   text-align: center;
   margin: 0 auto;
   float: left;
-  left: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
 }
 
@@ -85,9 +85,9 @@
   text-align: left;
   float: left;
   width: 35px;
-  left: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
-  margin-left: -200px;
+  margin-left: -205px;
 }
 
 #homepage-top span {

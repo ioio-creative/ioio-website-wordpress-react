@@ -129,14 +129,14 @@ function reloadJS() {
             */
     }
 
-    if ($(this).scrollTop() < 1000) {
+    if ($(this).scrollTop() < 1500) {
       let rangeToScroll = convertRange($(this).scrollTop(), [
-        0, 1000
+        0, 1500
       ], [0, 1])
       $('#img-hotpot').css('top', rangeToScroll * 15 + 'vh')
       $('#img-meet').css('top', rangeToScroll * 55 + 'vh')
       $('#img-fish').css('top', -rangeToScroll * 15 + 'vh')
-            $('#about01').css('background-size', (1-rangeToScroll) * 80 + '%')
+      $('#about01').css('background-size', (1-rangeToScroll) * 80 + '%')
 
 
     }

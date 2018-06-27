@@ -9,6 +9,8 @@
   font-size: 15px;
   text-transform: uppercase;
   opacity:0;
+  -webkit-filter: invert(0%);
+  filter: invert(0%);
 }
 
 
@@ -113,6 +115,8 @@
   top: 15px;
   left: 8px;
   width: 40px;
+  -webkit-filter: invert(0%);
+  filter: invert(0%);
 }
 
 #sidebar.active #menu-canvas {

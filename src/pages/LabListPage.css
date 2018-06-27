@@ -194,7 +194,6 @@ Lab List
 
 .lab-item {
   padding: 20px;
-
 }
 
 .lab-item.active {
@@ -211,7 +210,7 @@ Lab List
   transition: all 0.5s;
 }
 
-.lab-item.fade .sub-lab-item{
+.lab-item.fade .sub-lab-item {
   cursor: pointer;
   z-index: 10;
   opacity: 0.3;
@@ -310,14 +309,11 @@ Lab List
   color: #fccd05;
   position: absolute;
   margin: 0 0;
-
   top: 25px;
   bottom: 100px;
   font-weight: bold;
   font-size: 20px;
-
   z-index: 2;
-
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -356,10 +352,30 @@ Lab List
   /*  padding: 50% 0 0 0;*/
 }
 
+.lab-item.active img {
+  opacity: 1;
+}
+
 .lab-item img {
   flex-shrink: 0;
   min-width: 100%;
   min-height: 100%;
+}
+
+.sharing {
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.sharing:hover {
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #lab-bottom {
@@ -385,9 +401,9 @@ Lab List
   text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
 }
 
-#lab-bottom-detail-desc{
+#lab-bottom-detail-desc {
   font-weight: bold;
-padding-right: 70px;
+  padding-right: 70px;
 }
 
 @media only screen and (max-width: 767px) {

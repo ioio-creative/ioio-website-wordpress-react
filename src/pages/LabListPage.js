@@ -76,6 +76,8 @@ class LabItems extends Component {
     $(".lab-item.active").removeClass('fade')
 
 
+
+
     var el = $('#hover-cover')
     var offsets = $(thisTarget).closest('.lab-item').offset();
 
@@ -100,7 +102,8 @@ class LabItems extends Component {
     }
   }
 
-  handleMouseOut(e) {
+  handleMouseOut(e,template) {
+
     let thisTarget = e.target;
     $(".lab-item").removeClass('fade')
     $('#lab-list').removeClass('active')
@@ -126,12 +129,15 @@ class LabItems extends Component {
       let itemClassNames = classNames("template-type-" + item.template_type)
 
       let sz;
-      /* 1.Image/GIF
+      /*
+      1.Image/GIF
       2.video
       3.Portrait Image/GIF
       4.Instagram
       5.Research 0
-      6. medium post */
+      6. medium post
+      7. Sharing
+      */
 
       let gridSize = 3;
 
@@ -165,6 +171,7 @@ class LabItems extends Component {
                 let itemStyle;
                 let textColor;
                 let categoryColor;
+                let classNameImg = "lab-thumb";
 
                 let hasCategoryColor = {
                   opacity : '1',
@@ -196,7 +203,6 @@ class LabItems extends Component {
                   color: 'white',
                 };
 
-
                 let squareStyle = {
                   background: 'transparent',
                   color: 'black',
@@ -219,22 +225,29 @@ class LabItems extends Component {
                 };
 
                 let imgSquareStyle = {
-                  height: containerWidth
+                  height: containerWidth,
                 };
 
                 let imgLongRectStyle = {
                   width: "100%",
-                  height: 'auto'
+                  height: 'auto',
                 };
+
                 let imgNoImageStyle = {
-                  height: containerWidth,
+                  height: containerWidth
                 };
 
                 let imgResearchZeroStyle = {
                   width: '100%',
-                  height: 'auto'
-
+                  height: 'auto',
                 };
+
+                let imgSharingStyle = {
+                  width: '100%',
+                  height: 'auto',
+                };
+
+
 
                 if (templateType == 3) {
                   categoryColor = hasNoCategoryColor;
@@ -250,29 +263,34 @@ class LabItems extends Component {
                   categoryColor = hasMediumCategoryColor;
                   containerStyle = mediumContainerStyle;
                   textColor = blackText;
+                  imgStyle = imgNoImageStyle;
                 }else if (templateType == 7) {
-                  categoryColor = hasNoCategoryColor;
+                  categoryColor = hasCategoryColor;
                   containerStyle = sharingContainerStyle;
                   textColor = blackText;
-                  imgStyle = imgNoImageStyle;
+                  imgStyle = imgSharingStyle;
+                  classNameImg = "lab-thumb sharing";
                 }else {
                   categoryColor = hasNoCategoryColor;
                   itemStyle = squareStyle;
                   imgStyle = imgSquareStyle;
                   textColor = whiteText;
+
                 }
 
+
+
                 return (<div className="sub-lab-item wow fadeInUp" data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'} style={itemStyle} onMouseOver={(e) => {
-                  this.handleMouseOver(e, containerWidth, templateType ,item.lab_item_title, item.hover_description, item.lab_categories[0].name);
+                  this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
                 }} onMouseOut={(e) => {
-                  this.handleMouseOut(e);
+                  this.handleMouseOut(e,templateType);
                 }}>
                 <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
                   <span style={categoryColor}>{item.lab_categories[0].name}</span>
                   <h1 style={textColor}>{item.description}</h1>
                   <h3 style={textColor}>{item.lab_item_title}</h3>
                   <div className="img-container" style={containerStyle}>
-                    <img className="lab-thumb" src={item.image.guid} alt="" style={imgStyle}/>
+                    <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                   </div>
                 </a>
               </div>)
