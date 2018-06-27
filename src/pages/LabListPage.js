@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Shuffle from 'shufflejs'
-import queryString from 'query-string';
 
 //Footer
 import Footer from 'containers/DarkFooter';
 import LabCategories from 'containers/labCategories/LabCategories';
-import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
+
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import {fetchActiveLab, fetchLabCategories, fetchActiveDarkFooter} from 'websiteApi';
 
@@ -31,7 +31,7 @@ function tick(title, txt, cat, pos, topPos) {
   } else {
     thisTarget = '.hover-left'
   }
-  
+
   let item_hover_description = txt;
 
   const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
@@ -119,7 +119,6 @@ class LabItems extends Component {
 
     const styleFrame = props.styleFrame;
 
-    const idNamePairs = props.labCategoriesIdNamePairs;
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
@@ -340,32 +339,57 @@ class LabItems extends Component {
     }
   }
 
-  class LabListPage extends Component {
-    constructor(props) {
-      super(props);
-      this.selectAllCategoryId = -1;
-      this.state = {
-        lab: null,
-        labCategories: [],
-        windowHeight: window.innerHeight,
-        windowWidth: window.innerWidth,
-        footer: null
-      }
-    }
+class LabItemsWithShuffle extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    handleResize(){
-      this.setState({
-        windowHeight: window.innerHeight,
-        windowWidth: window.innerWidth
-      })
-    }
+  componentDidMount() {
 
-    async componentDidMount() {
-      fetchActiveLab((aLab) => {
-        this.setState({lab: aLab});
-      });
-      /*
-      fetchLabItems((aLabItems) => {
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  render() {
+    return (
+      <div></div>
+    );
+  }
+}
+
+class LabListPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      lab: null,
+      labCategories: [],
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth,
+      footer: null
+    };
+  }
+
+  handleResize(){
+    this.setState({
+      windowHeight: window.innerHeight,
+      windowWidth: window.innerWidth
+    })
+  }
+
+  componentDidMount() {
+    fetchActiveLab((aLab) => {
+      this.setState({lab: aLab});
+    });
+
+    /*
+    fetchLabItems((aLabItems) => {
       this.setState({labItems: aLabItems});
     });
     */
@@ -409,8 +433,6 @@ class LabItems extends Component {
     if (labCategories.length === 0) {
       return null;
     }
-
-    const idNamePairs = createIdNamePairs(labCategories);
 
     const bg = {
       //backgroundImage: url,
@@ -482,7 +504,7 @@ class LabItems extends Component {
                   categoryFilterId={1}//categoryIdToFilter}
                   allCategoryName='All' />
                 </div>
-                <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
+                <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} />
               </div>
               <div className="col-md-1"></div>
             </div>

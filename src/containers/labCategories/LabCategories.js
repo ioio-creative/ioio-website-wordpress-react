@@ -25,6 +25,7 @@ class LabCategories extends Component {
       <CategoryList
         items={props.categories}
         selectAllItemsOptionId={props.selectAllCategoryId}
+        selectedItemClass={props.selectedItemClass}
         selectedItemId={props.categoryFilterId}
         itemLinkToCreator={labItemLinkPathCreator}
         itemPropertyToShowSelector={labItemPropertyToShowSelector}

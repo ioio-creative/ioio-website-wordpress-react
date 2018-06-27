@@ -21,18 +21,14 @@ class BrightFooter extends Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      footer: null
     };
+    
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-
-    this.state = {
-      footer: {}
-    }
   }
-
-
 
   openModal() {
     this.setState({modalIsOpen: true});
@@ -47,12 +43,9 @@ class BrightFooter extends Component {
     this.setState({modalIsOpen: false});
   }
 
-  componentDidMount() {}
-
   render() {
-    console.log(this.props.footer)
     const f = this.props.footer;
-    if (f === undefined || f === null) {
+    if (f === null) {
       return null;
     }
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Shuffle from 'shufflejs'
 
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
@@ -9,6 +8,7 @@ import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveBrig
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
+import createDefaultShuffle from 'utils/shuffle/createDefaultShuffle';
 
 import Footer from 'containers/BrightFooter';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
@@ -16,7 +16,7 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 
 
 function ProjectGrid(props) {
-  console.log('ProjectGrid: render');
+  //console.log('ProjectGrid: render');
 
   const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
 
@@ -68,7 +68,8 @@ class ProjectListWithShuffle extends Component {
     super(props);
 
     this.selectAllCategoryId = -1;
-
+    this.selectedItemClass = 'filter-active';
+    
     this.shuffleRef = null;
     this.projectShuffleSelectorClass = 'portfolio-item';
     this.shuffle = null;
@@ -88,30 +89,7 @@ class ProjectListWithShuffle extends Component {
 
   componentDidMount() {
     // The elements are in the DOM, initialize a shuffle instance.
-    this.shuffle = new Shuffle(this.shuffleRef, {
-      // https://vestride.github.io/Shuffle/#options
-      // overrideable options
-      itemSelector: '.' + this.projectShuffleSelectorClass, // e.g. '.picture-item'.
-
-      buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
-      columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
-      columnWidth: 0, // A static number or function that returns a number which tells the plugin how wide the columns are (in pixels).
-      delimiter: null, // If your group is not json, and is comma delimeted, you could set delimiter to ','.
-      easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', // CSS easing function to use.
-      filterMode: Shuffle.FilterMode.ANY, // When using an array with filter(), the element passes the test if any of its groups are in the array. With "all", the element only passes if all groups are in the array.
-      group: Shuffle.ALL_ITEMS, // Initial filter group.
-      gutterWidth: 0, // A static number or function that tells the plugin how wide the gutters between columns are (in pixels).
-      initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method.
-      isCentered: false, // Attempt to center grid items in each row.
-      roundTransforms: true, // Whether to round pixel values used in translate(x, y). This usually avoids blurriness.
-      sizer: null, // Element or selector string. Use an element to determine the size of columns and gutters.
-      speed: 250, // Transition/animation speed (milliseconds).
-      staggerAmount: 15, // Transition delay offset for each item in milliseconds.
-      staggerAmountMax: 150, // Maximum stagger delay in milliseconds.
-      //throttle: throttle, // By default, shuffle will throttle resize events. This can be changed or removed.
-      throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
-      useTransforms: true, // Whether to use transforms or absolute positioning.
-    });
+    this.shuffle = createDefaultShuffle(this.shuffleRef, this.projectShuffleSelectorClass);
 
     // for first visiting of the page
     this.filterProjectsByQueryFromUrl();
@@ -169,7 +147,7 @@ class ProjectListWithShuffle extends Component {
     */
 
     if (categoryId === this.selectAllCategoryId) {
-      this.shuffle.filter(Shuffle.ALL_ITEMS);
+      this.shuffle.filter();
     } else {
       // https://vestride.github.io/Shuffle/#advanced-filters
       this.shuffle.filter((projectItem) => {
@@ -186,7 +164,7 @@ class ProjectListWithShuffle extends Component {
   }
 
   render() {
-    console.log('ProjectListWithShuffle: render');
+    //console.log('ProjectListWithShuffle: render');
 
     const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
 
@@ -204,6 +182,7 @@ class ProjectListWithShuffle extends Component {
                   {/* <ProjectTags tags={t}/> */}
                   <ProjectCategories categories={this.props.categories}
                                      selectAllCategoryId={this.selectAllCategoryId}
+                                     selectedItemClass={this.selectedItemClass}
                                      categoryFilterId={categoryIdToFilter}
                                      allCategoryName='All' />
                 </div>
@@ -290,7 +269,7 @@ class ProjectListPage extends Component {
   }
 
   render() {
-    console.log('ProjectListPage: render');
+    //console.log('ProjectListPage: render');
 
     const state = this.state;
     //const props = this.props;
@@ -301,22 +280,22 @@ class ProjectListPage extends Component {
     const footer = state.footer;
 
     if (projects.length === 0) {
-      console.log('ProjectListPage: projects length === 0');
+      //console.log('ProjectListPage: projects length === 0');
       return (<MyFirstLoadingComponent />);
     }
       
     if (pC.length === 0) {
-      console.log('ProjectListPage: projectCategories length === 0');
+      //console.log('ProjectListPage: projectCategories length === 0');
       return (<MyFirstLoadingComponent />);
     }
 
     if (pT.length === 0) {
-      console.log('ProjectListPage: projectTags length === 0');
+      //console.log('ProjectListPage: projectTags length === 0');
       return (<MyFirstLoadingComponent />);
     }
     
     if (footer === null) {
-      console.log('ProjectListPage: footer === null');
+      //console.log('ProjectListPage: footer === null');
       return (<MyFirstLoadingComponent />);
     }
 
