@@ -31,7 +31,7 @@ function tick(title, txt, cat, pos, topPos) {
   } else {
     thisTarget = '.hover-left'
   }
-
+  
   let item_hover_description = txt;
 
   const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
@@ -100,11 +100,13 @@ class LabItems extends Component {
 
   handleMouseOut(e,template) {
     let thisTarget = e.target;
+
     $(".lab-item").removeClass('fade')
     $('#lab-list').removeClass('active')
     $(thisTarget).closest('.lab-item').removeClass('active')
     $(thisTarget).closest('.img-container').removeClass('active')
     $('#hover-cover').removeClass('active')
+
   }
 
   handleMeasureResize(contentRect) {
@@ -151,219 +153,219 @@ class LabItems extends Component {
             render={({ size }) => {sz = size
               return(<div >
               </div>)}}
-          />
-          
-          <SizeMe monitorHeight
-            refreshRate={32} render={
-              ({size}) => {
+            />
 
-                //let containerWidth = size.width;
-                let containerWidth = sz.width;
-                let containerresearchZeroHeight = containerWidth / 2 * 1.3;
-                let templateType = item.template_type;
+            <SizeMe monitorHeight
+              refreshRate={32} render={
+                ({size}) => {
 
-                let containerStyle;
-                let imgStyle;
-                let itemStyle;
-                let textDescStyle;
-                let textTitleStyle;
-                let categoryColor;
-                let classNameImg = "lab-thumb";
+                  //let containerWidth = size.width;
+                  let containerWidth = sz.width;
+                  let containerresearchZeroHeight = containerWidth / 2 * 1.3;
+                  let templateType = item.template_type;
 
-                let classNameTitle = "lab-title-from-bottom";
-                let classNameDesc = "lab-desc-from-bottom";
+                  let containerStyle;
+                  let imgStyle;
+                  let itemStyle;
+                  let textDescStyle;
+                  let textTitleStyle;
+                  let categoryColor;
+                  let classNameImg = "lab-thumb";
 
-                let hasCategoryColor = {
-                  opacity : '1',
-                  right:'25px',
-                }
-                let hasMediumCategoryColor = {
-                  color:'black',
-                  opacity : '1',
-                  left:'25px',
-                }
-                let hasSharingCategoryColor = {
-                  color:'#fccd05',
-                  opacity : '1',
-                  left:'25px',
-                }
-                let hasNoCategoryColor = {
-                  opacity : '0'
-                }
-
-                let mediumContainerStyle = {
-                  background: 'yellow',
-                  height: containerWidth,
-                };
-
-                let sharingContainerStyle = {
-                  background: 'white',
-                  height: containerWidth,
-                };
-
-                let blackText = {
-                  color: 'black',
-                };
-                let whiteText = {
-                  color: 'white',
-                };
-
-                let squareStyle = {
-                  background: 'transparent',
-                  color: 'black',
-                  width: containerWidth,
-                  height: containerWidth
-                };
-
-                let longRectStyle = {
-                  background: 'transparent',
-                  color: 'black',
-                  width: containerWidth,
-                  height: 'auto'
-                };
-
-                let researchZeroStyle = {
-                  background: 'transparent',
-                  color: 'black',
-                  width: containerWidth,
-                  height: containerresearchZeroHeight
-                };
-
-                let imgSquareStyle = {
-                  height: containerWidth,
-                };
-
-                let imgLongRectStyle = {
-                  width: "100%",
-                  height: 'auto',
-                };
-
-                let imgNoImageStyle = {
-                  height: containerWidth
-                };
-
-                let imgResearchZeroStyle = {
-                  width: '100%',
-                  height: 'auto',
-                };
-
-                let imgSharingStyle = {
-                  width: '100%',
-                  height: 'auto',
-                };
-
-
-
-                if (templateType == 3) {
-                  categoryColor = hasNoCategoryColor;
-                  itemStyle = longRectStyle;
-                  imgStyle = imgLongRectStyle;
-                  textTitleStyle = whiteText;
-                  textDescStyle = whiteText;
                   let classNameTitle = "lab-title-from-bottom";
                   let classNameDesc = "lab-desc-from-bottom";
-                } else if (templateType == 5) {
-                  categoryColor = hasCategoryColor;
-                  itemStyle = researchZeroStyle;
-                  imgStyle = imgResearchZeroStyle;
-                  textTitleStyle = whiteText;
-                  textDescStyle = whiteText;
-                  let classNameTitle = "lab-title-from-bottom";
-                  let classNameDesc = "lab-desc-from-bottom";
-                } else if (templateType == 6) {
-                  categoryColor = hasMediumCategoryColor;
-                  containerStyle = mediumContainerStyle;
-                  textTitleStyle = blackText;
-                  textDescStyle = blackText;
-                  imgStyle = imgNoImageStyle;
-                  classNameTitle = "lab-title-from-top";
-                  classNameDesc = "lab-desc-from-top";
-                }else if (templateType == 7) {
-                  categoryColor = hasSharingCategoryColor;
-                  containerStyle = sharingContainerStyle;
-                  imgStyle = imgSharingStyle;
-                  textTitleStyle = blackText;
-                  textDescStyle = blackText;
-                  classNameImg = "lab-thumb sharing";
-                  classNameTitle = "lab-title-from-top";
-                  classNameDesc = "lab-desc-from-top";
-                }else {
-                  categoryColor = hasNoCategoryColor;
-                  itemStyle = squareStyle;
-                  imgStyle = imgSquareStyle;
-                  textTitleStyle = whiteText;
-                  textDescStyle = whiteText;
-                  let classNameTitle = "lab-title-from-bottom";
-                  let classNameDesc = "lab-desc-from-bottom";
+
+                  let hasCategoryColor = {
+                    opacity : '1',
+                    right:'25px',
+                  }
+                  let hasMediumCategoryColor = {
+                    color:'black',
+                    opacity : '1',
+                    left:'25px',
+                  }
+                  let hasSharingCategoryColor = {
+                    color:'#fccd05',
+                    opacity : '1',
+                    left:'25px',
+                  }
+                  let hasNoCategoryColor = {
+                    opacity : '0'
+                  }
+
+                  let mediumContainerStyle = {
+                    background: 'yellow',
+                    height: containerWidth,
+                  };
+
+                  let sharingContainerStyle = {
+                    background: 'white',
+                    height: containerWidth,
+                  };
+
+                  let blackText = {
+                    color: 'black',
+                  };
+                  let whiteText = {
+                    color: 'white',
+                  };
+
+                  let squareStyle = {
+                    background: 'transparent',
+                    color: 'black',
+                    width: containerWidth,
+                    height: containerWidth
+                  };
+
+                  let longRectStyle = {
+                    background: 'transparent',
+                    color: 'black',
+                    width: containerWidth,
+                    height: 'auto'
+                  };
+
+                  let researchZeroStyle = {
+                    background: 'transparent',
+                    color: 'black',
+                    width: containerWidth,
+                    height: containerresearchZeroHeight
+                  };
+
+                  let imgSquareStyle = {
+                    height: containerWidth,
+                  };
+
+                  let imgLongRectStyle = {
+                    width: "100%",
+                    height: 'auto',
+                  };
+
+                  let imgNoImageStyle = {
+                    height: containerWidth
+                  };
+
+                  let imgResearchZeroStyle = {
+                    width: '100%',
+                    height: 'auto',
+                  };
+
+                  let imgSharingStyle = {
+                    width: '100%',
+                    height: 'auto',
+                  };
+
+
+
+                  if (templateType == 3) {
+                    categoryColor = hasNoCategoryColor;
+                    itemStyle = longRectStyle;
+                    imgStyle = imgLongRectStyle;
+                    textTitleStyle = whiteText;
+                    textDescStyle = whiteText;
+                    let classNameTitle = "lab-title-from-bottom";
+                    let classNameDesc = "lab-desc-from-bottom";
+                  } else if (templateType == 5) {
+                    categoryColor = hasCategoryColor;
+                    itemStyle = researchZeroStyle;
+                    imgStyle = imgResearchZeroStyle;
+                    textTitleStyle = whiteText;
+                    textDescStyle = whiteText;
+                    let classNameTitle = "lab-title-from-bottom";
+                    let classNameDesc = "lab-desc-from-bottom";
+                  } else if (templateType == 6) {
+                    categoryColor = hasMediumCategoryColor;
+                    containerStyle = mediumContainerStyle;
+                    textTitleStyle = blackText;
+                    textDescStyle = blackText;
+                    imgStyle = imgNoImageStyle;
+                    classNameTitle = "lab-title-from-top";
+                    classNameDesc = "lab-desc-from-top";
+                  }else if (templateType == 7) {
+                    categoryColor = hasSharingCategoryColor;
+                    containerStyle = sharingContainerStyle;
+                    imgStyle = imgSharingStyle;
+                    textTitleStyle = blackText;
+                    textDescStyle = blackText;
+                    classNameImg = "lab-thumb sharing";
+                    classNameTitle = "lab-title-from-top";
+                    classNameDesc = "lab-desc-from-top";
+                  }else {
+                    categoryColor = hasNoCategoryColor;
+                    itemStyle = squareStyle;
+                    imgStyle = imgSquareStyle;
+                    textTitleStyle = whiteText;
+                    textDescStyle = whiteText;
+                    let classNameTitle = "lab-title-from-bottom";
+                    let classNameDesc = "lab-desc-from-bottom";
+                  }
+
+
+
+                  return (
+                    <div className="sub-lab-item wow fadeInUp"
+                      data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
+                      style={itemStyle}
+                      onMouseOver={(e) => {
+                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
+                      }}
+                      onMouseOut={(e) => {
+                        this.handleMouseOut(e,templateType);
+                      }}>
+                      <a className="lab-item-click"
+                        href={item.link != '' ? item.link : 'javascript:;'}
+                        target="_blank"
+                        onClick={this.handleMenuClose}
+                        style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
+                        <span style={categoryColor}>{item.lab_categories[0].name}</span>
+                        <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
+                        <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
+                        <div className="img-container" style={containerStyle}>
+                          <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
+                        </div>
+                      </a>
+                    </div>
+                  );
                 }
-
-
-
-                return (
-                  <div className="sub-lab-item wow fadeInUp" 
-                    data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
-                    style={itemStyle}
-                    onMouseOver={(e) => {
-                      this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
-                    }}
-                    onMouseOut={(e) => {
-                      this.handleMouseOut(e,templateType);
-                    }}>
-                    <a className="lab-item-click" 
-                      href={item.link != '' ? item.link : 'javascript:;'}
-                      target="_blank"
-                      onClick={this.handleMenuClose}
-                      style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
-                      <span style={categoryColor}>{item.lab_categories[0].name}</span>
-                      <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
-                      <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                      <div className="img-container" style={containerStyle}>
-                        <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
-                      </div>
-                    </a>
-                  </div>
-                );
               }
-            }
-          />
+            />
+          </div>
+        );
+      });
+
+      return (
+        <div className="row">
+          {items}
         </div>
       );
-    });
-
-    return (
-      <div className="row">
-        {items}
-      </div>
-    );
-  }
-}
-
-class LabListPage extends Component {
-  constructor(props) {
-    super(props);
-    this.selectAllCategoryId = -1;
-    this.state = {
-      lab: null,
-      labCategories: [],
-      windowHeight: window.innerHeight,
-      windowWidth: window.innerWidth,
-      footer: null
     }
   }
-  
-  handleResize(){
-    this.setState({
-      windowHeight: window.innerHeight,
-      windowWidth: window.innerWidth
-    })
-  }
 
-  async componentDidMount() {
-    fetchActiveLab((aLab) => {
-      this.setState({lab: aLab});
-    });
-    /*
-    fetchLabItems((aLabItems) => {
+  class LabListPage extends Component {
+    constructor(props) {
+      super(props);
+      this.selectAllCategoryId = -1;
+      this.state = {
+        lab: null,
+        labCategories: [],
+        windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth,
+        footer: null
+      }
+    }
+
+    handleResize(){
+      this.setState({
+        windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth
+      })
+    }
+
+    async componentDidMount() {
+      fetchActiveLab((aLab) => {
+        this.setState({lab: aLab});
+      });
+      /*
+      fetchLabItems((aLabItems) => {
       this.setState({labItems: aLabItems});
     });
     */
@@ -421,7 +423,7 @@ class LabListPage extends Component {
     const blackBg = {
       background: 'black'
     };
-    
+
     return (
       <div style={blackBg}>
         <div id="hover-cover">
@@ -479,28 +481,28 @@ class LabListPage extends Component {
                   selectAllCategoryId={this.selectAllCategoryId}
                   categoryFilterId={1}//categoryIdToFilter}
                   allCategoryName='All' />
-              </div>
-              <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
-            </div>
-            <div className="col-md-1"></div>
-          </div>
-        </section>
-        <section id="lab-bottom">
-          <div className="container-fluid">
-            <div className="row lab-bottom-detail">
-              <div className="col-md-1"></div>
-              <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
-              <div className="col-md-5 " id="lab-bottom-detail-desc">
-                <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
+                </div>
+                <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
               </div>
               <div className="col-md-1"></div>
             </div>
-          </div>
-        </section>
-        <Footer footer={footer}/>
-      </div>
-    );
+          </section>
+          <section id="lab-bottom">
+            <div className="container-fluid">
+              <div className="row lab-bottom-detail">
+                <div className="col-md-1"></div>
+                <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
+                <div className="col-md-5 " id="lab-bottom-detail-desc">
+                  <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
+                </div>
+                <div className="col-md-1"></div>
+              </div>
+            </div>
+          </section>
+          <Footer footer={footer}/>
+        </div>
+      );
+    }
   }
-}
 
-export default LabListPage;
+  export default LabListPage;
