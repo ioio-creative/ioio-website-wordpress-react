@@ -288,22 +288,7 @@ Lab List
   border: 2px solid rgba(255, 255, 255, 0);
 }
 
-.lab-item h1 {
-  color: white;
-  position: absolute;
-  margin: 0 0;
-  padding-left: 25px;
-  bottom: 100px;
-  font-weight: bold;
-  font-size: 25px;
-  text-transform: uppercase;
-  z-index: 2;
-  text-align: left;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
+
 
 .lab-item span {
   color: #fccd05;
@@ -320,13 +305,47 @@ Lab List
   transition: all 0.3s;
 }
 
-.lab-item h3 {
+.lab-desc-from-top{
+top: 150px;
+}
+
+.lab-title-from-top{
+top: 90px;
+}
+
+.lab-desc-from-bottom{
+bottom: 50px;
+}
+
+.lab-title-from-bottom{
+
+    bottom: 100px;
+}
+.lab-item h1 {
   color: white;
   position: absolute;
   margin: 0 0;
   padding-left: 25px;
-  font-size: 20px;
-  bottom: 40px;
+
+  font-weight: bold;
+  font-size: 25px;
+  text-transform: uppercase;
+  z-index: 2;
+  text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item h3 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  margin: 0 0;
+  padding-left: 25px;
+  font-size: 40px;
+
   z-index: 2;
   text-align: left;
   -webkit-transition: all 0.3s;

@@ -169,9 +169,13 @@ class LabItems extends Component {
                 let containerStyle;
                 let imgStyle;
                 let itemStyle;
-                let textColor;
+                let textDescStyle;
+                let textTitleStyle;
                 let categoryColor;
                 let classNameImg = "lab-thumb";
+
+                let classNameTitle = "lab-title-from-bottom";
+                let classNameDesc = "lab-desc-from-bottom";
 
                 let hasCategoryColor = {
                   opacity : '1',
@@ -179,6 +183,11 @@ class LabItems extends Component {
                 }
                 let hasMediumCategoryColor = {
                   color:'black',
+                  opacity : '1',
+                  left:'25px',
+                }
+                let hasSharingCategoryColor = {
+                  color:'#fccd05',
                   opacity : '1',
                   left:'25px',
                 }
@@ -253,29 +262,43 @@ class LabItems extends Component {
                   categoryColor = hasNoCategoryColor;
                   itemStyle = longRectStyle;
                   imgStyle = imgLongRectStyle;
-                  textColor = whiteText;
+                  textTitleStyle = whiteText;
+                  textDescStyle = whiteText;
+                  let classNameTitle = "lab-title-from-bottom";
+                  let classNameDesc = "lab-desc-from-bottom";
                 } else if (templateType == 5) {
                   categoryColor = hasCategoryColor;
                   itemStyle = researchZeroStyle;
                   imgStyle = imgResearchZeroStyle;
-                  textColor = whiteText;
+                  textTitleStyle = whiteText;
+                  textDescStyle = whiteText;
+                  let classNameTitle = "lab-title-from-bottom";
+                  let classNameDesc = "lab-desc-from-bottom";
                 } else if (templateType == 6) {
                   categoryColor = hasMediumCategoryColor;
                   containerStyle = mediumContainerStyle;
-                  textColor = blackText;
+                  textTitleStyle = blackText;
+                  textDescStyle = blackText;
                   imgStyle = imgNoImageStyle;
+                  classNameTitle = "lab-title-from-top";
+                  classNameDesc = "lab-desc-from-top";
                 }else if (templateType == 7) {
-                  categoryColor = hasCategoryColor;
+                  categoryColor = hasSharingCategoryColor;
                   containerStyle = sharingContainerStyle;
-                  textColor = blackText;
                   imgStyle = imgSharingStyle;
+                  textTitleStyle = blackText;
+                  textDescStyle = blackText;
                   classNameImg = "lab-thumb sharing";
+                  classNameTitle = "lab-title-from-top";
+                  classNameDesc = "lab-desc-from-top";
                 }else {
                   categoryColor = hasNoCategoryColor;
                   itemStyle = squareStyle;
                   imgStyle = imgSquareStyle;
-                  textColor = whiteText;
-
+                  textTitleStyle = whiteText;
+                  textDescStyle = whiteText;
+                  let classNameTitle = "lab-title-from-bottom";
+                  let classNameDesc = "lab-desc-from-bottom";
                 }
 
 
@@ -287,8 +310,8 @@ class LabItems extends Component {
                 }}>
                 <a className="lab-item-click" href={item.link != '' ? item.link : 'javascript:;'} target="_blank" onClick={this.handleMenuClose} style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
                   <span style={categoryColor}>{item.lab_categories[0].name}</span>
-                  <h1 style={textColor}>{item.description}</h1>
-                  <h3 style={textColor}>{item.lab_item_title}</h3>
+                  <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
+                  <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
                   <div className="img-container" style={containerStyle}>
                     <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                   </div>
