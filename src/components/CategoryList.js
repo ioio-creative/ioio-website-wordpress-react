@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-class CategoryListItem extends Component {
-  render() {
-    const props = this.props;    
+const defaultSelectedItemClass = 'filter-active';
 
-    const selectedItemClass = 'filter-active';
+class CategoryListItem extends Component {
+  render() {    
+    const props = this.props;
 
     let itemClassName = '';
     if (props.isSelected) {
-      itemClassName = selectedItemClass;
+      itemClassName = props.selectedItemClass || defaultSelectedItemClass;
     }
 
     return (
@@ -23,7 +23,7 @@ class CategoryListItem extends Component {
 }
 
 class CategoryList extends Component {
-  render() {  
+  render() {
     const props = this.props;    
 
     const items = props.items.map((item) => {      
@@ -31,6 +31,7 @@ class CategoryList extends Component {
       return (
         <CategoryListItem key={item.id} 
           isSelected={isSelected}
+          selectedItemClass={props.selectedItemClass}
           itemLinkTo={props.itemLinkToCreator(item)}
           itemSlug={item.slug}
           itemName={item.name}
@@ -44,6 +45,7 @@ class CategoryList extends Component {
     const btnAllItems = (
       <CategoryListItem
         isSelected={isAllItemSelected}
+        selectedItemClass={props.selectedItemClass}
         itemLinkTo={props.allItemLinkTo}
         itemSlug={null}
         itemName={props.allItemName}

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Shuffle from 'shufflejs'
-import queryString from 'query-string';
 
 //Footer
 import Footer from 'containers/DarkFooter';
 import LabCategories from 'containers/labCategories/LabCategories';
-import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
+
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import {fetchActiveLab, fetchLabCategories, fetchActiveDarkFooter} from 'websiteApi';
 
@@ -117,7 +117,6 @@ class LabItems extends Component {
 
     const styleFrame = props.styleFrame;
 
-    const idNamePairs = props.labCategoriesIdNamePairs;
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
@@ -338,17 +337,41 @@ class LabItems extends Component {
   }
 }
 
+class LabItemsWithShuffle extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  render() {
+    return (
+      <div></div>
+    );
+  }
+}
+
 class LabListPage extends Component {
   constructor(props) {
     super(props);
-    this.selectAllCategoryId = -1;
+    
     this.state = {
       lab: null,
       labCategories: [],
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       footer: null
-    }
+    };
   }
   
   handleResize(){
@@ -358,10 +381,11 @@ class LabListPage extends Component {
     })
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     fetchActiveLab((aLab) => {
       this.setState({lab: aLab});
     });
+
     /*
     fetchLabItems((aLabItems) => {
       this.setState({labItems: aLabItems});
@@ -407,8 +431,6 @@ class LabListPage extends Component {
     if (labCategories.length === 0) {
       return null;
     }
-
-    const idNamePairs = createIdNamePairs(labCategories);
 
     const bg = {
       //backgroundImage: url,
@@ -480,7 +502,7 @@ class LabListPage extends Component {
                   categoryFilterId={1}//categoryIdToFilter}
                   allCategoryName='All' />
               </div>
-              <LabItems labItems={labItems} labCategoriesIdNamePairs={idNamePairs} w={this.state.windowWidth} h={this.state.windowHeight} />
+              <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} />
             </div>
             <div className="col-md-1"></div>
           </div>
