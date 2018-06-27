@@ -23,9 +23,10 @@ const routes = {
     return this.labByCategory('all');
   },
   labByCategory: function (categorySlug) {
-    return "/lab?category=" + categorySlug;
+    return "/lab/labs?category=" + categorySlug;
   },
-  aboutLab: "/aboutLab",
+  labAbout: "/lab/about",
+  labContacts: "/lab/contacts",
   labBySlug: "/lab/:labSlug",
   labBySlugWithValue: (slugValue) => {
     return "/lab/" + slugValue;

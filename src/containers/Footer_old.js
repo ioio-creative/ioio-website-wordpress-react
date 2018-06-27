@@ -21,7 +21,7 @@ class Footer extends Component {
                 later Routes in the Route list.
             */}
             <Route path={routes.lab} component={AsyncDarkFooter} />
-            <Route path={routes.aboutLab} component={AsyncDarkFooter} />
+            <Route path={routes.labAbout} component={AsyncDarkFooter} />
             <Route component={AsyncBrightFooter} />
           </Switch>
         );

@@ -12,9 +12,11 @@ function SocialMedia(props) {
     return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
   });
 
-  return (<div>
-    {social_media_items}
-  </div>);
+  return (
+    <div>
+      {social_media_items}
+    </div>
+  );
 }
 
 class DarkSidebar extends Component {
@@ -36,7 +38,6 @@ class DarkSidebar extends Component {
   }
 
   handleMenuToggle(e) {
-
     e.preventDefault();
 
     let attr = $("#sidebar[class*='active']")
@@ -53,15 +54,14 @@ class DarkSidebar extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-
   }
 
   render() {
-
     const sidebar = this.state.sidebar;
     if (sidebar === null) {
       return null;
     }
+
     return (<nav id="sidebar" className="menu-transition" role="navigation">
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
@@ -76,12 +76,12 @@ class DarkSidebar extends Component {
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.aboutLab} onClick={this.handleMenuClose}>About</Link>{/*
+        <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link>{/*
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link>
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link>
         */
         }
-        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
+        <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link>
         <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>

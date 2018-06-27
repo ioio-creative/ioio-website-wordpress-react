@@ -33,7 +33,8 @@ class Main extends Component {
                 <Switch>
                   <Route exact path={routes.home} component={AsyncHomePage} />
                   <Route path={routes.about} component={AsyncAboutPage} />
-                  <Route path={routes.aboutLab} component={AsyncAboutLabPage} />
+                  <Route path={routes.labAbout} component={AsyncAboutLabPage} />
+                  <Route path={routes.labContacts} component={AsyncContactsPage} />  {/* link to Contacts page */}
                   <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
                   <Route path={routes.projects} component={AsyncProjectListPage} />
                   <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
