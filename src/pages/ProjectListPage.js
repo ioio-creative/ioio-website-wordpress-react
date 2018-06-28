@@ -64,7 +64,7 @@ function ProjectGrid(props) {
   );
 }
 
-class ProjectListWithShuffle extends Component {
+class ProjectCategoriesAndItems extends Component {
   constructor(props) {
     //console.log("ProjectListWithShuffle: constructor");
 
@@ -72,10 +72,8 @@ class ProjectListWithShuffle extends Component {
 
     this.selectAllCategoryId = -1;
     this.selectedCategoryClass = 'filter-active';
-    
-    // this.shuffleRef = null;
+
     this.projectShuffleSelectorClass = 'portfolio-item';
-    //this.shuffle = null;     
 
     this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
@@ -93,29 +91,6 @@ class ProjectListWithShuffle extends Component {
       this.props.setWithShuffleParamsFunc(this.projectShuffleSelectorClass,
         this.filterProjectsByQueryFromUrl, this.filterProjectsByQueryFromUrl);
     }
-  }
-
-  componentDidMount() {
-    // The elements are in the DOM, initialize a shuffle instance.
-    //this.shuffle = createDefaultShuffle(this.shuffleRef, this.projectShuffleSelectorClass);
-
-    // for first visiting of the page
-    //this.filterProjectsByQueryFromUrl();
-  }
-
-  // http://busypeoples.github.io/post/react-component-lifecycle/
-  componentDidUpdate() {
-    // Notify shuffle to dump the elements it's currently holding and consider
-    // all elements matching the `itemSelector` as new.
-    //this.shuffle.resetItems();
-
-    //this.filterProjectsByQueryFromUrl();
-  }
-
-  componentWillUnmount() {
-    // Dispose of shuffle when it will be removed from the DOM.
-    //this.shuffle.destroy();
-    //this.shuffle = null;
   }
 
   getProjectCategoryIdNamePairs() {
@@ -208,7 +183,7 @@ class ProjectListWithShuffle extends Component {
 
 
 // https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
-const ProjectListWithShuffleAdded = withShuffle(ProjectListWithShuffle);
+const ProjectCategoriesAndItemsWithShuffle = withShuffle(ProjectCategoriesAndItems);
 
 
 // filter implementation reference
@@ -299,7 +274,7 @@ class ProjectListPage extends Component {
 
     return (
       <div>
-        <ProjectListWithShuffleAdded projects={projects}
+        <ProjectCategoriesAndItemsWithShuffle projects={projects}
           categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
           categories={pC}
           tags={pT} />

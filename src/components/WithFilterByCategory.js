@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-import createDefaultShuffle from 'utils/shuffle/createDefaultShuffle';
-import getDisplayName from 'utils/react/getDisplayName';
-
-// https://vestride.github.io/Shuffle/shuffle-with-react
-export default function withShuffle(WrappedComponent) {
+export default function withFilterByCategory(WrappedComponent) {
   const HOC = class extends React.Component {
     constructor(props) {
       super(props);
@@ -84,7 +80,7 @@ export default function withShuffle(WrappedComponent) {
   };
 
   // https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging
-  HOC.displayName = `WithShuffle(${getDisplayName(WrappedComponent)})`;
+  HOC.displayName = `WithFilterByCategory(${getDisplayName(WrappedComponent)})`;
 
   return HOC;
 }
