@@ -69,6 +69,10 @@ class ProjectListWithShuffle extends Component {
 
     this.selectAllCategoryId = -1;
     this.selectedCategoryClass = 'filter-active';
+    
+    this.shuffleRef = null;
+    this.projectShuffleSelectorClass = 'portfolio-item';
+    this.shuffle = null;
 
     this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);

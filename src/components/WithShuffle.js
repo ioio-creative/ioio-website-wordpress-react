@@ -6,10 +6,8 @@ export default function withShuffle(WrappedComponent, shuffleSelectorClass) {
       super(props);
       
       this.state = {
-        data: selectData(DataSource, props)
-      };
 
-      this.selectAllItemId = -1;      
+      };
 
       // shuffle stuff
       this.shuffleRef = null;
@@ -17,17 +15,20 @@ export default function withShuffle(WrappedComponent, shuffleSelectorClass) {
     }
 
     componentDidMount() {
-      // ... that takes care of the subscription...
-      DataSource.addChangeListener(this.handleChange);
+      // The elements are in the DOM, initialize a shuffle instance.
+      this.shuffle = createDefaultShuffle(this.shuffleRef, this.projectShuffleSelectorClass);
+
+      // for first visiting of the page
+      this.filterProjectsByQueryFromUrl();
     }
 
     componentWillUnmount() {
-      DataSource.removeChangeListener(this.handleChange);
+      
     }
 
     render() {
       // ... and renders the wrapped component with the fresh data!
-      // Notice that we pass through any additional props
+      // Notice that we pass through any additional props      
       return <WrappedComponent data={this.state.data} {...this.props} />;
     }
   };
