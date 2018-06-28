@@ -68,11 +68,7 @@ class ProjectListWithShuffle extends Component {
     super(props);
 
     this.selectAllCategoryId = -1;
-    this.selectedItemClass = 'filter-active';
-    
-    this.shuffleRef = null;
-    this.projectShuffleSelectorClass = 'portfolio-item';
-    this.shuffle = null;
+    this.selectedCategoryClass = 'filter-active';
 
     this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
@@ -181,7 +177,7 @@ class ProjectListWithShuffle extends Component {
                 {/* <ProjectTags tags={t}/> */}
                 <ProjectCategories categories={this.props.categories}
                                     selectAllCategoryId={this.selectAllCategoryId}
-                                    selectedItemClass={this.selectedItemClass}
+                                    selectedItemClass={this.selectedCategoryClass}
                                     categoryFilterId={categoryIdToFilter}
                                     allCategoryName='All' />
               </div>

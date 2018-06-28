@@ -36,7 +36,8 @@ export default function withTracker(WrappedComponent, options = {}) {
     }
   };
 
-  HOC.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  // https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging
+  HOC.displayName = `WithTracker(${getDisplayName(WrappedComponent)})`;
 
   return HOC;
 }

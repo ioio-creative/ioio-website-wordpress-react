@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 
 export default function asyncComponent(importComponent) {
-  class AsyncComponent extends Component {
+  const HOC = class extends Component {
     constructor(props) {
       super(props);
 
@@ -30,5 +30,8 @@ export default function asyncComponent(importComponent) {
     }
   }
 
-  return AsyncComponent;
+  // https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging
+  HOC.displayName = `AsyncComponent(${getDisplayName(WrappedComponent)})`;
+
+  return HOC;
 }
