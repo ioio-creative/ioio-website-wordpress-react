@@ -330,7 +330,7 @@ console.log("ICON: " + mediumLogo)
                         <span style={categoryColor}>{item.lab_categories[0].name}</span>
                         <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                         <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                        <div className={classSharingPresenter} style={sharingPresenterStyle}><div className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? item.medium_logo.guid : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5></div>
+                        <div className={classSharingPresenter} style={sharingPresenterStyle}><div className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
                         <div className="img-container" style={containerStyle}>
                           <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                         </div>
@@ -458,6 +458,8 @@ class LabListPage extends Component {
     const blackBg = {
       background: 'black'
     };
+
+    console.log(lab);
 
     return (
       <div style={blackBg}>
