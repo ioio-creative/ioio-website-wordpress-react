@@ -8,11 +8,13 @@ import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteAp
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
-import createDefaultShuffle from 'utils/shuffle/createDefaultShuffle';
+import isFunction from 'utils/types/isFunction';
 
 import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
+import withShuffle from 'components/WithShuffle';
 
 
 function ProjectGrid(props) {
@@ -62,21 +64,21 @@ function ProjectGrid(props) {
   );
 }
 
-
 class ProjectListWithShuffle extends Component {
   constructor(props) {
+    //console.log("ProjectListWithShuffle: constructor");
+
     super(props);
 
     this.selectAllCategoryId = -1;
     this.selectedCategoryClass = 'filter-active';
     
-    this.shuffleRef = null;
+    // this.shuffleRef = null;
     this.projectShuffleSelectorClass = 'portfolio-item';
-    this.shuffle = null;
+    //this.shuffle = null;     
 
     this.filterProjectsByQueryFromUrl = this.filterProjectsByQueryFromUrl.bind(this);
     this.filterProjects = this.filterProjects.bind(this);
-    this.setShuffleRef = this.setShuffleRef.bind(this);
 
     this.getProjectCategoryIdNamePairs = this.getProjectCategoryIdNamePairs.bind(this);
     this.getProjectCategoryIdSlugPairs = this.getProjectCategoryIdSlugPairs.bind(this);
@@ -85,29 +87,35 @@ class ProjectListWithShuffle extends Component {
     this.projectCategoryIdNamePairs = [];
     this.projectCategoryIdSlugPairs = [];
     this.projectCategorySlugIdPairs = [];
+
+    // used together with WithShuffle  
+    if (isFunction(this.props.setWithShuffleParamsFunc)) {
+      this.props.setWithShuffleParamsFunc(this.projectShuffleSelectorClass,
+        this.filterProjectsByQueryFromUrl, this.filterProjectsByQueryFromUrl);
+    }
   }
 
   componentDidMount() {
     // The elements are in the DOM, initialize a shuffle instance.
-    this.shuffle = createDefaultShuffle(this.shuffleRef, this.projectShuffleSelectorClass);
+    //this.shuffle = createDefaultShuffle(this.shuffleRef, this.projectShuffleSelectorClass);
 
     // for first visiting of the page
-    this.filterProjectsByQueryFromUrl();
+    //this.filterProjectsByQueryFromUrl();
   }
 
   // http://busypeoples.github.io/post/react-component-lifecycle/
   componentDidUpdate() {
     // Notify shuffle to dump the elements it's currently holding and consider
     // all elements matching the `itemSelector` as new.
-    this.shuffle.resetItems();
+    //this.shuffle.resetItems();
 
-    this.filterProjectsByQueryFromUrl();
+    //this.filterProjectsByQueryFromUrl();
   }
 
   componentWillUnmount() {
     // Dispose of shuffle when it will be removed from the DOM.
-    this.shuffle.destroy();
-    this.shuffle = null;
+    //this.shuffle.destroy();
+    //this.shuffle = null;
   }
 
   getProjectCategoryIdNamePairs() {
@@ -146,22 +154,22 @@ class ProjectListWithShuffle extends Component {
       of this.shuffle.filter() not working.
     */
 
-    if (categoryId === this.selectAllCategoryId) {
-      this.shuffle.filter();
-    } else {
-      // https://vestride.github.io/Shuffle/#advanced-filters
-      this.shuffle.filter((projectItem) => {
-        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => {
-          return parseInt(id, 10);
-        });
-        return projItemCategoryIds.includes(categoryId);
-      });
-    }
-  }
+    const shuffle = this.props.shuffle;
 
-  setShuffleRef(element) {
-    this.shuffleRef = element;
-  }
+    if (shuffle !== null) {
+      if (categoryId === this.selectAllCategoryId) {
+        shuffle.filter();
+      } else {
+        // https://vestride.github.io/Shuffle/#advanced-filters
+        shuffle.filter((projectItem) => {
+          const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => {
+            return parseInt(id, 10);
+          });
+          return projItemCategoryIds.includes(categoryId);
+        });
+      }
+    }
+  }  
 
   render() {
     //console.log('ProjectListWithShuffle: render');
@@ -180,15 +188,15 @@ class ProjectListWithShuffle extends Component {
               <div className="row">
                 {/* <ProjectTags tags={t}/> */}
                 <ProjectCategories categories={this.props.categories}
-                                    selectAllCategoryId={this.selectAllCategoryId}
-                                    selectedItemClass={this.selectedCategoryClass}
-                                    categoryFilterId={categoryIdToFilter}
-                                    allCategoryName='All' />
+                  selectAllCategoryId={this.selectAllCategoryId}
+                  selectedItemClass={this.selectedCategoryClass}
+                  categoryFilterId={categoryIdToFilter}
+                  allCategoryName='All' />
               </div>
               <ProjectGrid projects={this.props.projects}
-                            projectShuffleSelectorClass={this.projectShuffleSelectorClass}
-                            setShuffleRefFunc={this.setShuffleRef}
-                            projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
+                projectShuffleSelectorClass={this.projectShuffleSelectorClass}
+                setShuffleRefFunc={this.props.setShuffleRefFunc}
+                projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
             </div>
             <div className="col-md-1" />
           </div>
@@ -197,6 +205,10 @@ class ProjectListWithShuffle extends Component {
     );
   }
 }
+
+
+// https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
+const ProjectListWithShuffleAdded = withShuffle(ProjectListWithShuffle);
 
 
 // filter implementation reference
@@ -283,11 +295,11 @@ class ProjectListPage extends Component {
       return (<MyFirstLoadingComponent />);
     }
      
-    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;    
 
     return (
       <div>
-        <ProjectListWithShuffle projects={projects}
+        <ProjectListWithShuffleAdded projects={projects}
           categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
           categories={pC}
           tags={pT} />

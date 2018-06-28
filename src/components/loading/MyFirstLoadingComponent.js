@@ -8,6 +8,7 @@ export default function MyFirstLoadingComponent(props) {
   }
   // Handle the error state
   else if (error) {
+    //alert(error);
     return <div>Sorry, there was a problem loading the page.</div>;
   }
   else {
