@@ -18,12 +18,24 @@ import LabTemp01 from 'containers/labDetail/LabTemp01'; //photomontage - 3 image
 import LabTemp02 from 'containers/labDetail/LabTemp02'; //slideshow - Image on Left, Text on right
 import LabTemp03 from 'containers/labDetail/LabTemp03'; //slideshow - Image on Right, Text on Left
 import LabTemp04 from 'containers/labDetail/LabTemp04'; //photomontage - One Image
+import LabTemp05 from 'containers/labDetail/LabTemp05'; //slideshow - Image only
+import LabTemp06 from 'containers/labDetail/LabTemp06'; //photomontage - 2-column Image and caption
+import LabTemp07 from 'containers/labDetail/LabTemp07'; //photomontage - One Video
+import LabTemp08 from 'containers/labDetail/LabTemp08'; //Full Width One Imgae
+import LabTemp09 from 'containers/labDetail/LabTemp09'; //centre text
+
 
 const labTemplateMap = {
   1: LabTemp01,
   2: LabTemp02,
   3: LabTemp03,
-  4: LabTemp04
+  4: LabTemp04,
+  5: LabTemp05,
+  6: LabTemp06,
+  7: LabTemp07,
+  8: LabTemp08,
+  9: LabTemp09,
+
 };
 
 function VideoLanding(props) {

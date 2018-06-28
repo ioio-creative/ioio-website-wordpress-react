@@ -425,6 +425,47 @@ Lab List
   padding-right: 70px;
 }
 
+.lab-sharing-presenter {
+  position: absolute;
+  bottom: 15px;
+
+  width: 100%;
+  height: 10%;
+}
+
+.presenter-img-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+
+}
+
+.lab-sharing-presenter span{
+  position: absolute;
+top:0;
+left: 60px;
+color: black;
+font-size: 15px;
+}
+
+.lab-sharing-presenter h5{
+  position: absolute;
+top:25px;
+left: 60px;
+color: black;
+font-size: 12px;
+
+}
+
+
+
+.presenter-img-container img {
+  position: absolute;
+  width: 100%;
+
+}
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
 }
