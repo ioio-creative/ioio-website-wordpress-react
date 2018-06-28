@@ -118,6 +118,8 @@ class LabItems extends Component {
 
     const styleFrame = props.styleFrame;
 
+    const mediumLogo = props.mediumLogo;
+console.log("ICON: " + mediumLogo)
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
@@ -169,9 +171,11 @@ class LabItems extends Component {
                   let textTitleStyle;
                   let categoryColor;
                   let classNameImg = "lab-thumb";
+                  let sharingPresenterStyle;
 
                   let classNameTitle = "lab-title-from-bottom";
                   let classNameDesc = "lab-desc-from-bottom";
+                  let classSharingPresenter ="lab-sharing-presenter"
 
                   let hasCategoryColor = {
                     opacity : '1',
@@ -252,7 +256,12 @@ class LabItems extends Component {
                     height: 'auto',
                   };
 
-
+                  let showSharingPresenterStyle = {
+                    display : 'block'
+                  }
+                  let hideSharingPresenterStyle = {
+                    display : 'none'
+                  }
 
                   if (templateType == 3) {
                     categoryColor = hasNoCategoryColor;
@@ -262,6 +271,7 @@ class LabItems extends Component {
                     textDescStyle = whiteText;
                     let classNameTitle = "lab-title-from-bottom";
                     let classNameDesc = "lab-desc-from-bottom";
+                    sharingPresenterStyle = hideSharingPresenterStyle;
                   } else if (templateType == 5) {
                     categoryColor = hasCategoryColor;
                     itemStyle = researchZeroStyle;
@@ -270,6 +280,7 @@ class LabItems extends Component {
                     textDescStyle = whiteText;
                     let classNameTitle = "lab-title-from-bottom";
                     let classNameDesc = "lab-desc-from-bottom";
+                    sharingPresenterStyle = hideSharingPresenterStyle;
                   } else if (templateType == 6) {
                     categoryColor = hasMediumCategoryColor;
                     containerStyle = mediumContainerStyle;
@@ -278,6 +289,7 @@ class LabItems extends Component {
                     imgStyle = imgNoImageStyle;
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
+                    sharingPresenterStyle = showSharingPresenterStyle;
                   }else if (templateType == 7) {
                     categoryColor = hasSharingCategoryColor;
                     containerStyle = sharingContainerStyle;
@@ -287,6 +299,7 @@ class LabItems extends Component {
                     classNameImg = "lab-thumb sharing";
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
+                    sharingPresenterStyle = showSharingPresenterStyle;
                   }else {
                     categoryColor = hasNoCategoryColor;
                     itemStyle = squareStyle;
@@ -295,9 +308,8 @@ class LabItems extends Component {
                     textDescStyle = whiteText;
                     let classNameTitle = "lab-title-from-bottom";
                     let classNameDesc = "lab-desc-from-bottom";
+                    sharingPresenterStyle = hideSharingPresenterStyle;
                   }
-
-
 
                   return (
                     <div className="sub-lab-item wow fadeInUp"
@@ -317,6 +329,7 @@ class LabItems extends Component {
                         <span style={categoryColor}>{item.lab_categories[0].name}</span>
                         <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                         <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
+                        <div className={classSharingPresenter} style={sharingPresenterStyle}><div className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? item.medium_logo.guid : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5></div>
                         <div className="img-container" style={containerStyle}>
                           <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                         </div>
@@ -493,7 +506,7 @@ class LabListPage extends Component {
                   categoryFilterId={1}//categoryIdToFilter}
                   allCategoryName='All' />
                 </div>
-                <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} />
+                <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} mediumLogo={lab.medium_logo.guid} />
               </div>
               <div className="col-md-1"></div>
             </div>
