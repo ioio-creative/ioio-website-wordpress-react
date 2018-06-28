@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {fetchProjectById,fetchActiveBrightFooter} from 'websiteApi';
+import {fetchProjectById} from 'websiteApi';
 
 import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
@@ -18,11 +18,9 @@ import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomonta
 import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
 import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Imgae
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
+import Footer from 'containers/footer/Footer';
 
 import './ProjectDetailPage.css';
-
-import Footer from 'containers/BrightFooter';
-
 
 import $ from 'jquery';
 
@@ -136,7 +134,7 @@ class ProjectDetailPage extends Component {
     this.state = {
       modalIsOpen: false,
       project: null,
-      isReturnNotFound: false
+      isReturnNotFound: false,
     };
   }
 
@@ -172,10 +170,6 @@ class ProjectDetailPage extends Component {
       }
     });
 
-    fetchActiveBrightFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
@@ -194,11 +188,6 @@ class ProjectDetailPage extends Component {
     }
 
     if (project === null) {
-      return null;
-    }
-
-    const footer = this.state.footer;
-    if (footer === null) {
       return null;
     }
 
@@ -241,8 +230,8 @@ class ProjectDetailPage extends Component {
           <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
         </div>
       </Modal>
-      <Footer footer={footer}/>
 
+      <Footer />
     </div>);
   }
 }

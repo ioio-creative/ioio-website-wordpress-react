@@ -4,13 +4,13 @@ import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
 import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveBrightFooter} from 'websiteApi.js';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import routes from 'globals/routes';
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 import createDefaultShuffle from 'utils/shuffle/createDefaultShuffle';
 
-import Footer from 'containers/BrightFooter';
+import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
@@ -169,36 +169,31 @@ class ProjectListWithShuffle extends Component {
     const categoryIdToFilter = this.getProjectCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery];
 
     return (
-      <div>
-        <section id="portfolio" className="section-bg wow fadeIn">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-1" />
-              <div className="col-md-10">
-                <header className="section-header">
-                  <h3 className="section-title">Case Studies</h3>
-                </header>
-                <div className="row">
-                  {/* <ProjectTags tags={t}/> */}
-                  <ProjectCategories categories={this.props.categories}
-                                     selectAllCategoryId={this.selectAllCategoryId}
-                                     selectedItemClass={this.selectedItemClass}
-                                     categoryFilterId={categoryIdToFilter}
-                                     allCategoryName='All' />
-                </div>
-                <ProjectGrid projects={this.props.projects}
-                             projectShuffleSelectorClass={this.projectShuffleSelectorClass}
-                             setShuffleRefFunc={this.setShuffleRef}
-                             projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
+      <section id="portfolio" className="section-bg wow fadeIn">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1" />
+            <div className="col-md-10">
+              <header className="section-header">
+                <h3 className="section-title">Case Studies</h3>
+              </header>
+              <div className="row">
+                {/* <ProjectTags tags={t}/> */}
+                <ProjectCategories categories={this.props.categories}
+                                    selectAllCategoryId={this.selectAllCategoryId}
+                                    selectedItemClass={this.selectedItemClass}
+                                    categoryFilterId={categoryIdToFilter}
+                                    allCategoryName='All' />
               </div>
-              <div className="col-md-1" />
+              <ProjectGrid projects={this.props.projects}
+                            projectShuffleSelectorClass={this.projectShuffleSelectorClass}
+                            setShuffleRefFunc={this.setShuffleRef}
+                            projCategoryIdNamePairs={this.getProjectCategoryIdNamePairs()} />
             </div>
+            <div className="col-md-1" />
           </div>
-        </section>
-        <Footer
-          //Section: Footer
-          footer={this.props.footerInfo} />
-      </div>
+        </div>
+      </section>        
     );
   }
 }
@@ -214,7 +209,6 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
-      footer: null,
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
@@ -238,10 +232,6 @@ class ProjectListPage extends Component {
       this.setState({
         projectTags: projTags
       });
-    });
-
-    fetchActiveBrightFooter((aFooter) => {
-      this.setState({footer: aFooter});
     });
   }
 
@@ -277,7 +267,6 @@ class ProjectListPage extends Component {
     const pC = state.projectCategories;
     const pT = state.projectTags;
     const projects = state.projects;
-    const footer = state.footer;
 
     if (projects.length === 0) {
       //console.log('ProjectListPage: projects length === 0');
@@ -293,20 +282,17 @@ class ProjectListPage extends Component {
       //console.log('ProjectListPage: projectTags length === 0');
       return (<MyFirstLoadingComponent />);
     }
-    
-    if (footer === null) {
-      //console.log('ProjectListPage: footer === null');
-      return (<MyFirstLoadingComponent />);
-    }
-
+     
     const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
-      <ProjectListWithShuffle projects={projects}
-        categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
-        categories={pC}
-        tags={pT}
-        footerInfo={footer} />
+      <div>
+        <ProjectListWithShuffle projects={projects}
+          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+          categories={pC}
+          tags={pT} />
+        <Footer />
+      </div>
     );
   }
 }

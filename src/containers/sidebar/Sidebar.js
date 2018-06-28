@@ -4,8 +4,8 @@ import { asyncLoadingComponent } from 'components/loading/AsyncLoadingComponent'
 
 import routes from 'globals/routes';
 
-const AsyncDarkSidebar = asyncLoadingComponent(() => import("containers/DarkSidebar"));
-const AsyncBrightSidebar = asyncLoadingComponent(() => import("containers/BrightSidebar"));
+const AsyncDarkSidebar = asyncLoadingComponent(() => import("./DarkSidebar"));
+const AsyncBrightSidebar = asyncLoadingComponent(() => import("./BrightSidebar"));
 
 class Sidebar extends Component {
     render() {

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import Footer from 'containers/DarkFooter';
+import Footer from 'containers/footer/Footer';
 
 import './AboutLabPage.css';
 
-import {fetchActiveAboutLab, fetchActiveDarkFooter} from 'websiteApi';
+import {fetchActiveAboutLab} from 'websiteApi';
 
 class AboutLabPage extends Component {
   constructor(props) {
@@ -18,10 +18,6 @@ class AboutLabPage extends Component {
     fetchActiveAboutLab((anAbout) => {
       this.setState({about: anAbout});
     });
-    fetchActiveDarkFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
   }
 
   render() {
@@ -29,23 +25,17 @@ class AboutLabPage extends Component {
     if (about === null) {
       return null;
     }
-    const footer = this.state.footer;
-    if (footer === null) {
-      return null;
-    }
 
-    return (<div>
-      <section id="lab-about">
-        <div className="container">
-        <span>{about.page_subtitle}</span>
+    return (
+      <div>
+        <section id="lab-about">
+          <div className="container">
+          <span>{about.page_subtitle}</span>
+        </div>
+        </section>
+        <Footer />
       </div>
-      </section>
-      {/*
-      <Footer
-        //Section: Footer
-        footer={footer}/>
-        */}
-    </div>);
+    );
   }
 }
 

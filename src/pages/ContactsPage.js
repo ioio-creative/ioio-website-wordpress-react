@@ -4,8 +4,8 @@ import React, {Component} from 'react';
 import './ContactsPage.css';
 import ContactForm from 'containers/ContactForm'
 
-import Footer from 'containers/BrightFooter';
-import {fetchActiveContact, fetchActiveBrightFooter} from 'websiteApi';
+import Footer from 'containers/footer/Footer';
+import {fetchActiveContact} from 'websiteApi';
 
 var dict = {
   "header": "Send Us A Mail",
@@ -62,11 +62,6 @@ class ContactsPage extends Component {
     fetchActiveContact((cContact) => {
       this.setState({contact: cContact});
     });
-
-    fetchActiveBrightFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
   }
 
   render() {
@@ -76,56 +71,51 @@ class ContactsPage extends Component {
       return null;
     }
 
-    const footer = this.state.footer;
-    if (footer === null) {
-      return null;
-    }
-    console.log(footer)
-    return (<div>
-      <section id="contact-top" className="wow contact-section-bg">
-        <div className="container-fluid row text-left">
-          <div className="col-md-1"></div>
-          <div className="col-md-10">
-            <h3 className="contactpage-title">{contact.page_title}</h3>
-            <h1>{contact.page_subtitle}</h1>
+    return (
+      <div>
+        <section id="contact-top" className="wow contact-section-bg">
+          <div className="container-fluid row text-left">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <h3 className="contactpage-title">{contact.page_title}</h3>
+              <h1>{contact.page_subtitle}</h1>
+            </div>
+            <div className="col-md-1"></div>
           </div>
-          <div className="col-md-1"></div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contact-core-value">
-        <div className="container-fluid">
-          <Items dnas={contact.dnas}/>
-        </div>
-      </section>
+        <section id="contact-core-value">
+          <div className="container-fluid">
+            <Items dnas={contact.dnas}/>
+          </div>
+        </section>
 
-      <section id="contact-social-media">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1"></div>
-            <div className="col-md-10"><h3 className="contactpage-title">{contact.social_media_title}</h3>
-            <SocialMedia items={contact.social_media}
-            />
+        <section id="contact-social-media">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-1"></div>
+              <div className="col-md-10"><h3 className="contactpage-title">{contact.social_media_title}</h3>
+              <SocialMedia items={contact.social_media}
+              />
+            </div>
+              <div className="col-md-1"></div>
+            </div>
           </div>
-            <div className="col-md-1"></div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="contact-form">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1"></div>
-            <div className="col-md-10"><h3 className="contactpage-title">{contact.contact_form_title}</h3><h2>{contact.contact_form_desc}</h2><ContactForm/></div>
-            <div className="col-md-1"></div>
-            {/* <ContactForm data={dict} ></ContactForm> */}
+        <section id="contact-form">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-1"></div>
+              <div className="col-md-10"><h3 className="contactpage-title">{contact.contact_form_title}</h3><h2>{contact.contact_form_desc}</h2><ContactForm/></div>
+              <div className="col-md-1"></div>
+              {/* <ContactForm data={dict} ></ContactForm> */}
+            </div>
           </div>
-        </div>
-      </section>
-      <Footer
-        //Section: Footer
-        footer={footer}/>
-    </div>);
+        </section>
+        <Footer />        
+      </div>
+    );
   }
 }
 

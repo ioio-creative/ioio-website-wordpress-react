@@ -4,14 +4,14 @@ import {Link} from 'react-router-dom';
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
-import Footer from 'containers/BrightFooter';
+import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectCategories/ProjectCategories';
 
 import $ from 'jquery';
 
 import P5Wrapper from 'react-p5-wrapper';
 
-import {fetchActiveHomePage, fetchProjectCategories, fetchProjects, fetchActiveBrightFooter} from 'websiteApi';
+import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
@@ -121,7 +121,6 @@ class HomePage extends Component {
       homepage: null,
       projectCategories: [],
       allProjects: [],
-      footer: null,
     }
   }
 
@@ -149,11 +148,7 @@ class HomePage extends Component {
 
     fetchProjects((projects) => {
       this.setState({allProjects: projects});
-    });
-
-    fetchActiveBrightFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
+    });    
     
     /*
       const publicUrl = process.env.PUBLIC_URL;
@@ -179,7 +174,6 @@ class HomePage extends Component {
 
   render() {
     const home = this.state.homepage;
-    const footer = this.state.footer;
     const pC = this.state.projectCategories;
     const allProjects = this.state.allProjects;
 
@@ -188,10 +182,6 @@ class HomePage extends Component {
     }
 
     if (pC.length === 0) {
-      return null;
-    }
-
-    if (footer === null) {
       return null;
     }
 
@@ -284,7 +274,7 @@ class HomePage extends Component {
         </div>
       </Modal>
 
-      <Footer footer={footer} />
+      <Footer />
     </div>);
   }
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {fetchLabDetailPageById, fetchActiveDarkFooter} from 'websiteApi';
+import {fetchLabDetailPageById} from 'websiteApi';
 
 import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds';
 import {Link} from 'react-router-dom'
@@ -12,7 +12,7 @@ import "./video-react.css"; // import css
 
 import './LabDetailPage.css';
 
-import Footer from 'containers/DarkFooter';
+import Footer from 'containers/footer/Footer';
 
 import LabTemp01 from 'containers/labDetail/LabTemp01'; //photomontage - 3 images
 import LabTemp02 from 'containers/labDetail/LabTemp02'; //slideshow - Image on Left, Text on right
@@ -137,11 +137,6 @@ class LabDetailPage extends Component {
       return;
     }
 
-    fetchActiveDarkFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
-
     fetchLabDetailPageById(labIdNum, (aLab) => {
       if (aLab === null) {
         this.setState({isReturnNotFound: true});
@@ -152,7 +147,6 @@ class LabDetailPage extends Component {
 
   }
   render() {
-
     const state = this.state;
     const lab = state.lab;
 
@@ -163,11 +157,6 @@ class LabDetailPage extends Component {
     }
 
     if (lab === null) {
-      return null;
-    }
-
-    const footer = this.state.footer;
-    if (footer === null) {
       return null;
     }
 
@@ -206,7 +195,7 @@ class LabDetailPage extends Component {
         </div>
       </div>
 
-      <Footer footer={footer}/>
+      <Footer />
     </div>);
   }
 
