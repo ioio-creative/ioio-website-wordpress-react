@@ -2,9 +2,13 @@
 #about general
 --------------------------------*/
 #lab-about{
+  margin: 0;
+  pardding:0;
+  height: 105vh;
+  overflow: hidden;
 
   background-color: #000000;
-  height: 100vh;
+
   width: 100%;
   text-align: center;
 }

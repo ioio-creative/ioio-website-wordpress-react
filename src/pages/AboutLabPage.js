@@ -5,6 +5,8 @@ import Footer from 'containers/footer/Footer';
 import './AboutLabPage.css';
 
 import {fetchActiveAboutLab} from 'websiteApi';
+import { withRouter } from 'react-router'
+import $ from 'jquery';
 
 class AboutLabPage extends Component {
   constructor(props) {
@@ -18,6 +20,10 @@ class AboutLabPage extends Component {
     fetchActiveAboutLab((anAbout) => {
       this.setState({about: anAbout});
     });
+    $('body').css("overflow", "hidden");
+  }
+  componentWillUnmount(){
+    $('body').css("overflow", "auto");
   }
 
   render() {
@@ -28,12 +34,12 @@ class AboutLabPage extends Component {
 
     return (
       <div>
-        <section id="lab-about">
+        <section id="lab-about" >
           <div className="container">
           <span>{about.page_subtitle}</span>
         </div>
         </section>
-        <Footer />
+
       </div>
     );
   }

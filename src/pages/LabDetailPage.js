@@ -97,13 +97,7 @@ function VideoLandingDesc(props) {
         <div className="col-md-2 additional-info">
           <ul>
             <li>
-              <a href="#">Suport info</a>
-            </li>
-            <li>
-              <a href="#">Venue</a>
-            </li>
-            <li>
-              <a href="#">Experience</a>
+              {props.lab.left_column_description}
             </li>
           </ul>
         </div>
