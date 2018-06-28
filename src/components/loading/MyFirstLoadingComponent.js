@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MyFirstLoadingComponent(props) {
+export default function MyFirstLoadingComponent(props) {
   const { isLoading, error } = props;
   // Handle the loading state
   if (isLoading) {
@@ -13,6 +13,4 @@ function MyFirstLoadingComponent(props) {
   else {
     return null;
   }
-}
-
-export default MyFirstLoadingComponent;
+};

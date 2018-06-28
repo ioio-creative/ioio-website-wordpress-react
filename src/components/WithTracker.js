@@ -5,7 +5,9 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 
-function withTracker(WrappedComponent, options = {}) {
+import getDisplayName from 'utils/react/getDisplayName';
+
+export default function withTracker(WrappedComponent, options = {}) {
   const trackPage = (page) => {
     ReactGA.set({
       page,
@@ -34,9 +36,7 @@ function withTracker(WrappedComponent, options = {}) {
     }
   };
 
+  HOC.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+
   return HOC;
 }
-
-export {
-  withTracker
-};
