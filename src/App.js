@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Main from 'containers/Main';
-import Sidebar from 'containers/Sidebar';
+import Sidebar from 'containers/sidebar/Sidebar';
 
 import scriptjs from 'scriptjs'
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';

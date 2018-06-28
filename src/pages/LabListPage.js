@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Shuffle from 'shufflejs'
 
-//Footer
-import Footer from 'containers/DarkFooter';
+import Footer from 'containers/footer/Footer';
 import LabCategories from 'containers/labCategories/LabCategories';
 
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
-import {fetchActiveLab, fetchLabCategories, fetchActiveDarkFooter} from 'websiteApi';
+import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
 
 import './LabListPage.css';
 
@@ -337,7 +336,7 @@ class LabItems extends Component {
         </div>
       );
     }
-  }
+}
 
 class LabItemsWithShuffle extends Component {
   constructor(props) {
@@ -372,7 +371,6 @@ class LabListPage extends Component {
       labCategories: [],
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
-      footer: null
     };
   }
 
@@ -396,11 +394,7 @@ class LabListPage extends Component {
 
     fetchLabCategories((categories) => {
       this.setState({labCategories: categories});
-    });
-
-    fetchActiveDarkFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
+    });    
 
     window.addEventListener("resize", this.handleResize.bind(this));
   }
@@ -417,11 +411,6 @@ class LabListPage extends Component {
   }
 
   render() {
-    const footer = this.state.footer;
-    if (footer === null) {
-      return null;
-    }
-
     const lab = this.state.lab;
     if (lab === null) {
       return null;
@@ -521,7 +510,7 @@ class LabListPage extends Component {
               </div>
             </div>
           </section>
-          <Footer footer={footer}/>
+          <Footer />
         </div>
       );
     }

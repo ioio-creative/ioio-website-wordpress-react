@@ -4,13 +4,11 @@ import { asyncLoadingComponent } from 'components/loading/AsyncLoadingComponent'
 
 import routes from 'globals/routes';
 
-const AsyncDarkFooter = asyncLoadingComponent(() => import("containers/DarkFooter"));
-const AsyncBrightFooter = asyncLoadingComponent(() => import("containers/BrightFooter"));
+const AsyncDarkFooter = asyncLoadingComponent(() => import("./DarkFooter"));
+const AsyncBrightFooter = asyncLoadingComponent(() => import("./BrightFooter"));
 
 class Footer extends Component {
-
     render() {
-        console.log("foooooooter")
         return (
           <Switch>
             {/*
@@ -21,7 +19,6 @@ class Footer extends Component {
                 later Routes in the Route list.
             */}
             <Route path={routes.lab} component={AsyncDarkFooter} />
-            <Route path={routes.labAbout} component={AsyncDarkFooter} />
             <Route component={AsyncBrightFooter} />
           </Switch>
         );
