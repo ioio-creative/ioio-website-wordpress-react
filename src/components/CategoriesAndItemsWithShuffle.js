@@ -1,38 +1,7 @@
 import React, {Component} from 'react';
-import asyncLoadingComponent from 'components/loading/AsyncLoadingComponent';
 
 import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 import isFunction from 'utils/types/isFunction';
-
-import ProjectCategories from 'containers/projectList/ProjectCategories';
-import ProjectItems from 'containers/projectList/ProjectItems';
-import LabCategories from 'containers/labList/LabCategories';
-import LabItems from 'containers/labList/LabItems';
-
-// What is the preferred syntax for defining enums in JavaScript?
-// https://stackoverflow.com/questions/287903/what-is-the-preferred-syntax-for-defining-enums-in-javascript
-const CategoriesAndItemsWithShuffleMode = Object.freeze({
-  Projects: 1,
-  Lab: 2
-});
-
-// How do I create a dynamic key to be added to a JavaScript object variable
-// https://stackoverflow.com/questions/2462800/how-do-i-create-a-dynamic-key-to-be-added-to-a-javascript-object-variable
-// Note: somehow I can't make the async/code-splitting stuff work yet.
-const CategoriesAndItemsWithShuffleModeComponentsDict = {
-  [CategoriesAndItemsWithShuffleMode.Projects]: {
-    // asyncCategoriesComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectCategories')),
-    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectItems')),
-    categoriesComponent: ProjectCategories,
-    itemsComponent: ProjectItems
-  },
-  [CategoriesAndItemsWithShuffleMode.Lab]: {
-    // asyncCategoriesComponent: asyncLoadingComponent(() => import('containers/labList/LabCategories')),
-    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/labList/LabItems')),
-    categoriesComponent: LabCategories,
-    itemsComponent: LabItems
-  }
-};
 
 class CategoriesAndItemsWithShuffle extends Component {
   constructor(props) {
@@ -117,12 +86,8 @@ class CategoriesAndItemsWithShuffle extends Component {
 
     const categoryIdToFilter = this.getCategorySlugIdPairs()[props.categoryFilterSlugFromQuery];
 
-    const categoriesAndItemsComponents = CategoriesAndItemsWithShuffleModeComponentsDict[props.mode];
-    // Note: somehow I can't make the async/code-splitting stuff work yet.
-    // const Categories = categoriesAndItemsComponents.asyncCategoriesComponent;
-    // const Items = categoriesAndItemsComponents.asyncItemsComponent;
-    const Categories = categoriesAndItemsComponents.categoriesComponent;
-    const Items = categoriesAndItemsComponents.itemsComponent;
+    const Categories = props.categoriesComponent;
+    const Items = props.itemsComponent;
 
     return (
       <section id="portfolio" className="section-bg wow fadeIn">
@@ -153,4 +118,3 @@ class CategoriesAndItemsWithShuffle extends Component {
 }
 
 export default CategoriesAndItemsWithShuffle;
-export const CategoriesAndItemsMode = CategoriesAndItemsWithShuffleMode;

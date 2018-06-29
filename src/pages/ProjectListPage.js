@@ -5,8 +5,10 @@ import './ProjectListPage.css';
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
+import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
+import ProjectCategories from 'containers/projectList/ProjectCategories';
+import ProjectItems from 'containers/projectList/ProjectItems';
 import Footer from 'containers/footer/Footer';
-import CategoriesAndItemsWithShuffle, {CategoriesAndItemsMode} from 'components/CategoriesAndItemsWithShuffle';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import withShuffle from 'components/WithShuffle';
@@ -18,7 +20,8 @@ class ProjectCategoriesAndItemsWithShuffle extends Component {
     
     return (
       <CategoriesAndItemsWithShuffle
-        mode={CategoriesAndItemsMode.Projects}
+        itemsComponent={ProjectItems}
+        categoriesComponent={ProjectCategories}
         shuffleSelectorClass='portfolio-item'
         items={props.projects}      
         categories={props.categories}
