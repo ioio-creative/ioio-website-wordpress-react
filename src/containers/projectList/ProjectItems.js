@@ -3,15 +3,15 @@ import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
 
-import './LabGrid.css';
+import './ProjectItems.css';
 
-export default function LabGrid(props) {
-  //console.log('LabGrid: render');
+export default function ProjectItems(props) {
+  //console.log('ProjectItems: render');
 
-  const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
+  const projectCategoryIdNamePairs = props.categoryIdNamePairs;
 
-  const project_items = props.projects.map((project) => {
-    let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
+  const project_items = props.items.map((project) => {
+    let projItemClassName = 'col-lg-6 col-md-6 ' + props.shuffleSelectorClass + ' ';
 
     const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
       let categoryName = projectCategoryIdNamePairs[categoryId];

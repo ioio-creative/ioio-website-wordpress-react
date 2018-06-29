@@ -5,9 +5,9 @@ import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/gen
 import isFunction from 'utils/types/isFunction';
 
 import ProjectCategories from 'containers/projectList/ProjectCategories';
-import ProjectGrid from 'containers/projectList/ProjectGrid';
+import ProjectItems from 'containers/projectList/ProjectItems';
 import LabCategories from 'containers/labList/LabCategories';
-import LabGrid from 'containers/labList/LabGrid';
+import LabItems from 'containers/labList/LabItems';
 
 // What is the preferred syntax for defining enums in JavaScript?
 // https://stackoverflow.com/questions/287903/what-is-the-preferred-syntax-for-defining-enums-in-javascript
@@ -22,15 +22,15 @@ const CategoriesAndItemsWithShuffleMode = Object.freeze({
 const CategoriesAndItemsWithShuffleModeComponentsDict = {
   [CategoriesAndItemsWithShuffleMode.Projects]: {
     // asyncCategoriesComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectCategories')),
-    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectGrid')),
+    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectItems')),
     categoriesComponent: ProjectCategories,
-    itemsComponent: ProjectGrid
+    itemsComponent: ProjectItems
   },
   [CategoriesAndItemsWithShuffleMode.Lab]: {
     // asyncCategoriesComponent: asyncLoadingComponent(() => import('containers/labList/LabCategories')),
-    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/labList/LabGrid')),
+    // asyncItemsComponent: asyncLoadingComponent(() => import('containers/labList/LabItems')),
     categoriesComponent: LabCategories,
-    itemsComponent: LabGrid
+    itemsComponent: LabItems
   }
 };
 
