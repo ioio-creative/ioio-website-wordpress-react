@@ -123,7 +123,7 @@ class ProjectListPage extends Component {
       return (<MyFirstLoadingComponent />);
     }
      
-    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;    
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
       <div>

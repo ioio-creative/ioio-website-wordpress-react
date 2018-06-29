@@ -3,43 +3,36 @@ import React, {Component} from 'react';
 import Footer from 'containers/footer/Footer';
 import LabCategories from 'containers/labList/LabCategories';
 import LabItems from 'containers/labList/LabItems';
+import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
+import withShuffle from 'components/WithShuffle';
 
-import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
+// import ReactPlayer from 'react-player';
+
+// import Measure from 'react-measure';
+// import withContentRect from 'react-measure';
+
+// import $ from 'jquery';
 
 import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
-
-import ReactPlayer from 'react-player';
-
-import Measure from 'react-measure';
-import withContentRect from 'react-measure';
-
-import $ from 'jquery';
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import './LabListPage.css';
 
-class LabItemsWithShuffle extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
-  componentDidUpdate() {
-
-  }
-
-  componentWillUnmount() {
-
-  }
-
+class LabCategoriesAndItemsWithShuffle extends Component {
   render() {
     return (
-      <div></div>
+      <CategoriesAndItemsWithShuffle
+        itemsComponent={LabItems}
+        categories={LabCategories}
+      />
     );
   }
 }
+
+
+// https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
+const LabCategoriesAndItemsWithShuffleAdded = withShuffle(LabCategoriesAndItemsWithShuffle);
+
 
 class LabListPage extends Component {
   constructor(props) {
@@ -104,6 +97,8 @@ class LabListPage extends Component {
       background: 'black'
     };
 
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
+
     return (
       <div style={blackBg}>
         <div id="hover-cover">
@@ -153,21 +148,23 @@ class LabListPage extends Component {
           </div>
         </section>
         <section id="lab-list" className="lab-bg wow fadeIn">
-          <div className="container-fluid row text-center">
-            <div className="col-md-1"></div>
-            <div className="col-md-10" id="lab-list-frame">
-              <div className="lab-categories container-fluid" id="portfolio-flters">
-                <LabCategories categories={labCategories}
-                  selectAllCategoryId={this.selectAllCategoryId}
-                  categoryFilterId={1}//categoryIdToFilter}
-                  allCategoryName='All' />
+          <div className="container-fluid">
+            <div class="row">
+              <div className="col-md-1"></div>
+              <div className="col-md-10" id="lab-list-frame">
+                <div className="lab-categories container-fluid" id="portfolio-flters">
+                  <LabCategories categories={labCategories}
+                    selectAllCategoryId={this.selectAllCategoryId}
+                    categoryFilterId={1}//categoryIdToFilter}
+                    allCategoryName='All' />
                 </div>
                 <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} mediumLogo={lab.medium_logo.guid} />
               </div>
               <div className="col-md-1"></div>
             </div>
-          </section>
-          <section id="lab-bottom">
+          </div>
+        </section>
+        <section id="lab-bottom">
             <div className="container-fluid">
               <div className="row lab-bottom-detail">
                 <div className="col-md-1"></div>
@@ -178,11 +175,11 @@ class LabListPage extends Component {
                 <div className="col-md-1"></div>
               </div>
             </div>
-          </section>
-          <Footer />
-        </div>
-      );
-    }
+        </section>
+        <Footer />
+      </div>
+    );
   }
+}
 
-  export default LabListPage;
+export default LabListPage;
