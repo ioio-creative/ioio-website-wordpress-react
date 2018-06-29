@@ -13,10 +13,6 @@ import withShuffle from 'components/WithShuffle';
 
 
 class ProjectCategoriesAndItemsWithShuffle extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const props = this.props;
     

@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
 
+import './LabGrid.css';
+
 export default function LabGrid(props) {
   //console.log('LabGrid: render');
 

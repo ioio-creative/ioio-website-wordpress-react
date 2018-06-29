@@ -60,7 +60,7 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId) {
 
 function orderProjectsByDateAscending(projects) {
     return projects.sort((project1, project2) => {
-        return compareForDatesDescending(project1.project_date, project2.project_date);
+        return compareForDatesAscending(project1.project_date, project2.project_date);
     });
 }
 

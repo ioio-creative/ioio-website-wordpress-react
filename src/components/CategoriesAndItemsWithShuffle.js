@@ -18,6 +18,7 @@ const CategoriesAndItemsWithShuffleMode = Object.freeze({
 
 // How do I create a dynamic key to be added to a JavaScript object variable
 // https://stackoverflow.com/questions/2462800/how-do-i-create-a-dynamic-key-to-be-added-to-a-javascript-object-variable
+// Note: somehow I can't make the async/code-splitting stuff work yet.
 const CategoriesAndItemsWithShuffleModeComponentsDict = {
   [CategoriesAndItemsWithShuffleMode.Projects]: {
     // asyncCategoriesComponent: asyncLoadingComponent(() => import('containers/projectList/ProjectCategories')),
@@ -116,7 +117,8 @@ class CategoriesAndItemsWithShuffle extends Component {
 
     const categoryIdToFilter = this.getCategorySlugIdPairs()[props.categoryFilterSlugFromQuery];
 
-    const categoriesAndItemsComponents = CategoriesAndItemsWithShuffleModeComponentsDict[props.mode];    
+    const categoriesAndItemsComponents = CategoriesAndItemsWithShuffleModeComponentsDict[props.mode];
+    // Note: somehow I can't make the async/code-splitting stuff work yet.
     // const Categories = categoriesAndItemsComponents.asyncCategoriesComponent;
     // const Items = categoriesAndItemsComponents.asyncItemsComponent;
     const Categories = categoriesAndItemsComponents.categoriesComponent;

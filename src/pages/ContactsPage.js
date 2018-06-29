@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-//import ContactForm from 'react-simple-contact-form'
 
 import './ContactsPage.css';
 import ContactForm from 'containers/ContactForm'
@@ -7,13 +6,6 @@ import ContactForm from 'containers/ContactForm'
 import Footer from 'containers/footer/Footer';
 import {fetchActiveContact} from 'websiteApi';
 
-var dict = {
-  "header": "Send Us A Mail",
-  "mailAddress": "Yout Email",
-  "message": "Your Message",
-  "sendMessage": "Mail send",
-  "sendButton": "Send"
-}
 
 function Items(props) {
   //let id = 0;
