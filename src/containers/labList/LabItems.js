@@ -54,18 +54,18 @@ export default class LabItems extends Component {
   }
 
   handleMouseOver(e, w, template, title, txt, cat) {
-    let thisTarget = e.target;
-    $(".lab-item").addClass('fade')
-    $('#lab-list').addClass('active')
+    const thisTarget = e.target;
+    $(".lab-item").addClass('fade');
+    $('#lab-list').addClass('active');
 
-    $(thisTarget).closest('.lab-item').addClass('active')
-    $(thisTarget).closest('.img-container').addClass('active')
-    $('#hover-cover').addClass('active')
+    $(thisTarget).closest('.lab-item').addClass('active');
+    $(thisTarget).closest('.img-container').addClass('active');
+    $('#hover-cover').addClass('active');
 
-    $(".lab-item.active").removeClass('fade')
+    $(".lab-item.active").removeClass('fade');
 
-    var el = $('#hover-cover')
-    var offsets = $(thisTarget).closest('.lab-item').offset();
+    //const el = $('#hover-cover');
+    const offsets = $(thisTarget).closest('.lab-item').offset();
 
     //console.log("offsets left" + (  offsets.left) + " lab-list-frame left" + (  $("#lab-list-frame").offset().left));
 
