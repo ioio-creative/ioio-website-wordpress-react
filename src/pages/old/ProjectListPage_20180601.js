@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './ProjectListPage.css';
-import './ProjectListPageProjectGrid.css';
+//import './ProjectListPageProjectGrid.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
 import routes from 'globals/routes';
@@ -198,7 +198,7 @@ class ProjectListWithShuffle extends Component {
     } else {
       // https://vestride.github.io/Shuffle/#advanced-filters
       this.shuffle.filter((projectItem) => {
-        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
+        const projItemCategoryIds = projectItem.getAttribute('data-category-ids').split(',').map((id) => { return parseInt(id); });
         return projItemCategoryIds.includes(categoryId);
       });
     }

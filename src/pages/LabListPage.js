@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Shuffle from 'shufflejs'
 
 import Footer from 'containers/footer/Footer';
-import LabCategories from 'containers/labCategories/LabCategories';
+import LabCategories from 'containers/labList/LabCategories';
 
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 

@@ -53,11 +53,13 @@ class CategoryList extends Component {
     );
 
     return (
-      <div className="col-lg-12">
-        <ul id="portfolio-flters">          
-          {btnAllItems}
-          {items}
-        </ul>
+      <div className="row">
+        <div className="col-lg-12">
+          <ul id="portfolio-flters">          
+            {btnAllItems}
+            {items}
+          </ul>
+        </div>
       </div>
     );
   }

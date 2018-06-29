@@ -5,11 +5,11 @@ import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
 import Footer from 'containers/footer/Footer';
-import ProjectCategories from 'containers/projectCategories/ProjectCategories';
+import ProjectCategories from 'containers/projectList/ProjectCategories';
 
 import $ from 'jquery';
 
-import P5Wrapper from 'react-p5-wrapper';
+//import P5Wrapper from 'react-p5-wrapper';
 
 import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
