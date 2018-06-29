@@ -95,9 +95,9 @@ class CategoriesAndItemsWithShuffle extends Component {
         {/* <Tags tags={t}/> */}
         <Categories categories={props.categories}
           selectAllCategoryId={this.selectAllCategoryId}
+          allCategoryName={props.allCategoryName}
           selectedItemClass={this.selectedCategoryClass}
-          categoryFilterId={categoryIdToFilter}
-          allCategoryName='All' />              
+          categoryFilterId={categoryIdToFilter} />              
         <Items items={props.items}
           shuffleSelectorClass={props.shuffleSelectorClass}
           setShuffleRefFunc={props.setShuffleRefFunc}

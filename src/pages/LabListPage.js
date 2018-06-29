@@ -18,12 +18,45 @@ import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHis
 
 import './LabListPage.css';
 
+
+class LabCategoriesAndItemsContainer extends Component {
+  render() {
+    const props = this.props;
+
+    return (
+      <section id="lab-list" className="lab-bg wow fadeIn">
+        <div className="container-fluid">
+          <div class="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-10" id="lab-list-frame">
+              {props.children}            
+            </div>
+            <div className="col-md-1"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+
 class LabCategoriesAndItemsWithShuffle extends Component {
   render() {
+    const props = this.props;
+
     return (
       <CategoriesAndItemsWithShuffle
+        categoriesAndItemsComponent={LabCategoriesAndItemsContainer}
         itemsComponent={LabItems}
-        categories={LabCategories}
+        categoriesComponent={LabCategories}
+        shuffleSelectorClass='portfolio-item'
+        allCategoryName='All'
+        items={props.labItems}
+        categories={props.categories}
+        categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
+        shuffle={props.shuffle}
+        setShuffleRefFunc={props.setShuffleRefFunc}
+        setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}
       />
     );
   }
@@ -147,23 +180,11 @@ class LabListPage extends Component {
             <div className="col-md-1"></div>
           </div>
         </section>
-        <section id="lab-list" className="lab-bg wow fadeIn">
-          <div className="container-fluid">
-            <div class="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-10" id="lab-list-frame">
-                <div className="lab-categories container-fluid" id="portfolio-flters">
-                  <LabCategories categories={labCategories}
-                    selectAllCategoryId={this.selectAllCategoryId}
-                    categoryFilterId={1}//categoryIdToFilter}
-                    allCategoryName='All' />
-                </div>
-                <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} mediumLogo={lab.medium_logo.guid} />
-              </div>
-              <div className="col-md-1"></div>
-            </div>
-          </div>
-        </section>
+
+        <LabCategoriesAndItemsWithShuffleAdded labItems={labItems}
+          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+          categories={labCategories} />
+
         <section id="lab-bottom">
             <div className="container-fluid">
               <div className="row lab-bottom-detail">

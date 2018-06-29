@@ -106,7 +106,7 @@ export default class LabItems extends Component {
     const props = this.props;
     const mediumLogo = props.mediumLogo;
 
-    const items = props.labItems.map((item, id) => {
+    const items = props.items.map((item, idx) => {
       let itemClassNames = classNames("template-type-" + item.template_type)
       let sz;
       /*
@@ -130,7 +130,10 @@ export default class LabItems extends Component {
       let gridSizeClassName = "col-md-" + gridSize;      
       
       return (
-        <div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
+        <div key={item.id}
+          className={gridSizeClassName + " lab-item " + itemClassNames + ' ' + props.shuffleSelectorClass}
+          key={item.id}
+          data-category-ids={item.lab_categories.join(',')}>
           <SizeMe
             monitorHeight monitorWidth
             refreshRate={32}
@@ -150,7 +153,7 @@ export default class LabItems extends Component {
 
               return (
                 <div className="sub-lab-item wow fadeInUp"
-                  data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
+                  data-wow-delay={Math.random() * (1 - 0.1) + idx * 0.05 + 's'}
                   style={labItemStyles.itemStyle}
                   onMouseOver={(e) => {
                     this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name);
@@ -180,7 +183,7 @@ export default class LabItems extends Component {
     });
 
     return (
-      <div className="row">
+      <div ref={props.setShuffleRefFunc} className="row">
         {items}
       </div>
     );

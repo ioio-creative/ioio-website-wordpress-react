@@ -48,7 +48,8 @@ class ProjectCategoriesAndItemsWithShuffle extends Component {
         itemsComponent={ProjectItems}
         categoriesComponent={ProjectCategories}
         shuffleSelectorClass='portfolio-item'
-        items={props.projects}      
+        allCategoryName='All'
+        items={props.projects}
         categories={props.categories}
         categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
         shuffle={props.shuffle}
