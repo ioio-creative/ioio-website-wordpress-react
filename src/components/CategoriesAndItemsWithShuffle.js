@@ -86,33 +86,23 @@ class CategoriesAndItemsWithShuffle extends Component {
 
     const categoryIdToFilter = this.getCategorySlugIdPairs()[props.categoryFilterSlugFromQuery];
 
+    const CategoriesAndItemsContainer = props.categoriesAndItemsComponent;
     const Categories = props.categoriesComponent;
     const Items = props.itemsComponent;
 
     return (
-      <section id="portfolio" className="section-bg wow fadeIn">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1" />
-            <div className="col-md-10">
-              <header className="section-header">
-                <h3 className="section-title">Case Studies</h3>
-              </header>              
-              {/* <Tags tags={t}/> */}
-              <Categories categories={props.categories}
-                selectAllCategoryId={this.selectAllCategoryId}
-                selectedItemClass={this.selectedCategoryClass}
-                categoryFilterId={categoryIdToFilter}
-                allCategoryName='All' />              
-              <Items items={props.items}
-                shuffleSelectorClass={props.shuffleSelectorClass}
-                setShuffleRefFunc={props.setShuffleRefFunc}
-                categoryIdNamePairs={this.getCategoryIdNamePairs()} />
-            </div>
-            <div className="col-md-1" />
-          </div>
-        </div>
-      </section>        
+      <CategoriesAndItemsContainer> 
+        {/* <Tags tags={t}/> */}
+        <Categories categories={props.categories}
+          selectAllCategoryId={this.selectAllCategoryId}
+          selectedItemClass={this.selectedCategoryClass}
+          categoryFilterId={categoryIdToFilter}
+          allCategoryName='All' />              
+        <Items items={props.items}
+          shuffleSelectorClass={props.shuffleSelectorClass}
+          setShuffleRefFunc={props.setShuffleRefFunc}
+          categoryIdNamePairs={this.getCategoryIdNamePairs()} />
+      </CategoriesAndItemsContainer>
     );
   }
 }

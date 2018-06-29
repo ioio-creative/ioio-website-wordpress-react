@@ -14,12 +14,37 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 import withShuffle from 'components/WithShuffle';
 
 
+class ProjectCategoriesAndItemsContainer extends Component {
+  render() {
+    const props = this.props;
+
+    return (
+      <section id="portfolio" className="section-bg wow fadeIn">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1" />
+            <div className="col-md-10">
+              <header className="section-header">
+                <h3 className="section-title">Case Studies</h3>
+              </header>              
+              {props.children}
+            </div>
+            <div className="col-md-1" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+}
+
+
 class ProjectCategoriesAndItemsWithShuffle extends Component {
   render() {
     const props = this.props;
     
     return (
       <CategoriesAndItemsWithShuffle
+        categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
         itemsComponent={ProjectItems}
         categoriesComponent={ProjectCategories}
         shuffleSelectorClass='portfolio-item'
