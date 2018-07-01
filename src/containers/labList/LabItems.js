@@ -8,13 +8,14 @@ import getStylesByTemplateType from './LabItemsStyles';
 import './LabItems.css';
 
 function tick(title, txt, cat, pos, topPos) {
-  let thisTarget;
-  if (pos === 2) {
-    thisTarget = '.hover-middle';
-  } else if (pos === 3) {
-    thisTarget = '.hover-right';
-  } else {
-    thisTarget = '.hover-left'
+  let thisTarget = '.hover-left';
+  switch (pos) {
+    case 2:
+      thisTarget = '.hover-middle';
+      break;
+    case 3:
+      thisTarget = '.hover-right';
+      break;
   }
 
   let item_hover_description = txt;
@@ -32,12 +33,12 @@ function tick(title, txt, cat, pos, topPos) {
   let topPosition = topPos;
 
   //  console.log(topPos-$(window).scrollTop());
-  if(topPos-$(window).scrollTop() > 0){
+  if (topPos-$(window).scrollTop() > 0){
     topPosition = topPos-$(window).scrollTop();
-  }else{
+  } else {
     topPosition = '10%';
   }
-  $(thisTarget).html(element).css('top',topPosition);
+  $(thisTarget).html(element).css('top', topPosition);
 }
 
 export default class LabItems extends Component {
