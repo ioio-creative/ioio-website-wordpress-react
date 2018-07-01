@@ -109,90 +109,82 @@ const hideSharingPresenterStyle = {
   display : 'none'
 }
 
+const defaultStylesObj = {
+  categoryColor: null,
+  itemStyle: null,
+  imgStyle: null,
+  textTitleStyle: null,
+  textDescStyle: null,
+  classNameTitle: null,
+  classNameDesc: null,
+  sharingPresenterStyle: null,
+
+  containerStyle: null,
+  classNameImg: null,
+  classSharingPresenter: labSharingPresenterClass,
+};
+
+const templateTypeStylesObjCreatorMapper = {
+  '3': (containerWidth) => ({
+    itemStyle: longRectStyle(containerWidth),
+    imgStyle: imgLongRectStyle,
+    textTitleStyle: whiteText,
+    textDescStyle: whiteText,
+    classNameTitle: labTitleFromBottomClass,
+    classNameDesc: labDescFromBottomClass,
+    sharingPresenterStyle: hideSharingPresenterStyle
+  }),    
+  '5': (containerWidth) => ({
+    categoryColor: hasCategoryColor,
+    itemStyle: researchZeroStyle(containerWidth),
+    imgStyle: imgResearchZeroStyle,
+    textTitleStyle: whiteText,
+    textDescStyle: whiteText,
+    classNameTitle: labTitleFromBottomClass,
+    classNameDesc: labDescFromBottomClass,
+    sharingPresenterStyle: hideSharingPresenterStyle
+  }),   
+  '6': (containerWidth) => ({
+    categoryColor: hasMediumCategoryColor,        
+    imgStyle: imgNoImageStyle(containerWidth),
+    textTitleStyle: blackText,
+    textDescStyle: blackText,
+    classNameTitle: "lab-title-from-top",
+    classNameDesc: "lab-desc-from-top",
+    sharingPresenterStyle: showSharingPresenterStyle,
+
+    containerStyle: mediumContainerStyle(containerWidth),
+  }),  
+  '7': (containerWidth) => ({
+    categoryColor: hasSharingCategoryColor,      
+    imgStyle: imgSharingStyle,
+    textTitleStyle: blackText,
+    textDescStyle: blackText,
+    classNameTitle: "lab-title-from-top",
+    classNameDesc: "lab-desc-from-top",
+    sharingPresenterStyle: showSharingPresenterStyle,
+
+    containerStyle: sharingContainerStyle(containerWidth),
+    classNameImg: labThumbClass + " sharing",
+  }),   
+  '-1': (containerWidth) => ({
+    categoryColor: hasNoCategoryColor,
+    itemStyle: squareStyle(containerWidth),
+    imgStyle: imgSquareStyle(containerWidth),
+    textTitleStyle: whiteText,
+    textDescStyle: whiteText,
+    classNameTitle: labTitleFromBottomClass,
+    classNameDesc: labDescFromBottomClass,
+    sharingPresenterStyle: hideSharingPresenterStyle
+  })
+}
+
 export default function getStylesByTemplateType(templateType,
   elementSize) {  
-  let stylesObjToMerge;
-  const containerWidth = elementSize ? elementSize.width : 0;
-  const templateStylesObj = {
-    categoryColor: null,
-    itemStyle: null,
-    imgStyle: null,
-    textTitleStyle: null,
-    textDescStyle: null,
-    classNameTitle: null,
-    classNameDesc: null,
-    sharingPresenterStyle: null,
-
-    containerStyle: null,
-    classNameImg: null,
-    classSharingPresenter: labSharingPresenterClass,
-  };
-
-  switch (templateType) {
-    case 3:
-      stylesObjToMerge = {
-        itemStyle: longRectStyle(containerWidth),
-        imgStyle: imgLongRectStyle,
-        textTitleStyle: whiteText,
-        textDescStyle: whiteText,
-        classNameTitle: labTitleFromBottomClass,
-        classNameDesc: labDescFromBottomClass,
-        sharingPresenterStyle: hideSharingPresenterStyle
-      };
-      break;
-    case 5:
-      stylesObjToMerge = {
-        categoryColor: hasCategoryColor,
-        itemStyle: researchZeroStyle(containerWidth),
-        imgStyle: imgResearchZeroStyle,
-        textTitleStyle: whiteText,
-        textDescStyle: whiteText,
-        classNameTitle: labTitleFromBottomClass,
-        classNameDesc: labDescFromBottomClass,
-        sharingPresenterStyle: hideSharingPresenterStyle
-      };
-      break;
-    case 6:
-      stylesObjToMerge = {
-        categoryColor: hasMediumCategoryColor,        
-        imgStyle: imgNoImageStyle(containerWidth),
-        textTitleStyle: blackText,
-        textDescStyle: blackText,
-        classNameTitle: "lab-title-from-top",
-        classNameDesc: "lab-desc-from-top",
-        sharingPresenterStyle: showSharingPresenterStyle,
-
-        containerStyle: mediumContainerStyle(containerWidth),
-      };
-      break;    
-    case 7:
-      stylesObjToMerge = {
-        categoryColor: hasSharingCategoryColor,
-        
-        imgStyle: imgSharingStyle     ,
-        textTitleStyle: blackText,
-        textDescStyle: blackText,
-        classNameTitle: "lab-title-from-top",
-        classNameDesc: "lab-desc-from-top",
-        sharingPresenterStyle: showSharingPresenterStyle,
-
-        containerStyle: sharingContainerStyle(containerWidth),
-        classNameImg: labThumbClass + " sharing",
-      };
-      break;
-    default:
-      stylesObjToMerge = {
-        categoryColor: hasNoCategoryColor,
-        itemStyle: squareStyle(containerWidth),
-        imgStyle: imgSquareStyle(containerWidth),
-        textTitleStyle: whiteText,
-        textDescStyle: whiteText,
-        classNameTitle: labTitleFromBottomClass,
-        classNameDesc: labDescFromBottomClass,
-        sharingPresenterStyle: hideSharingPresenterStyle
-      };
-      break;
-  }
-
-  return Object.assign(templateStylesObj, stylesObjToMerge);
+  const containerWidth = elementSize ? elementSize.width : 0; 
+  const templateTypeStr = templateType.toString();
+  const templateTypeStyleObjCreatorIdx = Object.keys(templateTypeStylesObjCreatorMapper).includes(templateTypeStr) ?
+    templateTypeStr : '-1';
+  const stylesObjToMerge = templateTypeStylesObjCreatorMapper[templateTypeStyleObjCreatorIdx](containerWidth);
+  return Object.assign(defaultStylesObj, stylesObjToMerge);
 };

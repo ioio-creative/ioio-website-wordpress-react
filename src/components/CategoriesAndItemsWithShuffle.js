@@ -86,23 +86,32 @@ class CategoriesAndItemsWithShuffle extends Component {
 
     const categoryIdToFilter = this.getCategorySlugIdPairs()[props.categoryFilterSlugFromQuery];
 
-    const CategoriesAndItemsContainer = props.categoriesAndItemsComponent;
-    const Categories = props.categoriesComponent;
-    const Items = props.itemsComponent;
+    const CategoriesAndItemsContainerComponent = props.categoriesAndItemsComponent;
+    const CategoriesComponent = props.categoriesComponent;
+    const ItemsComponent = props.itemsComponent;
+
+    const categories = (
+      <CategoriesComponent categories={props.categories}
+        selectAllCategoryId={this.selectAllCategoryId}
+        allCategoryName={props.allCategoryName}
+        selectedItemClass={this.selectedCategoryClass}
+        categoryFilterId={categoryIdToFilter} />
+    );
+
+    const items = (
+      <ItemsComponent items={props.items}
+        shuffleSelectorClass={props.shuffleSelectorClass}
+        setShuffleRefFunc={props.setShuffleRefFunc}
+        categoryIdNamePairs={this.getCategoryIdNamePairs()} />
+    );
 
     return (
-      <CategoriesAndItemsContainer> 
+      <CategoriesAndItemsContainerComponent
+        categories={categories}
+        items={items}
+      > 
         {/* <Tags tags={t}/> */}
-        <Categories categories={props.categories}
-          selectAllCategoryId={this.selectAllCategoryId}
-          allCategoryName={props.allCategoryName}
-          selectedItemClass={this.selectedCategoryClass}
-          categoryFilterId={categoryIdToFilter} />              
-        <Items items={props.items}
-          shuffleSelectorClass={props.shuffleSelectorClass}
-          setShuffleRefFunc={props.setShuffleRefFunc}
-          categoryIdNamePairs={this.getCategoryIdNamePairs()} />
-      </CategoriesAndItemsContainer>
+      </CategoriesAndItemsContainerComponent>
     );
   }
 }

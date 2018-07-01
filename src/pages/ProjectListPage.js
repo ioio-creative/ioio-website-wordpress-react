@@ -27,7 +27,8 @@ class ProjectCategoriesAndItemsContainer extends Component {
               <header className="section-header">
                 <h3 className="section-title">Case Studies</h3>
               </header>              
-              {props.children}
+              {props.categories}
+              {props.items}
             </div>
             <div className="col-md-1" />
           </div>

@@ -33,8 +33,8 @@ function tick(title, txt, cat, pos, topPos) {
   let topPosition = topPos;
 
   //  console.log(topPos-$(window).scrollTop());
-  if (topPos-$(window).scrollTop() > 0){
-    topPosition = topPos-$(window).scrollTop();
+  if (topPos - $(window).scrollTop() > 0) {
+    topPosition = topPos - $(window).scrollTop();
   } else {
     topPosition = '10%';
   }
@@ -71,20 +71,20 @@ export default class LabItems extends Component {
     //console.log("offsets left" + (  offsets.left) + " lab-list-frame left" + (  $("#lab-list-frame").offset().left));
 
     if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
-      //console.log("l1")
+      //console.log("l1");
       if (template === 5){
-        tick(title,txt,cat, 1, offsets.top)
+        tick(title,txt,cat, 1, offsets.top);
       } else {
-        tick(title,txt,cat, 2, offsets.top)
+        tick(title,txt,cat, 2, offsets.top);
       }
 
     } else {
       if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
-        //console.log("l3 ")
-        tick(title,txt,cat, 3, offsets.top)
+        //console.log("l3 ");
+        tick(title,txt,cat, 3, offsets.top);
       } else {
-        tick(title,txt,cat, 2, offsets.top)
-        //console.log("l2 ")
+        tick(title,txt,cat, 2, offsets.top);
+        //console.log("l2 ");
       }
     }
   }
@@ -108,7 +108,7 @@ export default class LabItems extends Component {
     const mediumLogo = props.mediumLogo;
 
     const items = props.items.map((item, idx) => {
-      let itemClassNames = classNames("template-type-" + item.template_type)
+      let itemClassNames = classNames("template-type-" + item.template_type);
       let sz;
       /*
         1.Image/GIF
@@ -122,7 +122,7 @@ export default class LabItems extends Component {
 
       let gridSize = 3;
 
-      if (item.template_type == 5) {
+      if (item.template_type === 5) {
         gridSize = 8;
       } else {
         gridSize = 4;
@@ -133,7 +133,6 @@ export default class LabItems extends Component {
       return (
         <div key={item.id}
           className={gridSizeClassName + " lab-item " + itemClassNames + ' ' + props.shuffleSelectorClass}
-          key={item.id}
           data-category-ids={item.lab_categories.join(',')}>
           <SizeMe
             monitorHeight monitorWidth

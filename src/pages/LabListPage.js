@@ -29,7 +29,8 @@ class LabCategoriesAndItemsContainer extends Component {
           <div class="row">
             <div className="col-md-1"></div>
             <div className="col-md-10" id="lab-list-frame">
-              {props.children}            
+              {props.categories}
+              {props.items}            
             </div>
             <div className="col-md-1"></div>
           </div>
