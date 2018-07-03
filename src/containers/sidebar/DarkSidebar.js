@@ -23,7 +23,8 @@ class DarkSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebar: null
+      sidebar: null,
+            about: null
     }
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.handleMenuClose = this.handleMenuClose.bind(this);
