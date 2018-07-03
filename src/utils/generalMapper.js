@@ -12,6 +12,12 @@ function createIdNamePairs(sourceObjs) {
     (sourceObj) => (sourceObj.name));    
 }
 
+function createNameIdPairs(sourceObjs) {
+  return createGeneralKeyValuePairs(sourceObjs,
+    (sourceObj) => (sourceObj.name),
+    (sourceObj) => (sourceObj.id));    
+}
+
 function createIdSlugPairs(sourceObjs) {
   return createGeneralKeyValuePairs(sourceObjs,
     (sourceObj) => (sourceObj.id),
@@ -27,6 +33,7 @@ function createSlugIdPairs(sourceObjs) {
 export {
   createGeneralKeyValuePairs,
   createIdNamePairs,
+  createNameIdPairs,
   createIdSlugPairs,
   createSlugIdPairs
 };

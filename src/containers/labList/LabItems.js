@@ -58,8 +58,8 @@ export default class LabItems extends Component {
 
     $(".lab-item.active").removeClass('fade');
 
-    var el = $('#hover-cover');
-    var offsets = $(thisTarget).closest('.lab-item').offset();
+    //const el = $('#hover-cover');
+    const offsets = $(thisTarget).closest('.lab-item').offset();
 
     //console.log("offsets left" + (  offsets.left) + " lab-list-frame left" + (  $("#lab-list-frame").offset().left));
 
@@ -83,7 +83,7 @@ export default class LabItems extends Component {
   }
 
   handleMouseOut(e,template) {
-    let thisTarget = e.target;
+    const thisTarget = e.target;
 
     $(".lab-item").removeClass('fade');
     $('#lab-list').removeClass('active');
@@ -98,9 +98,9 @@ export default class LabItems extends Component {
 
   render() {
     const props = this.props;
-    const state = this.state;
+    //const state = this.state;
 
-    const styleFrame = props.styleFrame;
+    //const styleFrame = props.styleFrame;
 
     const items = props.items.map((item, idx) => {
 
@@ -127,16 +127,20 @@ export default class LabItems extends Component {
 
       let gridSizeClassName = "col-md-" + gridSize;
 
-      const categoriesCorrespondingToLabItemStr = (item.lab_categories.length > 0) ?
-        item.lab_categories.map((category) => (category.name)).join(', ') :
+      const categoryNameIdPairs = props.categoryNameIdPairs;
+
+      const categoryIdsCorrespondingToLabItemStr = (item.lab_categories.length > 0) ?
+        item.lab_categories.map((category) => (categoryNameIdPairs[category.name])).join(',') :
         '';
 
-      console.log(item.lab_categories);
+      const categoryNamesCorrespondingToLabItemStr = (item.lab_categories.length > 0) ?
+        item.lab_categories.map((category) => (category.name)).join(', ') :
+        '';
 
       return (
         <div key={item.id}
           className={gridSizeClassName + " lab-item " + itemClassNames + ' ' + props.shuffleSelectorClass}
-          data-category-ids={item.lab_categories.join(',')}
+          data-category-ids={categoryIdsCorrespondingToLabItemStr}
         >
           <SizeMe
             monitorHeight monitorWidth
@@ -311,20 +315,20 @@ export default class LabItems extends Component {
                     data-wow-delay={Math.random() * (1 - 0.1) + idx * 0.05 + 's'}
                     style={itemStyle}
                     onMouseOver={(e) => {
-                      this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, categoriesCorrespondingToLabItemStr);
+                      this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, categoryNamesCorrespondingToLabItemStr);
                     }}
                     onMouseOut={(e) => {
-                      this.handleMouseOut(e,templateType);
+                      this.handleMouseOut(e, templateType);
                     }}>
                     <a className="lab-item-click"
                       href={item.link != '' ? item.link : 'javascript:;'}
                       target="_blank"
                       onClick={this.handleMenuClose}
                       style={item.link != '' ? {cursor: 'pointer'} : {cursor: 'none'}}>
-                      <span style={categoryColor}>{categoriesCorrespondingToLabItemStr}</span>
+                      <span style={categoryColor}>{categoryNamesCorrespondingToLabItemStr}</span>
                       <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                       <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                      <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? props.mediumLogoUrl : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
+                      <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? props.itemsExtra.mediumLogoUrl : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
                       <div className="img-container" style={containerStyle}>
                         <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                       </div>
