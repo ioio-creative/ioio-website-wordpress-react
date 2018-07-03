@@ -55,7 +55,7 @@ class CategoriesAndItemsWithShuffle extends Component {
   }
 
   filterItemsByQueryFromUrl() {
-    console.log("filter starts");
+    //console.log("filter starts");
 
     // cater for filter ALL case
     const categoryIdToFilter =
@@ -63,7 +63,7 @@ class CategoriesAndItemsWithShuffle extends Component {
       || this.selectAllCategoryId;
     this.filterItems(categoryIdToFilter);
 
-    console.log("filter ends");
+    //console.log("filter ends");
   }
 
   filterItems(categoryId, tagId) {

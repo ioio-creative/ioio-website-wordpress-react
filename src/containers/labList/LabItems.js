@@ -142,23 +142,25 @@ export default class LabItems extends Component {
           className={gridSizeClassName + " lab-item " + itemClassNames + ' ' + props.shuffleSelectorClass}
           data-category-ids={categoryIdsCorrespondingToLabItemStr}
         >
-          <SizeMe
+          {/* <SizeMe
             monitorHeight monitorWidth
             refreshRate={32}
             render={({ size }) => {
               sz = size;
+              console.log("size: " + JSON.stringify(sz));
               return (
                 <div></div>
               );
             }}
-          />
+          /> */}
 
-          <SizeMe monitorHeight
+          <SizeMe monitorHeight monitorWidth
             refreshRate={32} render={
               ({size}) => {
+                console.log("size: " + JSON.stringify(size));
 
-                //let containerWidth = size.width;
-                let containerWidth = sz.width;
+                let containerWidth = size.width;
+                //let containerWidth = sz.width;
                 let containerresearchZeroHeight = containerWidth / 2 * 1.3;
                 let templateType = item.template_type;
 
@@ -258,6 +260,7 @@ export default class LabItems extends Component {
                 let showSharingPresenterStyle = {
                   display : 'block'
                 }
+
                 let hideSharingPresenterStyle = {
                   display : 'none'
                 }
@@ -309,7 +312,7 @@ export default class LabItems extends Component {
                   let classNameDesc = "lab-desc-from-bottom"; */}
                   sharingPresenterStyle = hideSharingPresenterStyle;
                 }
-                console.log("sizeMe inside")
+                //console.log("sizeMe inside");
                 return (
                   <div className="sub-lab-item wow fadeInUp"
                     data-wow-delay={Math.random() * (1 - 0.1) + idx * 0.05 + 's'}
@@ -328,9 +331,9 @@ export default class LabItems extends Component {
                       <span style={categoryColor}>{categoryNamesCorrespondingToLabItemStr}</span>
                       <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                       <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                      <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? props.itemsExtra.mediumLogoUrl : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
+                      <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType === 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? props.itemsExtra.mediumLogoUrl : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
                       <div className="img-container" style={containerStyle}>
-                        <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
+                        <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle} />
                       </div>
                     </a>
                   </div>

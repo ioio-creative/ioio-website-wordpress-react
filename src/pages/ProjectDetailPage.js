@@ -7,7 +7,7 @@ import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 import {Link} from 'react-router-dom';
 
-import ReactPlayer from 'react-player';
+//import ReactPlayer from 'react-player';
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01'; //photomontage - 3 images
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02'; //slideshow - Image on Left, Text on right
