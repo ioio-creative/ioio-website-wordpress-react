@@ -22,19 +22,17 @@ class LabCategories extends Component {
     }
 
     return (
-      <div className="lab-categories container-fluid" id="portfolio-flters">
-        <CategoryList
-          items={props.categories}
-          selectAllItemsOptionId={props.selectAllCategoryId}
-          selectedItemClass={props.selectedItemClass}
-          selectedItemId={props.categoryFilterId}
-          itemLinkToCreator={labItemLinkPathCreator}
-          itemPropertyToShowSelector={labItemPropertyToShowSelector}
-          allItemsAggregateFunc={allCategoryLabItemCountFunc}
-          allItemLinkTo={routes.labAll}
-          allItemName={props.allCategoryName}
+      <CategoryList
+        items={props.categories}
+        selectAllItemsOptionId={props.selectAllCategoryId}
+        selectedItemClass={props.selectedItemClass}
+        selectedItemId={props.categoryFilterId}
+        itemLinkToCreator={labItemLinkPathCreator}
+        itemPropertyToShowSelector={labItemPropertyToShowSelector}
+        allItemsAggregateFunc={allCategoryLabItemCountFunc}
+        allItemLinkTo={routes.labAll}
+        allItemName={props.allCategoryName}
         />
-      </div>
     );
   }
 }
