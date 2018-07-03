@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import {createIdNamePairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
-import isFunction from 'utils/types/isFunction';
+import {createIdNamePairs, createNameIdPairs, createSlugIdPairs, createIdSlugPairs} from 'utils/generalMapper';
 
 class CategoriesAndItemsWithShuffle extends Component {
   constructor(props) {
@@ -18,21 +17,27 @@ class CategoriesAndItemsWithShuffle extends Component {
     this.getCategorySlugIdPairs = this.getCategorySlugIdPairs.bind(this);
 
     this.categoryIdNamePairs = [];
+    this.categoryNameIdPairs = [];
     this.categoryIdSlugPairs = [];
     this.categorySlugIdPairs = [];
 
     // used together with WithShuffle  
-    if (isFunction(props.setWithShuffleParamsFunc)) {
-      this.props.setWithShuffleParamsFunc(props.shuffleSelectorClass,
-        this.filterItemsByQueryFromUrl, this.filterItemsByQueryFromUrl);
-    }
-  }
+    this.props.setWithShuffleParamsFunc(props.shuffleSelectorClass,
+      this.filterItemsByQueryFromUrl, this.filterItemsByQueryFromUrl);    
+  }  
 
   getCategoryIdNamePairs() {
     if (this.categoryIdNamePairs.length === 0) {
       this.categoryIdNamePairs = createIdNamePairs(this.props.categories);
     }
     return this.categoryIdNamePairs;
+  }
+
+  getCategoryNameIdPairs() {
+    if (this.categoryNameIdPairs.length === 0) {
+      this.categoryNameIdPairs = createNameIdPairs(this.props.categories);
+    }
+    return this.categoryNameIdPairs;
   }
 
   getCategoryIdSlugPairs() {
@@ -75,7 +80,6 @@ class CategoriesAndItemsWithShuffle extends Component {
           const itemCategoryIds = item.getAttribute('data-category-ids').split(',').map((id) => {
             return parseInt(id, 10);
           });
-          console.log(itemCategoryIds);
           return itemCategoryIds.includes(categoryId);
         });
       }
@@ -104,9 +108,10 @@ class CategoriesAndItemsWithShuffle extends Component {
         shuffleSelectorClass={props.shuffleSelectorClass}
         setShuffleRefFunc={props.setShuffleRefFunc}
         categoryIdNamePairs={this.getCategoryIdNamePairs()}
+        categoryNameIdPairs={this.getCategoryNameIdPairs()}
         
-        /* used by LabItems */
-        mediumLogoUrl={props.mediumLogoUrl} />
+        /* items custom use */
+        itemsExtra={props.itemsExtra} />
     );
 
     return (
