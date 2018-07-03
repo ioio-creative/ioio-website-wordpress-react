@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-//import {Link} from 'react-router-dom';
-//import Shuffle from 'shufflejs'
+import {Link} from 'react-router-dom';
+import Shuffle from 'shufflejs'
 
 import Footer from 'containers/footer/Footer';
-//import LabCategories from 'containers/labList/LabCategories';
+import LabCategories from 'containers/labList/LabCategories';
 
-//import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
 
 import './LabListPage.css';
 
-//import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player';
 
-//import Measure from 'react-measure';
+import Measure from 'react-measure';
 import {SizeMe} from 'react-sizeme';
-//import withContentRect from 'react-measure';
+import withContentRect from 'react-measure';
 
 import classNames from 'classnames';
 
@@ -114,12 +114,12 @@ class LabItems extends Component {
 
   render() {
     const props = this.props;
-    //const state = this.state;
+    const state = this.state;
 
-    //const styleFrame = props.styleFrame;
+    const styleFrame = props.styleFrame;
 
     const mediumLogo = props.mediumLogo;
-    //console.log("ICON: " + mediumLogo);
+console.log("ICON: " + mediumLogo)
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
@@ -147,12 +147,20 @@ class LabItems extends Component {
 
       return (
         <div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
+          <SizeMe
+            monitorHeight monitorWidth
+            refreshRate={32}
+            render={({ size }) => {sz = size
+              return(<div >
+              </div>)}}
+            />
+
             <SizeMe monitorHeight monitorWidth
               refreshRate={32} render={
                 ({size}) => {
 
                   //let containerWidth = size.width;
-                  let containerWidth = size.width;
+                  let containerWidth = sz.width;
                   let containerresearchZeroHeight = containerWidth / 2 * 1.3;
                   let templateType = item.template_type;
 
