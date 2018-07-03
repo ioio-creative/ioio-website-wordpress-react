@@ -58,8 +58,8 @@ export default class LabItems extends Component {
 
     $(".lab-item.active").removeClass('fade');
 
-    var el = $('#hover-cover');
-    var offsets = $(thisTarget).closest('.lab-item').offset();
+    //const el = $('#hover-cover');
+    const offsets = $(thisTarget).closest('.lab-item').offset();
 
     //console.log("offsets left" + (  offsets.left) + " lab-list-frame left" + (  $("#lab-list-frame").offset().left));
 
@@ -83,7 +83,7 @@ export default class LabItems extends Component {
   }
 
   handleMouseOut(e,template) {
-    let thisTarget = e.target;
+    const thisTarget = e.target;
 
     $(".lab-item").removeClass('fade');
     $('#lab-list').removeClass('active');
@@ -98,9 +98,9 @@ export default class LabItems extends Component {
 
   render() {
     const props = this.props;
-    const state = this.state;
+    //const state = this.state;
 
-    const styleFrame = props.styleFrame;
+    //const styleFrame = props.styleFrame;
 
     const items = props.items.map((item, idx) => {
 
