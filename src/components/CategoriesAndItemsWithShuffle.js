@@ -21,10 +21,10 @@ class CategoriesAndItemsWithShuffle extends Component {
     this.categoryIdSlugPairs = [];
     this.categorySlugIdPairs = [];
 
-    // used together with WithShuffle  
+    // used together with WithShuffle
     this.props.setWithShuffleParamsFunc(props.shuffleSelectorClass,
-      this.filterItemsByQueryFromUrl, this.filterItemsByQueryFromUrl);    
-  }  
+      this.filterItemsByQueryFromUrl, this.filterItemsByQueryFromUrl);
+  }
 
   getCategoryIdNamePairs() {
     if (this.categoryIdNamePairs.length === 0) {
@@ -55,11 +55,15 @@ class CategoriesAndItemsWithShuffle extends Component {
   }
 
   filterItemsByQueryFromUrl() {
+    console.log("filter starts");
+
     // cater for filter ALL case
     const categoryIdToFilter =
       this.getCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery]
       || this.selectAllCategoryId;
     this.filterItems(categoryIdToFilter);
+
+    console.log("filter ends");
   }
 
   filterItems(categoryId, tagId) {
@@ -109,7 +113,7 @@ class CategoriesAndItemsWithShuffle extends Component {
         setShuffleRefFunc={props.setShuffleRefFunc}
         categoryIdNamePairs={this.getCategoryIdNamePairs()}
         categoryNameIdPairs={this.getCategoryNameIdPairs()}
-        
+
         /* items custom use */
         itemsExtra={props.itemsExtra} />
     );
@@ -118,7 +122,7 @@ class CategoriesAndItemsWithShuffle extends Component {
       <CategoriesAndItemsContainerComponent
         categories={categories}
         items={items}
-      > 
+      >
         {/* <Tags tags={t}/> */}
       </CategoriesAndItemsContainerComponent>
     );

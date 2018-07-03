@@ -309,7 +309,7 @@ export default class LabItems extends Component {
                   let classNameDesc = "lab-desc-from-bottom"; */}
                   sharingPresenterStyle = hideSharingPresenterStyle;
                 }
-
+                console.log("sizeMe inside")
                 return (
                   <div className="sub-lab-item wow fadeInUp"
                     data-wow-delay={Math.random() * (1 - 0.1) + idx * 0.05 + 's'}

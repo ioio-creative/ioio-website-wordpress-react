@@ -11,7 +11,7 @@ export default function withShuffle(WrappedComponent) {
 
       // shuffle stuff
       this.shuffle = null;
-      
+
       // set by children via setWithShuffleParams
       this.shuffleRef = null;
       this.shuffleSelectorClass = '';  //'portfolio-item';
@@ -29,9 +29,9 @@ export default function withShuffle(WrappedComponent) {
       //console.log("WithShuffle: componentDidMount");
 
       // The elements are in the DOM, initialize a shuffle instance.
-      this.shuffle = createDefaultShuffle(this.shuffleRef, this.shuffleSelectorClass);      
+      this.shuffle = createDefaultShuffle(this.shuffleRef, this.shuffleSelectorClass);
 
-      this.filterFuncToRunAtComponentDidMount();      
+      this.filterFuncToRunAtComponentDidMount();
     }
 
     // http://busypeoples.github.io/post/react-component-lifecycle/
@@ -73,9 +73,9 @@ export default function withShuffle(WrappedComponent) {
       //console.log("WithShuffle: render");
 
       // ... and renders the wrapped component with the fresh data!
-      // Notice that we pass through any additional props      
+      // Notice that we pass through any additional props
       return (
-        <WrappedComponent shuffle={this.shuffle} 
+        <WrappedComponent shuffle={this.shuffle}
           setShuffleRefFunc={this.setShuffleRef}
           setWithShuffleParamsFunc={this.setWithShuffleParams}
           {...this.props} />
