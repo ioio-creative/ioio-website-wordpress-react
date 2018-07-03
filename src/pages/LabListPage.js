@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import Shuffle from 'shufflejs'
+//import {Link} from 'react-router-dom';
+//import Shuffle from 'shufflejs'
 
 import Footer from 'containers/footer/Footer';
-import LabCategories from 'containers/labList/LabCategories';
+//import LabCategories from 'containers/labList/LabCategories';
 
-import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
+//import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
 import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
 
 import './LabListPage.css';
 
-import ReactPlayer from 'react-player';
+//import ReactPlayer from 'react-player';
 
-import Measure from 'react-measure';
+//import Measure from 'react-measure';
 import {SizeMe} from 'react-sizeme';
-import withContentRect from 'react-measure';
+//import withContentRect from 'react-measure';
 
 import classNames from 'classnames';
 
@@ -119,7 +119,7 @@ class LabItems extends Component {
     const styleFrame = props.styleFrame;
 
     const mediumLogo = props.mediumLogo;
-console.log("ICON: " + mediumLogo)
+    //console.log("ICON: " + mediumLogo);
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)

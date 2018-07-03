@@ -49,11 +49,12 @@ const projectTemplateMap = {
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
-  const poster_url = props.project.thumbnail.guid;
+  //const poster_url = props.project.thumbnail.guid;
+  const poster_url = props.project.cover_video_screenshot.guid;
   //const video_webm_url = props.project.cover_video.guid;
 
   //const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
-  const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
+  //const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   //const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
 
