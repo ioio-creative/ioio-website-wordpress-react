@@ -24,7 +24,7 @@ class DarkSidebar extends Component {
     super(props);
     this.state = {
       sidebar: null,
-            about: null
+      about: null
     }
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.handleMenuClose = this.handleMenuClose.bind(this);
@@ -85,10 +85,14 @@ class DarkSidebar extends Component {
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
 
-      <div className="container">
-        <span>{about.page_subtitle}</span>
-      </div>
+      <section id="lab-about">
+        <div className="container">
+          <span>{about.page_subtitle}</span>
+        </div>
+      </section>
+
       <div className="container-fluid ">
+
         {/*
         <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>

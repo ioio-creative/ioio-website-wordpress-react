@@ -34,7 +34,7 @@ class LabCategoriesAndItemsContainer extends Component {
 }
 
 
-class LabCategoriesAndItemsWithShuffle extends Component {  
+class LabCategoriesAndItemsWithShuffle extends Component {
   render() {
     const props = this.props;
 
@@ -159,15 +159,15 @@ class LabListPage extends Component {
             <div className="col-md-1"></div>
           </div>
         </section>
-        
+
         <LabCategoriesAndItemsWithShuffleAdded
           items={labItems}
           categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
-          categories={labCategories}          
-          
+          categories={labCategories}
+
           itemsExtra={{
             mediumLogoUrl: lab.medium_logo.guid
-          }}          
+          }}
         />
 
         <section id="lab-bottom">
@@ -182,9 +182,7 @@ class LabListPage extends Component {
             </div>
           </div>
         </section>
-        
         <Footer />
-      
       </div>
     );
   }

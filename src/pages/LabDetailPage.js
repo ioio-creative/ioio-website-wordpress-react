@@ -167,7 +167,7 @@ class LabDetailPage extends Component {
       }
     };
     //    console.log(state.isReturnNotFound);
-    //    console.log(lab);
+//console.log(lab);
 
     const labTemplates = lab.sections;
     const labTemplateContainer = labTemplates.map((templateData) => {
@@ -188,7 +188,10 @@ class LabDetailPage extends Component {
           <div className="col-md-1"></div>
         </div>
       </div>
-
+      <section id="lab-related-project">
+        <h1>Related Project</h1>
+        <h3><a href={lab.related_projects_lab_projects[0].link}>{lab.related_projects_lab_projects[0].project_name}</a></h3>
+      </section>
       <Footer />
     </div>);
   }

@@ -1,14 +1,15 @@
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
-#sidebar-top-logo-text{
+
+#sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
   top: 25px;
   left: 25px;
   font-size: 15px;
   text-transform: uppercase;
-  opacity:0;
+  opacity: 0;
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
@@ -237,6 +238,90 @@
   width: 80%;
 }
 
+/* text*/
+
+/*--------------------------------------------------------------
+#about general
+--------------------------------*/
+
+#sidebar #lab-about {
+  display: none;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar.active #lab-about {
+  position: absolute;
+  top: -5vh;
+  display: block;
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  height: auto;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.0);
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  left: 55px;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar.active #lab-about .container {
+  display: table;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+#sidebar.active #lab-about span {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-size: 40px;
+  line-height: 1.5em;
+  font-weight: bold;
+  opacity: 1;
+  -webkit-transition: opacity 1.4s;
+  -moz-transition: opacity 1.4s;
+  -ms-transition: opacity 1.4s;
+  -o-transition: opacity 1.4s;
+  transition: opacity 1.4s;
+  transition-delay: 0.3s;
+}
+
+#sidebar #lab-about span {
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity 1.4s;
+  -moz-transition: opacity 1.4s ;
+  -ms-transition: opacity 1.4s;
+  -o-transition: opacity 1.4s;
+  transition: opacity 1.4s;
+  transition-delay: 0.3s;
+}
+
+#sidebar.active #lab-about canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
 /*
 /* Extra small devices (phones, less than 768px) */
 
@@ -259,10 +344,9 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  #sidebar-top-logo-text{
+  #sidebar-top-logo-text {
     left: 15px;
-    opacity:1;
-
+    opacity: 1;
   }
   #menu-toggle-div {
     position: fixed;
@@ -280,7 +364,6 @@
     z-index: 999;
     top: 0;
     left: 0;
-
     overflow-y: hidden;
     color: #000;
     padding-top: 0;

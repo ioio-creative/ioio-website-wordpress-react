@@ -517,6 +517,26 @@ video {
   font-weight: bold;
 }
 
+
+#lab-related-project{
+  text-align: center;
+  background: #EDEDED;
+  padding: 200px 0 200px 0px;
+}
+
+#lab-related-project h1{
+font-weight: bold;
+}
+
+#lab-related-project h3{
+  cursor: pointer;
+}
+
+#lab-related-project a:hover{
+  text-decoration: underline;
+}
+
+
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   .project-section-bg {
