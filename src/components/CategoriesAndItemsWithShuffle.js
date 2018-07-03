@@ -75,6 +75,7 @@ class CategoriesAndItemsWithShuffle extends Component {
           const itemCategoryIds = item.getAttribute('data-category-ids').split(',').map((id) => {
             return parseInt(id, 10);
           });
+          console.log(itemCategoryIds);
           return itemCategoryIds.includes(categoryId);
         });
       }
@@ -102,7 +103,10 @@ class CategoriesAndItemsWithShuffle extends Component {
       <ItemsComponent items={props.items}
         shuffleSelectorClass={props.shuffleSelectorClass}
         setShuffleRefFunc={props.setShuffleRefFunc}
-        categoryIdNamePairs={this.getCategoryIdNamePairs()} />
+        categoryIdNamePairs={this.getCategoryIdNamePairs()}
+        
+        /* used by LabItems */
+        mediumLogoUrl={props.mediumLogoUrl} />
     );
 
     return (

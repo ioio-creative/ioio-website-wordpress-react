@@ -13,7 +13,7 @@ export default function ProjectItems(props) {
   const project_items = props.items.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.shuffleSelectorClass + ' ';
 
-    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+    const categoriesCorrespondingToProj = project.project_categories.map((categoryId, index) => {
       let categoryName = projectCategoryIdNamePairs[categoryId];
       if (index >= 1) {
         categoryName = ' / ' + categoryName;
@@ -37,7 +37,7 @@ export default function ProjectItems(props) {
               <h4>
                 {project.project_name}
               </h4>
-              <p>{categoryCorrespondingToProj}</p>
+              <p>{categoriesCorrespondingToProj}</p>
             </div>
           </div>
         </Link>

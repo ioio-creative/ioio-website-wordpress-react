@@ -7,7 +7,7 @@ class LabCategories extends Component {
   render() {
     const props = this.props;
 
-    const labItemLinkPathCreator = (lab) => {
+    const labItemsByCategoryLinkPathCreator = (lab) => {
       return routes.labByCategory(lab.slug);
     };
 
@@ -27,10 +27,10 @@ class LabCategories extends Component {
         selectAllItemsOptionId={props.selectAllCategoryId}
         selectedItemClass={props.selectedItemClass}
         selectedItemId={props.categoryFilterId}
-        itemLinkToCreator={labItemLinkPathCreator}
+        itemLinkToCreator={labItemsByCategoryLinkPathCreator}
         itemPropertyToShowSelector={labItemPropertyToShowSelector}
         allItemsAggregateFunc={allCategoryLabItemCountFunc}
-        allItemLinkTo={routes.labAll}
+        allItemLinkTo={routes.labAll()}
         allItemName={props.allCategoryName}
         />
     );

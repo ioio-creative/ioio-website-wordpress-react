@@ -1,379 +1,68 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import Shuffle from 'shufflejs'
 
 import Footer from 'containers/footer/Footer';
-import LabCategories from 'containers/labCategories/LabCategories';
+import withShuffle from 'components/WithShuffle';
+import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
+import LabCategories from 'containers/labList/LabCategories';
+import LabItems from 'containers/labList/LabItems';
 
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
-
 import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
 
 import './LabListPage.css';
 
-import ReactPlayer from 'react-player';
 
-import Measure from 'react-measure';
-import {SizeMe} from 'react-sizeme';
-import withContentRect from 'react-measure';
-
-import classNames from 'classnames';
-
-import $ from 'jquery';
-
-function tick(title, txt, cat, pos, topPos) {
-  let thisTarget;
-  if (pos == 2) {
-    thisTarget = '.hover-middle';
-  } else if (pos == 3) {
-    thisTarget = '.hover-right';
-  } else {
-    thisTarget = '.hover-left'
-  }
-
-  let item_hover_description = txt;
-
-  const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
-  $('.hover-middle').html('')
-  $('.hover-left').html('')
-  $('.hover-right').html('')
-
-  let topPosition = topPos;
-
-  //  console.log(topPos-$(window).scrollTop());
-  if(topPos-$(window).scrollTop() > 0){
-    topPosition = topPos-$(window).scrollTop();
-  }else{
-    topPosition = '10%';
-  }
-  $(thisTarget).html(element).css('top',topPosition);
-}
-
-class LabItems extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      dimensions: null,
-      hover: false,
-    };
-
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
-  }
-
-  handleMouseOver(e, w, template, title, txt, cat) {
-    let thisTarget = e.target;
-    $(".lab-item").addClass('fade')
-    $('#lab-list').addClass('active')
-
-    $(thisTarget).closest('.lab-item').addClass('active')
-    $(thisTarget).closest('.img-container').addClass('active')
-    $('#hover-cover').addClass('active')
-
-    $(".lab-item.active").removeClass('fade')
-
-    var el = $('#hover-cover')
-    var offsets = $(thisTarget).closest('.lab-item').offset();
-
-    //console.log("offsets left" + (  offsets.left) + " lab-list-frame left" + (  $("#lab-list-frame").offset().left));
-
-    if (offsets.left + (w * 1.1) > $('#lab-list-frame').width()) {
-      //console.log("l1")
-      if(template == 5){
-        tick(title,txt,cat, 1, offsets.top)
-      }else{
-        tick(title,txt,cat, 2, offsets.top)
-      }
-
-    } else {
-      if (offsets.left + (w / 2) > $('#lab-list-frame').width() / 3 && offsets.left + (w / 2) < $('#lab-list-frame').width() * 2 / 3) {
-        //console.log("l3 ")
-        tick(title,txt,cat, 3, offsets.top)
-      } else {
-        tick(title,txt,cat, 2, offsets.top)
-        //console.log("l2 ")
-      }
-    }
-  }
-
-  handleMouseOut(e,template) {
-    let thisTarget = e.target;
-
-    $(".lab-item").removeClass('fade')
-    $('#lab-list').removeClass('active')
-    $(thisTarget).closest('.lab-item').removeClass('active')
-    $(thisTarget).closest('.img-container').removeClass('active')
-    $('#hover-cover').removeClass('active')
-
-  }
-
-  handleMeasureResize(contentRect) {
-    this.setState({dimensions: contentRect.bounds});
-  }
-
+class LabCategoriesAndItemsContainer extends Component {
   render() {
     const props = this.props;
-    const state = this.state;
 
-    const styleFrame = props.styleFrame;
-
-    const mediumLogo = props.mediumLogo;
-console.log("ICON: " + mediumLogo)
-    const items = props.labItems.map((item, id) => {
-
-      let itemClassNames = classNames("template-type-" + item.template_type)
-
-      let sz;
-      /*
-      1.Image/GIF
-      2.video
-      3.Portrait Image/GIF
-      4.Instagram
-      5.Research 0
-      6. medium post
-      7. Sharing
-      */
-
-      let gridSize = 3;
-
-      if (item.template_type == 5) {
-        gridSize = 8;
-      } else {
-        gridSize = 4;
-      }
-
-      let gridSizeClassName = "col-md-" + gridSize;
-
-      return (
-        <div className={gridSizeClassName + " lab-item " + itemClassNames} key={item.id}>
-          <SizeMe
-            monitorHeight monitorWidth
-            refreshRate={32}
-            render={({ size }) => {sz = size
-              return(<div >
-              </div>)}}
-            />
-
-            <SizeMe monitorHeight
-              refreshRate={32} render={
-                ({size}) => {
-
-                  //let containerWidth = size.width;
-                  let containerWidth = sz.width;
-                  let containerresearchZeroHeight = containerWidth / 2 * 1.3;
-                  let templateType = item.template_type;
-
-                  let containerStyle;
-                  let imgStyle;
-                  let itemStyle;
-                  let textDescStyle;
-                  let textTitleStyle;
-                  let categoryColor;
-                  let classNameImg = "lab-thumb";
-                  let sharingPresenterStyle;
-
-                  let classNameTitle = "lab-title-from-bottom";
-                  let classNameDesc = "lab-desc-from-bottom";
-                  let classSharingPresenter ="lab-sharing-presenter"
-
-                  let hasCategoryColor = {
-                    opacity : '1',
-                    right:'25px',
-                  }
-                  let hasMediumCategoryColor = {
-                    color:'black',
-                    opacity : '1',
-                    left:'25px',
-                  }
-                  let hasSharingCategoryColor = {
-                    color:'#fccd05',
-                    opacity : '1',
-                    left:'25px',
-                  }
-                  let hasNoCategoryColor = {
-                    opacity : '0'
-                  }
-
-                  let mediumContainerStyle = {
-                    background: '#ffe000',
-                    height: containerWidth,
-                  };
-
-                  let sharingContainerStyle = {
-                    background: 'white',
-                    height: containerWidth,
-                  };
-
-                  let blackText = {
-                    color: 'black',
-                  };
-                  let whiteText = {
-                    color: 'white',
-                  };
-
-                  let squareStyle = {
-                    background: 'transparent',
-                    color: 'black',
-                    width: containerWidth,
-                    height: containerWidth
-                  };
-
-                  let longRectStyle = {
-                    background: 'transparent',
-                    color: 'black',
-                    width: containerWidth,
-                    height: 'auto'
-                  };
-
-                  let researchZeroStyle = {
-                    background: 'transparent',
-                    color: 'black',
-                    width: containerWidth,
-                    height: containerresearchZeroHeight
-                  };
-
-                  let imgSquareStyle = {
-                    height: containerWidth,
-                  };
-
-                  let imgLongRectStyle = {
-                    width: "100%",
-                    height: 'auto',
-                  };
-
-                  let imgNoImageStyle = {
-                    height: containerWidth
-                  };
-
-                  let imgResearchZeroStyle = {
-                    width: '100%',
-                    height: 'auto',
-                  };
-
-                  let imgSharingStyle = {
-                    width: '100%',
-                    height: 'auto',
-                  };
-
-                  let showSharingPresenterStyle = {
-                    display : 'block'
-                  }
-                  let hideSharingPresenterStyle = {
-                    display : 'none'
-                  }
-
-                  if (templateType == 3) {
-                    categoryColor = hasNoCategoryColor;
-                    itemStyle = longRectStyle;
-                    imgStyle = imgLongRectStyle;
-                    textTitleStyle = whiteText;
-                    textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
-                    sharingPresenterStyle = hideSharingPresenterStyle;
-                  } else if (templateType == 5) {
-                    categoryColor = hasCategoryColor;
-                    itemStyle = researchZeroStyle;
-                    imgStyle = imgResearchZeroStyle;
-                    textTitleStyle = whiteText;
-                    textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
-                    sharingPresenterStyle = hideSharingPresenterStyle;
-                  } else if (templateType == 6) {
-                    categoryColor = hasMediumCategoryColor;
-                    containerStyle = mediumContainerStyle;
-                    textTitleStyle = blackText;
-                    textDescStyle = blackText;
-                    imgStyle = imgNoImageStyle;
-                    classNameTitle = "lab-title-from-top";
-                    classNameDesc = "lab-desc-from-top";
-                    sharingPresenterStyle = showSharingPresenterStyle;
-                  }else if (templateType == 7) {
-                    categoryColor = hasSharingCategoryColor;
-                    containerStyle = sharingContainerStyle;
-                    imgStyle = imgSharingStyle;
-                    textTitleStyle = blackText;
-                    textDescStyle = blackText;
-                    classNameImg = "lab-thumb sharing";
-                    classNameTitle = "lab-title-from-top";
-                    classNameDesc = "lab-desc-from-top";
-                    sharingPresenterStyle = showSharingPresenterStyle;
-                  }else {
-                    categoryColor = hasNoCategoryColor;
-                    itemStyle = squareStyle;
-                    imgStyle = imgSquareStyle;
-                    textTitleStyle = whiteText;
-                    textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
-                    sharingPresenterStyle = hideSharingPresenterStyle;
-                  }
-
-                  return (
-                    <div className="sub-lab-item wow fadeInUp"
-                      data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
-                      style={itemStyle}
-                      onMouseOver={(e) => {
-                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
-                      }}
-                      onMouseOut={(e) => {
-                        this.handleMouseOut(e,templateType);
-                      }}>
-                      <a className="lab-item-click"
-                        href={item.link != '' ? item.link : 'javascript:;'}
-                        target="_blank"
-                        onClick={this.handleMenuClose}
-                        style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
-                        <span style={categoryColor}>{item.lab_categories[0].name}</span>
-                        <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
-                        <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                        <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
-                        <div className="img-container" style={containerStyle}>
-                          <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
-                        </div>
-                      </a>
-                    </div>
-                  );
-                }
-              }
-            />
-          </div>
-        );
-      });
-
-      return (
-        <div className="row">
-          {items}
-        </div>
-      );
-    }
-}
-
-class LabItemsWithShuffle extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
-  componentDidUpdate() {
-
-  }
-
-  componentWillUnmount() {
-
-  }
-
-  render() {
     return (
-      <div></div>
+      <section id="lab-list" className="lab-bg wow fadeIn">
+        <div className="container-fluid row text-center">
+          <div className="col-md-1"></div>
+          <div className="col-md-10" id="lab-list-frame">
+            <div className="lab-categories container-fluid" id="portfolio-flters">
+              {props.categories}
+            </div>
+            {props.items}
+          </div>
+          <div className="col-md-1"></div>
+        </div>
+      </section>
     );
   }
 }
+
+
+class LabCategoriesAndItemsWithShuffle extends Component {  
+  render() {
+    const props = this.props;
+
+    return (
+      <CategoriesAndItemsWithShuffle
+        categoriesAndItemsComponent={LabCategoriesAndItemsContainer}
+        itemsComponent={LabItems}
+        categoriesComponent={LabCategories}
+        shuffleSelectorClass='portfolio-item'
+        allCategoryName='All'
+        items={props.items}
+        categories={props.categories}
+        categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
+        shuffle={props.shuffle}
+        setShuffleRefFunc={props.setShuffleRefFunc}
+        setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}
+
+        /* items custom use */
+        itemsExtra={props.itemsExtra}
+      />
+    );
+  }
+}
+
+
+// https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
+const LabCategoriesAndItemsWithShuffleAdded = withShuffle(LabCategoriesAndItemsWithShuffle);
+
 
 class LabListPage extends Component {
   constructor(props) {
@@ -382,16 +71,7 @@ class LabListPage extends Component {
     this.state = {
       lab: null,
       labCategories: [],
-      windowHeight: window.innerHeight,
-      windowWidth: window.innerWidth,
     };
-  }
-
-  handleResize(){
-    this.setState({
-      windowHeight: window.innerHeight,
-      windowWidth: window.innerWidth
-    })
   }
 
   componentDidMount() {
@@ -399,28 +79,9 @@ class LabListPage extends Component {
       this.setState({lab: aLab});
     });
 
-    /*
-    fetchLabItems((aLabItems) => {
-      this.setState({labItems: aLabItems});
-    });
-    */
-
     fetchLabCategories((categories) => {
       this.setState({labCategories: categories});
     });
-
-    window.addEventListener("resize", this.handleResize.bind(this));
-  }
-
-  /**
-  * Remove event listener
-  */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize.bind(this));
-  }
-
-  componentWillMount(){
-    //this.handleResize();
   }
 
   render() {
@@ -448,7 +109,7 @@ class LabListPage extends Component {
       background: 'black'
     };
 
-    console.log(lab);
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
       <div style={blackBg}>
@@ -498,37 +159,35 @@ class LabListPage extends Component {
             <div className="col-md-1"></div>
           </div>
         </section>
-        <section id="lab-list" className="lab-bg wow fadeIn">
-          <div className="container-fluid row text-center">
-            <div className="col-md-1"></div>
-            <div className="col-md-10" id="lab-list-frame">
-              <div className="lab-categories container-fluid" id="portfolio-flters">
-                <LabCategories categories={labCategories}
-                  selectAllCategoryId={this.selectAllCategoryId}
-                  categoryFilterId={1}//categoryIdToFilter}
-                  allCategoryName='All' />
-                </div>
-                <LabItems labItems={labItems} w={this.state.windowWidth} h={this.state.windowHeight} mediumLogo={lab.medium_logo.guid} />
+        
+        <LabCategoriesAndItemsWithShuffleAdded
+          items={labItems}
+          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+          categories={labCategories}          
+          
+          itemsExtra={{
+            mediumLogoUrl: lab.medium_logo.guid
+          }}          
+        />
+
+        <section id="lab-bottom">
+          <div className="container-fluid">
+            <div className="row lab-bottom-detail">
+              <div className="col-md-1"></div>
+              <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
+              <div className="col-md-5 " id="lab-bottom-detail-desc">
+                <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
               </div>
               <div className="col-md-1"></div>
             </div>
-          </section>
-          <section id="lab-bottom">
-            <div className="container-fluid">
-              <div className="row lab-bottom-detail">
-                <div className="col-md-1"></div>
-                <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
-                <div className="col-md-5 " id="lab-bottom-detail-desc">
-                  <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
-                </div>
-                <div className="col-md-1"></div>
-              </div>
-            </div>
-          </section>
-          <Footer />
-        </div>
-      );
-    }
+          </div>
+        </section>
+        
+        <Footer />
+      
+      </div>
+    );
   }
+}
 
-  export default LabListPage;
+export default LabListPage;

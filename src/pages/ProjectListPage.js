@@ -154,7 +154,8 @@ class ProjectListPage extends Component {
 
     return (
       <div>
-        <ProjectCategoriesAndItemsWithShuffleAdded projects={projects}
+        <ProjectCategoriesAndItemsWithShuffleAdded 
+          projects={projects}
           categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
           categories={pC}
           tags={pT} />
