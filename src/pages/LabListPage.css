@@ -474,6 +474,17 @@ Lab List
   font-size: 12px;
 }
 
+
+.hover-mobile{
+  display: none;
+}
+
 @media only screen and (max-width: 767px) {
+  .hover-mobile{
+    display: block;
+  }
+  .hover-left,.hover-middle,.hover-right{
+    display: none;
+  }
   /*--[ Mobile styles go here]---------------------------*/
 }

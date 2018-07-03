@@ -34,19 +34,20 @@ function tick(title, txt, cat, pos, topPos) {
   let item_hover_description = txt;
 
   const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
-  $('.hover-middle').html('')
-  $('.hover-left').html('')
-  $('.hover-right').html('')
+  $('.hover-middle').html('');
+  $('.hover-left').html('');
+  $('.hover-right').html('');
 
   let topPosition = topPos;
 
-  //  console.log(topPos-$(window).scrollTop());
-  if(topPos-$(window).scrollTop() > 0){
+  // console.log(topPos-$(window).scrollTop());
+  if (topPos-$(window).scrollTop() > 0) {
     topPosition = topPos-$(window).scrollTop();
-  }else{
+  } else {
     topPosition = '10%';
   }
   $(thisTarget).html(element).css('top',topPosition);
+
 }
 
 class LabItems extends Component {
@@ -119,21 +120,13 @@ class LabItems extends Component {
     const styleFrame = props.styleFrame;
 
     const mediumLogo = props.mediumLogo;
-console.log("ICON: " + mediumLogo)
+
     const items = props.labItems.map((item, id) => {
 
       let itemClassNames = classNames("template-type-" + item.template_type)
 
       let sz;
-      /*
-      1.Image/GIF
-      2.video
-      3.Portrait Image/GIF
-      4.Instagram
-      5.Research 0
-      6. medium post
-      7. Sharing
-      */
+
 
       let gridSize = 3;
 
@@ -175,7 +168,23 @@ console.log("ICON: " + mediumLogo)
 
                   let classNameTitle = "lab-title-from-bottom";
                   let classNameDesc = "lab-desc-from-bottom";
-                  let classSharingPresenter ="lab-sharing-presenter"
+                  let classSharingPresenter ="lab-sharing-presenter";
+
+                  let classCategory = ""
+
+                  let classResearchZero = "lab-cat-research-zero";
+                  let classSharing = "lab-cat-sharing";
+                  let classMedium = "lab-cat-medium";
+                  let classExperimentPortrait = "lab-cat-experiment-portrait";
+                  /*
+                  1.Image/GIF
+                  2.video
+                  3.Portrait Image/GIF
+                  4.Instagram
+                  5.Research 0
+                  6. medium post
+                  7. Sharing
+                  */
 
                   let hasCategoryColor = {
                     opacity : '1',
@@ -269,8 +278,8 @@ console.log("ICON: " + mediumLogo)
                     imgStyle = imgLongRectStyle;
                     textTitleStyle = whiteText;
                     textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
+                    classNameTitle = "lab-title-from-bottom";
+                    classNameDesc = "lab-desc-from-bottom";
                     sharingPresenterStyle = hideSharingPresenterStyle;
                   } else if (templateType == 5) {
                     categoryColor = hasCategoryColor;
@@ -278,8 +287,8 @@ console.log("ICON: " + mediumLogo)
                     imgStyle = imgResearchZeroStyle;
                     textTitleStyle = whiteText;
                     textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
+                    classNameTitle = "lab-title-from-bottom";
+                    classNameDesc = "lab-desc-from-bottom";
                     sharingPresenterStyle = hideSharingPresenterStyle;
                   } else if (templateType == 6) {
                     categoryColor = hasMediumCategoryColor;
@@ -306,8 +315,8 @@ console.log("ICON: " + mediumLogo)
                     imgStyle = imgSquareStyle;
                     textTitleStyle = whiteText;
                     textDescStyle = whiteText;
-                    let classNameTitle = "lab-title-from-bottom";
-                    let classNameDesc = "lab-desc-from-bottom";
+                    classNameTitle = "lab-title-from-bottom";
+                    classNameDesc = "lab-desc-from-bottom";
                     sharingPresenterStyle = hideSharingPresenterStyle;
                   }
 
@@ -326,6 +335,9 @@ console.log("ICON: " + mediumLogo)
                         target="_blank"
                         onClick={this.handleMenuClose}
                         style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
+
+                        <div className="hover-mobile"><div class='lab-item-detail-mobile'><h3 class='lab-item-cat'>{item.lab_categories[0].name}</h3><h2 class='lab-item-title'>{item.lab_item_title}</h2><p class='lab-item-desc'>{item.hover_description}</p></div></div>
+
                         <span style={categoryColor}>{item.lab_categories[0].name}</span>
                         <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                         <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
@@ -446,7 +458,7 @@ class LabListPage extends Component {
 
     const blackBg = {
       background: 'black'
-    };    
+    };
 
     return (
       <div style={blackBg}>
@@ -516,7 +528,7 @@ class LabListPage extends Component {
               <div className="row lab-bottom-detail">
                 <div className="col-md-1"></div>
                 <div className="col-md-5 additional-info"><span id="ioio-text-l">IOIO</span><span id="ioio-text-r">LAB</span></div>
-                <div className="col-md-5 " id="lab-bottom-detail-desc">
+                <div className="col-md-5" id="lab-bottom-detail-desc">
                   <p>The research team is to disrupt usual habitat that lives in virtual and physical worlds through art and technology. It is also out catfish, to challenge, to inspire and to experiment.</p>
                 </div>
                 <div className="col-md-1"></div>

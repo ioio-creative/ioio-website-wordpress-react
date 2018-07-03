@@ -19,6 +19,7 @@ function tick(title, txt, cat, pos, topPos) {
   let item_hover_description = txt;
 
   const element = "<div class='lab-item-detail'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
+const elementMobile = "<div class='lab-item-detail-mobile'><h3 class='lab-item-cat'>" + cat + "</h3><h2 class='lab-item-title'>" + title + "</h2><p class='lab-item-desc'>" + item_hover_description + "</p></div>";
   $('.hover-middle').html('');
   $('.hover-left').html('');
   $('.hover-right').html('');
@@ -32,6 +33,7 @@ function tick(title, txt, cat, pos, topPos) {
     topPosition = '10%';
   }
   $(thisTarget).html(element).css('top',topPosition);
+  $(thisTarget).html(elementMobile);
 }
 
 export default class LabItems extends Component {
@@ -176,6 +178,9 @@ export default class LabItems extends Component {
                 let classNameTitle = "lab-title-from-bottom";
                 let classNameDesc = "lab-desc-from-bottom";
                 let classSharingPresenter ="lab-sharing-presenter"
+
+                let classResearchZero = "lab-research-zero"
+
 
                 let hasCategoryColor = {
                   opacity : '1',
