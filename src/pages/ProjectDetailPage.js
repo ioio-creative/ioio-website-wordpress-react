@@ -44,26 +44,17 @@ const projectTemplateMap = {
   9: ProjectTemp09
 };
 
-const customStyles = {
-  content: {
-    width: '80%',
-    margin: '0 auto',
-    transition: 'all 0.4s',
-    'z-index': '999'
-  }
-};
-
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
   const poster_url = props.project.thumbnail.guid;
-  const video_webm_url = props.project.cover_video.guid;
+  //const video_webm_url = props.project.cover_video.guid;
 
-  const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
+  //const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
   const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
-  const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
+  //const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
 
   const publicUrl = process.env.PUBLIC_URL;
@@ -208,8 +199,7 @@ class ProjectDetailPage extends Component {
 
     const projectTemplates = project.project_sections;
     const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
-      const templateType = parseInt(templateData.template_type, 10);
-      const TemplateToUse = projectTemplateMap[templateData.template_type];
+      const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
       return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
     });
 
