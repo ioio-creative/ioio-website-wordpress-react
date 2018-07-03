@@ -46,7 +46,6 @@ class AboutLabPage extends Component {
         <div className="container">
           <span>{about.page_subtitle}</span>
         </div>
-
       </section>
 
 
