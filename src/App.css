@@ -22,6 +22,25 @@
   font-size: large;
 }
 
+
+#work-lab-switch {
+  display: block;
+  position: absolute;
+  top: 25px;
+  color: white;
+  right: 25px;
+  font-weight: bold;
+  z-index: 900;
+  font-size: 25px;
+}
+
+#lab-work-lab-switch {
+  display: none;
+  cursor: pointer;
+  z-index: 900;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

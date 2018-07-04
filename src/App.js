@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
+import {Link} from 'react-router-dom'
+import routes from 'globals/routes';
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
@@ -47,6 +49,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Link id="lab-work-lab-switch" role="button" to={routes.home}>
+          <h4 id="work-lab-switch">Work</h4>
+        </Link>
         <Sidebar />
         <Main />
       </div>
