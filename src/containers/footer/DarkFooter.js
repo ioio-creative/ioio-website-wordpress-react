@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import './DarkFooter.css'
 
 import Modal from 'react-modal';
+import $ from 'jquery'
 
 import {fetchActiveDarkFooter} from 'websiteApi';
 
@@ -29,6 +30,8 @@ class DarkFooter extends Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    this.backToTop = this.backToTop.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +51,15 @@ class DarkFooter extends Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+
+  backToTop(){
+    console.log("go")
+    window.setTimeout(function() {
+      //$('html, body').scrollTop(0);
+      $('html, body').animate({scrollTop: "0"},1500);
+    }, 0);
+
   }
 
   render() {
@@ -70,7 +82,7 @@ class DarkFooter extends Component {
     };
 
     return (
-      <footer id="footer" className="wow fadeIn" data-wow-delay="0.5s">
+      <footer id="dark-footer" className="wow fadeIn" data-wow-delay="0.5s">
         <div className="footer-top">
           <div className="container-fluid">
             <div className="row">
@@ -112,7 +124,7 @@ class DarkFooter extends Component {
                   TERMS & CONDITIONS
                 </Link>
                 <a id="footer-join-us">JOIN US</a>
-                <a className="footer-back-to-top">
+                <a className="footer-back-to-top" onClick={this.backToTop}>
                   <i className="ion ion-android-arrow-up"></i>
                 </a>
               </div>

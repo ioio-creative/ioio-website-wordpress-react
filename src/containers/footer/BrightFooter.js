@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import './BrightFooter.css'
 
 import Modal from 'react-modal';
+import $ from 'jquery'
 
 import {fetchActiveBrightFooter} from 'websiteApi';
 
@@ -18,6 +19,8 @@ function SocialMedia(props) {
   </div>);
 }
 
+
+
 class BrightFooter extends Component {
   constructor(props) {
     super(props);
@@ -26,16 +29,20 @@ class BrightFooter extends Component {
       modalIsOpen: false,
       footer: null
     };
-    
+
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    this.backToTop = this.backToTop.bind(this);
   }
 
   componentDidMount() {
     fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
+
+
   }
 
   openModal() {
@@ -49,6 +56,15 @@ class BrightFooter extends Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+
+  backToTop(){
+    console.log("go")
+    window.setTimeout(function() {
+      //$('html, body').scrollTop(0);
+      $('html, body').animate({scrollTop: "0"},1500);
+    }, 0);
+
   }
 
   render() {
@@ -113,7 +129,7 @@ class BrightFooter extends Component {
                   TERMS & CONDITIONS
                 </Link>
                 <a id="footer-join-us">JOIN US</a>
-                <a className="footer-back-to-top">
+                <a className="footer-back-to-top" onClick={this.backToTop}>
                   <i className="ion ion-android-arrow-up"></i>
                 </a>
               </div>

@@ -11,6 +11,7 @@ function reloadJS() {
   //  } else {
   console.log("DOM OK!")
   // Back to top button
+  /*
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
@@ -18,13 +19,7 @@ function reloadJS() {
       $('.back-to-top').fadeOut('slow');
     }
   });
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
+*/
   // Helper function for add element box list in WOW
   WOW.prototype.addBox = function(element) {
     this.boxes.push(element);
@@ -135,27 +130,22 @@ function reloadJS() {
       let rangeToScroll = convertRange($(this).scrollTop(), [
         0, 1500
       ], [0, 1])
-            $('#about01').css('background-size', 50 + (rangeToScroll) * 700 + '%')
+      $('#about01').css('background-size', 50 + (rangeToScroll) * 700 + '%')
       $('#img-hotpot').css('top', rangeToScroll * 15 + 'vh')
       $('#img-meet').css('top', rangeToScroll * 55 + 'vh')
       $('#img-fish').css('top', -rangeToScroll * 25 + 'vh')
 
-      $('#img-fish').css('-webkit-transform','rotate('+ (rangeToScroll) * 360 + 'deg)')
-      $('#img-fish').css('transform', 'rotate('+ (rangeToScroll) * 360 + 'deg)')
+      $('#img-fish').css('-webkit-transform', 'rotate(' + (
+      rangeToScroll) * 360 + 'deg)')
+      $('#img-fish').css('transform', 'rotate(' + (
+      rangeToScroll) * 360 + 'deg)')
       $('#img-fish').css('z-index', '100')
-$('#media').css('z-index', '1')
+      $('#media').css('z-index', '1')
 
     }
   });
 
-  /* ===============  //footer =============== */
 
-  $('.footer-back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
 
 }
 

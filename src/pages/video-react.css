@@ -524,8 +524,14 @@ body.video-react-full-window {
   left: 0;
   right: 0;
   height: 3.0em;
-  background-color: #2B333F;
-  background-color: rgba(43, 51, 63, 0.7); }
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+  .video-react .video-react-control-bar div{
+
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.3); 
+  }
 
 .video-react-has-started .video-react-control-bar {
   display: -webkit-box;
