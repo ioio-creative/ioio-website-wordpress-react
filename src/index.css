@@ -227,3 +227,8 @@ section {
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
 }
+@media screen and (max-width: 767px) {
+  .owl-carousel .owl-stage-outer {
+    margin: 0 2px;
+  }
+}

@@ -1,0 +1,9 @@
+@media screen and (max-width: 767px) {
+	#footer {
+		background-color: #1b1b1b;
+		color: #ffffff;
+	}
+	#footer .footer-bottom-links a {
+		color: #ffffff;
+	}
+}

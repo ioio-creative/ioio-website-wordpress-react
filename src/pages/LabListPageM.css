@@ -1,0 +1,228 @@
+@media screen and (max-width: 767px) {
+	body {
+		background-color: #000;
+	}
+	#lab-video-landing {
+		height: 80vh;
+		position: relative;
+	}
+	.video-landing-div,
+	.video-landing-div .container-fluid ,
+	.video-landing-div .player-wrapper,
+	.video-landing-div .react-player {
+		height: 100%;
+	}
+	.video-landing-div .react-player {
+		object-fit: cover;
+	}
+	.video-landing-div .player-wrapper {
+		padding: 0 15px;
+	}
+	#lab-video-landing .video-text h1,
+	#lab-video-landing .video-text h3 {
+		padding-left: 15px;
+	}
+	#lab-video-landing .video-text h1 {
+		right: 0;
+		left: 0;
+		top: auto;
+		width: auto;
+	}
+	#lab-list {
+		overflow: hidden;
+	}
+	#lab-list .container-fluid.row {
+		margin: 0;
+	}
+	#portfolio-flters.lab-categories > .col-lg-12 {
+		padding: 0;
+	}
+	#portfolio-flters.lab-categories ul {
+		padding: 0 15px;
+	}
+
+	#lab-list .container-fluid,
+	#lab-list .col-md-10 {
+		padding: 0;
+	}
+	#lab-list .col-md-10 .row {
+		margin: 0 -5px;
+	}
+	#lab-list .lab-item {
+		padding: 5px;
+	}
+	.template-type-3,
+	.template-type-5,
+	.template-type-7 {
+		width: 100%;
+	}
+	.template-type-6,
+	.template-type-4 {
+		width: 50%;
+	}
+	.lab-item.template-type-6 span,
+	.lab-item.template-type-6 h3,
+	.lab-item.template-type-6 .lab-sharing-presenter {
+		left: 0% !important;
+		width: 100%;
+		text-align: left;
+		padding-left: 10px;
+		padding-right: 5px;
+	}
+	.lab-item.template-type-6 .lab-sharing-presenter .medium-arrow {
+		bottom: 0px;
+		right: 15px;
+	}
+	.lab-item.template-type-6 span {
+		bottom: auto;
+		top: 15px;
+	}
+	.lab-item.template-type-6 .lab-title-from-top {
+		padding-left: 0;
+		top: 40px;
+		padding-left: 10px;
+	}
+	.lab-item.template-type-6 .presenter-img-container {
+		width: 25px;
+		height: 25px;
+	}
+	.lab-item.template-type-6 .lab-sharing-presenter span {
+		width: auto;
+		left: 40px !important;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	.lab-item.template-type-6 .lab-sharing-presenter h5 {
+		top: 10px;
+		left: 40px;
+		padding-left: 10px;
+	}
+	.lab-item.template-type-6 .lab-thumb.sharing {
+		min-width: auto;
+		min-height: auto;
+		width: 50% !important;
+		opacity: 1;
+		padding-right: 5px;
+	}
+	.lab-item.template-type-7 .img-container {
+		height: auto !important;
+		justify-content: left;
+		background: transparent !important;
+	}
+	.lab-item.template-type-7 span,
+	.lab-item.template-type-7 h3,
+	.lab-item.template-type-7 .lab-sharing-presenter {
+		left: 50% !important;
+		width: 50%;
+		text-align: left;
+		padding-left: 10px;
+		padding-right: 5px;
+	}
+	.lab-item.template-type-7 span {
+		bottom: auto;
+		top: 15px;
+	}
+	.lab-item.template-type-7 .lab-title-from-top {
+		padding-left: 0;
+		top: 40px;
+		color: #fff !important;
+		padding-left: 10px;
+	}
+	.lab-item.template-type-7 .presenter-img-container {
+		width: 32px;
+		height: 32px;
+	}
+	.lab-item.template-type-7 .lab-sharing-presenter span {
+		width: auto;
+		top: 0;
+		left: 40px !important;
+		font-size: 12px;
+		color: #fff;
+		font-weight: normal;
+	}
+	.lab-item.template-type-7 .lab-sharing-presenter h5 {
+		top: 20px;
+		left: 40px;
+		color: #fff;
+		padding-left: 10px;
+	}
+	.lab-item.template-type-7 .lab-thumb.sharing {
+		min-width: auto;
+		min-height: auto;
+		width: 50% !important;
+		opacity: 1;
+		padding-right: 5px;
+	}
+	#hover-cover.active {
+		display: none;
+	}
+	#lab-list .lab-item.fade,
+	.lab-item.fade .sub-lab-item {
+		opacity: 1;
+	}
+	.lab-item.active .img-container {
+		border: 0;
+	}
+	.lab-item h1 {
+		font-size: 12px;
+		font-weight: bold;
+	}
+	.lab-desc-from-bottom {
+		bottom: 25px;
+	}
+	.lab-item h3 {
+		font-size: 16px;
+	}
+	.lab-title-from-bottom {
+		bottom: 55px;
+	}
+	.lab-bottom-detail .additional-info {
+		margin-bottom: 20px;
+	}
+	#ioio-text-l,
+	#ioio-text-r {
+		font-size: 40px;
+	}
+	#ioio-text-l {
+		padding-left: 0px;
+	}
+	#lab-bottom {
+		padding: 50px 0;
+	}
+	#lab-bottom-detail-desc {
+		padding-right: 50px;
+	}
+	/* should put this css file after other css file that styling #footer */
+	#lab-bottom + #footer {
+		background-color: #1b1b1b;
+	}
+	.sub-lab-item .hover-mobile {
+		display: none;
+	}
+	.lab-item.template-type-3 .lab-item-click {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.lab-item.template-type-3 .lab-item-click .hover-mobile {
+		display: block;
+	}
+	.lab-item.template-type-3 .lab-item-detail-mobile h3 {
+		position: static;
+	}
+	.lab-item.template-type-3 .lab-item-detail-mobile .lab-item-desc {
+		text-align: left;
+		padding: 0 25px;
+	}
+	/* about page move into menu? */
+	#root #sidebar.active #lab-about {
+		position: relative;
+		top: auto;
+		left: auto;
+	}
+	#root #sidebar.active #lab-about .container {
+		height: auto;
+	}
+	#root #sidebar.active #lab-about span {
+		font-size: 20px;
+	}
+}
