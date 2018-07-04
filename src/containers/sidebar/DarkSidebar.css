@@ -234,8 +234,13 @@
   transform: rotate(-0deg);
 }
 
-#dark-sidebar .sidebar-hiring p {
+#dark-sidebar .sidebar-hiring p{
   width: 80%;
+}
+
+#dark-sidebar .sidebar-hiring {
+
+  display: none;
 }
 
 /* text*/
