@@ -186,7 +186,7 @@ class LabDetailPage extends Component {
     const labTemplateContainer = labTemplates.map((templateData) => {    
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = labTemplateMap[templateType];
-      return <TemplateToUse {...templateData} />
+      return <TemplateToUse key={templateData.id} {...templateData} />
     });
 
     const isDisplayRelatedProjects = relatedProjects.length > 0;
