@@ -44,15 +44,15 @@ class DarkSidebar extends Component {
   handleMenuToggle(e) {
     e.preventDefault();
 
-    let attr = $("#sidebar[class*='active']")
+    let attr = $("#dark-sidebar[class*='active']")
     //console.log(attr.length)
 
-    $("#sidebar").toggleClass("active");
+    $("#dark-sidebar").toggleClass("active");
     menuCanvas();
   }
 
   handleMenuClose(e) {
-    $("#sidebar").removeClass("active");
+    $("#dark-sidebar").removeClass("active");
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
@@ -71,11 +71,11 @@ class DarkSidebar extends Component {
       return null;
     }
 
-    return (<nav id="sidebar" className="menu-transition" role="navigation">
+    return (<nav id="dark-sidebar" className="menu-transition" role="navigation">
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div">
-          <h3>Index</h3>
+          <h3>About</h3>
         </div>
         <div className="close-symbol"></div>
       </a>
@@ -92,7 +92,7 @@ class DarkSidebar extends Component {
       </section>
 
       <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
-        <h4 id="work-lab-switch">work</h4>
+        <h4 id="work-lab-switch">Work</h4>
       </Link>
 
       <div className="container-fluid ">

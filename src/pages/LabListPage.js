@@ -267,7 +267,7 @@ class LabItems extends Component {
                   };
 
                   let showSharingPresenterStyle = {
-                    display : 'block'
+  
                   }
                   let hideSharingPresenterStyle = {
                     display : 'none'
