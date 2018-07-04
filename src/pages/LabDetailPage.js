@@ -197,6 +197,7 @@ class LabDetailPage extends Component {
       </section>
       <Footer />
     </div>);
+    
   }
 
 }
