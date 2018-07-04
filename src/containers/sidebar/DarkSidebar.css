@@ -270,6 +270,10 @@
   width: 90%;
   text-align: center;
   z-index: 1;
+  height:0px;
+overflow:visible;
+pointer-events:none;
+background:none !important;
 
 }
 
@@ -415,6 +419,7 @@
     font-size: 14px;
   }
   #dark-sidebar.active .info-section {
+
     left: 0px;
     margin-left: 0px;
     top: 55%;

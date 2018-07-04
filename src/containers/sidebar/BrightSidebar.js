@@ -46,7 +46,7 @@ class BrightSidebar extends Component {
     //console.log(attr.length)
 
     $("#sidebar").toggleClass("active");
-    menuCanvas();
+    menuCanvas(true);
   }
 
   handleMenuClose(e) {
@@ -83,7 +83,7 @@ class BrightSidebar extends Component {
         <h4 id="work-lab-switch">Lab!</h4>
       </Link> */}
       <WorkWorkLabSwitch onClick={this.handleMenuClose} />
-      
+
       <div className="container-fluid ">
         <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link><br/>
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link><br/>

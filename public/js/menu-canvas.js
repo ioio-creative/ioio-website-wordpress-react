@@ -2,11 +2,11 @@ function menuCanvas(){
   var w = window.innerWidth;
   var h = window.innerHeight;
 
-  $("#menu-canvas").attr("width",w);
-  $("#menu-canvas").attr("height",h);
+  $(".menu-canvas").attr("width",w);
+  $(".menu-canvas").attr("height",h);
 
 
-  var canvas = document.getElementById("menu-canvas");
+  var canvas = document.getElementsByClassName("menu-canvas");
   var ctx = canvas.getContext("2d");
   //let cvs = rough.canvas(canvas);
 
@@ -185,8 +185,8 @@ function menuCanvas(){
     w = window.innerWidth;
     h = window.innerHeight;
 
-    $("#menu-canvas").attr("width",w);
-    $("#menu-canvas").attr("height",h);
+    $(".menu-canvas").attr("width",w);
+    $(".menu-canvas").attr("height",h);
 
     canvas.width = w;
     canvas.height = h;

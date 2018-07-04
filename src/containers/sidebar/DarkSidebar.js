@@ -50,7 +50,7 @@ class DarkSidebar extends Component {
     //console.log(attr.length)
 
     $("#dark-sidebar").toggleClass("active");
-    menuCanvas();
+    menuCanvas(true);
   }
 
   handleMenuClose(e) {
