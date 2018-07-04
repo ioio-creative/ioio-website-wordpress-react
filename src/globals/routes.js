@@ -4,7 +4,7 @@
     - Do not use lambda expression to define function as routes's members. Somehow 'this' keyword won't work if lambda was used instead of 'function'.
 */
 
-const routes = {
+export default {
   home: "/",
   about: "/about",
   projects: "/projects",
@@ -33,6 +33,4 @@ const routes = {
   },
   contacts: "/contacts",
   notFound: "/notfound"
-}
-
-export default routes;
+};

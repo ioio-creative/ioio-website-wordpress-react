@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import $ from 'jquery';
+
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
+import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 
 import routes from 'globals/routes';
 import {fetchActiveBrightSidebar} from 'websiteApi';
@@ -76,9 +78,12 @@ class BrightSidebar extends Component {
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
-      <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
+
+      {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
         <h4 id="work-lab-switch">Lab!</h4>
-      </Link>
+      </Link> */}
+      <WorkWorkLabSwitch onClick={this.handleMenuClose} />
+      
       <div className="container-fluid ">
         <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link><br/>
         <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link><br/>

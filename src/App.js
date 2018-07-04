@@ -4,6 +4,7 @@ import './App.css';
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
+import Header from 'containers/header/Header';
 
 import scriptjs from 'scriptjs'
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
@@ -46,8 +47,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div>        
         <Sidebar />
+        <Header />
         <Main />
       </div>
     );

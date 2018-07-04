@@ -192,7 +192,7 @@ class LabDetailPage extends Component {
     const isDisplayRelatedProjects = relatedProjects.length > 0;
     const relatedProjectElements = relatedProjects.map((relatedProject) => {
       return (
-        <h3>
+        <h3 key={relatedProject.id}>
           <Link to={routes.projectBySlugWithValue(relatedProject.slug)}>
             {relatedProject.project_name}
           </Link>

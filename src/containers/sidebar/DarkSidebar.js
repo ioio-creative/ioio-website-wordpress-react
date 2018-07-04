@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import $ from 'jquery';
+
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
+import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
@@ -91,9 +93,10 @@ class DarkSidebar extends Component {
         </div>
       </section>
 
-      <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+      {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <h4 id="work-lab-switch">Work</h4>
-      </Link>
+      </Link> */}
+      <LabWorkLabSwitch onClick={this.handleMenuClose} />
 
       <div className="container-fluid ">
 

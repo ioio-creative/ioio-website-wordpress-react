@@ -1,4 +1,4 @@
-import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime'
+import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime';
 
 /*
     WordPress API References
