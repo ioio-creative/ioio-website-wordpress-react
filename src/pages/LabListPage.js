@@ -306,7 +306,7 @@ class LabItems extends Component {
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
                     sharingPresenterStyle = showSharingPresenterStyle;
-                  }else if (templateType == 7) {
+                  } else if (templateType == 7) {
                     categoryColor = hasSharingCategoryColor;
                     containerStyle = sharingContainerStyle;
                     imgStyle = imgSharingStyle;
@@ -316,7 +316,7 @@ class LabItems extends Component {
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
                     sharingPresenterStyle = showSharingPresenterStyle;
-                  }else {
+                  } else {
                     categoryColor = hasNoCategoryColor;
                     itemStyle = squareStyle;
                     imgStyle = imgSquareStyle;
@@ -338,12 +338,24 @@ class LabItems extends Component {
                         this.handleMouseOut(e,templateType);
                       }}>
                       <a className="lab-item-click"
-                        href={item.link != '' ? item.link : 'javascript:;'}
-                        target={labCategories == "Feed" ? '_blank' : "_self"}
+                        href={item.link !== '' ? item.link : 'javascript:;'}
+                        target={labCategories === "Feed" ? '_blank' : "_self"}
                         onClick={this.handleMenuClose}
-                        style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
+                        style={item.link !== '' ? {cursor:'pointer'} : {cursor:'none'}}>
 
-                        <div className="hover-mobile"><div class='lab-item-detail-mobile'><h3 class='lab-item-cat'>{item.lab_categories[0].name}</h3><h2 class='lab-item-title'>{item.lab_item_title}</h2><p class='lab-item-desc'>{item.hover_description}</p></div></div>
+                        <div className="hover-mobile">
+                          <div className='lab-item-detail-mobile'>
+                            <h3 className='lab-item-cat'>
+                              {item.lab_categories[0].name}
+                            </h3>
+                            <h2 className='lab-item-title'>
+                              {item.lab_item_title}
+                            </h2>
+                            <p class='lab-item-desc'>
+                              {item.hover_description}
+                            </p>
+                          </div>
+                        </div>
 
                         <span style={categoryColor}>{item.lab_categories[0].name}</span>
                         <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
