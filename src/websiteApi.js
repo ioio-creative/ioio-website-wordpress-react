@@ -31,7 +31,7 @@ const activeEntities = {
 
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
-    let dataUrl = baseUrl
+    const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
@@ -49,7 +49,7 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
 }
 
 async function passJsonResultAsync(entityToFetch, optionalEntityId) {
-    let dataUrl = baseUrl
+    const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
@@ -183,7 +183,7 @@ function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
 
-async function fetchProjectCategoriesAsync(callback) {
+async function fetchProjectCategoriesAsync() {
     return await passJsonResultAsync("project_categories");
 }
 
@@ -191,7 +191,7 @@ function fetchProjectTags(callback) {
     passJsonResultToCallback("project_tags", callback);
 }
 
-async function fetchProjectTagsAsync(callback) {
+async function fetchProjectTagsAsync() {
     return await passJsonResultAsync("project_categories");
 }
 
@@ -202,6 +202,10 @@ async function fetchProjectTagsAsync(callback) {
 
 function fetchProjectById(id, callback) {
     passJsonResultToCallback("projects", callback, id);
+}
+
+async function fetchProjectByIdAsync(id) {
+    return await passJsonResultAsync("projects", id);
 }
 
 /* end of project detail page */
@@ -289,6 +293,7 @@ export {
 
   // project detail page
   fetchProjectById,
+  fetchProjectByIdAsync,
 
   // contact page
   fetchActiveContact,
