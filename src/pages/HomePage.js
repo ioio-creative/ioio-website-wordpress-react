@@ -117,7 +117,7 @@ class HomePage extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.state = {            
+    this.state = {
       homepage: null,
       projectCategories: [],
       allProjects: [],
@@ -148,8 +148,8 @@ class HomePage extends Component {
 
     fetchProjects((projects) => {
       this.setState({allProjects: projects});
-    });    
-    
+    });
+
     /*
       const publicUrl = process.env.PUBLIC_URL;
       scriptjs(publicUrl + '/canvas/hello/sketch.js');
@@ -210,6 +210,7 @@ class HomePage extends Component {
       <section id="homepage-top" className="section-bg wow fadeIn" data-wow-delay="0.5s">
         <div className="homepage-top-logo-div">
           <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
+
         </div>
         <div className="container-fluid iframe-p5-div-mobile">
           <h1>IOIO</h1>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
+import {Link} from 'react-router-dom'
+import routes from 'globals/routes';
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
