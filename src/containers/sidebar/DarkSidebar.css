@@ -259,16 +259,16 @@
   top: -5vh;
   display: block;
   opacity: 1;
-  margin: 0;
+  margin-left: 55px;
+  right: 27px;
   padding: 0;
   bottom: 0;
   height: auto;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.0);
-  width: 100%;
+  width: 90%;
   text-align: center;
   z-index: 1;
-  left: 55px;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -ms-transition: all 0.4s ease 0s;
@@ -303,23 +303,27 @@
   display: none;
   opacity: 0;
   -webkit-transition: opacity 1.4s;
-  -moz-transition: opacity 1.4s ;
+  -moz-transition: opacity 1.4s;
   -ms-transition: opacity 1.4s;
   -o-transition: opacity 1.4s;
   transition: opacity 1.4s;
   transition-delay: 0.3s;
 }
 
-#sidebar.active #lab-about canvas {
+#sidebar.active #work-lab-switch {
   display: block;
-  width: 100%;
-  height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
+  top: 20px;
+  color: white;
+  right: 20px;
+  font-weight: bold;
+  z-index: 900;
+}
+
+#lab-work-lab-switch {
+  display: none;
+  cursor: pointer;
+  z-index: 900;
 }
 
 /*

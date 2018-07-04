@@ -91,6 +91,10 @@ class DarkSidebar extends Component {
         </div>
       </section>
 
+      <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+        <h4 id="work-lab-switch">work</h4>
+      </Link>
+
       <div className="container-fluid ">
 
         {/*

@@ -11,6 +11,7 @@ import {Player} from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
 
 import './LabDetailPage.css';
+import './LabDetailPageM.css';
 
 import Footer from 'containers/footer/Footer';
 

@@ -248,6 +248,24 @@
   width: 80%;
 }
 
+
+#sidebar.active #work-lab-switch {
+  display: block;
+  position: absolute;
+  top: 20px;
+  color: white;
+  right: 20px;
+  font-weight: bold;
+  z-index: 900;
+}
+
+#lab-work-lab-switch {
+  display: none;
+  cursor: pointer;
+  z-index: 900;
+}
+
+
 /*
 /* Extra small devices (phones, less than 768px) */
 

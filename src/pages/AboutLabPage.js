@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Footer from 'containers/footer/Footer';
 
 import './AboutLabPage.css';
+import './AboutLabPageM.css';
 
 import {fetchActiveAboutLab} from 'websiteApi';
 import {withRouter} from 'react-router'

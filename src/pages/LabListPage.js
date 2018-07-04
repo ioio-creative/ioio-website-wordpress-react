@@ -10,6 +10,7 @@ import Footer from 'containers/footer/Footer';
 import {fetchActiveLab, fetchLabCategories} from 'websiteApi';
 
 import './LabListPage.css';
+import './LabListPageM.css';
 
 //import ReactPlayer from 'react-player';
 
