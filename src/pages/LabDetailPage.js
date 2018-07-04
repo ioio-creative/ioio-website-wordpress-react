@@ -177,7 +177,7 @@ class LabDetailPage extends Component {
       return <TemplateToUse {...templateData}/>
     });
 
-    console.log(lab.related_projects_lab_projects[0].link);
+
 
     return (<div className="wow fadeIn">
       <VideoLanding lab={lab}/>
@@ -191,9 +191,9 @@ class LabDetailPage extends Component {
           <div className="col-md-1"></div>
         </div>
       </div>
-      <section id="lab-related-project">
+      <section id="lab-related-project" style={lab.has_related_projects[0] == 1? {display:'block'} : {display:'none'}}>
         <h1>Related Project</h1>
-        <h3><a href={lab.related_projects_lab_projects[0].link}>{lab.related_projects_lab_projects[0].project_name}</a></h3>
+        <h3><a href={lab.related_projects[0].link}>{lab.related_projects[0].project_name}</a></h3>
       </section>
       <Footer />
     </div>);
