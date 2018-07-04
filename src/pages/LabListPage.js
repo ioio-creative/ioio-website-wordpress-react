@@ -306,7 +306,7 @@ class LabItems extends Component {
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
                     sharingPresenterStyle = showSharingPresenterStyle;
-                  }else if (templateType == 7) {
+                  } else if (templateType == 7) {
                     categoryColor = hasSharingCategoryColor;
                     containerStyle = sharingContainerStyle;
                     imgStyle = imgSharingStyle;
@@ -316,7 +316,7 @@ class LabItems extends Component {
                     classNameTitle = "lab-title-from-top";
                     classNameDesc = "lab-desc-from-top";
                     sharingPresenterStyle = showSharingPresenterStyle;
-                  }else {
+                  } else {
                     categoryColor = hasNoCategoryColor;
                     itemStyle = squareStyle;
                     imgStyle = imgSquareStyle;
