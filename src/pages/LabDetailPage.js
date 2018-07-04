@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-import {fetchLabDetailPageById} from 'websiteApi';
+import {fetchLabDetailPageById, fetchProjectByIdAsync} from 'websiteApi';
 
 import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds';
-import {Link} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 
-import {Player} from 'video-react'; //todo Remove video-react
+//import {Player} from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
 
 import './LabDetailPage.css';
@@ -36,7 +36,6 @@ const labTemplateMap = {
   7: LabTemp07,
   8: LabTemp08,
   9: LabTemp09,
-
 };
 
 function VideoLanding(props) {
@@ -117,7 +116,8 @@ class LabDetailPage extends Component {
     super(props);
     this.state = {
       isReturnNotFound: false,
-      lab: null
+      lab: null,
+      relatedProjects: [],
     }
   }
 
@@ -136,70 +136,95 @@ class LabDetailPage extends Component {
       if (aLab === null) {
         this.setState({isReturnNotFound: true});
       } else {
-        this.setState({lab: aLab});
+        this.setState({
+          lab: aLab
+        });
+        
+        const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
+          const relatedProjWhole =  await fetchProjectByIdAsync(relatedProj.id);          
+          return relatedProjWhole;
+        });
+
+        Promise.all(relatedProjectPromises).then((relatedProjectObjs) => {
+          this.setState({
+            relatedProjects: relatedProjectObjs
+          });
+        });
       }
     });
-
   }
+
   render() {
     const state = this.state;
     const lab = state.lab;
+    const relatedProjects = state.relatedProjects;
 
     // should check isReturnNotFound first
     // before checking lab === null
     if (state.isReturnNotFound) {
-      return (<Redirect to={routes.notFound}/>);
+      return (<Redirect to={routes.notFound} />);
     }
 
     if (lab === null) {
       return null;
     }
 
-    const customStyles = {
-      content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        backgroundColor: 'rgba(0,0,0,0)',
-        border: '0px'
-      }
-    };
-    //    console.log(state.isReturnNotFound);
-//console.log(lab);
+    // const customStyles = {
+    //   content: {
+    //     top: '50%',
+    //     left: '50%',
+    //     right: 'auto',
+    //     bottom: 'auto',
+    //     marginRight: '-50%',
+    //     transform: 'translate(-50%, -50%)',
+    //     backgroundColor: 'rgba(0,0,0,0)',
+    //     border: '0px'
+    //   }
+    // };  
 
     const labTemplates = lab.sections;
-    const labTemplateContainer = labTemplates.map((templateData) => {
+    const labTemplateContainer = labTemplates.map((templateData) => {    
       const templateType = parseInt(templateData.template_type, 10);
-      const TemplateToUse = labTemplateMap[templateData.template_type];
-      return <TemplateToUse {...templateData}/>
+      const TemplateToUse = labTemplateMap[templateType];
+      return <TemplateToUse key={templateData.id} {...templateData} />
     });
 
+    const isDisplayRelatedProjects = relatedProjects.length > 0;
+    const relatedProjectElements = relatedProjects.map((relatedProject) => {
+      return (
+        <h3>
+          <Link to={routes.projectBySlugWithValue(relatedProject.slug)}>
+            {relatedProject.project_name}
+          </Link>
+        </h3>
+      );
+    });
 
-
-    return (<div className="wow fadeIn">
-      <VideoLanding lab={lab}/>
-      <VideoLandingDesc lab={lab}/>
-      <div className="container-fluid">
-        <div className="row ">
-          <div className="col-md-1"></div>
-          <div className="col-md-10">
-            {labTemplateContainer}
+    return (
+      <div className="wow fadeIn">
+        <VideoLanding lab={lab}/>
+        <VideoLandingDesc lab={lab}/>
+        <div className="container-fluid">
+          <div className="row ">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              {labTemplateContainer}
+            </div>
+            <div className="col-md-1"></div>
           </div>
-          <div className="col-md-1"></div>
         </div>
+        {
+          isDisplayRelatedProjects && (          
+            <section id="lab-related-project">
+              <h1>Related Projects</h1>
+              {relatedProjectElements}
+            </section>
+          )
+        }
+        <Footer />
       </div>
-      <section id="lab-related-project" style={lab.has_related_projects[0] == 1? {display:'block'} : {display:'none'}}>
-        <h1>Related Project</h1>
-        <h3><a href={lab.related_projects[0].link}>{lab.related_projects[0].project_name}</a></h3>
-      </section>
-      <Footer />
-    </div>);
-    
+    );
   }
-
 }
 
 export default LabDetailPage;

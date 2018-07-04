@@ -26,8 +26,8 @@ export default function ProjectItems(props) {
     return (
       // data-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
       <div key={project.id}
-          className={projItemClassName}
-          data-category-ids={project.project_categories.join(',')}>
+        className={projItemClassName}
+        data-category-ids={project.project_categories.join(',')}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
             <div className="img-container">
