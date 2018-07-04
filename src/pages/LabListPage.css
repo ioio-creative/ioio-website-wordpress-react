@@ -312,7 +312,7 @@ Lab List
 
 .lab-title-from-top {
   width: 80%;
-  top: 90px;
+  top: 70px;
 }
 
 .lab-desc-from-bottom {
@@ -439,14 +439,14 @@ Lab List
 .lab-sharing-presenter {
   display: block;
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   left: 25px;
   width: 100%;
 }
 
 .lab-sharing-presenter .medium-arrow{
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
   right: 50px;
   text-align: right;
   width:200%;
@@ -470,15 +470,15 @@ Lab List
 
 .lab-sharing-presenter span {
   position: absolute;
-  top: 0;
+  top: 9px;
   left: 60px;
   color: black;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .lab-sharing-presenter h5 {
   position: absolute;
-  top: 25px;
+  top: 30px;
   left: 60px;
   color: black;
   font-size: 12px;

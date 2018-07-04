@@ -339,7 +339,7 @@ class LabItems extends Component {
                       }}>
                       <a className="lab-item-click"
                         href={item.link !== '' ? item.link : 'javascript:;'}
-                        target={labCategories === "Feed" ? '_blank' : "_self"}
+                        target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : "_self"}
                         onClick={this.handleMenuClose}
                         style={item.link !== '' ? {cursor:'pointer'} : {cursor:'none'}}>
 

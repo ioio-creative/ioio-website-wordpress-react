@@ -77,7 +77,7 @@ function VideoLandingDesc(props) {
         <div className="col-md-2 additional-info">
           <ul>
             <li className="date">
-              {res[1]}/{res[2]}
+              {res[2]}/{res[1]}
             </li>
             <li className="year">
               {res[0]}
@@ -139,9 +139,9 @@ class LabDetailPage extends Component {
         this.setState({
           lab: aLab
         });
-        
+
         const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
-          const relatedProjWhole =  await fetchProjectByIdAsync(relatedProj.id);          
+          const relatedProjWhole =  await fetchProjectByIdAsync(relatedProj.id);
           return relatedProjWhole;
         });
 
@@ -180,10 +180,10 @@ class LabDetailPage extends Component {
     //     backgroundColor: 'rgba(0,0,0,0)',
     //     border: '0px'
     //   }
-    // };  
+    // };
 
     const labTemplates = lab.sections;
-    const labTemplateContainer = labTemplates.map((templateData) => {    
+    const labTemplateContainer = labTemplates.map((templateData) => {
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = labTemplateMap[templateType];
       return <TemplateToUse key={templateData.id} {...templateData} />
@@ -214,7 +214,7 @@ class LabDetailPage extends Component {
           </div>
         </div>
         {
-          isDisplayRelatedProjects && (          
+          isDisplayRelatedProjects && (
             <section id="lab-related-project">
               <h1>Related Projects</h1>
               {relatedProjectElements}
