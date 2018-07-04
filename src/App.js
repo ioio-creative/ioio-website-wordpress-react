@@ -49,8 +49,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Link id="lab-work-lab-switch" role="button" to={routes.home}>
-          <h4 id="work-lab-switch">Work</h4>
+        <Link className="lab-work-switch" role="button" to={routes.home}>
+          <h4 className="work-lab-switch">Work</h4>
         </Link>
         <Sidebar />
         <Main />

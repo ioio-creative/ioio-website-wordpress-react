@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import asyncLoadingComponentWithTracker from 'components/loading/AsyncLoadingComponentWithTracker';
 
+import './Main.css';
+import {Link} from 'react-router-dom'
+
 import routes from 'globals/routes';
 
 import P5SketchTrialPage from 'pages/P5SketchTrialPage';
@@ -23,7 +26,10 @@ class Main extends Component {
   render() {
     return (
       <div id="scroller">
+
         <main id="main">
+
+
             {/*
                 Switch component behaves similarly to the "switch" construct
                 in programming. Once a Route is matched, subsequent Routes

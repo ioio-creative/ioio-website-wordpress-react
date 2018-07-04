@@ -23,21 +23,18 @@
 }
 
 
-#work-lab-switch {
-  display: block;
+.lab-work-switch {
   position: absolute;
-  top: 25px;
-  color: white;
-  right: 25px;
-  font-weight: bold;
+  display: block;
+  top: 18px;
+  right: 0;
   z-index: 900;
-  font-size: 25px;
 }
 
-#lab-work-lab-switch {
-  display: none;
-  cursor: pointer;
-  z-index: 900;
+.work-lab-switch {
+  position: absolute;
+  right: 40px;
+  font-weight: bold;
 }
 
 
