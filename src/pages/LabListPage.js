@@ -187,6 +187,12 @@ class LabItems extends Component {
                   7. Sharing
                   */
 
+                  let labCategories = item.lab_categories[0].name;
+                  if (labCategories == "Feed"){
+
+                  }
+
+
                   let hasCategoryColor = {
                     opacity : '1',
                     right:'25px',
@@ -267,7 +273,7 @@ class LabItems extends Component {
                   };
 
                   let showSharingPresenterStyle = {
-  
+
                   }
                   let hideSharingPresenterStyle = {
                     display : 'none'
@@ -333,7 +339,7 @@ class LabItems extends Component {
                       }}>
                       <a className="lab-item-click"
                         href={item.link != '' ? item.link : 'javascript:;'}
-                        target="_blank"
+                        target={labCategories == "Feed" ? '_blank' : "_self"}
                         onClick={this.handleMenuClose}
                         style={item.link != '' ? {cursor:'pointer'} : {cursor:'none'}}>
 

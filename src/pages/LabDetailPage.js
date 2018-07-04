@@ -157,6 +157,7 @@ class LabDetailPage extends Component {
   render() {
     const state = this.state;
     const lab = state.lab;
+    const relatedProjects = state.relatedProjects;
 
     // should check isReturnNotFound first
     // before checking lab === null
@@ -188,7 +189,8 @@ class LabDetailPage extends Component {
       return <TemplateToUse {...templateData} />
     });
 
-    const relatedProjectElements = state.relatedProjects.map((relatedProject) => {
+    const isDisplayRelatedProjects = relatedProjects.length > 0;
+    const relatedProjectElements = relatedProjects.map((relatedProject) => {
       return (
         <h3>
           <Link to={routes.projectBySlugWithValue(relatedProject.slug)}>
@@ -211,10 +213,14 @@ class LabDetailPage extends Component {
             <div className="col-md-1"></div>
           </div>
         </div>
-        <section id="lab-related-project">
-          <h1>Related Projects</h1>
-          {relatedProjectElements}
-        </section>
+        {
+          isDisplayRelatedProjects && (          
+            <section id="lab-related-project">
+              <h1>Related Projects</h1>
+              {relatedProjectElements}
+            </section>
+          )
+        }
         <Footer />
       </div>
     );
