@@ -351,7 +351,7 @@ class LabItems extends Component {
                             <h2 className='lab-item-title'>
                               {item.lab_item_title}
                             </h2>
-                            <p class='lab-item-desc'>
+                            <p className='lab-item-desc'>
                               {item.hover_description}
                             </p>
                           </div>
