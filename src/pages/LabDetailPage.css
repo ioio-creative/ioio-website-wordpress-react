@@ -532,9 +532,16 @@ font-weight: bold;
   cursor: pointer;
 }
 
-#lab-related-project a:hover{
+.related-hover:hover #lab-related-project{
+  background: #FFFFFF;
   text-decoration: underline;
 }
+
+.related-hover #lab-related-project{
+  background: #EDEDED;
+}
+
+
 
 
 @media only screen and (max-width: 767px) {

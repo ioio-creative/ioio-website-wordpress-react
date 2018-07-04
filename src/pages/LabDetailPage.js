@@ -7,7 +7,7 @@ import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 
-//import {Player} from 'video-react'; //todo Remove video-react
+//import {Player} from 'video-react'; todo Remove video-react
 import "./video-react.css"; // import css
 
 import './LabDetailPage.css';
@@ -25,7 +25,6 @@ import LabTemp07 from 'containers/labDetail/LabTemp07'; //photomontage - One Vid
 import LabTemp08 from 'containers/labDetail/LabTemp08'; //Full Width One Imgae
 import LabTemp09 from 'containers/labDetail/LabTemp09'; //centre text
 
-
 const labTemplateMap = {
   1: LabTemp01,
   2: LabTemp02,
@@ -35,7 +34,7 @@ const labTemplateMap = {
   6: LabTemp06,
   7: LabTemp07,
   8: LabTemp08,
-  9: LabTemp09,
+  9: LabTemp09
 };
 
 function VideoLanding(props) {
@@ -117,7 +116,7 @@ class LabDetailPage extends Component {
     this.state = {
       isReturnNotFound: false,
       lab: null,
-      relatedProjects: [],
+      relatedProjects: []
     }
   }
 
@@ -136,19 +135,15 @@ class LabDetailPage extends Component {
       if (aLab === null) {
         this.setState({isReturnNotFound: true});
       } else {
-        this.setState({
-          lab: aLab
-        });
+        this.setState({lab: aLab});
 
         const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
-          const relatedProjWhole =  await fetchProjectByIdAsync(relatedProj.id);
+          const relatedProjWhole = await fetchProjectByIdAsync(relatedProj.id);
           return relatedProjWhole;
         });
 
         Promise.all(relatedProjectPromises).then((relatedProjectObjs) => {
-          this.setState({
-            relatedProjects: relatedProjectObjs
-          });
+          this.setState({relatedProjects: relatedProjectObjs});
         });
       }
     });
@@ -162,7 +157,7 @@ class LabDetailPage extends Component {
     // should check isReturnNotFound first
     // before checking lab === null
     if (state.isReturnNotFound) {
-      return (<Redirect to={routes.notFound} />);
+      return (<Redirect to={routes.notFound}/>);
     }
 
     if (lab === null) {
@@ -186,44 +181,41 @@ class LabDetailPage extends Component {
     const labTemplateContainer = labTemplates.map((templateData) => {
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = labTemplateMap[templateType];
-      return <TemplateToUse key={templateData.id} {...templateData} />
+      return <TemplateToUse key={templateData.id} {...templateData}/>
     });
 
     const isDisplayRelatedProjects = relatedProjects.length > 0;
     const relatedProjectElements = relatedProjects.map((relatedProject) => {
-      return (
+      return (<Link to={routes.projectBySlugWithValue(relatedProject.slug)} className="related-hover">
+        <h1>Related Projects</h1>
         <h3 key={relatedProject.id}>
-          <Link to={routes.projectBySlugWithValue(relatedProject.slug)}>
-            {relatedProject.project_name}
-          </Link>
+
+          {relatedProject.project_name}
+
         </h3>
-      );
+      </Link>);
     });
 
-    return (
-      <div className="wow fadeIn">
-        <VideoLanding lab={lab}/>
-        <VideoLandingDesc lab={lab}/>
-        <div className="container-fluid">
-          <div className="row ">
-            <div className="col-md-1"></div>
-            <div className="col-md-10">
-              {labTemplateContainer}
-            </div>
-            <div className="col-md-1"></div>
+    return (<div className="wow fadeIn">
+      <VideoLanding lab={lab}/>
+      <VideoLandingDesc lab={lab}/>
+      <div className="container-fluid">
+        <div className="row ">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            {labTemplateContainer}
           </div>
+          <div className="col-md-1"></div>
         </div>
-        {
-          isDisplayRelatedProjects && (
-            <section id="lab-related-project">
-              <h1>Related Projects</h1>
-              {relatedProjectElements}
-            </section>
-          )
-        }
-        <Footer />
       </div>
-    );
+      {
+        isDisplayRelatedProjects && (<section id="lab-related-project">
+
+          {relatedProjectElements}
+        </section>)
+      }
+      <Footer/>
+    </div>);
   }
 }
 

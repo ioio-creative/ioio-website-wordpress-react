@@ -141,7 +141,7 @@ class BrightFooter extends Component {
           <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
             <i className="ion ion-android-close"></i>
           </button>
-          <div className="terms-div">
+          <div className="terms-div" contenteditable={"true"}>
             {footerInfo.terms_and_condition}
           </div>
         </Modal>
