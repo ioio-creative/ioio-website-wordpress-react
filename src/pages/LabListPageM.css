@@ -209,9 +209,16 @@
 	.lab-item.template-type-3 .lab-item-detail-mobile h3 {
 		position: static;
 	}
+	.lab-item.template-type-3 .lab-item-detail-mobile h2 {
+		margin: 0;
+	}
 	.lab-item.template-type-3 .lab-item-detail-mobile .lab-item-desc {
 		text-align: left;
 		padding: 0 25px;
+	}
+	#lab-list.active .template-type-7 .lab-title-from-top,
+	#lab-list.active .lab-sharing-presenter {
+		display: block;
 	}
 	/* about page move into menu? */
 	#root #sidebar.active #lab-about {
