@@ -77,7 +77,7 @@ class BrightSidebar extends Component {
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
       <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
-        <h4 id="work-lab-switch">lab</h4>
+        <h4 id="work-lab-switch">Lab!</h4>
       </Link>
       <div className="container-fluid ">
         <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link><br/>

@@ -313,11 +313,12 @@
 #sidebar.active #work-lab-switch {
   display: block;
   position: absolute;
-  top: 20px;
+  top: 25px;
   color: white;
-  right: 20px;
+  right: 25px;
   font-weight: bold;
   z-index: 900;
+  font-size: 25px;
 }
 
 #lab-work-lab-switch {
