@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-#sidebar {
+#dark-sidebar {
   height: 100%;
   width: 55px;
   /*update scroller margin-left as well*/
@@ -48,23 +48,23 @@
   border-right: 1px solid #656565;
 }
 
-#sidebar.active {
+#dark-sidebar.active {
   background: rgba(0, 0, 0, 0.9);
   color: #fff;
   width: 100%;
   padding-top: 100px;
 }
 
-#sidebar.active .logo {
+#dark-sidebar.active .logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
 
-#sidebar .menu-item {
+#dark-sidebar .menu-item {
   display: none;
 }
 
-#sidebar.active .menu-item {
+#dark-sidebar.active .menu-item {
   color: #fff;
   font-family: "FuturaLT", sans-serif;
   text-transform: uppercase;
@@ -73,22 +73,22 @@
   font-size: 80px;
 }
 
-#sidebar.active .menu-language {
+#dark-sidebar.active .menu-language {
   display: inline;
   font-size: 20px;
   display: none;
 }
 
-#sidebar.active a {
+#dark-sidebar.active a {
   display: inline;
   color: #fff;
 }
 
-#sidebar.active a:hover {
+#dark-sidebar.active a:hover {
   color: #FFE000;
 }
 
-#sidebar h3 {
+#dark-sidebar h3 {
   font-family: "FuturaLT", sans-serif;
   font-weight: 100;
   font-size: 16px;
@@ -108,7 +108,7 @@
   -o-transform: rotate(270deg);
 }
 
-#sidebar .logo {
+#dark-sidebar .logo {
   position: absolute;
   top: 15px;
   left: 8px;
@@ -117,7 +117,7 @@
   filter: invert(100%);
 }
 
-#sidebar.active #menu-canvas {
+#dark-sidebar.active #menu-canvas {
   display: inline;
   position: absolute;
   top: 0;
@@ -128,11 +128,11 @@
   background-color: #000;
 }
 
-#sidebar #menu-canvas {
+#dark-sidebar #menu-canvas {
   display: none;
 }
 
-#sidebar.active .info-section {
+#dark-sidebar.active .info-section {
   display: inline;
   position: fixed;
   bottom: 20px;
@@ -141,21 +141,21 @@
   font-size: 14px;
 }
 
-#sidebar.active .info-section h4 {
+#dark-sidebar.active .info-section h4 {
   font-weight: bold;
   margin-top: -20px;
   font-size: 14px;
 }
 
-#sidebar.active .info-section .social-links a {
+#dark-sidebar.active .info-section .social-links a {
   display: block;
 }
 
-#sidebar .info-section {
+#dark-sidebar .info-section {
   display: none;
 }
 
-#sidebar.active .close-symbol {
+#dark-sidebar.active .close-symbol {
   position: fixed;
   left: 15px;
   top: 70%;
@@ -165,16 +165,16 @@
   z-index: 999;
 }
 
-#sidebar .close-symbol {
+#dark-sidebar .close-symbol {
   z-index: 999;
 }
 
-#sidebar .close-symbol:hover {
+#dark-sidebar .close-symbol:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-#sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
+#dark-sidebar.active .close-symbol:before, #dark-sidebar.active .close-symbol:after {
   position: fixed;
   left: 30px;
   content: ' ';
@@ -188,7 +188,7 @@
   transition: all 0.4s ease 0s;
 }
 
-#sidebar .close-symbol:before {
+#dark-sidebar .close-symbol:before {
   position: fixed;
   left: 25px;
   content: ' ';
@@ -203,7 +203,7 @@
   transition: all 0.4s ease 0s;
 }
 
-#sidebar .close-symbol:after {
+#dark-sidebar .close-symbol:after {
   position: fixed;
   left: 32px;
   content: ' ';
@@ -218,23 +218,23 @@
   transition: all 0.4s ease 0s;
 }
 
-#sidebar.active .close-symbol:before {
+#dark-sidebar.active .close-symbol:before {
   transform: rotate(45deg);
 }
 
-#sidebar.active .close-symbol:after {
+#dark-sidebar.active .close-symbol:after {
   transform: rotate(-45deg);
 }
 
-#sidebar .close-symbol:before {
+#dark-sidebar .close-symbol:before {
   transform: rotate(0deg);
 }
 
-#sidebar .close-symbol:after {
+#dark-sidebar .close-symbol:after {
   transform: rotate(-0deg);
 }
 
-#sidebar .sidebar-hiring p {
+#dark-sidebar .sidebar-hiring p {
   width: 80%;
 }
 
@@ -244,7 +244,7 @@
 #about general
 --------------------------------*/
 
-#sidebar #lab-about {
+#dark-sidebar #lab-about {
   display: none;
   opacity: 0;
   -webkit-transition: all 0.4s ease 0s;
@@ -254,7 +254,7 @@
   transition: all 0.4s ease 0s;
 }
 
-#sidebar.active #lab-about {
+#dark-sidebar.active #lab-about {
   position: absolute;
   top: -5vh;
   display: block;
@@ -276,14 +276,14 @@
   transition: all 0.4s ease 0s;
 }
 
-#sidebar.active #lab-about .container {
+#dark-sidebar.active #lab-about .container {
   display: table;
   height: 100vh;
   width: 100%;
   text-align: center;
 }
 
-#sidebar.active #lab-about span {
+#dark-sidebar.active #lab-about span {
   display: table-cell;
   vertical-align: middle;
   color: white;
@@ -299,7 +299,7 @@
   transition-delay: 0.3s;
 }
 
-#sidebar #lab-about span {
+#dark-sidebar #lab-about span {
   display: none;
   opacity: 0;
   -webkit-transition: opacity 1.4s;
@@ -310,7 +310,7 @@
   transition-delay: 0.3s;
 }
 
-#sidebar.active #work-lab-switch {
+#dark-sidebar.active #work-lab-switch {
   display: block;
   position: absolute;
   top: 25px;
@@ -361,7 +361,7 @@
     width: 55px;
     right: 0;
   }
-  #sidebar {
+  #dark-sidebar {
     height: 55px;
     width: 100%;
     /*update scroller margin-left as well*/
@@ -374,14 +374,14 @@
     padding-top: 0;
     border-bottom: 0px solid #656565;
   }
-  #sidebar.active {
+  #dark-sidebar.active {
     /*background: rgba(0, 0, 0, 0.9);*/
     background: black;
     color: #fff;
     height: 100%;
     padding-top: 100px;
   }
-  #sidebar h3 {
+  #dark-sidebar h3 {
     font-size: 16px;
     letter-spacing: 2px;
     /*text-transform: uppercase;*/
@@ -400,36 +400,36 @@
     -o-transform: rotate(0deg);
     display: none;
   }
-  #sidebar.active h3 {
+  #dark-sidebar.active h3 {
     top: 12px;
   }
-  #sidebar.active .menu-item {
+  #dark-sidebar.active .menu-item {
     font-size: 40px;
     margin-left: 0px;
     margin-top: 0;
   }
-  #sidebar.active .menu-language {
+  #dark-sidebar.active .menu-language {
     /*display: inline;*/
     display: none;
     font-size: 18px;
   }
-  #sidebar .logo {
+  #dark-sidebar .logo {
     position: absolute;
     top: 10px;
     left: 15px;
     opacity: 0;
   }
-  #sidebar.active .info-section h4 {
+  #dark-sidebar.active .info-section h4 {
     margin-top: 0px;
     font-size: 14px;
   }
-  #sidebar.active .info-section p {
+  #dark-sidebar.active .info-section p {
     font-size: 14px;
   }
-  #sidebar.active .info-section a {
+  #dark-sidebar.active .info-section a {
     font-size: 14px;
   }
-  #sidebar.active .info-section {
+  #dark-sidebar.active .info-section {
     left: 0px;
     margin-left: 0px;
     top: 55%;
@@ -438,29 +438,29 @@
     padding-right: 65px;
     bottom: 0;
   }
-  #sidebar .sidebar-hiring {
+  #dark-sidebar .sidebar-hiring {
     display: none;
   }
-  #sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
+  #dark-sidebar.active .close-symbol:before, #dark-sidebar.active .close-symbol:after {
     left: 92%;
     width: 2px;
     height: 22px;
     top: 17px;
   }
-  #sidebar .close-symbol:before {
+  #dark-sidebar .close-symbol:before {
     left: 92%;
     height: 22px;
     top: 12px;
   }
-  #sidebar .close-symbol:after {
+  #dark-sidebar .close-symbol:after {
     left: 92%;
     height: 22px;
     top: 20px;
   }
-  #sidebar .close-symbol:before {
+  #dark-sidebar .close-symbol:before {
     transform: rotate(90deg);
   }
-  #sidebar .close-symbol:after {
+  #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
 }
