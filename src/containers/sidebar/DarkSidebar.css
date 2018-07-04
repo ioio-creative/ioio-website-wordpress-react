@@ -328,6 +328,10 @@
   #sidebar-top-logo-text {
     left: 15px;
     opacity: 1;
+    color: black;
+  }
+  #dark-sidebar.active #sidebar-top-logo-text {
+    color: black;
   }
   #menu-toggle-div {
     position: fixed;
@@ -439,13 +443,13 @@
   #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
-  #dark-sidebar.active #work-lab-switch {
-    top: 17px;
-    right: 100px;
+
+
+  #dark-sidebar.active #lab-about  {
+    top:-20vh;
+  }
+  #dark-sidebar.active #lab-about span {
     font-size: 20px;
   }
-
-
-
 
 }

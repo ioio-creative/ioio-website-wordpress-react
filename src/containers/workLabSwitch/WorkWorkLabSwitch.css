@@ -19,3 +19,10 @@
 #sidebar.active .work-to-lab-switch-txt {
   display: block;
 }
+
+
+@media only screen and (max-width: 767px) {
+  #sidebar.active .work-to-lab-switch-txt {
+  right: 80px;
+  }
+}

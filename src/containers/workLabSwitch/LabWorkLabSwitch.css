@@ -4,7 +4,7 @@
   top: 18px;
   right: 0;
   z-index: 900;
-  
+
 }
 
 .lab-to-work-switch-txt {
@@ -20,4 +20,11 @@
 
 #dark-sidebar.active .lab-to-work-switch-txt {
   display: block;
+}
+
+@media only screen and (max-width: 767px) {
+
+  #dark-sidebar.active .lab-to-work-switch-txt {
+  right: 80px;
+  }
 }
