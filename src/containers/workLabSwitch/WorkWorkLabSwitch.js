@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
+import './WorkWorkLabSwitch.css';
 
 export default class WorkWorkLabSwitch extends Component {
   render() {
-    const props = this.props;    
+    const props = this.props;
     let onClickFunc = () => {};
     if (props.onClick) {
       onClickFunc = () => {
@@ -14,13 +15,12 @@ export default class WorkWorkLabSwitch extends Component {
     }
 
     return (
-      <Link id="lab-work-lab-switch"
+      <Link className="work-to-lab-switch"
         role="button"
-        className="menu-transition"
         to={routes.lab}
         onClick={onClickFunc}
       >
-        <h4 id="work-lab-switch">Lab!</h4>
+        <h4 className="work-to-lab-switch-txt">Lab!</h4>
       </Link>
     );
   }

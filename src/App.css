@@ -23,21 +23,6 @@
 }
 
 
-.lab-work-switch {
-  position: absolute;
-  display: block;
-  top: 18px;
-  right: 0;
-  z-index: 900;
-}
-
-.work-lab-switch {
-  position: absolute;
-  right: 40px;
-  font-weight: bold;
-}
-
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

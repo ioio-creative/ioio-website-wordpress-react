@@ -6,7 +6,6 @@ export default class DarkHeader extends Component {
   render() {
     return (
       <div>
-        Dark Header
         <LabWorkLabSwitch />
       </div>
     );

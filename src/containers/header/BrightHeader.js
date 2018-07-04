@@ -6,7 +6,6 @@ export default class BrightHeader extends Component {
   render() {
     return (
       <div>
-        Bright Header
         <WorkWorkLabSwitch />
       </div>
     );

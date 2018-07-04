@@ -1,0 +1,22 @@
+.llab-to-work-switch {
+  position: absolute;
+  display: block;
+  top: 18px;
+  right: 0;
+  z-index: 900;
+}
+
+.lab-to-work-switch-txt {
+  position: absolute;
+  right: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+#dark-sidebar .lab-to-work-switch-txt {
+  display: none;
+}
+
+#dark-sidebar.active .lab-to-work-switch-txt {
+  display: block;
+}
