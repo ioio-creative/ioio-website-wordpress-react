@@ -177,6 +177,8 @@ class LabDetailPage extends Component {
       return <TemplateToUse {...templateData}/>
     });
 
+    console.log(lab.related_projects_lab_projects[0].link);
+
     return (<div className="wow fadeIn">
       <VideoLanding lab={lab}/>
       <VideoLandingDesc lab={lab}/>
