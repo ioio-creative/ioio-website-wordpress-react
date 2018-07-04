@@ -463,4 +463,14 @@
   #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
+
+
+
+  #dark-sidebar.active #work-lab-switch {
+    top: 17px;
+    right: 100px;
+    font-size: 20px;
+  }
+
+
 }

@@ -1,19 +1,18 @@
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
-#sidebar-top-logo-text{
+
+#sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
   top: 25px;
   left: 25px;
   font-size: 15px;
   text-transform: uppercase;
-  opacity:0;
+  opacity: 0;
   -webkit-filter: invert(0%);
   filter: invert(0%);
 }
-
-
 
 #menu-toggle-div {
   position: fixed;
@@ -66,7 +65,6 @@
 }
 
 #sidebar.active .menu-item {
-
   color: #fff;
   font-family: "FuturaLT", sans-serif;
   text-transform: uppercase;
@@ -146,11 +144,10 @@
 #sidebar.active .info-section h4 {
   font-weight: bold;
   margin-top: -20px;
-
   font-size: 14px;
 }
 
-#sidebar.active .sidebar-info p{
+#sidebar.active .sidebar-info p {
   margin-top: -12px;
 }
 
@@ -241,13 +238,13 @@
   transform: rotate(-0deg);
 }
 
-#sidebar .sidebar-hiring  {
+#sidebar .sidebar-hiring {
   display: none;
 }
+
 #sidebar .sidebar-hiring p {
   width: 80%;
 }
-
 
 #sidebar.active #work-lab-switch {
   display: block;
@@ -265,7 +262,6 @@
   cursor: pointer;
   z-index: 900;
 }
-
 
 /*
 /* Extra small devices (phones, less than 768px) */
@@ -289,9 +285,9 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  #sidebar-top-logo-text{
+  #sidebar-top-logo-text {
     left: 15px;
-    opacity:1;
+    opacity: 1;
   }
   #menu-toggle-div {
     position: fixed;
@@ -364,8 +360,6 @@
     margin-top: 0px;
     font-size: 14px;
   }
-
-
   #sidebar.active .info-section p {
     font-size: 14px;
   }
@@ -405,5 +399,10 @@
   }
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
+  }
+  #sidebar.active #work-lab-switch {
+    top: 17px;
+    right: 100px;
+    font-size: 20px;
   }
 }
