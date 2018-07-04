@@ -97,8 +97,8 @@ function reloadJS() {
         if (scrollVal < 200) {
           $('#sidebar,#dark-sidebar').css("border-bottom", "0px solid #FFFFFF");
         } else {
-          $('#sidebar,#dark-sidebar').css("border-bottom", "2px solid #E6E6E6");
-
+          $('#sidebar').css("border-bottom", "2px solid #E6E6E6");
+          $('#dark-sidebar').css("border-bottom", "2px solid #656565");
         }
       }
     })
@@ -144,8 +144,6 @@ function reloadJS() {
 
     }
   });
-
-
 
 }
 
