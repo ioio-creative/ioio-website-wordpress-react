@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 //import {Link} from 'react-router-dom';
 //import Shuffle from 'shufflejs'
-
+import {Link} from 'react-router-dom';
 import Footer from 'containers/footer/Footer';
 //import LabCategories from 'containers/labList/LabCategories';
 
@@ -337,8 +337,8 @@ class LabItems extends Component {
                       onMouseOut={(e) => {
                         this.handleMouseOut(e,templateType);
                       }}>
-                      <a className="lab-item-click"
-                        href={item.link !== '' ? item.link : 'javascript:;'}
+                      <Link className="lab-item-click"
+                        to={item.link !== '' ? item.link : 'javascript:;'}
                         target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : "_self"}
                         onClick={this.handleMenuClose}
                         style={item.link !== '' ? {cursor:'pointer'} : {cursor:'none'}}>
@@ -364,7 +364,7 @@ class LabItems extends Component {
                         <div className="img-container" style={containerStyle}>
                           <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   );
                 }
