@@ -11,7 +11,7 @@ Modal.setAppElement('#root');
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
-    return (<a href={item.link} key={index} className="youtube"><img className="social-media-img" src={item.icon.guid} alt={item.my_name} /></a>);
+    return (<a target={'_blank'} href={item.link} key={index} className="youtube"><img className="social-media-img" src={item.icon.guid} alt={item.my_name} /></a>);
   });
 
   return (<div>
