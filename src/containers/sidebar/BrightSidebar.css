@@ -386,4 +386,16 @@
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
+
+  #sidebar .work-to-lab-switch-txt,
+  #sidebar.active .work-to-lab-switch-txt {
+    display: block;
+    font-size: 14px;
+    top: 3px;
+    right: 55px;
+    border-right: 1px solid #3c3c3c;
+    padding-right: 10px;
+    color: #565656;
+    text-transform: uppercase;
+  }
 }

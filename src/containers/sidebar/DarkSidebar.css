@@ -462,4 +462,16 @@ background:none !important;
     font-size: 20px;
   }
 
+  #dark-sidebar .lab-to-work-switch-txt,
+  #dark-sidebar.active .lab-to-work-switch-txt {
+    display: block;
+    font-size: 14px;
+    top: 3px;
+    right: 55px;
+    border-right: 1px solid #3c3c3c;
+    padding-right: 10px;
+    color: #565656;
+    text-transform: uppercase;
+  }
+
 }
