@@ -28,7 +28,7 @@
   text-transform: uppercase;
   background: #fff;
   margin-bottom: 5px;
-  transition: all 0.3s ease-in-out;  
+  transition: all 0.3s ease-in-out;
 }
 
 #portfolio #portfolio-flters li span {
@@ -128,7 +128,8 @@
   margin: 0;
   color: #000;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 

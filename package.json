@@ -14,14 +14,16 @@
     "react-async-script-loader": "^0.3.0",
     "react-background-video-player": "^1.1.4",
     "react-dom": "^16.3.2",
-    "react-ga": "^2.5.0",
+    "react-ga": "^2.5.3",
     "react-loadable": "^5.3.1",
+    "react-measure": "^2.0.2",
     "react-modal": "^3.4.4",
     "react-owl-carousel": "^2.2.0",
     "react-p5-wrapper": "0.0.4",
     "react-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
+    "react-sizeme": "^2.5.1",
     "react-video-cover": "^1.2.0",
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",
@@ -31,7 +33,7 @@
   "scripts": {
     "start": "cross-env NODE_PATH=src PORT=80 react-scripts start",
     "build": "cross-env NODE_PATH=src react-scripts build",
-    "test": "cross-env NODE_PATH=src PORT=80 react-scripts test --env=jsdom",
+    "test": "cross-env NODE_PATH=src PORT=3000 react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }

@@ -8,11 +8,11 @@ import About05 from 'containers/about/About05';
 import About06 from 'containers/about/About06';
 import About07 from 'containers/about/About07';
 import About08 from 'containers/about/About08';
-import Footer from 'containers/Footer';
+import Footer from 'containers/footer/Footer';
 
 import './AboutPage.css';
 
-import {fetchActiveAbout, fetchActiveFooter} from 'websiteApi';
+import {fetchActiveAbout} from 'websiteApi';
 
 class AboutPage extends Component {
   constructor(props) {
@@ -26,10 +26,6 @@ class AboutPage extends Component {
     fetchActiveAbout((anAbout) => {
       this.setState({about: anAbout});
     });
-    fetchActiveFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
   }
 
   render() {
@@ -37,11 +33,7 @@ class AboutPage extends Component {
     if (about === null) {
       return null;
     }
-    const footer = this.state.footer;
-    if (footer === null) {
-      return null;
-    }
-
+    
     return (<div>
 
       <About01
@@ -76,10 +68,8 @@ class AboutPage extends Component {
         //Section: Press
         about={about}/>
 
-      <Footer
-        //Section: Footer
-        footer={footer}/>
-
+      <Footer />
+       
     </div>);
   }
 }

@@ -1,248 +1,69 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
 import './ProjectListPage.css';
-import './ProjectListPageProjectGrid.css';
 
-import {fetchProjects, fetchProjectTags, fetchActiveFooter} from 'websiteApi.js';
-import routes from 'globals/routes';
-import {getProjectCategoriesAndItsIdNamePairs, getProjectTagsAndItsProjectTagIdNamePairs} from 'utils/mapProjectCategoryAndTagNames';
+import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
+import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 
-import Footer from 'containers/Footer';
+import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
+import ProjectCategories from 'containers/projectList/ProjectCategories';
+import ProjectItems from 'containers/projectList/ProjectItems';
+import Footer from 'containers/footer/Footer';
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
-import Shuffle from 'shufflejs'
-
-
-function ProjectCategoryButton(props) {
-  /* Note: ProjectCategoryButton's props structure is designed such that the 'ALL' button can fit in. */
-  return (
-    <li
-        className={props.categoryItemClassName}
-        onClick={props.onClick}>
-        {props.categoryName}<span>{props.categoryCount}</span>
-    </li>
-  );
-}
+import withShuffle from 'components/WithShuffle';
 
 
-class ProjectCategories extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedCategoryId: props.selectAllCategoryId
-    };
-    this.handleCategoryButtonClick = this.handleCategoryButtonClick.bind(this);
-  }
-
-  handleCategoryButtonClick(categoryId) {
-    this.props.handleFilterClick(categoryId);
-    this.setState({
-      selectedCategoryId: categoryId
-    });
-  }
-
+class ProjectCategoriesAndItemsContainer extends Component {
   render() {
-    const state = this.state;
     const props = this.props;
 
-    const selectedItemClass = 'filter-active';
-
-    const categoryItems = props.categories.map((category) => {
-      let categoryItemClassName = '';
-      if (state.selectedCategoryId === category.id) {
-        categoryItemClassName += ' ' + selectedItemClass;
-      }
-      return (
-        <ProjectCategoryButton key={category.id} 
-          categoryItemClassName={categoryItemClassName} 
-          onClick={() => this.handleCategoryButtonClick(category.id)}
-          categoryName={category.name}
-          categoryCount={category.count} />
-      );
-    });
-
-    let allCategoryClassName = '';
-    if (state.selectedCategoryId === props.selectAllCategoryId) {
-      allCategoryClassName += ' ' + selectedItemClass;
-    }
-
-    const allCategoryProjectCount = props.categories.reduce((sum, currentCategory) => {
-      return sum + currentCategory.count;
-    }, 0);
-
     return (
-      <div className="col-lg-12 ">
-        <ul id="portfolio-flters">          
-          <ProjectCategoryButton
-            categoryItemClassName={allCategoryClassName} 
-            onClick={() => this.handleCategoryButtonClick(props.selectAllCategoryId)} 
-            categoryName='ALL'
-            categoryCount={allCategoryProjectCount} />
-          {categoryItems}
-        </ul>
-      </div>
-    );
-  }
-}
-
-
-function ProjectGrid(props) {
-  const projectCategoryIdNamePairs = props.projCategoryIdNamePairs;
-  const projectTagIdNamePairs = props.projTagIdNamePairs;
-
-  const project_items = props.projects.map((project) => {
-    let projItemClassName = 'col-lg-6 col-md-6 ' + props.projectShuffleSelectorClass + ' ';
-
-    const categoryCorrespondingToProj = project.project_categories.map((categoryId, index) => {
-      let categoryName = projectCategoryIdNamePairs[categoryId];
-      if (index >= 1) {
-        categoryName = ' / ' + categoryName;
-      }
-      return (<span key={index}>
-        {categoryName}
-      </span>);
-    });
-
-    return (
-      // data-project-category-ids is made use of in handleFilterButtonClick() of ProjectListWithShffle class
-      <div key={project.id}
-          className={projItemClassName}
-          data-project-category-ids={project.project_categories.join(',')}>
-        <Link to={routes.projectBySlugWithValue(project.slug)}>
-          <div className="portfolio-wrap">
-            <div className="img-container">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+      <section id="portfolio" className="section-bg wow fadeIn">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1" />
+            <div className="col-md-10">
+              <header className="section-header">
+                <h3 className="section-title">Case Studies</h3>
+              </header>              
+              {props.categories}
+              {props.items}
             </div>
-            <div className="portfolio-info">
-              <h4>
-                {project.project_name}
-              </h4>
-              <p>{categoryCorrespondingToProj}</p>
-            </div>
+            <div className="col-md-1" />
           </div>
-        </Link>
-      </div>
+        </div>
+      </section>
     );
-  });
-
-  return (
-    <div ref={props.setShuffleRefFunc} className="row portfolio-container wow fadeIn my-shuffle">
-      {project_items}
-    </div>
-  );
+  }
 }
 
 
-class ProjectListWithShuffle extends Component {
-  constructor(props) {
-    super(props);
-
-    this.selectAllCategoryId = -1;
-
-    this.shuffleRef = null;
-    this.projectShuffleSelectorClass = 'portfolio-item';
-    this.shuffle = null;
-
-    this.handleFilterButtonClick = this.handleFilterButtonClick.bind(this);
-    this.setShuffleRef = this.setShuffleRef.bind(this);
-  }
-
-  componentDidMount() {
-    // The elements are in the DOM, initialize a shuffle instance.
-    this.shuffle = new Shuffle(this.shuffleRef, {
-      // https://vestride.github.io/Shuffle/#options
-      // overrideable options
-      itemSelector: '.' + this.projectShuffleSelectorClass,
-
-      buffer: 0, // Useful for percentage based heights when they might not always be exactly the same (in pixels).
-      columnThreshold: 0.01, // Reading the width of elements isn't precise enough and can cause columns to jump between values.
-      columnWidth: 0, // A static number or function that returns a number which tells the plugin how wide the columns are (in pixels).
-      delimiter: null, // If your group is not json, and is comma delimeted, you could set delimiter to ','.
-      easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', // CSS easing function to use.
-      filterMode: Shuffle.FilterMode.ANY, // When using an array with filter(), the element passes the test if any of its groups are in the array. With "all", the element only passes if all groups are in the array.
-      group: Shuffle.ALL_ITEMS, // Initial filter group.
-      gutterWidth: 0, // A static number or function that tells the plugin how wide the gutters between columns are (in pixels).
-      initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method.
-      isCentered: false, // Attempt to center grid items in each row.
-      itemSelector: '*', // e.g. '.picture-item'.
-      roundTransforms: true, // Whether to round pixel values used in translate(x, y). This usually avoids blurriness.
-      sizer: null, // Element or selector string. Use an element to determine the size of columns and gutters.
-      speed: 250, // Transition/animation speed (milliseconds).
-      staggerAmount: 15, // Transition delay offset for each item in milliseconds.
-      staggerAmountMax: 150, // Maximum stagger delay in milliseconds.
-      //throttle: throttle, // By default, shuffle will throttle resize events. This can be changed or removed.
-      throttleTime: 300, // How often shuffle can be called on resize (in milliseconds).
-      useTransforms: true, // Whether to use transforms or absolute positioning.
-    });
-  }
-
-  componentDidUpdate() {
-    // Notify shuffle to dump the elements it's currently holding and consider
-    // all elements matching the `itemSelector` as new.
-    this.shuffle.resetItems();
-  }
-
-  componentWillUnmount() {
-    // Dispose of shuffle when it will be removed from the DOM.
-    this.shuffle.destroy();
-    this.shuffle = null;
-  }
-
-  handleFilterButtonClick(categoryId, tagId) {
-    /*
-      Important: Do not call this.setState() here.
-      Calling this.setState() here would make the animation effect
-      of this.shuffle.filter() not working.
-    */
-
-    if (categoryId === this.selectAllCategoryId) {
-      this.shuffle.filter(Shuffle.ALL_ITEMS);
-    } else {
-      // https://vestride.github.io/Shuffle/#advanced-filters
-      this.shuffle.filter((projectItem) => {
-        const projItemCategoryIds = projectItem.getAttribute('data-project-category-ids').split(',').map((id) => { return parseInt(id); });
-        return projItemCategoryIds.includes(categoryId);
-      });
-    }
-  }
-
-  setShuffleRef(element) {
-    this.shuffleRef = element;
-  }
-
+class ProjectCategoriesAndItemsWithShuffle extends Component {
   render() {
+    const props = this.props;
+    
     return (
-      <div>
-        <section id="portfolio" className="section-bg wow fadeIn">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-1" />
-              <div className="col-md-10">
-                <header className="section-header">
-                  <h3 className="section-title">Case Studies</h3>
-                </header>
-                <div className="row">
-                  {/* <ProjectTags tags={t}/> */}
-                  <ProjectCategories categories={this.props.categories}
-                                     selectAllCategoryId={this.selectAllCategoryId}
-                                     handleFilterClick={this.handleFilterButtonClick} />
-                </div>
-                <ProjectGrid projects={this.props.projects}
-                             projectShuffleSelectorClass={this.projectShuffleSelectorClass}
-                             setShuffleRefFunc={this.setShuffleRef}
-                             projCategoryIdNamePairs={this.props.projCategoryIdNamePairs}
-                             projTagIdNamePairs={this.props.projTagIdNamePairs} />
-              </div>
-              <div className="col-md-1" />
-            </div>
-          </div>
-        </section>
-        <Footer
-          //Section: Footer
-          footer={this.props.footerInfo} />
-      </div>
+      <CategoriesAndItemsWithShuffle
+        categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
+        itemsComponent={ProjectItems}
+        categoriesComponent={ProjectCategories}
+        shuffleSelectorClass='portfolio-item'
+        allCategoryName='All'
+        items={props.projects}
+        categories={props.categories}
+        categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
+        shuffle={props.shuffle}
+        setShuffleRefFunc={props.setShuffleRefFunc}
+        setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
+      />
     );
   }
 }
+
+
+// https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
+const ProjectCategoriesAndItemsWithShuffleAdded = withShuffle(ProjectCategoriesAndItemsWithShuffle);
 
 
 // filter implementation reference
@@ -254,10 +75,7 @@ class ProjectListPage extends Component {
     this.state = {
       projects: [],
       projectCategories: [],
-      projectCategoryIdNamePairs: [], 
       projectTags: [],
-      projectTagIdNamePairs: [],
-      footer: null,      
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
@@ -271,22 +89,16 @@ class ProjectListPage extends Component {
         })
     });
 
-    getProjectCategoriesAndItsIdNamePairs((projCategories, projCategoryIdNamePairs) => {
+    fetchProjectCategories((projCategories) => {
       this.setState({
-        projectCategories: projCategories,
-        projectCategoryIdNamePairs: projCategoryIdNamePairs
+        projectCategories: projCategories
       });
     });
 
-    getProjectTagsAndItsProjectTagIdNamePairs((projTags, projTagIdNamePairs) => {
+    fetchProjectTags((projTags) => {
       this.setState({
-        projectTags: projTags,
-        projectTagIdNamePairs: projTagIdNamePairs,
+        projectTags: projTags
       });
-    });
-
-    fetchActiveFooter((aFooter) => {
-      this.setState({footer: aFooter});
     });
   }
 
@@ -314,46 +126,41 @@ class ProjectListPage extends Component {
   }
 
   render() {
-    const state = this.state;    
+    //console.log('ProjectListPage: render');
+
+    const state = this.state;
+    //const props = this.props;
+
     const pC = state.projectCategories;
-    const projectCategoryIdNamePairs = state.projectCategoryIdNamePairs;
     const pT = state.projectTags;
-    const projectTagIdNamePairs = state.projectTagIdNamePairs;
-    const p = state.projects;
-    const footer = state.footer;
+    const projects = state.projects;
 
-    // not working if using p === []
-    if (p.length === 0) {
-      return null;
+    if (projects.length === 0) {
+      //console.log('ProjectListPage: projects length === 0');
+      return (<MyFirstLoadingComponent />);
     }
-    
+      
     if (pC.length === 0) {
-      return null;
-    }
-
-    if (projectCategoryIdNamePairs.length === 0) {
-      return null;
+      //console.log('ProjectListPage: projectCategories length === 0');
+      return (<MyFirstLoadingComponent />);
     }
 
     if (pT.length === 0) {
-      return null;
+      //console.log('ProjectListPage: projectTags length === 0');
+      return (<MyFirstLoadingComponent />);
     }
-
-    if (projectTagIdNamePairs.length === 0) {
-      return null;
-    }
-    
-    if (footer === null) {
-      return null;
-    }
+     
+    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
-      <ProjectListWithShuffle projects={p}
-        categories={pC}
-        projCategoryIdNamePairs={projectCategoryIdNamePairs}
-        tags={pT}
-        projTagIdNamePairs={projectTagIdNamePairs}
-        footerInfo={footer} />
+      <div>
+        <ProjectCategoriesAndItemsWithShuffleAdded 
+          projects={projects}
+          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+          categories={pC}
+          tags={pT} />
+        <Footer />
+      </div>
     );
   }
 }

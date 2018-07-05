@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import $ from 'jquery'
 
 import OwlCarousel from 'react-owl-carousel';
 import 'containers/slideshow.css';
@@ -100,7 +99,7 @@ class About05 extends Component {
       var divStyle = $(el + ' ' + itemsDiv).css('transform');
       var values = divStyle.match(/-?[\d\.]+/g);
       var xds = Math.abs(values[4]);
-      if (e == 0) {
+      if (e === 0) {
         translateXval = parseInt(xds) - parseInt(itemWidth * s);
         $(el + ' ' + rightBtn).removeClass("over");
 

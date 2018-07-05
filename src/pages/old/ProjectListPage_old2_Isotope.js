@@ -7,7 +7,7 @@ import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl, getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import {getProjectCategoryNameById, getProjectTagNameById} from 'utils/mapProjectCategoryAndTagNames';
 
-import Footer from 'containers/Footer';
+import Footer from 'containers/BrightFooter';
 
 import scriptjs from 'scriptjs'
 import $ from 'jquery'

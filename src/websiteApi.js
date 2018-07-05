@@ -1,4 +1,4 @@
-import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime'
+import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime';
 
 /*
     WordPress API References
@@ -18,20 +18,24 @@ const defaultQuery = "?per_page=20";
 // container of WordPress generated id's of active entities,
 // used for fetching entity by id via WordPress API
 const activeEntities = {
-    about: 72,
-    footer: 263,
-    sidebar: 351,
-    contact: 1008,
-    lab: 1348,
+  homepage: 637,
+  about: 72,
+  aboutLab: 1480,
+  brightFooter: 263,
+  darkFooter: 1518,
+  brightSidebar: 351,
+  darkSidebar: 1424,
+  contact: 1008,
+  lab: 1348,
 };
 
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
-    let dataUrl = baseUrl
+    const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
-        console.log(dataUrl)
+      //console.log(dataUrl);
     fetch(dataUrl)
         .then(res => res.json())
         .then(resJson => {
@@ -45,7 +49,7 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
 }
 
 async function passJsonResultAsync(entityToFetch, optionalEntityId) {
-    let dataUrl = baseUrl
+    const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
         + defaultQuery;
@@ -56,7 +60,7 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId) {
 
 function orderProjectsByDateAscending(projects) {
     return projects.sort((project1, project2) => {
-        return compareForDatesDescending(project1.project_date, project2.project_date);
+        return compareForDatesAscending(project1.project_date, project2.project_date);
     });
 }
 
@@ -69,31 +73,50 @@ function orderProjectsByDateDescending(projects) {
 
 /* General */
 
-function fetchSidebars(callback) {
+function fetchBrightSidebar(callback) {
     passJsonResultToCallback("sidebars", callback);
 }
 
-function fetchActiveSidebar(callback) {
-    passJsonResultToCallback("sidebars", callback, activeEntities.sidebar);
+function fetchActiveBrightSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback, activeEntities.brightSidebar);
+}
+
+function fetchDarkSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback);
+}
+
+function fetchActiveDarkSidebar(callback) {
+    passJsonResultToCallback("sidebars", callback, activeEntities.darkSidebar);
 }
 
 function fetchFooters(callback) {
     passJsonResultToCallback("footers", callback);
 }
 
-function fetchActiveFooter(callback) {
-    passJsonResultToCallback("footers", callback, activeEntities.footer);
+function fetchActiveBrightFooter(callback) {
+    passJsonResultToCallback("footers", callback, activeEntities.brightFooter);
+}
+
+function fetchActiveDarkFooter(callback) {
+    passJsonResultToCallback("footers", callback, activeEntities.darkFooter);
 }
 
 /* end of General */
+
+
 /* home page */
-function fetchHighlightedProjects(callback) {
-    passJsonResultToCallback("highlighted_projects", callback);
-}
-function fetchHomePage(callback) {
+
+function fetchHomePages(callback) {
     passJsonResultToCallback("homepage", callback);
 }
+
+function fetchActiveHomePage(callback) {
+  passJsonResultToCallback("homepage", callback, activeEntities.homepage);
+}
+
 /* end of home page */
+
+
 /* about page */
 
 function fetchAbouts(callback) {
@@ -106,6 +129,10 @@ function fetchAboutById(id, callback) {
 
 function fetchActiveAbout(callback) {
     passJsonResultToCallback("abouts", callback, activeEntities.about);
+}
+
+function fetchActiveAboutLab(callback) {
+    passJsonResultToCallback("abouts", callback, activeEntities.aboutLab);
 }
 
 function fetchCompanyDnas(callback) {
@@ -156,7 +183,7 @@ function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
 
-async function fetchProjectCategoriesAsync(callback) {
+async function fetchProjectCategoriesAsync() {
     return await passJsonResultAsync("project_categories");
 }
 
@@ -164,7 +191,7 @@ function fetchProjectTags(callback) {
     passJsonResultToCallback("project_tags", callback);
 }
 
-async function fetchProjectTagsAsync(callback) {
+async function fetchProjectTagsAsync() {
     return await passJsonResultAsync("project_categories");
 }
 
@@ -175,6 +202,10 @@ async function fetchProjectTagsAsync(callback) {
 
 function fetchProjectById(id, callback) {
     passJsonResultToCallback("projects", callback, id);
+}
+
+async function fetchProjectByIdAsync(id) {
+    return await passJsonResultAsync("projects", id);
 }
 
 /* end of project detail page */
@@ -190,47 +221,92 @@ function fetchContact(callback) {
 
 
 /* lab page */
+
 function fetchActiveLab(callback) {
-    passJsonResultToCallback("lab", callback, activeEntities.lab);
+  passJsonResultToCallback("lab", callback, activeEntities.lab);
 }
+
 function fetchLab(callback) {
-    passJsonResultToCallback("lab", callback);
+  passJsonResultToCallback("lab", callback);
 }
+
+function fetchLabItems(callback) {
+  passJsonResultToCallback("lab_items", callback);
+}
+
+function fetchLabCategories(callback) {
+  passJsonResultToCallback("lab_categories", callback);
+}
+
 /* end of lab page */
 
+/* lab detail page */
+
+async function fetchLabDetailPagesAsync() {
+    return await passJsonResultAsync("lab_detail_pages");
+}
+
+function fetchLabDetailPages(callback) {
+  passJsonResultToCallback("lab_detail_pages", callback);
+}
+
+
+function fetchLabDetailPageById(id, callback) {
+    passJsonResultToCallback("lab_detail_pages", callback, id);
+}
+
+/* end of lab detail page */
+
+
+
 export {
-    // general
-    fetchActiveSidebar,
-    fetchActiveFooter,
+  // general
+  fetchBrightSidebar,
+  fetchActiveBrightSidebar,
+  fetchDarkSidebar,
+  fetchActiveDarkSidebar,
+  fetchActiveBrightFooter,
+  fetchActiveDarkFooter,
 
-    // home page
-    fetchHomePage,
-    // about page
-    fetchActiveAbout,
-    fetchCompanyDnas,
-    fetchCompanyCultures,
-    fetchTeamMembers,
-    fetchCompanyServices,
-    fetchCompanyClients,
-    fetchPressReleases,
-    fetchCompanies,
+  // home page
+  fetchHomePages,
+  fetchActiveHomePage,
 
-    // project list page
-    fetchProjects,
-    fetchHighlightedProjects,
-    fetchProjectsAsync,
-    fetchProjectCategories,
-    fetchProjectCategoriesAsync,
-    fetchProjectTags,
-    fetchProjectTagsAsync,
+  // about page
+  fetchActiveAbout,
+  fetchActiveAboutLab,
+  fetchCompanyDnas,
+  fetchCompanyCultures,
+  fetchTeamMembers,
+  fetchCompanyServices,
+  fetchCompanyClients,
+  fetchPressReleases,
+  fetchCompanies,
 
-    // project detial page
-    fetchProjectById,
-    // contact page
-    fetchActiveContact,
-    fetchContact,
+  // project list page
+  fetchProjects,
+  fetchProjectsAsync,
+  fetchProjectCategories,
+  fetchProjectCategoriesAsync,
+  fetchProjectTags,
+  fetchProjectTagsAsync,
 
-    // lab page
-    fetchActiveLab,
-    fetchLab,
+  // project detail page
+  fetchProjectById,
+  fetchProjectByIdAsync,
+
+  // contact page
+  fetchActiveContact,
+  fetchContact,
+
+  // lab page
+  fetchActiveLab,
+  fetchLab,
+  fetchLabItems,
+  fetchLabCategories,
+
+  // lab detail page
+  fetchLabDetailPagesAsync,
+  fetchLabDetailPages,
+  fetchLabDetailPageById,
 };

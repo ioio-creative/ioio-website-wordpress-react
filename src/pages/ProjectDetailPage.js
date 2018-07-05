@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-import {fetchProjectById} from 'websiteApi'
+import {fetchProjectById} from 'websiteApi';
+
 import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
-import ReactPlayer from 'react-player'
+//import ReactPlayer from 'react-player';
 
 import ProjectTemp01 from 'containers/projectDetail/ProjectTemp01'; //photomontage - 3 images
 import ProjectTemp02 from 'containers/projectDetail/ProjectTemp02'; //slideshow - Image on Left, Text on right
@@ -17,11 +18,9 @@ import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomonta
 import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
 import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Imgae
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
+import Footer from 'containers/footer/Footer';
 
 import './ProjectDetailPage.css';
-
-import Footer from 'containers/Footer';
-import {fetchActiveFooter} from 'websiteApi';
 
 import $ from 'jquery';
 
@@ -45,26 +44,18 @@ const projectTemplateMap = {
   9: ProjectTemp09
 };
 
-const customStyles = {
-  content: {
-    width: '80%',
-    margin: '0 auto',
-    transition: 'all 0.4s',
-    'z-index': '999'
-  }
-};
-
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
 function VideoLanding(props) {
   const video_url = props.project.cover_video.guid;
-  const poster_url = props.project.thumbnail.guid;
-  const video_webm_url = props.project.cover_video.guid;
+  //const poster_url = props.project.thumbnail.guid;
+  const poster_url = props.project.cover_video_screenshot.guid;
+  //const video_webm_url = props.project.cover_video.guid;
 
-  const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
-  const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
-  const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
+  //const full_url = [video_url, 'https://i.gifer.com/3hmW.gif'];
+  //const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
+  //const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
 
   const publicUrl = process.env.PUBLIC_URL;
@@ -97,8 +88,8 @@ function VideoLanding(props) {
         </div>
       </div>
     </div>
-  </section>); 
-} 
+  </section>);
+}
 
 
 function VideoLandingDesc(props) {
@@ -135,7 +126,7 @@ class ProjectDetailPage extends Component {
     this.state = {
       modalIsOpen: false,
       project: null,
-      isReturnNotFound: false
+      isReturnNotFound: false,
     };
   }
 
@@ -171,10 +162,6 @@ class ProjectDetailPage extends Component {
       }
     });
 
-    fetchActiveFooter((aFooter) => {
-      this.setState({footer: aFooter});
-    });
-
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
@@ -196,11 +183,6 @@ class ProjectDetailPage extends Component {
       return null;
     }
 
-    const footer = this.state.footer;
-    if (footer === null) {
-      return null;
-    }
-
     const customStyles = {
       content : {
         top                   : '50%',
@@ -217,10 +199,9 @@ class ProjectDetailPage extends Component {
     //    console.log(project);
 
     const projectTemplates = project.project_sections;
-    const projectTemplateContainer = projectTemplates.map((templateData) => {
-      const templateType = parseInt(templateData.template_type, 10);
-      const TemplateToUse = projectTemplateMap[templateData.template_type];
-      return <TemplateToUse {...templateData}/>
+    const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
+      const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
+      return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
     });
 
     return (<div className="wow fadeIn">
@@ -231,6 +212,7 @@ class ProjectDetailPage extends Component {
     */
       }
       {projectTemplateContainer}
+      <div id="project-detail-page-space-buffer"></div>
       <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
         <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
           <i className="ion ion-android-close"></i>
@@ -239,10 +221,8 @@ class ProjectDetailPage extends Component {
           <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
         </div>
       </Modal>
-      <Footer
-        //Section: Footer
-        footer={footer}/>
 
+      <Footer />
     </div>);
   }
 }

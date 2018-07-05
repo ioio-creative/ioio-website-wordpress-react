@@ -386,6 +386,7 @@
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
+
   #sidebar .work-to-lab-switch-txt,
   #sidebar.active .work-to-lab-switch-txt {
     display: block;

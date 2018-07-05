@@ -1,60 +1,65 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import $ from 'jquery';
+
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
+import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 
 import routes from 'globals/routes';
-import {fetchActiveSidebar} from 'websiteApi';
-import 'containers/Sidebar.css';
+import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
+import './DarkSidebar.css';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
     return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
   });
 
-  return (<div>
-    {social_media_items}
-  </div>);
+  return (
+    <div>
+      {social_media_items}
+    </div>
+  );
 }
 
-class Sidebar extends Component {
+class DarkSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebar: null
+      sidebar: null,
+      about: null
     }
-
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.handleMenuClose = this.handleMenuClose.bind(this);
   }
 
   componentDidMount() {
-    fetchActiveSidebar((aSidebar) => {
+    fetchActiveDarkSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
     });
     //  $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
 
+    fetchActiveAboutLab((anAbout) => {
+      this.setState({about: anAbout});
+    });
   }
 
   handleMenuToggle(e) {
-
     e.preventDefault();
 
-    let attr = $("#sidebar[class*='active']")
+    let attr = $("#dark-sidebar[class*='active']")
     //console.log(attr.length)
 
-    $("#sidebar").toggleClass("active");
-    menuCanvas();
+    $("#dark-sidebar").toggleClass("active");
+    menuCanvas(true);
   }
 
   handleMenuClose(e) {
-    $("#sidebar").removeClass("active");
+    $("#dark-sidebar").removeClass("active");
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-
   }
 
   render() {
@@ -62,25 +67,49 @@ class Sidebar extends Component {
     if (sidebar === null) {
       return null;
     }
-    return (<nav id="sidebar" className="menu-transition" role="navigation">
+
+    const about = this.state.about;
+    if (about === null) {
+      return null;
+    }
+
+    return (<nav id="dark-sidebar" className="menu-transition" role="navigation">
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div">
-          <h3>Index</h3>
+          <h3>About</h3>
         </div>
         <div className="close-symbol"></div>
       </a>
 
-      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
         <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
       </Link>
+
+      <section id="lab-about">
+        <div className="container">
+          <span>{about.page_subtitle}</span>
+        </div>
+      </section>
+
+      {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+        <h4 id="work-lab-switch">Work</h4>
+      </Link> */}
+      <LabWorkLabSwitch onClick={this.handleMenuClose} />
+
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link>
-        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link>
-        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a>
+
+        {/*
+        <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
+
+        <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>
+        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a><br/>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
+        */
+        }
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
         <div className="info-section container-fluid">
@@ -116,10 +145,9 @@ class Sidebar extends Component {
             </div>
           </div>
         </div>
-
       </div>
     </nav>);
   }
 }
 
-export default Sidebar;
+export default DarkSidebar;

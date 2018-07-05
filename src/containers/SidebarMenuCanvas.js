@@ -48,8 +48,10 @@ function canvas_resize() {
 
 }
 
-function menuCanvas() {
-
+function menuCanvas(b) {
+  if(b){
+    initCanvas=false;
+  }
   $(window).resize(function() {
     canvas_resize();
   });

@@ -1,0 +1,28 @@
+.work-to-lab-switch {
+  position: absolute;
+  display: block;
+  top: 18px;
+  right: 0;
+  z-index: 900;
+}
+
+.work-to-lab-switch-txt {
+  position: absolute;
+  right: 40px;
+  font-weight: bold;
+}
+
+#sidebar .work-to-lab-switch-txt {
+  display: none;
+}
+
+#sidebar.active .work-to-lab-switch-txt {
+  display: block;
+}
+
+
+@media only screen and (max-width: 767px) {
+  #sidebar.active .work-to-lab-switch-txt {
+  right: 80px;
+  }
+}
