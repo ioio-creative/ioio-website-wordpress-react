@@ -471,8 +471,6 @@ class LabListPage extends Component {
         width: '100%',
         height: this.state.windowWidth *9/16+'px',
       };
-    }else{
-
     }
 
 
