@@ -332,7 +332,7 @@ class LabItems extends Component {
                       data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
                       style={itemStyle}
                       onMouseOver={(e) => {
-                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
+                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name );
                       }}
                       onMouseOut={(e) => {
                         this.handleMouseOut(e,templateType);
