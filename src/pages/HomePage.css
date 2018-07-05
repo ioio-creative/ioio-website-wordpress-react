@@ -311,16 +311,18 @@
     font-weight: bold;
     left: 0;
   }
-  .iframe-p5-inside-div {
-    display: none;
-  }
-  .iframe-p5 {}
+
+
 }
 
 @media only screen and (max-width: 767px) {
   /*----------------------------
   [ Mobile styles go here]
   ---------------------------*/
+  .iframe-p5-inside-div {
+    display: none;
+  }
+
   #homepage-top-logo {
 opacity: 0;
   }
