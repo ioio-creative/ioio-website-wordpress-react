@@ -339,9 +339,9 @@ class LabItems extends Component {
                       }}>
                       <Link className="lab-item-click"
                         to={item.link !== '' ? item.link : 'javascript:;'}
-                        target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : "_self"}
+                        target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : '_self'}
                         onClick={this.handleMenuClose}
-                        style={item.link !== '' ? {cursor:'pointer'} : {cursor:'none'}}>
+                        style={item.link !== '' ? {cursor: 'pointer'} : {cursor: 'none'}}>
 
                         <div className="hover-mobile">
                           <div className='lab-item-detail-mobile'>
