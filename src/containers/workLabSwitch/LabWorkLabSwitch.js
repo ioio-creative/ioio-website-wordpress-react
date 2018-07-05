@@ -20,7 +20,7 @@ export default class LabWorkLabSwitch extends Component {
         to={routes.home}
         onClick={onClickFunc}
       >
-        <h4 className="lab-to-work-switch-txt">Work</h4>
+        <h4 className="lab-to-work-switch-txt">Works</h4>
       </Link>
     );
   }

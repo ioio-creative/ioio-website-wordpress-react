@@ -14,11 +14,9 @@ function SocialMedia(props) {
     return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
   });
 
-  return (
-    <div>
-      {social_media_items}
-    </div>
-  );
+  return (<div>
+    {social_media_items}
+  </div>);
 }
 
 class DarkSidebar extends Component {
@@ -41,25 +39,36 @@ class DarkSidebar extends Component {
     fetchActiveAboutLab((anAbout) => {
       this.setState({about: anAbout});
     });
+
   }
 
   handleMenuToggle(e) {
     e.preventDefault();
 
     let attr = $("#dark-sidebar[class*='active']")
-    //console.log(attr.length)
+
 
     $("#dark-sidebar").toggleClass("active");
+
     menuCanvas(true);
+    if(attr.length == 1){
+      console.log("close")
+      $("#lab-about span").removeClass("active");
+    }else{
+        console.log("open")
+        $("#lab-about span").toggleClass("active");
+    }
   }
 
   handleMenuClose(e) {
+
     $("#dark-sidebar").removeClass("active");
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
+
   }
 
   render() {
@@ -95,8 +104,9 @@ class DarkSidebar extends Component {
 
       {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <h4 id="work-lab-switch">Work</h4>
-      </Link> */}
-      <LabWorkLabSwitch onClick={this.handleMenuClose} />
+      </Link> */
+      }
+      <LabWorkLabSwitch onClick={this.handleMenuClose}/>
 
       <div className="container-fluid ">
 

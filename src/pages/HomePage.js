@@ -15,6 +15,7 @@ import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websit
 import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
+import './HomePageSE.css';
 import sketch from './sketch';
 
 import Modal from 'react-modal';

@@ -234,12 +234,11 @@
   transform: rotate(-0deg);
 }
 
-#dark-sidebar .sidebar-hiring p{
+#dark-sidebar .sidebar-hiring p {
   width: 80%;
 }
 
 #dark-sidebar .sidebar-hiring {
-
   display: none;
 }
 
@@ -252,7 +251,6 @@
 #dark-sidebar #lab-about {
   display: none;
   opacity: 0;
-
 }
 
 #dark-sidebar.active #lab-about {
@@ -270,11 +268,10 @@
   width: 90%;
   text-align: center;
   z-index: 1;
-  height:0px;
-overflow:visible;
-pointer-events:none;
-background:none !important;
-
+  height: 0px;
+  overflow: visible;
+  pointer-events: none;
+  background: none !important;
 }
 
 #dark-sidebar.active #lab-about .container {
@@ -284,7 +281,7 @@ background:none !important;
   text-align: center;
 }
 
-#dark-sidebar.active #lab-about span {
+#lab-about span.active {
   display: table-cell;
   vertical-align: middle;
   color: white;
@@ -300,8 +297,8 @@ background:none !important;
   transition-delay: 0.3s;
 }
 
-#dark-sidebar #lab-about span {
-  display: none;
+#lab-about span {
+  display: table-cell;
   opacity: 0;
   -webkit-transition: opacity 1.4s;
   -moz-transition: opacity 1.4s;
@@ -310,7 +307,6 @@ background:none !important;
   transition: opacity 1.4s;
   transition-delay: 0.3s;
 }
-
 
 /*
 /* Extra small devices (phones, less than 768px) */
@@ -419,7 +415,6 @@ background:none !important;
     font-size: 14px;
   }
   #dark-sidebar.active .info-section {
-
     left: 0px;
     margin-left: 0px;
     top: 55%;
@@ -453,17 +448,13 @@ background:none !important;
   #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
-
-
-  #dark-sidebar.active #lab-about  {
-    top:-20vh;
+  #dark-sidebar.active #lab-about {
+    top: -20vh;
   }
   #dark-sidebar.active #lab-about span {
     font-size: 20px;
   }
-
-  #dark-sidebar .lab-to-work-switch-txt,
-  #dark-sidebar.active .lab-to-work-switch-txt {
+  #dark-sidebar .lab-to-work-switch-txt, #dark-sidebar.active .lab-to-work-switch-txt {
     display: block;
     font-size: 14px;
     top: 3px;
@@ -473,5 +464,4 @@ background:none !important;
     color: #565656;
     text-transform: uppercase;
   }
-
 }

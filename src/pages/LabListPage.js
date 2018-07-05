@@ -332,7 +332,7 @@ class LabItems extends Component {
                       data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
                       style={itemStyle}
                       onMouseOver={(e) => {
-                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name, );
+                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name );
                       }}
                       onMouseOut={(e) => {
                         this.handleMouseOut(e,templateType);
@@ -343,7 +343,7 @@ class LabItems extends Component {
                         onClick={this.handleMenuClose}
                         style={item.link !== '' ? {cursor: 'pointer'} : {cursor: 'none'}}>
 
-                        <div className="hover-mobile">
+                        <div onClick={null} className="hover-mobile">
                           <div className='lab-item-detail-mobile'>
                             <h3 className='lab-item-cat'>
                               {item.lab_categories[0].name}
@@ -361,7 +361,7 @@ class LabItems extends Component {
                         <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                         <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
                         <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
-                        <div className="img-container" style={containerStyle}>
+                        <div onClick={null} className="img-container" style={containerStyle}>
                           <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
                         </div>
                       </Link>
@@ -450,9 +450,6 @@ class LabListPage extends Component {
     window.removeEventListener("resize", this.handleResize.bind(this));
   }
 
-  componentWillMount(){
-    //this.handleResize();
-  }
 
   render() {
     const lab = this.state.lab;
@@ -466,14 +463,16 @@ class LabListPage extends Component {
     if (labCategories.length === 0) {
       return null;
     }
-
+    console.log(this.state.windowWidth)
     const bg = {
-      //backgroundImage: url,
-      /*
-      backgroundSize: 'auto',
-      backgroundPosition: 'center'
-      */
     };
+    if(this.state.windowWidth >767){
+      const bg = {
+        width: '100%',
+        height: this.state.windowWidth *9/16+'px',
+      };
+    }
+
 
     const blackBg = {
       background: 'black'
@@ -494,10 +493,10 @@ class LabListPage extends Component {
             <div className="col-md-1"></div>
           </div>
         </div>
-        <section id="lab-video-landing" className="lab-bg wow fadeIn" data-wow-delay="0.8s">
-          <div className="video-landing-div">
-            <div className="container-fluid">
-              <div className="player-wrapper">
+        <section id="lab-video-landing" className="lab-bg" style={bg}>
+          <div className="video-landing-div wow fadeIn" data-wow-delay="0.8s"  style={bg}>
+            <div className="container-fluid" style={bg}>
+              <div className="player-wrapper" style={bg}>
                 <video className="react-player" width={'100%'} height={'auto'} poster={lab.top_video_preload_image.guid} autoPlay={"autoPlay"} loop={"loop"} muted={"muted"} playsInline={"playsInline"}>
                   <source className="wow fadeIn" src={lab.top_video.guid} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
                   <img className="wow fadeIn" src={lab.top_video_preload_image.guid} title="Your browser does not support the <video> tag"/>
@@ -516,7 +515,7 @@ class LabListPage extends Component {
             </div>
           </div>
         </section>
-        <section id="lab-top" className="wow fadeIn lab-bg" style={bg}>
+        <section id="lab-top" className="wow fadeIn lab-bg">
           <div className="container-fluid row text-left">
             <div className="col-md-1"></div>
             <div className="col-md-10">
