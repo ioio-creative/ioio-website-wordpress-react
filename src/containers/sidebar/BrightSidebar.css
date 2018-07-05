@@ -273,6 +273,7 @@
   /*--[ Mobile styles go here]---------------------------*/
   #sidebar-top-logo-text {
     left: 15px;
+    top: 20px;
     opacity: 1;
   }
   #menu-toggle-div {
@@ -391,7 +392,7 @@
   #sidebar.active .work-to-lab-switch-txt {
     display: block;
     font-size: 14px;
-    top: 3px;
+    top: 1px;
     right: 55px;
     border-right: 1px solid #3c3c3c;
     padding-right: 10px;
