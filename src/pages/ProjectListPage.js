@@ -83,10 +83,19 @@ class ProjectListPage extends Component {
 
   componentDidMount() {
     fetchProjects((projects) => {
-      this._whenProjectsLoaded(projects)
-        .then((loadedProjects) => {
-          this.setState({projects: loadedProjects});
-        })
+      /*
+        TODO: 
+        Chris disabled the use of _whenProjectsLoaded() function for now
+        because blank white screen shown for a long time 
+        when loading images from projects for the first time.
+      */
+      // this._whenProjectsLoaded(projs)
+      //   .then((loadedProjects) => {
+      //     this.setState({projects: loadedProjects});
+      //   });
+      this.setState({
+        projects: projects
+      })
     });
 
     fetchProjectCategories((projCategories) => {
@@ -128,26 +137,25 @@ class ProjectListPage extends Component {
   render() {
     //console.log('ProjectListPage: render');
 
-    const state = this.state;
     //const props = this.props;
-
-    const pC = state.projectCategories;
-    const pT = state.projectTags;
-    const projects = state.projects;
+    const { projects, projectCategories, projectTags } = this.state;    
 
     if (projects.length === 0) {
-      //console.log('ProjectListPage: projects length === 0');
+      //console.log('ProjectListPage: projects length === 0');      
+      //return null;
       return (<MyFirstLoadingComponent />);
     }
       
-    if (pC.length === 0) {
+    if (projectCategories.length === 0) {
       //console.log('ProjectListPage: projectCategories length === 0');
-      return (<MyFirstLoadingComponent />);
+      //return null;
+      return (<MyFirstLoadingComponent />);      
     }
 
-    if (pT.length === 0) {
+    if (projectTags.length === 0) {
       //console.log('ProjectListPage: projectTags length === 0');
-      return (<MyFirstLoadingComponent />);
+      //return null;
+      return (<MyFirstLoadingComponent />);      
     }
      
     const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
@@ -157,8 +165,8 @@ class ProjectListPage extends Component {
         <ProjectCategoriesAndItemsWithShuffleAdded 
           projects={projects}
           categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
-          categories={pC}
-          tags={pT} />
+          categories={projectCategories}
+          tags={projectTags} />
         <Footer />
       </div>
     );

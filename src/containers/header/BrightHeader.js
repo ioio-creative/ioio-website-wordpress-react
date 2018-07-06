@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 
-export default class BrightHeader extends Component {
-  render() {
-    return (
-      <div>
-        <WorkWorkLabSwitch />
-      </div>
-    );
-  }
-}
+export default function BrightHeader() {
+  return (
+    <div>
+      <WorkWorkLabSwitch />
+    </div>
+  );  
+};

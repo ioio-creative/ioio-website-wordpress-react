@@ -10,6 +10,7 @@
 	.video-landing-div .container-fluid ,
 	.video-landing-div .player-wrapper,
 	.video-landing-div .react-player {
+
 		height: 100%;
 	}
 	.video-landing-div .react-player {
@@ -21,11 +22,14 @@
 	#lab-video-landing .video-text h1,
 	#lab-video-landing .video-text h3 {
 		padding-left: 15px;
+		top: -32vh;
 	}
 	#lab-video-landing .video-text h1 {
+
+
 		right: 0;
 		left: 0;
-		top: auto;
+		top: -25vh;
 		width: auto;
 	}
 	#lab-list {
@@ -153,8 +157,10 @@
 		opacity: 1;
 		padding-right: 5px;
 	}
+	#hover-cover,
 	#hover-cover.active {
-		display: none;
+	    display: none;
+	    z-index: 0;
 	}
 	#lab-list .lab-item.fade,
 	.lab-item.fade .sub-lab-item {

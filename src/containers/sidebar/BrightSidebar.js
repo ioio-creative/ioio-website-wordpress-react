@@ -47,6 +47,8 @@ class BrightSidebar extends Component {
 
     $("#sidebar").toggleClass("active");
     menuCanvas(true);
+
+
   }
 
   handleMenuClose(e) {

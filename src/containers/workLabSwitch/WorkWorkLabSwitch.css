@@ -25,4 +25,9 @@
   #sidebar.active .work-to-lab-switch-txt {
   right: 80px;
   }
+
+  .work-to-lab-switch-txt {
+display: none;
+  }
+
 }

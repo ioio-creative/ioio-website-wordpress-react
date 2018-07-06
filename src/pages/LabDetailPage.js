@@ -38,8 +38,7 @@ const labTemplateMap = {
 };
 
 function VideoLanding(props) {
-
-  const publicUrl = process.env.PUBLIC_URL;
+  //const publicUrl = process.env.PUBLIC_URL;
 
   return (<section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
     <div className="video-landing-div">
@@ -136,15 +135,16 @@ class LabDetailPage extends Component {
         this.setState({isReturnNotFound: true});
       } else {
         this.setState({lab: aLab});
+        if (aLab.related_projects && aLab.related_projects > 0) {       
+          const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
+            const relatedProjWhole = await fetchProjectByIdAsync(relatedProj.id);
+            return relatedProjWhole;
+          });
 
-        const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
-          const relatedProjWhole = await fetchProjectByIdAsync(relatedProj.id);
-          return relatedProjWhole;
-        });
-
-        Promise.all(relatedProjectPromises).then((relatedProjectObjs) => {
-          this.setState({relatedProjects: relatedProjectObjs});
-        });
+          Promise.all(relatedProjectPromises).then((relatedProjectObjs) => {
+            this.setState({relatedProjects: relatedProjectObjs});
+          });
+        }
       }
     });
   }
@@ -186,36 +186,41 @@ class LabDetailPage extends Component {
 
     const isDisplayRelatedProjects = relatedProjects.length > 0;
     const relatedProjectElements = relatedProjects.map((relatedProject) => {
-      return (<Link to={routes.projectBySlugWithValue(relatedProject.slug)} className="related-hover">
-        <h1>Related Projects</h1>
-        <h3 key={relatedProject.id}>
-
-          {relatedProject.project_name}
-
-        </h3>
-      </Link>);
+      return (
+        <Link key={relatedProject.id}
+          to={routes.projectBySlugWithValue(relatedProject.slug)}
+          className="related-hover">
+          <h1>Related Projects</h1>
+          <h3>
+            {relatedProject.project_name}
+          </h3>
+        </Link>
+      );
     });
 
-    return (<div className="wow fadeIn">
-      <VideoLanding lab={lab}/>
-      <VideoLandingDesc lab={lab}/>
-      <div className="container-fluid">
-        <div className="row ">
-          <div className="col-md-1"></div>
-          <div className="col-md-10">
-            {labTemplateContainer}
+    return (
+      <div className="wow fadeIn">
+        <VideoLanding lab={lab}/>
+        <VideoLandingDesc lab={lab}/>
+        <div className="container-fluid">
+          <div className="row ">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              {labTemplateContainer}
+            </div>
+            <div className="col-md-1"></div>
           </div>
-          <div className="col-md-1"></div>
         </div>
+        {
+          isDisplayRelatedProjects && (
+            <section id="lab-related-project">
+              {relatedProjectElements}
+            </section>
+          )
+        }
+        <Footer/>
       </div>
-      {
-        isDisplayRelatedProjects && (<section id="lab-related-project">
-
-          {relatedProjectElements}
-        </section>)
-      }
-      <Footer/>
-    </div>);
+    );
   }
 }
 

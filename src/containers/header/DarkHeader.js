@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 
-export default class DarkHeader extends Component {
-  render() {
-    return (
-      <div>
-        <LabWorkLabSwitch />
-      </div>
-    );
-  }
-}
+export default function DarkHeader() {  
+  return (
+    <div>
+      <LabWorkLabSwitch />
+    </div>
+  );  
+};

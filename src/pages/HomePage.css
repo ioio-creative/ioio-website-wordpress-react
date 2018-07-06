@@ -311,16 +311,18 @@
     font-weight: bold;
     left: 0;
   }
-  .iframe-p5-inside-div {
-    display: none;
-  }
-  .iframe-p5 {}
+
+
 }
 
 @media only screen and (max-width: 767px) {
   /*----------------------------
   [ Mobile styles go here]
   ---------------------------*/
+  .iframe-p5-inside-div {
+    display: none;
+  }
+
   #homepage-top-logo {
 opacity: 0;
   }
@@ -432,7 +434,7 @@ opacity: 0;
   }
 
   #portfolio-flters {
-    padding: 80px 0 0;
+    padding: 80px 15px 0;
   }
   #homepage-selected-project li {
     padding-right: 10px;
