@@ -333,6 +333,7 @@
   #sidebar-top-logo-text {
     left: 15px;
     opacity: 1;
+    top: 20px;
     color: black;
   }
   #dark-sidebar.active #sidebar-top-logo-text {
@@ -454,10 +455,14 @@
   #dark-sidebar.active #lab-about span {
     font-size: 20px;
   }
-  #dark-sidebar .lab-to-work-switch-txt, #dark-sidebar.active .lab-to-work-switch-txt {
+  .lab-to-work-switch {
+    display: none;
+  }
+  #dark-sidebar .lab-to-work-switch-txt,
+  #dark-sidebar.active .lab-to-work-switch-txt {
     display: block;
     font-size: 14px;
-    top: 3px;
+    top: 1px;
     right: 55px;
     border-right: 1px solid #3c3c3c;
     padding-right: 10px;
