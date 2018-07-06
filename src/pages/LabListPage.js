@@ -463,7 +463,7 @@ class LabListPage extends Component {
     if (labCategories.length === 0) {
       return null;
     }
-    console.log(this.state.windowWidth)
+    //console.log(this.state.windowWidth);
     const bg = {
     };
     if(this.state.windowWidth >767){
