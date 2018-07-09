@@ -4,6 +4,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
+import trackProjectListPageFilterByCategory from 'utils/reactGa/trackProjectListPageFilterByCategory';
 
 import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
 import ProjectCategories from 'containers/projectList/ProjectCategories';
@@ -76,6 +77,7 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
+      categoryFilterSlugFromQuery: null
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
@@ -96,7 +98,7 @@ class ProjectListPage extends Component {
       this.setState({
         projects: projects
       })
-    });
+    });    
 
     fetchProjectCategories((projCategories) => {
       this.setState({
@@ -109,6 +111,16 @@ class ProjectListPage extends Component {
         projectTags: projTags
       });
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const nextCategoryFilterSlugFromQuery = getSearchObjectFromHistory(nextProps.history).category || null;
+    if (this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
+      trackProjectListPageFilterByCategory(nextCategoryFilterSlugFromQuery);
+      this.setState({
+        categoryFilterSlugFromQuery: nextCategoryFilterSlugFromQuery
+      });
+    }
   }
 
   // https://vestride.github.io/Shuffle/shuffle-with-react
@@ -138,7 +150,7 @@ class ProjectListPage extends Component {
     //console.log('ProjectListPage: render');
 
     //const props = this.props;
-    const { projects, projectCategories, projectTags } = this.state;    
+    const { projects, projectCategories, projectTags, categoryFilterSlugFromQuery } = this.state;    
 
     if (projects.length === 0) {
       //console.log('ProjectListPage: projects length === 0');      
@@ -157,8 +169,6 @@ class ProjectListPage extends Component {
       //return null;
       return (<MyFirstLoadingComponent />);      
     }
-     
-    const categoryFilterSlugFromQuery = getSearchObjectFromHistory(this.props.history).category || null;
 
     return (
       <div>

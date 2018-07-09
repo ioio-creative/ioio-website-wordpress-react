@@ -466,12 +466,12 @@ class LabListPage extends Component {
     //console.log(this.state.windowWidth);
     const bg = {
     };
-    if(this.state.windowWidth >767){
-      const bg = {
-        width: '100%',
-        height: this.state.windowWidth *9/16+'px',
-      };
-    }
+    // if(this.state.windowWidth >767){
+    //   const bg = {
+    //     width: '100%',
+    //     height: this.state.windowWidth *9/16+'px',
+    //   };
+    // }
 
 
     const blackBg = {
