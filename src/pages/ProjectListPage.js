@@ -81,6 +81,7 @@ class ProjectListPage extends Component {
     }
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
+    this.getCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery.bind(this);
   }
 
   componentDidMount() {
@@ -114,13 +115,17 @@ class ProjectListPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextCategoryFilterSlugFromQuery = getSearchObjectFromHistory(nextProps.history).category || null;
+    const nextCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery(nextProps.history);
     if (nextCategoryFilterSlugFromQuery && this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
       trackProjectListPageFilterByCategory(nextCategoryFilterSlugFromQuery);
       this.setState({
         categoryFilterSlugFromQuery: nextCategoryFilterSlugFromQuery
       });
     }
+  }
+
+  getCategoryFilterSlugFromQuery(history) {
+    return getSearchObjectFromHistory(history).category || null;
   }
 
   // https://vestride.github.io/Shuffle/shuffle-with-react
@@ -149,7 +154,7 @@ class ProjectListPage extends Component {
   render() {
     //console.log('ProjectListPage: render');
 
-    //const props = this.props;
+    const props = this.props;
     const { projects, projectCategories, projectTags, categoryFilterSlugFromQuery } = this.state;    
 
     if (projects.length === 0) {
@@ -170,11 +175,18 @@ class ProjectListPage extends Component {
       return (<MyFirstLoadingComponent />);      
     }
 
+    /* 
+      null check is needed for categoryFilterSlugFromQuery
+      as componentWillReceiveProps() will not run before 
+      first render() call
+    */
+
     return (
       <div>
         <ProjectCategoriesAndItemsWithShuffleAdded 
-          projects={projects}
-          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery}
+          projects={projects}          
+          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery 
+            || this.getCategoryFilterSlugFromQuery(props.history)}
           categories={projectCategories}
           tags={projectTags} />
         <Footer />
