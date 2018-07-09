@@ -115,7 +115,7 @@ class ProjectListPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     const nextCategoryFilterSlugFromQuery = getSearchObjectFromHistory(nextProps.history).category || null;
-    if (this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
+    if (nextCategoryFilterSlugFromQuery && this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
       trackProjectListPageFilterByCategory(nextCategoryFilterSlugFromQuery);
       this.setState({
         categoryFilterSlugFromQuery: nextCategoryFilterSlugFromQuery
