@@ -4,7 +4,7 @@ import trackEvent from './trackEvent';
 // https://support.google.com/analytics/answer/1033068?hl=en
 export default function trackProjectListPageFilterByCategory(categorySlug) {
   trackEvent({
-    category: 'Project List Page',
+    category: 'Project List Page - Filter Projects by Category',
     action: `Filter Projects by Category - ${categorySlug}`,
     label: `Projects - ${categorySlug}`,
     //value: value,
