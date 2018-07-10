@@ -4,7 +4,7 @@ import './ProjectListPage.css';
 
 import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
-import trackProjectListPageFilterByCategory from 'utils/reactGa/trackProjectListPageFilterByCategory';
+import trackProjectListPageFilterByCategoryIfNotNull from 'utils/reactGa/trackProjectListPageFilterByCategoryIfNotNull';
 
 import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuffle';
 import ProjectCategories from 'containers/projectList/ProjectCategories';
@@ -77,8 +77,10 @@ class ProjectListPage extends Component {
       projects: [],
       projectCategories: [],
       projectTags: [],
-      categoryFilterSlugFromQuery: null
+      categoryFilterSlugFromQuery: null,      
     }
+
+    this.isRenderFirstTime = true;
 
     this._whenProjectsLoaded = this._whenProjectsLoaded.bind(this);
     this.getCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery.bind(this);
@@ -117,7 +119,7 @@ class ProjectListPage extends Component {
   componentWillReceiveProps(nextProps) {
     const nextCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery(nextProps.history);
     if (nextCategoryFilterSlugFromQuery && this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
-      trackProjectListPageFilterByCategory(nextCategoryFilterSlugFromQuery);
+      trackProjectListPageFilterByCategoryIfNotNull(nextCategoryFilterSlugFromQuery);      
       this.setState({
         categoryFilterSlugFromQuery: nextCategoryFilterSlugFromQuery
       });
@@ -181,12 +183,21 @@ class ProjectListPage extends Component {
       first render() call
     */
 
+    let categoryFilterSlugToUse = categoryFilterSlugFromQuery;
+    if (this.isRenderFirstTime) {
+      this.isRenderFirstTime = false;
+
+      if (!categoryFilterSlugToUse) {
+        categoryFilterSlugToUse = this.getCategoryFilterSlugFromQuery(props.history);
+        trackProjectListPageFilterByCategoryIfNotNull(categoryFilterSlugToUse);
+      }      
+    }
+
     return (
       <div>
         <ProjectCategoriesAndItemsWithShuffleAdded 
           projects={projects}          
-          categoryFilterSlugFromQuery={categoryFilterSlugFromQuery 
-            || this.getCategoryFilterSlugFromQuery(props.history)}
+          categoryFilterSlugFromQuery={categoryFilterSlugToUse}
           categories={projectCategories}
           tags={projectTags} />
         <Footer />
