@@ -99,7 +99,7 @@ class ProjectListPage extends Component {
       //     this.setState({projects: loadedProjects});
       //   });
       const trimmedProjectList = projects.filter((project) => {        
-        return project.is_excluded_from_project_list !== 1;
+        return project.is_excluded_from_project_list !== "1";
       })
       this.setState({
         projects: trimmedProjectList
