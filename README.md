@@ -61,6 +61,7 @@ Using pm2
   - pm2 start npm -- start
   - pm2 list
   - pm2 delete ID/NAME
+  - pm2 logs ID/NAME
 
   If running server on port 80,
   use root account
