@@ -65,6 +65,8 @@ class ProjectCategoriesAndItemsWithShuffle extends Component {
 // https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
 const ProjectCategoriesAndItemsWithShuffleAdded = withShuffle(ProjectCategoriesAndItemsWithShuffle);
 
+const loadingElement = (<MyFirstLoadingComponent />);
+
 
 // filter implementation reference
 // https://reactjs.org/docs/thinking-in-react.html
@@ -164,19 +166,19 @@ class ProjectListPage extends Component {
     if (projects.length === 0) {
       //console.log('ProjectListPage: projects length === 0');      
       //return null;
-      return (<MyFirstLoadingComponent />);
+      return loadingElement;
     }
       
     if (projectCategories.length === 0) {
       //console.log('ProjectListPage: projectCategories length === 0');
       //return null;
-      return (<MyFirstLoadingComponent />);      
+      return loadingElement;      
     }
 
     if (projectTags.length === 0) {
       //console.log('ProjectListPage: projectTags length === 0');
       //return null;
-      return (<MyFirstLoadingComponent />);      
+      return loadingElement;      
     }
 
     /* 
