@@ -9,6 +9,10 @@ export default function withShuffle(WrappedComponent) {
     constructor(props) {
       super(props);
 
+      this.state = {
+        isShuffleSet: false
+      };
+
       // shuffle stuff
       this.shuffle = null;
 
@@ -31,7 +35,7 @@ export default function withShuffle(WrappedComponent) {
       // The elements are in the DOM, initialize a shuffle instance.
       this.shuffle = createDefaultShuffle(this.shuffleRef, this.shuffleSelectorClass);
 
-      this.filterFuncToRunAtComponentDidMount();
+      this.filterFuncToRunAtComponentDidMount(this.shuffle);
     }
 
     // http://busypeoples.github.io/post/react-component-lifecycle/
@@ -41,8 +45,8 @@ export default function withShuffle(WrappedComponent) {
       // Notify shuffle to dump the elements it's currently holding and consider
       // all elements matching the `itemSelector` as new.
       this.shuffle.resetItems();
-
-      this.filterFuncToRunAtComponentDidUpdate();
+      
+      this.filterFuncToRunAtComponentDidUpdate(this.shuffle);
     }
 
     componentWillUnmount() {
@@ -71,11 +75,11 @@ export default function withShuffle(WrappedComponent) {
 
     render() {
       //console.log("WithShuffle: render");
-
+      
       // ... and renders the wrapped component with the fresh data!
       // Notice that we pass through any additional props
       return (
-        <WrappedComponent shuffle={this.shuffle}
+        <WrappedComponent
           setShuffleRefFunc={this.setShuffleRef}
           setWithShuffleParamsFunc={this.setWithShuffleParams}
           {...this.props} />

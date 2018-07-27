@@ -54,27 +54,24 @@ class CategoriesAndItemsWithShuffle extends Component {
     return this.categorySlugIdPairs;
   }
 
-  filterItemsByQueryFromUrl() {
-    //console.log("filter starts");
+  filterItemsByQueryFromUrl(shuffle) {
+    //console.log("filter starts");    
 
     // cater for filter ALL case
     const categoryIdToFilter =
       this.getCategorySlugIdPairs()[this.props.categoryFilterSlugFromQuery]
       || this.selectAllCategoryId;
-    this.filterItems(categoryIdToFilter);
+    this.filterItems(shuffle, categoryIdToFilter);
 
     //console.log("filter ends");
   }
 
-  filterItems(categoryId, tagId) {
+  filterItems(shuffle, categoryId, tagId) {    
     /*
       Important: Do not call this.setState() here.
       Calling this.setState() here would make the animation effect
       of this.shuffle.filter() not working.
-    */
-
-    const shuffle = this.props.shuffle;
-
+    */            
     if (shuffle !== null) {
       if (categoryId === this.selectAllCategoryId) {
         shuffle.filter();

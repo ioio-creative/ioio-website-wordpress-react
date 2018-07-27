@@ -54,7 +54,6 @@ class ProjectCategoriesAndItemsWithShuffle extends Component {
         items={props.projects}
         categories={props.categories}
         categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
-        shuffle={props.shuffle}
         setShuffleRefFunc={props.setShuffleRefFunc}
         setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
       />
