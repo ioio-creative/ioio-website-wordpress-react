@@ -35,7 +35,7 @@ pop-up
   height: 60vh;
 }
 
-.video-landing-div {
+#video-landing .video-landing-div {
   position: absolute;
   top: 0;
   margin: 0 0 0 0;
@@ -45,7 +45,7 @@ pop-up
   width: 100%;
 }
 
-.video-landing-div div {
+#video-landing .video-landing-div div {
   padding: 0 0 0 0;
 }
 
@@ -59,7 +59,7 @@ pop-up
   padding: 0 0 0 0;
 }
 
-.video-text {
+#video-landing .video-text {
   color: white;
   width: 100%;
   position: absolute;
@@ -69,11 +69,11 @@ pop-up
   background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
 }
 
-.video-text .pop-up-vid-div {
+#video-landing .video-text .pop-up-vid-div {
   text-align: right;
 }
 
-.video-text h1 {
+#video-landing .video-text h1 {
   position: absolute;
   top: 39vh;
   font-weight: bold;
@@ -82,7 +82,7 @@ pop-up
   line-height: 1.2em;
 }
 
-.video-text h2 {
+#video-landing .video-text h2 {
   position: absolute;
   top: 53vh;
   font-weight: 700;
@@ -92,7 +92,7 @@ pop-up
   letter-spacing: 0.05em;
 }
 
-.video-text a {
+#video-landing .video-text a {
   position: relative;
   font-weight: 100;
   text-transform: uppercase;
@@ -104,7 +104,7 @@ pop-up
   top: 52vh;
 }
 
-.video-landing-text {
+#video-landing .video-landing-text {
   position: relative;
   float: left;
   top: 0;
@@ -116,16 +116,16 @@ pop-up
   padding: 100px 0 100px 0;
 }
 
-.video-landing-text div {
+#video-landing .video-landing-text div {
   padding: 0 0;
 }
 
-.video-landing-text-l {
+#video-landing .video-landing-text-l {
   font-weight: bold;
   text-align: left;
 }
 
-.video-landing-text-r {
+#video-landing .video-landing-text-r {
   text-align: left;
 }
 
