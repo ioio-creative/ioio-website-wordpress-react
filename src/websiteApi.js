@@ -30,11 +30,11 @@ const activeEntities = {
 };
 
 
-function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
+function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, optionalQuery) {
     const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
-        + defaultQuery;
+        + (optionalQuery || defaultQuery);
       //console.log(dataUrl);
     fetch(dataUrl)
         .then(res => res.json())
@@ -48,11 +48,11 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
         });
 }
 
-async function passJsonResultAsync(entityToFetch, optionalEntityId) {
+async function passJsonResultAsync(entityToFetch, optionalEntityId, optionalQuery) {
     const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
-        + defaultQuery;
+        + optionalQuery || defaultQuery;
     const response = await fetch(dataUrl);
     const json = await response.json();
     return json;
@@ -179,6 +179,16 @@ async function fetchProjectsAsync() {
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
+function fetchProjectListOrderByProjectDateDesc(callback) {
+  passJsonResultToCallback("projects_list", (projects) => {
+    callback(projects);
+  }, null, "?orderby=project_date&order=desc");
+}
+
+async function fetchProjectListOrderByProjectDateDescAsync(callback) {
+  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=desc");
+}
+
 function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
@@ -286,6 +296,8 @@ export {
   // project list page
   fetchProjects,
   fetchProjectsAsync,
+  fetchProjectListOrderByProjectDateDesc,
+  fetchProjectListOrderByProjectDateDescAsync,
   fetchProjectCategories,
   fetchProjectCategoriesAsync,
   fetchProjectTags,
