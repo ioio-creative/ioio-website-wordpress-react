@@ -52,7 +52,7 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId, optionalQuer
     const dataUrl = baseUrl
         + entityToFetch
         + (optionalEntityId ? "/" + optionalEntityId : "")
-        + optionalQuery || defaultQuery;
+        + (optionalQuery || defaultQuery);
     const response = await fetch(dataUrl);
     const json = await response.json();
     return json;
@@ -65,6 +65,7 @@ function orderProjectsByDateAscending(projects) {
 }
 
 function orderProjectsByDateDescending(projects) {
+    console.log(projects);
     return projects.sort((project1, project2) => {
         return compareForDatesDescending(project1.project_date, project2.project_date);
     });
@@ -176,6 +177,7 @@ function fetchProjects(callback) {
 
 async function fetchProjectsAsync() {
     const unorderedProjects = await passJsonResultAsync("projects");
+    console.log(unorderedProjects);
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
