@@ -135,29 +135,29 @@ pop-up
 }
 
 @media (max-height: 700px) {
-  .video-text h1 {
+  #video-landing .video-text h1 {
     top: 35vh;
     font-size: 36px;
   }
-  .video-text h2 {
+  #video-landing .video-text h2 {
     top: 52vh;
     font-size: 16px;
   }
-  .video-text a {
+  #video-landing .video-text a {
     top: 50vh;
   }
 }
 
 @media (max-height: 600px) {
-  .video-text h1 {
+  #video-landing .video-text h1 {
     top: 30vh;
     font-size: 30px;
   }
-  .video-text h2 {
+  #video-landing .video-text h2 {
     top: 50vh;
     font-size: 12px;
   }
-  .video-text a {
+  #video-landing .video-text a {
     top: 35vh;
   }
 }
@@ -194,7 +194,7 @@ video {
 }
 */
 
-.player-wrapper {
+#video-landing .player-wrapper {
   display: flex;
   justify-content: center;
   /* align horizontal */
@@ -237,7 +237,7 @@ video {
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  .video-text h1 {
+  #video-landing .video-text h1 {
     position: static;
     text-align: center;
     font-size: 25px;
@@ -253,10 +253,10 @@ video {
     bottom: 20px;
     transform: none;
   }
-  .video-text .row {
+  #video-landing .video-text .row {
     margin: 0;
   }
-  .video-text h2 {
+  #video-landing .video-text h2 {
     position: static;
     text-align: center;
     font-size: 14px;
@@ -268,13 +268,13 @@ video {
     /*left: 50%;*/
     /*transform: translateX(-50%);*/
   }
-  .video-text .pop-up-vid-div {
+  #video-landing .video-text .pop-up-vid-div {
     text-align: center;
     position: absolute;
     bottom: 25px;
     left: 0;
   }
-  .video-text a {
+  #video-landing .video-text a {
     /*top: 0;*/
     font-size: 12px;
     width: 50%;
@@ -283,7 +283,7 @@ video {
     transition: none;
     top: 0;
   }
-  .video-landing-text {
+  #video-landing .video-landing-text {
     padding-top: 50px;
     padding-left: 0px;
     padding-right: 0px;
