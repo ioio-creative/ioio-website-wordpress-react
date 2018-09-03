@@ -179,6 +179,16 @@ async function fetchProjectsAsync() {
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
+function fetchProjectListOrderByProjectDateAsc(callback) {
+  passJsonResultToCallback("projects_list", (projects) => {
+    callback(projects);
+  }, null, "?orderby=project_date&order=asc");
+}
+
+async function fetchProjectListOrderByProjectDateAscAsync(callback) {
+  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=asc");
+}
+
 function fetchProjectListOrderByProjectDateDesc(callback) {
   passJsonResultToCallback("projects_list", (projects) => {
     callback(projects);
@@ -296,6 +306,8 @@ export {
   // project list page
   fetchProjects,
   fetchProjectsAsync,
+  fetchProjectListOrderByProjectDateAsc,
+  fetchProjectListOrderByProjectDateAscAsync,
   fetchProjectListOrderByProjectDateDesc,
   fetchProjectListOrderByProjectDateDescAsync,
   fetchProjectCategories,
