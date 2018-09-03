@@ -30,32 +30,32 @@ const activeEntities = {
 };
 
 
+function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
+  return baseUrl
+    + entityToFetch
+    + (optionalEntityId ? "/" + optionalEntityId : "")
+    + (optionalQuery || defaultQuery);
+}
+
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, optionalQuery) {
-    const dataUrl = baseUrl
-        + entityToFetch
-        + (optionalEntityId ? "/" + optionalEntityId : "")
-        + (optionalQuery || defaultQuery);
-      //console.log(dataUrl);
-    fetch(dataUrl)
-        .then(res => res.json())
-        .then(resJson => {
-            if (resJson.data && resJson.data.status === 404) {
-                // 404 not found
-                callback(null);
-            } else {
-                callback(resJson);
-            }
-        });
+  const dataUrl = constructDataUrl(entityToFetch, optionalEntityId, optionalQuery);      
+  fetch(dataUrl)
+    .then(res => res.json())
+    .then(resJson => {
+      if (resJson.data && resJson.data.status === 404) {
+        // 404 not found
+        callback(null);
+      } else {
+        callback(resJson);
+      }
+    });
 }
 
 async function passJsonResultAsync(entityToFetch, optionalEntityId, optionalQuery) {
-    const dataUrl = baseUrl
-        + entityToFetch
-        + (optionalEntityId ? "/" + optionalEntityId : "")
-        + (optionalQuery || defaultQuery);
-    const response = await fetch(dataUrl);
-    const json = await response.json();
-    return json;
+  const dataUrl = constructDataUrl(entityToFetch, optionalEntityId, optionalQuery);
+  const response = await fetch(dataUrl);
+  const json = await response.json();
+  return json;
 }
 
 function orderProjectsByDateAscending(projects) {
@@ -65,7 +65,6 @@ function orderProjectsByDateAscending(projects) {
 }
 
 function orderProjectsByDateDescending(projects) {
-    console.log(projects);
     return projects.sort((project1, project2) => {
         return compareForDatesDescending(project1.project_date, project2.project_date);
     });
@@ -177,7 +176,6 @@ function fetchProjects(callback) {
 
 async function fetchProjectsAsync() {
     const unorderedProjects = await passJsonResultAsync("projects");
-    console.log(unorderedProjects);
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
