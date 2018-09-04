@@ -104,7 +104,7 @@ pop-up
   top: 52vh;
 }
 
-#video-landing .video-landing-text {
+#video-landing-caption .video-landing-text {
   position: relative;
   float: left;
   top: 0;
@@ -116,16 +116,16 @@ pop-up
   padding: 100px 0 100px 0;
 }
 
-#video-landing .video-landing-text div {
+#video-landing-caption .video-landing-text div {
   padding: 0 0;
 }
 
-#video-landing .video-landing-text-l {
+#video-landing-caption .video-landing-text-l {
   font-weight: bold;
   text-align: left;
 }
 
-#video-landing .video-landing-text-r {
+#video-landing-caption .video-landing-text-r {
   text-align: left;
 }
 
@@ -283,7 +283,7 @@ video {
     transition: none;
     top: 0;
   }
-  #video-landing .video-landing-text {
+  #video-landing-caption .video-landing-text {
     padding-top: 50px;
     padding-left: 0px;
     padding-right: 0px;
