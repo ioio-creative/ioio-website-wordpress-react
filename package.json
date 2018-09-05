@@ -31,9 +31,9 @@
     "video-react": "^0.10.5"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=src PORT=80 react-scripts start",
-    "build": "cross-env NODE_PATH=src react-scripts build",
-    "test": "cross-env NODE_PATH=src PORT=3000 react-scripts test --env=jsdom",
+    "start": "cross-env PORT=80 react-scripts start",
+    "build": "cross-env react-scripts build",
+    "test": "cross-env PORT=3000 react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }

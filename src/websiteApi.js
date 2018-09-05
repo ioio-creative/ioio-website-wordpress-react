@@ -34,7 +34,7 @@ function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
   return baseUrl
     + entityToFetch
     + (optionalEntityId ? "/" + optionalEntityId : "")
-    + (optionalQuery || defaultQuery);
+    + (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery);
 }
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, optionalQuery) {
@@ -182,21 +182,21 @@ async function fetchProjectsAsync() {
 function fetchProjectListOrderByProjectDateAsc(callback) {
   passJsonResultToCallback("projects_list", (projects) => {
     callback(projects);
-  }, null, "?orderby=project_date&order=asc");
+  }, null, "orderby=project_date&order=asc");
 }
 
 async function fetchProjectListOrderByProjectDateAscAsync(callback) {
-  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=asc");
+  return await passJsonResultAsync("projects_list", null, "orderby=project_date&order=asc");
 }
 
 function fetchProjectListOrderByProjectDateDesc(callback) {
   passJsonResultToCallback("projects_list", (projects) => {
     callback(projects);
-  }, null, "?orderby=project_date&order=desc");
+  }, null, "orderby=project_date&order=desc");
 }
 
 async function fetchProjectListOrderByProjectDateDescAsync(callback) {
-  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=desc");
+  return await passJsonResultAsync("projects_list", null, "orderby=project_date&order=desc");
 }
 
 function fetchProjectCategories(callback) {
@@ -220,8 +220,8 @@ async function fetchProjectTagsAsync() {
 
 /* project detail page */
 
-function fetchProjectById(id, callback) {
-    passJsonResultToCallback("projects", callback, id);
+function fetchProjectById(id, callback, language) {
+    passJsonResultToCallback("projects", callback, id, `lang=${language}`);
 }
 
 async function fetchProjectByIdAsync(id) {

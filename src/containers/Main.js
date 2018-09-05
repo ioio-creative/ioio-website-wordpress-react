@@ -4,6 +4,8 @@ import asyncLoadingComponentWithTracker from 'components/loading/AsyncLoadingCom
 
 import './Main.css';
 
+import {LanguageContext} from 'globals/contexts/languageContext';
+
 import routes from 'globals/routes';
 
 import P5SketchTrialPage from 'pages/P5SketchTrialPage';
@@ -22,32 +24,48 @@ const AsyncContactsLabPage = asyncLoadingComponentWithTracker(() => import("page
 const AsyncNotFoundPage = asyncLoadingComponentWithTracker(() => import("pages/NotFoundPage"));
 
 class Main extends Component {
+  constructor(props) {
+    super(props);    
+    this.passLanguageToAsyncLoadingComponentFunc = this.passLanguageToAsyncLoadingComponentFunc.bind(this);
+  }
+
+  passLanguageToAsyncLoadingComponentFunc(languageObj, Component) {
+    return (props) => <Component language={languageObj.language} {...props} />
+  }
+
   render() {
     return (
-      <div id="scroller">
-        <main id="main">
-            {/*
-                Switch component behaves similarly to the "switch" construct
-                in programming. Once a Route is matched, subsequent Routes
-                will be ignored. So we should use "exact" keyword on more
-                generic paths, like "/", or put more generic paths as the
-                later Routes in the Route list.
-            */}
-            <Switch>
-              <Route exact path={routes.home} component={AsyncHomePage} />
-              <Route path={routes.about} component={AsyncAboutPage} />
-              <Route path={routes.labAbout} component={AsyncAboutLabPage} />
-              <Route path={routes.labContacts} component={AsyncContactsLabPage} />
-              <Route exact path={routes.projectBySlug} component={AsyncProjectDetailPage} />
-              <Route path={routes.projects} component={AsyncProjectListPage} />
-              <Route exact path={routes.labBySlug} component={AsyncLabDetailPage} />
-              <Route path={routes.lab} component={AsyncLabListPage} />
-              <Route path={routes.contacts} component={AsyncContactsPage} />
-              <Route path='/trial' component={P5SketchTrialPage} />
-              <Route component={AsyncNotFoundPage} />
-            </Switch>
-        </main>
-      </div>
+      <LanguageContext.Consumer>
+        {value => (
+          <div id="scroller">
+            <main id="main">
+                {/*
+                    Switch component behaves similarly to the "switch" construct
+                    in programming. Once a Route is matched, subsequent Routes
+                    will be ignored. So we should use "exact" keyword on more
+                    generic paths, like "/", or put more generic paths as the
+                    later Routes in the Route list.
+
+                    Pass props to a component rendered by React Router
+                    https://tylermcginnis.com/react-router-pass-props-to-components/
+                */}
+                <Switch>
+                  <Route exact path={routes.home} render={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncHomePage)} />
+                  <Route path={routes.about} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncAboutPage)} />
+                  <Route path={routes.labAbout} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncAboutLabPage)} />
+                  <Route path={routes.labContacts} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncContactsLabPage)} />
+                  <Route exact path={routes.projectBySlug} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncProjectDetailPage)} />
+                  <Route path={routes.projects} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncProjectListPage)} />
+                  <Route exact path={routes.labBySlug} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncLabDetailPage)} />
+                  <Route path={routes.lab} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncLabListPage)} />
+                  <Route path={routes.contacts} component={this.passLanguageToAsyncLoadingComponentFunc(value, AsyncContactsPage)} />
+                  <Route path='/trial' component={P5SketchTrialPage} />
+                  <Route component={AsyncNotFoundPage} />
+                </Switch>
+            </main>
+          </div>
+        )}
+      </LanguageContext.Consumer>
     );
   }
 }
