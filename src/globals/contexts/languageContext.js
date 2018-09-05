@@ -3,11 +3,11 @@ import React from 'react';
 const languages = {
   english: "en",
   simpliedChinese: "zh",
-  traditionalChinese: ""
+  traditionalChinese: "tc"
 };
 
 const defaultLanguageParams = {
-  language: languages.simpliedChinese
+  language: languages.traditionalChinese
 };
 
 const LanguageContext = React.createContext(

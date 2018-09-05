@@ -224,8 +224,8 @@ function fetchProjectById(id, callback, language) {
     passJsonResultToCallback("projects", callback, id, `lang=${language}`);
 }
 
-async function fetchProjectByIdAsync(id) {
-    return await passJsonResultAsync("projects", id);
+async function fetchProjectByIdAsync(id, language) {
+    return await passJsonResultAsync("projects", id, `lang=${language}`);
 }
 
 /* end of project detail page */
