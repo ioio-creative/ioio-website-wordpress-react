@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import config from 'globals/config';
+import {config} from 'globals/config';
 
 export default function initializeReactGa() {
   // https://golightlyplus.com/setup-google-analytics-react-js-apps/

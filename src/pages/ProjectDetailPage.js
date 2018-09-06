@@ -160,7 +160,7 @@ class ProjectDetailPage extends Component {
       } else {
         this.setState({project: aProject});
       }
-    }, this.props.language);
+    });
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);

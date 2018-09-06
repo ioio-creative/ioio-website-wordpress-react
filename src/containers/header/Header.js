@@ -19,6 +19,6 @@ export default function Header() {
       */}
       <Route path={routes.lab} component={AsyncDarkHeader} />
       <Route component={AsyncBrightHeader} />
-    </Switch>
+    </Switch>    
   );    
 };

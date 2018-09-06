@@ -1,4 +1,5 @@
 import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime';
+import {globalLanguage} from 'globals/contexts/languageContext';
 
 /*
     WordPress API References
@@ -31,10 +32,12 @@ const activeEntities = {
 
 
 function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
+  const customQuery = (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery) +
+    "&lang=" + globalLanguage;
   return baseUrl
     + entityToFetch
     + (optionalEntityId ? "/" + optionalEntityId : "")
-    + (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery);
+    + customQuery;
 }
 
 function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, optionalQuery) {
@@ -220,12 +223,12 @@ async function fetchProjectTagsAsync() {
 
 /* project detail page */
 
-function fetchProjectById(id, callback, language) {
-    passJsonResultToCallback("projects", callback, id, `lang=${language}`);
+function fetchProjectById(id, callback) {
+    passJsonResultToCallback("projects", callback, id);
 }
 
 async function fetchProjectByIdAsync(id, language) {
-    return await passJsonResultAsync("projects", id, `lang=${language}`);
+    return await passJsonResultAsync("projects", id);
 }
 
 /* end of project detail page */
