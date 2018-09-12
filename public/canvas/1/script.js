@@ -125,7 +125,7 @@ function init() {
   ground.position.y = -2000;
   scene.add(ground);
 
-  ground.receiveShadow = true;
+  ground.receiveShadow = false;
 
   group = new THREE.Group();
   group.position.y = 0;
@@ -433,7 +433,8 @@ function render() {
     0, 90
   ], [15, 450])
 
-  ground.position.z = -groundZPos;
+  //ground.position.z = -groundZPos;
+  ground.position.z = -450;
   //camera.position.x = -cursorX;
   //camera.position.y = cursorY;
 
