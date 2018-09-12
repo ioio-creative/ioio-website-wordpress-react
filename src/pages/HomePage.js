@@ -190,7 +190,7 @@ class HomePage extends Component {
       return null;
     }
 
-    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/hello/index.html');
+    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/1/index.html');
     const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
 
     const customStyles = {
