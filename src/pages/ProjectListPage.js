@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './ProjectListPage.css';
 
-import {fetchProjects, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
+import {fetchProjectListOrderByProjectDateDesc, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
 import trackProjectListPageFilterByCategoryIfNotNull from 'utils/reactGa/trackProjectListPageFilterByCategoryIfNotNull';
 
@@ -88,24 +88,29 @@ class ProjectListPage extends Component {
   }
 
   componentDidMount() {
-    fetchProjects((projects) => {
-      /*
-        TODO: 
-        Chris disabled the use of _whenProjectsLoaded() function for now
-        because blank white screen shown for a long time 
-        when loading images from projects for the first time.
-      */
-      // this._whenProjectsLoaded(projs)
-      //   .then((loadedProjects) => {
-      //     this.setState({projects: loadedProjects});
-      //   });
-      const trimmedProjectList = projects.filter((project) => {        
-        return project.is_excluded_from_project_list !== "1";
-      })
+    // fetchProjects((projects) => {
+    //   /*
+    //     TODO: 
+    //     Chris disabled the use of _whenProjectsLoaded() function for now
+    //     because blank white screen shown for a long time 
+    //     when loading images from projects for the first time.
+    //   */
+    //   // this._whenProjectsLoaded(projs)
+    //   //   .then((loadedProjects) => {
+    //   //     this.setState({projects: loadedProjects});
+    //   //   });
+    //   const trimmedProjectList = projects.filter((project) => {        
+    //     return project.is_excluded_from_project_list !== "1";
+    //   })
+    //   this.setState({
+    //     projects: trimmedProjectList
+    //   })
+    // });
+    fetchProjectListOrderByProjectDateDesc((projects) => {
       this.setState({
-        projects: trimmedProjectList
-      })
-    });    
+        projects: projects
+      });
+    });
 
     fetchProjectCategories((projCategories) => {
       this.setState({

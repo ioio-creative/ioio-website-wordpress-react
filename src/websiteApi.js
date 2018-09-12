@@ -30,32 +30,32 @@ const activeEntities = {
 };
 
 
-function passJsonResultToCallback(entityToFetch, callback, optionalEntityId) {
-    const dataUrl = baseUrl
-        + entityToFetch
-        + (optionalEntityId ? "/" + optionalEntityId : "")
-        + defaultQuery;
-      //console.log(dataUrl);
-    fetch(dataUrl)
-        .then(res => res.json())
-        .then(resJson => {
-            if (resJson.data && resJson.data.status === 404) {
-                // 404 not found
-                callback(null);
-            } else {
-                callback(resJson);
-            }
-        });
+function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
+  return baseUrl
+    + entityToFetch
+    + (optionalEntityId ? "/" + optionalEntityId : "")
+    + (optionalQuery || defaultQuery);
 }
 
-async function passJsonResultAsync(entityToFetch, optionalEntityId) {
-    const dataUrl = baseUrl
-        + entityToFetch
-        + (optionalEntityId ? "/" + optionalEntityId : "")
-        + defaultQuery;
-    const response = await fetch(dataUrl);
-    const json = await response.json();
-    return json;
+function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, optionalQuery) {
+  const dataUrl = constructDataUrl(entityToFetch, optionalEntityId, optionalQuery);      
+  fetch(dataUrl)
+    .then(res => res.json())
+    .then(resJson => {
+      if (resJson.data && resJson.data.status === 404) {
+        // 404 not found
+        callback(null);
+      } else {
+        callback(resJson);
+      }
+    });
+}
+
+async function passJsonResultAsync(entityToFetch, optionalEntityId, optionalQuery) {
+  const dataUrl = constructDataUrl(entityToFetch, optionalEntityId, optionalQuery);
+  const response = await fetch(dataUrl);
+  const json = await response.json();
+  return json;
 }
 
 function orderProjectsByDateAscending(projects) {
@@ -179,6 +179,26 @@ async function fetchProjectsAsync() {
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
+function fetchProjectListOrderByProjectDateAsc(callback) {
+  passJsonResultToCallback("projects_list", (projects) => {
+    callback(projects);
+  }, null, "?orderby=project_date&order=asc");
+}
+
+async function fetchProjectListOrderByProjectDateAscAsync(callback) {
+  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=asc");
+}
+
+function fetchProjectListOrderByProjectDateDesc(callback) {
+  passJsonResultToCallback("projects_list", (projects) => {
+    callback(projects);
+  }, null, "?orderby=project_date&order=desc");
+}
+
+async function fetchProjectListOrderByProjectDateDescAsync(callback) {
+  return await passJsonResultAsync("projects_list", null, "?orderby=project_date&order=desc");
+}
+
 function fetchProjectCategories(callback) {
     passJsonResultToCallback("project_categories", callback);
 }
@@ -286,6 +306,10 @@ export {
   // project list page
   fetchProjects,
   fetchProjectsAsync,
+  fetchProjectListOrderByProjectDateAsc,
+  fetchProjectListOrderByProjectDateAscAsync,
+  fetchProjectListOrderByProjectDateDesc,
+  fetchProjectListOrderByProjectDateDescAsync,
   fetchProjectCategories,
   fetchProjectCategoriesAsync,
   fetchProjectTags,
