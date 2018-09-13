@@ -81,7 +81,7 @@ function init() {
       0, 1000
     ], [0.2, 1])
     //renderScale = 0.1;
-    console.log("renderScale" + renderScale)
+    // console.log("renderScale" + renderScale)
   }
   container = document.createElement('div');
   document.body.appendChild(container);
@@ -185,7 +185,7 @@ function init() {
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     //  console.log(geometry.children[0].geometry)
-    console.log(materialBlack)
+    // console.log(materialBlack)
 
     materialBlack.reflectivity = 1;
     materialNormal.wireframe = true;
@@ -252,7 +252,7 @@ loader.load( 'models/animated/flamingo.js', function( geometry ) {
   composer.addPass(effectFXAA);
   composer.addPass(bloomPass);
   composer.addPass(copyPass);
-    console.log(composer);
+    // console.log(composer);
   // STATS
   stats = new Stats();
   //container.appendChild( stats.dom );
@@ -316,6 +316,7 @@ function onDocumentMouseDown(event) {
   document.addEventListener('mouseout', onDocumentMouseOut, false);
   mouseXOnMouseDown = event.clientX - windowHalfX;
   targetRotationOnMouseDown = targetRotation;
+  sendToParent('canvas_activated');
 }
 function onDocumentMouseMove(event) {
   mouseX = event.clientX - windowHalfX;
@@ -330,7 +331,7 @@ function onDocumentMouseUp(event) {
   document.removeEventListener('mousemove', onDocumentMouseMove, false);
   document.removeEventListener('mouseup', onDocumentMouseUp, false);
   document.removeEventListener('mouseout', onDocumentMouseOut, false);
-
+  sendToParent('canvas_deactivated');
 }
 function onDocumentMouseOut(event) {
 
@@ -346,13 +347,14 @@ function onDocumentTouchStart(event) {
     mouseXOnMouseDown = event.touches[0].pageX - windowHalfX;
     targetRotationOnMouseDown = targetRotation;
   }
+  sendToParent('canvas_activated');
 }
 function onDocumentTouchEnd(event) {
   event.preventDefault();
   pressState = false;
 
   timeToGoBack = true;
-
+  sendToParent('canvas_deactivated');
 }
 function onDocumentTouchMove(event) {
   if (event.touches.length == 1) {
@@ -532,4 +534,11 @@ function render() {
 
 function convertRange(value, r1, r2) {
   return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+}
+
+function sendToParent(msg) {
+  let parent = window.parent;
+  if (parent) {
+    parent.postMessage( msg , '*');
+  }
 }
