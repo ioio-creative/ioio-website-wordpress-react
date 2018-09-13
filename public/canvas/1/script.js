@@ -276,11 +276,28 @@ function onWindowResize() {
   var height = window.innerHeight;
   windowHalfX = width / 2;
   windowHalfY = height / 2;
-  camera.aspect = width / height;
+  // camera.aspect = width / height;
+  // OrthographicCamera need to define left right top bottom
+  camera.left = -windowHalfX;
+  camera.right = windowHalfX;
+  camera.top = windowHalfY;
+  camera.bottom = -windowHalfY;
+  // resize the IOIO renderScale on resize
+  if (window.innerWidth < 800) {
+    renderScale = convertRange(window.innerWidth, [
+      0, 1000
+    ], [0.2, 1]);
+  } else {
+    renderScale = 1;
+  }
+  group.scale.x = 1 * renderScale;
+  group.scale.y = 1 * renderScale;
+  group.scale.z = 1 * renderScale;
   camera.updateProjectionMatrix();
 
   renderer.setSize(width, height);
   composer.setSize(width, height);
+
 }
 /*
 function onDocumentKeyDown(event) {
