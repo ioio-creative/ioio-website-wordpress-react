@@ -84,6 +84,7 @@ function init() {
     // console.log("renderScale" + renderScale)
   }
   container = document.createElement('div');
+  container.setAttribute('id', 'canvasWrapper');
   document.body.appendChild(container);
 
   // CAMERA
@@ -546,6 +547,11 @@ function render() {
   pCursorX = cursorX;
   pCursorY = cursorY;
 
+  // sendToParent({
+  // // 'renderScale': renderScale,
+  //   'width': window.innerWidth,
+  //   'height': window.innerHeight,
+  // })
 }
 //Other Functions
 

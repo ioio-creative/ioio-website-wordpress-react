@@ -237,7 +237,7 @@ class HomePage extends Component {
           <div className="row">
             <div className="col-md-10 offset-md-1">
               <div className="iframe-p5-inside-div container-fluid">
-                <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
+                <iframe className="iframe-p5" frameBorder={0} scrolling="no" src={canvasURL}/>
               </div>
               <Link to="#" onClick={this.openModal} id="pop-up-vid" >
                 <div className="homepage-showreel">
