@@ -106,6 +106,7 @@ class ProjectListPage extends Component {
     //     projects: trimmedProjectList
     //   })
     // });
+
     fetchProjectListOrderByProjectDateDesc((projects) => {
       this.setState({
         projects: projects

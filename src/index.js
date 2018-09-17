@@ -5,13 +5,8 @@ import './fonts/font.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { BrowserRouter } from 'react-router-dom'
-
-ReactDOM.render((
-    <BrowserRouter>
-      {/*console.log(this.props.location.pathname)*/}
-      <App />
-    </BrowserRouter>
+ReactDOM.render((      
+  <App />
 ), document.getElementById('root'));
 
 registerServiceWorker();

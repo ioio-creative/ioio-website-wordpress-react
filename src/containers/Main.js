@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import asyncLoadingComponentWithTracker from 'components/loading/AsyncLoadingComponentWithTracker';
 
 import './Main.css';
 
-import {LanguageContext} from 'globals/contexts/languageContext';
+import {LanguageContext, passLanguageToAsyncLoadingComponentFunc} from 'globals/contexts/languageContext';
 
 import routes from 'globals/routes';
 
@@ -26,11 +26,6 @@ const AsyncNotFoundPage = asyncLoadingComponentWithTracker(() => import("pages/N
 class Main extends Component {
   constructor(props) {
     super(props);    
-    this.passLanguageToAsyncLoadingComponentFunc = this.passLanguageToAsyncLoadingComponentFunc.bind(this);
-  }
-
-  passLanguageToAsyncLoadingComponentFunc(languageObj, Component) {
-    return (props) => <Component language={languageObj.language} {...props} />
   }
 
   render() {
@@ -54,15 +49,15 @@ class Main extends Component {
                   language changes
               */}
               <Switch>
-                <Route exact path={routes.home} render={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncHomePage)} />
-                <Route path={routes.about} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutPage)} />
-                <Route path={routes.labAbout} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutLabPage)} />
-                <Route path={routes.labContacts} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsLabPage)} />
-                <Route exact path={routes.projectBySlug} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectDetailPage)} />
-                <Route path={routes.projects} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectListPage)} />
-                <Route exact path={routes.labBySlug} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabDetailPage)} />
-                <Route path={routes.lab} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabListPage)} />
-                <Route path={routes.contacts} component={this.passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsPage)} />
+                <Route exact path={routes.home} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncHomePage)} />
+                <Route path={routes.about} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutPage)} />
+                <Route path={routes.labAbout} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutLabPage)} />
+                <Route path={routes.labContacts} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsLabPage)} />
+                <Route exact path={routes.projectBySlug} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectDetailPage)} />
+                <Route path={routes.projects} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectListPage)} />
+                <Route exact path={routes.labBySlug} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabDetailPage)} />
+                <Route path={routes.lab} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabListPage)} />
+                <Route path={routes.contacts} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsPage)} />
                 <Route path='/trial' component={P5SketchTrialPage} />
                 <Route component={AsyncNotFoundPage} />
               </Switch>

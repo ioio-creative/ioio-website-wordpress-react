@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import Modal from 'react-modal';
+import {FormattedMessage} from 'react-intl';
+
 import './BrightFooter.css'
 
-import Modal from 'react-modal';
 import $ from 'jquery'
 
 import {fetchActiveBrightFooter} from 'websiteApi';
@@ -11,14 +13,17 @@ Modal.setAppElement('#root');
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
-    return (<a target={'_blank'} href={item.link} key={index} className="youtube"><img className="social-media-img" src={item.icon.guid} alt={item.my_name} /></a>);
+    return (
+      <a target={'_blank'} href={item.link} key={index} className="youtube">
+        <img className="social-media-img" src={item.icon.guid} alt={item.my_name} />
+      </a>
+    );
   });
 
   return (<div>
     {social_media_items}
   </div>);
 }
-
 
 
 class BrightFooter extends Component {
@@ -41,8 +46,6 @@ class BrightFooter extends Component {
     fetchActiveBrightFooter((aFooter) => {
       this.setState({footer: aFooter});
     });
-
-
   }
 
   openModal() {
@@ -64,7 +67,6 @@ class BrightFooter extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"},1500);
     }, 0);
-
   }
 
   render() {
@@ -119,16 +121,26 @@ class BrightFooter extends Component {
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-bottom-copyright">
-                <span>&copy;2018 IOIO LIMITED</span>
-
+                <FormattedMessage
+                  id="Footer.copyRightLabel"
+                  defaultMessage="&copy;2018 IOIO LIMITED"
+                />
               </div>
               <div className="col-md-3"></div>
               <div className="col-md-2"></div>
               <div className="col-md-2 footer-bottom-links">
                 <Link to="#" onClick={this.openModal} id="pop-up-terms">
-                  TERMS & CONDITIONS
+                  <FormattedMessage
+                    id="Footer.termsAndConditionsLabel"
+                    defaultMessage="TERMS & CONDITIONS"
+                  />
                 </Link>
-                <a id="footer-join-us">JOIN US</a>
+                <a id="footer-join-us">
+                  <FormattedMessage
+                    id="Footer.joinUsLabel"
+                    defaultMessage="JOIN US"
+                  />
+                </a>
                 <a className="footer-back-to-top" onClick={this.backToTop}>
                   <i className="ion ion-android-arrow-up"></i>
                 </a>

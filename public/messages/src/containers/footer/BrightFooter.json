@@ -1,0 +1,14 @@
+[
+  {
+    "id": "Footer.copyRightLabel",
+    "defaultMessage": "©2018 IOIO LIMITED"
+  },
+  {
+    "id": "Footer.termsAndConditionsLabel",
+    "defaultMessage": "TERMS & CONDITIONS"
+  },
+  {
+    "id": "Footer.joinUsLabel",
+    "defaultMessage": "JOIN US"
+  }
+]

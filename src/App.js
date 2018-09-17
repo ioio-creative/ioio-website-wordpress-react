@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
 
-import {LanguageContextProvider} from 'globals/contexts/languageContext';
+import {BrowserRouter} from 'react-router-dom';
+import {IntlProvider} from "react-intl";
+import {LanguageContextProvider, globalLanguage} from 'globals/contexts/languageContext';
+
+// Our translated strings
+import localeData from '../src/locales/data.json';
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
@@ -37,6 +42,25 @@ function loadJSFiles() {
   });
 }
 
+
+
+
+// Define user's language. Different browsers have the user locale defined
+// on different fields on the `navigator` object, so we make sure to account
+// for these different by checking all of them
+const language = (navigator.languages && navigator.languages[0]) ||
+                     navigator.language ||
+                     navigator.userLanguage;
+
+// Split locales with a region code
+const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
+
+// Try full locale, try locale without region code, fallback to 'en'
+const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData.en;
+
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -50,12 +74,17 @@ class App extends Component {
 
   render() {
     return (
-      <LanguageContextProvider>        
-        <Sidebar />
-        <Header />
-        <Main />
-        <TestLanguageSelector />
-      </LanguageContextProvider>
+      <IntlProvider locale={globalLanguage} messages={messages}>
+        <BrowserRouter>
+          {/*console.log(this.props.location.pathname)*/}
+          <LanguageContextProvider>        
+            <Sidebar />
+            <Header />
+            <Main />
+            <TestLanguageSelector />
+          </LanguageContextProvider>
+        </BrowserRouter>
+      </IntlProvider>
     );
   }
 }

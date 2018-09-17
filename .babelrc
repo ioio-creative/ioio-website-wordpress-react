@@ -1,0 +1,10 @@
+{
+  "presets":["react-app", "env"],
+  "plugins": [
+    ["react-intl", {
+      "messagesDir": "./src/messages/",
+      "enforceDescriptions": false,
+      "extractSourceLocation": false
+    }]
+  ]
+}

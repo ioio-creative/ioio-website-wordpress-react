@@ -148,6 +148,8 @@ class ProjectDetailPage extends Component {
     const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
     const projectIdNum = parseInt(projectIdStr, 10);
 
+    console.log(this.props.language);
+
     // if no corresponding project id entry for the slug got from query
     if (isNaN(projectIdNum)) {
       this.setState({isReturnNotFound: true});

@@ -25,6 +25,10 @@ const browserLangIdCodeToMyLangCodeMapper = {
   'zh-cn': languages.simplifiedChinese,
   'zh-sg': languages.simplifiedChinese,
   'zh-tw': languages.traditionalChinese, 
+};
+
+function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
+  return browserLangIdCodeToMyLangCodeMapper[browserLangIdCode];
 }
 
 const config = {
@@ -36,10 +40,11 @@ const config = {
     //   userId: 123
     // }
   },
-  defaultLanguage: languages.traditionalChinese
+  defaultLanguage: languages.english
 }
 
 export {
   config,
-  languages
+  languages,
+  getLanguageFromBrowserLangIdCode
 };

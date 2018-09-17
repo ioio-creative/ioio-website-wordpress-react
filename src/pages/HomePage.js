@@ -84,7 +84,7 @@ function HighlightedProjects(props) {
 }
 
 function Items(props) {
-  let a = props.abouts
+  const a = props.abouts;
   return (<div className="row">
     <div className="col-md-1"></div>
     <div className="col-md-5 about-section-left">

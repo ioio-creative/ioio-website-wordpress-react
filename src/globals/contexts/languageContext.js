@@ -1,8 +1,11 @@
 import React from 'react';
 
-import {config, languages} from 'globals/config'
+import {config, getLanguageFromBrowserLangIdCode} from 'globals/config'
 
-let globalLanguage = config.defaultLanguage;
+let browserLangIdCode = getNavigatorLanguageWithRegionCode();
+// browserLangIdCode = 'asdg';
+// console.log('language: ' + getLanguageFromBrowserLangIdCode(browserLangIdCode));
+let globalLanguage = getLanguageFromBrowserLangIdCode(browserLangIdCode) || config.defaultLanguage;
 
 function getNavigatorLanguageWithRegionCode() {
   // Define user's language. Different browsers have the user locale defined
@@ -15,8 +18,6 @@ function getNavigatorLanguageWithRegionCode() {
   return language.toLowerCase();
 }
 
-getNavigatorLanguageWithRegionCode();
-
 function getNavigatorLanguageWithoutRegionCode() {
   const language = getNavigatorLanguageWithRegionCode();
 
@@ -24,6 +25,10 @@ function getNavigatorLanguageWithoutRegionCode() {
   const languageWithoutRegionCode = language.split(/[_-]+/)[0];
 
   return languageWithoutRegionCode;
+}
+
+function passLanguageToAsyncLoadingComponentFunc(language, Component) {
+  return (props) => <Component language={language} {...props} />
 }
 
 const LanguageContext = React.createContext({
@@ -65,6 +70,7 @@ export {
   globalLanguage,
   getNavigatorLanguageWithRegionCode,
   getNavigatorLanguageWithoutRegionCode,
+  passLanguageToAsyncLoadingComponentFunc,
   LanguageContext,
   LanguageContextProvider
 };

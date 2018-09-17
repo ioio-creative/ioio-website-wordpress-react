@@ -1,4 +1,4 @@
-import { compareForDatesAscending, compareForDatesDescending } from 'utils/datetime';
+import {compareForDatesAscending, compareForDatesDescending} from 'utils/datetime';
 import {globalLanguage} from 'globals/contexts/languageContext';
 
 /*
