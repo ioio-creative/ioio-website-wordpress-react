@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import {languages} from 'globals/config';
 
 import {LanguageContext} from 'globals/contexts/languageContext';
+
+import nav from 'utils/history/nav';
 
 class TestLanguageSelector extends Component {
   constructor(props) {
@@ -10,8 +13,9 @@ class TestLanguageSelector extends Component {
     this.handleLanguageButtonClick.bind(this);
   }
 
-  handleLanguageButtonClick(languageCode, changeGlobalLanguageFunc) {
-    changeGlobalLanguageFunc(languageCode);
+  handleLanguageButtonClick(language, changeGlobalLocaleAndLanguageFunc) {
+    nav(window.location.pathname + '?lang=' + language[1]);
+    changeGlobalLocaleAndLanguageFunc(language);
   }
 
   render() {
@@ -19,9 +23,12 @@ class TestLanguageSelector extends Component {
       <LanguageContext.Consumer>
         {value => (
           <div style={{position: 'fixed', top: 0, left: 50, zIndex: 2}}>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeGlobalLanguageFunc);}}>EN</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeGlobalLanguageFunc);}}>SC</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeGlobalLanguageFunc);}}>TC</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeGlobalLocaleAndLanguageFunc);}}>EN</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeGlobalLocaleAndLanguageFunc);}}>SC</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeGlobalLocaleAndLanguageFunc);}}>TC</button>
+            {/* <Link to={window.location.pathname + '?lang=en'}>EN</Link>
+            <Link to={window.location.pathname + '?lang=sc'}>SC</Link>
+            <Link to={window.location.pathname + '?lang=tc'}>TC</Link> */}
           </div>
         )}
       </LanguageContext.Consumer>

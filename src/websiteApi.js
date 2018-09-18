@@ -1,5 +1,6 @@
 import {compareForDatesAscending, compareForDatesDescending} from 'utils/datetime';
-import {globalLanguage} from 'globals/contexts/languageContext';
+import {globalLanguage} from 'App';
+import {languages} from 'globals/config';
 
 /*
     WordPress API References
@@ -32,8 +33,14 @@ const activeEntities = {
 
 
 function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
+  console.log(globalLanguage);
+  /*
+    Somehow, CMS server may redirect when there is query string "lang=en" in the API request,
+    causing CORS error. So I ignore the language query string 
+    when (globalLanguage[1] === languages.english[1])
+  */
   const customQuery = (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery) +
-    ((!globalLanguage) ? "&lang=" + globalLanguage : "");
+    ((globalLanguage[1] === languages.english[1]) ? "" : "&lang=" + globalLanguage[1]);
   return baseUrl
     + entityToFetch
     + (optionalEntityId ? "/" + optionalEntityId : "")

@@ -202,7 +202,7 @@ class ProjectListPage extends Component {
         trackProjectListPageFilterByCategoryIfNotNull(categoryFilterSlugToUse);
       }      
     }
-
+    
     return (
       <div>
         <ProjectCategoriesAndItemsWithShuffleAdded 

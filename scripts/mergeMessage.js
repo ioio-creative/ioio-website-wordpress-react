@@ -1,4 +1,5 @@
 // https://github.com/austintackaberry/i18n-example/blob/master/scripts/mergeMessages.js
+// https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725
 // https://medium.freecodecamp.org/internationalization-in-react-7264738274a0
 
 // import * as fs from "fs";

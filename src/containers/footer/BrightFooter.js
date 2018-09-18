@@ -121,25 +121,25 @@ class BrightFooter extends Component {
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-bottom-copyright">
-                {/* <FormattedMessage */}
+                <FormattedMessage
                   id="Footer.copyRightLabel"
                   defaultMessage="&copy;2018 IOIO LIMITED"
-                {/* /> */}
+                />
               </div>
               <div className="col-md-3"></div>
               <div className="col-md-2"></div>
               <div className="col-md-2 footer-bottom-links">
                 <Link to="#" onClick={this.openModal} id="pop-up-terms">
-                  {/* <FormattedMessage */}
+                  <FormattedMessage
                     id="Footer.termsAndConditionsLabel"
                     defaultMessage="TERMS & CONDITIONS"
-                  {/* /> */}
+                  />
                 </Link>
                 <a id="footer-join-us">
-                  {/* <FormattedMessage */}
+                  <FormattedMessage
                     id="Footer.joinUsLabel"
                     defaultMessage="JOIN US"
-                  {/* /> */}
+                  />
                 </a>
                 <a className="footer-back-to-top" onClick={this.backToTop}>
                   <i className="ion ion-android-arrow-up"></i>

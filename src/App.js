@@ -2,8 +2,12 @@ import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
 
-import {IntlProvider} from "react-intl";
-import {LanguageContextProvider, globalLanguage} from 'globals/contexts/languageContext';
+import {BrowserRouter} from 'react-router-dom';
+import {IntlProvider, addLocaleData} from "react-intl";
+import en from "react-intl/locale-data/en";
+import zh from "react-intl/locale-data/zh";
+import {LanguageContextProvider} from 'globals/contexts/languageContext';
+import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config'
 
 // Our translated strings
 import localeData from '../src/locales/data.json';
@@ -16,6 +20,7 @@ import TestLanguageSelector from 'containers/test/TestLanguageSelector';
 import scriptjs from 'scriptjs'
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import initializeReactGa from 'utils/reactGa/initializeReactGa';
+import getSearchObjectFromLocation from 'utils/queryString/getSearchObjectFromLocation';
 
 function loadJSFiles() {
   const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/jquery/jquery.min.js', 'lib/wow/wow.min.js']);
@@ -42,28 +47,48 @@ function loadJSFiles() {
 }
 
 
+function getNavigatorLanguageWithRegionCode() {
+  // Define user's language. Different browsers have the user locale defined
+  // on different fields on the `navigator` object, so we make sure to account
+  // for these different by checking all of them
+  const language = (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    navigator.userLanguage;
+    
+  return language.toLowerCase();
+}
+
+function getNavigatorLanguageWithoutRegionCode() {
+  const language = getNavigatorLanguageWithRegionCode();
+
+  // Split locales with a region code
+  const languageWithoutRegionCode = language.split(/[_-]+/)[0];
+
+  return languageWithoutRegionCode;
+}
+
+const browserLangIdCode = getNavigatorLanguageWithRegionCode();
+// browserLangIdCode = 'asdg';
+// console.log('language: ' + getLanguageFromBrowserLangIdCode(browserLangIdCode));
+const languageCodeFromQuery = getSearchObjectFromLocation(window.location).lang;
+let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
+ || getLanguageFromBrowserLangIdCode(browserLangIdCode) 
+ || config.defaultLanguage;
 
 
-// Define user's language. Different browsers have the user locale defined
-// on different fields on the `navigator` object, so we make sure to account
-// for these different by checking all of them
-const language = (navigator.languages && navigator.languages[0]) ||
-                     navigator.language ||
-                     navigator.userLanguage;
-
-// Split locales with a region code
-const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
-
-// Try full locale, try locale without region code, fallback to 'en'
-const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData.en;
-
-
+// https://github.com/austintackaberry/i18n-example/blob/master/src/index.js
+// https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725
+addLocaleData([...en, ...zh]);
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      language: globalLanguage,
+      messages: localeData[globalLanguage[0]]
+    }
+    this.changeGlobalLocaleAndLanguage = this.changeGlobalLocaleAndLanguage.bind(this);
     initializeReactGa();
   }
 
@@ -71,18 +96,48 @@ class App extends Component {
     loadJSFiles();
   }
 
-  render() {
-// <IntlProvider locale={globalLanguage} messages={messages}>
+  changeGlobalLocaleAndLanguage(newLanguage) {
+    if (this.state.language !== newLanguage) {
+      globalLanguage = newLanguage;
+      this.setState({
+        language: globalLanguage,
+        messages: localeData[globalLanguage[0]]
+      });      
+    }
+  }
 
-    return (                
-        <LanguageContextProvider>        
-          <Sidebar />
-          <Header />
-          <Main />
-          <TestLanguageSelector />
-        </LanguageContextProvider>      
+  render() {
+    const state = this.state;
+    console.log(state.messages);    
+
+    /*
+      Note: 
+      Somehow, BrowserRouter must be inside IntlProvider for the router to work.
+      It does not work when IntlProvider is inside BrowserRouter.
+    */
+    return (
+      <IntlProvider locale={state.language[0]} messages={state.messages}>  
+        <BrowserRouter>
+          {/*console.log(this.props.location.pathname)*/}                 
+          <LanguageContextProvider 
+            languageCode={state.language[1]}
+            changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}
+          >
+            <Sidebar />
+            <Header />
+            <Main />
+            <TestLanguageSelector />
+          </LanguageContextProvider>
+        </BrowserRouter>
+      </IntlProvider>
     );
   }
 }
 
 export default App;
+
+export {
+  globalLanguage,
+  getNavigatorLanguageWithRegionCode,
+  getNavigatorLanguageWithoutRegionCode
+};

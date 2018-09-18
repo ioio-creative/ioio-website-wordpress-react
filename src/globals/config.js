@@ -1,9 +1,18 @@
-// have to map language codes to the api query param options
+// have to map language names to the [react-intl locale, api query param options] pairs
 const languages = {
-  english: 'en',
-  simpliedChinese: 'zh',
-  traditionalChinese: 'tc'
+  english: ['en', 'en'],
+  simpliedChinese: ['zh', 'zh'],
+  traditionalChinese: ['zh-Hant', 'tc']
 };
+
+const languageCodeToLanguageMap = {};
+Object.keys(languages).forEach((key, idx) => {
+  languageCodeToLanguageMap[languages[key][1]] = languages[key];
+});
+
+function getLanguageFromLanguageCode(languageCode) {
+  return languageCodeToLanguageMap[languageCode];
+}
 
 // https://www.metamodpro.com/browser-language-codes
 const browserLangIdCodeToMyLangCodeMapper = {
@@ -20,7 +29,7 @@ const browserLangIdCodeToMyLangCodeMapper = {
   'en-us': languages.english,
   'en-zw': languages.english,
 
-  'zh': languages.traditionalChinese,
+  'zh': languages.simplifiedChinese,
   'zh-hk': languages.traditionalChinese,
   'zh-cn': languages.simplifiedChinese,
   'zh-sg': languages.simplifiedChinese,
@@ -46,5 +55,6 @@ const config = {
 export {
   config,
   languages,
-  getLanguageFromBrowserLangIdCode
+  getLanguageFromBrowserLangIdCode,
+  getLanguageFromLanguageCode
 };

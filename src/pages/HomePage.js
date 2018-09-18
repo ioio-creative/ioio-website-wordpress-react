@@ -16,7 +16,7 @@ import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
 import './HomePageSE.css';
-import sketch from './sketch';
+//import sketch from './sketch';
 
 import Modal from 'react-modal';
 

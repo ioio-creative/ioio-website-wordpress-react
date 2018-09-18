@@ -148,8 +148,6 @@ class ProjectDetailPage extends Component {
     const projectIdStr = await getProjectIdBySlugAsync(projectSlugFromQuery);
     const projectIdNum = parseInt(projectIdStr, 10);
 
-    console.log(this.props.language);
-
     // if no corresponding project id entry for the slug got from query
     if (isNaN(projectIdNum)) {
       this.setState({isReturnNotFound: true});
@@ -168,7 +166,6 @@ class ProjectDetailPage extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-
   }
 
   render() {
@@ -202,7 +199,7 @@ class ProjectDetailPage extends Component {
     const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
       const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
       return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
-    });
+    });    
 
     return (
       <div className="wow fadeIn">
