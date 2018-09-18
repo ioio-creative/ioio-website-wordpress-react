@@ -345,9 +345,16 @@
     /* display: none; */
     padding: 0;
   }
-
+  #root.canvas_activated .iframe-p5-div {
+    background-color: #FFF;
+  }
+  #root.canvas_activated .homepage-top-logo-div,
+  #root.canvas_activated .work-to-lab-switch,
+  #root.canvas_activated .homepage-showreel-text {
+    color: #000;
+  }
   #homepage-top-logo {
-opacity: 0;
+    opacity: 0;
   }
   .homepage-top-logo-div {
     top: 0px;

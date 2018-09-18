@@ -298,8 +298,8 @@ function onWindowResize() {
   group.scale.z = 1 * renderScale;
   camera.updateProjectionMatrix();
 
-  renderer.setSize(width, height);
-  composer.setSize(width, height);
+  renderer.g(width, height);
+  composer.g(width, height);
 
 }
 /*
@@ -363,14 +363,14 @@ function onDocumentTouchStart(event) {
   pressState = true;
 
   if (event.touches.length == 1) {
-    event.preventDefault();
+    // event.preventDefault();
     mouseXOnMouseDown = event.touches[0].pageX - windowHalfX;
     targetRotationOnMouseDown = targetRotation;
   }
   sendToParent('canvas_activated');
 }
 function onDocumentTouchEnd(event) {
-  event.preventDefault();
+  // event.preventDefault();
   pressState = false;
 
   timeToGoBack = true;
@@ -378,7 +378,7 @@ function onDocumentTouchEnd(event) {
 }
 function onDocumentTouchMove(event) {
   if (event.touches.length == 1) {
-    event.preventDefault();
+    // event.preventDefault();
     mouseX = event.touches[0].pageX - windowHalfX;
     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
   }
@@ -517,7 +517,7 @@ function render() {
     bloomPass.enabled = false;
   }
   composer.render(scene, camera);
-  console.log(lightColor)
+  // console.log(lightColor)
   //Shader
 
   var shaderOffsetY2 = convertRange(smoothedY, [
@@ -562,10 +562,15 @@ function render() {
   pCursorX = cursorX;
   pCursorY = cursorY;
 
+  // try read the color in canvas to set the background color
+  // but the effect not good
+  // let gl = renderer.domElement.getContext('webgl');
+  // let color = new Uint8Array(4);
+  // gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,color);
+  // console.log(csize);
+  // console.log(color);
   // sendToParent({
-  // // 'renderScale': renderScale,
-  //   'width': window.innerWidth,
-  //   'height': window.innerHeight,
+  //   'backgroundColor': color
   // })
 }
 //Other Functions

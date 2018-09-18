@@ -366,18 +366,21 @@
     display: none;
   }
   #sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
-    left: 92%;
+    left: auto;
+    right: 28px;
     width: 2px;
     height: 22px;
     top: 17px;
   }
   #sidebar .close-symbol:before {
-    left: 92%;
+    left: auto;
+    right: 28px;
     height: 22px;
     top: 12px;
   }
   #sidebar .close-symbol:after {
-    left: 92%;
+    left: auto;
+    right: 28px;
     height: 22px;
     top: 20px;
   }
