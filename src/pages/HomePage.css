@@ -353,6 +353,12 @@
   #root.canvas_activated .homepage-showreel-text {
     color: #000;
   }
+  #root.canvas_activated .homepage-showreel-img circle {
+    stroke: #000;
+  }
+  #root.canvas_activated .homepage-showreel-img polygon {
+    fill: #000;
+  }
   #homepage-top-logo {
     opacity: 0;
   }
