@@ -158,6 +158,22 @@ class HomePage extends Component {
     */
 
     window.addEventListener('load', this.handleLoad);
+    // $('iframe.iframe-p5').contents()
+    //   .find('canvas').on('click',function(){
+    //     console.log('click');
+    // })
+    window.addEventListener('message',function(e){
+      switch (e.data) {
+        case 'canvas_activated':
+          $('#root').addClass('canvas_activated');
+          break;
+        case 'canvas_deactivated':
+          $('#root').removeClass('canvas_activated');
+          break;
+        default:
+          // unknown msg, do nth
+      }
+    })
   }
 
   handleLoad() {
@@ -191,7 +207,8 @@ class HomePage extends Component {
     }
 
     const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/1/index.html');
-    const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
+    // use inline svg instead of img
+    // const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
 
     const customStyles = {
       content : {
@@ -218,22 +235,23 @@ class HomePage extends Component {
         </div>
         <div className="container-fluid iframe-p5-div">
           <div className="row">
-            <div className="col-md-1"></div>
-            <div className="col-md-10">
+            <div className="col-md-10 offset-md-1">
               <div className="iframe-p5-inside-div container-fluid">
-                <iframe className="iframe-p5" frameBorder={0} src={canvasURL}/>
+                <iframe className="iframe-p5" frameBorder={0} scrolling="no" src={canvasURL}/>
               </div>
               <Link to="#" onClick={this.openModal} id="pop-up-vid" >
                 <div className="homepage-showreel">
-                <h4 className="homepage-showreel-text">{home.page_title}
-                </h4>
-                <img className="homepage-showreel-img" src={svgURL} alt="showreel"/>
+                  <h4 className="homepage-showreel-text">{home.page_title}
+                  </h4>
+                  <svg className="homepage-showreel-img" viewBox="0 0 30 30">
+                    <polygon points="17.8,15 13.1,12.3 13.1,17.7"/>
+                    <circle cx="15" cy="15" r="10"/>
+                  </svg>
                   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </div>
               </Link>
             </div>
-            <div className="col-md-1"></div>
-
+            <div className="clearfix"></div>
           </div>
         </div>
       </section>

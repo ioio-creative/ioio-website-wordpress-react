@@ -84,9 +84,10 @@ function init() {
       0, 1000
     ], [0.2, 1])
     //renderScale = 0.1;
-    console.log("renderScale" + renderScale)
+    // console.log("renderScale" + renderScale)
   }
   container = document.createElement('div');
+  container.setAttribute('id', 'canvasWrapper');
   document.body.appendChild(container);
 
   // CAMERA
@@ -188,7 +189,7 @@ function init() {
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     //  console.log(geometry.children[0].geometry)
-    console.log(materialBlack)
+    // console.log(materialBlack)
 
     materialBlack.reflectivity = 1;
     materialNormal.wireframe = true;
@@ -278,11 +279,28 @@ function onWindowResize() {
   var height = window.innerHeight;
   windowHalfX = width / 2;
   windowHalfY = height / 2;
-  camera.aspect = width / height;
+  // camera.aspect = width / height;
+  // OrthographicCamera need to define left right top bottom
+  camera.left = -windowHalfX;
+  camera.right = windowHalfX;
+  camera.top = windowHalfY;
+  camera.bottom = -windowHalfY;
+  // resize the IOIO renderScale on resize
+  if (window.innerWidth < 800) {
+    renderScale = convertRange(window.innerWidth, [
+      0, 1000
+    ], [0.2, 1]);
+  } else {
+    renderScale = 1;
+  }
+  group.scale.x = 1 * renderScale;
+  group.scale.y = 1 * renderScale;
+  group.scale.z = 1 * renderScale;
   camera.updateProjectionMatrix();
 
   renderer.setSize(width, height);
   composer.setSize(width, height);
+
 }
 /*
 function onDocumentKeyDown(event) {
@@ -318,6 +336,7 @@ function onDocumentMouseDown(event) {
   document.addEventListener('mouseout', onDocumentMouseOut, false);
   mouseXOnMouseDown = event.clientX - windowHalfX;
   targetRotationOnMouseDown = targetRotation;
+  sendToParent('canvas_activated');
 }
 function onDocumentMouseMove(event) {
   mouseX = event.clientX - windowHalfX;
@@ -332,7 +351,7 @@ function onDocumentMouseUp(event) {
   document.removeEventListener('mousemove', onDocumentMouseMove, false);
   document.removeEventListener('mouseup', onDocumentMouseUp, false);
   document.removeEventListener('mouseout', onDocumentMouseOut, false);
-
+  sendToParent('canvas_deactivated');
 }
 function onDocumentMouseOut(event) {
 
@@ -348,13 +367,14 @@ function onDocumentTouchStart(event) {
     mouseXOnMouseDown = event.touches[0].pageX - windowHalfX;
     targetRotationOnMouseDown = targetRotation;
   }
+  sendToParent('canvas_activated');
 }
 function onDocumentTouchEnd(event) {
   event.preventDefault();
   pressState = false;
 
   timeToGoBack = true;
-
+  sendToParent('canvas_deactivated');
 }
 function onDocumentTouchMove(event) {
   if (event.touches.length == 1) {
@@ -542,9 +562,21 @@ function render() {
   pCursorX = cursorX;
   pCursorY = cursorY;
 
+  // sendToParent({
+  // // 'renderScale': renderScale,
+  //   'width': window.innerWidth,
+  //   'height': window.innerHeight,
+  // })
 }
 //Other Functions
 
 function convertRange(value, r1, r2) {
   return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+}
+
+function sendToParent(msg) {
+  let parent = window.parent;
+  if (parent) {
+    parent.postMessage( msg , '*');
+  }
 }
