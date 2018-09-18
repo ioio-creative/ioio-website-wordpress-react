@@ -50,16 +50,16 @@ class Main extends Component {
               */}
               <Switch>
                 <Route exact path={routes.home} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncHomePage)} />
-                <Route path={routes.about} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutPage)} />
-                <Route path={routes.labAbout} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutLabPage)} />
-                <Route path={routes.labContacts} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsLabPage)} />
-                <Route exact path={routes.projectBySlug} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectDetailPage)} />
-                <Route path={routes.projects} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectListPage)} />
-                <Route exact path={routes.labBySlug} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabDetailPage)} />
-                <Route path={routes.lab} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabListPage)} />
-                <Route path={routes.contacts} component={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsPage)} />
-                <Route path='/trial' component={P5SketchTrialPage} />
-                <Route component={AsyncNotFoundPage} />
+                <Route path={routes.about} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutPage)} />
+                <Route path={routes.labAbout} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncAboutLabPage)} />
+                <Route path={routes.labContacts} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsLabPage)} />
+                <Route exact path={routes.projectBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectDetailPage)} />
+                <Route path={routes.projects} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncProjectListPage)} />
+                <Route exact path={routes.labBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabDetailPage)} />
+                <Route path={routes.lab} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncLabListPage)} />
+                <Route path={routes.contacts} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncContactsPage)} />
+                <Route path='/trial' render={P5SketchTrialPage} />
+                <Route render={AsyncNotFoundPage} />
               </Switch>
             </main>
           </div>

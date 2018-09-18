@@ -33,7 +33,7 @@ const activeEntities = {
 
 function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
   const customQuery = (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery) +
-    "&lang=" + globalLanguage;
+    ((!globalLanguage) ? "&lang=" + globalLanguage : "");
   return baseUrl
     + entityToFetch
     + (optionalEntityId ? "/" + optionalEntityId : "")

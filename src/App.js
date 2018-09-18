@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 //import logo from '../images/logo.svg';
 import './App.css';
 
-import {BrowserRouter} from 'react-router-dom';
 import {IntlProvider} from "react-intl";
 import {LanguageContextProvider, globalLanguage} from 'globals/contexts/languageContext';
 
@@ -73,18 +72,15 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <IntlProvider locale={globalLanguage} messages={messages}>
-        <BrowserRouter>
-          {/*console.log(this.props.location.pathname)*/}
-          <LanguageContextProvider>        
-            <Sidebar />
-            <Header />
-            <Main />
-            <TestLanguageSelector />
-          </LanguageContextProvider>
-        </BrowserRouter>
-      </IntlProvider>
+// <IntlProvider locale={globalLanguage} messages={messages}>
+
+    return (                
+        <LanguageContextProvider>        
+          <Sidebar />
+          <Header />
+          <Main />
+          <TestLanguageSelector />
+        </LanguageContextProvider>      
     );
   }
 }
