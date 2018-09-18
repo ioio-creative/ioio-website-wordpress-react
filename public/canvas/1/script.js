@@ -298,8 +298,8 @@ function onWindowResize() {
   group.scale.z = 1 * renderScale;
   camera.updateProjectionMatrix();
 
-  renderer.g(width, height);
-  composer.g(width, height);
+  renderer.setSize(width, height);
+  composer.setSize(width, height);
 
 }
 /*
