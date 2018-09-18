@@ -50,10 +50,10 @@ var prevTime,
 var bloomPass;
 
 var paramsPressed = {
-  exposure: 0.7,
-  bloomStrength: 0.8,
+  exposure: 1.0,
+  bloomStrength: 1.0,
   bloomThreshold: 0,
-  bloomRadius: 0
+  bloomRadius: 0.8
 };
 
 var paramsReleased = {
@@ -69,7 +69,10 @@ var timeToGoBack = false;
 
 var renderScale = 1.0;
 
-var effectFXAA, copyPass;
+var effectFXAA,
+  copyPass;
+
+var lightColor = 0;
 //RUN
 init();
 animate();
@@ -239,7 +242,6 @@ loader.load( 'models/animated/flamingo.js', function( geometry ) {
   bloomPass.strength = paramsPressed.bloomStrength;
   bloomPass.radius = paramsPressed.bloomRadius;
 
-
   effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
   effectFXAA.renderToScreen = false;
   var width = window.innerWidth || 2;
@@ -252,7 +254,7 @@ loader.load( 'models/animated/flamingo.js', function( geometry ) {
   composer.addPass(effectFXAA);
   composer.addPass(bloomPass);
   composer.addPass(copyPass);
-    console.log(composer);
+  //console.log(composer);
   // STATS
   stats = new Stats();
   //container.appendChild( stats.dom );
@@ -360,11 +362,8 @@ function onDocumentTouchMove(event) {
     mouseX = event.touches[0].pageX - windowHalfX;
     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
   }
-
-
-    cursorX = event.touches[0].pageX;
-    cursorY = event.touches[0].pageY;
-
+  cursorX = event.touches[0].pageX;
+  cursorY = event.touches[0].pageY;
 }
 //
 function animate() {
@@ -396,10 +395,12 @@ function render() {
 
   smoothedX += distX * 0.1;
   smoothedY += distY * 0.1;
-
+  /*//for casting shadow
   var dirLigtPosX = convertRange(smoothedX, [
     0, window.innerWidth
   ], [-250, 250])
+*/
+  var dirLigtPosX = 1;
   var dirLigtIntensity = 0.8;
 
   if (!isCursorEntered) {
@@ -450,7 +451,16 @@ function render() {
       bloomPass.radius = paramsPressed.bloomRadius;
 
       mesh.material = materialNormal;
-      dirLight.color.setRGB(0, 0, 0);
+      /*
+      if(lightColor >0){
+        lightColor -= 0.05
+      }else{
+
+      }
+      */
+      lightColor = 0;
+
+      dirLight.color.setRGB(lightColor, lightColor, lightColor);
 
       effectFXAA.enabled = false;
       copyPass.enabled = false;
@@ -464,7 +474,12 @@ function render() {
       bloomPass.radius = paramsReleased.bloomRadius;
       //renderer.render(scene, camera);
       mesh.material = materialBlack;
-      dirLight.color.setRGB(1, 1, 1);
+      if (lightColor < 1) {
+        lightColor += 0.05
+      } else {
+        lightColor = 1
+      }
+      dirLight.color.setRGB(lightColor, lightColor, lightColor);
 
       effectFXAA.enabled = true;
       copyPass.enabled = true;
@@ -482,7 +497,7 @@ function render() {
     bloomPass.enabled = false;
   }
   composer.render(scene, camera);
-
+  console.log(lightColor)
   //Shader
 
   var shaderOffsetY2 = convertRange(smoothedY, [
