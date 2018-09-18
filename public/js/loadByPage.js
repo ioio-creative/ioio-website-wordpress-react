@@ -24,7 +24,14 @@ function reloadJS() {
   WOW.prototype.addBox = function(element) {
     this.boxes.push(element);
   };
-
+  // added .wow {opacity: 0;} in index.css, make it visible again after wow loaded
+  function afterReveal( el ) {
+    el.addEventListener('animationend', function( event ) {
+      $('.wow').each(function(){
+        $(this).css('opacity',1);
+      });
+    });
+  }
   // Init WOW.js and get instance
   //var wow = new WOW();
   var wow = new WOW({
@@ -32,7 +39,8 @@ function reloadJS() {
     animateClass: 'animated', // default
     offset: 0, // default
     mobile: true, // default
-    live: true // default
+    live: true, // default
+    callback: afterReveal // fix page flashing on load
   })
 
   wow.init();

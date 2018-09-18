@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import './DarkFooter.css'
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import Modal from 'react-modal';
 import $ from 'jquery'
@@ -65,7 +66,8 @@ class DarkFooter extends Component {
   render() {
     const footerInfo = this.state.footer;
     if (footerInfo === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     const customStyles = {

@@ -7,6 +7,8 @@ import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds
 import {Redirect} from 'react-router-dom'
 import routes from 'globals/routes';
 
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
 //import {Player} from 'video-react'; todo Remove video-react
 import "./video-react.css"; // import css
 
@@ -161,7 +163,8 @@ class LabDetailPage extends Component {
     }
 
     if (lab === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     // const customStyles = {

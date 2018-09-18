@@ -4,6 +4,7 @@ import $ from 'jquery';
 
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
@@ -74,12 +75,14 @@ class DarkSidebar extends Component {
   render() {
     const sidebar = this.state.sidebar;
     if (sidebar === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     const about = this.state.about;
     if (about === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     return (<nav id="dark-sidebar" className="menu-transition" role="navigation">

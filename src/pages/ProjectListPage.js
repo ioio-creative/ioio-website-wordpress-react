@@ -65,7 +65,7 @@ class ProjectCategoriesAndItemsWithShuffle extends Component {
 // https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
 const ProjectCategoriesAndItemsWithShuffleAdded = withShuffle(ProjectCategoriesAndItemsWithShuffle);
 
-const loadingElement = (<MyFirstLoadingComponent />);
+const loadingElement = (<MyFirstLoadingComponent isLoading={true} />);
 
 
 // filter implementation reference

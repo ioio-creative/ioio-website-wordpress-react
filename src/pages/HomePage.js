@@ -7,6 +7,8 @@ import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectList/ProjectCategories';
 
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
 import $ from 'jquery';
 
 //import P5Wrapper from 'react-p5-wrapper';
@@ -195,15 +197,18 @@ class HomePage extends Component {
     const allProjects = this.state.allProjects;
 
     if (allProjects.length === 0) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     if (pC.length === 0) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     if (home === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/1/index.html');
