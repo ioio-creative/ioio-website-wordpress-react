@@ -33,14 +33,13 @@ const activeEntities = {
 
 
 function constructDataUrl(entityToFetch, optionalEntityId, optionalQuery) {
-  console.log(globalLanguage);
   /*
     Somehow, CMS server may redirect when there is query string "lang=en" in the API request,
     causing CORS error. So I ignore the language query string 
-    when (globalLanguage[1] === languages.english[1])
+    when (globalLanguage.code === languages.english.code)
   */
   const customQuery = (optionalQuery ? defaultQuery + "&" + optionalQuery : defaultQuery) +
-    ((globalLanguage[1] === languages.english[1]) ? "" : "&lang=" + globalLanguage[1]);
+    ((globalLanguage.code === languages.english.code) ? "" : "&lang=" + globalLanguage.code);
   return baseUrl
     + entityToFetch
     + (optionalEntityId ? "/" + optionalEntityId : "")

@@ -13,9 +13,10 @@ class TestLanguageSelector extends Component {
     this.handleLanguageButtonClick.bind(this);
   }
 
-  handleLanguageButtonClick(language, changeGlobalLocaleAndLanguageFunc) {
-    nav(window.location.pathname + '?lang=' + language[1]);
-    changeGlobalLocaleAndLanguageFunc(language);
+  handleLanguageButtonClick(language, changeLanguageContextFunc) {
+    nav(window.location.pathname + '?lang=' + language.code);    
+    this.props.changeGlobalLocaleAndLanguageFunc(language);
+    changeLanguageContextFunc(language.code);
   }
 
   render() {
@@ -23,9 +24,9 @@ class TestLanguageSelector extends Component {
       <LanguageContext.Consumer>
         {value => (
           <div style={{position: 'fixed', top: 0, left: 50, zIndex: 2}}>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeGlobalLocaleAndLanguageFunc);}}>EN</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeGlobalLocaleAndLanguageFunc);}}>SC</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeGlobalLocaleAndLanguageFunc);}}>TC</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeLanguageContextFunc);}}>EN</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeLanguageContextFunc);}}>SC</button>
+            <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeLanguageContextFunc);}}>TC</button>
             {/* <Link to={window.location.pathname + '?lang=en'}>EN</Link>
             <Link to={window.location.pathname + '?lang=sc'}>SC</Link>
             <Link to={window.location.pathname + '?lang=tc'}>TC</Link> */}

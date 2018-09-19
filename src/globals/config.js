@@ -1,13 +1,13 @@
 // have to map language names to the [react-intl locale, api query param options] pairs
 const languages = {
-  english: ['en', 'en'],
-  simpliedChinese: ['zh', 'zh'],
-  traditionalChinese: ['zh-Hant', 'tc']
+  english: { code: 'en', locale: 'en'},
+  simpliedChinese: {code: 'zh', locale: 'zh'},
+  traditionalChinese: {code: 'tc', locale: 'zh-Hant'}
 };
 
 const languageCodeToLanguageMap = {};
-Object.keys(languages).forEach((key, idx) => {
-  languageCodeToLanguageMap[languages[key][1]] = languages[key];
+Object.keys(languages).forEach((key) => {
+  languageCodeToLanguageMap[languages[key].code] = languages[key];
 });
 
 function getLanguageFromLanguageCode(languageCode) {

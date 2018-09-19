@@ -86,7 +86,7 @@ class App extends Component {
     super(props);
     this.state = {
       language: globalLanguage,
-      messages: localeData[globalLanguage[0]]
+      messages: localeData[globalLanguage.local]
     }
     this.changeGlobalLocaleAndLanguage = this.changeGlobalLocaleAndLanguage.bind(this);
     initializeReactGa();
@@ -101,14 +101,14 @@ class App extends Component {
       globalLanguage = newLanguage;
       this.setState({
         language: globalLanguage,
-        messages: localeData[globalLanguage[0]]
+        messages: localeData[globalLanguage.locale]
       });      
     }
   }
 
   render() {
     const state = this.state;
-    console.log(state.messages);    
+    console.log(state.messages);
 
     /*
       Note: 
@@ -116,17 +116,16 @@ class App extends Component {
       It does not work when IntlProvider is inside BrowserRouter.
     */
     return (
-      <IntlProvider locale={state.language[0]} messages={state.messages}>  
+      <IntlProvider locale={state.language.locale} messages={state.messages}>  
         <BrowserRouter>
           {/*console.log(this.props.location.pathname)*/}                 
           <LanguageContextProvider 
-            languageCode={state.language[1]}
-            changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}
+            languageCode={state.language.code}
           >
-            <Sidebar />
-            <Header />
-            <Main />
-            <TestLanguageSelector />
+            <Sidebar languageCode={state.language.code} />
+            <Header languageCode={state.language.code} />
+            <Main languageCode={state.language.code} />
+            <TestLanguageSelector changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage} />
           </LanguageContextProvider>
         </BrowserRouter>
       </IntlProvider>

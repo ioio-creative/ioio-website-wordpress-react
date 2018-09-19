@@ -31,39 +31,41 @@ class Main extends Component {
   render() {
     return (
       <LanguageContext.Consumer>
-        {value => (
-          <div id="scroller">
-          <main id="main">
-              {/*
-                  Switch component behaves similarly to the "switch" construct
-                  in programming. Once a Route is matched, subsequent Routes
-                  will be ignored. So we should use "exact" keyword on more
-                  generic paths, like "/", or put more generic paths as the
-                  later Routes in the Route list.
+        {value => {
+          console.log(value);
+          return (
+            <div id="scroller">
+            <main id="main">
+                {/*
+                    Switch component behaves similarly to the "switch" construct
+                    in programming. Once a Route is matched, subsequent Routes
+                    will be ignored. So we should use "exact" keyword on more
+                    generic paths, like "/", or put more generic paths as the
+                    later Routes in the Route list.
 
-                  Pass props to a component rendered by React Router
-                  https://tylermcginnis.com/react-router-pass-props-to-components/
+                    Pass props to a component rendered by React Router
+                    https://tylermcginnis.com/react-router-pass-props-to-components/
 
-                  Using context to pass language as props to the element in each 
-                  Route is necessary to trigger re-render of the elements when 
-                  language changes
-              */}
-              <Switch>
-                <Route exact path={routes.home} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncHomePage)} />
-                <Route path={routes.about} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncAboutPage)} />
-                <Route path={routes.labAbout} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncAboutLabPage)} />
-                <Route path={routes.labContacts} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncContactsLabPage)} />
-                <Route exact path={routes.projectBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncProjectDetailPage)} />
-                <Route path={routes.projects} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncProjectListPage)} />
-                <Route exact path={routes.labBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncLabDetailPage)} />
-                <Route path={routes.lab} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncLabListPage)} />
-                <Route path={routes.contacts} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncContactsPage)} />
-                <Route path='/trial' component={P5SketchTrialPage} />
-                <Route component={AsyncNotFoundPage} />
-              </Switch>
-            </main>
-          </div>
-        )}
+                    Using context to pass language as props to the element in each 
+                    Route is necessary to trigger re-render of the elements when 
+                    language changes
+                */}
+                <Switch>
+                  <Route exact path={routes.home} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncHomePage)} />
+                  <Route path={routes.about} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncAboutPage)} />
+                  <Route path={routes.labAbout} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncAboutLabPage)} />
+                  <Route path={routes.labContacts} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncContactsLabPage)} />
+                  <Route exact path={routes.projectBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncProjectDetailPage)} />
+                  <Route path={routes.projects} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncProjectListPage)} />
+                  <Route exact path={routes.labBySlug} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncLabDetailPage)} />
+                  <Route path={routes.lab} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncLabListPage)} />
+                  <Route path={routes.contacts} render={passLanguageToAsyncLoadingComponentFunc(value.languageCode, AsyncContactsPage)} />
+                  <Route path='/trial' component={P5SketchTrialPage} />
+                  <Route component={AsyncNotFoundPage} />
+                </Switch>
+              </main>
+            </div>
+        );}}
       </LanguageContext.Consumer>
     );
   }
