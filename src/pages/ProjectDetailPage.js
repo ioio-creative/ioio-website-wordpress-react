@@ -201,7 +201,6 @@ class ProjectDetailPage extends Component {
       return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
     });    
 
-    console.log(this.props.languageCode);
     return (
       <div className="wow fadeIn">
         <VideoLanding project={project} modalClick={this.openModal}/>

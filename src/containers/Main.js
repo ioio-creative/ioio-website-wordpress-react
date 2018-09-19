@@ -32,7 +32,6 @@ class Main extends Component {
     return (
       <LanguageContext.Consumer>
         {value => {
-          console.log(value);
           return (
             <div id="scroller">
             <main id="main">
