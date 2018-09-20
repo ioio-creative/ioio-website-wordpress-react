@@ -23,7 +23,7 @@ class TestLanguageSelector extends Component {
     return (
       <LanguageContext.Consumer>
         {value => (
-          <div style={{position: 'fixed', top: 0, left: 50, zIndex: 2}}>
+          <div style={{position: 'fixed', top: 0, left: 50, zIndex: 10}}>
             <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeLanguageContextFunc);}}>EN</button>
             <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeLanguageContextFunc);}}>SC</button>
             <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeLanguageContextFunc);}}>TC</button>

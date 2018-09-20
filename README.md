@@ -79,6 +79,27 @@ Using pm2
 
 """
 
+Internationalisation strategies:
+Internationalisation is done in two folds - the WordPress CMS & API level and the React front end level.
+
+Firstly, at WordPress, we use the qTranslate X plugin to help us provide CMS UI for multilingual input. To expose the content of a particular language, an API that supports query strings like '?lang=en' is specified at the CMS server. In the front end, different language query strings would be appended to the endpoint URL for CMS API requests, according to the globalLanguage variable in App.js. Other js programs that have functions to support this are config.js, languageContext.js, websiteApi.js
+
+References:
+Internationalisation using React Context API
+https://codeburst.io/what-can-react-context-api-do-for-you-multi-language-text-modals-and-theme-switchers-9cfbc8e5ee5e
+https://blog.alexdevero.com/react-context-multilingual-website-pt1/
+https://medium.com/@ally_20818/multi-language-text-with-react-native-react-context-b76d5677346d
+https://itnext.io/using-reacts-context-api-to-provide-a-localization-toolbox-for-your-components-48915f04bb54
+https://leefreeman.xyz/2018/04/13/react-context-demo/
+
+Secondly, at React, we use the react-intl library to help translating "hard-coded" texts in our html. Files in the locales, messages and scripts directories help facilitate this.
+
+References:
+How to set up Internationalization in React from start to finish (using react-intl)
+https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725
+https://github.com/austintackaberry/i18n-example
+https://medium.freecodecamp.org/internationalization-in-react-7264738274a0
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
