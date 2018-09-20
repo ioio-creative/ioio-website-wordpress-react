@@ -269,6 +269,9 @@ loader.load( 'models/animated/flamingo.js', function( geometry ) {
   //  document.addEventListener('keydown', onDocumentKeyDown, false);
 
   window.addEventListener('resize', onWindowResize, false);
+  document.body.style.cssText = "cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;";
+  
+
 }
 function onDocumentMouseOver(e) {
   isCursorEntered = true;
@@ -336,12 +339,12 @@ function onDocumentMouseDown(event) {
   document.addEventListener('mouseout', onDocumentMouseOut, false);
   mouseXOnMouseDown = event.clientX - windowHalfX;
   targetRotationOnMouseDown = targetRotation;
+  document.body.style.cssText = "cursor:move; cursor:-webkit-grabbing; cursor:-moz-grabbing; cursor:grabbing;";
   sendToParent('canvas_activated');
 }
 function onDocumentMouseMove(event) {
   mouseX = event.clientX - windowHalfX;
   targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.005;
-
 }
 function onDocumentMouseUp(event) {
   pressState = false;
@@ -351,6 +354,7 @@ function onDocumentMouseUp(event) {
   document.removeEventListener('mousemove', onDocumentMouseMove, false);
   document.removeEventListener('mouseup', onDocumentMouseUp, false);
   document.removeEventListener('mouseout', onDocumentMouseOut, false);
+  document.body.style.cssText = "cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;";
   sendToParent('canvas_deactivated');
 }
 function onDocumentMouseOut(event) {
