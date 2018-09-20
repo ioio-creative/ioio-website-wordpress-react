@@ -1,7 +1,13 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-
+/* lang switch */
+#lang-switch {
+  position: fixed;
+  top: 0;
+  left: 50px;
+  z-index: 10;
+}
 #loading-screen {
   position: fixed;
   left: 50%;
@@ -192,6 +198,13 @@ section {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  /* lang switch */
+  #lang-switch {
+    position: fixed;
+    top: 55px;
+    left: 0px;
+    z-index: 10;
+  }
   #main {
     margin: 0 0 0 0;
     /*hack: //TODO adjust after sidebar, check this*/
