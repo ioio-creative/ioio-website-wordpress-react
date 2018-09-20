@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 
 import {languages} from 'globals/config';
 
@@ -23,7 +23,7 @@ class TestLanguageSelector extends Component {
     return (
       <LanguageContext.Consumer>
         {value => (
-          <div style={{position: 'fixed', top: 0, left: 50, zIndex: 10}}>
+          <div id="lang-switch">
             <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeLanguageContextFunc);}}>EN</button>
             <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeLanguageContextFunc);}}>SC</button>
             <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeLanguageContextFunc);}}>TC</button>

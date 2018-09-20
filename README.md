@@ -82,7 +82,7 @@ Using pm2
 Internationalisation strategies:
 Internationalisation is done in two folds - the WordPress CMS & API level and the React front end level.
 
-Firstly, at WordPress, we use the qTranslate X plugin to help us provide CMS UI for multilingual input. To expose the content of a particular language, an API that supports query strings like '?lang=en' is specified at the CMS server. In the front end, different language query strings would be appended to the endpoint URL for CMS API requests, according to the globalLanguage variable in App.js. Other js programs that have functions to support this are config.js, languageContext.js, websiteApi.js
+Firstly, at WordPress, we use the qTranslate X plugin to help us provide CMS UI for multilingual input. To expose the content of a particular language, an API that supports query strings like '?lang=en' is specified at the CMS server. In the front end, different language query strings would be appended to the endpoint URL for CMS API requests, according to the globalLanguage variable in App.js. Other js programs that have functions to support this are config.js, languageContext.js, websiteApi.js, TestLanguageSelector.js
 
 References:
 Internationalisation using React Context API
