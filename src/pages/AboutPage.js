@@ -10,6 +10,8 @@ import About07 from 'containers/about/About07';
 import About08 from 'containers/about/About08';
 import Footer from 'containers/footer/Footer';
 
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
 import './AboutPage.css';
 
 import {fetchActiveAbout} from 'websiteApi';
@@ -31,7 +33,8 @@ class AboutPage extends Component {
   render() {
     const about = this.state.about;
     if (about === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
     
     return (<div>

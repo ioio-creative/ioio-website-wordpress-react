@@ -20,6 +20,8 @@ import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
 import Footer from 'containers/footer/Footer';
 
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
 import './ProjectDetailPage.css';
 
 import $ from 'jquery';
@@ -179,7 +181,8 @@ class ProjectDetailPage extends Component {
     }
 
     if (project === null) {
-      return null;
+      // return <div id="loading-screen"></div>;
+      return <MyFirstLoadingComponent isLoading={true} />;
     }
 
     const customStyles = {

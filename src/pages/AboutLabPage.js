@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Footer from 'containers/footer/Footer';
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import './AboutLabPage.css';
 import './AboutLabPageM.css';
@@ -38,7 +39,8 @@ class AboutLabPage extends Component {
   render() {
     const about = this.state.about;
     if (about === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     return (<div>

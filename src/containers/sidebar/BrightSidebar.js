@@ -4,6 +4,7 @@ import $ from 'jquery';
 
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import routes from 'globals/routes';
 import {fetchActiveBrightSidebar} from 'websiteApi';
@@ -65,7 +66,8 @@ class BrightSidebar extends Component {
 
     const sidebar = this.state.sidebar;
     if (sidebar === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
     return (<nav id="sidebar" className="menu-transition" role="navigation">
 

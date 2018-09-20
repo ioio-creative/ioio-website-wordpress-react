@@ -428,18 +428,21 @@
     display: none;
   }
   #dark-sidebar.active .close-symbol:before, #dark-sidebar.active .close-symbol:after {
-    left: 92%;
+    left: auto;
+    right: 28px;
     width: 2px;
     height: 22px;
     top: 17px;
   }
   #dark-sidebar .close-symbol:before {
-    left: 92%;
+    left: auto;
+    right: 28px;
     height: 22px;
     top: 12px;
   }
   #dark-sidebar .close-symbol:after {
-    left: 92%;
+    left: auto;
+    right: 28px;
     height: 22px;
     top: 20px;
   }

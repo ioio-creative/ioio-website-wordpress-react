@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import './ContactsPage.css';
 import ContactForm from 'containers/ContactForm'
 
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
 import Footer from 'containers/footer/Footer';
 import {fetchActiveContact} from 'websiteApi';
 
@@ -60,7 +62,8 @@ class ContactsPage extends Component {
 
     const contact = this.state.contact;
     if (contact === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
     if (contact.facebook_og_images && contact.facebook_og_images.length) {
       var ogimage = document.querySelectorAll('[property="og:image"]');

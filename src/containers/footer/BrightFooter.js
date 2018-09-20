@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import {FormattedMessage} from 'react-intl';
 
 import './BrightFooter.css'
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import $ from 'jquery'
 
@@ -71,8 +72,10 @@ class BrightFooter extends Component {
 
   render() {
     const footerInfo = this.state.footer;
+    
     if (footerInfo === null) {
-      return null;
+      return <MyFirstLoadingComponent isLoading={true} />;
+      // return null;
     }
 
     const customStyles = {
