@@ -1,14 +1,21 @@
 // have to map language names to the [react-intl locale, api query param options] pairs
 const languages = {
-  english: { code: 'en', locale: 'en'},
-  simpliedChinese: {code: 'zh', locale: 'zh'},
-  traditionalChinese: {code: 'tc', locale: 'zh-Hant'}
+  english: { code: 'en', locale: 'en', isUsed: true}, 
+  traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true},
+  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false}
 };
 
 const languageCodeToLanguageMap = {};
 Object.keys(languages).forEach((key) => {
   languageCodeToLanguageMap[languages[key].code] = languages[key];
 });
+
+const usedLanguagesArray = [];
+for (let language in languages) {
+  if (languages[language].isUsed) {
+    usedLanguagesArray.push(languages[language]);
+  }
+}
 
 function getLanguageFromLanguageCode(languageCode) {
   return languageCodeToLanguageMap[languageCode];
@@ -29,10 +36,10 @@ const browserLangIdCodeToMyLangCodeMapper = {
   'en-us': languages.english,
   'en-zw': languages.english,
 
-  'zh': languages.simplifiedChinese,
+  'zh': languages.traditionalChinese,
   'zh-hk': languages.traditionalChinese,
-  'zh-cn': languages.simplifiedChinese,
-  'zh-sg': languages.simplifiedChinese,
+  'zh-cn': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese.isUsed : languages.traditionalChinese,
+  'zh-sg': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese.isUsed : languages.traditionalChinese,
   'zh-tw': languages.traditionalChinese, 
 };
 
@@ -55,6 +62,7 @@ const config = {
 export {
   config,
   languages,
+  usedLanguagesArray,
   getLanguageFromBrowserLangIdCode,
   getLanguageFromLanguageCode
 };

@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 //import {Link} from 'react-router-dom';
 
-import {languages} from 'globals/config';
+import {usedLanguagesArray} from 'globals/config';
 
 import {LanguageContext} from 'globals/contexts/languageContext';
 
 import nav from 'utils/history/nav';
+import insertParamToQueryInCurrentUrl from 'utils/queryString/insertParamToQueryInCurrentUrl';
+
+function TestLanguageButton(props) {
+  const language = props.language;
+  // const newUrl = insertParamToQueryInCurrentUrl('lang', language.code);
+  // <Link to={newUrl}>props.language.code</Link>
+  return !language.isUsed ? null : (
+    <button onClick={props.handleLanguageButtonClickFunc}>{language.code}</button>    
+  );
+}
 
 class TestLanguageSelector extends Component {
   constructor(props) {
@@ -14,7 +24,8 @@ class TestLanguageSelector extends Component {
   }
 
   handleLanguageButtonClick(language, changeLanguageContextFunc) {
-    nav(window.location.pathname + '?lang=' + language.code);    
+    const newUrl = insertParamToQueryInCurrentUrl('lang', language.code);
+    nav(newUrl);    
     this.props.changeGlobalLocaleAndLanguageFunc(language);
     changeLanguageContextFunc(language.code);
   }
@@ -24,12 +35,15 @@ class TestLanguageSelector extends Component {
       <LanguageContext.Consumer>
         {value => (
           <div id="lang-switch">
-            <button onClick={() => {this.handleLanguageButtonClick(languages.english, value.changeLanguageContextFunc);}}>EN</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.simpliedChinese, value.changeLanguageContextFunc);}}>SC</button>
-            <button onClick={() => {this.handleLanguageButtonClick(languages.traditionalChinese, value.changeLanguageContextFunc);}}>TC</button>
-            {/* <Link to={window.location.pathname + '?lang=en'}>EN</Link>
-            <Link to={window.location.pathname + '?lang=sc'}>SC</Link>
-            <Link to={window.location.pathname + '?lang=tc'}>TC</Link> */}
+            {
+              usedLanguagesArray.map(lang => (
+                <TestLanguageButton 
+                  key={lang.code}
+                  language={lang}
+                  handleLanguageButtonClickFunc={() => this.handleLanguageButtonClick(lang, value.changeLanguageContextFunc)}
+                />
+              ))
+            }
           </div>
         )}
       </LanguageContext.Consumer>
