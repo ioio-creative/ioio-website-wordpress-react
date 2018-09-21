@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
 import './WorkWorkLabSwitch.css';
@@ -19,7 +20,12 @@ export default function WorkWorkLabSwitch(props) {
       to={routes.lab}
       onClick={onClickFunc}
     >
-      <h4 className="work-to-lab-switch-txt">Lab!</h4>
+      <h4 className="work-to-lab-switch-txt">
+        <FormattedMessage
+          id="WorkWorkLabSwitch.switchDestination"
+          defaultMessage="Lab!"
+        />         
+      </h4>
     </Link>
   );
 }

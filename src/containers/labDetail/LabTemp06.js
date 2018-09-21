@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 
-import {getMultipleTextsFromSingleText} from 'utils/textAreaDelimiter';
-
 function SlideshowLeft(props) {
   const member_items = props.slides.map((slide, id) => {
-
     if (id % 2 == 1)
-
       return (<div className="slideshow-2-col-item" key={id}>
         <img src={slide.guid} className="img-fluid wow fadeInUp" alt=""/>
         <p>{slide.post_excerpt}</p>

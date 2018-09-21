@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+
 import $ from 'jquery';
 
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
@@ -48,28 +50,25 @@ class DarkSidebar extends Component {
 
     let attr = $("#dark-sidebar[class*='active']")
 
-
     $("#dark-sidebar").toggleClass("active");
 
     menuCanvas(true);
-    if(attr.length == 1){
-      console.log("close")
+    if (attr.length === 1){
+      //console.log("close");
       $("#lab-about span").removeClass("active");
-    }else{
-        console.log("open")
-        $("#lab-about span").toggleClass("active");
+    } else {
+      //console.log("open");
+      $("#lab-about span").toggleClass("active");
     }
   }
 
   handleMenuClose(e) {
-
     $("#dark-sidebar").removeClass("active");
 
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-
   }
 
   render() {
@@ -89,14 +88,24 @@ class DarkSidebar extends Component {
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div">
-          <h3>About</h3>
+          <h3>
+            <FormattedMessage
+              id="DarkSidebar.aboutButton"
+              defaultMessage="About"
+            />
+          </h3>
         </div>
         <div className="close-symbol"></div>
       </a>
 
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
-        <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
+        <h4 id="sidebar-top-logo-text">
+          <FormattedMessage
+            id="DarkSidebar.companyName"
+            defaultMessage="IOIO CREATIVE"
+          />
+        </h4>
       </Link>
 
       <section id="lab-about">

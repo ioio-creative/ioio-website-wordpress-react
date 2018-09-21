@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
+
 import $ from 'jquery';
 
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
@@ -80,18 +82,45 @@ class BrightSidebar extends Component {
 
       <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
-        <h4 id="sidebar-top-logo-text">IOIO CREATIVE</h4>
+        <h4 id="sidebar-top-logo-text">
+          <FormattedMessage
+            id="BrightSidebar.companyName"
+            defaultMessage="IOIO CREATIVE"
+          />
+        </h4>
       </Link>
 
-      {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
-        <h4 id="work-lab-switch">Lab!</h4>
-      </Link> */}
+      {
+        /* 
+        <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
+          <h4 id="work-lab-switch">Lab!</h4>
+        </Link>
+        */
+      }
       <WorkWorkLabSwitch onClick={this.handleMenuClose} />
 
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>About</Link><br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Projects</Link><br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>Contact</Link><br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>
+          <FormattedMessage
+            id="BrightSidebar.aboutButton"
+            defaultMessage="About"
+          /> 
+        </Link>
+        <br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>
+          <FormattedMessage
+            id="BrightSidebar.projectsButton"
+            defaultMessage="Project"
+          />
+        </Link>
+        <br/>
+        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>
+          <FormattedMessage
+            id="BrightSidebar.contactButton"
+            defaultMessage="Contact"
+          />          
+        </Link>
+        <br/>
         <a className="menu-item menu-transition menu-language menu-close" href="#">English</a><br/>
         <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>

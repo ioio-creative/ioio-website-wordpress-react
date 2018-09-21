@@ -6,11 +6,11 @@ class About01 extends Component {
     super(props);
     this.state = {
       about: {}
-    }
+    };
   }
 
   render() {
-    var a = this.props.about
+    var a = this.props.about;
 
     const url = "url('" + a.about_top_section_background_image.guid + "')"
 

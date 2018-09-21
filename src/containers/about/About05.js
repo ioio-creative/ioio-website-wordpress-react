@@ -25,7 +25,7 @@ class About05 extends Component {
     super(props);
     this.state = {
       about: {}
-    }
+    };
   }
 
   componentDidMount() {

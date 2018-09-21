@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
@@ -232,11 +233,20 @@ class HomePage extends Component {
 
       <section id="homepage-top" className="section-bg wow fadeIn" data-wow-delay="0.5s">
         <div className="homepage-top-logo-div">
-          <h4 id="homepage-top-logo">IOIO CREATIVE</h4>
-
+          <h4 id="homepage-top-logo">
+            <FormattedMessage
+              id="HomePage.companyName"
+              defaultMessage="IOIO CREATIVE"
+            />            
+          </h4>
         </div>
         <div className="container-fluid iframe-p5-div-mobile">
-          <h1>IOIO</h1>
+          <h1>
+            <FormattedMessage
+              id="HomePage.shortCompanyNameInTopCanvas"
+              defaultMessage="IOIO"
+            />
+          </h1>
         </div>
         <div className="container-fluid iframe-p5-div">
           <div className="row">
@@ -279,12 +289,22 @@ class HomePage extends Component {
         <div className="row container-fluid">
           <div className="col-md-4 text-left">
             <a href="#">
-              <p>Tapping</p>
+              <p>
+                <FormattedMessage
+                  id="HomePage.labItemTitle"
+                  defaultMessage="Tapping"
+                /> 
+              </p>
             </a>
           </div>
           <div className="col-md-8 text-left">
             <a href="#">
-              <p>Bible Consipiracy</p>
+              <p>
+                <FormattedMessage
+                  id="HomePage.sharingItemTitle"
+                  defaultMessage="Bible Consipiracy"
+                /> 
+              </p>
             </a>
           </div>
         </div>

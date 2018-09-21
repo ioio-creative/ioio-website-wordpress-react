@@ -5,11 +5,11 @@ class About08 extends Component {
     super(props);
     this.state = {
       about: {}
-    }
+    };
   }
 
   render() {
-    var a = this.props.about
+    const a = this.props.about;
     return (<section id="about-press" className="about-section-bg">
         <div className="container">
           <header className="section-header">

@@ -201,7 +201,7 @@ class ProjectDetailPage extends Component {
     const projectTemplates = project.project_sections;
     const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
       const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
-      return <TemplateToUse key={idx + '_' + templateData.id} {...templateData}/>
+      return <TemplateToUse key={idx + '_' + templateData.id} {...templateData} />
     });    
 
     return (

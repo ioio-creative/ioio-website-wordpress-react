@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
 
-import Footer from 'containers/footer/Footer';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import './AboutLabPage.css';
 import './AboutLabPageM.css';
 
 import {fetchActiveAboutLab} from 'websiteApi';
-import {withRouter} from 'react-router'
 import $ from 'jquery';
 
-function hello() {
+function hello() { }
 
-
-
-}
 class AboutLabPage extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +24,6 @@ class AboutLabPage extends Component {
     });
     $('body').css("overflow", "hidden");
 
-
   }
 
   componentWillUnmount() {
@@ -40,20 +34,18 @@ class AboutLabPage extends Component {
     const about = this.state.about;
     if (about === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
-      // return null;
     }
 
-    return (<div>
-      <section id="lab-about">
-        <canvas id = 'c'>{hello()}</canvas>
-        <div className="container">
-          <span>{about.page_subtitle}</span>
-        </div>
-      </section>
-
-
-
-    </div>);
+    return (
+      <div>
+        <section id="lab-about">
+          <canvas id = 'c'>{hello()}</canvas>
+          <div className="container">
+            <span>{about.page_subtitle}</span>
+          </div>
+        </section>
+      </div>
+    );
   }
 }
 

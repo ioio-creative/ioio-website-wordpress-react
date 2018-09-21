@@ -50,7 +50,7 @@ export default class LabItems extends Component {
   }
 
   handleMouseOver(e, w, template, title, txt, cat) {
-    let thisTarget = e.target;
+    const thisTarget = e.target;
     $(".lab-item").addClass('fade');
     $('#lab-list').addClass('active');
 

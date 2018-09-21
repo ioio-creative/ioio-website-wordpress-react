@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 import {Player} from 'video-react'; //todo Remove video-react
 import './About02.css'
 
-
-
 class About02 extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +12,7 @@ class About02 extends Component {
   }
 
   render() {
-    var a = this.props.about
+    const a = this.props.about;
 
     const buttonStyle = {
       left: '50%',

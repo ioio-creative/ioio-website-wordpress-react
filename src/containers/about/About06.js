@@ -53,11 +53,11 @@ class About06 extends Component {
     super(props);
     this.state = {
       about: {}
-    }
+    };
   }
 
   render() {
-    var a = this.props.about
+    const a = this.props.about;
 
     return (<section id="services" className="about-section-bg">
       <div className="container-fluid">

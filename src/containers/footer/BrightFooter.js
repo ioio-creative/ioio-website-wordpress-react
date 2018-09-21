@@ -125,7 +125,7 @@ class BrightFooter extends Component {
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-bottom-copyright">
                 <FormattedMessage
-                  id="Footer.copyRightLabel"
+                  id="BrightFooter.copyRightLabel"
                   defaultMessage="&copy;2018 IOIO LIMITED"
                 />
               </div>
@@ -134,13 +134,13 @@ class BrightFooter extends Component {
               <div className="col-md-2 footer-bottom-links">
                 <Link to="#" onClick={this.openModal} id="pop-up-terms">
                   <FormattedMessage
-                    id="Footer.termsAndConditionsLabel"
+                    id="BrightFooter.termsAndConditionsLabel"
                     defaultMessage="TERMS & CONDITIONS"
                   />
                 </Link>
                 <a id="footer-join-us">
                   <FormattedMessage
-                    id="Footer.joinUsLabel"
+                    id="BrightFooter.joinUsLabel"
                     defaultMessage="JOIN US"
                   />
                 </a>

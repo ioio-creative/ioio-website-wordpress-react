@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
+import {FormattedMessage} from 'react-intl';
+
 import './DarkFooter.css'
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
@@ -116,16 +118,28 @@ class DarkFooter extends Component {
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-bottom-copyright">
-                <span>&copy;2018 IOIO LIMITED</span>
-
+                <span>
+                  <FormattedMessage
+                    id="DarkFooter.copyRightLabel"
+                    defaultMessage="&copy;2018 IOIO LIMITED"
+                  />
+                </span>
               </div>
               <div className="col-md-3"></div>
               <div className="col-md-2"></div>
               <div className="col-md-2 footer-bottom-links">
                 <Link to="#" onClick={this.openModal} id="pop-up-terms">
-                  TERMS & CONDITIONS
+                  <FormattedMessage
+                    id="DarkFooter.termsAndConditionsLabel"
+                    defaultMessage="TERMS & CONDITIONS"
+                  />
                 </Link>
-                <a id="footer-join-us">JOIN US</a>
+                <a id="footer-join-us">
+                  <FormattedMessage
+                    id="DarkFooter.joinUsLabel"
+                    defaultMessage="JOIN US"
+                  />
+                </a>
                 <a className="footer-back-to-top" onClick={this.backToTop}>
                   <i className="ion ion-android-arrow-up"></i>
                 </a>
