@@ -38,8 +38,8 @@ const browserLangIdCodeToMyLangCodeMapper = {
 
   'zh': languages.traditionalChinese,
   'zh-hk': languages.traditionalChinese,
-  'zh-cn': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese.isUsed : languages.traditionalChinese,
-  'zh-sg': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese.isUsed : languages.traditionalChinese,
+  'zh-cn': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
+  'zh-sg': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
   'zh-tw': languages.traditionalChinese, 
 };
 
