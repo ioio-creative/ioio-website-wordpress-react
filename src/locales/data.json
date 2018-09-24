@@ -1,10 +1,36 @@
 {
   "en": {
-    "Footer.copyRightLabel": "©2018 IOIO LIMITED",
-    "Footer.termsAndConditionsLabel": "TERMS & CONDITIONS",
-    "Footer.joinUsLabel": "JOIN US"
+    "ContactForm.firstNameLabel": "First Name",
+    "ContactForm.lastNameLabel": "Last Name",
+    "ContactForm.emailLabel": "Email",
+    "ContactForm.phoneLabel": "Phone",
+    "ContactForm.companyNameLabel": "Company Name",
+    "ContactForm.titleOrRoleLabel": "Your title / role",
+    "ContactForm.messageLabel": "Message",
+    "ContactForm.submitButton": "Submit",
+    "ContactForm.messageSendSuccessMessage": "Your message has been sent!",
+    "ContactForm.messageSendErrorMessage": "An error occured while submitting the form.",
+    "BrightFooter.copyRightLabel": "©2018 IOIO LIMITED",
+    "BrightFooter.termsAndConditionsLabel": "TERMS & CONDITIONS",
+    "BrightFooter.joinUsLabel": "JOIN US",
+    "DarkFooter.copyRightLabel": "©2018 IOIO LIMITED",
+    "DarkFooter.termsAndConditionsLabel": "TERMS & CONDITIONS",
+    "DarkFooter.joinUsLabel": "JOIN US",
+    "BrightSidebar.indexButton": "Index",
+    "BrightSidebar.companyName": "IOIO CREATIVE",
+    "BrightSidebar.aboutButton": "About",
+    "BrightSidebar.projectsButton": "Project",
+    "BrightSidebar.contactButton": "Contact",
+    "DarkSidebar.aboutButton": "About",
+    "DarkSidebar.companyName": "IOIO CREATIVE",
+    "LabWorkLabSwitch.switchDestination": "Works",
+    "WorkWorkLabSwitch.switchDestination": "Lab!",
+    "HomePage.companyName": "IOIO CREATIVE",
+    "HomePage.shortCompanyNameInTopCanvas": "IOIO",
+    "HomePage.labItemTitle": "Tapping",
+    "HomePage.sharingItemTitle": "Bible Consipiracy"
   },
-  "zh-Hant": {
+  "tc": {
     "Footer.copyRightLabel": "©2018 十下創作有限公司",
     "Footer.termsAndConditionsLabel": "條款和條件",
     "Footer.joinUsLabel": "加入我們"

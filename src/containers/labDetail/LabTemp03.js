@@ -22,7 +22,7 @@ function Slideshow(props) {
 class LabTemp03 extends Component {
   constructor(props) {
     super(props);
-  }Y
+  }
 
   render() {
     const props = this.props;

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "BrightSidebar.indexButton",
+    "defaultMessage": "Index"
+  },
+  {
+    "id": "BrightSidebar.companyName",
+    "defaultMessage": "IOIO CREATIVE"
+  },
+  {
+    "id": "BrightSidebar.aboutButton",
+    "defaultMessage": "About"
+  },
+  {
+    "id": "BrightSidebar.projectsButton",
+    "defaultMessage": "Project"
+  },
+  {
+    "id": "BrightSidebar.contactButton",
+    "defaultMessage": "Contact"
+  }
+]

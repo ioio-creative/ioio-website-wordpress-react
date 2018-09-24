@@ -13,12 +13,12 @@ export default function ProjectItems(props) {
   const project_items = props.items.map((project) => {
     let projItemClassName = 'col-lg-6 col-md-6 ' + props.shuffleSelectorClass + ' ';
 
-    const categoriesCorrespondingToProj = project.project_categories.map((categoryId, index) => {
+    const categoriesCorrespondingToProj = project.project_categories.map((categoryId, idx) => {
       let categoryName = projectCategoryIdNamePairs[categoryId];
-      if (index >= 1) {
+      if (idx >= 1) {
         categoryName = ' / ' + categoryName;
       }
-      return (<span key={index}>
+      return (<span key={categoryId}>
         {categoryName}
       </span>);
     });
@@ -31,7 +31,7 @@ export default function ProjectItems(props) {
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
             <div className="img-container">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt"/>
+              <img src={project.thumbnail.guid} className="img-fluid" alt="alt" />
             </div>
             <div className="portfolio-info">
               <h4>

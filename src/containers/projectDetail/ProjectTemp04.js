@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ProjectTemp04 extends Component {
     constructor(props) {
-        super(props);
+      super(props);
     }
 
     render() {
@@ -10,10 +10,10 @@ class ProjectTemp04 extends Component {
       const bg = {
         backgroundColor: props.background_mood_color,
       };
-        return (
-          <section className="photo-montage-one-img project-section-bg wow fadeInUp" style={bg}>
-            {/* TODO: modified by Chris */}
-            {/* <div className="container"> */}
+      return (
+        <section className="photo-montage-one-img project-section-bg wow fadeInUp" style={bg}>
+          {/* TODO: modified by Chris */}
+          {/* <div className="container"> */}
             <div className="row container-fluid">
               <div className="col-md-1 ">
 
@@ -22,9 +22,9 @@ class ProjectTemp04 extends Component {
                 <img src={props.images[0].guid} className="img-fluid" alt="alt"/>
               </div>
             </div>
-            {/* </div> */}
-          </section>
-        );
+          {/* </div> */}
+        </section>
+      );
     }
 }
 

@@ -1,14 +1,14 @@
 [
   {
-    "id": "BrightFooter.copyRightLabel",
+    "id": "DarkFooter.copyRightLabel",
     "defaultMessage": "©2018 IOIO LIMITED"
   },
   {
-    "id": "BrightFooter.termsAndConditionsLabel",
+    "id": "DarkFooter.termsAndConditionsLabel",
     "defaultMessage": "TERMS & CONDITIONS"
   },
   {
-    "id": "BrightFooter.joinUsLabel",
+    "id": "DarkFooter.joinUsLabel",
     "defaultMessage": "JOIN US"
   }
 ]

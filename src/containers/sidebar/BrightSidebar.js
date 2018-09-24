@@ -27,7 +27,7 @@ class BrightSidebar extends Component {
     super(props);
     this.state = {
       sidebar: null
-    }
+    };
 
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.handleMenuClose = this.handleMenuClose.bind(this);
@@ -75,7 +75,12 @@ class BrightSidebar extends Component {
 
       <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
         <div id="menu-toggle-div">
-          <h3>Index</h3>
+          <h3>
+            <FormattedMessage
+              id="BrightSidebar.indexButton"
+              defaultMessage="Index"
+            />
+          </h3>
         </div>
         <div className="close-symbol"></div>
       </a>
