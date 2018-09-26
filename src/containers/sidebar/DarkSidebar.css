@@ -96,7 +96,6 @@
 }
 
 #dark-sidebar h3 {
-  font-family: "FuturaLT", sans-serif;
   font-weight: 100;
   font-size: 16px;
   letter-spacing: 2px;
@@ -109,10 +108,7 @@
   top: 45%;
   left: 0;
   background: none;
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 #dark-sidebar .logo {
@@ -153,7 +149,27 @@
   margin-top: -20px;
   font-size: 14px;
 }
-
+#dark-sidebar.active .language-selector {
+  padding-left: 100px;
+  position: absolute;
+  pointer-events: all;
+  left: 0;
+  right: 0;
+}
+#dark-sidebar.active .language-selector a {
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 20px;
+  font-weight: normal;
+  opacity: 0.6;
+}
+#dark-sidebar.active .language-selector a:hover {
+  opacity: 1;
+}
+#dark-sidebar.active .language-selector a.current-language {
+  text-decoration: underline;
+  opacity: 1;
+}
 #dark-sidebar.active .info-section .social-links a {
   display: block;
 }
@@ -279,6 +295,9 @@
   overflow: visible;
   pointer-events: none;
   background: none !important;
+  margin-left: 0;
+  right: 0;
+  width: 100%;
 }
 
 #dark-sidebar.active #lab-about .container {
@@ -374,6 +393,9 @@
     height: 100%;
     padding-top: 100px;
   }
+  #sidebar.active .language-selector {
+    padding-left: 0;
+  }
   #dark-sidebar h3 {
     font-size: 16px;
     letter-spacing: 2px;
@@ -387,10 +409,7 @@
     left: 30%;
     text-align: center;
     background: none;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
     display: none;
   }
   #dark-sidebar.active h3 {

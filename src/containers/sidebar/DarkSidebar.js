@@ -7,30 +7,12 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
-import LanguageSelectorRenderer from 'components/i18n/LanguageSelectorRenderer';
+import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
-import {languages} from 'globals/config';
 
 import './DarkSidebar.css';
-
-
-function LanguageSelector(props) {
-  // LanguageSelectorRenderer uses a render prop.
-  return <LanguageSelectorRenderer
-    language={props.language}
-    render={({selectLanguageFunc}) => {
-      return (
-        <a 
-          className="menu-item menu-transition menu-language menu-close"                
-          onClick={selectLanguageFunc}>
-          {props.labelText}
-        </a>
-      );
-    }}
-  />;
-}
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -130,8 +112,12 @@ class DarkSidebar extends Component {
 
       <section id="lab-about">
         <div className="container">
-          <span>{about.page_subtitle}</span>
+          <span>
+            {about.page_subtitle}
+            <LanguageSelectors />
+          </span>
         </div>
+        
       </section>
 
       <LabWorkLabSwitch onClick={this.handleMenuClose}/>
@@ -144,12 +130,6 @@ class DarkSidebar extends Component {
           <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
           <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>       
         */}
-
-        <LanguageSelector language={languages.english} labelText='English' />
-        
-        <br/>
-        
-        <LanguageSelector language={languages.traditionalChinese} labelText='中文' />
 
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 

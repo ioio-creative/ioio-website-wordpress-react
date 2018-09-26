@@ -20,11 +20,11 @@ class LanguageSelectorRenderer extends Component {
   // using a render prop.
   render() {
     const props = this.props;
-    console.log(props);
     return (
       <LanguageContext.Consumer>
         {value => {
           return this.props.render({
+            currentLanguage: value.language,
             selectLanguageFunc: () => this.selectLanguage(props.language, value.changeLanguageContextFunc)
           });
         }}

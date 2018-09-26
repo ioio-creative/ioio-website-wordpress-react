@@ -94,9 +94,25 @@
 #sidebar.active a:hover {
   color: #FFE000;
 }
-
+#sidebar.active .language-selector {
+  padding-left: 100px;
+}
+#sidebar.active .language-selector a {
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 20px;
+  font-weight: normal;
+  opacity: 0.6;
+}
+#sidebar.active .language-selector a:hover {
+  opacity: 1;
+}
+#sidebar.active .language-selector a.current-language {
+  text-decoration: underline;
+  opacity: 1;
+}
 #sidebar h3 {
-  font-family: "FuturaLT", sans-serif;
+  /* font-family: "FuturaLT", sans-serif; */
   font-weight: 100;
   font-size: 16px;
   letter-spacing: 2px;
@@ -109,10 +125,7 @@
   top: 45%;
   left: 0;
   background: none;
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 #sidebar .logo {
@@ -315,6 +328,9 @@
     color: #fff;
     height: 100%;
     padding-top: 100px;
+  }
+  #sidebar.active .language-selector {
+    padding-left: 0;
   }
   #sidebar h3 {
     font-size: 16px;
