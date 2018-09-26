@@ -10,7 +10,9 @@ import CategoriesAndItemsWithShuffle from 'components/CategoriesAndItemsWithShuf
 import ProjectCategories from 'containers/projectList/ProjectCategories';
 import ProjectItems from 'containers/projectList/ProjectItems';
 import Footer from 'containers/footer/Footer';
+
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import LanguageContextMessagesConsumer from 'components/i18n/LanguageContextMessagesConsumer';
 
 import withShuffle from 'components/WithShuffle';
 
@@ -43,19 +45,24 @@ class ProjectCategoriesAndItemsContainer extends Component {
 class ProjectCategoriesAndItemsWithShuffle extends Component {
   render() {
     const props = this.props;
-    
     return (
-      <CategoriesAndItemsWithShuffle
-        categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
-        itemsComponent={ProjectItems}
-        categoriesComponent={ProjectCategories}
-        shuffleSelectorClass='portfolio-item'
-        allCategoryName='All'
-        items={props.projects}
-        categories={props.categories}
-        categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
-        setShuffleRefFunc={props.setShuffleRefFunc}
-        setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
+      <LanguageContextMessagesConsumer
+        render={(messages) => {
+          return (
+            <CategoriesAndItemsWithShuffle
+              categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
+              itemsComponent={ProjectItems}
+              categoriesComponent={ProjectCategories}
+              shuffleSelectorClass='portfolio-item'
+              allCategoryName={messages['ProjectListPage.allCategoryLabel']}
+              items={props.projects}
+              categories={props.categories}
+              categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
+              setShuffleRefFunc={props.setShuffleRefFunc}
+              setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
+            />
+          );
+        }}
       />
     );
   }

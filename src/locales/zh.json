@@ -15,7 +15,7 @@
   "DarkFooter.copyRightLabel": "©2018 十下创作有限公司",
   "DarkFooter.termsAndConditionsLabel": "条款和条件",
   "DarkFooter.joinUsLabel": "加入我们",
-  "BrightSidebar.indexButton": "Index",
+  "BrightSidebar.indexButton": "选单",
   "BrightSidebar.companyName": "十下创作",
   "BrightSidebar.aboutButton": "关于十下",
   "BrightSidebar.projectsButton": "项目",
@@ -27,5 +27,8 @@
   "HomePage.companyName": "十下创作",
   "HomePage.shortCompanyNameInTopCanvas": "十下",
   "HomePage.labItemTitle": "Tapping",
-  "HomePage.sharingItemTitle": "圣经的秘密"
+  "HomePage.sharingItemTitle": "圣经的秘密",
+
+  "HomePage.allCategoryLabel": "全",
+  "ProjectListPage.allCategoryLabel": "全"
 }

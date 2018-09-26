@@ -13,16 +13,17 @@ class LanguageContextProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      languageCode: props.languageCode
+      language: props.language
     };
     this.changeLanguageContext = this.changeLanguageContext.bind(this);
   }
 
-  changeLanguageContext(languageCode) {
-    if (languageCode !== this.state.languageCode) {
+  changeLanguageContext(newLanguage) {
+    if (this.state.language.code !== newLanguage.code) {
+      this.props.changeGlobalLocaleAndLanguageFunc(newLanguage);
       this.setState({
-        languageCode: languageCode
-      });
+        language: newLanguage
+      });      
     }
   }
   
@@ -32,7 +33,8 @@ class LanguageContextProvider extends React.Component {
     return (
       <LanguageContext.Provider 
         value={{
-          languageCode: state.languageCode,
+          language: state.language,
+          messages: props.multilingualMessages[state.language.locale],
           changeLanguageContextFunc: this.changeLanguageContext 
         }}>
         {props.children}

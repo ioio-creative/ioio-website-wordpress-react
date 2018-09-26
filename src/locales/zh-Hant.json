@@ -15,7 +15,7 @@
   "DarkFooter.copyRightLabel": "©2018 十下創作有限公司",
   "DarkFooter.termsAndConditionsLabel": "條款和條件",
   "DarkFooter.joinUsLabel": "加入我們",
-  "BrightSidebar.indexButton": "Index",
+  "BrightSidebar.indexButton": "選單",
   "BrightSidebar.companyName": "十下創作",
   "BrightSidebar.aboutButton": "關於十下",
   "BrightSidebar.projectsButton": "項目",
@@ -27,5 +27,8 @@
   "HomePage.companyName": "十下創作",
   "HomePage.shortCompanyNameInTopCanvas": "十下",
   "HomePage.labItemTitle": "Tapping",
-  "HomePage.sharingItemTitle": "聖經的秘密"
+  "HomePage.sharingItemTitle": "聖經的秘密",
+
+  "HomePage.allCategoryLabel": "全",
+  "ProjectListPage.allCategoryLabel": "全"
 }

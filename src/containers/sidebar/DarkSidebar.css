@@ -75,8 +75,9 @@
 
 #dark-sidebar.active .menu-language {
   display: inline;
-  font-size: 20px;
-  display: none;
+  cursor: pointer;
+  /* display: none; */
+  font-size: 20px;  
 }
 
 #dark-sidebar.active a {
@@ -395,8 +396,9 @@
     margin-top: 0;
   }
   #dark-sidebar.active .menu-language {
-    /*display: inline;*/
-    display: none;
+    display: inline;
+    cursor: pointer;
+    /* display: none; */
     font-size: 18px;
   }
   #dark-sidebar .logo {

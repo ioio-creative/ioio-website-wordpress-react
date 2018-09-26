@@ -26,8 +26,7 @@ class TestLanguageSelector extends Component {
   handleLanguageButtonClick(language, changeLanguageContextFunc) {
     const newUrl = insertParamToQueryInCurrentUrl('lang', language.code);
     nav(newUrl);    
-    this.props.changeGlobalLocaleAndLanguageFunc(language);
-    changeLanguageContextFunc(language.code);
+    changeLanguageContextFunc(language);
   }
 
   render() {

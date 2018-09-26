@@ -1,8 +1,8 @@
 // have to map language names to the [react-intl locale, api query param options] pairs
 const languages = {
-  english: { code: 'en', locale: 'en', isUsed: true}, 
-  traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true},
-  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false}
+  english: { code: 'en', locale: 'en', isUsed: true, isFontLoaded: true, fontFamily: ''}, 
+  traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true, isFontLoaded: false, fontFamily: 'Noto Sans TC'},
+  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false, isFontLoaded: false, fontFamily: 'Noto Sans SC'}
 };
 
 const languageCodeToLanguageMap = {};
@@ -47,6 +47,7 @@ function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
   return browserLangIdCodeToMyLangCodeMapper[browserLangIdCode];
 }
 
+
 const config = {
   gaTrackingId: 'UA-66792466-2',
   gaOptions: {
@@ -56,13 +57,15 @@ const config = {
     //   userId: 123
     // }
   },
-  defaultLanguage: languages.english
+  defaultLanguage: languages.english,
+  defaultFontFamily: 'sans-serif'
 }
+
 
 export {
   config,
   languages,
   usedLanguagesArray,
   getLanguageFromBrowserLangIdCode,
-  getLanguageFromLanguageCode
+  getLanguageFromLanguageCode,
 };

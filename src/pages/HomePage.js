@@ -9,6 +9,7 @@ import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectList/ProjectCategories';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import LanguageContextMessagesConsumer from 'components/i18n/LanguageContextMessagesConsumer';
 
 import $ from 'jquery';
 
@@ -272,8 +273,14 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-        <ProjectCategories categories={pC}
-          allCategoryName='We Do' />
+        <LanguageContextMessagesConsumer
+          render={(messages) => {            
+            return (
+              <ProjectCategories categories={pC}
+                allCategoryName={messages['HomePage.allCategoryLabel']} />
+            );
+          }}
+        />        
         <HighlightedProjects highlightedProjects={home.highlighted_projects} allProjects={allProjects} />
       </section>
 
