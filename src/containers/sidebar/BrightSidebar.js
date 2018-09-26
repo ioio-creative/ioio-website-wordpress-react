@@ -7,30 +7,12 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
-import LanguageSelectorRenderer from 'components/i18n/LanguageSelectorRenderer';
+import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 
 import routes from 'globals/routes';
 import {fetchActiveBrightSidebar} from 'websiteApi';
-import {languages} from 'globals/config';
 
 import './BrightSidebar.css';
-
-
-function LanguageSelector(props) {
-  // LanguageSelectorRenderer uses a render prop.
-  return <LanguageSelectorRenderer
-    language={props.language}
-    render={({selectLanguageFunc}) => {
-      return (
-        <a 
-          className="menu-item menu-transition menu-language menu-close"                
-          onClick={selectLanguageFunc}>
-          {props.labelText}
-        </a>
-      );
-    }}
-  />;
-}
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -140,13 +122,7 @@ class BrightSidebar extends Component {
         </Link>
         
         <br/>
-
-        <LanguageSelector language={languages.english} labelText='English' />          
-        
-        <br/>
-
-        <LanguageSelector language={languages.traditionalChinese} labelText='中文' />
-        
+        <LanguageSelectors />
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
         <div className="info-section container-fluid">

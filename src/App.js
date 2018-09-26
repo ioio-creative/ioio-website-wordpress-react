@@ -146,7 +146,7 @@ class App extends Component {
             <Sidebar languageCode={state.language.code} />
             <Header languageCode={state.language.code} />
             <Main languageCode={state.language.code} />
-            <TestLanguageSelector />
+            {/* <TestLanguageSelector /> */}
           </LanguageContextProvider>
         </BrowserRouter>
       </IntlProvider>

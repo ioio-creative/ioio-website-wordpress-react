@@ -68,7 +68,7 @@ Cover Video Part
 Lab List
  ======================= */
 
-#portfolio-flters {
+#portfolio-flters.lab-categories {
   white-space: pre-line;
   display: block;
   padding: 0;
@@ -78,7 +78,7 @@ Lab List
   text-align: left;
 }
 
-#portfolio-flters div {
+#portfolio-flters.lab-categories div {
   padding-left: 5px;
 }
 

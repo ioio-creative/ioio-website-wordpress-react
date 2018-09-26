@@ -397,6 +397,9 @@ a#pop-up-vid {
   #root.canvas_activated .homepage-showreel-img polygon {
     fill: #000;
   }
+  #pop-up-vid:hover .homepage-showreel-text {
+    transform: none;
+  }
   #homepage-top-logo {
     opacity: 0;
   }
