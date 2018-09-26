@@ -31,6 +31,12 @@
 
 #menu-toggle {
   cursor: pointer;
+  height: 100%;
+  /* width: 100%; */
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #dark-sidebar {

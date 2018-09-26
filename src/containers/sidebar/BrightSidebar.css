@@ -31,6 +31,12 @@
 
 #menu-toggle {
   cursor: pointer;
+  height: 100%;
+  /* width: 100%; */
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #sidebar {
@@ -223,7 +229,12 @@
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
 }
-
+#menu-toggle:hover .close-symbol:before {
+  transform: translateX(-2px);
+}
+#menu-toggle:hover .close-symbol:after {
+  transform: translateX(2px);
+}
 #sidebar.active .close-symbol:before {
   transform: rotate(45deg);
 }
@@ -239,7 +250,6 @@
 #sidebar .close-symbol:after {
   transform: rotate(-0deg);
 }
-
 #sidebar .sidebar-hiring {
   display: none;
 }
@@ -390,7 +400,18 @@
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
-
+  #menu-toggle:hover .close-symbol:before {
+    transform: translateY(-1px) rotate(90deg);
+  }
+  #menu-toggle:hover .close-symbol:after {
+    transform: translateY(1px) rotate(-90deg);
+  }
+  #sidebar.active #menu-toggle .close-symbol:before {
+    transform: rotate(45deg);
+  }
+  #sidebar.active #menu-toggle .close-symbol:after {
+    transform: rotate(-45deg);
+  }
   #sidebar .work-to-lab-switch-txt,
   #sidebar.active .work-to-lab-switch-txt {
     display: block;

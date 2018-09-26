@@ -47,6 +47,7 @@ function HighlightedProjects(props) {
             <div className="portfolio-wrap">
               <div className="img-container">
                 <img src={project.thumbnail.guid} alt="alt"/>
+                <div className="img-hover-color"></div>
               </div>
               <div className="portfolio-info">
                 <h4>
@@ -65,6 +66,7 @@ function HighlightedProjects(props) {
             <div className="portfolio-wrap">
               <div className="img-container">
                 <img src={project.thumbnail.guid} alt="alt"/>
+                <div className="img-hover-color"></div>
               </div>
               <div className="portfolio-info">
                 <h4>
