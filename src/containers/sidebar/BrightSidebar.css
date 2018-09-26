@@ -81,8 +81,9 @@
 
 #sidebar.active .menu-language {
   display: inline;
-  font-size: 20px;
-  display: none;
+  cursor: pointer;
+  /* display: none; */
+  font-size: 20px;  
 }
 
 #sidebar.active a {
@@ -343,8 +344,9 @@
     margin-top: 0;
   }
   #sidebar.active .menu-language {
-    /*display: inline;*/
-    display: none;
+    display: inline;
+    cursor: pointer;
+    /*display: none;*/
     font-size: 18px;
   }
   #sidebar .logo {

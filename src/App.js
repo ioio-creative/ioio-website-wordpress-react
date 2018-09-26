@@ -6,11 +6,14 @@ import {BrowserRouter} from 'react-router-dom';
 import {IntlProvider, addLocaleData} from "react-intl";
 import en from "react-intl/locale-data/en";
 import zh from "react-intl/locale-data/zh";
-import {LanguageContextProvider} from 'globals/contexts/languageContext';
-import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config'
 
 // Our translated strings
 import localeData from '../src/locales/data.json';
+
+//import WebFont from 'webfontloader';
+
+import {LanguageContextProvider} from 'globals/contexts/languageContext';
+import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config';
 
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
@@ -81,12 +84,25 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
 addLocaleData([...en, ...zh]);
 
 
+// function loadGlobalLanugageFont() {
+//   if (!globalLanguage.isFontLoaded) {
+//     console.log
+//     WebFont.load({
+//       google: {
+//         families: [globalLanguage.fontFamily, config.defaultFontFamily]
+//       }
+//     });
+//     globalLanguage.isFontLoaded = true; 
+//   }
+// }
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       language: globalLanguage,
-      messages: localeData[globalLanguage.local]
+      messages: localeData[globalLanguage.locale]
     }
     this.changeGlobalLocaleAndLanguage = this.changeGlobalLocaleAndLanguage.bind(this);
     initializeReactGa();
@@ -97,8 +113,11 @@ class App extends Component {
   }
 
   changeGlobalLocaleAndLanguage(newLanguage) {
-    if (this.state.language !== newLanguage) {
+    if (this.state.language.code !== newLanguage.code) {
       globalLanguage = newLanguage;
+
+      //loadGlobalLanugageFont();
+      
       this.setState({
         language: globalLanguage,
         messages: localeData[globalLanguage.locale]
@@ -119,12 +138,14 @@ class App extends Component {
         <BrowserRouter>
           {/*console.log(this.props.location.pathname)*/}                 
           <LanguageContextProvider 
-            languageCode={state.language.code}
+            language={state.language}
+            multilingualMessages={localeData}
+            changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}            
           >
             <Sidebar languageCode={state.language.code} />
             <Header languageCode={state.language.code} />
             <Main languageCode={state.language.code} />
-            <TestLanguageSelector changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage} />
+            <TestLanguageSelector />
           </LanguageContextProvider>
         </BrowserRouter>
       </IntlProvider>

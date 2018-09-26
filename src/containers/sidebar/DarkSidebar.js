@@ -7,10 +7,30 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import LanguageSelectorRenderer from 'components/i18n/LanguageSelectorRenderer';
 
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
+import {languages} from 'globals/config';
+
 import './DarkSidebar.css';
+
+
+function LanguageSelector(props) {
+  // LanguageSelectorRenderer uses a render prop.
+  return <LanguageSelectorRenderer
+    language={props.language}
+    render={({selectLanguageFunc}) => {
+      return (
+        <a 
+          className="menu-item menu-transition menu-language menu-close"                
+          onClick={selectLanguageFunc}>
+          {props.labelText}
+        </a>
+      );
+    }}
+  />;
+}
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -114,24 +134,23 @@ class DarkSidebar extends Component {
         </div>
       </section>
 
-      {/* <Link id="lab-work-lab-switch" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
-        <h4 id="work-lab-switch">Work</h4>
-      </Link> */
-      }
       <LabWorkLabSwitch onClick={this.handleMenuClose}/>
 
       <div className="container-fluid ">
-
+        
         {/*
-        <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>       
+        */}
 
-        <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>
-        <a className="menu-item menu-transition menu-language menu-close" href="#">English</a><br/>
-        <a className="menu-item menu-transition menu-language menu-close" href="#">中文</a>
-        */
-        }
+        <LanguageSelector language={languages.english} labelText='English' />
+        
+        <br/>
+        
+        <LanguageSelector language={languages.traditionalChinese} labelText='中文' />
+
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
         <div className="info-section container-fluid">

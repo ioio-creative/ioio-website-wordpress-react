@@ -23,13 +23,14 @@
     "react-p5-wrapper": "0.0.4",
     "react-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^1.1.5",
     "react-sizeme": "^2.5.1",
     "react-video-cover": "^1.2.0",
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",
     "shufflejs": "^5.1.2",
-    "video-react": "^0.10.5"
+    "video-react": "^0.10.5",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "cross-env PORT=80 react-scripts start",
