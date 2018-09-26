@@ -10,7 +10,7 @@ import zh from "react-intl/locale-data/zh";
 // Our translated strings
 import localeData from '../src/locales/data.json';
 
-import WebFont from 'webfontloader';
+//import WebFont from 'webfontloader';
 
 import {LanguageContextProvider} from 'globals/contexts/languageContext';
 import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config';
@@ -84,17 +84,17 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
 addLocaleData([...en, ...zh]);
 
 
-function loadGlobalLanugageFont() {
-  if (!globalLanguage.isFontLoaded) {
-    console.log
-    WebFont.load({
-      google: {
-        families: [globalLanguage.fontFamily, config.defaultFontFamily]
-      }
-    });
-    globalLanguage.isFontLoaded = true; 
-  }
-}
+// function loadGlobalLanugageFont() {
+//   if (!globalLanguage.isFontLoaded) {
+//     console.log
+//     WebFont.load({
+//       google: {
+//         families: [globalLanguage.fontFamily, config.defaultFontFamily]
+//       }
+//     });
+//     globalLanguage.isFontLoaded = true; 
+//   }
+// }
 
 
 class App extends Component {
