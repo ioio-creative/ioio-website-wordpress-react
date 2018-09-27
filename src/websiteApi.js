@@ -230,11 +230,19 @@ async function fetchProjectTagsAsync() {
 /* project detail page */
 
 function fetchProjectById(id, callback) {
-    passJsonResultToCallback("projects", callback, id);
+  passJsonResultToCallback("projects", callback, id);
 }
 
-async function fetchProjectByIdAsync(id, language) {
+async function fetchProjectByIdAsync(id) {
     return await passJsonResultAsync("projects", id);
+}
+
+function fetchProjectWithNextIdById(id, callback) {
+  passJsonResultToCallback("projects_with_next_id", callback, id);
+}
+
+async function fetchProjectWithNextIdByIdAsync(id) {
+  return await passJsonResultAsync("projects_with_next_id", id);
 }
 
 /* end of project detail page */
@@ -243,6 +251,7 @@ async function fetchProjectByIdAsync(id, language) {
 function fetchActiveContact(callback) {
     passJsonResultToCallback("contact", callback, activeEntities.contact);
 }
+
 function fetchContact(callback) {
     passJsonResultToCallback("contact", callback);
 }
@@ -328,6 +337,10 @@ export {
   fetchProjectById,
   fetchProjectByIdAsync,
 
+  // project detail page with next id
+  fetchProjectWithNextIdById,
+  fetchProjectWithNextIdByIdAsync,
+  
   // contact page
   fetchActiveContact,
   fetchContact,
