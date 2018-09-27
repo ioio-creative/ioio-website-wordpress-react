@@ -84,6 +84,7 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
 addLocaleData([...en, ...zh]);
 
 
+// https://scotch.io/@micwanyoike/how-to-add-fonts-to-a-react-project
 // function loadGlobalLanugageFont() {
 //   if (!globalLanguage.isFontLoaded) {
 //     console.log
