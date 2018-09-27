@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {fetchProjectById} from 'websiteApi';
+import {fetchProjectWithNextIdById} from 'websiteApi';
 
 import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
 import {Redirect} from 'react-router-dom'
@@ -155,7 +155,7 @@ class ProjectDetailPage extends Component {
       return;
     }
 
-    fetchProjectById(projectIdNum, (aProject) => {
+    fetchProjectWithNextIdById(projectIdNum, (aProject) => {
       if (aProject === null) {
         this.setState({isReturnNotFound: true});
       } else {
