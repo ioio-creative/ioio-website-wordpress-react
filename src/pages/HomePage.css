@@ -103,6 +103,7 @@ a#pop-up-vid {
   float: left;
   width: 35px;
   transition: transform 0.2s;
+  margin-top: -2px;
 }
 
 .homepage-showreel-img circle {

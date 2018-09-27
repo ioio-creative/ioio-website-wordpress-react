@@ -118,6 +118,7 @@ pop-up
   margin-bottom: 42px;
   transition: all 0.2s;
   transform: none;
+  text-decoration: none;
 }
 #video-landing .video-text a:hover {
   padding: 14px 19px;
