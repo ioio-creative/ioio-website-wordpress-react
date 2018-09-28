@@ -17,7 +17,7 @@ export default function Header() {
           generic paths, like "/", or put more generic paths as the
           later Routes in the Route list.
       */}
-      <Route path={routes.lab} component={AsyncDarkHeader} />
+      <Route path={routes.lab(false)} component={AsyncDarkHeader} />
       <Route component={AsyncBrightHeader} />
     </Switch>    
   );    

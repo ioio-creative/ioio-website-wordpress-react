@@ -100,7 +100,7 @@ class DarkSidebar extends Component {
         <div className="close-symbol"></div>
       </a>
 
-      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.lab} onClick={this.handleMenuClose}>
+      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.lab(true)} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
         <h4 id="sidebar-top-logo-text">
           <FormattedMessage
@@ -125,10 +125,10 @@ class DarkSidebar extends Component {
       <div className="container-fluid ">
         
         {/*
-          <Link className="menu-item menu-transition menu-close" to={routes.labAbout} onClick={this.handleMenuClose}>About</Link><br/>
-          <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Research 0</Link><br/>
-          <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>Experiment</Link><br/>
-          <Link className="menu-item menu-transition menu-close" to={routes.labContacts} onClick={this.handleMenuClose}>Contact</Link><br/>       
+          <Link className="menu-item menu-transition menu-close" to={routes.labAbout(true)} onClick={this.handleMenuClose}>About</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.projects(true)} onClick={this.handleMenuClose}>Research 0</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.projects(true)} onClick={this.handleMenuClose}>Experiment</Link><br/>
+          <Link className="menu-item menu-transition menu-close" to={routes.labContacts(true)} onClick={this.handleMenuClose}>Contact</Link><br/>       
         */}
 
         <canvas id="menu-canvas" width="1000px" height="500px"></canvas>

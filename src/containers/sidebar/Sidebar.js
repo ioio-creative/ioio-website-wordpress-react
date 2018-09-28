@@ -23,7 +23,7 @@ export default function Sidebar() {
                 generic paths, like "/", or put more generic paths as the
                 later Routes in the Route list.
             */}
-            <Route path={routes.lab} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncDarkSidebar)} />
+            <Route path={routes.lab(false)} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncDarkSidebar)} />
             <Route render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncBrightSidebar)} />
           </Switch>
         );

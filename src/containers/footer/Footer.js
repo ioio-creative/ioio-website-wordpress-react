@@ -21,7 +21,7 @@ export default function Footer() {
               generic paths, like "/", or put more generic paths as the
               later Routes in the Route list.
           */}
-          <Route path={routes.lab} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncDarkFooter)} />
+          <Route path={routes.lab(false)} render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncDarkFooter)} />
           <Route render={passLanguageToAsyncLoadingComponentFunc(value.language, AsyncBrightFooter)} />
         </Switch>
       )}

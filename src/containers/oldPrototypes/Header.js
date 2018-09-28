@@ -10,10 +10,10 @@ class Header extends Component {
           <header>
           <nav>
           <ul>
-          <li><Link to={routes.home}>Home</Link></li>
-          <li><Link to={routes.about}>About</Link></li>
-          <li><Link to={routes.projects}>Projects</Link></li>
-          <li><Link to={routes.contacts}>Contacts</Link></li>
+          <li><Link to={routes.home(true)}>Home</Link></li>
+          <li><Link to={routes.about(true)}>About</Link></li>
+          <li><Link to={routes.projects(true)}>Projects</Link></li>
+          <li><Link to={routes.contacts(true)}>Contacts</Link></li>
         </ul>
       </nav>
     </header>

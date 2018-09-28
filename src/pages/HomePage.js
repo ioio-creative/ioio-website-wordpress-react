@@ -288,7 +288,7 @@ class HomePage extends Component {
 
       <section id="homepage-core-value">
         <div className="container">
-          <Link to={routes.about}>
+          <Link to={routes.about(true)}>
             <Items abouts={home}/>
           </Link>
         </div>

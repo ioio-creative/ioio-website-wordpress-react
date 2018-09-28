@@ -87,7 +87,7 @@ class BrightSidebar extends Component {
         <div className="close-symbol"></div>
       </a>
 
-      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home} onClick={this.handleMenuClose}>
+      <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home(true)} onClick={this.handleMenuClose}>
         <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
         <h4 id="sidebar-top-logo-text">
           <FormattedMessage
@@ -100,21 +100,21 @@ class BrightSidebar extends Component {
       <WorkWorkLabSwitch onClick={this.handleMenuClose} />
 
       <div className="container-fluid ">
-        <Link className="menu-item menu-transition menu-close" to={routes.about} onClick={this.handleMenuClose}>
+        <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>
           <FormattedMessage
             id="BrightSidebar.aboutButton"
             defaultMessage="About"
           /> 
         </Link>
         <br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.projects} onClick={this.handleMenuClose}>
+        <Link className="menu-item menu-transition menu-close" to={routes.projects(true)} onClick={this.handleMenuClose}>
           <FormattedMessage
             id="BrightSidebar.projectsButton"
             defaultMessage="Project"
           />
         </Link>
         <br/>
-        <Link className="menu-item menu-transition menu-close" to={routes.contacts} onClick={this.handleMenuClose}>
+        <Link className="menu-item menu-transition menu-close" to={routes.contacts(true)} onClick={this.handleMenuClose}>
           <FormattedMessage
             id="BrightSidebar.contactButton"
             defaultMessage="Contact"

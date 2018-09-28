@@ -17,7 +17,7 @@ export default function WorkWorkLabSwitch(props) {
   return (
     <Link className="work-to-lab-switch"
       role="button"
-      to={routes.lab}
+      to={routes.lab(true)}
       onClick={onClickFunc}
     >
       <h4 className="work-to-lab-switch-txt">
