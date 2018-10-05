@@ -32,5 +32,6 @@ export default {
     return "/lab/" + slugValue;
   },
   contacts: "/contacts",
-  notFound: "/notfound"
+  notFound: "/notfound",
+  tapping: "/tapping"
 };
