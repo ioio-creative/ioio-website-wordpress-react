@@ -91,7 +91,7 @@ function VideoLandingDesc(props) {
         </div>
         <div className="col-md-8">
           <div className="cover-text">
-            <h1 className="container-fluid">{props.lab.project_short_desc}</h1>
+            <h1 className="container-fluid">HOPPING</h1>
             <h2 className="container-fluid">{props.lab.project_name}</h2>
           </div>
         </div>
@@ -107,8 +107,8 @@ function VideoLandingDesc(props) {
           </ul>
         </div>
         <div className="col-md-8">
-          <p className="lab-key-message">{props.lab.key_message}</p>
-          <p className="lab-overview">{props.lab.overview}</p>
+          <p className="lab-key-message">{props.lab.key_message.replace(/p2/gi, "Hopping")}</p>
+          <p className="lab-overview">{props.lab.overview.replace(/p2/gi, "Hopping")}</p>
         </div>
         <div className="col-md-1"></div>
       </div>
