@@ -33,5 +33,6 @@ export default {
   },
   contacts: "/contacts",
   notFound: "/notfound",
-  tapping: "/tapping"
+  tapping: "/tapping",
+  hopping: "/hopping"
 };
