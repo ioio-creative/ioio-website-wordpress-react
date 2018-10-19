@@ -24,6 +24,7 @@ export default function LanguageSelectors() {
     <div className="language-selector">
       <LanguageSelector language={languages.english} labelText='English' />
       <LanguageSelector language={languages.traditionalChinese} labelText='中文' />
+      <LanguageSelector language={languages.japanese} labelText='日文' />
     </div>
   );
 }

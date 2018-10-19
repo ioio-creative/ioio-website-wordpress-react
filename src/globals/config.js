@@ -2,7 +2,8 @@
 const languages = {
   english: { code: 'en', locale: 'en', isUsed: true, isFontLoaded: true, fontFamily: ''}, 
   traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true, isFontLoaded: false, fontFamily: 'Noto Sans TC'},
-  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false, isFontLoaded: false, fontFamily: 'Noto Sans SC'}
+  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false, isFontLoaded: false, fontFamily: 'Noto Sans SC'},
+  japanese: {code: 'jp', locale: 'ja', isUsed: true, isFontLoaded: false, fontFamily: ''}
 };
 
 const languageCodeToLanguageMap = {};
@@ -40,7 +41,9 @@ const browserLangIdCodeToMyLangCodeMapper = {
   'zh-hk': languages.traditionalChinese,
   'zh-cn': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
   'zh-sg': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
-  'zh-tw': languages.traditionalChinese, 
+  'zh-tw': languages.traditionalChinese,
+
+  'ja': languages.japanese
 };
 
 function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
