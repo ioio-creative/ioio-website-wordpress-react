@@ -6,6 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {IntlProvider, addLocaleData} from "react-intl";
 import en from "react-intl/locale-data/en";
 import zh from "react-intl/locale-data/zh";
+import ja from "react-intl/locale-data/ja";
 
 // Our translated strings
 import localeData from '../src/locales/data.json';
@@ -81,7 +82,7 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
 
 // https://github.com/austintackaberry/i18n-example/blob/master/src/index.js
 // https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725
-addLocaleData([...en, ...zh]);
+addLocaleData([...en, ...zh, ...ja]);
 
 
 // https://scotch.io/@micwanyoike/how-to-add-fonts-to-a-react-project
