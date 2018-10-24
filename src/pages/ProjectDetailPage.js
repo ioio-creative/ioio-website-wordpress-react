@@ -16,7 +16,7 @@ import ProjectTemp04 from 'containers/projectDetail/ProjectTemp04'; //photomonta
 import ProjectTemp05 from 'containers/projectDetail/ProjectTemp05'; //slideshow - Image only
 import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomontage - 2-column Image and caption
 import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
-import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Imgae
+import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Image
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
 import Footer from 'containers/footer/Footer';
 
