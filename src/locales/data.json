@@ -65,7 +65,7 @@
     "HomePage.sharingItemTitle": "聖經的秘密",
 
     "HomePage.allCategoryLabel": "我們做",
-    "ProjectListPage.allCategoryLabel": "全"
+    "ProjectListPage.allCategoryLabel": "全部"
   },
   "zh": {
     "ContactForm.firstNameLabel": "名",
@@ -99,7 +99,7 @@
     "HomePage.sharingItemTitle": "圣经的秘密",
 
     "HomePage.allCategoryLabel": "我们做",
-    "ProjectListPage.allCategoryLabel": "全"
+    "ProjectListPage.allCategoryLabel": "全部"
   },
   "ja": {
     "ContactForm.firstNameLabel": "名",
@@ -132,7 +132,7 @@
     "HomePage.labItemTitle": "Tapping",
     "HomePage.sharingItemTitle": "圣经的秘密",
 
-    "HomePage.allCategoryLabel": "全",
-    "ProjectListPage.allCategoryLabel": "全"
+    "HomePage.allCategoryLabel": "我们做",
+    "ProjectListPage.allCategoryLabel": "全部"
   }
 }
