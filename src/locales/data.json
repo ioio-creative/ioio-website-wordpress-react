@@ -19,7 +19,7 @@
     "BrightSidebar.indexButton": "Index",
     "BrightSidebar.companyName": "IOIO CREATIVE",
     "BrightSidebar.aboutButton": "About",
-    "BrightSidebar.projectsButton": "Project",
+    "BrightSidebar.projectsButton": "Projects",
     "BrightSidebar.contactButton": "Contact",
     "DarkSidebar.aboutButton": "About",
     "DarkSidebar.companyName": "IOIO CREATIVE",
@@ -31,7 +31,8 @@
     "HomePage.sharingItemTitle": "Bible Consipiracy",
 
     "HomePage.allCategoryLabel": "We Do",
-    "ProjectListPage.allCategoryLabel": "All"
+    "ProjectListPage.allCategoryLabel": "All",
+    "ProjectListPage.pageTitle": "Case Studies"
   },
   "zh-Hant": {
     "ContactForm.firstNameLabel": "名",
@@ -65,7 +66,8 @@
     "HomePage.sharingItemTitle": "聖經的秘密",
 
     "HomePage.allCategoryLabel": "我們做",
-    "ProjectListPage.allCategoryLabel": "全部"
+    "ProjectListPage.allCategoryLabel": "全部",
+    "ProjectListPage.pageTitle": "作品"
   },
   "zh": {
     "ContactForm.firstNameLabel": "名",
@@ -99,7 +101,8 @@
     "HomePage.sharingItemTitle": "圣经的秘密",
 
     "HomePage.allCategoryLabel": "我们做",
-    "ProjectListPage.allCategoryLabel": "全部"
+    "ProjectListPage.allCategoryLabel": "全部",
+    "ProjectListPage.pageTitle": "作品"
   },
   "ja": {
     "ContactForm.firstNameLabel": "名",
@@ -133,6 +136,7 @@
     "HomePage.sharingItemTitle": "圣经的秘密",
 
     "HomePage.allCategoryLabel": "我们做",
-    "ProjectListPage.allCategoryLabel": "全部"
+    "ProjectListPage.allCategoryLabel": "全部",
+    "ProjectListPage.pageTitle": "作品"
   }
 }

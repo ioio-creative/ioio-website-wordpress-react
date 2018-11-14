@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FormattedMessage} from 'react-intl';
 
 import './ProjectListPage.css';
 
@@ -27,8 +28,13 @@ class ProjectCategoriesAndItemsContainer extends Component {
           <div className="row">
             <div className="col-md-1" />
             <div className="col-md-10">
-              <header className="section-header">
-                <h3 className="section-title">Case Studies</h3>
+              <header className="section-header">                
+                <h3 className="section-title">
+                  <FormattedMessage
+                    id="ProjectListPage.pageTitle"
+                    defaultMessage="Case Studies"
+                  />
+                </h3>
               </header>              
               {props.categories}
               {props.items}
