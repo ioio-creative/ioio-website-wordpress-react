@@ -117,7 +117,7 @@ class App extends Component {
   changeGlobalLocaleAndLanguage(newLanguage) {
     if (this.state.language.code !== newLanguage.code) {
       globalLanguage = newLanguage;
-
+      document.querySelector('html').setAttribute('lang', newLanguage.code);
       //loadGlobalLanugageFont();
       
       this.setState({

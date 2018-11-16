@@ -189,9 +189,7 @@ class Prototype2Page extends Component {
     const labTemplateContainer = labTemplates.map((templateData, index) => {
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = labTemplateMap[templateType];
-      if (templateType == 8) {
-        console.log(templateData);
-      }
+
       /* insert between block 4 and block 5 */
       if (index == 4) {
         const newSection1 = {
