@@ -66,9 +66,9 @@ class ContactsPage extends Component {
       // return null;
     }
     if (contact.facebook_og_images && contact.facebook_og_images.length) {
-      var ogimage = document.querySelectorAll('[property="og:image"]');
+      const ogimage = document.querySelectorAll('[property="og:image"]');
       contact.facebook_og_images.forEach(ogimgobj => {
-        var newmeta = document.createElement('meta');
+        const newmeta = document.createElement('meta');
         newmeta.setAttribute('property', 'og:image');
         newmeta.setAttribute('content', ogimgobj.guid);
         ogimage[0].parentNode.insertBefore(newmeta,ogimage[0]);
