@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
 import './ProjectListPage.css';
 
@@ -229,4 +229,4 @@ class ProjectListPage extends Component {
   }
 }
 
-export default ProjectListPage;
+export default injectIntl(ProjectListPage);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
@@ -340,4 +340,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default injectIntl(HomePage);
