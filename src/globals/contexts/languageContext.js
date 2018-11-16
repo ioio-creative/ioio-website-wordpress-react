@@ -20,10 +20,10 @@ class LanguageContextProvider extends React.Component {
 
   changeLanguageContext(newLanguage) {
     if (this.state.language.code !== newLanguage.code) {
-      this.props.changeGlobalLocaleAndLanguageFunc(newLanguage);
+      this.props.changeGlobalLocaleAndLanguageFunc(newLanguage);      
       this.setState({
         language: newLanguage
-      });      
+      });     
     }
   }
   

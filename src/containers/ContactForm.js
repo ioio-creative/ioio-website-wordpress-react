@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {FormattedMessage, injectIntl} from 'react-intl';
 
-import LanguageContextMessagesConsumer from 'components/i18n/LanguageContextMessagesConsumer';
-
 import './ContactForm.css';
 
 //import gapi from 'gapi'
@@ -10,7 +8,14 @@ import './ContactForm.css';
 
 class ContactForm extends Component {
   render() {
-    const props = this.props;    
+    const props = this.props;
+    const intl = props.intl;
+    const formatMessage = (msgId, defaultMsg) => {
+      return intl.formatMessage({
+        id: msgId,
+        defaultMessage: defaultMsg
+      });
+    };
     return (
       <form className="contact-form" method="POST" action="https://formspree.io/info@ioioproduction.com">
         <div className="form-field">
@@ -21,14 +26,8 @@ class ContactForm extends Component {
                 id="ContactForm.firstNameLabel"
                 defaultMessage="First Name"
               />      
-            </div>
-            <LanguageContextMessagesConsumer
-              render={(messages) => {            
-                return (
-                  <input type="text" name="firstname" placeholder={messages['ContactForm.firstNameTextBoxPlaceHolder']} required="required"/>
-                );
-              }}
-            />
+            </div>            
+            <input type="text" name="firstname" placeholder={formatMessage("ContactForm.firstNameTextBoxPlaceHolder", "First Name")} required />
           </label>
           <label htmlFor="lname" className="form-r">
             <div className="label-content">
@@ -36,14 +35,8 @@ class ContactForm extends Component {
                 id="ContactForm.lastNameLabel"
                 defaultMessage="Last Name"
               />          
-            </div>
-            <LanguageContextMessagesConsumer
-              render={(messages) => {            
-                return (
-                  <input type="text" name="lastname" placeholder={messages['ContactForm.lastNameTextBoxPlaceHolder']} required="required"/>
-                );
-              }}
-            />          
+            </div>            
+            <input type="text" name="lastname" placeholder={formatMessage("ContactForm.lastNameTextBoxPlaceHolder", "Last Name")} required />                          
           </label>
   
         </div>
@@ -55,14 +48,8 @@ class ContactForm extends Component {
                 id="ContactForm.emailLabel"
                 defaultMessage="Email"
               />
-            </div>
-            <LanguageContextMessagesConsumer
-              render={(messages) => {            
-                return (
-                  <input type="email" name="_replyto" name="email" placeholder={messages['ContactForm.emailTextBoxPlaceHolder']} required="required"/>
-                );
-              }}
-            />          
+            </div>            
+            <input type="email" name="_replyto" name="email" placeholder={formatMessage("ContactForm.emailTextBoxPlaceHolder", "Email")} />              
           </label>
           <label htmlFor="phone" className="form-r">
             <div className="label-content">
@@ -71,10 +58,7 @@ class ContactForm extends Component {
                 defaultMessage="Phone"
               />
             </div>
-            <input type="phone" name="phone" name="phone" placeholder={props.intl.formatMessage({
-              id: "ContactForm.phoneTextBoxPlaceHolder",
-              defaultMessage: "Phone"
-            })} />
+            <input type="phone" name="phone" name="phone" placeholder={formatMessage("ContactForm.phoneTextBoxPlaceHolder", "Phone")} />            
           </label>
         </div>
   
@@ -86,7 +70,7 @@ class ContactForm extends Component {
                 defaultMessage="Company Name"
               />
             </div>
-            <input type="companyname" name="companyname" name="companyname" placeholder="Company Name" />
+            <input type="companyname" name="companyname" name="companyname" placeholder={formatMessage("ContactForm.companyNameTextBoxPlaceHolder", "Company Name")} />
           </label>
           <label htmlFor="role" className="form-r">
             <div className="label-content">
@@ -95,7 +79,7 @@ class ContactForm extends Component {
                 defaultMessage="Your title / role"
               />            
             </div>
-            <input type="role" name="role" name="role" placeholder="Your title / role" />
+            <input type="role" name="role" name="role" placeholder={formatMessage("ContactForm.titleOrRoleTextBoxPlaceHolder", "Your title / role")} />
           </label>
         </div>
   
@@ -107,7 +91,8 @@ class ContactForm extends Component {
                 defaultMessage="Message"
               />            
             </div>
-            <textarea className="stretch" name="message" rows="5" placeholder="Please tell us a bit about what you're looking to collaborate on." required="required"/>
+            <textarea className="stretch" name="message" rows="5"
+              placeholder={formatMessage("ContactForm.messageTextBoxPlaceHolder", "Please tell us a bit about what you're looking to collaborate on.")} required />
           </label>
         </div>
   
