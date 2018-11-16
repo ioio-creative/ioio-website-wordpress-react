@@ -62,6 +62,8 @@ class Main extends Component {
                 <Route exact path={routes.labBySlug} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncLabDetailPage)} />
                 <Route path={routes.lab(false)} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncLabListPage)} />
                 <Route path={routes.contacts(false)} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncContactsPage)} />
+                <Route path={routes.tapping} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncTappingPage)} />
+                <Route path={routes.hopping} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncHoppingPage)} />
                 <Route path='/trial' component={P5SketchTrialPage} />
                 <Route component={AsyncNotFoundPage} />
               </Switch>
