@@ -92,7 +92,7 @@ class ContactForm extends Component {
               />            
             </div>
             <textarea className="stretch" name="message" rows="5"
-              placeholder={formatMessage("ContactForm.messageTextBoxPlaceHolder", "Please tell us a bit about what you're looking to collaborate on.")} required />
+              placeholder={formatMessage("ContactForm.messageTextBoxPlaceHolder", "Please tell us any interesting ideas we can work on together!")} required />
           </label>
         </div>
   
