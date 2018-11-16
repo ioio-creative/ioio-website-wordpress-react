@@ -96,14 +96,16 @@ function Items(props) {
     <div className="col-md-5 about-section-left">
       <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
       <div className="text-center">
-        <img src={a.about_section_picture_left.guid} alt="alt" className="img-fluid core-value-img"/>
+        <img src={a.about_section_picture_left.guid} className="img-fluid core-value-img"/>
+        <img src={a.about_section_picture_left_hover.guid} className="img-fluid core-value-img hover-img"/>
       </div>
       <p className="description text-center"></p>
     </div>
     <div className="col-md-5 about-section-right">
       <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
       <div className="text-center">
-        <img src={a.about_section_picture_right.guid} alt="alt" className="img-fluid core-value-img"/>
+        <img src={a.about_section_picture_right.guid} className="img-fluid core-value-img"/>
+        <img src={a.about_section_picture_right_hover.guid} className="img-fluid core-value-img hover-img"/>
       </div>
       <div className="text-center about-section-right-p-div">
         <p className="description">{a.about_section_desc}</p>

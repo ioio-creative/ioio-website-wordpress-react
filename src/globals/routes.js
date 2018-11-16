@@ -58,5 +58,7 @@ export default {
   },
   notFound: function (isLink) {
     return '/notfound' + addLangQueryIfIsLink(isLink);
-  }
+  },
+  tapping: "/tapping",
+  hopping: "/hopping"
 };

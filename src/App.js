@@ -75,9 +75,10 @@ const browserLangIdCode = getNavigatorLanguageWithRegionCode();
 // browserLangIdCode = 'asdg';
 // console.log('language: ' + getLanguageFromBrowserLangIdCode(browserLangIdCode));
 const languageCodeFromQuery = getSearchObjectFromLocation(window.location).lang;
-let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
- || getLanguageFromBrowserLangIdCode(browserLangIdCode) 
- || config.defaultLanguage;
+// let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
+//  || getLanguageFromBrowserLangIdCode(browserLangIdCode) 
+//  || config.defaultLanguage;
+let globalLanguage = config.defaultLanguage;
 
 
 // https://github.com/austintackaberry/i18n-example/blob/master/src/index.js
@@ -117,7 +118,7 @@ class App extends Component {
   changeGlobalLocaleAndLanguage(newLanguage) {
     if (this.state.language.code !== newLanguage.code) {
       globalLanguage = newLanguage;
-
+      document.querySelector('html').setAttribute('lang', newLanguage.code);
       //loadGlobalLanugageFont();
       
       this.setState({

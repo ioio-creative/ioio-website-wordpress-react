@@ -15,7 +15,7 @@ function Slideshow(props) {
   });
 
   // TODO: autoplay changed to false by Chris
-  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={false} dots={true} dotsEach={true} items={4.5} margin={5} slideBy={1} autoplayTimeout={2500}>
+  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={false} dots={true} dotsEach={true} items={4.5} margin={5} slideBy={1} autoplayTimeout={2500} responsive={{0:{items:3},768:{items:4.5}}}>
     {member_items}
   </OwlCarousel>);
 }

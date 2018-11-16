@@ -19,7 +19,8 @@ function LanguageSelector(props) {
   />;
 }
 
-export default function LanguageSelectors() {
+export default function LanguageSelectors() { 
+  return null;
   return (
     <div className="language-selector">
       <LanguageSelector language={languages.english} labelText='English' />

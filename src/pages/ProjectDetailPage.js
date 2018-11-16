@@ -167,8 +167,13 @@ class ProjectDetailPage extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
+
+    $('#root').addClass('project-details-page');
   }
 
+  componentWillUnmount() {
+    $('#root').removeClass('project-details-page');
+  }
   render() {
     const state = this.state;
     const project = state.project;

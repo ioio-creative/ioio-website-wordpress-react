@@ -16,7 +16,7 @@
 .work-to-lab-switch:hover .work-to-lab-switch-txt {
   animation-name: bounce;
   transform-origin: center;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
 }
 
@@ -28,6 +28,10 @@
   display: block;
 }
 
+/* turn white in project details page */
+#root.project-details-page .work-to-lab-switch {
+  color: #FFFFFF;
+}
 
 @media only screen and (max-width: 767px) {
   #sidebar.active .work-to-lab-switch-txt {

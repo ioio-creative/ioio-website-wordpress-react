@@ -58,6 +58,7 @@ class CategoryList extends Component {
           <ul id="portfolio-flters">          
             {btnAllItems}
             {items}
+            <div className="scroll-icon" />
           </ul>
         </div>
       </div>
