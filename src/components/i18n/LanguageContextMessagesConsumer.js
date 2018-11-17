@@ -1,3 +1,11 @@
+/**
+ * Important:
+ * The function of this component LanguageContextMessagesConsumer is
+ * basically the same as that of injectIntl() HOC of react-intl.
+ * So its use is going to be deprecated.
+ */
+
+
 import React, {Component} from 'react';
 
 import {LanguageContext} from 'globals/contexts/languageContext';

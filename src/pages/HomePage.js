@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
@@ -9,7 +9,6 @@ import Footer from 'containers/footer/Footer';
 import ProjectCategories from 'containers/projectList/ProjectCategories';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
-import LanguageContextMessagesConsumer from 'components/i18n/LanguageContextMessagesConsumer';
 
 import $ from 'jquery';
 
@@ -198,6 +197,8 @@ class HomePage extends Component {
   }
 
   render() {
+    const props = this.props;
+
     const home = this.state.homepage;
     const pC = this.state.projectCategories;
     const allProjects = this.state.allProjects;
@@ -232,6 +233,14 @@ class HomePage extends Component {
         backgroundColor       : 'rgba(0,0,0,0)',
         border                : '0px'
       }
+    };
+    
+    const intl = props.intl;
+    const formatMessage = (msgId, defaultMsg) => {
+      return intl.formatMessage({
+        id: msgId,
+        defaultMessage: defaultMsg
+      });
     };
 
     return (<div>
@@ -277,14 +286,10 @@ class HomePage extends Component {
       </section>
 
       <section id="homepage-selected-project" className="section-bg wow fadeInUp">
-        <LanguageContextMessagesConsumer
-          render={(messages) => {            
-            return (
-              <ProjectCategories categories={pC}
-                allCategoryName={messages['HomePage.allCategoryLabel']} />
-            );
-          }}
-        />        
+        <ProjectCategories 
+          categories={pC}
+          allCategoryName={formatMessage('HomePage.allCategoryLabel', 'We Do')}
+        />                
         <HighlightedProjects highlightedProjects={home.highlighted_projects} allProjects={allProjects} />
       </section>
 
@@ -335,4 +340,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default injectIntl(HomePage);
