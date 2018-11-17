@@ -150,3 +150,9 @@
     padding: 15px;
   }
 }
+
+
+html[lang=zh] #contact-core-value p,
+html[lang=tc] #contact-core-value p {
+  max-width: 300px;
+}

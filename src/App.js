@@ -76,10 +76,10 @@ const browserLangIdCode = getNavigatorLanguageWithRegionCode();
 // console.log('language: ' + getLanguageFromBrowserLangIdCode(browserLangIdCode));
 const languageCodeFromQuery = getSearchObjectFromLocation(window.location).lang;
 let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
- || getLanguageFromBrowserLangIdCode(browserLangIdCode) 
+ || getLanguageFromBrowserLangIdCode(browserLangIdCode)
  || config.defaultLanguage;
 // let globalLanguage = config.defaultLanguage;
-
+document.querySelector('html').setAttribute('lang', globalLanguage.code);
 
 // https://github.com/austintackaberry/i18n-example/blob/master/src/index.js
 // https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725

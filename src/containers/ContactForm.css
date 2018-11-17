@@ -53,8 +53,13 @@ label{
 .sendBtn {
   background-color: black;
   color: white;
-  padding: 5px 10px;
-
+  padding: 10px 50px;
+  font-weight: 500;
+  transition: all 0.4s;
+}
+.sendBtn:hover {
+  background-color: #555555;
+  color: white;
 }
 
 .contact-form {

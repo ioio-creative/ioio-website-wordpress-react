@@ -459,3 +459,22 @@ Serivce
     position: relative;
   }
 }
+
+
+html[lang=zh] #about01 h1,
+html[lang=tc] #about01 h1 {
+  font-size: 75px;
+}
+html[lang=zh] #media h1,
+html[lang=tc] #media h1 {
+  line-height: 1.7em;
+}
+html[lang=zh] #core-value h4,
+html[lang=tc] #core-value h4 {
+  font-weight: bold;
+}
+
+html[lang=zh] #the-team .section-header p,
+html[lang=tc] #the-team .section-header p {
+  max-width: 470px;
+}

@@ -176,3 +176,13 @@
     letter-spacing: 0.05em;
   }
 }
+
+html[lang=zh] #portfolio .section-title,
+html[lang=tc] #portfolio .section-title {
+  letter-spacing: 0.1em;
+  font-weight: 900;
+}
+html[lang=zh] #portfolio #portfolio-flters,
+html[lang=tc] #portfolio #portfolio-flters {
+  letter-spacing: 0.05em;
+}

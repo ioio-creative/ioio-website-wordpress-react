@@ -180,6 +180,7 @@ a#pop-up-vid {
   position: absolute;
   right: 15px;
   top: 0;
+  cursor: s-resize;
 }
 
 #homepage-selected-project .row div.scroll-icon:hover {
@@ -344,6 +345,7 @@ a#pop-up-vid {
   color: white;
   font-size: 18px;
   z-index: 2;
+  opacity: 0.4;
 }
 
 #homepage-core-value img {
@@ -549,6 +551,10 @@ a#pop-up-vid {
     float: none;
     transform: none;
   }
+  html[lang=zh] #homepage-top .homepage-showreel-text,
+  html[lang=tc] #homepage-top .homepage-showreel-text {
+    width: 7em;
+  }
   #homepage-top .homepage-showreel-text::after {
     content: '';
     display: block;
@@ -585,4 +591,21 @@ a#pop-up-vid {
   0% { transform: translateY(-12px); opacity: 0; }
  30%, 70% { opacity: 1; }
 100% { transform: translateY(12px); opacity: 0; }
+}
+
+html[lang=zh] #homepage-top .homepage-showreel-text,
+html[lang=tc] #homepage-top .homepage-showreel-text,
+html[lang=zh] #homepage-selected-project #portfolio-flters,
+html[lang=tc] #homepage-selected-project #portfolio-flters {
+  letter-spacing: 0.05em;
+}
+
+html[lang=zh] .about-section-right p,
+html[lang=tc] .about-section-right p {
+  padding: 40px 80px 0 20px;
+  line-height: 1.7em;
+}
+html[lang=zh] #pop-up-terms,
+html[lang=tc] #pop-up-terms {
+  margin-left: 37px;
 }

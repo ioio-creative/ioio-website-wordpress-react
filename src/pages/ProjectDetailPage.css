@@ -620,3 +620,14 @@ video {
     transform: translateY(-50%);
   }
 }
+
+html[lang=zh] #video-landing .video-text h1,
+html[lang=tc] #video-landing .video-text h1 {
+  line-height: 1.5em;
+}
+html[lang=zh] #video-landing-caption .video-landing-text-l,
+html[lang=tc] #video-landing-caption .video-landing-text-l,
+html[lang=zh] #video-landing-caption .video-landing-text-r,
+html[lang=tc] #video-landing-caption .video-landing-text-r {
+  line-height: 1.7em;
+}

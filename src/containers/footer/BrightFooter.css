@@ -155,3 +155,8 @@
   #footer .footer-bottom-links a {}
   #footer .back-to-top-button {}
 }
+
+html[lang=zh] #footer .footer-slogan,
+html[lang=tc] #footer .footer-slogan {
+  font-weight: 900;
+}

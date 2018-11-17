@@ -92,3 +92,8 @@
     height: 8px;
   }
 }
+
+html[lang=zh] .slideshow p,
+html[lang=tc] .slideshow p {
+  line-height: 1.7em;
+}
