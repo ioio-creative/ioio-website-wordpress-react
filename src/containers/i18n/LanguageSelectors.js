@@ -22,9 +22,9 @@ function LanguageSelector(props) {
 export default function LanguageSelectors() { 
   return (
     <div className="language-selector">
-      <LanguageSelector language={languages.english} labelText='English' />
-      <LanguageSelector language={languages.traditionalChinese} labelText='中文' />
-      <LanguageSelector language={languages.japanese} labelText='日文' />
+      {languages.english.isUsed && <LanguageSelector language={languages.english} labelText='English' />}
+      {languages.traditionalChinese.isUsed && <LanguageSelector language={languages.traditionalChinese} labelText='中文' />}
+      {languages.japanese.isUsed && <LanguageSelector language={languages.japanese} labelText='日文' />}
     </div>
   );
 }

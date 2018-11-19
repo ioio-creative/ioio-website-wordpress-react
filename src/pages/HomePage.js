@@ -183,7 +183,7 @@ class HomePage extends Component {
     //   .find('canvas').on('click',function(){
     //     console.log('click');
     // })
-    window.addEventListener('message',)
+    window.addEventListener('message', this.handleCanvasMessage);
   }
 
   componentWillUnmount() {
