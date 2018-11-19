@@ -293,8 +293,11 @@ video {
   #video-landing .video-text .pop-up-vid-div {
     text-align: center;
     position: absolute;
-    bottom: 25px;
+    top: 50%;
+    bottom: 0;
     left: 0;
+    right: 0;
+    transform: translateY(-50%);
   }
   #video-landing .video-text a {
     /*top: 0;*/
@@ -303,7 +306,16 @@ video {
     display: block;
     margin: 0 auto;
     transition: none;
-    top: 0;
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+  }
+  #video-landing .video-text a:hover {
+    padding: 10px 15px;
+    margin-right: auto;
+    margin-bottom: 0px;
   }
   #video-landing-caption .video-landing-text {
     padding-top: 50px;
@@ -630,4 +642,9 @@ html[lang=tc] #video-landing-caption .video-landing-text-l,
 html[lang=zh] #video-landing-caption .video-landing-text-r,
 html[lang=tc] #video-landing-caption .video-landing-text-r {
   line-height: 1.7em;
+}
+
+html[lang=zh] #video-landing .video-text a,
+html[lang=tc] #video-landing .video-text a {
+  font-weight: 400;
 }

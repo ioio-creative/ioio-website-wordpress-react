@@ -272,7 +272,7 @@
 --------------------------------*/
 
 #dark-sidebar #lab-about {
-  display: none;
+  pointer-events: none;
   opacity: 0;
 }
 
@@ -293,11 +293,11 @@
   z-index: 1;
   height: 0px;
   overflow: visible;
-  pointer-events: none;
   background: none !important;
   margin-left: 0;
   right: 0;
   width: 100%;
+  transition: opacity 0.4s 0.4s;
 }
 
 #dark-sidebar.active #lab-about .container {

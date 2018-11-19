@@ -39,23 +39,24 @@
 
     "HomePage.allCategoryLabel": "We Do",
     "ProjectListPage.allCategoryLabel": "All",
-    "ProjectListPage.pageTitle": "Case Studies"
+    "ProjectListPage.pageTitle": "Case Studies",
+    "ProjectDetailPage.showreelButton": "SHOWREEL"
   },
   "zh-Hant": {
     "ContactForm.firstNameLabel": "名",
     "ContactForm.firstNameTextBoxPlaceHolder": "名",
     "ContactForm.lastNameLabel": "姓",
     "ContactForm.lastNameTextBoxPlaceHolder": "姓",
-    "ContactForm.emailLabel": "電郵",
-    "ContactForm.emailTextBoxPlaceHolder": "電郵",
-    "ContactForm.phoneLabel": "電話",
-    "ContactForm.phoneTextBoxPlaceHolder": "電話",
+    "ContactForm.emailLabel": "電郵地址",
+    "ContactForm.emailTextBoxPlaceHolder": "電郵地址",
+    "ContactForm.phoneLabel": "聯絡電話",
+    "ContactForm.phoneTextBoxPlaceHolder": "聯絡電話",
     "ContactForm.companyNameLabel": "公司名稱",
     "ContactForm.companyNameTextBoxPlaceHolder": "公司名稱",
-    "ContactForm.titleOrRoleLabel": "崗位",
-    "ContactForm.titleOrRoleTextBoxPlaceHolder": "崗位",
+    "ContactForm.titleOrRoleLabel": "職業/崗位",
+    "ContactForm.titleOrRoleTextBoxPlaceHolder": "職業/崗位",
     "ContactForm.messageLabel": "信息",
-    "ContactForm.messageTextBoxPlaceHolder": "有什麼好玩的事找我們合作呢!",
+    "ContactForm.messageTextBoxPlaceHolder": "請告訴我們任何有趣的想法, 然後一起去實現!",
     "ContactForm.submitButton": "送出",
     "ContactForm.messageSendSuccessMessage": "您的留言已發送！",
     "ContactForm.messageSendErrorMessage": "提交表單時出錯。",
@@ -72,7 +73,7 @@
     "BrightSidebar.contactButton": "聯絡",
     "DarkSidebar.aboutButton": "關於",
     "DarkSidebar.companyName": "十下創作",
-    "LabWorkLabSwitch.switchDestination": "作品",
+    "LabWorkLabSwitch.switchDestination": "工作室！",
     "WorkWorkLabSwitch.switchDestination": "實驗室！",
     "HomePage.companyName": "十下創作",
     "HomePage.shortCompanyNameInTopCanvas": "十下",
@@ -81,23 +82,24 @@
 
     "HomePage.allCategoryLabel": "我們做",
     "ProjectListPage.allCategoryLabel": "全部",
-    "ProjectListPage.pageTitle": "作品"
+    "ProjectListPage.pageTitle": "作品",
+    "ProjectDetailPage.showreelButton": "作品視頻"
   },
   "zh": {
     "ContactForm.firstNameLabel": "名",
     "ContactForm.firstNameTextBoxPlaceHolder": "名",
     "ContactForm.lastNameLabel": "姓",
     "ContactForm.lastNameTextBoxPlaceHolder": "姓",
-    "ContactForm.emailLabel": "电邮",
-    "ContactForm.emailTextBoxPlaceHolder": "电邮",
-    "ContactForm.phoneLabel": "电话",
-    "ContactForm.phoneTextBoxPlaceHolder": "电话",
+    "ContactForm.emailLabel": "电邮地址",
+    "ContactForm.emailTextBoxPlaceHolder": "电邮地址",
+    "ContactForm.phoneLabel": "联络电话",
+    "ContactForm.phoneTextBoxPlaceHolder": "联络电话",
     "ContactForm.companyNameLabel": "公司名称",
     "ContactForm.companyNameTextBoxPlaceHolder": "公司名称",
-    "ContactForm.titleOrRoleLabel": "岗位",
-    "ContactForm.titleOrRoleTextBoxPlaceHolder": "岗位",
+    "ContactForm.titleOrRoleLabel": "职业/岗位",
+    "ContactForm.titleOrRoleTextBoxPlaceHolder": "职业/岗位",
     "ContactForm.messageLabel": "信息",
-    "ContactForm.messageTextBoxPlaceHolder": "有什么好玩的事找我们合作呢!",
+    "ContactForm.messageTextBoxPlaceHolder": "興味深いアイデアを教えて、一緒に実装してください！",
     "ContactForm.submitButton": "送出",
     "ContactForm.messageSendSuccessMessage": "您的留言已发送！",
     "ContactForm.messageSendErrorMessage": "提交表单时出错。",
@@ -114,7 +116,7 @@
     "BrightSidebar.contactButton": "联络",
     "DarkSidebar.aboutButton": "关于",
     "DarkSidebar.companyName": "十下创作",
-    "LabWorkLabSwitch.switchDestination": "作品",
+    "LabWorkLabSwitch.switchDestination": "工作室！",
     "WorkWorkLabSwitch.switchDestination": "实验室！",
     "HomePage.companyName": "十下创作",
     "HomePage.shortCompanyNameInTopCanvas": "十下",
@@ -123,7 +125,8 @@
 
     "HomePage.allCategoryLabel": "我们做",
     "ProjectListPage.allCategoryLabel": "全部",
-    "ProjectListPage.pageTitle": "作品"
+    "ProjectListPage.pageTitle": "作品",
+    "ProjectDetailPage.showreelButton": "作品视频"
   },
   "ja": {
     "ContactForm.firstNameLabel": "名",
@@ -140,7 +143,7 @@
     "ContactForm.titleOrRoleTextBoxPlaceHolder": "役職名",
     "ContactForm.messageLabel": "お問い合わせ内容",
     "ContactForm.submitButton": "送信",
-    "ContactForm.messageTextBoxPlaceHolder": "有什么好玩的事找我们合作呢!",
+    "ContactForm.messageTextBoxPlaceHolder": "どのような楽しいものが私たちと協力して見つけてください！",
     "ContactForm.messageSendSuccessMessage": "您的留言已发送！",
     "ContactForm.messageSendErrorMessage": "提交表单时出错。",
     "BrightFooter.copyRightLabel": "©2018 IOIO LIMITED",
@@ -156,7 +159,7 @@
     "BrightSidebar.contactButton": "联络",
     "DarkSidebar.aboutButton": "关于",
     "DarkSidebar.companyName": "十下创作",
-    "LabWorkLabSwitch.switchDestination": "作品",
+    "LabWorkLabSwitch.switchDestination": "工作室！",
     "WorkWorkLabSwitch.switchDestination": "实验室！",
     "HomePage.companyName": "十下创作",
     "HomePage.shortCompanyNameInTopCanvas": "十下",
@@ -165,6 +168,7 @@
 
     "HomePage.allCategoryLabel": "我们做",
     "ProjectListPage.allCategoryLabel": "全部",
-    "ProjectListPage.pageTitle": "作品"
+    "ProjectListPage.pageTitle": "作品",
+    "ProjectDetailPage.showreelButton": "ショーライト"
   }
 }

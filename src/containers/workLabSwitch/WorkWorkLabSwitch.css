@@ -52,3 +52,8 @@ display: none;
   70%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.15)}
   90%{transform:scale(1.05)}
 }
+
+html[lang=zh] .work-to-lab-switch-txt,
+html[lang=tc] .work-to-lab-switch-txt {
+  margin-right: -0.3em;
+}

@@ -442,7 +442,7 @@ Serivce
     font-weight: bold;
   }
   .section-header p {
-    width: 80%;
+    width: 100%;
     position: relative;
     opacity: 1;
     height: auto;
@@ -477,4 +477,10 @@ html[lang=tc] #core-value h4 {
 html[lang=zh] #the-team .section-header p,
 html[lang=tc] #the-team .section-header p {
   max-width: 470px;
+}
+@media only screen and (max-width: 767px) {
+  html[lang=zh] #about01 h1,
+  html[lang=tc] #about01 h1 {
+    font-size: 50px;
+  }
 }

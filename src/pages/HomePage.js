@@ -53,7 +53,12 @@ function HighlightedProjects(props) {
                 <h4>
                   {project.project_name}
                 </h4>
-                <p>{project.project_short_description}</p>
+                <p>
+                  {/* 20181119: HUNG edited */}
+                  {project.project_categories.map((cat, idx) => {
+                    return props.categories.find(pC => pC.id == cat.pod_item_id).name;
+                  })}
+                </p>
               </div>
             </div>
           </Link>
@@ -72,7 +77,12 @@ function HighlightedProjects(props) {
                 <h4>
                   {project.project_name}
                 </h4>
-                <p>{project.project_short_description}</p>
+                <p>
+                  {/* 20181119: HUNG edited */}
+                  {project.project_categories.map((cat, idx) => {
+                    return props.categories.find(pC => pC.id == cat.pod_item_id).name;
+                  })}
+                </p>
               </div>
             </div>
           </Link>
@@ -290,7 +300,11 @@ class HomePage extends Component {
           categories={pC}
           allCategoryName={formatMessage('HomePage.allCategoryLabel', 'We Do')}
         />                
-        <HighlightedProjects highlightedProjects={home.highlighted_projects} allProjects={allProjects} />
+        <HighlightedProjects
+          categories={pC}
+          highlightedProjects={home.highlighted_projects}
+          allProjects={allProjects}
+        />
       </section>
 
       <section id="homepage-core-value">

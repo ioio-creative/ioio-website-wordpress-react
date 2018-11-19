@@ -30,6 +30,7 @@ import Modal from 'react-modal';
 
 import {Player} from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
+import { FormattedMessage } from 'react-intl';
 
 Modal.setAppElement('#root');
 // Choosing the React Element Type at Runtime
@@ -82,7 +83,11 @@ function VideoLanding(props) {
             <div className="pop-up-vid-div">
               <Link to="#" onClick={props.modalClick} id="pop-up-vid">
                 <img className="projectlist-showreel-img" src={svgURL} alt="showreel"/>
-                SHOWREEL&nbsp;</Link>
+                <FormattedMessage 
+                  id="ProjectDetailPage.showreelButton"
+                  defaultMessage="SHOWREEL"
+                />
+              </Link>
             </div>
             <div className="col-md-1"></div>
           </div>

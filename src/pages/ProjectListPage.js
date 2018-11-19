@@ -222,7 +222,9 @@ class ProjectListPage extends Component {
           projects={projects}          
           categoryFilterSlugFromQuery={categoryFilterSlugToUse}
           categories={projectCategories}
-          tags={projectTags} />
+          tags={projectTags}
+          intl={props.intl}
+        />
         <Footer />
       </div>
     );

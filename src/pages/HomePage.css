@@ -171,14 +171,14 @@ a#pop-up-vid {
   justify-content: center;
   align-items: center;
   height: 2em;
-  width: 1.2em;
-  font-size: 22px;
+  width: 1.5em;
+  font-size: 15px;
   color: rgba(#fff, .5);
   border-radius: 2em;
-  border: solid 2px;
+  border: solid 1px;
   transition: .4s;
   position: absolute;
-  right: 15px;
+  right: 40px;
   top: 0;
   cursor: s-resize;
 }
@@ -190,8 +190,8 @@ a#pop-up-vid {
 
 #homepage-selected-project .row div.scroll-icon::after {
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   background-color: #333333;
   border-radius: 50%;
   animation: scroll-icon 2.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -479,8 +479,9 @@ a#pop-up-vid {
     width: 90%;
   }
   #homepage-selected-project .portfolio-wrap .portfolio-info {
-    padding: 15px;
+    padding: 25px 15px 60px;
   }
+
   #homepage-selected-project .portfolio-wrap .img-container {
     padding-top: 0;
   }
@@ -491,6 +492,7 @@ a#pop-up-vid {
     position: static;
     color: black;
     font-size: 14px;
+    margin-bottom: 5px;
   }
   #homepage-selected-project .portfolio-wrap .portfolio-info p {
     position: static;

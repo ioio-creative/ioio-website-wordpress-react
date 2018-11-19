@@ -110,16 +110,15 @@
 #portfolio .portfolio-item .portfolio-info {
   position: relative;
   text-align: left;
-  padding: 30px 0px;
+  padding: 25px 0px;
   height: 90px;
   /*border-radius: 0 0 3px 3px;*/
 }
 
 #portfolio .portfolio-item .portfolio-info h4 {
   font-size: 18px;
-  line-height: 1px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   padding-bottom: 0;
 }
 
