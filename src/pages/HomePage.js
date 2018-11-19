@@ -234,10 +234,9 @@ class HomePage extends Component {
         border                : '0px'
       }
     };
-    
-    const intl = props.intl;
+        
     const formatMessage = (msgId, defaultMsg) => {
-      return intl.formatMessage({
+      return props.intl.formatMessage({
         id: msgId,
         defaultMessage: defaultMsg
       });

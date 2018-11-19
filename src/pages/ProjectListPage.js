@@ -49,10 +49,9 @@ class ProjectCategoriesAndItemsContainer extends Component {
 
 class ProjectCategoriesAndItemsWithShuffle extends Component {
   render() {
-    const props = this.props;
-    const intl = props.intl;
+    const props = this.props;    
     const formatMessage = (msgId, defaultMsg) => {
-      return intl.formatMessage({
+      return props.intl.formatMessage({
         id: msgId,
         defaultMessage: defaultMsg
       });
