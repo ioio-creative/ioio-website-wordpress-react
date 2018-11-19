@@ -101,7 +101,7 @@ function reloadJS() {
 
         $('#sidebar .logo,#dark-sidebar .logo').css("opacity", val3);
         $('#sidebar-top-logo-text').css("opacity", 1 - val2);
-        $('#sidebar-top-logo-text').css("top", ((1 - val) * 20) + "px");
+        $('#sidebar-top-logo-text').css("top", ((1 - val) * 17) + "px");
         if (scrollVal < 200) {
           $('#sidebar,#dark-sidebar').css("border-bottom", "0px solid #FFFFFF");
         } else {
