@@ -81,7 +81,7 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
 // let globalLanguage = config.defaultLanguage;
 
 // this is for setting language specific css
-const htmlElement = document.getElementsByTagName('html');
+const htmlElement = document.querySelector('html');
 const changeHtmlLang = (newCode) => {
   htmlElement.setAttribute('lang', newCode);
 }
