@@ -79,7 +79,13 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
  || getLanguageFromBrowserLangIdCode(browserLangIdCode)
  || config.defaultLanguage;
 // let globalLanguage = config.defaultLanguage;
-document.querySelector('html').setAttribute('lang', globalLanguage.code);
+
+// this is for setting language specific css
+const htmlElement = document.querySelector('html');
+const changeHtmlLang = (newCode) => {
+  htmlElement.setAttribute('lang', newCode);
+}
+changeHtmlLang(globalLanguage.code);
 
 // https://github.com/austintackaberry/i18n-example/blob/master/src/index.js
 // https://medium.freecodecamp.org/setting-up-internationalization-in-react-from-start-to-finish-6cb94a7af725
@@ -118,7 +124,7 @@ class App extends Component {
   changeGlobalLocaleAndLanguage(newLanguage) {
     if (this.state.language.code !== newLanguage.code) {
       globalLanguage = newLanguage;
-      document.querySelector('html').setAttribute('lang', newLanguage.code);
+      changeHtmlLang(newLanguage.code);
       //loadGlobalLanugageFont();
       
       this.setState({

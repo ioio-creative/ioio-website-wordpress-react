@@ -131,15 +131,19 @@ class HomePage extends Component {
     this.state = {
       modalIsOpen: false
     };
+    
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    this.handleLoad = this.handleLoad.bind(this);
+    this.handleCanvasMessage = this.handleCanvasMessage.bind(this);
 
     this.state = {
       homepage: null,
       projectCategories: [],
       allProjects: [],
-    }
+    }    
   }
 
   openModal() {
@@ -179,18 +183,12 @@ class HomePage extends Component {
     //   .find('canvas').on('click',function(){
     //     console.log('click');
     // })
-    window.addEventListener('message',function(e){
-      switch (e.data) {
-        case 'canvas_activated':
-          $('#root').addClass('canvas_activated');
-          break;
-        case 'canvas_deactivated':
-          $('#root').removeClass('canvas_activated');
-          break;
-        default:
-          // unknown msg, do nth
-      }
-    })
+    window.addEventListener('message',)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('load', this.handleLoad);
+    window.removeEventListener('message', this.handleCanvasMessage);
   }
 
   handleLoad() {
@@ -204,6 +202,19 @@ class HomePage extends Component {
         console.log($('.iframe-p5').attr("width"));
       });
     */
+  }
+
+  handleCanvasMessage(e) {
+    switch (e.data) {
+      case 'canvas_activated':
+        $('#root').addClass('canvas_activated');
+        break;
+      case 'canvas_deactivated':
+        $('#root').removeClass('canvas_activated');
+        break;
+      default:
+        // unknown msg, do nth
+    }
   }
 
   render() {
@@ -244,10 +255,9 @@ class HomePage extends Component {
         border                : '0px'
       }
     };
-    
-    const intl = props.intl;
+        
     const formatMessage = (msgId, defaultMsg) => {
-      return intl.formatMessage({
+      return props.intl.formatMessage({
         id: msgId,
         defaultMessage: defaultMsg
       });
