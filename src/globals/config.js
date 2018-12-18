@@ -3,7 +3,7 @@ const languages = {
   english: { code: 'en', locale: 'en', isUsed: true, isFontLoaded: true, fontFamily: ''}, 
   traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true, isFontLoaded: false, fontFamily: 'Noto Sans TC'},
   simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false, isFontLoaded: false, fontFamily: 'Noto Sans SC'},
-  japanese: {code: 'ja', locale: 'ja', isUsed: false, isFontLoaded: false, fontFamily: ''}
+  japanese: {code: 'ja', locale: 'ja', isUsed: true, isFontLoaded: false, fontFamily: ''}
 };
 
 const languageCodeToLanguageMap = {};
