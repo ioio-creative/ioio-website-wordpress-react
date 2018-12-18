@@ -10,7 +10,7 @@
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "FuturaLT", sans-serif;
+  /* font-family: "FuturaLT", sans-serif; */
   height: 500px;
   overflow: hidden;
 }
@@ -130,7 +130,7 @@
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "FuturaLT", sans-serif;
+    /* font-family: "FuturaLT", sans-serif; */
     height: 100%;
     position: relative;
   }

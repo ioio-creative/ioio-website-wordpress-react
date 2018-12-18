@@ -119,6 +119,12 @@ class App extends Component {
 
   componentDidMount() {
     loadJSFiles();
+    if (console.clear) {
+      console.clear();
+    }
+    if (console.log) {
+      console.log('  ██    ██████\n  ██    ██  ██\n  ██    ██████\n\n  ██    ██████\n██████    ██ ▄\n  ██      ██');
+    }
   }
 
   changeGlobalLocaleAndLanguage(newLanguage) {

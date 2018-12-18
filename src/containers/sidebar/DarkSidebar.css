@@ -71,7 +71,7 @@
 
 #dark-sidebar.active .menu-item {
   color: #fff;
-  font-family: "FuturaLT", sans-serif;
+  /* font-family: "FuturaLT", sans-serif; */
   text-transform: uppercase;
   font-weight: bold;
   margin-left: 100px;
