@@ -2,16 +2,15 @@
 # Sidebar
 --------------------------------------------------------------*/
 
-#sidebar-top-logo-text {
+#dark-sidebar #sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
-  top: 25px;
+  top: 17px;
   left: 25px;
   font-size: 15px;
   text-transform: uppercase;
   opacity: 0;
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
+  color: #FFFFFF;
 }
 
 #menu-toggle-div {
@@ -357,14 +356,14 @@
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  #sidebar-top-logo-text {
+  #dark-sidebar #sidebar-top-logo-text {
     left: 15px;
     opacity: 1;
-    top: 20px;
-    color: black;
+    top: 17px;
+    color: #FFFFFF;
   }
   #dark-sidebar.active #sidebar-top-logo-text {
-    color: black;
+    color: #FFFFFF;
   }
   #menu-toggle-div {
     position: fixed;
@@ -494,7 +493,7 @@
     padding: 0;
   }
   .lab-to-work-switch {
-    display: none;
+    /* display: none; */
   }
   #dark-sidebar .lab-to-work-switch-txt,
   #dark-sidebar.active .lab-to-work-switch-txt {
@@ -512,7 +511,7 @@ html[lang=zh] #dark-sidebar h3,
 html[lang=tc] #dark-sidebar h3 {
   font-weight: 500;
   font-weight: 500;
-  margin-left: 4px;
+  /* margin-left: 4px; */
   white-space: nowrap;
 }
 

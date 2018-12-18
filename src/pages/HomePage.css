@@ -426,6 +426,7 @@ a#pop-up-vid {
   .iframe-p5-inside-div {
     /* display: none; */
     padding: 0;
+    height: 50vh;
   }
   #root.canvas_activated .iframe-p5-div {
     background-color: #FFF;
@@ -463,6 +464,9 @@ a#pop-up-vid {
   }
   #homepage-selected-project {
     padding: 10px 0 0 0;
+  }
+  #homepage-selected-project .row div.scroll-icon {
+    display: none;
   }
   #homepage-core-value div {
     padding: 0 0;
@@ -533,7 +537,7 @@ a#pop-up-vid {
     left: 0;
     display: block;
     transform: none;
-    margin: 19% auto 0;
+    margin: 20px auto 0;
   }
   .homepage-showreel {
     position: relative;
@@ -556,6 +560,8 @@ a#pop-up-vid {
   html[lang=zh] #homepage-top .homepage-showreel-text,
   html[lang=tc] #homepage-top .homepage-showreel-text {
     width: 7em;
+    font-size: 20px;
+    line-height: 1.6em;
   }
   #homepage-top .homepage-showreel-text::after {
     content: '';

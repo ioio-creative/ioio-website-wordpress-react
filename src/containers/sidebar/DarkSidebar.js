@@ -114,7 +114,7 @@ class DarkSidebar extends Component {
         <div className="container">
           <span>
             {about.page_subtitle}
-            <LanguageSelectors />
+            {/* <LanguageSelectors /> */}
           </span>
         </div>
         
