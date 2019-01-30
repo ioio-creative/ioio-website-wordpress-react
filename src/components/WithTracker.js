@@ -40,4 +40,4 @@ export default function withTracker(WrappedComponent, options = {}) {
   HOC.displayName = `WithTracker(${getDisplayName(WrappedComponent)})`;
 
   return HOC;
-}
+};
