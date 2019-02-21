@@ -17,17 +17,18 @@ export default function withTracker(WrappedComponent, options = {}) {
   };
 
   const HOC = class extends Component {
-    componentDidMount() {
+    componentDidMount() {      
       const page = this.props.location.pathname;
       trackPage(page);
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps) {
+      const previousPage = prevProps.location.pathname;
       const currentPage = this.props.location.pathname;
-      const nextPage = nextProps.location.pathname;
 
-      if (currentPage !== nextPage) {
-        trackPage(nextPage);
+      // this case almost never happens
+      if (currentPage !== previousPage) {        
+        trackPage(currentPage);
       }
     }
 

@@ -138,8 +138,8 @@ class ProjectListPage extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    const nextCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery(nextProps.history);
+  componentDidUpdate() {
+    const nextCategoryFilterSlugFromQuery = this.getCategoryFilterSlugFromQuery(this.props.history);
     if (nextCategoryFilterSlugFromQuery && this.state.categoryFilterSlugFromQuery !== nextCategoryFilterSlugFromQuery) {
       trackProjectListPageFilterByCategoryIfNotNull(nextCategoryFilterSlugFromQuery);      
       this.setState({
@@ -201,8 +201,8 @@ class ProjectListPage extends Component {
 
     /* 
       null check is needed for categoryFilterSlugFromQuery
-      as componentWillReceiveProps() will not run before 
-      first render() call
+      as (componentWillReceiveProps() obsolete, should be componentDidUpdate()???) 
+      will not run before first render() call
     */
 
     let categoryFilterSlugToUse = categoryFilterSlugFromQuery;
