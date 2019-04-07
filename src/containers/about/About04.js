@@ -42,7 +42,7 @@ class About04 extends Component {
   render() {
     let a = this.props.about
     let slides = a.slideshow
-    console.log(a.slideshow_background_image.guid)
+    //console.log(a.slideshow_background_image.guid);
 
     const url = "url('" + a.slideshow_background_image.guid + "')"
 
