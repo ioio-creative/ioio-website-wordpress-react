@@ -26,3 +26,16 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('Gotham Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('Gotham Book Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -18,6 +18,7 @@ export default function Header() {
           later Routes in the Route list.
       */}
       <Route path={routes.lab(false)} component={AsyncDarkHeader} />
+      <Route path={routes['sonar2019']} render={null} />
       <Route component={AsyncBrightHeader} />
     </Switch>    
   );    

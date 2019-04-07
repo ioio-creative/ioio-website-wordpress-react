@@ -60,5 +60,6 @@ export default {
     return '/notfound' + addLangQueryIfIsLink(isLink);
   },
   tapping: "/tapping",
-  hopping: "/hopping"
+  hopping: "/hopping",
+  sonar2019: "/sonar2019"
 };
