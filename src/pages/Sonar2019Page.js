@@ -3,15 +3,23 @@ import {Link} from 'react-router-dom';
 import Matter from 'matter-js';
 import MatterWrap from 'matter-wrap';
 import {TweenMax} from 'gsap';
+import routes from 'globals/routes';
 import './Sonar2019Page.css';
 import board1ImgPath from 'images/first@2x.png';
 import board2ImgPath from 'images/second@2x.png';
 import board3ImgPath from 'images/third@2x.png';
 import board4ImgPath from 'images/fourth@2x.png';
-import photo1ImgPath from 'images/photo1@2x.png';
-import photo2ImgPath from 'images/photo2@2x.png';
-import photo3ImgPath from 'images/photo3@2x.png';
+import photo1ImgPath from 'images/image_1.jpg';
+import photo2ImgPath from 'images/image_2.jpg';
+import photo3ImgPath from 'images/image_3.jpg';
+import photo4ImgPath from 'images/image_4.jpg';
+import photo5ImgPath from 'images/image_5.jpg';
+import photo6ImgPath from 'images/image_6.jpg';
+import photo7ImgPath from 'images/image_7.jpg';
 import bg3Path from 'images/bg3.png';
+// import logo1 from 'images/IOIO_logo.svg';
+import logo1 from 'images/WEB-Logo-2019-01B 2.svg';
+import logo2 from 'images/WEB-Logo-2019-02B 2.svg';
 const Engine = Matter.Engine;
 const Render = Matter.Render;
 const Runner = Matter.Runner;
@@ -29,71 +37,148 @@ Matter.use(
   MatterWrap
 );
 
+const slidesPhoto = [
+  photo1ImgPath,
+  photo2ImgPath,
+  photo3ImgPath,
+  photo4ImgPath,
+  photo5ImgPath,
+  photo6ImgPath,
+  photo7ImgPath
+]
 function isTouchSupport() {
   try {
     document.createEvent('TouchEvent');
   } catch (e) {
-    return false;  
+    return false;
   }
   return true;
 }
-class Sonar2019Page extends Component {
+class Sonar2019Maze1 extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activeBallsIdx: []
-    }
+    this.enableDrag = false;
     this.engine = null;
+    this.mazeWrapper = null;
+    this.canvasLayer = null;
+    this.checkIfOrientationEnabled = null;
     this.initMatterjs = this.initMatterjs.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
-    this.handleSlidesDragStart = this.handleSlidesDragStart.bind(this);
-    this.handleSlidesDragMove = this.handleSlidesDragMove.bind(this);
-    this.handleSlidesDragEnd = this.handleSlidesDragEnd.bind(this);
-    this.animateTriggerActive = this.animateTriggerActive.bind(this);
     this.handleDeviceRotate = this.handleDeviceRotate.bind(this);
-    this.syncForegroundBackgroundHeight = this.syncForegroundBackgroundHeight.bind(this);
-    this.lastPointerX = 0;
-    this.lastSliderX = 0;
+    this.handleTouchStart = this.handleTouchStart.bind(this);
+    this.handleMazeTilt = this.handleMazeTilt.bind(this);
+    this.resetMazeTilt = this.resetMazeTilt.bind(this);
+    this.createPlatforms = this.createPlatforms.bind(this);
+    this.createBalls = this.createBalls.bind(this);
+    this.state = {
+      orientationEnabledCounter: 0
+    }
   }
   componentDidMount() {
-    document.getElementById('root').classList.add('sonar-2019-page');
     this.initMatterjs();
-
-    this.pageWrapper.addEventListener('scroll', this.handleScroll);
-    // console.log('touch support: ', isTouchSupport());
-    this.photoSlidesWrapper.addEventListener('mousedown', this.handleSlidesDragStart);
-    this.photoSlidesWrapper.addEventListener('touchstart', this.handleSlidesDragStart);
-
-    const rotatingTextEl = document.querySelector('.rotating-text');
-    const rotatingTextElText = rotatingTextEl.innerHTML;
-    rotatingTextEl.innerHTML = '';
-    rotatingTextElText.split('').forEach((char, idx) => {
-      const textEl = document.createElement('span');
-      textEl.innerHTML = (char === ' '? '&nbsp;': char);
-      TweenMax.set(textEl, {
-        transform: `rotate(${idx * 360 / rotatingTextElText.length}DEG) translate(-4px, -${4 / Math.sin(Math.PI / rotatingTextElText.length / 2) - 27}px)`
-      })
-      rotatingTextEl.append(textEl)
-    })
-    this.syncForegroundBackgroundHeight();
+    this.checkIfOrientationEnabled = setTimeout(() => {
+      // alert('Enable device orientation in Settings > Safari > Motion & Orientation Access.')
+      // no deviceorientation
+      this.mazeWrapper.addEventListener('touchstart', this.handleTouchStart);
+      this.mazeWrapper.addEventListener('touchmove', this.handleMazeTilt, {passive: false});
+      this.mazeWrapper.addEventListener('touchend', this.resetMazeTilt);
+      this.mazeWrapper.addEventListener('mousedown', this.handleTouchStart);
+      document.addEventListener('mousemove', this.handleMazeTilt, {passive: false});
+      document.addEventListener('mouseup', this.resetMazeTilt);
+      window.removeEventListener("deviceorientation", this.handleDeviceRotate);
+    }, 500);
     window.addEventListener("deviceorientation", this.handleDeviceRotate);
-    window.addEventListener("resize", this.syncForegroundBackgroundHeight);
   }
-  syncForegroundBackgroundHeight() {
-    this.sectionWrapper.querySelectorAll('.section').forEach(el => {
-      const classList = [...el.classList];
-      classList.splice(classList.indexOf('section'), 1);
-      const targetClass = classList[0];
-      const targetEl = this.backgroundColorLayer.querySelector(`.${targetClass}`);
-      if (targetEl) {
-        TweenMax.set(targetEl, {
-          height: el.offsetHeight
-        })
+  initMatterjs() {
+    const self = this;
+    const engine = Engine.create();
+    this.engine = engine;
+    const world = engine.world;
+    const render = Render.create({
+        element: this.canvasLayer,
+        engine: engine,
+        options: {
+          width: 600,
+          height: 680,
+          background: 'none',
+          wireframes: false,
+          showAngleIndicator: false
+        }
+    });
+    Render.run(render);
+
+    // create runner
+    const runner = Runner.create();
+    Runner.run(runner, engine);
+
+    this.createPlatforms(world, render);
+    this.createBalls(world, render);
+
+  }
+  handleTouchStart(event) {
+    if (event.target === this.mazeWrapper) {
+      // event.preventDefault();
+      const boxPosition = this.mazeWrapper.getBoundingClientRect();
+      let pointer = event;
+      if (event.changedTouches && event.changedTouches[0]) {
+        pointer = event.changedTouches[0];
       }
+      const forceX = (pointer.clientX - boxPosition.x - boxPosition.width / 2) / boxPosition.width;
+      const forceY = (pointer.clientY - boxPosition.y - boxPosition.height / 2) / boxPosition.height;
+      this.engine.world.gravity.x = forceX;
+      this.engine.world.gravity.y = forceY;
+      TweenMax.to(this.canvasLayer, 0.1, {
+        rotationX: -forceY * 30,
+        rotationY: forceX * 30
+      })
+      this.enableDrag = true;
+    }
+  }
+  handleMazeTilt(event) {
+    if (this.enableDrag) {
+      event.preventDefault();
+      const boxPosition = this.mazeWrapper.getBoundingClientRect();
+      let pointer = event;
+      if (event.changedTouches && event.changedTouches[0]) {
+        pointer = event.changedTouches[0];
+      }
+      const forceX = (pointer.clientX - boxPosition.x - boxPosition.width / 2) / boxPosition.width;
+      const forceY = (pointer.clientY - boxPosition.y - boxPosition.height / 2) / boxPosition.height;
+      this.engine.world.gravity.x = forceX;
+      this.engine.world.gravity.y = forceY;
+      TweenMax.to(this.canvasLayer, 0.1, {
+        rotationX: -forceY * 30,
+        rotationY: forceX * 30
+      })
+    }
+  }
+  resetMazeTilt(event) {
+    this.enableDrag = false;
+    this.engine.world.gravity.x = 0;
+    this.engine.world.gravity.y = 0;
+    TweenMax.to(this.canvasLayer, 0.1, {
+      rotationX: 0,
+      rotationY: 0
     })
   }
   handleDeviceRotate(event) {
-    return;
+    // this.canvasLayer.innerHTML = JSON.stringify({
+    //   event: event,
+    //   alpha: event.alpha,
+    //   beta: event.beta,
+    //   gamma: event.gamma
+    // },' ');
+    // return;
+    this.setState(prevState => {
+      return {
+        orientationEnabledCounter: prevState.orientationEnabledCounter + 1
+      }
+    }, _=> {
+      if (this.state.orientationEnabledCounter > 2) {
+        if (this.checkIfOrientationEnabled)
+          clearTimeout(this.checkIfOrientationEnabled);
+        console.log('it works !!!');
+      }
+    })
     const beta = event.beta;
     const gamma = event.gamma;
 
@@ -103,17 +188,157 @@ class Sonar2019Page extends Component {
     this.engine.world.gravity.x = xForce;
     this.engine.world.gravity.y = yForce;
   }
+  createPlatforms(world, render) {
+    const maze = [
+      [0,0,0,0,0,1,1,2,1,1,0,0,0,0,0],
+      [0,0,0,0,0,1,0,0,0,1,0,0,0,0,0],
+      [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1],
+      [1,0,0,0,1,0,0,0,1,0,0,0,0,0,1],
+      [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1],
+      [1,0,1,0,0,0,1,0,0,0,0,0,1,0,1],
+      [1,0,1,0,1,1,1,1,1,1,1,0,1,0,1],
+      [1,0,0,0,1,0,0,0,1,0,0,0,1,0,1],
+      [1,0,1,0,1,0,1,0,1,0,1,1,1,0,1],
+      [1,0,1,0,1,0,1,0,1,0,1,0,0,0,1],
+      [1,0,1,1,1,1,1,0,1,0,1,0,1,1,1],
+      [1,0,1,0,0,0,0,0,1,0,1,0,0,0,1],
+      [1,0,1,0,1,1,1,1,1,1,1,1,1,0,1],
+      [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1],
+      [1,0,1,1,1,1,1,0,1,0,1,0,1,1,1],
+      [1,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ]
+    const borderWidth = 40;
+    const boxArray = [];
+    maze.forEach((col, yIdx) => {
+      col.forEach((cell, xIdx) => {
+        if (cell === 1) {
+          boxArray.push(
+            Bodies.rectangle((xIdx + 0.5) * borderWidth, (yIdx + 0.5) * borderWidth, borderWidth, borderWidth, { render: { fillStyle: '#FFF' }, isStatic: true })
+          )
+        } else if (cell === 2) {
+          boxArray.push(
+            Bodies.rectangle((xIdx + 0.5) * borderWidth, (yIdx + 0.5) * borderWidth, borderWidth, borderWidth, { 
+              render: { fillStyle: '#FFF' }, 
+              isStatic: true,
+              collisionFilter: {
+                mask: 0x0002
+              }
+            })
+          )
+        } else {
+          // boxArray.push(
+          //   Bodies.rectangle((xIdx + 0.5) * borderWidth, (yIdx + 0.5) * borderWidth, borderWidth, borderWidth, { 
+          //     render: { fillStyle: '#ccc' }, 
+          //     isStatic: true,
+          //     collisionFilter: {
+          //       mask: 0x0002
+          //     }
+          //   })
+          // )
+        }
+      })
+    })
+    World.add(world, boxArray);
+  }
+  createBalls(world, render) {
+    const borderWidth = 40;
+    // x: 6, y: 8
+    var ball = Bodies.circle(5.5 * borderWidth, 7.5 * borderWidth, borderWidth / 2, { 
+      friction: 0.00001, 
+      restitution: 0.35, 
+      density: 0.001,
+      render: { fillStyle: '#F00' }
+    });
+    World.add(world, ball);
+  }
+  componentWillUnmount() {
+    this.mazeWrapper.removeEventListener('touchstart', this.handleTouchStart);
+    this.mazeWrapper.removeEventListener('touchmove', this.handleMazeTilt);
+    this.mazeWrapper.removeEventListener('touchend', this.resetMazeTilt);
+    this.mazeWrapper.removeEventListener('mousedown', this.handleTouchStart);
+    document.removeEventListener('mousemove', this.handleMazeTilt);
+    document.removeEventListener('mouseup', this.resetMazeTilt);
+    window.removeEventListener("deviceorientation", this.handleDeviceRotate);
+  }
+  render() {
+    return <div class="maze-wrapper" ref={ref=>this.mazeWrapper=ref}>
+      <div class="maze" ref={ref=>this.canvasLayer=ref} />
+      <div class="maze-hints">Play!</div>
+    </div>
+  }
+}
+class Sonar2019Page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeBallsIdx: []
+    }
+    this.engine = null;
+    // this.checkScrollPosition = null;
+    this.initMatterjs = this.initMatterjs.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleSlidesDragStart = this.handleSlidesDragStart.bind(this);
+    this.handleSlidesDragMove = this.handleSlidesDragMove.bind(this);
+    this.handleSlidesDragEnd = this.handleSlidesDragEnd.bind(this);
+    this.animateTriggerActive = this.animateTriggerActive.bind(this);
+    this.syncForegroundBackgroundHeight = this.syncForegroundBackgroundHeight.bind(this);
+    this.lastPointerX = 0;
+    this.lastSliderX = 0;
+  }
+  componentDidMount() {
+    const self = this;
+    document.getElementById('root').classList.add('sonar-2019-page');
+    this.initMatterjs();
+
+    this.pageWrapper.addEventListener('scroll', this.handleScroll);
+    // this.checkScrollPosition = window.requestAnimationFrame(this.handleScroll);
+    // console.log('touch support: ', isTouchSupport());
+    this.photoSlidesWrapper.addEventListener('mousedown', this.handleSlidesDragStart);
+    this.photoSlidesWrapper.addEventListener('touchstart', this.handleSlidesDragStart);
+
+    const rotatingTextEls = document.querySelectorAll('.rotating-text');
+    rotatingTextEls.forEach(rotatingTextEl => {
+      const rotatingTextElText = rotatingTextEl.innerHTML;
+      rotatingTextEl.innerHTML = '';
+      rotatingTextElText.split('').forEach((char, idx) => {
+        const textEl = document.createElement('span');
+        textEl.innerHTML = (char === ' '? '&nbsp;': char);
+        TweenMax.set(textEl, {
+          transform: `rotate(${idx * 360 / rotatingTextElText.length}DEG) translate(-4px, -${4 / Math.sin(Math.PI / rotatingTextElText.length / 2) - 27}px)`
+        })
+        rotatingTextEl.append(textEl)
+      })
+    })
+    this.syncForegroundBackgroundHeight();
+    setTimeout(this.syncForegroundBackgroundHeight, 500);
+    window.addEventListener("resize", this.syncForegroundBackgroundHeight);
+  }
+  syncForegroundBackgroundHeight() {
+    this.sectionWrapper.querySelectorAll('.section').forEach(el => {
+      const classList = [...el.classList];
+      classList.splice(classList.indexOf('section'), 1);
+      const targetClass = classList[0];
+      const targetEl = this.backgroundColorLayer.querySelector(`.${targetClass}`);
+      if (targetEl) {
+        // console.log(el.offsetHeight, el.getBoundingClientRect().height);
+        TweenMax.set(targetEl, {
+          height: el.offsetHeight
+        })
+      }
+    })
+  }
   handleScroll(event) {
     // console.log(event);
     // check screen width
     const backgroundMaxScrollOffset = (window.innerWidth < 768 ? 0: -window.innerHeight)
-    TweenMax.set(this.backgroundLayer, {
+    TweenMax.set(this.canvasLayer, {
       y: Math.max(-this.pageWrapper.scrollTop, backgroundMaxScrollOffset)
     })
-    TweenMax.set(this.backgroundColorLayer, {
-      y: -this.pageWrapper.scrollTop
-    })
-    if (this.pageWrapper.scrollTop > window.innerHeight * 1.5) {
+    // TweenMax.set(this.backgroundColorLayer, {
+    //   y: -this.pageWrapper.scrollTop
+    // })
+    if (this.pageWrapper.scrollTop > window.innerHeight * (window.innerWidth < 768? 0.5: 1.5)) {
       TweenMax.set(this.canvasLayer, {
         filter: 'blur(20px)'
       })
@@ -122,6 +347,7 @@ class Sonar2019Page extends Component {
         filter: ''
       })
     }
+    // this.checkScrollPosition = window.requestAnimationFrame(this.handleScroll);
   }
   handleSlidesDragStart(event) {
     let pointer = event;
@@ -210,12 +436,12 @@ class Sonar2019Page extends Component {
     // keep the mouse in sync with rendering
     render.mouse = mouse;
     
-    // this.createPlatforms(world, render);
     this.createPlatforms(world, render);
+    // this.createPlatforms2(world, render);
     // createPlatforms2
     // Render.lookAt(render, Composite.allBodies(world));
     this.createBalls(world, render);
-    // this.createBalls(world, render);
+    // this.createBalls2(world, render);
 
     // Events.on(engine, 'collisionStart', function(event) {
     //   var pairs = event.pairs;
@@ -374,69 +600,6 @@ class Sonar2019Page extends Component {
       })
     ]);
   }
-  createPlatforms2(world, render) {
-    // const size = {
-    //   width: render.bounds.max.x - render.bounds.min.x,
-    //   height: render.bounds.max.y - render.bounds.min.y
-    // };
-    // x : 15, y: 17
-    // 40
-    const maze = [
-      [0,0,0,0,0,1,1,1,1,1,0,0,0,0,0],
-      [0,0,0,0,0,1,0,0,0,1,0,0,0,0,0],
-      [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1],
-      [1,0,0,0,1,0,0,0,1,0,0,0,0,0,1],
-      [1,0,1,1,1,0,1,0,1,1,1,0,1,0,1],
-      [1,0,1,0,0,0,1,0,0,0,0,0,1,0,1],
-      [1,0,1,0,1,1,1,1,1,1,1,0,1,0,1],
-      [1,0,0,0,1,0,0,0,1,0,0,0,1,0,1],
-      [1,0,1,0,1,0,1,0,1,0,1,1,1,0,1],
-      [1,0,1,0,1,0,1,0,1,0,1,0,0,0,1],
-      [1,0,1,1,1,1,1,0,1,0,1,0,1,1,1],
-      [1,0,1,0,0,0,0,0,1,0,1,0,0,0,1],
-      [1,0,1,0,1,1,1,1,1,1,1,1,1,0,1],
-      [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1],
-      [1,0,1,1,1,1,1,0,1,0,1,0,1,1,1],
-      [1,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
-      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    ]
-    const borderWidth = 40;
-    const boxArray = [];
-    maze.forEach((col, yIdx) => {
-      col.forEach((cell, xIdx) => {
-        if (cell === 1) {
-          boxArray.push(
-            Bodies.rectangle((xIdx + 0.5) * borderWidth, (yIdx + 0.5) * borderWidth, borderWidth, borderWidth, { render: { fillStyle: '#888' }, isStatic: true })
-          )
-        } else {
-          boxArray.push(
-            Bodies.rectangle((xIdx + 0.5) * borderWidth, (yIdx + 0.5) * borderWidth, borderWidth, borderWidth, { 
-              render: { fillStyle: '#ccc' }, 
-              isStatic: true,
-              collisionFilter: {
-                mask: 0x0002
-              }
-            })
-          )
-        }
-      })
-    })
-    World.add(world, boxArray);
-  }
-  createBalls2(world, render) {
-    const borderWidth = 40;
-    // x: 6, y: 8
-    var ball = Bodies.circle(5.5 * borderWidth, 7.5 * borderWidth, borderWidth / 2, { 
-      friction: 0.00001, 
-      restitution: 0.35, 
-      density: 0.001,
-      render: { fillStyle: '#F00' }
-      // collisionFilter: {
-      //   mask: 0x0001
-      // }
-    });
-    World.add(world, ball);
-  }
 
   createBalls(world, render) {
     const size = {
@@ -470,6 +633,8 @@ class Sonar2019Page extends Component {
     this.pageWrapper.removeEventListener('scroll', this.handleScroll);
     this.photoSlidesWrapper.removeEventListener('mousedown', this.handleSlidesDragStart);
     this.photoSlidesWrapper.removeEventListener('touchstart', this.handleSlidesDragStart);
+    // if (this.checkScrollPosition)
+    //   window.cancelAnimationFrame(this.checkScrollPosition);
   }
   render() {
     const state = this.state;
@@ -486,38 +651,47 @@ class Sonar2019Page extends Component {
           </div>
           <div className="bg section-explore"></div>
           <div className="bg section-about"></div>
+          <div className="bg section-special"></div>
         </div>
-        <div className="trigger-point" ref={ref=>this.triggerPointEl=ref}>
+        {/* <div className="trigger-point" ref={ref=>this.triggerPointEl=ref}>
           {state.activeBallsIdx.map(idx => {
             return <div className={`circle circle-${idx}`} key={idx} />
           })}
-        </div>
+        </div> */}
       </div>
       <div className="foreground-layer">
         <div className="logo container">
-          <Link to="/" className="company-link">IOIO Creative</Link>
+          <Link to={routes.lab(false)} className="company-link">IOIO Creative</Link>
         </div>
         <div className="container" ref={ref=>this.sectionWrapper=ref}>
           <div className="section section-title">
             <div className="title">Polar Polar</div>
+            <div className="rotating-text-wrapper">
+              <div className="rotating-text-size-wrapper">
+                <div className="rotating-text">SCROLL DOWN TO EXPLORE MORE PLEASE </div>
+              </div>
+            </div>
           </div>
           <div className="section section-general">
             <div className="title">
-              <span className="highlight">Polar Polar</span> is a playable artefact creating temporary topographic images through one’s motor input with audible elements.
+              <span className="highlight">Polar Polar</span> is a playable artefact creating temporary topographic images with audible elements through player’s motor input. 
             </div>
             <div className="description">
-              <p>It consists of a miniature speaker array, placed horizontally above an opaque cubic structure. While the permanent magnet is eliminated in the loudspeaker units, Polar Polar turns this component into a variable factor that players are asked to use a magnetic ball to complete a Ball-in-a-maze puzzle. The sound generated on one hand serves the semantic means of completing the game, whereas the artefact becomes a musical instrument through the act of playing.</p>
-              <p>With disrupting the conventional mechanism of the loudspeaker, Polar Polar recreates a familiar, yet alienated experience through the investigation of how a technological medium could possibly appear to us</p>
+              <p>Each set consists of a miniature speaker array, placed above a semi-opaque maze structure attached to a spinning mechanism. While the permanent magnet is eliminated in the loudspeaker units, Polar Polar turns this component into a variable factor that players navigate the <u>Ball-in-a-maze puzzle</u> with a magnetic ball. The sound generated on one hand serves the semantic means of completing the game, whereas the artefact turns into a <u>musical instrument</u> through the act of playing. </p>
+              <p>With disrupting the conventional mechanism of the loudspeaker, Polar Polar recreates a familiar, yet alienated experience through the investigation of how a technological medium could possibly be appeared.</p>
             </div>
           </div>
           <div className="section section-board">
             <div className="top-column">
               <div className="title">
-                Explore 4 unique ways to explore sound, find your way out through the sounds.
+                Distributing the magnetic energy with the rotary design to temporarily bring the speakers alive
               </div>
               <div className="line"></div>
               <div className="description">
-                It consists of a miniature speaker array, placed horizontally above an opaque cubic structure. While the permanent magnet is eliminated in the loudspeaker units, Polar Polar turns this component into.It consists of a miniature speaker array, placed horizontally above an opaque cubic structure.
+                Geometric path reinforces motion dynamics;<br />
+                Speaker Coils notate the rhythms;<br />
+                Revolving to define the tempo;<br />
+                Disruption brings forth the audible experience
               </div>
             </div>
             <div className="bottom-column">
@@ -526,25 +700,25 @@ class Sonar2019Page extends Component {
                   <div className="board-image">
                     <img src={board1ImgPath} alt=""/>
                   </div>
-                  <div className="board-name">Name 1</div>
+                  <div className="board-name">Kevin</div>
                 </li>
                 <li className="board">
                   <div className="board-image">
                     <img src={board2ImgPath} alt=""/>
                   </div>
-                  <div className="board-name">Name 2</div>
+                  <div className="board-name">Mary</div>
                 </li>
                 <li className="board">
                   <div className="board-image">
                     <img src={board3ImgPath} alt=""/>
                   </div>
-                  <div className="board-name">Name 3</div>
+                  <div className="board-name">David</div>
                 </li>
                 <li className="board">
                   <div className="board-image">
                     <img src={board4ImgPath} alt=""/>
                   </div>
-                  <div className="board-name">Name 4</div>
+                  <div className="board-name">Susan</div>
                 </li>
               </ul>
             </div>
@@ -552,31 +726,36 @@ class Sonar2019Page extends Component {
           <div className="section section-explore">
             <div className="top-column">
               <div className="title">
-                Explore 4 unique ways to explore sound, find your way out through the sounds.
+                Re: construction
               </div>
             </div>
             <div className="bottom-column">
               <div className="slides-wrapper" ref={ref=>this.photoSlidesWrapper=ref}>
                 <ul className="photos" ref={ref=>this.photoSlides=ref}>
-                  <li className="photo">
-                    <img src={photo1ImgPath} alt=""/>
-                  </li>
-                  <li className="photo">
-                    <img src={photo2ImgPath} alt=""/>
-                  </li>
-                  <li className="photo">
-                    <img src={photo3ImgPath} alt=""/>
-                  </li>
+                  {slidesPhoto.map((photoPath, idx) => {
+                    return <li className="photo" key={idx}>
+                      <img src={photoPath} />
+                    </li>
+                  })}
                 </ul>
               </div>
             </div>
-            <div className="background-text">Hand-Crafted</div>
+            <div className="background-text">Re: construction</div>
           </div>
           <div className="section section-about">
-            <p><span className="highlight">ABOUT US</span> - IOIO is a group of artists, engineers and designers that resides in the intersection between virtuality and physicality. We pull elements from their usual habitat and put it in the other side, the unfamiliar habitat, in the hope to ﬁnd a novel perspective to see things we thought we are familiar with. It is through the disruption of this network of many things that lives in virtual world, physical world or as a bridge between two worlds, we try to create new nodes in the network, new meaning of interaction, new perspective to see. We believe this is a rich and refreshing way to tell old story, an exciting and promising way to create new story.</p>
+            <p><Link to={routes.about(false)} className="highlight">ABOUT US</Link> - IOIO is a group of artists, engineers and designers that resides in the intersection between virtuality and physicality. We pull elements from their usual habitat and put it in the other side, the unfamiliar habitat, in the hope to find a novel perspective to see things we thought we are familiar with. It is through the disruption of this network of many things that lives in virtual world, physical world or as a bridge between two worlds, we try to create new nodes in the network, new meaning of interaction, new perspective to see. We believe this is a rich and refreshing way to tell old story, an exciting and promising way to create new story.</p>
+            {/* <div className="footer-text">Finding Polar Polar at Sónar Hong Kong 2019</div> */}
+              <div className="logo-wrapper">
+                <img src={logo1} alt="sonar2019"/>
+                <img src={logo2} alt="sonar2019"/>
+              </div>
             <div className="rotating-text-wrapper">
-              <div className="rotating-text">Stunning Mesh - Creativity is all !!!  </div>
+              <a  href="https://sonarhongkong.com/en/2019/artists/new-media-arts-polar-polar" target="_blank"
+                className="rotating-text">FINDING POLAR POLAR AT SÓNAR HONG KONG 2019   </a>
             </div>
+          </div>
+          <div className="section section-special">
+            <Sonar2019Maze1 />
           </div>
         </div>
       </div>
