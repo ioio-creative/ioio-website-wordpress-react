@@ -630,9 +630,14 @@ class Sonar2019Page extends Component {
   }
   componentWillUnmount() {
     document.getElementById('root').classList.remove('sonar-2019-page');
+    window.removeEventListener("resize", this.syncForegroundBackgroundHeight);
     this.pageWrapper.removeEventListener('scroll', this.handleScroll);
     this.photoSlidesWrapper.removeEventListener('mousedown', this.handleSlidesDragStart);
     this.photoSlidesWrapper.removeEventListener('touchstart', this.handleSlidesDragStart);
+    document.removeEventListener('mousemove', this.handleSlidesDragMove);
+    document.removeEventListener('mouseup', this.handleSlidesDragEnd);
+    document.removeEventListener('touchmove', this.handleSlidesDragMove);
+    document.removeEventListener('touchend', this.handleSlidesDragEnd);
     // if (this.checkScrollPosition)
     //   window.cancelAnimationFrame(this.checkScrollPosition);
   }
