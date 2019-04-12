@@ -331,6 +331,7 @@ body {
   margin: 0 auto;
   perspective: 500px;
   cursor: grab;
+  user-select: none;
 }
 #sonar-2019 .foreground-layer .section-special .maze {
   max-width: 600px;
