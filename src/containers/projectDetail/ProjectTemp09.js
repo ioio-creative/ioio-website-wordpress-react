@@ -9,14 +9,20 @@ class ProjectTemp09 extends Component {
     const props = this.props;
     const bg = {
       backgroundColor: props.background_mood_color,
-    };        
+    };
 
     let descriptionStyle = {
       textAlign: "left"
     };
+
     const isTextAlignDescriptionCenter = parseInt(props.is_text_align_description_center) === 1;
     if (isTextAlignDescriptionCenter) {
       descriptionStyle.textAlign = "center";
+    }
+
+    const isTitlePresent = Boolean(props.section_title);
+    if (isTitlePresent) {
+      descriptionStyle.fontWeight = "normal";
     }
     
     return (
@@ -24,7 +30,7 @@ class ProjectTemp09 extends Component {
         <div className="container-fluid" style={bg}>
           <div className="row">
             {
-              props.section_title &&
+              isTitlePresent &&
               <React.Fragment>
                 <div className="col-md-4"></div>
                 <div className="col-md-4"><p>{props.section_title}</p></div>
