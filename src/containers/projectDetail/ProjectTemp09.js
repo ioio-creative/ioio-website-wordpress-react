@@ -23,9 +23,14 @@ class ProjectTemp09 extends Component {
       <section className="photo-montage-one-text project-section-bg wow fadeIn">
         <div className="container-fluid" style={bg}>
           <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-4"><p>{props.section_title}</p></div>
-            <div className="col-md-4"></div>
+            {
+              props.section_title &&
+              <React.Fragment>
+                <div className="col-md-4"></div>
+                <div className="col-md-4"><p>{props.section_title}</p></div>
+                <div className="col-md-4"></div>
+              </React.Fragment>
+            }            
             <div className="col-md-4"></div>
             <div className="col-md-4"><p style={descriptionStyle}>{props.description}</p></div>
             <div className="col-md-4"></div>
