@@ -18,6 +18,7 @@ import ProjectTemp06 from 'containers/projectDetail/ProjectTemp06'; //photomonta
 import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomontage - One Video
 import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Image
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
+import ProjectTemp10 from 'containers/projectDetail/ProjectTemp10'; //videomontage - One Video
 import Footer from 'containers/footer/Footer';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
@@ -44,7 +45,8 @@ const projectTemplateMap = {
   6: ProjectTemp06,
   7: ProjectTemp07,
   8: ProjectTemp08,
-  9: ProjectTemp09
+  9: ProjectTemp09,
+  10: ProjectTemp10
 };
 
 
