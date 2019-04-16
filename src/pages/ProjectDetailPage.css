@@ -372,7 +372,10 @@ video {
   padding: 0;
   width: 100%;
 }
-
+.photo-montage-one-video > div {
+  padding: 0;
+  margin: 0;
+}
 .photo-montage-one-video .video-wrapper {
   margin: 0;
   padding: 0;
@@ -385,7 +388,31 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  /* object-fit: contain; */
+}
+.photo-montage-one-video .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: #FFFFFF;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.photo-montage-one-video .play-button:after {
+  content: '';
+  border-left: 40px solid #000;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  display: block;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-40%, -50%);
 }
 
 @media only screen and (max-width: 767px) {
