@@ -12,17 +12,18 @@ class ProjectTemp09 extends Component {
     };
 
     let descriptionStyle = {
-      textAlign: "left"
+      textAlign: "left",
+      fontWeight: "normal"
     };
 
-    const isTextAlignDescriptionCenter = parseInt(props.is_text_align_description_center) === 1;
+    const isTextAlignDescriptionCenter = props.is_text_align_description_center === "1";
     if (isTextAlignDescriptionCenter) {
       descriptionStyle.textAlign = "center";
     }
 
-    const isTitlePresent = Boolean(props.section_title);
-    if (isTitlePresent) {
-      descriptionStyle.fontWeight = "normal";
+    const isBoldDescription = props.is_bold_description === "1";
+    if (isBoldDescription) {
+      descriptionStyle.fontWeight = "bold";
     }
     
     return (
@@ -30,7 +31,7 @@ class ProjectTemp09 extends Component {
         <div className="container-fluid" style={bg}>
           <div className="row">
             {
-              isTitlePresent &&
+              props.section_title &&
               <React.Fragment>
                 <div className="col-md-4"></div>
                 <div className="col-md-4"><p>{props.section_title}</p></div>
