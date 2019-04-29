@@ -38,7 +38,8 @@ class ProjectTemp10 extends Component {
       };
       const videoAttrs = {
         autoPlay: (props.is_autoplay_video === "1"? true: false),
-        loop: (props.is_autoplay_video === "1"? true: false)
+        loop: (props.is_autoplay_video === "1"? true: false),
+        muted: (props.is_autoplay_video === "1"? true: false),
       }
       // console.log(videoAttrs);
       return (
