@@ -37,10 +37,15 @@ class ProjectTemp09 extends Component {
                 <div className="col-md-4"><p>{props.section_title}</p></div>
                 <div className="col-md-4"></div>
               </React.Fragment>
-            }            
-            <div className="col-md-4"></div>
-            <div className="col-md-4"><p style={descriptionStyle}>{props.description}</p></div>
-            <div className="col-md-4"></div>
+            }
+            {
+              props.description &&
+              <React.Fragment>
+                <div className="col-md-4"></div>
+                <div className="col-md-4"><p style={descriptionStyle}>{props.description}</p></div>
+                <div className="col-md-4"></div>
+              </React.Fragment>
+            }
           </div>
           <p></p>
         </div>

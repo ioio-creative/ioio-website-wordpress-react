@@ -382,6 +382,9 @@ video {
   position: relative;
   padding-top: 56.25%;
 }
+.photo-montage-one-text + section.photo-montage-one-video .video-wrapper {
+  margin: 0;
+}
 .photo-montage-one-video video {
   position: absolute;
   top: 0;
