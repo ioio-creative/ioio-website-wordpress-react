@@ -181,6 +181,7 @@ class ProjectDetailPage extends Component {
   componentWillUnmount() {
     $('#root').removeClass('project-details-page');
   }
+  
   render() {
     const state = this.state;
     const project = state.project;
