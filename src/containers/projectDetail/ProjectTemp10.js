@@ -48,6 +48,7 @@ class ProjectTemp10 extends Component {
     playVideo(isMutedVideo = true) {
       // https://github.com/scottschiller/SoundManager2/issues/178
       // https://sites.google.com/a/chromium.org/dev/audio-video/autoplay
+      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
       this.video.muted = isMutedVideo;
       const videoPlayPromise = this.video.play();
       if (videoPlayPromise !== undefined) {
