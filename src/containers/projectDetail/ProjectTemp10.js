@@ -81,7 +81,7 @@ class ProjectTemp10 extends Component {
         autoPlay: (props.is_autoplay_video === "1"? true: false),
         loop: (props.is_autoplay_video === "1"? true: false),
         muted: (props.is_autoplay_video === "1"? true: false),
-      }
+      };
       // console.log(videoAttrs);
       return (
         <section className="photo-montage-one-video project-section-bg wow fadeInUp" style={bg}>
@@ -90,7 +90,7 @@ class ProjectTemp10 extends Component {
             <div className="row container-fluid">
               <div className="col-md-10 offset-md-1">
                 <div className="video-wrapper">
-                  <video muted={true} src={props.video.guid} {...videoAttrs}
+                  <video src={props.video.guid} {...videoAttrs}
                     onPlay={this.hidePlayButton}
                     onPause={this.showPlayButton}
                     ref={ref=>this.video=ref}
