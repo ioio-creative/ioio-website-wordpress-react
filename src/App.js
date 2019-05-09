@@ -19,7 +19,7 @@ import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} f
 import Main from 'containers/Main';
 import Sidebar from 'containers/sidebar/Sidebar';
 import Header from 'containers/header/Header';
-import TestLanguageSelector from 'containers/test/TestLanguageSelector';
+//import TestLanguageSelector from 'containers/test/TestLanguageSelector';
 
 import scriptjs from 'scriptjs'
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
@@ -79,6 +79,7 @@ let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
  || getLanguageFromBrowserLangIdCode(browserLangIdCode)
  || config.defaultLanguage;
 // let globalLanguage = config.defaultLanguage;
+
 
 // this is for setting language specific css
 const htmlElement = document.querySelector('html');
