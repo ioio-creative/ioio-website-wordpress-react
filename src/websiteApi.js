@@ -188,6 +188,13 @@ async function fetchProjectsAsync() {
     return orderProjectsByDateDescending(unorderedProjects);
 }
 
+/**
+ * 
+ * wp api:  /projects_list
+ * - project limit
+ * - functions.php:6083
+ */
+
 function fetchProjectListOrderByProjectDateAsc(callback) {
   passJsonResultToCallback("projects_list", (projects) => {
     callback(projects);

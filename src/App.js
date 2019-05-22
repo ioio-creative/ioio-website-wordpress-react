@@ -21,7 +21,7 @@ import Sidebar from 'containers/sidebar/Sidebar';
 import Header from 'containers/header/Header';
 //import TestLanguageSelector from 'containers/test/TestLanguageSelector';
 
-import scriptjs from 'scriptjs'
+import scriptjs from 'scriptjs';
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import initializeReactGa from 'utils/reactGa/initializeReactGa';
 import getSearchObjectFromLocation from 'utils/queryString/getSearchObjectFromLocation';
