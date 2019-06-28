@@ -121,7 +121,7 @@ class DarkFooter extends Component {
                 <span>
                   <FormattedMessage
                     id="DarkFooter.copyRightLabel"
-                    defaultMessage="&copy;2018 IOIO LIMITED"
+                    defaultMessage="&copy;2019 IOIO LIMITED"
                   />
                 </span>
               </div>
