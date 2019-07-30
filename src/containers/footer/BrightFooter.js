@@ -126,7 +126,7 @@ class BrightFooter extends Component {
               <div className="col-md-3 footer-bottom-copyright">
                 <FormattedMessage
                   id="BrightFooter.copyRightLabel"
-                  defaultMessage="&copy;2018 IOIO LIMITED"
+                  defaultMessage="&copy;2019 IOIO LIMITED"
                 />
               </div>
               <div className="col-md-3"></div>
