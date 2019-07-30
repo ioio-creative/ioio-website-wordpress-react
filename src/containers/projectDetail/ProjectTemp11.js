@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-
-import spriteTest01 from 'images/test/sprite03.png';
 /**
  * scrollable png sequences template
  */
