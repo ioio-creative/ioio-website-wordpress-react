@@ -107,6 +107,7 @@ function VideoLandingDesc(props) {
         </div>
         <div className="col-md-1"></div>
       </div>
+      <div className="clearfix"></div>
     </div>
   </section>);
 }

@@ -19,6 +19,8 @@ import ProjectTemp07 from 'containers/projectDetail/ProjectTemp07'; //photomonta
 import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width One Image
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
 import ProjectTemp10 from 'containers/projectDetail/ProjectTemp10'; //videomontage - One Video
+import ProjectTemp11 from 'containers/projectDetail/ProjectTemp11'; //scrollable png sequences template
+
 import Footer from 'containers/footer/Footer';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
@@ -46,7 +48,8 @@ const projectTemplateMap = {
   7: ProjectTemp07,
   8: ProjectTemp08,
   9: ProjectTemp09,
-  10: ProjectTemp10
+  10: ProjectTemp10,
+  11: ProjectTemp11,
 };
 
 
@@ -118,6 +121,7 @@ function VideoLandingDesc(props) {
         </div>
         <div className="col-md-1"></div>
       </div>
+      <div className="clearfix"></div>
     </div>
   </section>);
 }
@@ -213,7 +217,10 @@ class ProjectDetailPage extends Component {
     const projectTemplates = project.project_sections;
     const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
       const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
-      return <TemplateToUse key={idx + '_' + templateData.id} {...templateData} />
+      if (TemplateToUse)
+        return <TemplateToUse key={idx + '_' + templateData.id} {...templateData} />;
+      else 
+        return null;
     });    
 
     return (
@@ -224,8 +231,15 @@ class ProjectDetailPage extends Component {
           <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
       */
         }
+        {/* <ProjectTemp11 /> */}
         {projectTemplateContainer}
         <div id="project-detail-page-space-buffer"></div>
+        {/* next project link, maybe useful for "scroll down and load next" */}
+        {/*
+        <div className="next-project-block">
+          <Link to={routes.projectBySlugWithValue(project.next_project.slug)}>Next Project</Link>
+        </div>
+        */}
         <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
           <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
             <i className="ion ion-android-close"></i>
