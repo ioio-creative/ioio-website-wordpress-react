@@ -15,8 +15,8 @@ class ProjectTemp11 extends Component {
       spriteStep: 0,
       spriteActive: false,
     }
-    this.spriteWidth = parseInt('0' + props.sprite_image_height);
-    this.spriteHeight = parseInt('0' + props.sprite_image_width);
+    this.spriteWidth = parseInt('0' + props.sprite_image_width);
+    this.spriteHeight = parseInt('0' + props.sprite_image_height);
     this.spriteCount = parseInt('0' + props.sprite_images_count);
     this.scrollStep = parseInt('0' + props.sprite_scroll_distance);
     this.scrollOffsetToStep = this.scrollOffsetToStep.bind(this);
