@@ -15,7 +15,9 @@ import {languages} from 'globals/config';
 */
 const baseUrl = "https://admin.ioiocreative.com/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
-const defaultQuery = "?per_page=20";
+// const defaultQuery = "?per_page=20";
+const defaultQuery = "?per_page=100";
+
 
 // container of WordPress generated id's of active entities,
 // used for fetching entity by id via WordPress API

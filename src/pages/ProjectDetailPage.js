@@ -193,7 +193,7 @@ class ProjectDetailPage extends Component {
     // should check isReturnNotFound first
     // before checking project === null
     if (state.isReturnNotFound) {
-      return (<Redirect to={routes.notFound} />);
+      return (<Redirect to={routes.notFound(false)} />);
     }
 
     if (project === null) {
