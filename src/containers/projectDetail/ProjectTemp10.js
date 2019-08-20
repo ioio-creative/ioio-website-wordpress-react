@@ -84,6 +84,9 @@ class ProjectTemp10 extends Component {
         muted: (props.is_autoplay_video === "1"? true: false),
       };
       // console.log(videoAttrs);
+      if (props.images && props.images[0]['guid']) {
+        videoAttrs['poster'] = props.images[0]['guid'];
+      }
       return (
         <section className="photo-montage-one-video project-section-bg wow fadeInUp" style={bg}>
           {/* TODO: modified by Chris */}
