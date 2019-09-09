@@ -20,6 +20,7 @@ import ProjectTemp08 from 'containers/projectDetail/ProjectTemp08'; //Full Width
 import ProjectTemp09 from 'containers/projectDetail/ProjectTemp09'; //centre text
 import ProjectTemp10 from 'containers/projectDetail/ProjectTemp10'; //videomontage - One Video
 import ProjectTemp11 from 'containers/projectDetail/ProjectTemp11'; //scrollable png sequences template
+import ProjectTemp12 from 'containers/projectDetail/ProjectTemp12'; //scrollable png sequences template
 
 import Footer from 'containers/footer/Footer';
 
@@ -50,6 +51,7 @@ const projectTemplateMap = {
   9: ProjectTemp09,
   10: ProjectTemp10,
   11: ProjectTemp11,
+  12: ProjectTemp12,
 };
 
 

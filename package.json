@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aframe": "^0.9.2",
+    "aframe-react": "^4.4.0",
     "ajv": "^6.4.0",
     "ajv-keywords": "^3.1.0",
     "gmail-send": "^1.2.14",
