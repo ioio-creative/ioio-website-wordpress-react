@@ -24,6 +24,7 @@ const AsyncContactsLabPage = asyncLoadingComponentWithTracker(() => import("page
 const AsyncTappingPage = asyncLoadingComponentWithTracker(() => import("pages/TappingPage"));
 const AsyncHoppingPage = asyncLoadingComponentWithTracker(() => import("pages/Prototype2Page"));
 const AsyncSonar2019Page = asyncLoadingComponentWithTracker(() => import("pages/Sonar2019Page"));
+const AsyncSchoolVR = asyncLoadingComponentWithTracker(() => import("pages/schoolVR"));
 const AsyncNotFoundPage = asyncLoadingComponentWithTracker(() => import("pages/NotFoundPage"));
 
 class Main extends Component {
@@ -66,6 +67,7 @@ class Main extends Component {
                 <Route path={routes.tapping} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncTappingPage)} />
                 <Route path={routes.hopping} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncHoppingPage)} />
                 <Route path={routes.sonar2019} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncSonar2019Page)} />
+                <Route path={routes.schoolVR} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncSchoolVR)} />
                 <Route path='/trial' component={P5SketchTrialPage} />
                 <Route component={AsyncNotFoundPage} />
               </Switch>

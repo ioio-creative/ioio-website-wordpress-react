@@ -25,6 +25,7 @@ export default function Sidebar() {
             */}
             <Route path={routes.lab(false)} render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncDarkSidebar)} />
             <Route path={routes['sonar2019']} render={null} />
+            <Route path={routes['schoolVR']} render={null} />
             <Route render={passLanguageToAsyncLoadingComponentFunc(langCode, AsyncBrightSidebar)} />
           </Switch>
         );

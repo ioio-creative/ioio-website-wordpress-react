@@ -19,6 +19,7 @@ export default function Header() {
       */}
       <Route path={routes.lab(false)} component={AsyncDarkHeader} />
       <Route path={routes['sonar2019']} render={null} />
+      <Route path={routes['schoolVR']} render={null} />
       <Route component={AsyncBrightHeader} />
     </Switch>    
   );    
