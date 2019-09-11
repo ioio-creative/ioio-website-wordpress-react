@@ -24,7 +24,7 @@ const AsyncContactsLabPage = asyncLoadingComponentWithTracker(() => import("page
 const AsyncTappingPage = asyncLoadingComponentWithTracker(() => import("pages/TappingPage"));
 const AsyncHoppingPage = asyncLoadingComponentWithTracker(() => import("pages/Prototype2Page"));
 const AsyncSonar2019Page = asyncLoadingComponentWithTracker(() => import("pages/Sonar2019Page"));
-const AsyncSchoolVR = asyncLoadingComponentWithTracker(() => import("pages/schoolVR"));
+const AsyncSchoolVR = asyncLoadingComponentWithTracker(() => import("pages/SchoolVR"));
 const AsyncNotFoundPage = asyncLoadingComponentWithTracker(() => import("pages/NotFoundPage"));
 
 class Main extends Component {

@@ -62,5 +62,5 @@ export default {
   tapping: "/tapping",
   hopping: "/hopping",
   sonar2019: "/sonar2019",
-  // schoolVR: "/schoolVR"
+  schoolVR: "/schoolVR"
 };
