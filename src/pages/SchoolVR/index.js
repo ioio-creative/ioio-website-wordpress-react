@@ -228,11 +228,11 @@ const SchoolVR = (props) => {
       <div ref={(elem)=>{svrIcon = elem}} id="svrIcon" className="hide">
         <p className="s">School VR</p><span></span>
       </div>
-      <div id="logo">
+      <a id="logo" href="https://ioiocreative.com" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.81 30.87">
           <path d="M8.11.09H5.83v4.82H.05v2.28h5.78v6.7h2.28v-6.7h5.77V4.91H8.11V.09zM25.13 2.49h5.22v11.35h2.27V2.49h6.34V.22H25.13v2.27z"/><path d="M35.94 5.25v2.9l2.93.01-.01-2.92-2.92.01zM90.75 9.3h-5.42V7.55h5.42V5.66h-5.42V3.74h5.42V1.86h-6.37V.01h-1.89v2.47l-1.66 2.07V2.91l1-1.36.25-.33-1.16-.89-.34-.25-3.45 4.72-.24.33 1.16.87.34.25.56-.76v8.47h1.88V4.69l1.41 1.13 1.2-1.52v9.66h1.89v-2.77h5.42V9.3zM60.28 1.84h1.59v9.63h-1.59z"/><path d="M62.77.05v12.34h-2.5v1.59h4.08V.05h-1.58zM58.25 2.67c-.65-.51-1.32-1-1.91-1.51V0h-1.59v1.16l-3.64 3 1 1.23.21-.18V9l-1.12 5.1H53l.72-3.67v3.69h5.18V9.91h-5.12l.07-.36h5.07v-4.3l.22.17 1-1.22L60 4c-.55-.4-1.16-.87-1.75-1.33zm-3.1 10v-1.3h2.29v1.25zm2.18-5V8H54v-.43zm0-2V6H54v-.45zM53.9 4l1.65-1.38L57.3 4zM0 23.41h1.84v7.33H0zM8 23.29c-2.25 0-3.25 1.17-3.25 3.78s1 3.8 3.25 3.8 3.23-1.14 3.23-3.8a4.32 4.32 0 0 0-.75-2.85A3 3 0 0 0 8 23.29zm0 5.94c-1 0-1.37-.32-1.37-2.16S7 24.93 8 24.93s1.35.3 1.35 2.14-.44 2.16-1.35 2.16zM14.09 23.41h1.84v7.33h-1.84zM22.05 23.29c-2.24 0-3.24 1.17-3.24 3.78s1 3.8 3.24 3.8 3.24-1.14 3.24-3.8a4.38 4.38 0 0 0-.75-2.85 3 3 0 0 0-2.49-.93zm1.36 3.78c0 1.84-.41 2.16-1.35 2.16s-1.36-.32-1.36-2.16c0-1.51.19-2.14 1.35-2.14.95 0 1.36.3 1.36 2.14zM37.11 29a3.57 3.57 0 0 1-1.35.26c-1.11 0-1.64-.33-1.64-2.21 0-1.61.38-2.11 1.61-2.11a4.08 4.08 0 0 1 1.36.23l.13.05.18-1.59h-.07a5.34 5.34 0 0 0-1.69-.3 3.27 3.27 0 0 0-2.58 1 4.06 4.06 0 0 0-.83 2.67c0 2.59 1.08 3.85 3.31 3.85a4.53 4.53 0 0 0 1.82-.4h.06l-.18-1.52zM45.53 25.72c0-1.56-.9-2.31-2.75-2.31h-2.72v7.32h1.82v-2.65h.83L44 30.73h2.12l-1.69-3a2 2 0 0 0 1.1-2.01zm-1.88.07c0 .67-.21.88-.89.88h-.88v-1.73h.91c.66 0 .86.2.86.85zM50.23 27.72h2.63v-1.49h-2.63v-1.2h3.12l-.03-1.62h-4.9v7.32h5.05l.04-1.6h-3.28v-1.41zM60.12 23.41h-2l-2.54 7.32h1.92l.4-1.38h2.42l.4 1.38h2l-2.53-7.25zm-1 1.67l.11.41.64 2.31H58.3l.7-2.31zM63.9 23.41l-.04 1.65h1.91v5.67h1.82v-5.67h1.92l-.04-1.65H63.9zM72.09 23.41h1.84v7.33h-1.84zM80.02 28.3l-.1.41-.11-.41-1.4-4.89h-1.99l2.47 7.25.02.07h1.93l2.5-7.32h-1.89l-1.43 4.89zM87.53 29.13v-1.41h2.63v-1.49h-2.63v-1.2h3.13l-.04-1.62h-4.9v7.32h5.05l.04-1.6h-3.28z"/>
         </svg>
-      </div>
+      </a>
       <div id="copyright">
         <div className="copyrightWrap">
           <div className="pages bold h5">
@@ -241,7 +241,7 @@ const SchoolVR = (props) => {
               <span className="pageNum"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></span>
             </div>
           </div>
-          <span className="s">Copyright © 2019 IOIO Limited</span>
+          <span className="s">Copyright © {new Date().getFullYear()} IOIO Limited</span>
         </div>
       </div>
 
@@ -373,7 +373,7 @@ const SchoolVR = (props) => {
               <h2>Contact</h2>
               <ul className="h6">
                 <li>
-                  <div className="t h4">Let’s Create Together!</div>
+                  <div className="t h4 bold">Let’s Create Together!</div>
                   <p>IOIO is a cross-media studio for experience innovation. We are a team of designers, computer engineers, media artists, project managers and researchers. Our target is to create new nodes in the network between physical and virtual, new meaning of interaction, new perspective to see.</p>
                 </li>
                 <li>
