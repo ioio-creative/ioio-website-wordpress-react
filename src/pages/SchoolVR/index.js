@@ -347,6 +347,43 @@ const SchoolVR = (props) => {
             <h2>Functions</h2>
           </div>
         </div>
+        <div id="section06" className="section">
+          <div className="content">
+            <h2>Product<br/>Outcome</h2>
+          </div>
+        </div>
+        <div id="section07" className="section">
+          <div className="content">
+            <h2>Product<br/>Outcome</h2>
+          </div>
+        </div>
+        <div id="section08" className="section">
+          <div className="content halfWrap">
+            <div className="half">
+              <h2>Specification for<br/>best performance</h2>
+              <ul className="specList h5">
+                <li>Windows 10 64-bit</li>
+                <li>CPU: i5 @3.2GHz * 4</li>
+                <li>RAM: 8GB min</li>
+                <li>GPU: NVIDIA GTX 1050; AMD RX560</li>
+                <li>Browser: Firefox / Chrome</li>
+              </ul>
+            </div>
+            <div className="contact half">
+              <h2>Contact</h2>
+              <ul className="h6">
+                <li>
+                  <div className="t h4">Let’s Create Together!</div>
+                  <p>IOIO is a cross-media studio for experience innovation. We are a team of designers, computer engineers, media artists, project managers and researchers. Our target is to create new nodes in the network between physical and virtual, new meaning of interaction, new perspective to see.</p>
+                </li>
+                <li>
+                  <p>UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING,<br/>17 YUK YAT ST, TO KWA WAN, KOWLOON,<br/>HONG KONG</p>
+                  <p>(852) 3709 8437<br/><a href="http://www.ioiocreative.com" target="_blank">www.ioiocreative.com</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

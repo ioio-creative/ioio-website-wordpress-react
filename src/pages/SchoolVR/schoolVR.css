@@ -31,9 +31,10 @@ h3, .title{ font-size:calc(28 / 16 * 1rem); line-height:calc(36 / 16 * 1rem); fo
 h4, .h4{ font-size:calc(19 / 16 * 1rem); line-height:calc(30 / 16 * 1rem); }
 h5, .h5{ font-size:calc(16 / 16 * 1rem); line-height:calc(23 / 16 * 1rem); }
 h6, .h6{ font-size:calc(13 / 16 * 1rem); line-height:calc(23 / 16 * 1rem); }
-.s{ font-size:calc(11 / 16 * 1rem); }
+.s{ font-size:calc(11 / 16 * 1rem); line-height:calc(18 / 16 * 1rem); }
 .bold{font-family: 'Myriad Pro'; font-weight: bold;}
 
+a{ color:#fff; }
 html, body{ width:100%; height:100%; overflow: hidden; }
 body{
   white-space: initial;
@@ -71,6 +72,7 @@ body{
 .schoolVR #svrIcon p{
   float: left;
   padding-right:calc(14 / 16 * 1rem);
+  line-height: calc(21 / 16 * 1rem);
 }
 .schoolVR #svrIcon span{
   width:calc(31 / 16 * 1rem);
@@ -110,6 +112,7 @@ body{
 .schoolVR #copyright .copyrightWrap > span{
   padding-top: calc(4 / 16 * 1rem);
   padding-left: calc(15 / 16 * 1rem);
+  line-height: calc(10 / 16 * 1rem);
 }
 .schoolVR #copyright .pages{
   border-right: calc(1 / 16 * 1rem) solid rgba(39,200,250,.3);
@@ -128,7 +131,7 @@ body{
   display: inline-block;
 }
 .schoolVR #copyright .pages .pageNumWrap .pageNum{
-  transition: transform .6s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform .6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .schoolVR #copyright.w{
   color:#fff;
@@ -148,6 +151,12 @@ body{
 .schoolVR .section .content{
   height: 100%;
   padding:calc(75 / 16 * 1rem) 0 11% 6%;
+}
+.schoolVR .section .content.halfWrap{
+  display: flex;
+}
+.schoolVR .section .content .half{
+  width:50%;
 }
 
 
@@ -313,4 +322,33 @@ body{
 #scrollBarWrap #scrollBar.active,
 #scrollBarWrap #scrollBar:hover{
   background-color:rgba(255,255,255,0.7);
+}
+
+
+/* section 08 */
+.schoolVR #section08 .specList{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(80 / 16 * 1rem);
+}
+.schoolVR #section08 li{
+  list-style: none;
+  margin:0;
+  border-bottom: calc(1 / 16 * 1rem) solid #fff;
+}
+.schoolVR #section08 .specList li{
+  padding: calc(26 / 16 * 1rem) 0;
+}
+.schoolVR #section08 .contact ul{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(110 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li{
+  padding: calc(30 / 16 * 1rem) 0 calc(46 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li:last-child{
+  border:0;
+}
+.schoolVR #section08 .contact .t{
+  color:#41DDF7;
+  padding-bottom:calc(15 / 16 * 1rem);
 }
