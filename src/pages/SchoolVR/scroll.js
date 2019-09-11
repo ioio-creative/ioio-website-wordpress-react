@@ -664,7 +664,7 @@ var SmoothScroll = function(elem, scrollFunc){
 
 	var onShowScrollBar = function(){
 		showScrollBar = true;
-		initScrollBar();
+		// initScrollBar();
 	}
 
 	var init = function(){

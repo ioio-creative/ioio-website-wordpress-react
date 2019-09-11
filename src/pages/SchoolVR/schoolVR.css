@@ -233,6 +233,8 @@ body{
 }
 
 
+
+/* scroll bar */
 #scrollBarWrap{
 	width:calc(6 / 16 * 1rem); height:100vh; position: fixed; top:0px; right:calc(3 / 16 * 1rem); -webkit-animation: fadeIn .3s cubic-bezier(0.215, 0.61, 0.355, 1); animation: fadeIn .3s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1); transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -242,12 +244,12 @@ body{
   opacity: 0;
 }
 #scrollBarWrap #scrollBar{
-  width:100%; height:auto; background-color:rgba(176,177,178,0.3); border-radius: rem-calc(5); position: absolute; top:0px; right:0px;
+  width:100%; height:auto; background-color:rgba(255,255,255,0.2); border-radius: calc(5 / 16 * 1rem); position: absolute; top:0px; right:0px;
 
   -webkit-transition: background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), height 600ms cubic-bezier(0.19, 1, 0.22, 1);
   transition:         background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), height 600ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 #scrollBarWrap #scrollBar.active,
 #scrollBarWrap #scrollBar:hover{
-  background-color:rgba(176,177,178,0.6);
+  background-color:rgba(255,255,255,0.7);
 }
