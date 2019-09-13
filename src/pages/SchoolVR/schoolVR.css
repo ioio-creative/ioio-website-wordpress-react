@@ -215,7 +215,7 @@ body{
   color:#7BEFEC;
   font-size:1.59vw;
 }
-.schoolVR #section01 canvas{
+.schoolVR canvas{
   display: block;
 }
 
@@ -489,7 +489,19 @@ body{
 
 
 
-
+.schoolVR #footer3d{
+  position: relative;
+}
+.schoolVR #footer3d #changeGeoBtn{
+  width:calc(150 / 16 * 1rem);
+  height:calc(50 / 16 * 1rem);
+  border-radius: calc(25 /16 * 1rem);
+  background:#fff;
+  position: absolute;
+  bottom:calc(60 / 16 * 1rem);
+  left:50%;
+  transform: translate3d(-50%,0,0);
+}
 
 
 /* scroll bar */

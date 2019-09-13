@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import TweenMax, { Power3 } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
+// import Landing3d from './landing3d.js';
+// import Footer3d from './footer3d.js';
 import './schoolVR.css';
 import smoothScroll from './scroll';
 import pjImage01 from '../../images/schoolVR/project01.png';
@@ -14,18 +16,23 @@ import ftnImage05 from '../../images/schoolVR/function05.png';
 import ftnImage06 from '../../images/schoolVR/function06.png';
 import ftnImage07 from '../../images/schoolVR/function07.png';
 import ftnImage08 from '../../images/schoolVR/function08.png';
+let svrIcon = null;
+let pageNum = null;
+let pageNumSpan = null;
+let logo = null;
+let copyright = null;
+let copyrightWrap = null;
+let pages = null;
+let section01wrap = null;
+
+let page = 0;
+let smooth = null;
 
 const SchoolVR = (props) => {
   const [sceneElem, setSceneElem] = useState(null);
-  let svrIcon = null;
-  let pageNum = null;
-  let pageNumSpan = null;
-  let logo = null;
-  let copyright = null;
-  let copyrightWrap = null;
-  let pages = null;
-  let section01wrap = null
-
+  const [footerSceneElem, setFooterSceneElem] = useState(null);
+  // const [disable, setDisable] = useState(false);
+  
   useEffect(()=>{
     document.getElementById('root').classList.add('schoolVR');
 
@@ -38,15 +45,219 @@ const SchoolVR = (props) => {
       let width = window.innerWidth,
           height = window.innerHeight; 
       let scene, camera, renderer, control;
-      let isClicked = false;
+
+    const initScene = () => {
+      camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
+
+      camera.position.x = 7;
+      camera.position.y = 9;
+      camera.position.z = 32;
+
+      scene = new THREE.Scene();
+
+      renderer = new THREE.WebGLRenderer({antialias: true});
+      renderer.setClearColor(0x000000);
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( width, height );
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.setAnimationLoop(render);
+      sceneElem.appendChild( renderer.domElement );
       
+      control = new Orbitcontrols( camera, renderer.domElement );
+      control.enablePan = false;
+      control.enableZoom = false;
+      control.minPolarAngle = 10 * Math.PI/180;
+      control.maxPolarAngle = 90 * Math.PI/180;
+      control.enableDamping = true;
+      control.dampingFactor = 0.05;
+      control.rotateSpeed = 0.05;
+      control.autoRotate = true;
+      control.autoRotateSpeed = .02;
+      
+      initGeometry();
+      initLights();
+    }
+
+    const initLights = () => {
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+
+      //left
+      const pointLight = new THREE.PointLight(0xd1898a, 1.3);
+      pointLight.position.set( -40, 15, 0 );
+      pointLight.castShadow = true;
+      pointLight.shadow.mapSize.width = 2048;
+      pointLight.shadow.mapSize.height = 2048;
+      scene.add(pointLight);
+
+      //right
+      const spotLight2 = new THREE.SpotLight(0x29cdfc, 2.5, 60, 40);
+      spotLight2.position.set( 30, 15, -5 );
+      spotLight2.penumbra = 1;
+      spotLight2.castShadow = true;
+      spotLight2.shadow.mapSize.width = 2048;
+      spotLight2.shadow.mapSize.height = 2048;
+      scene.add(spotLight2);
+
+      // // back
+      // const spotLight = new THREE.SpotLight(0x32aace, 1, 60, 30);
+      // spotLight.position.set( -10, 10, 30 );
+      // spotLight.penumbra = 1;
+      // spotLight.castShadow = true;
+      // spotLight.shadow.mapSize.width = 2048;
+      // spotLight.shadow.mapSize.height = 2048;
+      // scene.add(spotLight);
+
+      // // front
+      // const spotLight3 = new THREE.SpotLight(0xd1898a, 2, 60, 20);
+      // spotLight3.position.set( -5, 5, -30 );
+      // spotLight3.penumbra = 1;
+      // spotLight3.castShadow = true;
+      // spotLight3.shadow.mapSize.width = 2048;
+      // spotLight3.shadow.mapSize.height = 2048;
+      // scene.add(spotLight3);
+
+      // var spotLightHelper = new THREE.SpotLightHelper( spotLight );
+      // scene.add( spotLightHelper );
+      // var spotLightHelper = new THREE.SpotLightHelper( spotLight2 );
+      // scene.add( spotLightHelper );
+      // var spotLightHelper = new THREE.SpotLightHelper( spotLight3 );
+      // scene.add( spotLightHelper );
+      
+      // const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      // pointLight.position.set( -5, 15, -23 );
+      // scene.add(pointLight);
+    }
+
+    const initGeometry = () => {
+      var cylindergeometry = new THREE.CylinderBufferGeometry( 2, 2, 11, 32 );
+      var cylindermaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba, shininess:40});
+      var cylinder = new THREE.Mesh( cylindergeometry, cylindermaterial );
+      cylinder.position.x = -10;
+      cylinder.position.z = 3;
+      cylinder.castShadow = true;
+      // cylinder.receiveShadow = true;
+      scene.add( cylinder );
+
+      const spheregeometry = new THREE.SphereBufferGeometry(5, 36,36);
+      const spherematerial = new THREE.MeshPhongMaterial({color:0xd1898a, shininess:40});
+      const sphere = new THREE.Mesh(spheregeometry, spherematerial);
+      sphere.position.x = 5;
+      // sphere.position.z = -10;
+      sphere.castShadow = true;
+      // sphere.receiveShadow = true;
+      scene.add(sphere);
+
+      
+      const boxgeometry = new THREE.BoxBufferGeometry(70,100,70);
+      const boxmaterial = new THREE.MeshPhongMaterial({color:0x283c51, shininess:50, side: THREE.BackSide});
+      const box = new THREE.Mesh(boxgeometry, boxmaterial);
+      box.position.y = 100/2 - 5;
+      box.rotation.y = 45 * Math.PI/180;
+      box.castShadow = true;
+      box.receiveShadow = true;
+      scene.add(box);
+    }
+
+    const update = () => {
+      control.update();
+      camera.lookAt(-1,8,0);
+    }
+
+    const render = (y) => {
+      if(page === 1){
+        update();
+        
+        renderer.render( scene, camera );
+      }
+    }
+
+
+    onWindowResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      adjustSize();
+    }
+    window.addEventListener( 'resize', onWindowResize, false );
+    
+    initScene();
+
+    onScroll = (s, y, h) => {
+      page = Math.round(-y / window.innerHeight);
+
+      section01wrap.style.transform = `translate3d(-50%,${y * .4}px,0)`;
+
+      if(-y>50){
+        logo.className = 'w';
+        copyright.className = 'w';
+      }
+      else{
+        logo.className = '';
+        copyright.className = '';
+      }
+
+      pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
+
+      if(page > 0){
+        svrIcon.className = '';
+        copyrightWrap.style.transform = `translate3d(0,0,0)`;
+        // setDisable(true);
+      }
+      else{
+        svrIcon.className = 'hide';
+        copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
+        // setDisable(false);
+      }
+    }
+
+    smooth = new smoothScroll('#scroll',(s, y, h)=>{
+      onScroll(s, y, h);
+    });
+    smooth.showScrollBar();
+    smooth.on();
+
+    const adjustSize = function(){
+      var width = window.innerWidth;
+      var roundNumber = Math.round(baseFontRatio * width * fontMultiplier);
+      if(roundNumber >= 16)
+          document.documentElement.style.fontSize = roundNumber + 'px';
+      else
+          document.documentElement.style.fontSize = '';
+    }
+
+    adjustSize();
+
+    TweenMax.to('#section02Cir01', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, ease:Power3.easeInOut});
+    TweenMax.to('#section02Cir02', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, delay:.3, ease:Power3.easeInOut});
+
+    return ()=>{
+      if(onWindowResize)
+        window.removeEventListener( 'resize', onWindowResize, false );
+
+      smooth.off();
+    }
+  }
+  },[sceneElem]);
+
+
+
+
+  // footer scene
+
+  useEffect(()=>{
+    let onWindowResize = null;
+
+    if(footerSceneElem){
+      let width = window.innerWidth,
+          height = window.innerHeight; 
+      let scene, camera, renderer, control;
 
       const initScene = () => {
         camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
-
-        camera.position.x = 7;
-        camera.position.y = 9;
-        camera.position.z = 32;
+        // camera.position.y = 5;
+        camera.position.z = 10;
 
         scene = new THREE.Scene();
 
@@ -57,196 +268,81 @@ const SchoolVR = (props) => {
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         renderer.setAnimationLoop(render);
-        sceneElem.appendChild( renderer.domElement );
+        footerSceneElem.appendChild( renderer.domElement );
 
         
         control = new Orbitcontrols( camera, renderer.domElement );
-        control.enablePan = false;
         control.enableZoom = false;
-        control.minPolarAngle = 10 * Math.PI/180;
-        control.maxPolarAngle = 90 * Math.PI/180;
-        control.enableDamping = true;
-        control.dampingFactor = 0.05;
-        control.rotateSpeed = 0.05;
-        control.autoRotate = true;
-        control.autoRotateSpeed = .02;
-        
+
         initGeometry();
         initLights();
       }
 
       const initLights = () => {
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
         scene.add(ambientLight);
 
-        //left
-        const pointLight = new THREE.PointLight(0xd1898a, 1.3);
-        pointLight.position.set( -40, 15, 0 );
+        const pointLight = new THREE.PointLight(0xd1898a, 0);
+        pointLight.position.set( -10, 15, 10 );
         pointLight.castShadow = true;
         pointLight.shadow.mapSize.width = 2048;
         pointLight.shadow.mapSize.height = 2048;
         scene.add(pointLight);
 
-        //right
-        const spotLight2 = new THREE.SpotLight(0x29cdfc, 2.5, 60, 40);
-        spotLight2.position.set( 30, 15, -5 );
-        spotLight2.penumbra = 1;
-        spotLight2.castShadow = true;
-        spotLight2.shadow.mapSize.width = 2048;
-        spotLight2.shadow.mapSize.height = 2048;
-        scene.add(spotLight2);
-
-        // // back
-        // const spotLight = new THREE.SpotLight(0x32aace, 1, 60, 30);
-        // spotLight.position.set( -10, 10, 30 );
-        // spotLight.penumbra = 1;
-        // spotLight.castShadow = true;
-        // spotLight.shadow.mapSize.width = 2048;
-        // spotLight.shadow.mapSize.height = 2048;
-        // scene.add(spotLight);
-
-        // // front
-        // const spotLight3 = new THREE.SpotLight(0xd1898a, 2, 60, 20);
-        // spotLight3.position.set( -5, 5, -30 );
-        // spotLight3.penumbra = 1;
-        // spotLight3.castShadow = true;
-        // spotLight3.shadow.mapSize.width = 2048;
-        // spotLight3.shadow.mapSize.height = 2048;
-        // scene.add(spotLight3);
-
-        // var spotLightHelper = new THREE.SpotLightHelper( spotLight );
-        // scene.add( spotLightHelper );
-        // var spotLightHelper = new THREE.SpotLightHelper( spotLight2 );
-        // scene.add( spotLightHelper );
-        // var spotLightHelper = new THREE.SpotLightHelper( spotLight3 );
-        // scene.add( spotLightHelper );
-        
-        // const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-        // pointLight.position.set( -5, 15, -23 );
-        // scene.add(pointLight);
+        TweenMax.to(pointLight, 5, {intensity:1});
       }
 
       const initGeometry = () => {
-        var cylindergeometry = new THREE.CylinderBufferGeometry( 2, 2, 11, 32 );
-        var cylindermaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba, shininess:40});
-        var cylinder = new THREE.Mesh( cylindergeometry, cylindermaterial );
-        cylinder.position.x = -10;
-        cylinder.position.z = 3;
-        cylinder.castShadow = true;
-        // cylinder.receiveShadow = true;
-        scene.add( cylinder );
-
-        const spheregeometry = new THREE.SphereBufferGeometry(5, 36,36);
-        const spherematerial = new THREE.MeshPhongMaterial({color:0xd1898a, shininess:40});
-        const sphere = new THREE.Mesh(spheregeometry, spherematerial);
-        sphere.position.x = 5;
-        // sphere.position.z = -10;
+        const spheregeometry = new THREE.SphereBufferGeometry( 2, 32, 32 );
+        // spheregeometry.translate(0,2,0);
+        const spherematerial = new THREE.MeshPhongMaterial({color: 0x990000});
+        const sphere = new THREE.Mesh( spheregeometry, spherematerial );
         sphere.castShadow = true;
-        // sphere.receiveShadow = true;
-        scene.add(sphere);
+        scene.add( sphere );
 
-        
-        const boxgeometry = new THREE.BoxBufferGeometry(70,100,70);
-        const boxmaterial = new THREE.MeshPhongMaterial({color:0x283c51, shininess:50, side: THREE.BackSide});
-        const box = new THREE.Mesh(boxgeometry, boxmaterial);
-        box.position.y = 100/2 - 5;
-        box.rotation.y = 45 * Math.PI/180;
-        box.castShadow = true;
-        box.receiveShadow = true;
-        scene.add(box);
+        // const planegeometry = new THREE.PlaneBufferGeometry( 50, 20, 1 );
+        // const planematerial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
+        // const plane = new THREE.Mesh( planegeometry, planematerial );
+        // plane.rotation.set(-90*Math.PI/180,0,0);
+        // plane.receiveShadow = true;
+        // scene.add( plane );
+
+        const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
+        const wallmaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
+        const wall = new THREE.Mesh( wallgeometry, wallmaterial );
+        wall.position.set(0,0,-10);
+        scene.add( wall );
       }
 
       const update = () => {
-        control.update();
-        camera.lookAt(-1,8,0);
+        camera.lookAt(0,0,0);
       }
 
       const render = () => {
-        update();
-        
-				renderer.setRenderTarget( null );
-        renderer.render( scene, camera );
+        if(page === 0){
+          update();
+          
+          renderer.render( scene, camera );
+        }
       }
 
-
-      const adjustSize = function(){
-        var width = window.innerWidth;
-        var roundNumber = Math.round(baseFontRatio * width * fontMultiplier);
-        if(roundNumber >= 16) //roundNumber = 16;
-            document.documentElement.style.fontSize = roundNumber + 'px';
-        else
-            document.documentElement.style.fontSize = '';
-      }
       onWindowResize = () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
-
-        adjustSize();
       }
       window.addEventListener( 'resize', onWindowResize, false );
-
-      adjustSize();
-
-
-      onScroll = (s, y, h) => {
-        const page = Math.round(-y / window.innerHeight);
-
-        section01wrap.style.transform = `translate3d(-50%,${y * .4}px,0)`;
-
-        if(-y>50){
-          logo.className = 'w';
-          copyright.className = 'w';
-        }
-        else{
-          logo.className = '';
-          copyright.className = '';
-        }
-
-        pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
-
-        if(page > 0){
-          svrIcon.className = '';
-          copyrightWrap.style.transform = `translate3d(0,0,0)`;
-        }
-        else{
-          svrIcon.className = 'hide';
-          copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
-        }
-      }
-      // window.addEventListener('scroll',onScroll);
       
-
-      // const onMousedown = () => { isClicked = true; }
-      // const onMouseup = () => { isClicked = false; }
-      // const onMouseMove = (event) => {
-      //   let e = event.touch ? event.touch[0] : event;
-      //   if(isClicked)
-      //     mouse = {x:e.ClientX, y:e.ClientY};
-      // }
-      // document.addEventListener('mousedown', onMousedown, false);
-      // document.addEventListener('mouseup', onMouseup, false);
-      // document.addEventListener('mousemove', onMouseMove, false);
-
       initScene();
-
-
-      const smooth = new smoothScroll('#scroll',(s, y, h)=>{
-        onScroll(s, y, h);
-      });
-      smooth.showScrollBar();
-      smooth.on();
-
-      TweenMax.to('#section02Cir01', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, ease:Power3.easeInOut});
-      TweenMax.to('#section02Cir02', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, delay:.3, ease:Power3.easeInOut});
-
 
       return ()=>{
         if(onWindowResize)
           window.removeEventListener( 'resize', onWindowResize, false );
       }
     }
-  },[sceneElem]);
+  },[footerSceneElem]);
+
+
 
   return(
     <div>
@@ -271,6 +367,11 @@ const SchoolVR = (props) => {
       </div>
 
       <div id="scroll">
+        {/* { <Footer3d disable={disable} />} */}
+        <div id="footer3d">
+          <div ref={elem=>{setFooterSceneElem(elem)}} id="scene3d"></div>
+          <div id="changeGeoBtn"></div>
+        </div>
         <div id="section01" className="section">
           <div ref={elem => section01wrap = elem} className="wrap">
             <div className="row"><div id="vrIcon"></div></div>

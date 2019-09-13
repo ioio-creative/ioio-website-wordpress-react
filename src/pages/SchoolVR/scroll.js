@@ -51,6 +51,7 @@ const FrameImpulse = (function() {
   }
 
   r.on = function(f) {
+    document.body.scrollTo(0,0);
     if(listeners.indexOf(f) > -1) { return; }
     listeners.push(f);
     numListeners = listeners.length;
