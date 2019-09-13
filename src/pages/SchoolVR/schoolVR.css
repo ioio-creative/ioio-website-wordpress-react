@@ -60,7 +60,7 @@ body{
   color:#fff;
   position: fixed;
   top:calc(83 / 16 * 1rem);
-  right:5%;
+  right:6%;
   z-index: 2;
   opacity: 1;
   visibility: visible;
@@ -151,7 +151,7 @@ body{
 }
 .schoolVR .section .content{
   height: 100%;
-  padding:calc(75 / 16 * 1rem) 0 11% 6%;
+  padding:calc(75 / 16 * 1rem) 6% 11% 6%;
 }
 .schoolVR .section .content.halfWrap{
   display: flex;
@@ -192,9 +192,9 @@ body{
   justify-content: center;
 }
 .schoolVR #section01 .wrap #vrIcon{
-  width: 25%;
+  width: 27%;
   background:url('../../images/schoolVR/vr_icon.svg') center top no-repeat;
-  padding-bottom:calc(40 / 16 * 1rem);
+  padding-bottom:calc(35 / 16 * 1rem);
 }
 .schoolVR #section01 .wrap #vrIcon:before{
   content:'';
@@ -204,7 +204,7 @@ body{
 .schoolVR #section01 .wrap #schoolvrIcon{
   width:100%;
   background:url('../../images/schoolVR/schoolvr_icon.svg') center top no-repeat;
-  padding-bottom:calc(30 / 16 * 1rem);
+  padding-bottom:calc(25 / 16 * 1rem);
 }
 .schoolVR #section01 .wrap #schoolvrIcon:before{
   content:'';
@@ -235,6 +235,15 @@ body{
 .schoolVR #section02 .wrap .bigTitle{
   text-align: center;
   padding-bottom:calc(54  / 16 * 1rem);
+}
+.schoolVR #section02 svg{
+  width: 85%;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  margin: auto;
 }
 
 
@@ -269,11 +278,13 @@ body{
 }
 .schoolVR #section04 svg{
   width: calc( 75  / 16 * 1rem);
-  font-size:35px;
+  font-size:40px;
   fill: none;
   stroke: #fff;
   stroke-width:calc(.2 / 16 * 1rem);
   stroke-linejoin: round;
+  font-family: 'Myriad Pro';
+  font-weight: bold;
 }
 .schoolVR #section04 .outerGroupWrap{
   display: flex;
@@ -297,11 +308,187 @@ body{
 }
 .schoolVR #section04 .groupWrap .col:first-child{
   flex: 0;
+  padding-right: calc(20 / 16 * 1rem);
 }
 .schoolVR #section04 .t{
   color:#41DDF7;
   padding-bottom:calc(8 / 16 * 1rem);
 }
+
+
+/* section 05 */
+.schoolVR #section05 .content .wrap{
+  max-height: calc(600 / 16 * 1rem);
+  display: flex;
+  padding-top:calc(40 / 16 * 1rem);
+}
+.schoolVR #section05 .content .col .itemWrap{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.schoolVR #section05 .content #col01{
+  flex: 2.8;
+}
+.schoolVR #section05 .content #col02{
+  flex: 3;
+}
+.schoolVR #section05 .content #col03{
+  flex: 1.6;
+}
+.schoolVR #section05 .content #col01 .itemWrap{
+  padding-right:27%;
+}
+.schoolVR #section05 .content #col02 .itemWrap{
+  padding-right:24%;
+}
+.schoolVR #section05 .content #col03 .itemWrap{
+  padding-right:6%;
+}
+.schoolVR #section05 .content #col01 #item02 img{
+  width:82%;
+}
+.schoolVR #section05 .content #col01 #item03 img{
+  width:30%;
+}
+.schoolVR #section05 .content #col02 #item02 img{
+  width:90%;
+}
+.schoolVR #section05 .content #col03 #item01 img{
+  width:42%;
+}
+.schoolVR #section05 .content #col03 #item02 img{
+  width:71%;
+}
+.schoolVR #section05 .content #col03 #item03 img{
+  width:58%;
+}
+.schoolVR #section05 .content .col img{
+  width:100%;
+}
+.schoolVR #section05 .content .col .des{
+  padding-top:calc(20 / 16 * 1rem);
+  padding-left:calc(10 / 16 * 1rem);
+}
+.schoolVR #section05 .content .col .des .h4{
+  padding-bottom:calc(5 / 16 * 1rem);
+}
+.schoolVR #section05 .content #col01 #item03 .des{
+  padding-top:0;
+  padding-left:calc(25 / 16 * 1rem);
+}
+.schoolVR #section05 .content #col02 #item01{
+  padding-bottom:calc(30 / 16 * 1rem);
+}
+.schoolVR #section05 .content #col02 #item01 .des{
+  padding-top:0;
+  padding-left:calc(26 / 16 * 1rem);
+}
+.schoolVR #section05 .content .col .half{
+  width:100%;
+  display: flex;
+}
+.schoolVR #section05 .content #col01 .half > *:first-child{
+  width:37%;
+  padding:0;
+}
+.schoolVR #section05 .content #col01 .half > *{
+  width:63%;
+}
+.schoolVR #section05 .content #col02 .half > *{
+  width:50%;
+}
+
+
+/* section 06 */
+.schoolVR #section06 .wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(-40 / 16 * 1rem);
+}
+.schoolVR #section06 .wrap img{
+  width:60%;
+  margin-right: 8%;
+}
+.schoolVR #section06 .wrap .des{
+  display: flex;
+  align-items: flex-end;
+}
+.schoolVR #section06 .wrap .des p{
+  max-width: 210px;
+}
+
+/* section 07 */
+.schoolVR #section07 .wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(-40 / 16 * 1rem);
+}
+.schoolVR #section07 .wrap img{
+  width:60%;
+  margin-right: 8%;
+}
+.schoolVR #section07 .wrap .des{
+  display: flex;
+  align-items: flex-end;
+}
+.schoolVR #section07 .wrap .des p{
+  max-width: 210px;
+}
+
+
+/* section 08 */
+.schoolVR #section08 .specList{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(80 / 16 * 1rem);
+}
+.schoolVR #section08 li{
+  list-style: none;
+  margin:0;
+  border-bottom: calc(1 / 16 * 1rem) solid #fff;
+}
+.schoolVR #section08 .specList li{
+  padding: calc(26 / 16 * 1rem) 0 calc(23 / 16 * 1rem);
+}
+.schoolVR #section08 .specList li.t{
+  font-size: calc(22 / 16 * 1rem);
+}
+.schoolVR #section08 .specList li.t:after{
+  content:'';
+  width:calc(16 / 16 * 1rem);
+  height:calc(16 / 16 * 1rem);
+  background:url('../../images/schoolVR/window.svg') center no-repeat;
+  display: inline-block;
+  position: relative;
+  top:calc(2 / 16 * 1rem);
+  margin-left:calc(40 / 16 * 1rem);
+}
+.schoolVR #section08 .contact ul{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(110 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li{
+  padding: calc(30 / 16 * 1rem) 0 calc(46 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li:last-child{
+  border:0;
+}
+.schoolVR #section08 .contact li:last-child p:last-child{
+  padding-top:calc(25 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li p{
+  line-height: calc(20 / 16 * 1rem);
+}
+.schoolVR #section08 .t{
+  color:#41DDF7;
+}
+.schoolVR #section08 .contact .t{
+  padding-bottom:calc(15 / 16 * 1rem);
+}
+
+
+
 
 
 
@@ -326,36 +513,26 @@ body{
 }
 
 
-/* section 08 */
-.schoolVR #section08 .specList{
-  max-width: calc(420 / 16 * 1rem);
-  padding-top:calc(80 / 16 * 1rem);
+/* tablet */
+@media only screen and (max-width: 1024px){
+  body{
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  #scrollBarWrap{
+    display: none;
+  }
 }
-.schoolVR #section08 li{
-  list-style: none;
-  margin:0;
-  border-bottom: calc(1 / 16 * 1rem) solid #fff;
+/* mobile */
+@media only screen and (max-width: 700px){
 }
-.schoolVR #section08 .specList li{
-  padding: calc(26 / 16 * 1rem) 0;
+
+/* iphone 6,7,8 */
+@media only screen and (device-width : 375px) and (device-height : 667px) and (-webkit-device-pixel-ratio : 2){ 
 }
-.schoolVR #section08 .contact ul{
-  max-width: calc(420 / 16 * 1rem);
-  padding-top:calc(110 / 16 * 1rem);
+/* iphone 8+ */
+@media only screen and (device-width : 414px) and (device-height : 736px) and (-webkit-device-pixel-ratio : 3){
 }
-.schoolVR #section08 .contact li{
-  padding: calc(30 / 16 * 1rem) 0 calc(46 / 16 * 1rem);
-}
-.schoolVR #section08 .contact li:last-child{
-  border:0;
-}
-.schoolVR #section08 .contact li:last-child p:last-child{
-  padding-top:calc(25 / 16 * 1rem);
-}
-.schoolVR #section08 .contact li p{
-  line-height: calc(20 / 16 * 1rem);
-}
-.schoolVR #section08 .contact .t{
-  color:#41DDF7;
-  padding-bottom:calc(15 / 16 * 1rem);
+/* iphone X */
+@media (device-width: 375px) and (device-height: 812px) and (-webkit-min-device-pixel-ratio: 3){
 }
