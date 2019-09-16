@@ -728,6 +728,7 @@ body{
   .schoolVR #section06 .wrap img,
   .schoolVR #section07 .wrap img{
     width: 100%;
+    height:auto;
     margin-right: 0%;
   }
   .schoolVR #section06 .wrap .des p,
@@ -787,6 +788,17 @@ body{
   .schoolVR #logo{
     bottom:20px;
   }
+  .schoolVR #section01 .wrap #vrIcon{
+    width:15%;
+    padding-bottom:20px;
+  }
+  .schoolVR #section01 .wrap #schoolvrIcon {
+    width: 60%;
+    padding-bottom: 10px;
+  }
+  .schoolVR #section01 .wrap .des{
+    font-size:12px;
+  }
   .schoolVR #section02{
     height:auto;
   }
@@ -809,6 +821,10 @@ body{
   .schoolVR #section06,
   .schoolVR #section07{
     height:auto;
+  }
+  .schoolVR #section06 .wrap,
+  .schoolVR #section07 .wrap{
+    display: inline-block;
   }
   .schoolVR #section08 .contact ul{
     padding-top:0;

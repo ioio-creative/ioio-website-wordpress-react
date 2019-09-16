@@ -93,8 +93,6 @@ const SchoolVR = (props) => {
     const initLights = () => {
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
       scene.add(ambientLight);
-      const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.5);
-      scenef.add(ambientLight2);
 
       //left
       const pointLight = new THREE.PointLight(0xd1898a, 1.3);
@@ -112,6 +110,17 @@ const SchoolVR = (props) => {
       spotLight2.shadow.mapSize.width = 2048;
       spotLight2.shadow.mapSize.height = 2048;
       scene.add(spotLight2);
+
+      
+      const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.8);
+      scenef.add(ambientLight2);
+
+      const pointLight2 = new THREE.PointLight(0xffffff, .8);
+      pointLight2.position.set( -10, 20, 10 );
+      pointLight2.castShadow = true;
+      // pointLight2.shadow.mapSize.width = 2048;
+      // pointLight2.shadow.mapSize.height = 2048;
+      scenef.add(pointLight2);
 
       // // back
       // const spotLight = new THREE.SpotLight(0x32aace, 1, 60, 30);
@@ -173,7 +182,7 @@ const SchoolVR = (props) => {
       
       // footer
       const fspheregeometry = new THREE.SphereBufferGeometry( 2, 32, 32 );
-      const fspherematerial = new THREE.MeshPhongMaterial({color: 0x990000});
+      const fspherematerial = new THREE.MeshPhongMaterial({color: 0x99aa00});
       const fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
       fsphere.castShadow = true;
       scenef.add( fsphere );
