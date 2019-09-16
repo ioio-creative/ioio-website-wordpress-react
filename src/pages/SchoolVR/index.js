@@ -8,6 +8,11 @@ import './schoolVR.css';
 import smoothScroll from './scroll';
 import pjImage01 from '../../images/schoolVR/project01.png';
 import pjImage02 from '../../images/schoolVR/project02.png';
+import layerImage01 from '../../images/schoolVR/layer01.png';
+import layerImage02 from '../../images/schoolVR/layer02.png';
+import layerImage03 from '../../images/schoolVR/layer03.png';
+import layerImage04 from '../../images/schoolVR/layer04.png';
+import layerImage05 from '../../images/schoolVR/layer05.png';
 import ftnImage01 from '../../images/schoolVR/function01.png';
 import ftnImage02 from '../../images/schoolVR/function02.png';
 import ftnImage03 from '../../images/schoolVR/function03.png';
@@ -24,19 +29,21 @@ let copyright = null;
 let copyrightWrap = null;
 let pages = null;
 let section01wrap = null;
+let section04bg = null;
 
 let page = 0;
 let smooth = null;
 
 const SchoolVR = (props) => {
   const [sceneElem, setSceneElem] = useState(null);
-  const [footerSceneElem, setFooterSceneElem] = useState(null);
+  // const [footerSceneElem, setFooterSceneElem] = useState(null);
   // const [disable, setDisable] = useState(false);
   
   useEffect(()=>{
     document.getElementById('root').classList.add('schoolVR');
 
     let onWindowResize = null;
+    let onWindowScroll = null;
     let onScroll = null;
     const baseFontRatio = 16 / 1440;
     const fontMultiplier = 0.84375;
@@ -44,16 +51,20 @@ const SchoolVR = (props) => {
     if(sceneElem){
       let width = window.innerWidth,
           height = window.innerHeight; 
-      let scene, camera, renderer, control;
+      let scene, scenef, camera, cameraf, renderer, control;
 
     const initScene = () => {
       camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
-
       camera.position.x = 7;
       camera.position.y = 9;
       camera.position.z = 32;
 
+      cameraf = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
+      cameraf.position.z = 10;
+
+
       scene = new THREE.Scene();
+      scenef = new THREE.Scene();
 
       renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setClearColor(0x000000);
@@ -82,6 +93,8 @@ const SchoolVR = (props) => {
     const initLights = () => {
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
       scene.add(ambientLight);
+      const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.5);
+      scenef.add(ambientLight2);
 
       //left
       const pointLight = new THREE.PointLight(0xd1898a, 1.3);
@@ -137,16 +150,13 @@ const SchoolVR = (props) => {
       cylinder.position.x = -10;
       cylinder.position.z = 3;
       cylinder.castShadow = true;
-      // cylinder.receiveShadow = true;
       scene.add( cylinder );
 
       const spheregeometry = new THREE.SphereBufferGeometry(5, 36,36);
       const spherematerial = new THREE.MeshPhongMaterial({color:0xd1898a, shininess:40});
       const sphere = new THREE.Mesh(spheregeometry, spherematerial);
       sphere.position.x = 5;
-      // sphere.position.z = -10;
       sphere.castShadow = true;
-      // sphere.receiveShadow = true;
       scene.add(sphere);
 
       
@@ -158,29 +168,88 @@ const SchoolVR = (props) => {
       box.castShadow = true;
       box.receiveShadow = true;
       scene.add(box);
+
+
+      
+      // footer
+      const fspheregeometry = new THREE.SphereBufferGeometry( 2, 32, 32 );
+      const fspherematerial = new THREE.MeshPhongMaterial({color: 0x990000});
+      const fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
+      fsphere.castShadow = true;
+      scenef.add( fsphere );
+
+      const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
+      const wallmaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
+      const wall = new THREE.Mesh( wallgeometry, wallmaterial );
+      wall.position.set(0,0,-10);
+      scenef.add( wall );
     }
 
     const update = () => {
       control.update();
       camera.lookAt(-1,8,0);
+      cameraf.lookAt(0,0,0);
     }
 
     const render = (y) => {
-      if(page === 1){
         update();
         
-        renderer.render( scene, camera );
-      }
+        // renderer.clear();
+        if(page <= 1)
+          renderer.render( scene, camera );
+        else
+          renderer.render( scenef, cameraf );
     }
 
 
     onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
+      cameraf.aspect = window.innerWidth / window.innerHeight;
+      cameraf.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, window.innerHeight );
       adjustSize();
     }
+    onWindowScroll = () => {
+      if(window.innerWidth <= 1024){
+        page = Math.round(window.pageYOffset / window.innerHeight);
+        
+        // renderer.domElement.style.transform = `translate3d(0,0,0)`;
+
+        pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
+        if(page > 1){
+          if(renderer.domElement.className !== 'active'){
+            renderer.domElement.className = 'active';
+            renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+          }
+        }
+        else{
+          if(renderer.domElement.className === 'active'){
+            renderer.domElement.className = '';
+            renderer.domElement.style.transform = `translate3d(0,0,0)`;
+          }
+        }
+
+        // if(page > 0){
+        //   svrIcon.className = '';
+        //   copyrightWrap.style.transform = `translate3d(0,0,0)`;
+        // }
+        // else{
+        //   svrIcon.className = 'hide';
+        //   copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
+        // }
+          
+        if(page === 3){
+          if(section04bg.className !== 'active')
+            section04bg.className = 'active';
+        }
+        else
+          if(section04bg.className === 'active')
+            section04bg.className = '';
+      }
+    }
     window.addEventListener( 'resize', onWindowResize, false );
+    window.addEventListener( 'scroll', onWindowScroll, false );
     
     initScene();
 
@@ -200,15 +269,34 @@ const SchoolVR = (props) => {
 
       pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
 
+      if(page > 1){
+        if(renderer.domElement.className !== 'active'){
+          renderer.domElement.className = 'active';
+          renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+        }
+        if(page === 3){
+          if(section04bg.className !== 'active')
+            section04bg.className = 'active';
+        }
+        else
+          if(section04bg.className === 'active')
+            section04bg.className = '';
+      }
+      else{
+        if(renderer.domElement.className === 'active'){
+          renderer.domElement.className = '';
+          renderer.domElement.style.transform = `translate3d(0,0,0)`;
+        }
+      }
+
       if(page > 0){
         svrIcon.className = '';
         copyrightWrap.style.transform = `translate3d(0,0,0)`;
-        // setDisable(true);
+        
       }
       else{
         svrIcon.className = 'hide';
         copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
-        // setDisable(false);
       }
     }
 
@@ -216,7 +304,9 @@ const SchoolVR = (props) => {
       onScroll(s, y, h);
     });
     smooth.showScrollBar();
-    smooth.on();
+    if(window.innerWidth > 1024){
+      smooth.on();
+    }
 
     const adjustSize = function(){
       var width = window.innerWidth;
@@ -236,111 +326,12 @@ const SchoolVR = (props) => {
       if(onWindowResize)
         window.removeEventListener( 'resize', onWindowResize, false );
 
+      if(onWindowScroll)
+        window.removeEventListener( 'scroll', onWindowScroll, false);
       smooth.off();
     }
   }
   },[sceneElem]);
-
-
-
-
-  // footer scene
-
-  useEffect(()=>{
-    let onWindowResize = null;
-
-    if(footerSceneElem){
-      let width = window.innerWidth,
-          height = window.innerHeight; 
-      let scene, camera, renderer, control;
-
-      const initScene = () => {
-        camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
-        // camera.position.y = 5;
-        camera.position.z = 10;
-
-        scene = new THREE.Scene();
-
-        renderer = new THREE.WebGLRenderer({antialias: true});
-        renderer.setClearColor(0x000000);
-        renderer.setPixelRatio( window.devicePixelRatio );
-        renderer.setSize( width, height );
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        renderer.setAnimationLoop(render);
-        footerSceneElem.appendChild( renderer.domElement );
-
-        
-        control = new Orbitcontrols( camera, renderer.domElement );
-        control.enableZoom = false;
-
-        initGeometry();
-        initLights();
-      }
-
-      const initLights = () => {
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-        scene.add(ambientLight);
-
-        const pointLight = new THREE.PointLight(0xd1898a, 0);
-        pointLight.position.set( -10, 15, 10 );
-        pointLight.castShadow = true;
-        pointLight.shadow.mapSize.width = 2048;
-        pointLight.shadow.mapSize.height = 2048;
-        scene.add(pointLight);
-
-        TweenMax.to(pointLight, 5, {intensity:1});
-      }
-
-      const initGeometry = () => {
-        const spheregeometry = new THREE.SphereBufferGeometry( 2, 32, 32 );
-        // spheregeometry.translate(0,2,0);
-        const spherematerial = new THREE.MeshPhongMaterial({color: 0x990000});
-        const sphere = new THREE.Mesh( spheregeometry, spherematerial );
-        sphere.castShadow = true;
-        scene.add( sphere );
-
-        // const planegeometry = new THREE.PlaneBufferGeometry( 50, 20, 1 );
-        // const planematerial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
-        // const plane = new THREE.Mesh( planegeometry, planematerial );
-        // plane.rotation.set(-90*Math.PI/180,0,0);
-        // plane.receiveShadow = true;
-        // scene.add( plane );
-
-        const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
-        const wallmaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
-        const wall = new THREE.Mesh( wallgeometry, wallmaterial );
-        wall.position.set(0,0,-10);
-        scene.add( wall );
-      }
-
-      const update = () => {
-        camera.lookAt(0,0,0);
-      }
-
-      const render = () => {
-        if(page === 0){
-          update();
-          
-          renderer.render( scene, camera );
-        }
-      }
-
-      onWindowResize = () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize( window.innerWidth, window.innerHeight );
-      }
-      window.addEventListener( 'resize', onWindowResize, false );
-      
-      initScene();
-
-      return ()=>{
-        if(onWindowResize)
-          window.removeEventListener( 'resize', onWindowResize, false );
-      }
-    }
-  },[footerSceneElem]);
 
 
 
@@ -359,7 +350,9 @@ const SchoolVR = (props) => {
           <div ref={elem => pages = elem} className="pages bold h5">
             <span>P</span>
             <div className="pageNumWrap">
-              <span ref={(elem)=>pageNum = elem} className="pageNum"><span ref={elem => pageNumSpan = elem}>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></span>
+              <span ref={(elem)=>pageNum = elem} className="pageNum">
+                <span ref={elem => pageNumSpan = elem}>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+              </span>
             </div>
           </div>
           <span className="s">Copyright © {new Date().getFullYear()} IOIO Limited</span>
@@ -368,10 +361,6 @@ const SchoolVR = (props) => {
 
       <div id="scroll">
         {/* { <Footer3d disable={disable} />} */}
-        <div id="footer3d">
-          <div ref={elem=>{setFooterSceneElem(elem)}} id="scene3d"></div>
-          <div id="changeGeoBtn"></div>
-        </div>
         <div id="section01" className="section">
           <div ref={elem => section01wrap = elem} className="wrap">
             <div className="row"><div id="vrIcon"></div></div>
@@ -433,6 +422,13 @@ const SchoolVR = (props) => {
         <div id="section04" className="section">
           <div className="content">
             <h2>Just 5 steps</h2>
+            <div ref={elem => section04bg = elem} id="bg">
+              <img id="_01" src={layerImage01} />
+              <img id="_02" src={layerImage02} />
+              <img id="_04" src={layerImage04} />
+              <img id="_05" src={layerImage05} />
+              <img id="_03" src={layerImage03} />
+            </div>
             <div className="outerGroupWrap">
               <div className="groupWrap">
                 <div className="wrap">
@@ -458,7 +454,7 @@ const SchoolVR = (props) => {
                 </div>
               </div>
               <div className="groupWrap">
-                <div className="wrap">
+                <div className="wrap empty">
                   <div className="col"><svg viewBox="0 0 25 34"><text y="28"></text></svg></div>
                   <div className="col">
                     <div className="t h4"></div>
@@ -566,10 +562,10 @@ const SchoolVR = (props) => {
           <div className="content">
             <h2>Product<br/>Outcome</h2>
             <div className="wrap">
+              <img src={pjImage01} />
               <div className="des s">
                 <p>A simple example for 3D space building. Making use with basic 3D objects and effects, students are able to build a 3D campus, exploring along the way and curate their own exhibition.  More creation and surprises to be seen within this imaginary space. </p>
               </div>
-              <img src={pjImage01} />
             </div>
           </div>
         </div>
@@ -577,10 +573,10 @@ const SchoolVR = (props) => {
           <div className="content">
             <h2>Product<br/>Outcome</h2>
             <div className="wrap">
+              <img src={pjImage02} />
               <div className="des s">
                 <p>Making use of 360 material collected from field trip, it is an easy example of field trip presentation. Students are able to tell stories with their own method, it can be a map, a timeline, multi-senses and more. Students can make good use of the navigation function to transfer between different spaces.</p>
               </div>
-              <img src={pjImage02} />
             </div>
           </div>
         </div>
@@ -609,6 +605,12 @@ const SchoolVR = (props) => {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+        <div id="section09">
+          <div id="footer3d">
+            <div id="scene3d"></div>
+            <div id="changeGeoBtn"></div>
           </div>
         </div>
       </div>
