@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import TweenMax, { Power3 } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
-// import Landing3d from './landing3d.js';
-// import Footer3d from './footer3d.js';
 import './schoolVR.css';
 import smoothScroll from './scroll';
 import pjImage01 from '../../images/schoolVR/project01.png';
@@ -369,7 +367,6 @@ const SchoolVR = (props) => {
       </div>
 
       <div id="scroll">
-        {/* { <Footer3d disable={disable} />} */}
         <div id="section01" className="section">
           <div ref={elem => section01wrap = elem} className="wrap">
             <div className="row"><div id="vrIcon"></div></div>
