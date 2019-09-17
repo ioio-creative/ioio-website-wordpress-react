@@ -634,7 +634,7 @@ var SmoothScroll = function(elem, scrollFunc){
 		FrameImpulse.on(onAnim);
 	}
 	
-	var off = function(){console.log('off')
+	var off = function(){
 		isOn = false;
 		VirtualScroll.off(onScroll);
 		FrameImpulse.off(onAnim);

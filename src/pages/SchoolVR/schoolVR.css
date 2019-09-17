@@ -680,6 +680,9 @@ body{
   /* .schoolVR canvas{
     width:100% !important;
   } */
+  .schoolVR #svrIcon{
+    display: none;
+  }
   .schoolVR .section .content.halfWrap{
     width: 100%;
     display: inline-block;

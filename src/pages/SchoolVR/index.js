@@ -228,6 +228,11 @@ const SchoolVR = (props) => {
       adjustSize();
 
       if(window.innerWidth <= 1024){
+        page = Math.round(window.pageYOffset / window.innerHeight);
+
+        
+        section01wrap.style.transform = '';
+
         if(!f){
           document.querySelector('#item08')
           f = new Flickity('#section05 .wrap',{
@@ -240,6 +245,18 @@ const SchoolVR = (props) => {
             },
             cellAlign: 'left'
           });
+        }
+        if(page > 1){
+          if(renderer.domElement.className !== 'active'){
+            renderer.domElement.className = 'active';
+            renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+          }
+        }
+        else{
+          if(renderer.domElement.className === 'active'){
+            renderer.domElement.className = '';
+            renderer.domElement.style.transform = `translate3d(0,0,0)`;
+          }
         }
       }
       else{
