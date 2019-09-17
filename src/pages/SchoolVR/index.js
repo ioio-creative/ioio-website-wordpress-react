@@ -270,6 +270,15 @@ const SchoolVR = (props) => {
           }
         }
 
+        if(page > 0){
+          logo.className = 'w';
+          copyright.className = 'w';
+        }
+        else{
+          logo.className = '';
+          copyright.className = '';
+        }
+
         // if(page > 0){
         //   svrIcon.className = '';
         //   copyrightWrap.style.transform = `translate3d(0,0,0)`;
