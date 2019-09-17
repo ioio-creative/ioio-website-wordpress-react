@@ -381,8 +381,10 @@ body{
 /* section 05 */
 .schoolVR #section05 .content .wrap{
   max-height: calc(600 / 16 * 1rem);
-  display: flex;
   padding-top:calc(40 / 16 * 1rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .schoolVR #section05 .content .col .itemWrap{
   height: 100%;
@@ -390,7 +392,21 @@ body{
   flex-wrap: wrap;
   align-content: space-between;
 }
-.schoolVR #section05 .content #col01{
+.schoolVR #section05 .half{
+  width:100%;
+  display: flex;
+}
+.schoolVR #section05 .item{
+  width:20%;
+  position: relative;
+}
+.schoolVR #section05 .item:nth-child(3n+1){
+  width:37%;
+}
+.schoolVR #section05 .item:nth-child(3n+2){
+  width:43%;
+}
+/* .schoolVR #section05 .content #col01{
   flex: 2.8;
 }
 .schoolVR #section05 .content #col02{
@@ -407,60 +423,111 @@ body{
 }
 .schoolVR #section05 .content #col03 .itemWrap{
   padding-right:6%;
+} */
+.schoolVR #section05 .content #item04,
+.schoolVR #section05 .content #item05{
+  margin-top:calc(40 / 16 * 1rem);
 }
-.schoolVR #section05 .content #col01 #item02 img{
-  width:82%;
+.schoolVR #section05 .content #item06{
+  margin-top: calc(20 / 16 * 1rem);
 }
-.schoolVR #section05 .content #col01 #item03 img{
-  width:30%;
+.schoolVR #section05 .content img{
+  height: auto;
 }
-.schoolVR #section05 .content #col02 #item02 img{
-  width:90%;
+.schoolVR #section05 .content #item01 img{
+  width:72%;
 }
-.schoolVR #section05 .content #col03 #item01 img{
-  width:42%;
+.schoolVR #section05 .content #item02 img{
+  width:38%;
 }
-.schoolVR #section05 .content #col03 #item02 img{
-  width:71%;
+.schoolVR #section05 .content #item03 img{
+  width:49%;
 }
-.schoolVR #section05 .content #col03 #item03 img{
-  width:58%;
+.schoolVR #section05 .content #item04 img{
+  width:59%;
 }
-.schoolVR #section05 .content .col img{
+.schoolVR #section05 .content #item05 img{
+  width:67%;
+}
+.schoolVR #section05 .content #item06 img{
+  width:73%;
+}
+.schoolVR #section05 .content #item07 img{
+  width:20%;
+}
+.schoolVR #section05 .content #item08 img{
+  width:60%;
+}
+.schoolVR #section05 .content #item08{
+  padding-left: 23%;
+}
+/* .schoolVR #section05 .content .col img{
   width:100%;
+} */
+.schoolVR #section05 .content .des{
+  padding-top:calc(25 / 16 * 1rem);
+  padding-left:calc(20 / 16 * 1rem);
 }
-.schoolVR #section05 .content .col .des{
-  padding-top:calc(20 / 16 * 1rem);
-  padding-left:calc(10 / 16 * 1rem);
-}
-.schoolVR #section05 .content .col .des .h4{
+/* .schoolVR #section05 .content .des .h4{
   padding-bottom:calc(5 / 16 * 1rem);
+} */
+.schoolVR #section05 .content .des.half{
+  padding-right: 20%;
 }
-.schoolVR #section05 .content #col01 #item03 .des{
+.schoolVR #section05 .content .des.half .h4{
+  width: 60%;
+}
+/* .schoolVR #section05 .content #item03 .des{
   padding-top:0;
   padding-left:calc(25 / 16 * 1rem);
+} */
+.schoolVR #section05 .content #item02 .des,
+.schoolVR #section05 .content #item07 .des{
+  padding-left:calc(30 / 16 * 1rem);
+  padding-top:0;
+  padding-right:20%;
 }
-.schoolVR #section05 .content #col02 #item01{
+.schoolVR #section05 .content #item04{
   padding-bottom:calc(30 / 16 * 1rem);
 }
-.schoolVR #section05 .content #col02 #item01 .des{
-  padding-top:0;
-  padding-left:calc(26 / 16 * 1rem);
+.schoolVR #section05 .content #item07{
+  padding-top: calc(20 / 16 * 1rem);
 }
-.schoolVR #section05 .content .col .half{
+.schoolVR #section05 .content #item05 .des{
+  position: absolute;
+  padding-right:48%;
+}
+.schoolVR #section05 .content button{
+  width: calc(40 / 16 * 1rem);
+  background: none;
+  border: none;
+  position: absolute;
+  top:50%;
+  transform: translate3d(0,-50%,0);
+}
+.schoolVR #section05 .content button.previous{
+  left:20px;
+}
+.schoolVR #section05 .content button.next{
+  right:20px;
+}
+.schoolVR #section05 .content button path{
+  fill: #fff;
+}
+/* .schoolVR #section05 .content .col .half{
   width:100%;
   display: flex;
-}
-.schoolVR #section05 .content #col01 .half > *:first-child{
+} */
+/* .schoolVR #section05 .content #col01 .half > *:first-child{
   width:37%;
   padding:0;
-}
-.schoolVR #section05 .content #col01 .half > *{
+} */
+/* .schoolVR #section05 .content #col01 .half > *{
   width:63%;
 }
 .schoolVR #section05 .content #col02 .half > *{
   width:50%;
-}
+} */
 
 
 /* section 06 */
@@ -641,7 +708,7 @@ body{
     padding: 0 10%;
   }
   .schoolVR #section04 .content h2{
-    font-size: 15vw;
+    font-size: 7vw;
     line-height: 13vw;
   }
   .schoolVR #section04 #bg{
@@ -662,63 +729,64 @@ body{
   .schoolVR #section04 .empty{
     display: none !important;
   }
+    
+  .flickity-slider{
+    height: 100%;
+  }
   .schoolVR #section05{
     height:auto;
+    overflow: hidden;
+  }
+  .schoolVR #section05 .item {
+    width:100% !important;
+    /* height: 500px; */
+    text-align: center;
+    transform: translate3d(0,-50%,0);
+    top: 50%;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center; */
   }
   .schoolVR #section05 .content h2{
-    font-size: 10vw;
+    font-size: 7vw;
     line-height: 8vw;
     text-align: center;
     padding: 0 10%;
   }
   .schoolVR #section05 .content .wrap{
+    width: 100%;
     display: inline-block;
     max-height: initial;
+    outline: none;
   }
-  .schoolVR #section05 .content .col .half{
-    display:block;
-  }
-  .schoolVR #section05 .content #col01 .itemWrap {
-    padding-right: 0;
-  }
-  .schoolVR #section05 .content .col .item{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-  .schoolVR #section05 .content #col01 .half > *,
-  .schoolVR #section05 .content #col02 .half > *{
-    width:auto;
-  }
-  
-  .schoolVR #section05 .content #col01 .des > *:first-child {
-    width: 100%;
-    text-align: center;
-  }
-  .schoolVR #section05 .content .col .item .des{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-left:0;
-  }
-  .schoolVR #section05 .content .col .item .des .s{
-    width:100%;
-  }
-  .schoolVR #section05 .content #col02 .itemWrap{
-    padding:0;
-  }
-  .schoolVR #section05 .content #col02 #item01{
-    width:100%;
-  }
-  .schoolVR #section05 .content #col01 #item03 .des,
-  .schoolVR #section05 .content #col02 #item01 .des{
-    padding-left:0;
-  }
-  .schoolVR #section05 .content .col .item img{
+  .schoolVR #section05 .half{
     display: inline-block;
   }
+  .schoolVR #section05 .content .des.half .h4{
+    width:auto;
+  }
+  .schoolVR #section05 .content #item02 .des, 
+  .schoolVR #section05 .content #item07 .des,
+  .schoolVR #section05 .content #item05 .des,
+  .schoolVR #section05 .content .des{
+    padding: 30px 20% 0;
+    position: relative;
+    width: 100%;
+  }
+  .schoolVR #section05 .content #item03 img,
+  .schoolVR #section05 .content #item06 img{
+    width:40%;
+  }
+  .schoolVR #section05 .content #item07 img,
+  .schoolVR #section05 .content #item08 img{
+    width:30%;
+  }
+  .schoolVR #section05 .content #item07,
+  .schoolVR #section05 .content #item08{
+    padding:0;
+  }
+
   .schoolVR #section06 .wrap,
   .schoolVR #section07 .wrap{
     flex-wrap: wrap;
@@ -777,7 +845,7 @@ body{
     padding:0 20px;
   }
   .schoolVR .section .content {
-    padding: calc(75 / 16 * 1rem) 0% 11% 0%;
+    padding: calc(60 / 16 * 1rem) 0% 11% 0%;
   }
   .schoolVR #copyright{
     bottom:20px;
@@ -817,6 +885,9 @@ body{
   }
   .schoolVR #section03 .content ul {
     width: 100%;
+  }
+  .schoolVR #section05 .content button{
+    width: calc(20 / 16 * 1rem);
   }
   .schoolVR #section06,
   .schoolVR #section07{

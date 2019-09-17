@@ -4,6 +4,7 @@ import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
 import smoothScroll from './scroll';
+import Flickity from 'flickity';
 import pjImage01 from '../../images/schoolVR/project01.png';
 import pjImage02 from '../../images/schoolVR/project02.png';
 import layerImage01 from '../../images/schoolVR/layer01.png';
@@ -28,6 +29,7 @@ let copyrightWrap = null;
 let pages = null;
 let section01wrap = null;
 let section04bg = null;
+let f = null;
 
 let page = 0;
 let smooth = null;
@@ -168,7 +170,7 @@ const SchoolVR = (props) => {
 
       
       const boxgeometry = new THREE.BoxBufferGeometry(70,100,70);
-      const boxmaterial = new THREE.MeshPhongMaterial({color:0x283c51, shininess:50, side: THREE.BackSide});
+      const boxmaterial = new THREE.MeshPhongMaterial({color:0x283c51, side: THREE.BackSide});
       const box = new THREE.Mesh(boxgeometry, boxmaterial);
       box.position.y = 100/2 - 5;
       box.rotation.y = 45 * Math.PI/180;
@@ -200,14 +202,22 @@ const SchoolVR = (props) => {
 
     const render = (y) => {
         update();
-        
-        // renderer.clear();
+
         if(page <= 1)
           renderer.render( scene, camera );
         else
           renderer.render( scenef, cameraf );
     }
 
+
+    const adjustSize = function(){
+      var width = window.innerWidth;
+      var roundNumber = Math.round(baseFontRatio * width * fontMultiplier);
+      if(roundNumber >= 16)
+          document.documentElement.style.fontSize = roundNumber + 'px';
+      else
+          document.documentElement.style.fontSize = '';
+    }
 
     onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -216,7 +226,30 @@ const SchoolVR = (props) => {
       cameraf.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, window.innerHeight );
       adjustSize();
+
+      if(window.innerWidth <= 1024){
+        if(!f){
+          document.querySelector('#item08')
+          f = new Flickity('#section05 .wrap',{
+            pageDots: false,
+            arrowShape: { 
+              x0: 10,
+              x1: 60, y1: 50,
+              x2: 70, y2: 40,
+              x3: 30
+            },
+            cellAlign: 'left'
+          });
+        }
+      }
+      else{
+        if(f){
+          f.destroy();
+          f = null;
+        }
+      }
     }
+
     onWindowScroll = () => {
       if(window.innerWidth <= 1024){
         page = Math.round(window.pageYOffset / window.innerHeight);
@@ -259,6 +292,7 @@ const SchoolVR = (props) => {
     window.addEventListener( 'scroll', onWindowScroll, false );
     
     initScene();
+    onWindowResize();
 
     onScroll = (s, y, h) => {
       page = Math.round(-y / window.innerHeight);
@@ -315,16 +349,6 @@ const SchoolVR = (props) => {
       smooth.on();
     }
 
-    const adjustSize = function(){
-      var width = window.innerWidth;
-      var roundNumber = Math.round(baseFontRatio * width * fontMultiplier);
-      if(roundNumber >= 16)
-          document.documentElement.style.fontSize = roundNumber + 'px';
-      else
-          document.documentElement.style.fontSize = '';
-    }
-
-    adjustSize();
 
     TweenMax.to('#section02Cir01', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, ease:Power3.easeInOut});
     TweenMax.to('#section02Cir02', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, delay:.3, ease:Power3.easeInOut});
@@ -489,8 +513,8 @@ const SchoolVR = (props) => {
           <div className="content">
             <h2>Functions</h2>
             <div className="wrap">
-              <div id="col01" className="col">
-                <div className="itemWrap">
+              {/* <div id="col01" className="col">
+                <div className="itemWrap"> */}
                   <div id="item01" className="item">
                     <img src={ftnImage01} />
                     <div className="des half">
@@ -499,26 +523,6 @@ const SchoolVR = (props) => {
                     </div>
                   </div>
                   <div id="item02" className="item">
-                    <img src={ftnImage02} />
-                    <div className="des half">
-                      <div className="h4 bold">Medias</div>
-                      <div className="s">Make use of 2D and 3D photos and videos as an immersive storytelling method.</div>
-                    </div>
-                  </div>
-                  <div id="item03" className="item">
-                    <div className="half">
-                      <img src={ftnImage03} />
-                      <div className="des">
-                        <div className="h4 bold">Navigation</div>
-                        <div className="s">Easy wiring method for better story organisation.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="col02" className="col">
-                <div className="itemWrap">
-                  <div id="item01" className="item">
                     <div className="half">
                       <img src={ftnImage04} />
                       <div className="des">
@@ -527,40 +531,61 @@ const SchoolVR = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div id="item02" className="item">
-                    <img src={ftnImage05} />
-                    <div className="des">
-                      <div className="h4 bold">Timeline</div>
-                      <div className="s">Go beyond 3D. A glimpse on the use of motion and production of animation.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="col03" className="col">
-                <div className="itemWrap">
-                  <div id="item01" className="item">
+                  <div id="item03" className="item">
                     <img src={ftnImage06} />
                     <div className="des">
                       <div className="h4 bold">Camera</div>
                       <div className="s">Pick the best angle to present your great idea.</div>
                     </div>
                   </div>
-                  <div id="item02" className="item">
+                  <div id="item04" className="item">
+                    <img src={ftnImage02} />
+                    <div className="des half">
+                      <div className="h4 bold">Medias</div>
+                      <div className="s">Make use of 2D and 3D photos and videos as an immersive storytelling method.</div>
+                    </div>
+                  </div>
+                {/* </div>
+              </div>
+              <div id="col02" className="col">
+                <div className="itemWrap"> */}
+                
+                <div id="item05" className="item">
+                    <img src={ftnImage05} />
+                    <div className="des">
+                      <div className="h4 bold">Timeline</div>
+                      <div className="s">Go beyond 3D. A glimpse on the use of motion and production of animation.</div>
+                    </div>
+                  </div>
+                {/* </div>
+              </div>
+              <div id="col03" className="col">
+                <div className="itemWrap"> */}
+                  <div id="item06" className="item">
                     <img src={ftnImage07} />
                     <div className="des">
                       <div className="h4 bold">Preview/ Share</div>
                       <div className="s">Share the 3D world in a presentation space that sits everyone in the same network.</div>
                     </div>
                   </div>
-                  <div id="item03" className="item">
+                  <div id="item07" className="item">
+                    <div className="half">
+                      <img src={ftnImage03} />
+                      <div className="des">
+                        <div className="h4 bold">Navigation</div>
+                        <div className="s">Easy wiring method for better story organisation.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="item08" className="item">
                     <img src={ftnImage08} />
                     <div className="des">
                       <div className="h4 bold">Real Time View</div>
                       <div className="s">See who’s with you.</div>
                     </div>
                   </div>
-                </div>
-              </div>
+                {/* </div>
+              </div> */}
             </div>
           </div>
         </div>
