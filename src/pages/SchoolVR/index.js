@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import TweenMax, { Power3 } from 'gsap';
+import TweenMax, { Power3, Power4 } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
@@ -44,9 +44,13 @@ const SchoolVR = (props) => {
 
     let onWindowResize = null;
     let onWindowScroll = null;
+    let onChangeGeo = null;
     let onScroll = null;
     const baseFontRatio = 16 / 1440;
     const fontMultiplier = 0.84375;
+    let fsphere = null;
+    let fbox = null;
+    let num = 0;
 
     if(sceneElem){
       let width = window.innerWidth,
@@ -112,44 +116,13 @@ const SchoolVR = (props) => {
       scene.add(spotLight2);
 
       
-      const ambientLight2 = new THREE.AmbientLight(0xffffff, 0.8);
+      const ambientLight2 = new THREE.AmbientLight(0xffffff, 1);
       scenef.add(ambientLight2);
 
-      const pointLight2 = new THREE.PointLight(0xffffff, .8);
+      const pointLight2 = new THREE.PointLight(0xffffff, .7);
       pointLight2.position.set( -10, 20, 10 );
       pointLight2.castShadow = true;
-      // pointLight2.shadow.mapSize.width = 2048;
-      // pointLight2.shadow.mapSize.height = 2048;
       scenef.add(pointLight2);
-
-      // // back
-      // const spotLight = new THREE.SpotLight(0x32aace, 1, 60, 30);
-      // spotLight.position.set( -10, 10, 30 );
-      // spotLight.penumbra = 1;
-      // spotLight.castShadow = true;
-      // spotLight.shadow.mapSize.width = 2048;
-      // spotLight.shadow.mapSize.height = 2048;
-      // scene.add(spotLight);
-
-      // // front
-      // const spotLight3 = new THREE.SpotLight(0xd1898a, 2, 60, 20);
-      // spotLight3.position.set( -5, 5, -30 );
-      // spotLight3.penumbra = 1;
-      // spotLight3.castShadow = true;
-      // spotLight3.shadow.mapSize.width = 2048;
-      // spotLight3.shadow.mapSize.height = 2048;
-      // scene.add(spotLight3);
-
-      // var spotLightHelper = new THREE.SpotLightHelper( spotLight );
-      // scene.add( spotLightHelper );
-      // var spotLightHelper = new THREE.SpotLightHelper( spotLight2 );
-      // scene.add( spotLightHelper );
-      // var spotLightHelper = new THREE.SpotLightHelper( spotLight3 );
-      // scene.add( spotLightHelper );
-      
-      // const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-      // pointLight.position.set( -5, 15, -23 );
-      // scene.add(pointLight);
     }
 
     const initGeometry = () => {
@@ -162,7 +135,7 @@ const SchoolVR = (props) => {
       scene.add( cylinder );
 
       const spheregeometry = new THREE.SphereBufferGeometry(5, 36,36);
-      const spherematerial = new THREE.MeshPhongMaterial({color:0xd1898a, shininess:40});
+      const spherematerial = new THREE.MeshPhongMaterial({color:0xd18980, shininess:40});
       const sphere = new THREE.Mesh(spheregeometry, spherematerial);
       sphere.position.x = 5;
       sphere.castShadow = true;
@@ -181,26 +154,38 @@ const SchoolVR = (props) => {
 
       
       // footer
-      const fspheregeometry = new THREE.SphereBufferGeometry( 2, 32, 32 );
+      const fspheregeometry = new THREE.SphereBufferGeometry( 2, 22, 22 );
       const fspherematerial = new THREE.MeshPhongMaterial({color: 0x99aa00});
-      const fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
-      fsphere.castShadow = true;
+      fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
       scenef.add( fsphere );
 
+      const fboxgeometry = new THREE.BoxBufferGeometry( 3, 3, 3 );
+      const fboxmaterial = new THREE.MeshPhongMaterial({color: 0x99aa00});
+      fbox = new THREE.Mesh( fboxgeometry, fboxmaterial );
+      fbox.scale.set(0.001,0.001,0.001);
+      scenef.add( fbox );
+
       const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
-      const wallmaterial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
+      const wallmaterial = new THREE.MeshPhongMaterial({color: 0x142326});
       const wall = new THREE.Mesh( wallgeometry, wallmaterial );
       wall.position.set(0,0,-10);
       scenef.add( wall );
     }
 
     const update = () => {
+      if(page > 1){
+        fsphere.rotation.x += .005;
+        fsphere.rotation.y += .005;
+        fbox.rotation.x += .005;
+        fbox.rotation.y += .005;
+        cameraf.lookAt(0,0,0);
+      }
+
       control.update();
       camera.lookAt(-1,8,0);
-      cameraf.lookAt(0,0,0);
     }
 
-    const render = (y) => {
+    const render = () => {
         update();
 
         if(page <= 1)
@@ -209,6 +194,24 @@ const SchoolVR = (props) => {
           renderer.render( scenef, cameraf );
     }
 
+    onChangeGeo = () => {
+      const _num = num++ % 2;
+      if(_num === 0){
+        TweenMax.to(fbox.scale, .6, {x:1,y:1,z:1, delay:.3, ease:Power4.easeInOut});
+        TweenMax.to(fsphere.scale, .6, {x:0.001,y:0.001,z:0.001, ease:Power4.easeInOut});
+      }
+      else{
+        TweenMax.to(fsphere.scale, .6, {x:1,y:1,z:1, delay:.3, ease:Power4.easeInOut});
+        TweenMax.to(fbox.scale, .6, {x:0.001,y:0.001,z:0.001, ease:Power4.easeInOut});
+      }
+    }
+    document.querySelector('#changeGeoBtn').addEventListener('click',onChangeGeo);
+
+    document.querySelector('#sd').addEventListener('click', ()=>{
+      if(window.innerWidth <= 1024){
+        TweenMax.to('#scroll',1,{scrollTop:window.innerHeight, ease:Power3.easeOut});
+      }
+    });
 
     const adjustSize = function(){
       var width = window.innerWidth;
@@ -220,16 +223,20 @@ const SchoolVR = (props) => {
     }
 
     onWindowResize = () => {
+      document.querySelector('#section01').style.height = window.innerHeight+'px';
+      document.querySelector('#section09').style.height = window.innerHeight+'px';
+      document.querySelector('#section01 #scene3d').style.height = window.innerHeight+'px';
+      document.querySelector('#section09 #scene3d').style.height = window.innerHeight+'px';
+
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       cameraf.aspect = window.innerWidth / window.innerHeight;
       cameraf.updateProjectionMatrix();
-      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setSize( window.innerWidth, document.querySelector('#scene3d').offsetHeight );
       adjustSize();
 
       if(window.innerWidth <= 1024){
         page = Math.round(window.pageYOffset / window.innerHeight);
-
         
         section01wrap.style.transform = '';
 
@@ -268,12 +275,11 @@ const SchoolVR = (props) => {
     }
 
     onWindowScroll = () => {
+      const s = document.querySelector('#section01').getBoundingClientRect().top;
+      page = Math.round(-s / window.innerHeight);
       if(window.innerWidth <= 1024){
-        page = Math.round(window.pageYOffset / window.innerHeight);
-        
-        // renderer.domElement.style.transform = `translate3d(0,0,0)`;
-
         pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
+
         if(page > 1){
           if(renderer.domElement.className !== 'active'){
             renderer.domElement.className = 'active';
@@ -315,7 +321,7 @@ const SchoolVR = (props) => {
       }
     }
     window.addEventListener( 'resize', onWindowResize, false );
-    window.addEventListener( 'scroll', onWindowScroll, false );
+    document.querySelector('#scroll').addEventListener( 'scroll', onWindowScroll, false );
     
     initScene();
     onWindowResize();
@@ -385,6 +391,9 @@ const SchoolVR = (props) => {
 
       if(onWindowScroll)
         window.removeEventListener( 'scroll', onWindowScroll, false);
+
+      if(onChangeGeo)
+        document.querySelector('#changeGeoBtn').removeEventListener( 'click', onChangeGeo);
       smooth.off();
     }
   }
@@ -424,6 +433,7 @@ const SchoolVR = (props) => {
             <div className="row des">Innovation Lab for your first VR world</div>
           </div>
           <div ref={elem=>{setSceneElem(elem)}} id="scene3d"></div>
+          <div id="sd" className="bold">Scroll down</div>
         </div>
         <div id="section02" className="section">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1634.25 801.48">
@@ -667,7 +677,7 @@ const SchoolVR = (props) => {
         <div id="section09">
           <div id="footer3d">
             <div id="scene3d"></div>
-            <div id="changeGeoBtn"></div>
+            <div id="changeGeoBtn"><div className="wrap"><span className="h4 bold">Next</span></div></div>
           </div>
         </div>
       </div>

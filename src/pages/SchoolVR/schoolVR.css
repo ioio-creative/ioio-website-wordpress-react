@@ -176,6 +176,25 @@ body{
   cursor: -webkit-grab;
   padding:0;
 }
+.schoolVR #section01 #sd{
+  width:calc(150 / 16 * 1rem);
+  height:calc(50 / 16 * 1rem);
+  line-height:calc(50 / 16 * 1rem);
+  border-radius: calc(25 /16 * 1rem);
+  background:rgba(255,255,255,.2);
+  position: absolute;
+  bottom:calc(60 / 16 * 1rem);
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  color:#fff;
+  text-align: center;
+}
+.schoolVR #section01 #sd:active{
+  transform: translate3d(-50%,0,0) scale(.9);
+}
 
 /* (Optional) Apply a "closed-hand" cursor during drag operation. */
 .schoolVR #section01:active {
@@ -230,8 +249,9 @@ body{
 
  /* section 02 */
 .schoolVR #section02{
-  background: url('../../images/schoolVR/section02.jpg') center no-repeat;
-  background-size:cover;
+  background: rgb(110,133,157);
+  background: linear-gradient(155deg, rgba(110,133,157,1) 0%, rgba(65,177,188,1) 100%);
+  /* background-size:cover; */
 }
 .schoolVR #section02 .wrap{
   width: calc(600 / 16 * 1rem);
@@ -257,8 +277,29 @@ body{
 
  /* section 03 */
 .schoolVR #section03{
-  background: url('../../images/schoolVR/section03.svg') center no-repeat;
-  background-size:cover;
+  background: rgb(255,119,116);
+  background: linear-gradient(45deg, rgba(255,119,116,1) 0%, rgba(255,208,175,1) 100%);
+}
+.schoolVR #section03:before{
+  content:'';
+  width:45%;
+  padding-top:50%;
+  position: absolute;
+  top:5%;
+  right: 3%;
+  background:url('../../images/schoolVR/section02_1.png') center no-repeat;
+  background-size:100%;
+  z-index: 2;
+}
+.schoolVR #section03:after{
+  content:'';
+  width:30%;
+  padding-top:22%;
+  position: absolute;
+  top:5%;
+  right: 30%;
+  background:url('../../images/schoolVR/section02_2.png') center no-repeat;
+  background-size:100%;
 }
 .schoolVR #section03 .content .wrap{
   padding-top:calc(90 / 16 * 1rem);
@@ -634,6 +675,24 @@ body{
   bottom:calc(60 / 16 * 1rem);
   left:50%;
   transform: translate3d(-50%,0,0);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1)
+}
+.schoolVR #footer3d #changeGeoBtn:active{
+  transform: translate3d(-50%,0,0) scale(.9);
+}
+.schoolVR #footer3d #changeGeoBtn .wrap{
+  white-space: nowrap;
+}
+.schoolVR #footer3d #changeGeoBtn span{
+  width:100%;
+  height: 100%;
+  display: inline-block;
+  text-align:center;
+  padding-top:calc(4 / 16 * 1rem);
+  line-height:calc(46 / 16 * 1rem);
+  color:#1E373A;
 }
 
 
@@ -668,11 +727,15 @@ body{
     font-size: calc(24 / 16 * 1rem);
     line-height: calc(34 / 16 * 1rem);
   }
-  html,body{
-    height: auto;
-    overflow: initial;
-    /* overflow-x: hidden;
-    overflow-y: scroll; */
+  html{
+    position:fixed;
+    top:0;
+  }
+  #scroll{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   #scrollBarWrap{
     display: none;
@@ -693,6 +756,7 @@ body{
   .schoolVR .section .content {
     padding: calc(75 / 16 * 1rem) 2% 11% 2%;
   }
+
   .schoolVR #section02 svg {
     width: 90%;
   }
@@ -700,8 +764,9 @@ body{
     width:100%;
     max-width: calc(600 / 16 * 1rem);
   }
-  .schoolVR #section03 {
-    background-position: 70% center;
+  .schoolVR #section03:before,
+  .schoolVR #section03:after{
+    top:30%;
   }
   .schoolVR #section04{
     height:auto;
@@ -870,18 +935,31 @@ body{
   .schoolVR #section01 .wrap .des{
     font-size:12px;
   }
-  .schoolVR #section02{
-    height:auto;
-  }
   .schoolVR #section02 .wrap {
-    position: relative;
+    /* position: relative;
     top:0;
     left:0;
-    transform:translate3d(0,0,0);
-    padding: 50px 0;
+    transform:translate3d(0,0,0); */
+    padding: 50px 20px;
   }
   .schoolVR #section02 .wrap .bigTitle{
     padding-bottom:30px;
+  }
+  .schoolVR #section03{
+    height:auto;
+  }
+  .schoolVR #section03:before{
+    width: 53%;
+    padding-top:55%;
+    right:10%;
+    top:6%;
+  }
+  .schoolVR #section03:after{
+    right: 47%;
+    top:6%;
+  }
+  .schoolVR #section03 .content{
+    padding-top:180px;
   }
   .schoolVR #section03 .content .wrap {
     padding-top:40px;
