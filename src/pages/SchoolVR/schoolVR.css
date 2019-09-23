@@ -151,6 +151,9 @@ body{
   color:#fff;
   padding:0 30px;
 }
+.schoolVR #sd{
+  display: none;
+}
 .schoolVR #scene3d{
   position: relative;
   width:100%;
@@ -222,6 +225,12 @@ body{
   width: 27%;
   background:url('../../images/schoolVR/vr_icon.svg') center top no-repeat;
   padding-bottom:calc(35 / 16 * 1rem);
+  opacity: 1;
+  transition:  all .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.schoolVR #section01 .wrap #vrIcon.hide{
+  opacity: 0;
+  visibility: hidden;
 }
 .schoolVR #section01 .wrap #vrIcon:before{
   content:'';
@@ -290,6 +299,7 @@ body{
   background:url('../../images/schoolVR/section02_1.png') center no-repeat;
   background-size:100%;
   z-index: 2;
+  animation: fly 6s infinite;
 }
 .schoolVR #section03:after{
   content:'';
@@ -300,6 +310,15 @@ body{
   right: 30%;
   background:url('../../images/schoolVR/section02_2.png') center no-repeat;
   background-size:100%;
+  animation: fly 6s infinite 2s;
+}
+@keyframes fly{
+  0%,100%{
+    transform: translate3d(0,0,0);
+  }
+  50%{
+    transform: translate3d(0,-3%,0);
+  }
 }
 .schoolVR #section03 .content .wrap{
   padding-top:calc(90 / 16 * 1rem);
@@ -736,6 +755,7 @@ body{
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    transform: none !important;
   }
   #scrollBarWrap{
     display: none;
@@ -743,6 +763,9 @@ body{
   /* .schoolVR canvas{
     width:100% !important;
   } */
+  .schoolVR #sd{
+    display: inline-block;
+  }
   .schoolVR #svrIcon{
     display: none;
   }
@@ -757,16 +780,48 @@ body{
     padding: calc(75 / 16 * 1rem) 2% 11% 2%;
   }
 
+  .schoolVR #section01 .wrap #vrIcon{
+    width: 6%;
+    position: fixed;
+    top: 90px;
+    background:url('../../images/schoolVR/s_vr_icon.svg') top no-repeat;
+  }
+  .schoolVR #section01 .wrap{
+    top: 190px;
+    left: calc(50% - 160px);
+    transform: none;
+  }
   .schoolVR #section02 svg {
     width: 90%;
+    display: none;
   }
   .schoolVR #section02 .wrap{
     width:100%;
     max-width: calc(600 / 16 * 1rem);
   }
-  .schoolVR #section03:before,
+  .schoolVR #section03{
+    height:auto;
+  }
+  .schoolVR #section03 .content{
+    padding: 100vh 2% 11% 2%;
+  }
+  .schoolVR #section03 .content ul{
+    width: 100%;
+  }
+  .schoolVR #section03:before {
+    width: 75%;
+    padding-top: 70%;
+    right:7%;
+    top:20%;
+  }
   .schoolVR #section03:after{
-    top:30%;
+    width: 40%;
+    padding-top: 32%;
+    right:50%;
+    top:17%;
+  }
+  .schoolVR #section03 h1{
+    text-align: center;
   }
   .schoolVR #section04{
     height:auto;
@@ -775,8 +830,11 @@ body{
     text-align: center;
     padding: 0 10%;
   }
+  .schoolVR #section04 .content{
+    padding-top: calc(190 / 16 * 1rem);
+}
   .schoolVR #section04 .content h2{
-    font-size: 7vw;
+    font-size: 10vw;
     line-height: 13vw;
   }
   .schoolVR #section04 #bg{
@@ -787,7 +845,7 @@ body{
   }
   .schoolVR #section04 .outerGroupWrap{
     display: inline-block;
-    padding-top: calc(120 / 16 * 1rem);
+    padding-top: calc(200 / 16 * 1rem);
   }
   .schoolVR #section04 .groupWrap{
     width:100%;
@@ -804,6 +862,7 @@ body{
   .schoolVR #section05{
     height:auto;
     overflow: hidden;
+    background:#0f414b;
   }
   .schoolVR #section05 .item {
     width:100% !important;
@@ -855,6 +914,10 @@ body{
     padding:0;
   }
 
+  .schoolVR #section06,
+  .schoolVR #section07{
+    height: auto;
+  }
   .schoolVR #section06 .wrap,
   .schoolVR #section07 .wrap{
     flex-wrap: wrap;
@@ -872,6 +935,9 @@ body{
     max-width: initial;
     padding-top:calc(20 / 16 * 1rem);
   }
+  .schoolVR #section07 .content h2{
+    display: none;
+  }
   .schoolVR #section08{
     height:auto;
   }
@@ -886,7 +952,18 @@ body{
     max-width: initial;
     padding-top:calc(30 / 16 * 1rem);
   }
+  .schoolVR #copyright{
+    display: none;
+  }
 }
+@media only screen and (max-width: 768px){
+  .schoolVR #section01 .wrap #vrIcon{
+    width: 9%;
+    position: fixed;
+    top: 140px;
+  }
+}
+
 /* mobile */
 @media only screen and (max-width: 700px){
   .s{
@@ -894,39 +971,46 @@ body{
     line-height: calc(22 / 16 * 1rem);
   }
   h1 {
-    font-size: calc(20 / 16 * 1rem);
-    line-height: calc(20 / 16 * 1rem);
+    font-size: calc(24 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
   }
   h2, .bigTitle {
-    font-size: calc(20 / 16 * 1rem);
-    line-height: calc(20 / 16 * 1rem);
+    font-size: calc(24 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
   }
   h3, .title {
     font-size: calc(20 / 16 * 1rem);
     line-height: calc(28 / 16 * 1rem);
   }
   h4, .h4 {
-    font-size: calc(16 / 16 * 1rem);
-    line-height: calc(26 / 16 * 1rem);
+    font-size: calc(14 / 16 * 1rem);
+    line-height: calc(22 / 16 * 1rem);
+  }
+  .schoolVR ul li {
+    margin-left: calc(15 / 16 * 1rem);
   }
   .schoolVR .section{
-    padding:0 20px;
+    padding:0 30px;
   }
   .schoolVR .section .content {
     padding: calc(60 / 16 * 1rem) 0% 11% 0%;
   }
-  .schoolVR #copyright{
+  /* .schoolVR #copyright{
     bottom:20px;
   }
   .schoolVR #copyright .s{
     font-size:10px;
-  }
+  } */
   .schoolVR #logo{
     bottom:20px;
   }
+  .schoolVR #section01 .wrap{
+    top:110px;
+  }
   .schoolVR #section01 .wrap #vrIcon{
-    width:15%;
+    width:10%;
     padding-bottom:20px;
+    top: 60px;
   }
   .schoolVR #section01 .wrap #schoolvrIcon {
     width: 60%;
@@ -940,7 +1024,7 @@ body{
     top:0;
     left:0;
     transform:translate3d(0,0,0); */
-    padding: 50px 20px;
+    padding: 50px 30px;
   }
   .schoolVR #section02 .wrap .bigTitle{
     padding-bottom:30px;
@@ -949,23 +1033,34 @@ body{
     height:auto;
   }
   .schoolVR #section03:before{
-    width: 53%;
-    padding-top:55%;
-    right:10%;
-    top:6%;
+    width: 75%;
+    padding-top:85%;
+    right:7%;
+    top:15%;
   }
   .schoolVR #section03:after{
-    right: 47%;
-    top:6%;
+    right: 53%;
+    top:14%;
   }
   .schoolVR #section03 .content{
-    padding-top:180px;
+    padding-top:440px;
   }
   .schoolVR #section03 .content .wrap {
     padding-top:40px;
   }
+  .schoolVR #section03 .content .wrap:last-child{
+    border-top:1px solid #fff;
+    margin-top: 40px;
+  }
+  .schoolVR #section03 .content .wrap .title{
+    font-size: calc(16 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
+  }
   .schoolVR #section03 .content ul {
     width: 100%;
+  }
+  .schoolVR #section04 .content{
+    padding-top:100px;
   }
   .schoolVR #section05 .content button{
     width: calc(20 / 16 * 1rem);
