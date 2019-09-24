@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import TweenMax, { Power3, Power2 } from 'gsap';
+import TweenMax, { Power3, Power2, Power4 } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
@@ -70,16 +70,16 @@ const SchoolVR = (props) => {
     const initScene = () => {
       camera = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
       camera.position.x = 7;
-      camera.position.y = 9;
-      camera.position.z = 32;
+      camera.position.y = 32;
+      camera.position.z = 1;
 
-      cameraf = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
+      // cameraf = new THREE.PerspectiveCamera( 55, width / height, 0.1, 1000 );
       // cameraf.position.y = 20;
-      cameraf.position.z = 10;
+      // cameraf.position.z = 10;
 
 
       scene = new THREE.Scene();
-      scenef = new THREE.Scene();
+      // scenef = new THREE.Scene();
 
       renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setClearColor(0x000000);
@@ -100,7 +100,10 @@ const SchoolVR = (props) => {
       control.dampingFactor = 0.05;
       control.rotateSpeed = 0.05;
       control.autoRotate = true;
-      control.autoRotateSpeed = .02;
+      control.autoRotateSpeed = .1;
+
+      TweenMax.to(camera.position, 5, {delay:5, y:9,z:32,ease:Power3.easeInOut});
+      TweenMax.to(control, 5, {delay:5, autoRotateSpeed:0.02,ease:Power3.easeInOut});
       
       initGeometry();
       initLights();
@@ -209,9 +212,9 @@ const SchoolVR = (props) => {
     let a = 0;
     let b = 0;
     const update = () => {
-      if(page > 1){
-        cameraf.lookAt(0,0,0);
-      }
+      // if(page > 1){
+      //   cameraf.lookAt(0,0,0);
+      // }
         
       // if(clicked){
       //   rotateYease += (-dragSpeed - rotateYease) * .1;
@@ -272,8 +275,8 @@ const SchoolVR = (props) => {
 
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      cameraf.aspect = window.innerWidth / window.innerHeight;
-      cameraf.updateProjectionMatrix();
+      // cameraf.aspect = window.innerWidth / window.innerHeight;
+      // cameraf.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, document.querySelector('#scene3d').offsetHeight );
       adjustSize();
 
@@ -469,6 +472,16 @@ const SchoolVR = (props) => {
         TweenMax.to('#scroll',1,{scrollTop:0, ease:Power2.easeInOut});
       }
     });
+
+    TweenMax.staggerFromTo(
+      ['#svrIcon span',
+      '#section01 #schoolvrIcon',
+      '#section01 .des',
+      '#section01 #video',
+      '#section01 #sd'],
+      1,
+      {autoAlpha:0, y: 10},
+      {force3D:true, delay:1, autoAlpha:1, y:0, ease:Power3.easeOut},.2);
 
     // const onMouseDown = (event) =>{
     //   const e = event.touches ? event.touches[0] : event;

@@ -64,7 +64,7 @@ body{
   z-index: 2;
   opacity: 1;
   visibility: visible;
-  transition: all .4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: width .4s cubic-bezier(0.455, 0.03, 0.515, 0.955), top .4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .schoolVR #svrIcon.small{
   transition-duration: .6s;
@@ -210,13 +210,13 @@ body{
   transform: translate3d(-50%,0,0);
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  /* transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); */
   color:#333;
   text-align: center;
 }
-.schoolVR #section01 #video:active{
+/* .schoolVR #section01 #video:active{
   transform: translate3d(-50%,0,0) scale(.9);
-}
+} */
 
 /* (Optional) Apply a "closed-hand" cursor during drag operation. */
 .schoolVR #section01:active {
@@ -798,6 +798,7 @@ body{
 #mobileContact .address{
   font-size: 17px;
   line-height: 26px;
+  padding-right:10%;
 }
 #mobileContactBtn{
   display: none;
