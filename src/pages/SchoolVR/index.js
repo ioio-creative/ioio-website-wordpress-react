@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import TweenMax, { Power3, Power4 } from 'gsap';
+import TweenMax, { Power3, Power2 } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
@@ -22,16 +22,19 @@ import ftnImage07 from '../../images/schoolVR/function07.png';
 import ftnImage08 from '../../images/schoolVR/function08.png';
 let vrIcon = null;
 let svrIcon = null;
-let iconTimeout = null;
-let pageNum = null;
-let pageNumSpan = null;
+// let iconTimeout = null;
+// let pageNum = null;
+// let pageNumSpan = null;
 // let logo = null;
-let copyright = null;
-let copyrightWrap = null;
-let pages = null;
+// let copyright = null;
+// let copyrightWrap = null;
+// let pages = null;
 let section01wrap = null;
 let section04bg = null;
 let f = null;
+let mobileContact = null;
+let mobileContactBtn = null;
+let mobileContactCloseBtn = null;
 
 let page = 0;
 let smooth = null;
@@ -125,13 +128,13 @@ const SchoolVR = (props) => {
       scene.add(spotLight2);
 
       
-      const ambientLight2 = new THREE.AmbientLight(0xffffff, 1);
-      scenef.add(ambientLight2);
+      // const ambientLight2 = new THREE.AmbientLight(0xffffff, 1);
+      // scenef.add(ambientLight2);
 
-      const pointLight2 = new THREE.PointLight(0xffffff, .7);
-      pointLight2.position.set( -10, 20, 10 );
-      pointLight2.castShadow = true;
-      scenef.add(pointLight2);
+      // const pointLight2 = new THREE.PointLight(0xffffff, .7);
+      // pointLight2.position.set( -10, 20, 10 );
+      // pointLight2.castShadow = true;
+      // scenef.add(pointLight2);
     }
 
     const initGeometry = () => {
@@ -163,44 +166,44 @@ const SchoolVR = (props) => {
 
       
       // footer
-      fgroup = new THREE.Group();
-      const fspheregeometry = new THREE.SphereBufferGeometry( 1.5, 22, 22 );
-      const fspherematerial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
-      const fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
-      fgroup.add( fsphere );
+      // fgroup = new THREE.Group();
+      // const fspheregeometry = new THREE.SphereBufferGeometry( 1.5, 22, 22 );
+      // const fspherematerial = new THREE.MeshPhongMaterial({color: 0x1b95ba});
+      // const fsphere = new THREE.Mesh( fspheregeometry, fspherematerial );
+      // fgroup.add( fsphere );
 
-      const fboxgeometry = new THREE.BoxBufferGeometry( 2, 2, 2 );
-      const fboxmaterial = new THREE.MeshPhongMaterial({color: 0xd18980});
-      const fbox = new THREE.Mesh( fboxgeometry, fboxmaterial );
-      fgroup.add( fbox );
+      // const fboxgeometry = new THREE.BoxBufferGeometry( 2, 2, 2 );
+      // const fboxmaterial = new THREE.MeshPhongMaterial({color: 0xd18980});
+      // const fbox = new THREE.Mesh( fboxgeometry, fboxmaterial );
+      // fgroup.add( fbox );
 
-      const fsphere2 = new THREE.Mesh( fspheregeometry, fspherematerial );
-      fgroup.add( fsphere2 );
+      // const fsphere2 = new THREE.Mesh( fspheregeometry, fspherematerial );
+      // fgroup.add( fsphere2 );
 
-      const fbox2 = new THREE.Mesh( fboxgeometry, fboxmaterial );
-      fgroup.add( fbox2 );
+      // const fbox2 = new THREE.Mesh( fboxgeometry, fboxmaterial );
+      // fgroup.add( fbox2 );
 
-      const fsphere3 = new THREE.Mesh( fspheregeometry, fspherematerial );
-      fgroup.add( fsphere3 );
+      // const fsphere3 = new THREE.Mesh( fspheregeometry, fspherematerial );
+      // fgroup.add( fsphere3 );
 
-      const fbox3 = new THREE.Mesh( fboxgeometry, fboxmaterial );
-      fgroup.add( fbox3 );
+      // const fbox3 = new THREE.Mesh( fboxgeometry, fboxmaterial );
+      // fgroup.add( fbox3 );
 
-      fgroup.position.z = 10;
+      // fgroup.position.z = 10;
 
 
-      degree = 360 / fgroup.children.length;
-      for(let i=0; i<fgroup.children.length; i++){
-        fgroup.children[i].position.set(10*Math.sin(i*degree * Math.PI/180), 0, 10*Math.cos(i*degree * Math.PI/180));
-      }
+      // degree = 360 / fgroup.children.length;
+      // for(let i=0; i<fgroup.children.length; i++){
+      //   fgroup.children[i].position.set(10*Math.sin(i*degree * Math.PI/180), 0, 10*Math.cos(i*degree * Math.PI/180));
+      // }
 
-      scenef.add(fgroup);
+      // scenef.add(fgroup);
 
-      const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
-      const wallmaterial = new THREE.MeshPhongMaterial({color: 0x142326});
-      const wall = new THREE.Mesh( wallgeometry, wallmaterial );
-      wall.position.set(0,0,-10);
-      scenef.add( wall );
+      // const wallgeometry = new THREE.PlaneBufferGeometry( 50, 30, 1 );
+      // const wallmaterial = new THREE.MeshPhongMaterial({color: 0x142326});
+      // const wall = new THREE.Mesh( wallgeometry, wallmaterial );
+      // wall.position.set(0,0,-10);
+      // scenef.add( wall );
     }
 
     let a = 0;
@@ -210,16 +213,15 @@ const SchoolVR = (props) => {
         cameraf.lookAt(0,0,0);
       }
         
-      if(clicked){
-        rotateYease += (dragSpeed - rotateYease) * .1;
-        a += rotateYease;
-      }
-      else{
-        a += ((Math.round((fgroup.rotation.y* 180/Math.PI) / degree)*degree*Math.PI/180) - a) * .1;
-      }
+      // if(clicked){
+      //   rotateYease += (-dragSpeed - rotateYease) * .1;
+      //   a += rotateYease * Math.PI/180;
+      // }
+      // else{
+      //   a += ((Math.round((fgroup.rotation.y* 180/Math.PI) / degree)*degree*Math.PI/180) - a) * .1;
+      // }
 
-      fgroup.rotation.y = a;
-      // console.log(a* 180/Math.PI, Math.round((fgroup.rotation.y* 180/Math.PI) / degree)*degree)
+      // fgroup.rotation.y = a;
 
       control.update();
       camera.lookAt(-1,8,0);
@@ -228,10 +230,10 @@ const SchoolVR = (props) => {
     const render = () => {
         update();
 
-        if(page <= 1)
+        // if(page <= 1)
           renderer.render( scene, camera );
-        else
-          renderer.render( scenef, cameraf );
+        // else
+        //   renderer.render( scenef, cameraf );
     }
 
     // onChangeGeo = () => {
@@ -245,11 +247,11 @@ const SchoolVR = (props) => {
       //   TweenMax.to(fbox.scale, .6, {x:0.001,y:0.001,z:0.001, ease:Power4.easeInOut});
       // }
     // }
-    // document.querySelector('#changeGeoBtn').addEventListener('click',onChangeGeo);
+    // document.querySelector('#bookingBtn').addEventListener('click',onChangeGeo);
 
     document.querySelector('#sd').addEventListener('click', ()=>{
       if(window.innerWidth <= 1024){
-        TweenMax.to('#scroll',1,{scrollTop:window.innerHeight, ease:Power3.easeOut});
+        TweenMax.to('#scroll',1,{scrollTop:window.innerHeight, ease:Power2.easeInOut});
       }
     });
 
@@ -264,9 +266,9 @@ const SchoolVR = (props) => {
 
     onWindowResize = () => {
       document.querySelector('#section01').style.height = window.innerHeight+'px';
-      document.querySelector('#section09').style.height = window.innerHeight+'px';
+      // document.querySelector('#section09').style.height = window.innerHeight+'px';
       document.querySelector('#section01 #scene3d').style.height = window.innerHeight+'px';
-      document.querySelector('#section09 #scene3d').style.height = window.innerHeight+'px';
+      // document.querySelector('#section09 #scene3d').style.height = window.innerHeight+'px';
 
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -284,6 +286,7 @@ const SchoolVR = (props) => {
           document.querySelector('#item08')
           f = new Flickity('#section05 .wrap',{
             pageDots: false,
+            prevNextButtons: false,
             arrowShape: { 
               x0: 10,
               x1: 60, y1: 50,
@@ -293,18 +296,18 @@ const SchoolVR = (props) => {
             cellAlign: 'left'
           });
         }
-        if(page > 1){
-          if(renderer.domElement.className !== 'active'){
-            renderer.domElement.className = 'active';
-            renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
-          }
-        }
-        else{
-          if(renderer.domElement.className === 'active'){
-            renderer.domElement.className = '';
-            renderer.domElement.style.transform = `translate3d(0,0,0)`;
-          }
-        }
+        // if(page > 1){
+        //   if(renderer.domElement.className !== 'active'){
+        //     renderer.domElement.className = 'active';
+        //     renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+        //   }
+        // }
+        // else{
+        //   if(renderer.domElement.className === 'active'){
+        //     renderer.domElement.className = '';
+        //     renderer.domElement.style.transform = `translate3d(0,0,0)`;
+        //   }
+        // }
       }
       else{
         if(f){
@@ -320,26 +323,27 @@ const SchoolVR = (props) => {
       page = Math.floor(-s / window.innerHeight);
 
       if(window.innerWidth <= 1024){
-        pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
+        // pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
 
-        if(page > 1){
-          if(renderer.domElement.className !== 'active'){
-            renderer.domElement.className = 'active';
-            renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
-          }
-        }
-        else{
-          if(renderer.domElement.className === 'active'){
-            renderer.domElement.className = '';
-            renderer.domElement.style.transform = `translate3d(0,0,0)`;
-          }
-        }
+        // if(page > 1){
+        //   if(renderer.domElement.className !== 'active'){
+        //     renderer.domElement.className = 'active';
+        //     renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+        //   }
+        // }
+        // else{
+        //   if(renderer.domElement.className === 'active'){
+        //     renderer.domElement.className = '';
+        //     renderer.domElement.style.transform = `translate3d(0,0,0)`;
+        //   }
+        // }
 
-        iconTimeout ? clearTimeout(iconTimeout) : vrIcon.className = 'hide';
-        iconTimeout = setTimeout(()=>{
-          vrIcon.className = '';
-          iconTimeout = null;
-        },1000);
+          
+
+        // iconTimeout = setTimeout(()=>{
+        //   vrIcon.className = '';
+        //   iconTimeout = null;
+        // },1000);
 
         // if(page > 0){
           // logo.className = 'w';
@@ -358,14 +362,29 @@ const SchoolVR = (props) => {
         //   svrIcon.className = 'hide';
         //   copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
         // }
+        if(page > 0 && page < 9){
+          mobileContactBtn.className = '';
+        }
+        else{
+          mobileContactBtn.className = 'hide';
+        }
           
         if(s4 <= 0){
           if(section04bg.className !== 'active')
             section04bg.className = 'active';
+            svrIcon.className = 'small blue';
         }
-        else
+        else{
           if(section04bg.className === 'active')
             section04bg.className = '';
+            
+          if(s < -10)
+            svrIcon.className = 'small';
+          else
+            svrIcon.className = '';
+        }
+
+        
       }
     }
     window.addEventListener( 'resize', onWindowResize, false );
@@ -382,22 +401,22 @@ const SchoolVR = (props) => {
 
       section01wrap.style.transform = `translate3d(-50%,${y * .4}px,0)`;
 
-      if(-y>50){
+      // if(-y>50){
         // logo.className = 'w';
-        copyright.className = 'w';
-      }
-      else{
+        // copyright.className = 'w';
+      // }
+      // else{
         // logo.className = '';
-        copyright.className = '';
-      }
+        // copyright.className = '';
+      // }
 
-      pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
+      // pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
 
       if(page > 1){
-        if(renderer.domElement.className !== 'active'){
-          renderer.domElement.className = 'active';
-          renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
-        }
+        // if(renderer.domElement.className !== 'active'){
+        //   renderer.domElement.className = 'active';
+        //   renderer.domElement.style.transform = `translate3d(0,${document.querySelector('#section09').offsetTop}px,0)`;
+        // }
         if(page === 3){
           if(section04bg.className !== 'active')
             section04bg.className = 'active';
@@ -406,21 +425,21 @@ const SchoolVR = (props) => {
           if(section04bg.className === 'active')
             section04bg.className = '';
       }
-      else{
-        if(renderer.domElement.className === 'active'){
-          renderer.domElement.className = '';
-          renderer.domElement.style.transform = `translate3d(0,0,0)`;
-        }
-      }
+      // else{
+      //   if(renderer.domElement.className === 'active'){
+      //     renderer.domElement.className = '';
+      //     renderer.domElement.style.transform = `translate3d(0,0,0)`;
+      //   }
+      // }
 
       if(page > 0){
         svrIcon.className = '';
-        copyrightWrap.style.transform = `translate3d(0,0,0)`;
+        // copyrightWrap.style.transform = `translate3d(0,0,0)`;
         
       }
       else{
         svrIcon.className = 'hide';
-        copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
+        // copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
       }
     }
 
@@ -436,31 +455,45 @@ const SchoolVR = (props) => {
     TweenMax.to('#section02Cir01', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, ease:Power3.easeInOut});
     TweenMax.to('#section02Cir02', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, delay:.3, ease:Power3.easeInOut});
 
+    mobileContactBtn.addEventListener('click',()=>{
+      if(mobileContact.className === 'section fixed')
+        mobileContact.className = 'section fixed active';
+    });
+    mobileContactCloseBtn.addEventListener('click',()=>{
+      if(mobileContact.className !== 'section fixed')
+        mobileContact.className = 'section fixed';
+    });
 
-    const onMouseDown = (event) =>{
-      const e = event.touches ? event.touches[0] : event;
-      clicked = true;
-      startPos = e.clientX;
-      dragSpeed = 0;
-    }
-    const onMouseUp = () =>{
-      clicked = false;
-      startPos = 0;
-      dragSpeed = 0;
-      rotateYease = 0;
-    }
-    const onMouseMove = (event) =>{
-      if(clicked){
-        const e = event.touches ? event.touches[0] : event;
-        dragSpeed = (e.clientX - startPos) * .0001;
+    svrIcon.addEventListener('click',()=>{
+      if(window.innerWidth <= 1024){
+        TweenMax.to('#scroll',1,{scrollTop:0, ease:Power2.easeInOut});
       }
-    }
-    document.querySelector('#section09 #scene3d').addEventListener('mousedown',onMouseDown);
-    document.querySelector('#section09 #scene3d').addEventListener('mouseup',onMouseUp);
-    document.querySelector('#section09 #scene3d').addEventListener('mousemove',onMouseMove);
-    document.querySelector('#section09 #scene3d').addEventListener('touchstart',onMouseDown);
-    document.querySelector('#section09 #scene3d').addEventListener('touchend',onMouseUp);
-    document.querySelector('#section09 #scene3d').addEventListener('touchmove',onMouseMove);
+    });
+
+    // const onMouseDown = (event) =>{
+    //   const e = event.touches ? event.touches[0] : event;
+    //   clicked = true;
+    //   startPos = e.clientX;
+    //   dragSpeed = 0;
+    // }
+    // const onMouseUp = () =>{
+    //   clicked = false;
+    //   startPos = 0;
+    //   dragSpeed = 0;
+    //   rotateYease = 0;
+    // }
+    // const onMouseMove = (event) =>{
+    //   if(clicked){
+    //     const e = event.touches ? event.touches[0] : event;
+    //     dragSpeed = (e.clientX - startPos) * .01;
+    //   }
+    // }
+    // document.querySelector('#section09 #scene3d').addEventListener('mousedown',onMouseDown);
+    // document.querySelector('#section09 #scene3d').addEventListener('mouseup',onMouseUp);
+    // document.querySelector('#section09 #scene3d').addEventListener('mousemove',onMouseMove);
+    // document.querySelector('#section09 #scene3d').addEventListener('touchstart',onMouseDown);
+    // document.querySelector('#section09 #scene3d').addEventListener('touchend',onMouseUp);
+    // document.querySelector('#section09 #scene3d').addEventListener('touchmove',onMouseMove);
 
     return ()=>{
       if(onWindowResize)
@@ -470,7 +503,7 @@ const SchoolVR = (props) => {
         window.removeEventListener( 'scroll', onWindowScroll, false);
 
       // if(onChangeGeo)
-      //   document.querySelector('#changeGeoBtn').removeEventListener( 'click', onChangeGeo);
+      //   document.querySelector('#bookingBtn').removeEventListener( 'click', onChangeGeo);
       smooth.off();
     }
   }
@@ -488,7 +521,7 @@ const SchoolVR = (props) => {
           <path d="M8.11.09H5.83v4.82H.05v2.28h5.78v6.7h2.28v-6.7h5.77V4.91H8.11V.09zM25.13 2.49h5.22v11.35h2.27V2.49h6.34V.22H25.13v2.27z"/><path d="M35.94 5.25v2.9l2.93.01-.01-2.92-2.92.01zM90.75 9.3h-5.42V7.55h5.42V5.66h-5.42V3.74h5.42V1.86h-6.37V.01h-1.89v2.47l-1.66 2.07V2.91l1-1.36.25-.33-1.16-.89-.34-.25-3.45 4.72-.24.33 1.16.87.34.25.56-.76v8.47h1.88V4.69l1.41 1.13 1.2-1.52v9.66h1.89v-2.77h5.42V9.3zM60.28 1.84h1.59v9.63h-1.59z"/><path d="M62.77.05v12.34h-2.5v1.59h4.08V.05h-1.58zM58.25 2.67c-.65-.51-1.32-1-1.91-1.51V0h-1.59v1.16l-3.64 3 1 1.23.21-.18V9l-1.12 5.1H53l.72-3.67v3.69h5.18V9.91h-5.12l.07-.36h5.07v-4.3l.22.17 1-1.22L60 4c-.55-.4-1.16-.87-1.75-1.33zm-3.1 10v-1.3h2.29v1.25zm2.18-5V8H54v-.43zm0-2V6H54v-.45zM53.9 4l1.65-1.38L57.3 4zM0 23.41h1.84v7.33H0zM8 23.29c-2.25 0-3.25 1.17-3.25 3.78s1 3.8 3.25 3.8 3.23-1.14 3.23-3.8a4.32 4.32 0 0 0-.75-2.85A3 3 0 0 0 8 23.29zm0 5.94c-1 0-1.37-.32-1.37-2.16S7 24.93 8 24.93s1.35.3 1.35 2.14-.44 2.16-1.35 2.16zM14.09 23.41h1.84v7.33h-1.84zM22.05 23.29c-2.24 0-3.24 1.17-3.24 3.78s1 3.8 3.24 3.8 3.24-1.14 3.24-3.8a4.38 4.38 0 0 0-.75-2.85 3 3 0 0 0-2.49-.93zm1.36 3.78c0 1.84-.41 2.16-1.35 2.16s-1.36-.32-1.36-2.16c0-1.51.19-2.14 1.35-2.14.95 0 1.36.3 1.36 2.14zM37.11 29a3.57 3.57 0 0 1-1.35.26c-1.11 0-1.64-.33-1.64-2.21 0-1.61.38-2.11 1.61-2.11a4.08 4.08 0 0 1 1.36.23l.13.05.18-1.59h-.07a5.34 5.34 0 0 0-1.69-.3 3.27 3.27 0 0 0-2.58 1 4.06 4.06 0 0 0-.83 2.67c0 2.59 1.08 3.85 3.31 3.85a4.53 4.53 0 0 0 1.82-.4h.06l-.18-1.52zM45.53 25.72c0-1.56-.9-2.31-2.75-2.31h-2.72v7.32h1.82v-2.65h.83L44 30.73h2.12l-1.69-3a2 2 0 0 0 1.1-2.01zm-1.88.07c0 .67-.21.88-.89.88h-.88v-1.73h.91c.66 0 .86.2.86.85zM50.23 27.72h2.63v-1.49h-2.63v-1.2h3.12l-.03-1.62h-4.9v7.32h5.05l.04-1.6h-3.28v-1.41zM60.12 23.41h-2l-2.54 7.32h1.92l.4-1.38h2.42l.4 1.38h2l-2.53-7.25zm-1 1.67l.11.41.64 2.31H58.3l.7-2.31zM63.9 23.41l-.04 1.65h1.91v5.67h1.82v-5.67h1.92l-.04-1.65H63.9zM72.09 23.41h1.84v7.33h-1.84zM80.02 28.3l-.1.41-.11-.41-1.4-4.89h-1.99l2.47 7.25.02.07h1.93l2.5-7.32h-1.89l-1.43 4.89zM87.53 29.13v-1.41h2.63v-1.49h-2.63v-1.2h3.13l-.04-1.62h-4.9v7.32h5.05l.04-1.6h-3.28z"/>
         </svg>
       </a> */}
-      <div ref={elem => copyright = elem} id="copyright">
+      {/* <div ref={elem => copyright = elem} id="copyright">
         <div ref={elem => copyrightWrap = elem} className="copyrightWrap">
           <div ref={elem => pages = elem} className="pages bold h5">
             <span>P</span>
@@ -500,7 +533,7 @@ const SchoolVR = (props) => {
           </div>
           <span className="s">Copyright © {new Date().getFullYear()} IOIO Limited</span>
         </div>
-      </div>
+      </div> */}
 
       <div id="scroll">
         <div id="section01" className="section">
@@ -510,7 +543,8 @@ const SchoolVR = (props) => {
             <div className="row des">Innovation Lab for your first VR world</div>
           </div>
           <div ref={elem=>{setSceneElem(elem)}} id="scene3d"></div>
-          <div id="sd" className="bold">Scroll down</div>
+          <div id="video">Watch the Video</div>
+          <div id="sd"></div>
         </div>
         <div id="section02" className="section">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1634.25 801.48">
@@ -563,15 +597,15 @@ const SchoolVR = (props) => {
           </div>
         </div>
         <div id="section04" className="section">
+          <div ref={elem => section04bg = elem} id="bg">
+            <img id="_01" src={layerImage01} />
+            <img id="_02" src={layerImage02} />
+            <img id="_04" src={layerImage04} />
+            <img id="_05" src={layerImage05} />
+            <img id="_03" src={layerImage03} />
+          </div>
           <div className="content">
             <h2>Just 5 steps</h2>
-            <div ref={elem => section04bg = elem} id="bg">
-              <img id="_01" src={layerImage01} />
-              <img id="_02" src={layerImage02} />
-              <img id="_04" src={layerImage04} />
-              <img id="_05" src={layerImage05} />
-              <img id="_03" src={layerImage03} />
-            </div>
             <div className="outerGroupWrap">
               <div className="groupWrap">
                 <div className="wrap">
@@ -704,7 +738,7 @@ const SchoolVR = (props) => {
         </div>
         <div id="section06" className="section">
           <div className="content">
-            <h2>Product<br/>Outcome</h2>
+            <h2>Product <br/>Outcome</h2>
             <div className="wrap">
               <img src={pjImage01} />
               <div className="des s">
@@ -715,7 +749,7 @@ const SchoolVR = (props) => {
         </div>
         <div id="section07" className="section">
           <div className="content">
-            <h2>Product<br/>Outcome</h2>
+            <h2>Product <br/>Outcome</h2>
             <div className="wrap">
               <img src={pjImage02} />
               <div className="des s">
@@ -727,7 +761,7 @@ const SchoolVR = (props) => {
         <div id="section08" className="section">
           <div className="content halfWrap">
             <div className="half">
-              <h2>Specification for<br/>best performance</h2>
+              <h2>Specification for <br/>best performance</h2>
               <ul className="specList h5">
                 <li className="t h4 bold">Windows 10 64-bit</li>
                 <li>CPU: i5 @3.2GHz * 4</li>
@@ -745,19 +779,49 @@ const SchoolVR = (props) => {
                 </li>
                 <li>
                   <p>UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING,<br/>17 YUK YAT ST, TO KWA WAN, KOWLOON,<br/>HONG KONG</p>
-                  <p>(852) 3709 8437<br/><a href="http://www.ioiocreative.com" target="_blank">www.ioiocreative.com</a></p>
+                  <p>(852) 3709 8437<br/><a href="https://www.ioiocreative.com" target="_blank">www.ioiocreative.com</a></p>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div id="section09">
+        <div id="mobileContact" className="section">
+          <div className="content">
+            <h1>Let’s Create Together!</h1>
+            <div className="wrap">
+              <div className="t">Contact Us</div>
+              <div><a>(852) 3709 8437</a></div>
+              <a href="https://www.ioiocreative.com" target="_blank">www.ioiocreative.com</a>
+            </div>
+            <div className="wrap">
+              <div className="t">Visit Us</div>
+              <p className="address bold">UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING, 17 YUK YAT ST, TO KWA WAN, KOWLOON, HONG KONG</p>
+            </div>
+          </div>
+        </div>
+        {/* <div id="section09">
           <div id="footer3d">
             <div id="scene3d"></div>
-            <div id="changeGeoBtn"><div className="wrap"><span className="h4 bold">Next</span></div></div>
+            <div id="bookingBtn"><div className="wrap"><span className="h4 bold">Booking</span></div></div>
+          </div>
+        </div> */}
+      </div>
+      <div ref={elem => mobileContact = elem} id="mobileContact" className="section fixed">
+        <div ref={elem => mobileContactCloseBtn = elem} id="mobileContactCloseBtn">X</div>
+        <div className="content">
+          <h1>Let’s Create Together!</h1>
+          <div className="wrap">
+            <div className="t">Contact Us</div>
+            <div><a>(852) 3709 8437</a></div>
+            <a href="https://www.ioiocreative.com" target="_blank">www.ioiocreative.com</a>
+          </div>
+          <div className="wrap">
+            <div className="t">Visit Us</div>
+            <p className="address bold">UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING, 17 YUK YAT ST, TO KWA WAN, KOWLOON, HONG KONG</p>
           </div>
         </div>
       </div>
+      <div ref={elem=> mobileContactBtn = elem} id="mobileContactBtn" className="hide"></div>
     </div>
   )
 }
