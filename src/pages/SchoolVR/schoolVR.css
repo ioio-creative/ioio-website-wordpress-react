@@ -64,12 +64,12 @@ body{
   z-index: 2;
   opacity: 1;
   visibility: visible;
-  transition: width .4s cubic-bezier(0.455, 0.03, 0.515, 0.955), top .4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.schoolVR #svrIcon.small{
-  transition-duration: .6s;
+/* .schoolVR #svrIcon.small{
+  transition-duration: .8s;
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-}
+} */
 .schoolVR #svrIcon.hide{
   opacity: 0;
   visibility: hidden;
@@ -79,11 +79,35 @@ body{
   padding-right:calc(14 / 16 * 1rem);
   line-height: calc(21 / 16 * 1rem);
 }
-.schoolVR #svrIcon span{
+.schoolVR #svrIcon > span{
   width:calc(31 / 16 * 1rem);
   height:calc(17 / 16 * 1rem);
   background:url('../../images/schoolVR/s_vr_icon.svg') center no-repeat;
   display: inline-block;
+}
+.schoolVR #sschoolvrIcon{
+  display: none;
+  width: 50%;
+  position: fixed;
+  top:150px;
+  right:50%;
+  z-index: 9;
+  transform: translate3d(50%,0,0);
+  transition: all .4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.schoolVR #sschoolvrIcon.small{
+  transition-duration: .8s;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.schoolVR #sschoolvrIcon span{
+  width:100%;
+  background: url('../../images/schoolVR/schoolvr_icon.svg') center top no-repeat;
+  display: inline-block;
+}
+.schoolVR #sschoolvrIcon span:before{
+  content: '';
+  padding-top: 14.5%;
+  display: block;
 }
 .schoolVR #logo{
   width:calc(65 / 16 * 1rem);
@@ -155,9 +179,6 @@ body{
   color:#fff;
   padding:0 30px;
 }
-.schoolVR #sd{
-  display: none;
-}
 .schoolVR #scene3d{
   position: relative;
   width:100%;
@@ -182,41 +203,49 @@ body{
   cursor: -moz-grab;
   cursor: -webkit-grab;
   padding:0;
+  position: sticky;
+  top:0;
+  left:0;
 }
-.schoolVR #section01 #sd{
-  width:calc(14 / 16 * 1rem);
-  background:url('../../images/schoolVR/scroll_down.svg') center no-repeat;
-  position: absolute;
-  left:calc(50% - 37px / 2);
-  bottom: calc((30 - 35 / 2) / 16 * 1rem);
-  padding: calc(20 / 16 * 1rem);
-}
-.schoolVR #section01 #sd:before{
-  content:'';
-  display: block;
-  padding-top:67%;
-}
-.schoolVR #section01 #video{
-  width:auto;
+.btn{
+  width:auto !important;
   height:auto;
-  line-height:calc(47 / 16 * 1rem);
+  min-width: 188px;
+  line-height:calc(46 / 16 * 1rem);
   border-radius: calc(28 /16 * 1rem);
+  padding-top:calc(2 / 16 * 1rem);
+  border:1px solid #fff;
   white-space: nowrap;
-  padding:calc(3 / 16 * 1rem) calc(40 / 16 * 1rem) 0;
-  background:#fff;
   position: absolute;
-  bottom:calc(65 / 16 * 1rem);
   left:50%;
   transform: translate3d(-50%,0,0);
-  overflow: hidden;
-  cursor: pointer;
-  /* transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); */
-  color:#333;
   text-align: center;
+  cursor: pointer;
+  z-index: 9;
 }
-/* .schoolVR #section01 #video:active{
-  transform: translate3d(-50%,0,0) scale(.9);
-} */
+.schoolVR #section01 #sd{
+  bottom: calc(50 / 16 * 1rem);
+}
+.schoolVR #section01 #video{
+  bottom:calc(115 / 16 * 1rem);
+  color:#333;
+  background:#fff;
+  font-size:calc(14 / 16 * 1rem);
+}
+.schoolVR #section01 #video:before{
+  content:'';
+  width: calc(12 / 16 * 1rem);
+  height: calc(16 / 16 * 1rem);
+  background:#fff url('../../images/schoolVR/play_btn.svg') center no-repeat;
+  display: inline-block;
+  position: relative;
+  top: calc(3 / 16 * 1rem);
+  margin-right: calc(20 / 16 * 1rem);
+}
+.schoolVR #section01 #sd.hide,
+.schoolVR #section01 #video.hide{
+  display: none;
+}
 
 /* (Optional) Apply a "closed-hand" cursor during drag operation. */
 .schoolVR #section01:active {
@@ -273,6 +302,7 @@ body{
 
  /* section 02 */
 .schoolVR #section02{
+  /* margin-top: 100vh; */
   background: rgb(110,133,157);
   background: linear-gradient(155deg, rgba(110,133,157,1) 0%, rgba(65,177,188,1) 100%);
   /* background-size:cover; */
@@ -591,6 +621,25 @@ body{
 .schoolVR #section05 .content button path{
   fill: #fff;
 }
+.schoolVR #section05 .flickity-page-dots{
+  width:100%;
+  white-space: nowrap;
+  text-align: center;
+  padding-top:30px;
+}
+.schoolVR #section05 .flickity-page-dots li{
+  display: inline-block;
+  list-style: none;
+  width:5px;
+  height:5px;
+  margin:3px;
+  background:#fff;
+  border-radius: 50%;
+  opacity: .3;
+}
+.schoolVR #section05 .flickity-page-dots li.is-selected{
+  opacity: 1;
+}
 /* .schoolVR #section05 .content .col .half{
   width:100%;
   display: flex;
@@ -754,10 +803,11 @@ body{
 #mobileContact{
   display: none;
   width:100%;
-  height:100vh;
+  height:120vh;
   background:#142326;
 }
 #mobileContact.fixed{
+  height:100%;
   position: fixed;
   top:0;
   left:0;
@@ -765,47 +815,66 @@ body{
   background: rgb(255,119,116);
   background: linear-gradient(0deg, rgba(255,119,116,1) -20%, rgba(255,208,175,1) 100%);
   transform: translate3d(0,100%,0);
-  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  margin-bottom:0px;
+}
+#mobileContact.fixed .ioio{
+  color:#333;
 }
 #mobileContact.fixed.active{
   transform: translate3d(0,0%,0);
 }
 #mobileContact.fixed .content{
-  padding-top:50px;
+  padding-top:calc(50 / 16 * 1rem);
+}
+#mobileContact.fixed .btn{
+  bottom:calc(50 / 16 * 1rem);
+}
+#mobileContact .ioio{
+  font-size: 6vw;
+  color: #7DD1E0;
+  margin-bottom: 10px;
 }
 #mobileContact h1{
   padding-right:30%;
+  padding-bottom: 20px;
   color:#fff;
 }
 #mobileContact a{
   display: inline-block;
 }
 #mobileContact .content{
-  display: flex;
-  flex-wrap: wrap;
   padding-top: 100px;
   padding-bottom: 50px;
 }
 #mobileContact .content > *{
   width:100%;
 }
-#mobileContact .content .t{
+#mobileContact .content .wrap{
+  padding-top: 40px;
+}
+/* #mobileContact .content .t{
   text-transform:  uppercase;
   padding-bottom:15px;
   margin-bottom:20px;
   border-bottom: 1px solid #fff;
-}
+} */
 #mobileContact .address{
-  font-size: 17px;
-  line-height: 26px;
   padding-right:10%;
+  padding-top:40px;
+  border-top:1px solid #fff;
+}
+#mobileContact .btn{
+  background:#fff;
+  color:#333;
+  bottom:calc(70 / 16 * 1rem);
 }
 #mobileContactBtn{
   display: none;
   width:58px;
   height:58px;
   border-radius: 50%;
-  background:#fff;
+  background:#fff url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
   position: fixed;
   bottom:44px;
   right:27px;
@@ -855,38 +924,69 @@ body{
   /* .schoolVR canvas{
     width:100% !important;
   } */
-  .schoolVR #sd{
-    display: inline-block;
-  }
-  .schoolVR #svrIcon{
-    width: 8%;
-    top:120px;
-    right: 50%;
-    transform: translate3d(50%,0,0);
-  }
-  .schoolVR #svrIcon.small{
-    width: 5%;
+
+  
+  /* .schoolVR #svrIcon.small{
+    width: 4%;
     top: 60px;
+    left: calc(4% / 2 + 48px);
+  } */
+  /* .schoolVR #sschoolvrIcon{
+    display: inline-block;
+    width: 30%;
+    top:200px;
   }
-  .schoolVR #svrIcon.hide{
-    opacity: 1;
-    visibility: visible;
-  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 14%;
+    top: 60px;
+    right: calc(14% / 2 + 48px);
+  } */
   .schoolVR #svrIcon.blue span{
     background:url('../../images/schoolVR/s_b_vr_icon.svg') top no-repeat;
   }
+  .schoolVR #svrIcon{
+    width:calc(100% - 80px);
+    right:40px;
+    top:60px;
+  }
   .schoolVR #svrIcon p{
-    display: none;
+    width: 14%;
+    float: right;
+    padding:0;
+    background:url('../../images/schoolVR/schoolvr_icon.svg') no-repeat;
   }
   .schoolVR #svrIcon span{
+    width:4%;
+    height:20px;
+    float: left;
+  }
+  .schoolVR #svrIcon p:before{
+    content:'';
+    display: block;
+    padding-top:15%;
+  }
+  .schoolVR #svrIcon p span{
+    display: none;
+  }
+  /* .schoolVR #svrIcon > span{
     width:100%;
     height:auto;
     display: block;
-  }
-  .schoolVR #svrIcon span:before{
+  } */
+  /* .schoolVR #svrIcon span:before{
     content:'';
     display:block;
     padding-top: 55%;
+  } */
+  .schoolVR #scroll{
+    /* width:50%; */
+  }
+  .schoolVR .section{
+    width:100vw;
+  }
+  .schoolVR .section .content {
+    padding-left:10px;
+    padding-right:10px;
   }
   .schoolVR .section .content.halfWrap{
     width: 100%;
@@ -895,22 +995,20 @@ body{
   .schoolVR .section .content .half {
     width:100%;
   }
-  .schoolVR .section .content {
-    padding: calc(75 / 16 * 1rem) 2% 11% 2%;
-  }
-
   .schoolVR #section01 .wrap #vrIcon{
-    display: none;
-    /* width: 8.5%;
-    position: fixed;
-    top: 110px;
-    background:url('../../images/schoolVR/s_vr_icon.svg') top no-repeat; */
+    width:27%;
+    background:url('../../images/schoolVR/s_vr_icon.svg') top no-repeat;
   }
+  /* .schoolVR #section01 .wrap #vrIcon,
+  .schoolVR #section01 .wrap #schoolvrIcon{
+    display: none;
+  } */
   .schoolVR #section01 .wrap .des {
     font-size: 1.89vw;
+    /* padding-top:75px; */
   }
   .schoolVR #section01 .wrap{
-    top: 190px;
+    top: 140px;
     left: calc(50% - 160px);
     transform: none;
   }
@@ -963,10 +1061,12 @@ body{
   .schoolVR #section04 .content{
     padding-top: 270px;
   }
-  /* .schoolVR #section04 .content h2{
-    font-size: 10vw;
-    line-height: 13vw;
-  } */
+  .schoolVR #section04 br{
+    display: none;
+  }
+  .schoolVR #section04 .content .s{
+    padding:0 5%;
+  }
   .schoolVR #section04 #bg{
     width: 70%;
     position: relative;
@@ -1106,20 +1206,56 @@ body{
   } */
   #mobileContact{
     display: inline-block;
+    height:100vh;
+    margin-bottom:300px;
+  }
+  #mobileContact .ioio{
+    font-size:40px;
+    margin-bottom: 20px;
+  }
+  #mobileContact .content{
+    padding-top:150px;
+  }
+  #mobileContact .content .wrap{
+    font-size: 20px;
+  }
+  #mobileContact .address{
+    font-size: 20px;
   }
   #mobileContactBtn{
     display: inline-block;
+    right: 40px;
   }
 }
 
 @media only screen and (max-width: 768px){
   .schoolVR #svrIcon{
-    width: 11%;
-    top: 120px;
+    width:calc(100% - 80px);
+    right:40px;
+    top:50px;
   }
-  .schoolVR #svrIcon.small{
+  .schoolVR #svrIcon span{
+    width:5.5%;
+    /* top:40px; */
+  }
+  .schoolVR #svrIcon p {
+    width: 20%;
+  }
+  /* .schoolVR #svrIcon.small{
     width: 7%;
     top: 70px;
+    left: calc(7% / 2 + 6%);
+  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 19%;
+    top:70px;
+    right: calc(19% / 2 + 6%);
+  } */
+  /* .schoolVR #section01 .wrap .des {
+    padding-top: 60px;
+  } */
+  .schoolVR #section01 .wrap .des{
+    font-size: 2.55vw;
   }
   .schoolVR #section03 .content{
     padding-top: 76vh;
@@ -1137,6 +1273,10 @@ body{
   }
   .schoolVR #section08 h2{
     width: 80%;
+  }
+  #mobileContact{
+    height:100vh;
+    margin-bottom:400px;
   }
 }
 
@@ -1175,30 +1315,57 @@ body{
   .schoolVR .section .content {
     padding: calc(60 / 16 * 1rem) 0% 11% 0%;
   }
-  .schoolVR #svrIcon{
+  /* .schoolVR #svrIcon{
     width:13%;
     top: 100px;
-  }
+  } */
   .schoolVR #logo{
     bottom:20px;
   }
   .schoolVR #section01 .wrap{
-    top:150px;
+    top:90px;
   }
-  .schoolVR #svrIcon{
+  .schoolVR #section01 .wrap #vrIcon {
+    width: 16%;
+    padding-bottom:20px;
+  }
+  .schoolVR #svrIcon {
+    width: calc(100% - 60px);
+    right: 30px;
+    top: 40px;
+  }
+  .schoolVR #svrIcon span {
+    width: 7%;
+    height: 12px;
+  }
+  .schoolVR #svrIcon p {
+    width:23%;
+  }
+  /* .schoolVR #svrIcon{
     width:13%;
     top: 100px;
   }
   .schoolVR #svrIcon.small {
-    width: 10%;
-    top:50px;
+    width: 6%;
+    top:40px;
+    left: calc(6% / 2 + 30px);
   }
+  .schoolVR #sschoolvrIcon{
+    width: 52%;
+    top: 150px;
+  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 19%;
+    top:40px;
+    right: calc(19% / 2 + 30px);
+  } */
   .schoolVR #section01 .wrap #schoolvrIcon {
     width: 60%;
     padding-bottom: 10px;
   }
   .schoolVR #section01 .wrap .des{
     font-size:12px;
+    /* padding-top: 35px; */
   }
   .schoolVR #section02 .wrap {
     /* position: relative;
@@ -1306,9 +1473,21 @@ body{
   .schoolVR #section08 .specList li.t{
     font-size: 18px;
   }
+  #mobileContact{
+    height: 120vh;
+    margin-bottom:200px;
+  }
   #mobileContact h1{
     font-size: 33px;
     line-height: 38px;
+  }
+  #mobileContact .ioio{
+    font-size:25px;
+    margin-bottom:10px;
+  }
+  #mobileContactBtn{
+    right: 30px;
+    bottom:30px;
   }
 }
 
