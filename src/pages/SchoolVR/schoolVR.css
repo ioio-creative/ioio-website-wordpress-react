@@ -222,6 +222,7 @@ body{
   text-align: center;
   cursor: pointer;
   z-index: 9;
+  font-size:calc(14 / 16 * 1rem);
 }
 .schoolVR #section01 #sd{
   bottom: calc(50 / 16 * 1rem);
@@ -255,7 +256,7 @@ body{
 }
 .schoolVR #section01 .wrap{
   width:26%;
-  min-width: 320px;
+  min-width: calc(320 / 16 * 1rem);
   position: absolute;
   top:20%;
   left:50%;
@@ -447,7 +448,7 @@ body{
 
 .schoolVR #section04 svg{
   width: calc( 75  / 16 * 1rem);
-  font-size:40px;
+  font-size:calc(40 / 16 * 1rem);
   fill: none;
   stroke: #fff;
   stroke-width:calc(.2 / 16 * 1rem);
@@ -613,10 +614,10 @@ body{
   transform: translate3d(0,-50%,0);
 }
 .schoolVR #section05 .content button.previous{
-  left:20px;
+  left:calc(20 / 16 * 1rem);
 }
 .schoolVR #section05 .content button.next{
-  right:20px;
+  right:calc(20 / 16 * 1rem);
 }
 .schoolVR #section05 .content button path{
   fill: #fff;
@@ -625,14 +626,14 @@ body{
   width:100%;
   white-space: nowrap;
   text-align: center;
-  padding-top:30px;
+  padding-top:calc(30 / 16 * 1rem);
 }
 .schoolVR #section05 .flickity-page-dots li{
   display: inline-block;
   list-style: none;
-  width:5px;
-  height:5px;
-  margin:3px;
+  width:calc(5 / 16 * 1rem);
+  height:calc(5 / 16 * 1rem);
+  margin:calc(3 / 16 * 1rem);
   background:#fff;
   border-radius: 50%;
   opacity: .3;
@@ -672,7 +673,7 @@ body{
   align-items: flex-end;
 }
 .schoolVR #section06 .wrap .des p{
-  max-width: 210px;
+  max-width: calc(210 / 16 * 1rem);
 }
 
 /* section 07 */
@@ -691,7 +692,7 @@ body{
   align-items: flex-end;
 }
 .schoolVR #section07 .wrap .des p{
-  max-width: 210px;
+  max-width: calc(210 / 16 * 1rem);
 }
 
 
@@ -833,25 +834,25 @@ body{
 #mobileContact .ioio{
   font-size: 6vw;
   color: #7DD1E0;
-  margin-bottom: 10px;
+  margin-bottom: calc(10 / 16 * 1rem);
 }
 #mobileContact h1{
   padding-right:30%;
-  padding-bottom: 20px;
+  padding-bottom: calc(20 / 16 * 1rem);
   color:#fff;
 }
 #mobileContact a{
   display: inline-block;
 }
 #mobileContact .content{
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: calc(100 / 16 * 1rem);
+  padding-bottom: calc(50 / 16 * 1rem);
 }
 #mobileContact .content > *{
   width:100%;
 }
 #mobileContact .content .wrap{
-  padding-top: 40px;
+  padding-top: calc(40 / 16 * 1rem);
 }
 /* #mobileContact .content .t{
   text-transform:  uppercase;
@@ -861,8 +862,8 @@ body{
 } */
 #mobileContact .address{
   padding-right:10%;
-  padding-top:40px;
-  border-top:1px solid #fff;
+  padding-top:calc(40 / 16 * 1rem);
+  border-top:calc(1 / 16 * 1rem) solid #fff;
 }
 #mobileContact .btn{
   background:#fff;
@@ -871,14 +872,14 @@ body{
 }
 #mobileContactBtn{
   display: none;
-  width:58px;
-  height:58px;
+  width:calc(58 / 16 * 1rem);
+  height:calc(58 / 16 * 1rem);
   border-radius: 50%;
   background:#fff url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
   position: fixed;
-  bottom:44px;
-  right:27px;
-  box-shadow: 0px 2px 10px rgba(0,0,0,.2);
+  bottom:calc(44 / 16 * 1rem);
+  right:calc(27 / 16 * 1rem);
+  box-shadow: 0px calc(2 / 16 * 1rem) calc(10 / 16 * 1rem) rgba(0,0,0,.2);
   opacity: 1;
   visibility: visible;
   transform: translate3d(0,0,0) scale(0);
@@ -893,8 +894,8 @@ body{
   position: absolute;
   top:0px;
   right:0px;
-  padding:30px;
-  font-size:30px;
+  padding:calc(30 / 16 * 1rem);
+  font-size:calc(30 / 16 * 1rem);
 }
 
 
