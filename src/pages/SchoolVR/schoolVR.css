@@ -448,7 +448,7 @@ body{
 
 .schoolVR #section04 svg{
   width: calc( 75  / 16 * 1rem);
-  font-size:calc(40 / 16 * 1rem);
+  font-size:40px;
   fill: none;
   stroke: #fff;
   stroke-width:calc(.2 / 16 * 1rem);
