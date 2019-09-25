@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import TweenMax, { Power3, Power2, Power4 } from 'gsap';
+import TweenMax, { Power3, Power2, Elastic } from 'gsap';
 import {THREE} from 'aframe';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
@@ -113,7 +113,7 @@ const SchoolVR = (props) => {
         '#section01 #video',
         '#section01 #sd'],
         1,
-        {autoAlpha:0, y: 10},
+        {autoAlpha:0, y: 15},
         {force3D:true, delay:3, autoAlpha:1, y:0, ease:Power3.easeOut},.2);
         
         initGeometry();
@@ -405,10 +405,16 @@ const SchoolVR = (props) => {
         //   copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
         }
         if(page > 0 && page < 8){
-          mobileContactBtn.className = '';
+          if(mobileContactBtn.className !== 'active'){
+            mobileContactBtn.className = 'active';
+            TweenMax.to(mobileContactBtn, 1, {scale:1,ease:Elastic.easeOut.config(1, 0.4)});
+          }
         }
         else{
-          mobileContactBtn.className = 'hide';
+          if(mobileContactBtn.className === 'active'){
+            mobileContactBtn.className = '';
+            TweenMax.to(mobileContactBtn, .3, {scale:0,ease:'Power3.easeOut'});
+          }
         }
           
         if(s4 <= window.innerHeight/2){
