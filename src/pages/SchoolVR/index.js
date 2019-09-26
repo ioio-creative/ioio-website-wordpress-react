@@ -104,8 +104,8 @@ const SchoolVR = (props) => {
       control.autoRotate = true;
       control.autoRotateSpeed = .1;
 
-      TweenMax.to(camera.position, 3, {delay:2, y:9,z:window.innerWidth <= 1024? 50 :32,ease:'Sine.easeInOut'});
-      TweenMax.to(control, 3, {delay:2, autoRotateSpeed:0.02,ease:'Sine.easeInOut',onComplete:()=>{done=true}});
+      TweenMax.to(camera.position, 3, {delay:1, y:9,z:window.innerWidth <= 1024? 50 :32,ease:'Sine.easeInOut'});
+      TweenMax.to(control, 3, {delay:1, autoRotateSpeed:0.02,ease:'Sine.easeInOut',onComplete:()=>{done=true}});
       TweenMax.staggerFromTo(
         ['#vrIcon',
         '#schoolvrIcon',
@@ -114,7 +114,7 @@ const SchoolVR = (props) => {
         '#section01 #sd'],
         1,
         {autoAlpha:0, y: 15},
-        {force3D:true, delay:3, autoAlpha:1, y:0, ease:Power3.easeOut},.2);
+        {force3D:true, delay:1.6, autoAlpha:1, y:0, ease:Power3.easeOut},.2);
         
         initGeometry();
         initLights();
@@ -243,12 +243,12 @@ const SchoolVR = (props) => {
       control.update();
       if(window.innerWidth <= 1024){
         if(page > 0){
-          camera.lookAt(-2,16,0);
-          // if(done) geoGroup.position.y = -1;
+          camera.lookAt(-2,18,0);
+          geoGroup.scale.set(.8,.8,.8);
         }
         else{
           camera.lookAt(-1,8,0);
-          // if(done) geoGroup.position.y = 0;
+          geoGroup.scale.set(1,1,1);
         }
       }
       else{
@@ -356,7 +356,7 @@ const SchoolVR = (props) => {
     onWindowScroll = () => {
       const s = document.querySelector('#section02').getBoundingClientRect().top - window.innerHeight;
       const s4 = document.querySelector('#section04').getBoundingClientRect().top;
-      page = Math.floor(-s / window.innerHeight);
+      page = Math.floor((-s+1) / window.innerHeight);
 
       if(window.innerWidth <= 1024){
         // pageNum.style.transform = `translate3d(0,${-pageNumSpan.offsetHeight * page}px,0)`;
@@ -599,8 +599,8 @@ const SchoolVR = (props) => {
           <div className="row des">Innovation Lab for your first VR world</div>
         </div>
         <div ref={elem=>{setSceneElem(elem)}} id="scene3d"></div>
-        <div id="video" className="btn">Watch the Video</div>
-        <div id="sd" className="btn">More details</div>
+        <div id="video" className="btn"><div>Watch the Video</div></div>
+        <div id="sd" className="btn"><div>More details</div></div>
       </div>
         {/* <div id="section01" className="section"> */}
         {/* </div> */}
@@ -853,7 +853,7 @@ const SchoolVR = (props) => {
             <div className="wrap">
               <p className="address s">UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING, 17 YUK YAT ST, TO KWA WAN, KOWLOON, HONG KONG</p>
             </div>
-            <a className="btn" href="mailto:">Send Email</a>
+            <a className="btn" href="mailto:"><div>Send Email</div></a>
           </div>
         </div>
         {/* <div id="section09">
@@ -874,10 +874,10 @@ const SchoolVR = (props) => {
           <div className="wrap">
             <p className="address s">UNIT A802, 8/F, TAI CHIAP FACTORY BUILDING, 17 YUK YAT ST, TO KWA WAN, KOWLOON, HONG KONG</p>
           </div>
-          <a className="btn" href="mailto:">Send Email</a>
+          <a className="btn" href="mailto:"><div>Send Email</div></a>
         </div>
       </div>
-      <div ref={elem=> mobileContactBtn = elem} id="mobileContactBtn" className="hide"></div>
+      <div ref={elem=> mobileContactBtn = elem} id="mobileContactBtn" className="hide"><span></span></div>
     </div>
   )
 }
