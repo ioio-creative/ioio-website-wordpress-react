@@ -864,7 +864,7 @@ const SchoolVR = (props) => {
         </div> */}
       </div>
       <div ref={elem => mobileContact = elem} id="mobileContact" className="section fixed">
-        <div ref={elem => mobileContactCloseBtn = elem} id="mobileContactCloseBtn">X</div>
+        <div ref={elem => mobileContactCloseBtn = elem} id="mobileContactCloseBtn"></div>
         <div className="content">
           <h1>Let’s Create Together!</h1>
           <div className="wrap">
