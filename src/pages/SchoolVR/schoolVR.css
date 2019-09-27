@@ -24,7 +24,12 @@
   font-style: normal;
 }
 
-
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
 h1{ font-size:calc(55 / 16 * 1rem); line-height:calc(55 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; }
 h2, .bigTitle{ font-size:calc(40 / 16 * 1rem); line-height:calc(40 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; letter-spacing:calc(1.5 / 16 * 1rem);  }
 h3, .title{ font-size:calc(28 / 16 * 1rem); line-height:calc(36 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; }
@@ -34,7 +39,7 @@ h6, .h6{ font-size:calc(13 / 16 * 1rem); line-height:calc(23 / 16 * 1rem); }
 .s{ font-size:calc(11 / 16 * 1rem); line-height:calc(18 / 16 * 1rem); }
 .bold{font-family: 'Myriad Pro'; font-weight: bold;}
 
-a{ color:#fff; }
+a{ color:#fff; outline: none; }
 a:hover{ color:#fff; }
 html, body{ width:100%; height:100%; overflow: hidden; }
 body{
@@ -124,7 +129,7 @@ body{
 .schoolVR #logo.w path{
   fill:#fff;
 }
-/* .schoolVR #copyright{
+.schoolVR #copyright{
   position: fixed;
   bottom:calc(40 / 16 * 1rem);
   left:6%;
@@ -168,7 +173,7 @@ body{
 }
 .schoolVR #copyright.w .pages{
   border-color:rgba(255,255,255,.5);
-} */
+}
 
 
 /* Common */
@@ -233,12 +238,23 @@ body{
   transform: translate3d(0,0,0) scale(.95);
 }
 .schoolVR #section01 #sd{
-  bottom: calc(50 / 16 * 1rem);
+  bottom: calc(40 / 16 * 1rem);
+}
+.schoolVR #section01 #sd_icon{
+  width:12px;
+  height:9px;
+  background:url('../../images/schoolVR/scroll_down.svg') no-repeat;
+  background-size: 100%;
+  position: absolute;
+  bottom:16px;
+  left:50%;
+  transform: translate3d(-50%,0,0);
 }
 .schoolVR #section01 #video{
-  bottom:calc(115 / 16 * 1rem);
+  bottom:calc(105 / 16 * 1rem);
   color:#333;
   font-size:calc(14 / 16 * 1rem);
+  display: none;
 }
 .schoolVR #section01 #video div{
   background:#fff;
@@ -337,6 +353,9 @@ body{
   right: -100%;
   bottom: -100%;
   margin: auto;
+}
+.schoolVR #section02 svg{
+  mix-blend-mode: screen;
 }
 
 
@@ -818,19 +837,21 @@ body{
   background:#142326;
 }
 #mobileContact.fixed{
+  width:calc(500 / 16 * 1rem);
   height:100%;
   position: fixed;
   top:0;
-  left:0;
+  right:0;
   z-index:999;
   background: rgb(255,119,116);
   background: linear-gradient(0deg, rgba(255,119,116,1) -20%, rgba(255,208,175,1) 100%);
-  transform: translate3d(0,100%,0);
+  transform: translate3d(100%,0%,0);
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   margin-bottom:0px;
+  display: block;
 }
 #mobileContact.fixed .ioio{
-  color:#333;
+  color:#cf5c5c;
 }
 #mobileContact.fixed.active{
   transform: translate3d(0,0%,0);
@@ -845,12 +866,12 @@ body{
   border-color:#fff;
 }
 #mobileContact .ioio{
-  font-size: 6vw;
+  font-size: 2vw;
   color: #41DDF7;
   margin-bottom: calc(10 / 16 * 1rem);
 }
 #mobileContact h1{
-  padding-right:30%;
+  padding-right:20%;
   padding-bottom: calc(20 / 16 * 1rem);
   color:#fff;
 }
@@ -873,10 +894,16 @@ body{
   margin-bottom:20px;
   border-bottom: 1px solid #fff;
 } */
+#mobileContact .wrap div a{
+  font-size: calc(18 / 16 * 1rem);
+  line-height: calc(23 / 16 * 1rem);
+}
 #mobileContact .address{
   padding-right:10%;
   padding-top:calc(40 / 16 * 1rem);
   border-top:calc(1 / 16 * 1rem) solid #7C7C7C;
+  font-size: calc(18 / 16 * 1rem);
+  line-height: calc(23 / 16 * 1rem);
 }
 #mobileContact .btn{
   color:#333;
@@ -886,24 +913,58 @@ body{
   background:#fff;
 }
 #mobileContactBtn{
-  display: none;
+  /* display: none; */
   position: fixed;
   bottom:calc(44 / 16 * 1rem);
-  right:calc(27 / 16 * 1rem);
+  right:6%;
   opacity: 1;
   visibility: visible;
   transform: translate3d(0,0,0) scale(0);
   z-index: 99;
+  background:#fff;
+  border-radius: calc(58 / 2 / 16 * 1rem);
+  box-shadow: 0px calc(2 / 16 * 1rem) calc(10 / 16 * 1rem) rgba(0,0,0,.2);
+  /* transition: width .6s cubic-bezier(0.19, 1, 0.22, 1); */
+}
+#mobileContactBtn a{
+  width:calc(188 / 16 * 1rem);
+  opacity: 0;
+  visibility: hidden;
+  display: inline-block;
+  color:#333;
+  border-radius: calc(58 / 2 / 16 * 1rem);
+  border:0;
+  width:calc(58 / 16 * 1rem);
+  height:calc(58 / 16 * 1rem);
+  transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+  position: absolute;
+  top:0;
+}
+#mobileContactBtn a div{
+  border:0;
+}
+#mobileContactBtn.big{
+  width:calc(188 / 16 * 1rem);
+  padding-left:30px;
+}
+#mobileContactBtn.big span{
+}
+#mobileContactBtn.big a{
+  opacity: 1;
+  visibility: visible;
+  padding-left: 25%;
+}
+#mobileContactBtn.big a div{
+  padding-top: calc(7 / 16 * 1rem);
 }
 #mobileContactBtn span{
   display: inline-block;
-  border-radius: 50%;
   width:calc(58 / 16 * 1rem);
   height:calc(58 / 16 * 1rem);
-  background:#fff url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
-  box-shadow: 0px calc(2 / 16 * 1rem) calc(10 / 16 * 1rem) rgba(0,0,0,.2);
+  background: url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
   transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
   transform: translate3d(0,0,0) scale(1);
+  display: block;
 }
 #mobileContactBtn span:active{
   transform: translate3d(0,0,0) scale(.95);
@@ -1021,6 +1082,9 @@ body{
   }
   .schoolVR .section .content .half {
     width:100%;
+  }
+  .schoolVR #section01 #sd_icon{
+    display: none;
   }
   .schoolVR #section01 .wrap #vrIcon{
     width:27%;
@@ -1213,6 +1277,7 @@ body{
   .schoolVR #section08{
     display: flex;
     align-items: center;
+    background: #122022;
   }
   .schoolVR #section08 .content{
     height:auto;
@@ -1228,13 +1293,20 @@ body{
   .schoolVR #section08 .contact{
     display: none;
   }
-  /* .schoolVR #copyright{
+  .schoolVR #copyright{
     display: none;
-  } */
+  }
   #mobileContact{
     display: inline-block;
     height:100vh;
     margin-bottom:300px;
+  }
+  #mobileContact h1{
+    padding-right:30%;
+  }
+  #mobileContact.fixed{
+    width:100%;
+    transform: translate3d(0,100%,0);
   }
   #mobileContact .ioio{
     font-size:40px;
@@ -1245,6 +1317,10 @@ body{
   }
   #mobileContact .content .wrap{
     font-size: 20px;
+  }
+  #mobileContact .wrap div a{
+    font-size: 20px;
+    line-height: 30px;
   }
   #mobileContact .address{
     font-size: 20px;
@@ -1304,7 +1380,7 @@ body{
     width: 80%;
   }
   #mobileContact{
-    height:100vh;
+    height:80vh;
     margin-bottom:400px;
   }
 }
@@ -1513,6 +1589,10 @@ body{
   #mobileContact .ioio{
     font-size:25px;
     margin-bottom:10px;
+  }
+  #mobileContact .wrap div a{
+    font-size: 13px;
+    line-height: 20px;
   }
   #mobileContact .address {
     font-size: 13px;
