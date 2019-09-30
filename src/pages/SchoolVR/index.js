@@ -409,7 +409,7 @@ const SchoolVR = (props) => {
 
         if(sm <= 0){
           mobileContactBtn.className = 'active big';
-          TweenMax.to(mobileContactBtn, .6, {x:'50%',width:188,right:'50%',ease:'Power2.easeOut'});
+          TweenMax.to(mobileContactBtn, .6, {x:'50%',width:188/16+'rem',right:'50%',ease:'Power2.easeOut'});
         }
         else{
           // mobileContactBtn.className = 'active';
@@ -417,7 +417,7 @@ const SchoolVR = (props) => {
             if(mobileContactBtn.className !== 'active'){
               mobileContactBtn.className = 'active';
               TweenMax.to(mobileContactBtn, 1, {scale:1,ease:Elastic.easeOut.config(1, 0.4)});
-              TweenMax.to(mobileContactBtn, .6, {x:'0%',width:58,right:30,ease:'Power2.easeOut'});
+              TweenMax.to(mobileContactBtn, .6, {x:'0%',width:58/16+'rem',right:30,ease:'Power2.easeOut'});
             }
           }
           else if(page < 1){
@@ -495,14 +495,14 @@ const SchoolVR = (props) => {
         if(page >= 7){
           if(mobileContactBtn.className !== 'active big'){
             mobileContactBtn.className = 'active big';
-            TweenMax.to(mobileContactBtn, .6, {width:188,ease:'Power2.easeOut'});
+            TweenMax.to(mobileContactBtn, .6, {width:188/16+'rem',ease:'Power2.easeOut'});
           }
         }
         else if(page >= 0 && page < 7){
           if(mobileContactBtn.className !== 'active'){
             mobileContactBtn.className = 'active';
             TweenMax.to(mobileContactBtn, 1, {scale:1,ease:Elastic.easeOut.config(1, 0.4)});
-            TweenMax.to(mobileContactBtn, .6, {width:58,ease:'Power2.easeOut'});
+            TweenMax.to(mobileContactBtn, .6, {width:58/16+'rem',ease:'Power2.easeOut'});
           }
         }
       }

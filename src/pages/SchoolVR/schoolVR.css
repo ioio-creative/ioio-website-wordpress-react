@@ -106,7 +106,8 @@ body{
 }
 .schoolVR #sschoolvrIcon span{
   width:100%;
-  background: url('../../images/schoolVR/schoolvr_icon.svg') center top no-repeat;
+  background: url('../../images/schoolVR/schoolvr_icon.png') center top no-repeat;
+  background-size:100%;
   display: inline-block;
 }
 .schoolVR #sschoolvrIcon span:before{
@@ -310,7 +311,8 @@ body{
 }
 .schoolVR #section01 .wrap #schoolvrIcon{
   width:100%;
-  background:url('../../images/schoolVR/schoolvr_icon.svg') center top no-repeat;
+  background:url('../../images/schoolVR/schoolvr_icon.png') center top no-repeat;
+  background-size:100%;
   padding-bottom:calc(25 / 16 * 1rem);
 }
 .schoolVR #section01 .wrap #schoolvrIcon:before{
@@ -962,6 +964,7 @@ body{
   width:calc(58 / 16 * 1rem);
   height:calc(58 / 16 * 1rem);
   background: url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
+  background-size: 58%;
   transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
   transform: translate3d(0,0,0) scale(1);
   display: block;
@@ -1041,7 +1044,8 @@ body{
     width: 14%;
     float: right;
     padding:0;
-    background:url('../../images/schoolVR/schoolvr_icon.svg') no-repeat;
+    background:url('../../images/schoolVR/schoolvr_icon.png') no-repeat;
+    background-size:100%;
   }
   .schoolVR #svrIcon span{
     width:4%;
