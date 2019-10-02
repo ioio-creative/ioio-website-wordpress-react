@@ -36,6 +36,7 @@ let f = null;
 let mobileContact = null;
 let mobileContactBtn = null;
 let mobileContactCloseBtn = null;
+let mobileContactBg = null;
 
 let page = 0;
 let smooth = null;
@@ -547,13 +548,24 @@ const SchoolVR = (props) => {
     TweenMax.to('#section02Cir02', 6, {force3D:true, rotation:360, transformOrigin:'50% 50%', repeat:-1, delay:.3, ease:Power3.easeInOut});
 
     mobileContactBtn.addEventListener('click',()=>{
-      if(mobileContact.className === 'section fixed')
+      if(mobileContact.className === 'section fixed'){
         mobileContact.className = 'section fixed active';
+        mobileContactBg.className = 'active';
+      }
     });
     mobileContactCloseBtn.addEventListener('click',()=>{
-      if(mobileContact.className !== 'section fixed')
+      if(mobileContact.className !== 'section fixed'){
         mobileContact.className = 'section fixed';
+        mobileContactBg.className = '';
+      }
     });
+
+    mobileContactBg.addEventListener('click',()=>{
+      if(mobileContact.className !== 'section fixed'){
+        mobileContact.className = 'section fixed';
+        mobileContactBg.className = '';
+      }
+    })
 
     svrIcon.addEventListener('click',()=>{
       if(window.innerWidth <= 1024){
@@ -899,6 +911,7 @@ const SchoolVR = (props) => {
           </div>
         </div> */}
       </div>
+      <div ref={elem => mobileContactBg = elem} id="mobileContactBg"></div>
       <div ref={elem => mobileContact = elem} id="mobileContact" className="section fixed">
         <div ref={elem => mobileContactCloseBtn = elem} id="mobileContactCloseBtn"></div>
         <div className="content">

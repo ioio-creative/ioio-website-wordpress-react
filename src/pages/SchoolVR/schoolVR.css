@@ -58,6 +58,9 @@ body{
   margin:0;
   padding:0;
 }
+#scroll{
+  background: #142326;
+}
 .schoolVR ul li{
   margin-left:calc(30 / 16 * 1rem);
 }
@@ -180,10 +183,31 @@ body{
 /* Common */
 .schoolVR .section{
   width:100%;
-  height:100vh;
+  /* height:100vh; */
   position: relative;
   color:#fff;
   padding:0 30px;
+}
+#section02{
+  transform: translateY(calc(-1 / 16 * 1rem));
+}
+#section03{
+  transform: translateY(calc(-2 / 16 * 1rem));
+}
+#section04{
+  transform: translateY(calc(-3 / 16 * 1rem));
+}
+#section05{
+  transform: translateY(calc(-4 / 16 * 1rem));
+}
+#section06{
+  transform: translateY(calc(-5 / 16 * 1rem));
+}
+#section07{
+  transform: translateY(calc(-6 / 16 * 1rem));
+}
+#section08{
+  transform: translateY(calc(-7 / 16 * 1rem));
 }
 .schoolVR #scene3d{
   position: relative;
@@ -400,7 +424,7 @@ body{
   }
 }
 .schoolVR #section03 .content .wrap{
-  padding-top:calc(90 / 16 * 1rem);
+  padding-top:5%;
 }
 .schoolVR #section03 .content > *{
   width:100%;
@@ -838,6 +862,22 @@ body{
   height:120vh;
   background:#142326;
 }
+#mobileContactBg{
+  width:100vw;
+  height:100%;
+  background: rgba(0,0,0,.3);
+  position: fixed;
+  top:0;
+  left:0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+#mobileContactBg.active{
+  opacity: 1;
+  visibility: visible;
+  transition-duration: 1s;
+}
 #mobileContact.fixed{
   width:calc(500 / 16 * 1rem);
   height:100%;
@@ -1128,15 +1168,15 @@ body{
     width: 100%;
   }
   .schoolVR #section03:before {
-    width: 65%;
+    width: 50%;
     padding-top: 70%;
-    right: 11%;
-    top:15%;
+    right: 21%;
+    top:3%;
   }
   .schoolVR #section03:after{
-    width: 40%;
+    width: 30%;
     padding-top: 32%;
-    right:50%;
+    right:55%;
     top:12%;
   }
   .schoolVR #section03 h1{
@@ -1367,7 +1407,7 @@ body{
     font-size: 2.55vw;
   }
   .schoolVR #section03 .content{
-    padding-top: 76vh;
+    padding-top: 750px;
   }
   .schoolVR #section03:before {
     width: 75%;
@@ -1384,7 +1424,8 @@ body{
     width: 80%;
   }
   #mobileContact{
-    height:80vh;
+    height:auto;
+    padding-bottom:100px;
     margin-bottom:400px;
   }
 }
@@ -1500,7 +1541,7 @@ body{
     top:90px;
   }
   .schoolVR #section03 .content{
-    padding-top:400px;
+    padding-top:650px;
     padding-bottom: 80px;
   }
   .schoolVR #section03 .content .wrap {
@@ -1583,7 +1624,7 @@ body{
     font-size: 18px;
   }
   #mobileContact{
-    height: 120vh;
+    /* height: 120vh; */
     margin-bottom:200px;
   }
   #mobileContact h1{
@@ -1608,7 +1649,16 @@ body{
     bottom:30px;
   }
 }
-
+@media only screen and (max-width: 600px){
+  .schoolVR #section03 .content {
+    padding-top: 550px;
+  }
+}
+@media only screen and (max-width: 500px){
+  .schoolVR #section03 .content {
+    padding-top: 450px;
+  }
+}
 /* iphone 6,7,8 */
 @media only screen and (device-width : 375px) and (device-height : 667px) and (-webkit-device-pixel-ratio : 2){ 
 }
