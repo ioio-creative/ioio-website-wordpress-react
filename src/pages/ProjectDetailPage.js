@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import {fetchProjectWithNextIdById} from 'websiteApi';
+import { fetchProjectWithNextIdById } from 'websiteApi';
 
-import {getProjectIdBySlugAsync} from 'utils/mapProjectSlugNameToIds';
-import {Redirect} from 'react-router-dom'
+import { getProjectIdBySlugAsync } from 'utils/mapProjectSlugNameToIds';
+import { Redirect } from 'react-router-dom'
 import routes from 'globals/routes';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //import ReactPlayer from 'react-player';
 
@@ -32,7 +32,7 @@ import $ from 'jquery';
 
 import Modal from 'react-modal';
 
-import {Player} from 'video-react'; //todo Remove video-react
+import { Player } from 'video-react'; //todo Remove video-react
 import "./video-react.css"; // import css
 import { FormattedMessage } from 'react-intl';
 
@@ -76,8 +76,8 @@ function VideoLanding(props) {
       <div className="container-fluid">
         <div className="player-wrapper">
           <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
-            <source className="wow fadeIn" src={video_url} type="video/mp4"/> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
-            <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag"/>
+            <source className="wow fadeIn" src={video_url} type="video/mp4" /> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+            <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag" />
           </video>
         </div>
         {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
@@ -89,8 +89,8 @@ function VideoLanding(props) {
             </div>
             <div className="pop-up-vid-div">
               <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-                <img className="projectlist-showreel-img" src={svgURL} alt="showreel"/>
-                <FormattedMessage 
+                <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
+                <FormattedMessage
                   id="ProjectDetailPage.showreelButton"
                   defaultMessage="SHOWREEL"
                 />
@@ -145,7 +145,7 @@ class ProjectDetailPage extends Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   afterOpenModal() {
@@ -154,7 +154,7 @@ class ProjectDetailPage extends Component {
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
   async componentDidMount() {
@@ -164,21 +164,21 @@ class ProjectDetailPage extends Component {
 
     // if no corresponding project id entry for the slug got from query
     if (isNaN(projectIdNum)) {
-      this.setState({isReturnNotFound: true});
+      this.setState({ isReturnNotFound: true });
       return;
     }
 
     fetchProjectWithNextIdById(projectIdNum, (aProject) => {
       if (aProject === null) {
-        this.setState({isReturnNotFound: true});
+        this.setState({ isReturnNotFound: true });
       } else {
-        this.setState({project: aProject});
+        this.setState({ project: aProject });
       }
     });
 
-    window.setTimeout(function() {
+    window.setTimeout(function () {
       //$('html, body').scrollTop(0);
-      $('html, body').animate({scrollTop: "0"});
+      $('html, body').animate({ scrollTop: "0" });
     }, 0);
 
     $('#root').addClass('project-details-page');
@@ -187,7 +187,7 @@ class ProjectDetailPage extends Component {
   componentWillUnmount() {
     $('#root').removeClass('project-details-page');
   }
-  
+
   render() {
     const state = this.state;
     const project = state.project;
@@ -204,15 +204,15 @@ class ProjectDetailPage extends Component {
     }
 
     const customStyles = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        backgroundColor       : 'rgba(0,0,0,0)',
-        border                : '0px'
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgba(0,0,0,0)',
+        border: '0px'
       }
     };
 
@@ -221,20 +221,51 @@ class ProjectDetailPage extends Component {
       const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
       if (TemplateToUse)
         return <TemplateToUse key={idx + '_' + templateData.id} {...templateData} />;
-      else 
+      else
         return null;
-    });    
+    });
 
     return (
       <div className="wow fadeIn">
-        <VideoLanding project={project} modalClick={this.openModal}/>
-        <VideoLandingDesc project={project}/> {/*
+        <VideoLanding project={project} modalClick={this.openModal} />
+        <VideoLandingDesc project={project} /> {/*
           <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
           <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
       */
         }
         {/* <ProjectTemp11 /> */}
         {projectTemplateContainer}
+
+        <section id="project-info" class="project-section-bg">
+          <div class="container-fluid"><div class="row video-landing-text">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 wow fadeIn">
+              <div id="summary" className="wrap">
+                <div className="title">{project.project_summary_label}</div>
+                <div className="content">
+                {
+                  project.project_summary_rows.map((s, idx)=>{
+                    return <div key={idx} className="item"><span>{s.header}</span><span>{s.content}</span></div>
+                  })
+                }
+                </div>
+              </div>
+              <div id="tag" className="wrap">
+                <div className="title">Tech Tag</div>
+                <div className="content">
+                  {
+                    project.tags.map((t, idx)=>{
+                      return <span key={idx}>{t.name}</span>
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="clearfix"></div></div>
+        </section>
+
         <div id="project-detail-page-space-buffer"></div>
         {/* next project link, maybe useful for "scroll down and load next" */}
         {/*
@@ -247,7 +278,7 @@ class ProjectDetailPage extends Component {
             <i className="ion ion-android-close"></i>
           </button>
           <div className="vid-player">
-            <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'}/>
+            <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'} />
           </div>
         </Modal>
 
