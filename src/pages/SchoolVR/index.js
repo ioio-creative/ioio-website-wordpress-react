@@ -243,19 +243,19 @@ const SchoolVR = (props) => {
       // fgroup.rotation.y = a;
 
       control.update();
-      if(window.innerWidth <= 1024){
-        if(page > 0){
-          camera.lookAt(-2,18,0);
-          geoGroup.scale.set(.8,.8,.8);
-        }
-        else{
-          camera.lookAt(-1,8,0);
-          geoGroup.scale.set(1,1,1);
-        }
-      }
-      else{
+      // if(window.innerWidth <= 1024){
+      //   if(page > 0){
+      //     camera.lookAt(-2,18,0);
+      //     geoGroup.scale.set(.8,.8,.8);
+      //   }
+      //   else{
+      //     camera.lookAt(-1,8,0);
+      //     geoGroup.scale.set(1,1,1);
+      //   }
+      // }
+      // else{
         camera.lookAt(-1,8,0);
-      }
+      // }
     }
 
     const render = () => {
@@ -285,7 +285,7 @@ const SchoolVR = (props) => {
         TweenMax.to('#scroll',1,{scrollTop:window.innerHeight, ease:Power2.easeInOut});
       }
       else{
-        smooth.to(-window.innerHeight);
+        smooth.to(-window.innerHeight+1);
       }
     });
 

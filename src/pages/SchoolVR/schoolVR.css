@@ -188,26 +188,40 @@ body{
   color:#fff;
   padding:0 30px;
 }
+#section01{
+  z-index: 9;
+}
 #section02{
   transform: translateY(calc(-1 / 16 * 1rem));
+  z-index: 8;
 }
 #section03{
   transform: translateY(calc(-2 / 16 * 1rem));
+  z-index: 7;
 }
 #section04{
   transform: translateY(calc(-3 / 16 * 1rem));
+  z-index: 6;
 }
 #section05{
   transform: translateY(calc(-4 / 16 * 1rem));
+  z-index: 5;
 }
 #section06{
   transform: translateY(calc(-5 / 16 * 1rem));
+  z-index: 4;
 }
 #section07{
   transform: translateY(calc(-6 / 16 * 1rem));
+  z-index: 3;
 }
 #section08{
   transform: translateY(calc(-7 / 16 * 1rem));
+  z-index: 2;
+}
+#mobileContact{
+  transform: translateY(calc(-8 / 16 * 1rem));
+  z-index: 1;
 }
 .schoolVR #scene3d{
   position: relative;
@@ -1056,7 +1070,9 @@ body{
     width:100% !important;
   } */
 
-  
+  #section01{
+    z-index: auto;
+  }
   /* .schoolVR #svrIcon.small{
     width: 4%;
     top: 60px;
@@ -1115,6 +1131,9 @@ body{
   }
   .schoolVR .section{
     width:100vw;
+  }
+  .schoolVR .section:not(.fixed){
+    transform: none !important;
   }
   .schoolVR .section .content {
     padding-left:10px;
@@ -1343,7 +1362,7 @@ body{
   #mobileContact{
     display: inline-block;
     height:100vh;
-    margin-bottom:300px;
+    /* margin-bottom:300px; */
   }
   #mobileContact h1{
     padding-right:30%;
@@ -1426,7 +1445,7 @@ body{
   #mobileContact{
     height:auto;
     padding-bottom:100px;
-    margin-bottom:400px;
+    /* margin-bottom:400px; */
   }
 }
 
@@ -1625,7 +1644,7 @@ body{
   }
   #mobileContact{
     /* height: 120vh; */
-    margin-bottom:200px;
+    /* margin-bottom:200px; */
   }
   #mobileContact h1{
     font-size: 33px;
