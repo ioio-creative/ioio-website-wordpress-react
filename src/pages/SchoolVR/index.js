@@ -243,25 +243,25 @@ const SchoolVR = (props) => {
       // fgroup.rotation.y = a;
 
       control.update();
-      // if(window.innerWidth <= 1024){
-      //   if(page > 0){
-      //     camera.lookAt(-2,18,0);
-      //     geoGroup.scale.set(.8,.8,.8);
-      //   }
-      //   else{
-      //     camera.lookAt(-1,8,0);
-      //     geoGroup.scale.set(1,1,1);
-      //   }
-      // }
-      // else{
+      if(window.innerWidth <= 1024){
+        if(page > 0){
+          camera.lookAt(-2,18,0);
+          geoGroup.scale.set(.8,.8,.8);
+        }
+        else{
+          camera.lookAt(-1,8,0);
+          geoGroup.scale.set(1,1,1);
+        }
+      }
+      else{
         camera.lookAt(-1,8,0);
-      // }
+      }
     }
 
     const render = () => {
         update();
 
-        // if(page <= 1)
+        if(window.innerWidth <= 1024 && page <= 0 || window.innerWidth > 1024 && page <= 1)
           renderer.render( scene, camera );
         // else
         //   renderer.render( scenef, cameraf );
@@ -303,7 +303,7 @@ const SchoolVR = (props) => {
       document.querySelector('#section02').style.height = window.innerHeight+'px';
       // document.querySelector('#section02').style.marginTop = window.innerHeight+'px';
       document.querySelector('#section08').style.height = window.innerHeight+'px';
-      // document.querySelector('#mobileContact').style.height = window.innerHeight+'px';
+      document.querySelector('#mobileContact').style.height = window.innerHeight+'px';
       // document.querySelector('#scroll #section01').style.height = window.innerHeight+'px';
       // document.querySelector('#section09').style.height = window.innerHeight+'px';
       document.querySelector('#section01 #scene3d').style.height = window.innerHeight+'px';
@@ -408,7 +408,7 @@ const SchoolVR = (props) => {
         //   copyrightWrap.style.transform = `translate3d(-${pages.offsetWidth + 15}px,0,0)`;
         }
 
-        if(sm <= 0){
+        if(sm <= 100){
           mobileContactBtn.className = 'active big';
           TweenMax.to(mobileContactBtn, .6, {x:'50%',width:188/16+'rem',right:'50%',ease:'Power2.easeOut'});
         }
@@ -672,7 +672,7 @@ const SchoolVR = (props) => {
           <div className="wrap">
             <p className="bigTitle">The Interactive<br/>Learning Experience</p>
             <p className="h4">
-              3D world, 360 video and Virtual reality (VR) technology is revolutionising  
+              3D world, 360 video and Virtual Reality (VR) technology is revolutionising  
               the way of education, schools would provide students with engaging  
               learning experiences that help them observe, create and communicate,  
               thus to maximise students’ potential in the path of learning and development.  
@@ -748,7 +748,7 @@ const SchoolVR = (props) => {
                 <div className="wrap">
                   <div className="col"><svg viewBox="0 0 25 30"><text y="28">4</text></svg></div>
                   <div className="col">
-                    <div className="t h4 bold">Camera Placement</div>
+                    <div className="t h4 bold">The Virtual Camera Placement</div>
                     <div className="s">The last step before wrapping up, user can edit the location of camera to control the first look of each slide.</div>
                   </div>
                 </div>
@@ -781,7 +781,7 @@ const SchoolVR = (props) => {
                       <img src={ftnImage04} />
                       <div className="des">
                         <div className="h4 bold">Adjustment Panel</div>
-                        <div className="s">Simple yet sufficient effects to construct the 3D world.</div>
+                        <div className="s">Simple yet sufficient effects to construct your 3D world.</div>
                       </div>
                     </div>
                   </div>
@@ -795,7 +795,7 @@ const SchoolVR = (props) => {
                   <div id="item04" className="item">
                     <img src={ftnImage02} />
                     <div className="des half">
-                      <div className="h4 bold">Medias</div>
+                      <div className="h4 bold">Media</div>
                       <div className="s">Make use of 2D and 3D photos and videos as an immersive storytelling method.</div>
                     </div>
                   </div>
@@ -860,7 +860,7 @@ const SchoolVR = (props) => {
             <div className="wrap">
               <img src={pjImage02} />
               <div className="des s">
-                <p>Making use of 360 material collected from field trip, it is an easy example of field trip presentation. Students are able to tell stories with their own method, it can be a map, a timeline, multi-senses and more. Students can make good use of the navigation function to transfer between different spaces.</p>
+                <p>Making use of 360 materials collected, it is an easy example of how a VR field trip presentation works. Students are able to tell stories with their own method, it can be a map, a timeline, multi-senses and more. Students can make good use of the navigation function to transfer between different spaces.</p>
               </div>
             </div>
           </div>
@@ -868,7 +868,7 @@ const SchoolVR = (props) => {
         <div id="section08" className="section">
           <div className="content halfWrap">
             <div className="half">
-              <h2>Specification for <br/>best performance</h2>
+              <h2>Specification</h2>
               <ul className="specList h5">
                 <li className="t h4 bold">Windows 10 64-bit</li>
                 <li>CPU: i5 @3.2GHz * 4</li>

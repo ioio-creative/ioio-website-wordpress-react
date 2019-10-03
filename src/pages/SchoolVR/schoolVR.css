@@ -69,7 +69,7 @@ body{
   position: fixed;
   top:calc(83 / 16 * 1rem);
   right:6%;
-  z-index: 2;
+  z-index: 99;
   opacity: 1;
   visibility: visible;
   transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
@@ -160,8 +160,8 @@ body{
   line-height: calc(11 / 16 * 1rem);
 }
 .schoolVR #copyright .pages .pageNumWrap{
-  width: 9px;
-  height: 11px;
+  width: calc(9 / 16 * 1rem);
+  height: calc(14 / 16 * 1rem);
   display: inline-block;
   overflow: hidden;
   line-height: calc(14 / 16 * 1rem);
@@ -1131,6 +1131,7 @@ body{
   }
   .schoolVR .section{
     width:100vw;
+    z-index: 1 !important;
   }
   .schoolVR .section:not(.fixed){
     transform: none !important;
@@ -1181,7 +1182,7 @@ body{
     height:auto;
   }
   .schoolVR #section03 .content{
-    padding-top: 125vh;
+    padding-top: 70%;
   }
   .schoolVR #section03 .content ul{
     width: 100%;
@@ -1376,7 +1377,7 @@ body{
     margin-bottom: 20px;
   }
   #mobileContact .content{
-    padding-top:150px;
+    padding-top:100px;
   }
   #mobileContact .content .wrap{
     font-size: 20px;
@@ -1443,7 +1444,7 @@ body{
     width: 80%;
   }
   #mobileContact{
-    height:auto;
+    /* height:auto; */
     padding-bottom:100px;
     /* margin-bottom:400px; */
   }
