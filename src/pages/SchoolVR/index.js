@@ -926,7 +926,7 @@ const SchoolVR = (props) => {
           <a className="btn" href="mailto:"><div>Enquiry</div></a>
         </div>
       </div>
-      <div ref={elem=> mobileContactBtn = elem} id="mobileContactBtn" className="hide"><span></span><a className="btn" href="mailto:"><div>Enquiry</div></a></div>
+      <div ref={elem=> mobileContactBtn = elem} id="mobileContactBtn" className="hide"><span></span><a className="btn"><div>Enquiry</div></a></div>
     </div>
   )
 }
