@@ -5,7 +5,7 @@ import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 export default function BrightHeader() {
   return (
     <div>
-      <WorkWorkLabSwitch />
+      {/* <WorkWorkLabSwitch /> */}
     </div>
   );  
 };
