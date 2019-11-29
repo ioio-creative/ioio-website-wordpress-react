@@ -170,8 +170,8 @@ class HomePage extends Component {
   onMouseEnter(){
     if(this.cursor){
       var tl = new TimelineMax({delay:.1});
-      tl.to(this.cursor.querySelector('span:nth-child(1)'), .6, {width:70,height:70,ease:Elastic.easeOut.config(.7, .7)});
-      tl.to(this.cursor.querySelector('span:nth-child(2)'), .6, {width:50,height:50,ease:Elastic.easeOut.config(1, .7)},'-=.5');
+      tl.to(this.cursor.querySelector('span:nth-child(1)'), 1, {width:70,height:70,ease:Elastic.easeOut.config(1.5, .5)});
+      tl.to(this.cursor.querySelector('span:nth-child(2)'), 1, {width:50,height:50,ease:Elastic.easeOut.config(1.2, .5)},'-=.9');
     }
   }
   onMouseLeave(){
@@ -262,7 +262,7 @@ class HomePage extends Component {
             <video muted preload="auto" loop playsInline autoPlay>
               <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" />
             </video>
-            <div ref={elem => this.cursor = elem} id="cursor"><span>view</span><span></span></div>
+            <div ref={elem => this.cursor = elem} id="cursor"><span></span><span>view</span></div>
           </div>
           <div id="featuredProjects">
             <ul className="clearfix">

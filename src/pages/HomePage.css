@@ -36,8 +36,9 @@ ul, li{
   transform: translate3d(-50%,-50%,0);
   font-size: 12px;
   font-weight: bold;
+  overflow: hidden;
 }
-#homepage #featuredVideo #cursor span:nth-child(2){
+#homepage #featuredVideo #cursor span:nth-child(1){
   position: absolute;
   top: 0;
   mix-blend-mode: exclusion;
