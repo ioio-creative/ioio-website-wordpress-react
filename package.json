@@ -33,8 +33,8 @@
     "redux": "^4.0.0",
     "scriptjs": "^2.5.8",
     "shufflejs": "^5.1.2",
+    "three": "^0.111.0",
     "three-orbitcontrols": "^2.102.2",
-    "three.js": "^0.77.1",
     "video-react": "^0.10.5"
   },
   "scripts": {

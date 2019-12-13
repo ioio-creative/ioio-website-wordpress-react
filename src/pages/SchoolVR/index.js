@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import TweenMax, { Power3, Power2, Elastic } from 'gsap';
-import {THREE} from 'aframe';
+import * as THREE from 'three';
 import Orbitcontrols from 'three-orbitcontrols';
 import './schoolVR.css';
 import smoothScroll from './scroll';

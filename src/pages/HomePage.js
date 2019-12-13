@@ -17,6 +17,7 @@ import TweenMax, { TimelineLite, TimelineMax, Elastic } from 'gsap';
 
 import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
+import LabSection from '../components/LabSection';
 
 import './HomePage.css';
 import './HomePageSE.css';
@@ -29,75 +30,6 @@ import "./video-react.css";
 
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
-
-
-// function HighlightedProjects(props) {
-//   // Important notes:
-//   // the WordPress projects api contains slug names of each project,
-//   // the WordPress homepage.highlightedProjects api do not
-
-//   const allProjectIdSlugPairs = createIdSlugPairs(props.allProjects);
-
-//   const projectItems = props.highlightedProjects.map((project, idx) => {
-//     const projectDetailRoutePath = routes.projectBySlugWithValue(allProjectIdSlugPairs[project.id]);
-
-//     if (idx === 0) {
-//       return (
-//         <div className="col-md-12" key={project.id}>
-//           <Link to={projectDetailRoutePath}>{props.name}
-//             <div className="portfolio-wrap">
-//               <div className="img-container">
-//                 <img src={project.thumbnail.guid} alt="alt"/>
-//                 <div className="img-hover-color"></div>
-//               </div>
-//               <div className="portfolio-info">
-//                 <h4>
-//                   {project.project_name}
-//                 </h4>
-//                 <p>
-//                   {/* 20181119: HUNG edited */}
-//                   {project.project_categories.map((cat, idx) => {
-//                     return props.categories.find(pC => pC.id == cat.pod_item_id).name;
-//                   })}
-//                 </p>
-//               </div>
-//             </div>
-//           </Link>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div className="col-md-6 wrap-this" key={project.id}>
-//           <Link to={projectDetailRoutePath}>{props.name}
-//             <div className="portfolio-wrap">
-//               <div className="img-container">
-//                 <img src={project.thumbnail.guid} alt="alt"/>
-//                 <div className="img-hover-color"></div>
-//               </div>
-//               <div className="portfolio-info">
-//                 <h4>
-//                   {project.project_name}
-//                 </h4>
-//                 <p>
-//                   {/* 20181119: HUNG edited */}
-//                   {project.project_categories.map((cat, idx) => {
-//                     return props.categories.find(pC => pC.id == cat.pod_item_id).name;
-//                   })}
-//                 </p>
-//               </div>
-//             </div>
-//           </Link>
-//         </div>
-//       );
-//     }
-//   });
-
-//   return (
-//     <div className="row container-fluid">
-//       {projectItems}
-//     </div>
-//   );
-// }
 
 function Items(props) {
   const a = props.abouts;
@@ -215,7 +147,7 @@ class HomePage extends Component {
   }
 
   componentDidUpdate(){
-    console.log(this.state.homepage && this.state.projectCategories.length && this.state.allProjects.length)
+    // console.log(this.state.homepage && this.state.projectCategories.length && this.state.allProjects.length)
     if(this.state.homepage && this.state.projectCategories.length && this.state.allProjects.length){
       this.featuredVideo.addEventListener('mouseenter', this.onMouseEnter);
       this.featuredVideo.addEventListener('mouseleave', this.onMouseLeave);
@@ -227,7 +159,6 @@ class HomePage extends Component {
     window.removeEventListener('message', this.handleCanvasMessage);
     document.removeEventListener('mousemove', this.onMouseMove);
   }
-
 
   render() {
     const props = this.props;
@@ -258,6 +189,7 @@ class HomePage extends Component {
     return (
       <div>
         <section id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
+          <LabSection />
           <div ref={elem => this.featuredVideo = elem} id="featuredVideo">
             <video muted preload="auto" loop playsInline autoPlay>
               <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" />
