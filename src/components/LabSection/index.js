@@ -16,66 +16,17 @@ const LabSection = props => {
     let scene, sceneMask, camera, renderer, composer, rtMain, rtMask,
         w = labSection.current.offsetWidth,
         h = labSection.current.offsetHeight,
-        box=null;
+        ioio=[];
 
+    const rotateDir = [];
+    const speed = [];
     const options = {
-        cameraZ:{ value:5, min:0, max:20 },
+        cameraZ:{ value:7, min:0, max:20 },
         scale:{ value:10, min:0, max:50 }
     }
 
-    // const TextureMaskShader = {
-
-    //   uniforms: {
-  
-    //       "textureA": { type: "t", value: null },
-    //       "textureB": { type: "t", value: null }
-  
-    //   },
-  
-    //   vertexShader: [
-  
-    //       "varying vec2 vUv;",
-  
-    //       "void main() {",
-  
-    //           "vUv = uv;",
-    //           "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-  
-    //       "}"
-  
-    //   ].join("\n"),
-  
-    //   fragmentShader: [
-  
-    //       "uniform float opacity;",
-  
-    //       "uniform sampler2D textureA;",
-    //       "uniform sampler2D textureB;",
-  
-    //       "varying vec2 vUv;",
-  
-    //       "void main() {",
-  
-    //           "vec4 texelA = texture2D( textureA, vUv );",
-    //           "vec4 texelB = texture2D( textureB, vUv );",
-    //           "vec4 background = vec4(1.0, 1.0, 1.0, 0.0);",
-  
-    //           // just textureA
-    //           "gl_FragColor = texelA;",
-  
-    //           // just textureB
-    //           //"gl_FragColor = texelB;",
-  
-    //           // textureB masking textureA 
-    //           // "gl_FragColor = mix( background, texelA,);",
-  
-    //       "}"
-  
-    //   ].join("\n")
-    // };
-
     const init = function(){
-        const fov = 60;
+        const fov = 40;
         const near = 0.1;
         const far = 1000;
 
@@ -84,7 +35,7 @@ const LabSection = props => {
         camera = new THREE.PerspectiveCamera( fov, w / h, near, far );
         camera.position.z = options.cameraZ.value;
 
-        renderer = new THREE.WebGLRenderer({premultipliedAlpha:false,antialias: true});
+        renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( w, h );
         renderer.setClearColor( 0x000000, 0.0);
@@ -152,25 +103,74 @@ const LabSection = props => {
     }
 
     const initMesh = function(){
-      box = generateBox(2);
-      sceneMask.add(box);
+      const size = 1.1;
+      const pos = [
+        {x:-4,y:-1},
+        {x:-2.3,y:1.1},
+        {x:-.3,y:0},
+        {x:2,y:-1}
+      ]
+      ioio.push(generateO(size-.4));
+      ioio.push(generateI(size-.55,size+.1));
+      ioio.push(generateO(size-.4));
+      ioio.push(generateI(size-.55,size+.1));
+      for(let i=0;i<ioio.length;i++){
+        rotateDir[i] = {x:Math.random()*2-1, y: Math.random()*2-1};
+        speed[i] = {x: Math.random()*0.03-0.015, y:Math.random()*0.03-0.015};
+        ioio[i].position.x = Math.random()*8-4;
+        ioio[i].position.y = Math.random()*2-1;
+        sceneMask.add(ioio[i]);
+      }
     }
 
-    const generateBox = function(size = 1){
-        const geometry = new THREE.BoxGeometry(size,size,size);
+    const generateI = (size = 1, height = 1) => {
+      const group = new THREE.Group();
+      const cgeometry = new THREE.CylinderGeometry( size, size, height, 50 );
+      const material = new THREE.MeshPhongMaterial({color:0xff0000});
+
+      const stgeometry = new THREE.SphereGeometry( size, 32, 32 );
+      stgeometry.translate(0,height/2,0);
+      const stmesh = new THREE.Mesh(stgeometry, material);
+      const sbgeometry = new THREE.SphereGeometry( size, 32, 32 );
+      sbgeometry.translate(0,-height/2,0);
+      const sbmesh = new THREE.Mesh(sbgeometry, material);
+      
+      stmesh.updateMatrix();
+      cgeometry.merge(stmesh.geometry, stmesh.matrix);
+      stmesh.updateMatrix();
+      cgeometry.merge(sbmesh.geometry, sbmesh.matrix);
+      
+      const cmesh = new THREE.Mesh(cgeometry, material);
+
+      group.add(cmesh);
+      return group;
+    }
+
+    const generateO = (size = 1) => {
+        const geometry = new THREE.TorusGeometry( size, size/1.9, 30, 50 );
         const material = new THREE.MeshPhongMaterial({color:0xff0000});
         const mesh = new THREE.Mesh(geometry, material);
         return mesh;
     }
 
     const draw = function(){
-        // const timer = (Date.now() - start) * .0002;
         var time = performance.now() * 0.0005;
 
-        box.position.x = 2*Math.sin(time*2);
-        box.rotation.x=time;
-        box.rotation.y=time;
-        // camera.position.z = options.cameraZ.value;
+        for(let i=0;i<ioio.length;i++){
+          ioio[i].position.x+=speed[i].x;
+          ioio[i].position.y+=speed[i].y;
+          if(ioio[i].position.x > 7.5)
+            ioio[i].position.x = -7.5;
+          else if(ioio[i].position.x < -7.5)
+            ioio[i].position.x = 7.5;
+          if(ioio[i].position.y > 4)
+            ioio[i].position.y = -4;
+          else if(ioio[i].position.y < -4)
+            ioio[i].position.y = 4;
+          ioio[i].rotation.x = time * rotateDir[i].x;
+          ioio[i].rotation.y = time * rotateDir[i].y;
+        }
+
         camera.lookAt(0,0,0);
     }
 
@@ -214,10 +214,11 @@ const LabSection = props => {
     // }
     
     const onWindowResize = () => {
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize( w, h );
-        composer.setSize( w, h );
+      w = labSection.current.offsetWidth;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize( w, h );
+      composer.setSize( w, h );
     }
 
     init();
@@ -230,7 +231,8 @@ const LabSection = props => {
 
   return(
     <div ref={labSection} id="labSection" style={{height:500}}>
-      <video id="video" loop crossOrigin="anonymous" playsInline style={{display:'none'}}>
+      <div id="content">IOIO Lab allows and sometimes embraces failure.</div>
+      <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted style={{display:'none'}}>
         <source src="https://threejs.org/examples/textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'/>
         <source src="https://threejs.org/examples/textures/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>
       </video>

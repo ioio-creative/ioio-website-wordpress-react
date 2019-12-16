@@ -189,7 +189,6 @@ class HomePage extends Component {
     return (
       <div>
         <section id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
-          <LabSection />
           <div ref={elem => this.featuredVideo = elem} id="featuredVideo">
             <video muted preload="auto" loop playsInline autoPlay>
               <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" />
@@ -228,6 +227,7 @@ class HomePage extends Component {
             </ul>
           </div>
         </section>
+        <LabSection />
         <section id="homepage-core-value">
           <div className="container">
             <Link to={routes.about(true)}>

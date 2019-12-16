@@ -106,6 +106,18 @@ ul, li{
   font-size: 26px;
 }
 
+#labSection{
+  position: relative;
+}
+#labSection #content{
+  max-width: 400px;
+  position: absolute;
+  bottom:55px;
+  right:15%;
+  color:#fff;
+  font-size: 47px;
+}
+
 #homepage-core-value {
   text-align: center;
   padding: 50px 0;
@@ -142,6 +154,7 @@ ul, li{
 #homepage-core-value:hover img.hover-img {
   opacity: 1;
 }
+
 
 
 @media only screen and (max-width: 1024px) {
