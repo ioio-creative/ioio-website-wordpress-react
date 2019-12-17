@@ -117,6 +117,13 @@ ul, li{
   color:#fff;
   font-size: 47px;
 }
+#labSection video{
+  width: 300px;
+  /* visibility: hidden; */
+  position: absolute;
+  top:0;
+  left:0;
+}
 
 #homepage-core-value {
   text-align: center;

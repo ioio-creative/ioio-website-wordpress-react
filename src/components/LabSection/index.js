@@ -56,7 +56,8 @@ const LabSection = props => {
         // console.log(effectGlitch)
 
         const video = document.getElementById( 'video' );
-				video.play();
+        // if(video)
+				// video.play();
         var texture =  new THREE.VideoTexture( video );
 				var texturePass = new TexturePass( texture );
 
@@ -112,7 +113,7 @@ const LabSection = props => {
       ioio.push(generateO(size-.4));
       ioio.push(generateI(size-.55,size+.1));
       for(let i=0;i<ioio.length;i++){
-        rotateDir[i] = {x:Math.random()*2-1, y: Math.random()*2-1};
+        rotateDir[i] = {x:Math.random()*.5+.5, y: Math.random()*.5+.5};
         speed[i] = {x: Math.random()*0.03-0.015, y:Math.random()*0.03-0.015};
         ioio[i].position.x = Math.random()*8-4;
         ioio[i].position.y = Math.random()*2-1;
@@ -229,9 +230,8 @@ const LabSection = props => {
   return(
     <div ref={labSection} id="labSection" style={{height:500}}>
       <div id="content">IOIO Lab allows and sometimes embraces failure.</div>
-      <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted style={{display:'none'}}>
-        {/* <source src="https://threejs.org/examples/textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'/> */}
-        <source src="https://threejs.org/examples/textures/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>
+      <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
+        <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>
       </video>
     </div>
   )
