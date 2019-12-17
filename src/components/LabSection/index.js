@@ -6,6 +6,7 @@ import {ShaderPass} from './postprocessing/ShaderPass';
 import {TexturePass} from './postprocessing/TexturePass';
 import {ClearPass} from './postprocessing/ClearPass';
 import {MaskPass, ClearMaskPass} from './postprocessing/MaskPass';
+import {GlitchPass} from './postprocessing/GlitchPass';
 import {CopyShader} from './shaders/CopyShader';
 
 const LabSection = props => {
@@ -50,15 +51,10 @@ const LabSection = props => {
         initLights();
         initMesh();
 
-        // const shaderMask = new ShaderPass( TextureMaskShader );
-        // shaderMask.renderToScreen = true;
-        // rtMain = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter } );
-        // rtMask = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter } );
-        // shaderMask.uniforms[ "textureA" ].value = rtMain.texture;
-        // shaderMask.uniforms[ "textureB" ].value = rtMask.texture;
+        var effectGlitch = new GlitchPass(10);
+        effectGlitch.uniforms.col_s.value = 0;
+        // console.log(effectGlitch)
 
-        // var texture = new THREE.TextureLoader().load( 'https://threejs.org/examples/textures/758px-Canestra_di_frutta_(Caravaggio).jpg' );
-        // texture.minFilter = THREE.LinearFilter;
         const video = document.getElementById( 'video' );
 				video.play();
         var texture =  new THREE.VideoTexture( video );
@@ -77,14 +73,15 @@ const LabSection = props => {
 					stencilBuffer: true
 				};
 
-				var renderTarget = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, parameters );
+        var renderTarget = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, parameters );
+        
 
 				composer = new EffectComposer( renderer, renderTarget );
 				composer.addPass( clearPass );
-        // composer.addPass( shaderMask );
         composer.addPass( maskPass );
 				composer.addPass( texturePass );
 				composer.addPass( clearMaskPass );
+        composer.addPass( effectGlitch );
         composer.addPass( outputPass );
         
         // initStats();
@@ -233,7 +230,7 @@ const LabSection = props => {
     <div ref={labSection} id="labSection" style={{height:500}}>
       <div id="content">IOIO Lab allows and sometimes embraces failure.</div>
       <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted style={{display:'none'}}>
-        <source src="https://threejs.org/examples/textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'/>
+        {/* <source src="https://threejs.org/examples/textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'/> */}
         <source src="https://threejs.org/examples/textures/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>
       </video>
     </div>
