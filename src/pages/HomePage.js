@@ -185,6 +185,34 @@ class HomePage extends Component {
     }
 
     const allProjectIdSlugPairs = createIdSlugPairs(allProjects);
+    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/1/index.html');
+    // use inline svg instead of img
+    // const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
+
+    const customStyles = {
+      content : {
+        // top                   : '50%',
+        // left                  : '50%',
+        // right                 : 'auto',
+        // bottom                : 'auto',
+        // marginRight           : '-50%',
+        top                   : 0,
+        left                  : 0,
+        right                 : 0,
+        bottom                : 0,
+        padding               : 0,
+        // transform             : 'translate(-50%, -50%)',
+        backgroundColor       : 'rgba(0,0,0,0)',
+        border                : '0px'
+      }
+    };
+        
+    const formatMessage = (msgId, defaultMsg) => {
+      return props.intl.formatMessage({
+        id: msgId,
+        defaultMessage: defaultMsg
+      });
+    };
 
     return (
       <div>

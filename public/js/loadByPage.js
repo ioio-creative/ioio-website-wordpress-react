@@ -123,8 +123,11 @@ function reloadJS() {
 
     if ($(this).scrollTop() > 100) {
       $('#scroller').addClass('header-scrolled');
+      $('body').addClass('scrolled');
+
     } else {
       $('#scroller').removeClass('header-scrolled');
+      $('body').removeClass('scrolled');
 
       /*
                   $('.wow').removeClass('animated');
