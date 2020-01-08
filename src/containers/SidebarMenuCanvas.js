@@ -26,8 +26,7 @@ var boxA,
   groundRight,
   groundTop;
 
-var resetTimer
-var resetDrop
+var resetTimer;
 var initCanvas = false;
 var resetCanvas = false;
 var setIntervals = false;

@@ -1,14 +1,5 @@
 {
-  // https://stackoverflow.com/questions/42856054/how-do-i-tell-visual-studio-code-about-the-relative-path
   "compilerOptions": {
     "baseUrl": "./src"
   }
-  // {
-  //   "compilerOptions": {
-  //       "baseUrl": ".",
-  //       "paths": {
-  //           "~/*": ["./src/*"]
-  //       }
-  //   }
-  // }
 }

@@ -1,0 +1,18 @@
+.client-list {
+
+}
+
+.clients {
+
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client img {
+  object-fit: contain;
+  object-position: center;
+}

@@ -6,7 +6,7 @@ import About03 from 'containers/about/About03';
 import About04 from 'containers/about/About04';
 import About05 from 'containers/about/About05';
 import About06 from 'containers/about/About06';
-import About07 from 'containers/about/About07';
+import ClientList from 'containers/about/ClientList';
 import About08 from 'containers/about/About08';
 import Footer from 'containers/footer/Footer';
 
@@ -15,6 +15,7 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 import './AboutPage.css';
 
 import {fetchActiveAbout} from 'websiteApi';
+
 
 class AboutPage extends Component {
   constructor(props) {
@@ -62,17 +63,19 @@ class AboutPage extends Component {
       <About06
         //Section: Services
         about={about}/>
-
-      <About07
-        //Section: Clients
-        about={about}/>
+              
+      <ClientList        
+        title={about.client_section_title}
+        desc={about.client_section_desc}
+        clients={about.clients}
+      />      
 
       <About08
         //Section: Press
         about={about}/>
 
       <Footer />
-       
+
     </div>);
   }
 }
