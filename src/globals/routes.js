@@ -56,6 +56,7 @@ export default {
   contacts: function (isLink) {
     return '/contacts' + addLangQueryIfIsLink(isLink);
   },
+  // notFound: '/notfound',
   notFound: function (isLink) {
     return '/notfound' + addLangQueryIfIsLink(isLink);
   },

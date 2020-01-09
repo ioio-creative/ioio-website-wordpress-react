@@ -219,9 +219,15 @@ class HomePage extends Component {
         <section id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
           <div ref={elem => this.featuredVideo = elem} id="featuredVideo">
             <video muted autoPlay loop playsInline>
-              <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>
+              {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
+              <source src="./video/website_video_s.mp4" type="video/mp4"/>
             </video>
             <div ref={elem => this.cursor = elem} id="cursor"><span></span><span>view</span></div>
+            <div className="companyLogo">IOIO</div>
+            <div className="videoDescription">
+              <div className="videoTitle">A transmedia studio<br/>for experience innovation</div>
+              <div className="scrollHint"><span class="returnIcon"></span>Scroll to explore</div>
+            </div>
           </div>
           <div id="featuredProjects">
             <ul className="clearfix">

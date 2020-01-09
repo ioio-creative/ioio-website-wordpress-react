@@ -8,11 +8,12 @@ ul, li{
   margin:0;
 }
 #homepage #featuredVideo{
-  width:100%;
+  width:100vw;
   height:100vh;
   background:#999;
   overflow: hidden;
   position: relative;
+  left: -55px;
 }
 #homepage #featuredVideo #cursor{
   width:0;
@@ -50,6 +51,64 @@ ul, li{
 }
 #homepage #featuredVideo video:hover{
   cursor: none;
+}
+#homepage #featuredVideo .companyLogo {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 40px;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+#homepage #featuredVideo .videoDescription {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  color: #FFFFFF;
+}
+
+#homepage #featuredVideo .videoDescription .videoTitle {
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+#homepage #featuredVideo .videoDescription .scrollHint {
+  font-size: 1.5vw;
+  margin-top: 1em;
+  font-family: serif;
+}
+#homepage #featuredVideo .returnIcon {
+  height: 1em;
+  display: inline-block;
+  position: relative;
+  padding-left: 0.4em;
+  padding-right: 1vw;
+  top: -13px;
+}
+#homepage #featuredVideo .returnIcon:before,
+#homepage #featuredVideo .returnIcon:after {
+  content: '';
+  display: block;
+}
+#homepage #featuredVideo .returnIcon:before {
+  height: 130%;
+  width: 1vw;
+  border-left: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+}
+
+#homepage #featuredVideo .returnIcon:after {
+  position: absolute;
+  width: 0.5vw;
+  height: 0.5vw;
+  border-top: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+  transform: rotate(45deg) translate(1px, -1px);
+  transform-origin: top right;
+  right: 1vw;
 }
 #homepage #featuredProjects{
   padding:80px 0 0;
