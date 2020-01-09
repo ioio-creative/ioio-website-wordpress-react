@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {FormattedMessage, injectIntl} from 'react-intl';
+import {injectIntl} from 'react-intl';
 
 import routes from 'globals/routes';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
-import Footer from 'containers/footer/Footer';
-import ProjectCategories from 'containers/projectList/ProjectCategories';
-
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import LabSection from 'components/LabSection';
+import ClientList from 'containers/home/ClientList';
 
 import $ from 'jquery';
-import TweenMax, { TimelineLite, TimelineMax, Elastic } from 'gsap';
+import TweenMax, { TimelineMax, Elastic } from 'gsap';
 
 //import P5Wrapper from 'react-p5-wrapper';
 
 import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
 import {createIdSlugPairs} from 'utils/generalMapper';
-import LabSection from '../components/LabSection';
 
 import './HomePage.css';
 import './HomePageSE.css';
@@ -25,7 +23,7 @@ import './HomePageSE.css';
 
 import Modal from 'react-modal';
 
-import {Player} from 'video-react';
+//import {Player} from 'video-react';
 import "./video-react.css";
 
 Modal.setAppElement('#root');
@@ -33,28 +31,30 @@ Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
 function Items(props) {
   const a = props.abouts;
-  return (<div className="row">
-    <div className="col-md-1"></div>
-    <div className="col-md-5 about-section-left">
-      <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
-      <div className="text-center">
-        <img src={a.about_section_picture_left.guid} className="img-fluid core-value-img"/>
-        <img src={a.about_section_picture_left_hover.guid} className="img-fluid core-value-img hover-img"/>
+  return (
+    <div className="row">
+      <div className="col-md-1"></div>
+      <div className="col-md-5 about-section-left">
+        <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
+        <div className="text-center">
+          <img src={a.about_section_picture_left.guid} className="img-fluid core-value-img"/>
+          <img src={a.about_section_picture_left_hover.guid} className="img-fluid core-value-img hover-img"/>
+        </div>
+        <p className="description text-center"></p>
       </div>
-      <p className="description text-center"></p>
+      <div className="col-md-5 about-section-right">
+        <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
+        <div className="text-center">
+          <img src={a.about_section_picture_right.guid} className="img-fluid core-value-img"/>
+          <img src={a.about_section_picture_right_hover.guid} className="img-fluid core-value-img hover-img"/>
+        </div>
+        <div className="text-center about-section-right-p-div">
+          <p className="description">{a.about_section_desc}</p>
+        </div>
+      </div>
+      <div className="col-md-1"></div>
     </div>
-    <div className="col-md-5 about-section-right">
-      <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
-      <div className="text-center">
-        <img src={a.about_section_picture_right.guid} className="img-fluid core-value-img"/>
-        <img src={a.about_section_picture_right_hover.guid} className="img-fluid core-value-img hover-img"/>
-      </div>
-      <div className="text-center about-section-right-p-div">
-        <p className="description">{a.about_section_desc}</p>
-      </div>
-    </div>
-    <div className="col-md-1"></div>
-  </div>);
+  );
 }
 
 class HomePage extends Component {
@@ -168,7 +168,6 @@ class HomePage extends Component {
     const allProjects = this.state.allProjects;
     const highlightedProjects = home ? home.highlighted_projects : [];
 
-
     if (allProjects.length === 0) {
       return <MyFirstLoadingComponent isLoading={true} />;
       // return null;
@@ -189,6 +188,9 @@ class HomePage extends Component {
     // use inline svg instead of img
     // const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
 
+    const clientSectionTitle = home.client_section_title;
+    const clients = home.clients;
+
     const customStyles = {
       content : {
         // top                   : '50%',
@@ -207,12 +209,12 @@ class HomePage extends Component {
       }
     };
         
-    const formatMessage = (msgId, defaultMsg) => {
-      return props.intl.formatMessage({
-        id: msgId,
-        defaultMessage: defaultMsg
-      });
-    };
+    // const formatMessage = (msgId, defaultMsg) => {
+    //   return props.intl.formatMessage({
+    //     id: msgId,
+    //     defaultMessage: defaultMsg
+    //   });
+    // };
 
     return (
       <div>
@@ -268,6 +270,12 @@ class HomePage extends Component {
               <Items abouts={home}/>
             </Link>
           </div>
+        </section>
+        <section id="clients">
+          <ClientList
+            title={clientSectionTitle}          
+            clients={clients}
+          />
         </section>
       </div>
     );
