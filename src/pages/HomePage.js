@@ -228,7 +228,7 @@ class HomePage extends Component {
             <div className="companyLogo">IOIO</div>
             <div className="videoDescription">
               <div className="videoTitle">A transmedia studio<br/>for experience innovation</div>
-              <div className="scrollHint"><span class="returnIcon"></span>Scroll to explore</div>
+              <div className="scrollHint"><span className="returnIcon"></span>Scroll to explore</div>
             </div>
           </div>
           <div id="featuredProjects">

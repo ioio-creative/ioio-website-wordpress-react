@@ -6,6 +6,12 @@
 
 }
 
+.client-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .client {
   display: flex;
   align-items: center;

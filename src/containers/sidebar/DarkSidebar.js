@@ -7,7 +7,7 @@ import $ from 'jquery';
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
-import LanguageSelectors from 'containers/i18n/LanguageSelectors';
+//import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';

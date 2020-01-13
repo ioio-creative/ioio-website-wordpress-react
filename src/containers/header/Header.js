@@ -4,8 +4,8 @@ import asyncLoadingComponent from 'components/loading/AsyncLoadingComponent';
 
 import routes from 'globals/routes';
 
-const AsyncDarkHeader = asyncLoadingComponent(() => import("./DarkHeader"));
-const AsyncBrightHeader = asyncLoadingComponent(() => import("./BrightHeader"));
+const AsyncDarkHeader = asyncLoadingComponent(_ => import("./DarkHeader"));
+const AsyncBrightHeader = asyncLoadingComponent(_ => import("./BrightHeader"));
 
 export default function Header() {    
   return (

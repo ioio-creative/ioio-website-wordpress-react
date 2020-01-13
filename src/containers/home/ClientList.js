@@ -23,7 +23,7 @@ function Clients(props) {
       <div className="row">
         {
           clients.map((client) => (
-            <div className="col-md-3 col-xs-4 col-sm-4 wow fadeIn" key={client.my_name}>
+            <div className="col-md-4 col-xs-6 col-sm-6 wow fadeIn client-container" key={client.my_name}>
               <Client
                 name={client.my_name}
                 imgSrc={client.image.guid}
@@ -51,18 +51,22 @@ function ClientList(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-1" />
-          <div className="col-md-5">
-            <header className="section-header">
-              <h3>{title}</h3>
-              {
-                desc &&
-                <p>{desc}</p>
-              }              
-            </header>
-          </div>
-          <div className="col-md-5">
-            <Clients clients={clients}/>
-          </div>
+          <div className="col-md-10">
+            <div className="row">
+              <div className="col-md-6 col-sm-12">
+                <header className="section-header">
+                  <h3>{title}</h3>
+                  {
+                    desc &&
+                    <p>{desc}</p>
+                  }              
+                </header>
+              </div>
+              <div className="col-md-6 col-sm-12">
+                <Clients clients={clients}/>
+              </div>
+            </div>
+          </div>          
           <div className="col-md-1" />
         </div>                  
       </div>
