@@ -63,7 +63,8 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      openVideo:false
     };
     
     this.openModal = this.openModal.bind(this);
@@ -76,6 +77,9 @@ class HomePage extends Component {
 
     this.featuredVideo = null;
     this.cursor = null;
+
+    this.onClickVideo = this.onClickVideo.bind(this);
+    this.onCloseVideo = this.onCloseVideo.bind(this);
 
     // this.handleLoad = this.handleLoad.bind(this);
     // this.handleCanvasMessage = this.handleCanvasMessage.bind(this);
@@ -161,6 +165,18 @@ class HomePage extends Component {
     document.removeEventListener('mousemove', this.onMouseMove);
   }
 
+  onClickVideo(){
+    this.setState({openVideo:true});
+  }
+
+  onCloseVideo(){
+    this.setState({openVideo:false});
+    const video = document.querySelector('#popupVideo video');
+    if(!video.paused){
+      video.pause();
+    }
+  }
+
   render() {
     const props = this.props;
 
@@ -219,8 +235,16 @@ class HomePage extends Component {
 
     return (
       <div>
+        <div id="popupVideo" className={this.state.openVideo ? '' : 'hide'}>
+          <div className="videoWrap">
+            <video controls>
+              <source src="./video/website_video_s.mp4" type="video/mp4"/>
+            </video>
+          </div>
+          <div className="bg" onClick={this.onCloseVideo}></div>
+        </div>
         <section id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
-          <div ref={elem => this.featuredVideo = elem} id="featuredVideo">
+          <div ref={elem => this.featuredVideo = elem} id="featuredVideo" onClick={this.onClickVideo}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
               <source src="./video/website_video_s.mp4" type="video/mp4"/>
