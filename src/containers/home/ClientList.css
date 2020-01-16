@@ -16,11 +16,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
 }
 
 .client img {
   object-fit: contain;
   object-position: center;
+
+  width: 100%;
 }
 
 @media screen and (max-width: 767px) {
