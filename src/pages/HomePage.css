@@ -313,6 +313,9 @@ ul, li{
     right: 20px;
     width: 8em;
   }
+  #popupVideo .videoWrap {
+    width: 100%;
+  }
 }
 
 
