@@ -231,7 +231,48 @@ ul, li{
   /*----------------------------
   [ Mobile styles go here]
   ---------------------------*/
-  
+
+  #homepage #featuredVideo {
+    left: 0;
+  }
+  #homepage #featuredVideo .companyLogo {
+    display: none;
+  }
+  #homepage #featuredVideo .videoDescription {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  #homepage #featuredVideo .videoDescription .videoTitle {
+    font-size: 6vw;
+  }
+  #homepage #featuredVideo .videoDescription .scrollHint {
+    font-size: 4.5vw;
+  }
+  #homepage #featuredVideo .returnIcon {
+    padding-left: 1vw;
+    margin: 0 1em 0 0.5em;
+    top: -0.5em;
+  }
+  #homepage #featuredVideo .returnIcon:before {
+    width: 0;
+  }
+  #homepage #featuredVideo .returnIcon:after {
+    width: 3vw;
+    height: 3vw;
+    border-width: 2px;
+    transform: translate(-1px, 1px) rotate(135DEG) ;
+  }
+  #labSection {
+    background-color: #000;
+  }
+  #labSection #content {
+    bottom: 20px;
+    font-size: 30px;
+    left: auto;
+    right: 20px;
+    width: 8em;
+  }
 }
 
 
@@ -251,3 +292,4 @@ html[lang=zh] #pop-up-terms,
 html[lang=tc] #pop-up-terms {
   margin-left: 37px;
 }
+

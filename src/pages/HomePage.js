@@ -8,6 +8,7 @@ import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 import LabSection from 'components/LabSection';
 import ClientList from 'containers/home/ClientList';
+import Footer from 'containers/footer/Footer';
 
 import $ from 'jquery';
 import TweenMax, { TimelineMax, Elastic } from 'gsap';
@@ -277,6 +278,7 @@ class HomePage extends Component {
             clients={clients}
           />
         </section>
+        <Footer />
       </div>
     );
   }

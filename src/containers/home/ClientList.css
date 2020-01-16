@@ -22,3 +22,12 @@
   object-fit: contain;
   object-position: center;
 }
+
+@media screen and (max-width: 767px) {
+  .clients .row {
+    justify-content: center;
+  }
+  .client-container {
+    width: 33%;
+  }
+}

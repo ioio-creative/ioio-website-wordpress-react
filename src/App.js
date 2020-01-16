@@ -154,7 +154,7 @@ class App extends Component {
     */
     return (
       <IntlProvider locale={state.language.locale} messages={state.messages}>  
-        <BrowserRouter basename="/ioioweb">
+        <BrowserRouter>
           {/*console.log(this.props.location.pathname)*/}                 
           <LanguageContextProvider 
             language={state.language}

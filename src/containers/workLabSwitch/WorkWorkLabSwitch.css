@@ -93,3 +93,9 @@
   70%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.15) skewY(-20deg)}
   90%{transform:scale(1.05)}
 }
+
+@media screen and (max-width: 767px) {
+  .work-to-lab-switch {
+    display: none;
+  }
+}
