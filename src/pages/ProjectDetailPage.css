@@ -31,8 +31,10 @@ pop-up
   font-size: 14px;
   line-height: 24px;
   /* font-family: "FuturaLT", sans-serif; */
-  width: 100%;
   height: 60vh;
+  /* width: 100%; */
+  margin-left: -55px;
+  overflow: hidden;
 }
 
 #video-landing .video-landing-div {
@@ -71,6 +73,7 @@ pop-up
 #video-landing .project-title-div {
   position: absolute;
   bottom: 0;
+  left: 35px;
 }
 #video-landing .video-text .pop-up-vid-div {
   /* text-align: right; */
