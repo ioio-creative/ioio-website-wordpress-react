@@ -60,7 +60,7 @@ function ClientList(props) {
                     <span className="title-first-half">
                       <FormattedMessage
                         id="HomePage.highlightedClientsLabel.firstHalf"
-                        defaultMessage="Selected"
+                        defaultMessage="Selected "
                       />
                     </span>
                     <span className="title-second-half">

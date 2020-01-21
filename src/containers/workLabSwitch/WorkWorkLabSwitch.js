@@ -49,7 +49,7 @@ export default function WorkWorkLabSwitch(props) {
     return function cleanup() {
       window.removeEventListener('scroll', handleWindowScroll);
     }
-  });
+  },[]);
 
   const circleStyle = {
     backgroundColor: backgroundColor || 'black'

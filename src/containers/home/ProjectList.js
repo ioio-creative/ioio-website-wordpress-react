@@ -41,9 +41,9 @@ function Project(props) {
         <img src={imgSrc} alt={name} />
       </Link>
       <Link to={detailRoutePath}>
-        <div className="project-name">
+        <div className="project-name clearfix">
           <span className="return-icon" />
-          {name}
+          <p dangerouslySetInnerHTML={{__html: name}}></p>
         </div>
       </Link>
       <div className="project-category">{categoriesCorrespondingToProj}</div>      
