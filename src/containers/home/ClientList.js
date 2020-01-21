@@ -1,6 +1,7 @@
 import './ClientList.css';
 
 import React from 'react';
+import {FormattedMessage} from 'react-intl';
 
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 
@@ -39,7 +40,7 @@ function Clients(props) {
 
 function ClientList(props) {
   const { 
-    title, desc, clients
+    clients
   } = props;
 
   if (!isNonEmptyArray(clients)) {
@@ -47,7 +48,7 @@ function ClientList(props) {
   }  
 
   return (
-    <div className='client-list'>
+    <div className='home-client-list'>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-1" />
@@ -55,11 +56,20 @@ function ClientList(props) {
             <div className="row">
               <div className="col-md-6 col-sm-12">
                 <header className="section-header">
-                  <h3>{title}</h3>
-                  {
-                    desc &&
-                    <p>{desc}</p>
-                  }              
+                  <h3>
+                    <span className="title-first-half">
+                      <FormattedMessage
+                        id="HomePage.highlightedClientsLabel.firstHalf"
+                        defaultMessage="Selected"
+                      />
+                    </span>
+                    <span className="title-second-half">
+                      <FormattedMessage
+                        id="HomePage.highlightedClientsLabel.secondHalf"
+                        defaultMessage="Clients"
+                      />
+                    </span>
+                  </h3>
                 </header>
               </div>
               <div className="col-md-6 col-sm-12">

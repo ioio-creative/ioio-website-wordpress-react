@@ -1,0 +1,127 @@
+.home-project-list {
+
+}
+
+.home-project-list .row-2 {
+  display: flex;
+  align-items: center;  
+
+  padding: 5% 0 5% 0;
+}
+
+.home-project-list .row-1-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 5% 0 5% 0;
+}
+
+.home-project-list .row-2 .project,
+.home-project-list .row-2 .section-desc { 
+  flex: 1 1 50%;
+  padding: 0 5% 0 5%;
+}
+
+.home-project-list .row-1-right .project { 
+  flex: 0 0 75%;
+  padding: 0 5% 0 5%;
+}
+
+.home-project-list .project {
+
+}
+
+.home-project-list .project img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.home-project-list .project-1 {
+
+}
+
+.home-project-list .project-2 {
+
+}
+
+.home-project-list .project-3 {
+
+}
+
+.home-project-list .project-4 {
+
+}
+
+.home-project-list .project-5 {
+
+}
+
+.home-project-list .project-6 {
+  padding-right: 0 !important;
+}
+
+
+/* return-icon */
+
+.home-project-list .return-icon {
+  --returnIconColor: #000;
+
+  height: 1em;
+  display: inline-block;
+  position: relative;
+  padding-left: 0.4em;
+  padding-right: 1vw;
+  top: -13px;
+}
+.home-project-list .return-icon:before,
+.home-project-list .return-icon:after {
+  content: '';
+  display: block;
+}
+.home-project-list .return-icon:before {
+  height: 130%;
+  width: 1vw;
+  border-left: 1px solid var(--returnIconColor);
+  border-bottom: 1px solid var(--returnIconColor);
+}
+
+.home-project-list .return-icon:after {
+  position: absolute;
+  width: 0.5vw;
+  height: 0.5vw;
+  border-top: 1px solid var(--returnIconColor);
+  border-right: 1px solid var(--returnIconColor);
+  transform: rotate(45deg) translate(1px, -1px);
+  transform-origin: top right;
+  right: 1vw;
+}
+
+/* end of return-icon */
+
+
+@media only screen and (max-width: 768px) {
+  /*----------------------------
+  [ Mobile styles go here]
+  ---------------------------*/
+
+  /* return-icon */
+
+  .home-project-list .return-icon {
+    padding-left: 1vw;
+    margin: 0 1em 0 0.5em;
+    top: -0.5em;
+  }
+  .home-project-list .return-icon:before {
+    width: 0;
+  }
+  .home-project-list .return-icon:after {
+    width: 3vw;
+    height: 3vw;
+    border-width: 2px;
+    transform: translate(-1px, 1px) rotate(135DEG) ;
+  }
+
+  /* end of return-icon */
+}

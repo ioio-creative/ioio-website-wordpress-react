@@ -36,8 +36,9 @@
     "HomePage.shortCompanyNameInTopCanvas": "IOIO",
     "HomePage.labItemTitle": "Tapping",
     "HomePage.sharingItemTitle": "Bible Consipiracy",
-
     "HomePage.allCategoryLabel": "We Do",
+    "HomePage.highlightedClientsLabel.firstHalf": "Selected ",
+    "HomePage.highlightedClientsLabel.secondHalf": "Clients",
     "ProjectListPage.allCategoryLabel": "All",
     "ProjectListPage.pageTitle": "Case Studies",
     "ProjectDetailPage.showreelButton": "SHOWREEL"
@@ -79,8 +80,9 @@
     "HomePage.shortCompanyNameInTopCanvas": "十下",
     "HomePage.labItemTitle": "Tapping",
     "HomePage.sharingItemTitle": "聖經的秘密",
-
     "HomePage.allCategoryLabel": "我們做",
+    "HomePage.highlightedClientsLabel.firstHalf": "我們的客戶",
+    "HomePage.highlightedClientsLabel.secondHalf": "",
     "ProjectListPage.allCategoryLabel": "全部",
     "ProjectListPage.pageTitle": "作品",
     "ProjectDetailPage.showreelButton": "作品視頻"
@@ -122,8 +124,9 @@
     "HomePage.shortCompanyNameInTopCanvas": "十下",
     "HomePage.labItemTitle": "Tapping",
     "HomePage.sharingItemTitle": "圣经的秘密",
-
     "HomePage.allCategoryLabel": "我们做",
+    "HomePage.highlightedClientsLabel.firstHalf": "我们的客户",
+    "HomePage.highlightedClientsLabel.secondHalf": "",
     "ProjectListPage.allCategoryLabel": "全部",
     "ProjectListPage.pageTitle": "作品",
     "ProjectDetailPage.showreelButton": "作品视频"
@@ -165,8 +168,9 @@
     "HomePage.shortCompanyNameInTopCanvas": "十下",
     "HomePage.labItemTitle": "Tapping",
     "HomePage.sharingItemTitle": "圣经的秘密",
-
     "HomePage.allCategoryLabel": "我们做",
+    "HomePage.highlightedClientsLabel.firstHalf": "我们的客户",
+    "HomePage.highlightedClientsLabel.secondHalf": "",
     "ProjectListPage.allCategoryLabel": "全部",
     "ProjectListPage.pageTitle": "作品",
     "ProjectDetailPage.showreelButton": "ショーライト"

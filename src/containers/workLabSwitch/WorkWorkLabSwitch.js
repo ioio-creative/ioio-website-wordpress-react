@@ -27,14 +27,14 @@ export default function WorkWorkLabSwitch(props) {
       const threshold = bufferPercentage * (window.innerHeight || document.documentElement.clientHeight);
       const positionBottom = workToLabSwitchRef.current.getBoundingClientRect().bottom;      
       if (isShow) {
-        const isMovingOut = positionBottom < 0 + threshold;
+        const isMovingOut = (positionBottom < (0 + threshold));
         if (isMovingOut) {
           setIsShow(false);
         }
       }
 
       if (!isShow) {
-        const isMovingIn = positionBottom >= 0 + threshold;
+        const isMovingIn = (positionBottom >= (0 + threshold));
         if (isMovingIn) {
           setIsShow(true);
         }

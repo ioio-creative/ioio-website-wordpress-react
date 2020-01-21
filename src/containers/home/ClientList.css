@@ -1,18 +1,18 @@
-.client-list {
+.home-client-list {
 
 }
 
-.clients {
+.home-client-list .clients {
 
 }
 
-.client-container {
+.home-client-list .client-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.client {
+.home-client-list .client {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.client img {
+.home-client-list .client img {
   object-fit: contain;
   object-position: center;
 
@@ -28,10 +28,11 @@
 }
 
 @media screen and (max-width: 767px) {
-  .clients .row {
+  .home-client-list .clients .row {
     justify-content: center;
   }
-  .client-container {
+  
+  .home-client-list .client-container {
     width: 33%;
   }
 }

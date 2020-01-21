@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import {injectIntl} from 'react-intl';
 
 import routes from 'globals/routes';
-import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import ProjectList from 'containers/home/ProjectList';
 import LabSection from 'components/LabSection';
 import ClientList from 'containers/home/ClientList';
 import Footer from 'containers/footer/Footer';
@@ -13,14 +13,13 @@ import Footer from 'containers/footer/Footer';
 import $ from 'jquery';
 import TweenMax, { TimelineMax, Elastic } from 'gsap';
 
-//import P5Wrapper from 'react-p5-wrapper';
-
 import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
-import {createIdSlugPairs} from 'utils/generalMapper';
+import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
+import firstOrDefault from 'utils/js/array/firstOrDefault';
+import {createIdSlugPairs, createIdNamePairs} from 'utils/generalMapper';
 
 import './HomePage.css';
 import './HomePageSE.css';
-//import sketch from './sketch';
 
 import Modal from 'react-modal';
 
@@ -62,47 +61,135 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalIsOpen: false,
-      openVideo:false
-    };
-    
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
-
+    // refs
     this.featuredVideo = null;
+    this.setFeaturedVideo = element => this.featuredVideo = element;
     this.cursor = null;
+    this.setCursor = element => this.cursor = element;
 
-    this.onClickVideo = this.onClickVideo.bind(this);
-    this.onCloseVideo = this.onCloseVideo.bind(this);
+    this.state = {      
+      openVideo: false,
+      homepageData: null,
+      allProjects: [],      
+      highlightedProjectSectionDesc: null,
+      highlightedProjects: [],
+      highlightedClients: [],      
+    };
 
-    // this.handleLoad = this.handleLoad.bind(this);
-    // this.handleCanvasMessage = this.handleCanvasMessage.bind(this);
+    [
+      // methods
+      'isDataFetchComplete',
+      'parseHomepageData',         
 
-    this.state = {
-      homepage: null,
-      projectCategories: [],
-      allProjects: [],
-    }    
+      // event handlers
+      'onMouseEnter',
+      'onMouseLeave',
+      'onMouseMove',
+      'onClickVideo',
+      'onCloseVideo',
+      'handleFetchCallback'
+    ].forEach(methodName => {
+      this[methodName] = this[methodName].bind(this);
+    });   
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
+
+  /* react lifecycles */
+
+  componentDidMount() {
+    fetchActiveHomePage((homepage) => {
+      this.setState({
+        homepageData: homepage
+      }, this.handleFetchCallback);      
+    });
+
+    fetchProjects((projects) => {
+      this.setState({
+        allProjects: projects
+      }, this.handleFetchCallback);
+    });     
+
+    document.addEventListener('mousemove', this.onMouseMove);
   }
 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    //this.subtitle.style.color = '#f00';
+  componentWillUnmount() {    
+    document.removeEventListener('mousemove', this.onMouseMove);
   }
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  componentDidUpdate() {    
+    if (this.isDataFetchComplete()) {
+      this.featuredVideo.addEventListener('mouseenter', this.onMouseEnter);
+      this.featuredVideo.addEventListener('mouseleave', this.onMouseLeave);
+    }
+  }  
+
+  /* end of react lifecycles */
+
+
+  /* methods */
+
+  isDataFetchComplete() {
+    const {
+      homepageData,      
+      allProjects,      
+    } = this.state;
+    return homepageData !== null && isNonEmptyArray(allProjects);
   }
+
+  parseHomepageData(homepageData, allProjects) {
+     const {
+      highlighted_project_1,
+      highlighted_project_2,      
+      highlighted_project_3,
+      highlighted_project_4,
+      highlighted_project_5,
+      highlighted_project_6,
+      highlighted_project_section_desc: highlightedProjectSectionDesc,
+      highlighted_clients: highlightedClients,
+    } = homepageData;
+    
+    const projectIdSlugPairs = createIdSlugPairs(allProjects);    
+
+    const highlightedProjects = [
+      highlighted_project_1,
+      highlighted_project_2,
+      highlighted_project_3,
+      highlighted_project_4,
+      highlighted_project_5,
+      highlighted_project_6
+    ].map(highlighted_project => {  
+      const highlightedProject = firstOrDefault(highlighted_project);
+      if (!highlightedProject) {
+        return null;
+      }
+      
+      const { project_name, image, referred_project } = highlightedProject;
+      // TODO: referred_project in json has strange relationship structure, maybe related to "Allow Add New" option in Pods (WordPress plugin)
+      //console.log(referred_project);
+
+      const referredProject = firstOrDefault(referred_project);
+      const detailRoutePath = referredProject ? 
+        routes.projectBySlugWithValue(projectIdSlugPairs[referredProject.id]) : null;
+
+      return {
+        name: project_name,
+        imgSrc: image.guid,
+        referredProject: referredProject,
+        detailRoutePath: detailRoutePath
+      };
+    });
+
+    this.setState({      
+      highlightedProjectSectionDesc: highlightedProjectSectionDesc,
+      highlightedProjects: highlightedProjects,
+      highlightedClients: highlightedClients,      
+    });  
+  }
+  
+  /* end of methods */
+
+
+  /* event handlers */
 
   onMouseEnter(){
     if(this.cursor){
@@ -111,198 +198,107 @@ class HomePage extends Component {
       tl.to(this.cursor.querySelector('span:nth-child(2)'), 1, {width:50,height:50,ease:Elastic.easeOut.config(1.2, .5)},'-=.9');
     }
   }
+
   onMouseLeave(){
     if(this.cursor){
       TweenMax.to(this.cursor.querySelectorAll('span'), .6, {width:0,height:0,ease:'Power4.easeOut'}); 
     }
   }
+
   onMouseMove(e){
     if(this.cursor){
       TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideo.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
     }
-  }
-
-  componentDidMount() {
-    fetchActiveHomePage((homepage) => {
-      this.setState({homepage: homepage});
-    });
-
-    fetchProjectCategories((projectCategories) => {
-      this.setState({projectCategories: projectCategories});
-    });
-
-    fetchProjects((projects) => {
-      this.setState({allProjects: projects});
-    });
-
-    /*
-      const publicUrl = process.env.PUBLIC_URL;
-      scriptjs(publicUrl + '/canvas/hello/sketch.js');
-      console.log('script loaded');
-    */
-
-    window.addEventListener('load', this.handleLoad);
-    // $('iframe.iframe-p5').contents()
-    //   .find('canvas').on('click',function(){
-    //     console.log('click');
-    // })
-    window.addEventListener('message', this.handleCanvasMessage);
-
-    document.addEventListener('mousemove', this.onMouseMove);
-  }
-
-  componentDidUpdate(){
-    // console.log(this.state.homepage && this.state.projectCategories.length && this.state.allProjects.length)
-    if(this.state.homepage && this.state.projectCategories.length && this.state.allProjects.length){
-      this.featuredVideo.addEventListener('mouseenter', this.onMouseEnter);
-      this.featuredVideo.addEventListener('mouseleave', this.onMouseLeave);
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('load', this.handleLoad);
-    window.removeEventListener('message', this.handleCanvasMessage);
-    document.removeEventListener('mousemove', this.onMouseMove);
-  }
+  }  
 
   onClickVideo(){
-    this.setState({openVideo:true});
+    this.setState({openVideo: true});
   }
 
   onCloseVideo(){
-    this.setState({openVideo:false});
+    this.setState({openVideo: false});
     const video = document.querySelector('#popupVideo video');
     if(!video.paused){
       video.pause();
     }
   }
 
+  handleFetchCallback() {    
+    if (this.isDataFetchComplete()) {
+      const {
+        homepageData, allProjects
+      } = this.state;
+      this.parseHomepageData(homepageData, allProjects);
+    }     
+  }
+
+  /* end of event handlers */
+
+
   render() {
-    const props = this.props;
+    const {      
+      openVideo,
+      homepageData,
+      allProjects,            
+      highlightedProjectSectionDesc,
+      highlightedProjects,
+      highlightedClients,
+    } = this.state;        
 
-    const home = this.state.homepage;
-    const pC = this.state.projectCategories;
-    const allProjects = this.state.allProjects;
-    const highlightedProjects = home ? home.highlighted_projects : [];
-
-    if (allProjects.length === 0) {
-      return <MyFirstLoadingComponent isLoading={true} />;
-      // return null;
+    if (!this.isDataFetchComplete()) {
+      return <MyFirstLoadingComponent isLoading={true} />;      
     }
-
-    if (pC.length === 0) {
-      return <MyFirstLoadingComponent isLoading={true} />;
-      // return null;
-    }
-
-    if (home === null) {
-      return <MyFirstLoadingComponent isLoading={true} />;
-      // return null;
-    }
-
-    const allProjectIdSlugPairs = createIdSlugPairs(allProjects);
-    const canvasURL = getAbsoluteUrlFromRelativeUrl('canvas/1/index.html');
-    // use inline svg instead of img
-    // const svgURL = getAbsoluteUrlFromRelativeUrl('img/Play_btn-14.svg');
-
-    const clientSectionTitle = home.client_section_title;
-    const clients = home.clients;
-
-    const customStyles = {
-      content : {
-        // top                   : '50%',
-        // left                  : '50%',
-        // right                 : 'auto',
-        // bottom                : 'auto',
-        // marginRight           : '-50%',
-        top                   : 0,
-        left                  : 0,
-        right                 : 0,
-        bottom                : 0,
-        padding               : 0,
-        // transform             : 'translate(-50%, -50%)',
-        backgroundColor       : 'rgba(0,0,0,0)',
-        border                : '0px'
-      }
-    };
-        
-    // const formatMessage = (msgId, defaultMsg) => {
-    //   return props.intl.formatMessage({
-    //     id: msgId,
-    //     defaultMessage: defaultMsg
-    //   });
-    // };
 
     return (
       <div>
-        <div id="popupVideo" className={this.state.openVideo ? '' : 'hide'}>
+        <div id="popupVideo" className={openVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video controls>
               <source src="./video/website_video_s.mp4" type="video/mp4"/>
             </video>
           </div>
-          <div className="bg" onClick={this.onCloseVideo}></div>
+          <div className="bg" onClick={this.onCloseVideo} />
         </div>
-        <section id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
-          <div ref={elem => this.featuredVideo = elem} id="featuredVideo" onClick={this.onClickVideo}>
+        <div id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
+          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.onClickVideo}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
-              <source src="./video/website_video_s.mp4" type="video/mp4"/>
+              <source src="./video/website_video_s.mp4" type="video/mp4" />
             </video>
-            <div ref={elem => this.cursor = elem} id="cursor"><span></span><span>view</span></div>
+            <div ref={this.setCursor} id="cursor">
+              <span />
+              <span>view</span>
+            </div>
             <div className="companyLogo">IOIO</div>
             <div className="videoDescription">
-              <div className="videoTitle">A transmedia studio<br/>for experience innovation</div>
-              <div className="scrollHint"><span className="returnIcon"></span>Scroll to explore</div>
+              <div className="videoTitle">A transmedia studio<br />for experience innovation</div>
+              <div className="scrollHint"><span className="returnIcon" />Scroll to explore</div>
             </div>
-          </div>
-          <div id="featuredProjects">
-            <ul className="clearfix">
-              {
-                highlightedProjects.map((project,idx)=>{
-                  const projectDetailRoutePath = routes.projectBySlugWithValue(allProjectIdSlugPairs[project.id]);
-
-                  return <li key={idx} className={idx === 2 ? 'full' : ''}>
-                      <Link to={projectDetailRoutePath}>
-                        <img src={project.thumbnail.guid} alt="" />
-                        <p>{project.project_name}</p>
-                      </Link>
-                    </li>
-                })
-              }
-            </ul>
-            <ul className="others">
-              <li>
-                
-                <img src="https://admin.ioiocreative.com/wp-content/uploads/2018/04/K11_cover_loop.gif" alt="" />
-                <p>K11藝術基金會 「Emerald City」展覽</p>
-              </li>
-              <li>
-                <img src="https://admin.ioiocreative.com/wp-content/uploads/2019/06/thumbnail_19.gif" alt="" />
-                <p>Hong Kong FinTech Week 2018</p>
-              </li>
-              <li className="big">
-                <img src="https://admin.ioiocreative.com/wp-content/uploads/2018/04/FFF_thumb.jpg" alt="" />
-                <p>FFFriday 時裝發佈會</p>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <LabSection />
-        <section id="homepage-core-value">
-          <div className="container">
-            <Link to={routes.about(true)}>
-              <Items abouts={home}/>
-            </Link>
-          </div>
-        </section>
-        <section id="clients">
-          <ClientList
-            title={clientSectionTitle}          
-            clients={clients}
-          />
-        </section>
-        <Footer />
+          </div>         
+          <section id="highlighted-project">
+            <ProjectList 
+              projects={highlightedProjects}    
+              sectionDesc={highlightedProjectSectionDesc}              
+            />
+          </section>
+          <LabSection />
+          <section id="homepage-core-value">
+            <div className="container">
+              <Link to={routes.about(true)}>
+                <Items abouts={homepageData}/>
+              </Link>
+            </div>
+          </section>
+          {
+            isNonEmptyArray(highlightedClients) &&
+            <section id="clients">
+              <ClientList                      
+                clients={highlightedClients}
+              />
+            </section>
+          }          
+          <Footer />
+        </div>        
       </div>
     );
   }

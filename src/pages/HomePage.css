@@ -121,6 +121,8 @@ ul, li{
   font-family: serif;
 }
 #homepage #featuredVideo .returnIcon {
+  --returnIconColor: #FFF;
+
   height: 1em;
   display: inline-block;
   position: relative;
@@ -136,21 +138,21 @@ ul, li{
 #homepage #featuredVideo .returnIcon:before {
   height: 130%;
   width: 1vw;
-  border-left: 1px solid #FFF;
-  border-bottom: 1px solid #FFF;
+  border-left: 1px solid var(--returnIconColor);
+  border-bottom: 1px solid var(--returnIconColor);
 }
 
 #homepage #featuredVideo .returnIcon:after {
   position: absolute;
   width: 0.5vw;
   height: 0.5vw;
-  border-top: 1px solid #FFF;
-  border-right: 1px solid #FFF;
+  border-top: 1px solid var(--returnIconColor);
+  border-right: 1px solid var(--returnIconColor);
   transform: rotate(45deg) translate(1px, -1px);
   transform-origin: top right;
   right: 1vw;
 }
-#homepage #featuredProjects{
+/* #homepage #featuredProjects{
   padding:80px 0 0;
 }
 #homepage #featuredProjects ul{
@@ -203,7 +205,7 @@ ul, li{
 #homepage #featuredProjects li.big p{
   font-weight: bold;
   font-size: 26px;
-}
+} */
 
 #labSection{
   position: relative;
@@ -289,7 +291,7 @@ ul, li{
   #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: 4.5vw;
   }
-  #homepage #featuredVideo .returnIcon {
+  #homepage #featuredVideo .returnIcon {    
     padding-left: 1vw;
     margin: 0 1em 0 0.5em;
     top: -0.5em;

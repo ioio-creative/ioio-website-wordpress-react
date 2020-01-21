@@ -15,12 +15,14 @@ export default function ProjectItems(props) {
 
     const categoriesCorrespondingToProj = project.project_categories.map((categoryId, idx) => {
       let categoryName = projectCategoryIdNamePairs[categoryId];
-      if (idx >= 1) {
+      if (idx !== 0) {
         categoryName = ' / ' + categoryName;
       }
-      return (<span key={categoryId}>
-        {categoryName}
-      </span>);
+      return (
+        <span key={categoryId}>
+          {categoryName}
+        </span>
+      );
     });
 
     return (

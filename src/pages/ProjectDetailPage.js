@@ -236,10 +236,10 @@ class ProjectDetailPage extends Component {
         {/* <ProjectTemp11 /> */}
         {projectTemplateContainer}
 
-        <section id="project-info" class="project-section-bg">
-          <div class="container-fluid"><div class="row video-landing-text">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 wow fadeIn">
+        <section id="project-info" className="project-section-bg">
+          <div className="container-fluid"><div className="row video-landing-text">
+            <div className="col-md-1" />
+            <div className="col-md-10 wow fadeIn">
               <div id="summary" className="wrap">
                 <div className="title">{project.project_summary_label}</div>
                 <div className="content">
@@ -261,9 +261,9 @@ class ProjectDetailPage extends Component {
                 </div>
               </div>
             </div>
-            <div class="col-md-1"></div>
+            <div className="col-md-1"></div>
           </div>
-          <div class="clearfix"></div></div>
+          <div className="clearfix"></div></div>
         </section>
 
         <div id="project-detail-page-space-buffer"></div>
