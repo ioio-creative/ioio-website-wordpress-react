@@ -38,45 +38,44 @@ class AboutPage extends Component {
       // return null;
     }
     
-    return (<div>
-
-      <About01
-        //Section: title
-        about={about}/>
-
-      <About02
-        //Section: video
-        about={about}/>
-
-      <About03
-        //Section: core-value
-        about={about}/>
-
-      <About04
-        // Section: SlideShow
-        about={about}/>
-
-      <About05
-        // Section: The-team
-        about={about}/>
-
-      <About06
-        //Section: Services
-        about={about}/>
-              
-      <ClientList        
-        title={about.client_section_title}
-        desc={about.client_section_desc}
-        clients={about.clients}
-      />      
-
-      <About08
-        //Section: Press
-        about={about}/>
-
-      <Footer />
-
-    </div>);
+    return (
+      <div className='about-page'>
+        <About01
+          //Section: title
+          about={about}
+        />
+        <About02
+          //Section: video
+          about={about}
+        />
+        <About03
+          //Section: core-value
+          about={about}
+        />
+        <About04
+          // Section: SlideShow
+          about={about}
+        />
+        <About05
+          // Section: The-team
+          about={about}
+        />
+        <About06
+          //Section: Services
+          about={about}
+        />        
+        <ClientList        
+          title={about.client_section_title}
+          desc={about.client_section_desc}
+          clients={about.clients}
+        />
+        <About08
+          //Section: Press
+          about={about}
+        />
+        <Footer />
+      </div>
+    );
   }
 }
 

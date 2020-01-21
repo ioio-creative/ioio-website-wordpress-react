@@ -1,17 +1,18 @@
-import {compareForDatesAscending, compareForDatesDescending} from 'utils/datetime';
 import {globalLanguage} from 'App';
 import {languages} from 'globals/config';
+import {compareForDatesAscending, compareForDatesDescending} from 'utils/datetime';
+import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 
 /*
-    WordPress API References
-    - https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#_embed
+  WordPress API References
+  - https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/#_embed
 */
 
 //const baseUrl = "http://13.228.34.232/wp-json/wp/v2/";
 /*
-    !!! Important !!!
-    To avoid "Blocked loading mixed active content" error,
-    we have to use HTTPS.
+  !!! Important !!!
+  To avoid "Blocked loading mixed active content" error,
+  we have to use HTTPS.
 */
 const baseUrl = "https://admin.ioiocreative.com/wp-json/wp/v2/";
 //const defaultQuery = "?_embed";
@@ -77,15 +78,21 @@ async function passJsonResultAsync(entityToFetch, optionalEntityId, optionalQuer
 }
 
 function orderProjectsByDateAscending(projects) {
-    return projects.sort((project1, project2) => {
-        return compareForDatesAscending(project1.project_date, project2.project_date);
-    });
+  if (!isNonEmptyArray(projects)) {
+    return [];
+  }
+  return projects.sort((project1, project2) => {
+      return compareForDatesAscending(project1.project_date, project2.project_date);
+  });
 }
 
 function orderProjectsByDateDescending(projects) {
-    return projects.sort((project1, project2) => {
-        return compareForDatesDescending(project1.project_date, project2.project_date);
-    });
+  if (!isNonEmptyArray(projects)) {
+    return [];
+  }
+  return projects.sort((project1, project2) => {
+      return compareForDatesDescending(project1.project_date, project2.project_date);
+  });
 }
 
 
@@ -356,7 +363,7 @@ export {
   // project detail page with next id
   fetchProjectWithNextIdById,
   fetchProjectWithNextIdByIdAsync,
-  
+
   // contact page
   fetchActiveContact,
   fetchContact,
