@@ -6,7 +6,6 @@ import routes from 'globals/routes';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 import ProjectList from 'containers/home/ProjectList';
-import LabSection from 'components/LabSection';
 import ClientList from 'containers/home/ClientList';
 import Footer from 'containers/footer/Footer';
 
@@ -246,8 +245,15 @@ class HomePage extends Component {
     } = this.state;        
 
     if (!this.isDataFetchComplete()) {
-      return <MyFirstLoadingComponent isLoading={true} />;      
+      return <MyFirstLoadingComponent isLoading={true} />;    
     }
+
+    const {
+      showreel_video_company_name: showreelVideoCompanyName,
+      showreel_video_title: showreelVideoTitle,
+      showreel_video_interaction_hint: showreelVideoInteractionHint,
+      showreel_video_button: showreelVideoButton,
+    } = homepageData;    
 
     return (
       <div>
@@ -269,10 +275,14 @@ class HomePage extends Component {
               <span />
               <span>view</span>
             </div>
-            <div className="companyLogo">IOIO</div>
+            <div className="companyLogo">{showreelVideoCompanyName}</div>
             <div className="videoDescription">
-              <div className="videoTitle">A transmedia studio<br />for experience innovation</div>
-              <div className="scrollHint"><span className="returnIcon" />Scroll to explore</div>
+              <div className="videoTitle"
+                dangerouslySetInnerHTML={{
+                  __html: showreelVideoTitle
+                }}
+              />
+              <div className="scrollHint"><span className="returnIcon" />{showreelVideoInteractionHint}</div>
             </div>
           </div>         
           <section id="highlighted-project">
@@ -280,15 +290,14 @@ class HomePage extends Component {
               projects={highlightedProjects}    
               sectionDesc={highlightedProjectSectionDesc}              
             />
-          </section>
-          <LabSection />
-          <section id="homepage-core-value">
+          </section>          
+          {/* <section id="homepage-core-value">
             <div className="container">
               <Link to={routes.about(true)}>
                 <Items abouts={homepageData}/>
               </Link>
             </div>
-          </section>
+          </section> */}
           {
             isNonEmptyArray(highlightedClients) &&
             <section id="clients">

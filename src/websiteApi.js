@@ -54,11 +54,18 @@ function passJsonResultToCallback(entityToFetch, callback, optionalEntityId, opt
     .then(res => res.json())
     .then(resJson => {
       if (resJson.data && resJson.data.status === 404) {
+        console.log(`Fetching ${dataUrl} :`);
+        console.log('Status:', resJson.data.status);
         // 404 not found
         callback(null);
       } else {
         callback(resJson);
       }
+    })
+    .catch(err => {
+      console.error(`Error when fetching ${dataUrl} :`);
+      console.error(err);
+      callback(null);
     });
 }
 
