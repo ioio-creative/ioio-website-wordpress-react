@@ -17,6 +17,11 @@
   padding: 5% 0 5% 0;
 }
 
+.home-project-list .row-2 .section-desc {
+  font-size:43px;
+  font-weight: bold;
+}
+
 .home-project-list .row-2 .project,
 .home-project-list .row-2 .section-desc { 
   flex: 1 1 50%;
@@ -36,6 +41,40 @@
   width: 100%;
   object-fit: contain;
   object-position: center;
+}
+.home-project-list .project .project-name{
+  width: 100%;
+  padding-top: 10px;
+}
+.home-project-list .project .project-name span{
+  float: left;
+}
+.home-project-list .project .project-name p{
+  width: calc(100% - 67px);
+  float: left;
+  margin:0;
+  font-size: 26px;
+  font-weight: bold;
+  padding-top:10px;
+}
+.home-project-list .project .return-icon{
+  padding-left:0;
+  padding-right: 11px;
+  margin-right:10px;
+  top:9px;
+}
+.home-project-list .project .return-icon:before{
+  width: 34px;
+  height: 21px;
+}
+.home-project-list .project .return-icon:after{
+  width: 1vw;
+  height: 1vw;
+  right: 10px;
+}
+.home-project-list .project .project-category{
+  padding-left: 56px;
+  padding-top:5px;
 }
 
 .home-project-list .project-1 {
