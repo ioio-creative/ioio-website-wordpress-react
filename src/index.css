@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+#root {
+  overflow: hidden;
+  position: relative;
+}
+
 /* fonts */
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 body {
