@@ -136,7 +136,7 @@ class HomePage extends Component {
   }
 
   parseHomepageData(homepageData, allProjects) {
-     const {
+    const {
       highlighted_project_1,
       highlighted_project_2,      
       highlighted_project_3,
@@ -237,8 +237,7 @@ class HomePage extends Component {
   render() {
     const {      
       openVideo,
-      homepageData,
-      allProjects,            
+      homepageData,                
       highlightedProjectSectionDesc,
       highlightedProjects,
       highlightedClients,
@@ -273,7 +272,7 @@ class HomePage extends Component {
             </video>
             <div ref={this.setCursor} id="cursor">
               <span />
-              <span>view</span>
+              <span>{showreelVideoButton}</span>
             </div>
             <div className="companyLogo">{showreelVideoCompanyName}</div>
             <div className="videoDescription">

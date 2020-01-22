@@ -1,4 +1,4 @@
-import React, {useState, useEffect , useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
@@ -49,7 +49,7 @@ export default function WorkWorkLabSwitch(props) {
     return function cleanup() {
       window.removeEventListener('scroll', handleWindowScroll);
     }
-  },[]);
+  }, []);
 
   const circleStyle = {
     backgroundColor: backgroundColor || 'black'
@@ -64,20 +64,24 @@ export default function WorkWorkLabSwitch(props) {
       ref={workToLabSwitchRef}
       className={`work-to-lab-switch ${isShow ? "show" : "hide"}`}
     >
-      <Link 
-        role="button"
-        to={routes.lab(true)}
-        onClick={onClickFunc}
-      >
-        <div className='circle' style={circleStyle}>
-          <div className='text' style={textStyle}>
-            <FormattedMessage
-              id="WorkWorkLabSwitch.switchDestination"
-              defaultMessage="Lab!"
-            />         
-          </div>
+      <div className='switch-outer-container'>
+        <div className='switch-inner-container'>
+          <Link 
+            role="button"
+            to={routes.lab(true)}
+            onClick={onClickFunc}          
+          >
+            <div className='circle' style={circleStyle}>
+              <div className='text' style={textStyle}>
+                <FormattedMessage
+                  id="WorkWorkLabSwitch.switchDestination"
+                  defaultMessage="LAB!"
+                />         
+              </div>
+            </div>
+          </Link>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

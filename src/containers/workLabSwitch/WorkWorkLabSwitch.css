@@ -3,11 +3,12 @@
   --default-transition: all 0.4s;
 
   position: absolute;
-  display: block;
+  top: 0;
+  right: 0;
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  
   z-index: 900;
-
-  top: -76px;
-  right: -72px;
 }
 
 .work-to-lab-switch.show {
@@ -18,14 +19,31 @@
 
 }
 
+.work-to-lab-switch .switch-outer-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.work-to-lab-switch .switch-inner-container {
+  position: absolute;  
+  top: -76px;
+  right: -72px;
+}
 
 .work-to-lab-switch .circle {
-  position: relative;
+  /* position: relative;
+  top: -76px;
+  right: -72px; */
 
   width: var(--circle-diameter);
   height: var(--circle-diameter);
 
-  border-radius: 50%;
+  border-radius: 100%;
 
   /* background-image: linear-gradient(145deg, #f9f8f8, #c5e8ff);
   opacity: 0.8;

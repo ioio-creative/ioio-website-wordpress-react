@@ -77,8 +77,8 @@ const browserLangIdCode = getNavigatorLanguageWithRegionCode();
 // console.log('language: ' + getLanguageFromBrowserLangIdCode(browserLangIdCode));
 const languageCodeFromQuery = getSearchObjectFromLocation(window.location).lang;
 let globalLanguage = getLanguageFromLanguageCode(languageCodeFromQuery)
- || getLanguageFromBrowserLangIdCode(browserLangIdCode)
- || config.defaultLanguage;
+  || getLanguageFromBrowserLangIdCode(browserLangIdCode)
+  || config.defaultLanguage;
 // let globalLanguage = config.defaultLanguage;
 
 
@@ -153,7 +153,7 @@ class App extends Component {
       Somehow, BrowserRouter must be inside IntlProvider for the router to work.
       It does not work when IntlProvider is inside BrowserRouter.
     */
-    return (
+    return (      
       <IntlProvider locale={state.language.locale} messages={state.messages}>  
         <BrowserRouter>
           {/*console.log(this.props.location.pathname)*/}                 
@@ -162,13 +162,13 @@ class App extends Component {
             multilingualMessages={localeData}
             changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}            
           >
-            <Sidebar languageCode={state.language.code} />
-            <Header languageCode={state.language.code} />
+            <Sidebar languageCode={state.language.code} />  
+            <Header languageCode={state.language.code} /> 
             <Main languageCode={state.language.code} />
             {/* <TestLanguageSelector /> */}
           </LanguageContextProvider>
         </BrowserRouter>
-      </IntlProvider>
+      </IntlProvider>      
     );
   }
 }

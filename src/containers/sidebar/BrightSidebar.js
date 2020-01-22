@@ -74,8 +74,7 @@ class BrightSidebar extends Component {
     }
     
     return (
-      <nav id="sidebar" className={`menu-transition ${isOpenSidebar ? 'active' : ''}`} role="navigation">
-        
+      <nav id="sidebar" className={`menu-transition ${isOpenSidebar ? 'active' : ''}`} role="navigation">        
         <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
           <div id="menu-toggle-div">
             <h3>
@@ -99,12 +98,12 @@ class BrightSidebar extends Component {
         </Link>
 
         {
-          isOpenSidebar &&
+          isOpenSidebar &&          
           <WorkWorkLabSwitch
             backgroundColor='white'
             color='black'
             onClick={this.handleMenuClose}
-          />
+          />          
         }        
 
         <div className="container-fluid ">
