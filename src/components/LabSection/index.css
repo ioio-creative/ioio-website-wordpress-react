@@ -1,0 +1,36 @@
+.lab-section-container #labSection {
+  position: relative;
+}
+
+.lab-section-container .title {
+  font-size: 70px;
+  font-weight: bold;
+  padding: 5% 10% 5% 10%;
+}
+
+.lab-section-container #labSection #video {
+  width: 300px;
+  
+  position: absolute;
+  top:0;
+  left:0;
+  
+  visibility: hidden;  
+}
+
+.lab-section-container #labSection .video-text-container {
+  max-width: 400px;
+  position: absolute;
+  bottom: 55px;
+  right: 15%;
+  color: #fff;
+  font-size: 47px;
+}
+
+.lab-section-container #labSection .desc {
+
+}
+
+.lab-section-container #labSection .interaction-hint {
+
+}

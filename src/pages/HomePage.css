@@ -207,26 +207,11 @@ ul, li{
   font-size: 26px;
 } */
 
-#labSection{
-  position: relative;
-}
-#labSection #content{
-  max-width: 400px;
-  position: absolute;
-  bottom:55px;
-  right:15%;
-  color:#fff;
-  font-size: 47px;
-}
-#labSection video{
-  width: 300px;
-  /* visibility: hidden; */
-  position: absolute;
-  top:0;
-  left:0;
-}
 
-#homepage-core-value {
+
+
+
+/* #homepage-core-value {
   text-align: center;
   padding: 50px 0;
   margin: 0 auto;
@@ -261,7 +246,7 @@ ul, li{
 }
 #homepage-core-value:hover img.hover-img {
   opacity: 1;
-}
+} */
 
 
 

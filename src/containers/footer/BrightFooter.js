@@ -99,12 +99,16 @@ class BrightFooter extends Component {
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-info">
                 <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="alt"/>
-                <h3 className="footer-slogan">{footerInfo.slogan}</h3>
+                <h3 className="footer-slogan" dangerouslySetInnerHTML={{
+                  __html: footerInfo.slogan
+                }} />
               </div>
               <div className="col-md-2 footer-img"></div>
               <div className="col-md-3 footer-contact">
                 <p>
-                  {footerInfo.address}
+                  <span dangerouslySetInnerHTML={{
+                    __html: footerInfo.address
+                  }} />                  
                   <br/>
                   <br/>
                   <strong>{footerInfo.phone}</strong>
@@ -154,7 +158,7 @@ class BrightFooter extends Component {
         </div>
         <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Terms Modal" style={customStyles}>
           <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
-            <i className="ion ion-android-close"></i>
+            <i className="ion ion-android-close" />
           </button>
           <div className="terms-div" contenteditable={"true"}>
             {footerInfo.terms_and_condition}

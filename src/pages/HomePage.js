@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {injectIntl} from 'react-intl';
 
 import routes from 'globals/routes';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+import LabSection from 'components/LabSection';
+
 import ProjectList from 'containers/home/ProjectList';
 import ClientList from 'containers/home/ClientList';
 import Footer from 'containers/footer/Footer';
@@ -28,33 +29,33 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
-function Items(props) {
-  const a = props.abouts;
-  return (
-    <div className="row">
-      <div className="col-md-1"></div>
-      <div className="col-md-5 about-section-left">
-        <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
-        <div className="text-center">
-          <img src={a.about_section_picture_left.guid} className="img-fluid core-value-img"/>
-          <img src={a.about_section_picture_left_hover.guid} className="img-fluid core-value-img hover-img"/>
-        </div>
-        <p className="description text-center"></p>
-      </div>
-      <div className="col-md-5 about-section-right">
-        <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
-        <div className="text-center">
-          <img src={a.about_section_picture_right.guid} className="img-fluid core-value-img"/>
-          <img src={a.about_section_picture_right_hover.guid} className="img-fluid core-value-img hover-img"/>
-        </div>
-        <div className="text-center about-section-right-p-div">
-          <p className="description">{a.about_section_desc}</p>
-        </div>
-      </div>
-      <div className="col-md-1"></div>
-    </div>
-  );
-}
+// function Items(props) {
+//   const a = props.abouts;
+//   return (
+//     <div className="row">
+//       <div className="col-md-1"></div>
+//       <div className="col-md-5 about-section-left">
+//         <h4 className="core-value-title text-left">{a.about_section_title_left}</h4>
+//         <div className="text-center">
+//           <img src={a.about_section_picture_left.guid} className="img-fluid core-value-img"/>
+//           <img src={a.about_section_picture_left_hover.guid} className="img-fluid core-value-img hover-img"/>
+//         </div>
+//         <p className="description text-center"></p>
+//       </div>
+//       <div className="col-md-5 about-section-right">
+//         <h4 className="core-value-title text-left">{a.about_section_title_right}</h4>
+//         <div className="text-center">
+//           <img src={a.about_section_picture_right.guid} className="img-fluid core-value-img"/>
+//           <img src={a.about_section_picture_right_hover.guid} className="img-fluid core-value-img hover-img"/>
+//         </div>
+//         <div className="text-center about-section-right-p-div">
+//           <p className="description">{a.about_section_desc}</p>
+//         </div>
+//       </div>
+//       <div className="col-md-1"></div>
+//     </div>
+//   );
+// }
 
 class HomePage extends Component {
   constructor(props) {
@@ -252,6 +253,9 @@ class HomePage extends Component {
       showreel_video_title: showreelVideoTitle,
       showreel_video_interaction_hint: showreelVideoInteractionHint,
       showreel_video_button: showreelVideoButton,
+      lab_section_title: labSectionTitle,
+      lab_section_desc: labSectionDesc,
+      lab_section_interaction_hint: labSectionInteractionHint,
     } = homepageData;    
 
     return (
@@ -289,7 +293,13 @@ class HomePage extends Component {
               projects={highlightedProjects}    
               sectionDesc={highlightedProjectSectionDesc}              
             />
-          </section>          
+          </section>
+          <LabSection 
+            videoHeight={500}
+            title={labSectionTitle}
+            desc={labSectionDesc}
+            interactionHint={labSectionInteractionHint}
+          />      
           {/* <section id="homepage-core-value">
             <div className="container">
               <Link to={routes.about(true)}>

@@ -1,6 +1,8 @@
+import './index.css';
+
 import React, {useEffect,useRef} from 'react';
 import * as THREE from 'three';
-import OrbitControls from 'three-orbitcontrols';
+//import OrbitControls from 'three-orbitcontrols';
 import {EffectComposer} from './EffectComposer';
 import {ShaderPass} from './postprocessing/ShaderPass';
 import {TexturePass} from './postprocessing/TexturePass';
@@ -10,9 +12,18 @@ import {GlitchPass} from './postprocessing/GlitchPass';
 import {CopyShader} from './shaders/CopyShader';
 
 const LabSection = props => {
+  const defaultHeight = 500;
+
+  const {
+    videoHeight,
+    title,
+    desc,
+    interactionHint
+  } = props;
+
   const labSection = useRef(null);
 
-  useEffect(()=>{
+  useEffect(_ => {
 
     let scene, sceneMask, camera, renderer, composer, rtMain, rtMask,
         w = labSection.current.offsetWidth,
@@ -225,16 +236,26 @@ const LabSection = props => {
     return () => {
       window.removeEventListener( 'resize', onWindowResize, false );
     }
-  },[labSection])
+  }, [labSection])
 
-  return(
-    <div ref={labSection} id="labSection" style={{height:500}}>
-      <div id="content">IOIO Lab allows and sometimes embraces failure.</div>
-      <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
-        <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>
-      </video>
+  return (
+    <div className="lab-section-container">
+      <div className="title" dangerouslySetInnerHTML={{
+        __html: title
+      }} />
+      <div ref={labSection} id="labSection" style={{height: videoHeight || defaultHeight}}> 
+        <div className="video-text-container">
+          <div className="desc" dangerouslySetInnerHTML={{
+            __html: desc
+          }} />
+          <div className="interaction-hint">{interactionHint}</div>
+        </div>
+        <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
+          <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>
+        </video>
+      </div>
     </div>
-  )
+  );
 }
 
 export default LabSection;

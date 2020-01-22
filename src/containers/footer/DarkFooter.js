@@ -93,12 +93,16 @@ class DarkFooter extends Component {
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-info">
                 <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="alt"/>
-                <h3 className="footer-slogan">{footerInfo.slogan}</h3>
+                <h3 className="footer-slogan" dangerouslySetInnerHTML={{
+                  __html: footerInfo.slogan
+                }} />
               </div>
               <div className="col-md-2 footer-img"></div>
               <div className="col-md-3 footer-contact">
                 <p>
-                  {footerInfo.address}
+                  <span dangerouslySetInnerHTML={{
+                    __html: footerInfo.address
+                  }} />
                   <br/>
                   <br/>
                   <strong>{footerInfo.phone}</strong>

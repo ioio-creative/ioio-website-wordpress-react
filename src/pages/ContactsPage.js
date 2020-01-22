@@ -15,18 +15,24 @@ function Items(props) {
     let h
     h = "col-lg-4 box-bg-0" + (
     id + 1)
-    return (<div className={h} key={id}>
-      <h4 className="core-value-title text-left">{dna.my_name}</h4>
-      <div className="text-center">
-        <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
+    return (
+      <div className={h} key={id}>
+        <h4 className="core-value-title text-left">{dna.my_name}</h4>
+        <div className="text-center">
+          <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
+        </div>
+        <p className="description text-center" dangerouslySetInnerHTML={{
+          __html: dna.desc
+        }} />
       </div>
-      <p className="description text-center">{dna.desc}</p>
-    </div>);
+    );
   });
 
-  return (<div className="row wow fadeInUp">
-    {social_media_items}
-  </div>);
+  return (
+    <div className="row wow fadeInUp">
+      {social_media_items}
+    </div>
+  );
 }
 
 function SocialMedia(props) {
