@@ -120,7 +120,8 @@ ul, li{
   margin-top: 1em;
   font-family: serif;
 }
-#homepage #featuredVideo .returnIcon {
+#homepage #featuredVideo .returnIcon,
+#homepage #labSection .returnIcon{
   --returnIconColor: #FFF;
 
   height: 1em;
@@ -130,19 +131,26 @@ ul, li{
   padding-right: 1vw;
   top: -13px;
 }
+#homepage #labSection .returnIcon{
+  height: .6em;
+}
 #homepage #featuredVideo .returnIcon:before,
-#homepage #featuredVideo .returnIcon:after {
+#homepage #featuredVideo .returnIcon:after,
+#homepage #labSection .returnIcon:before,
+#homepage #labSection .returnIcon:after  {
   content: '';
   display: block;
 }
-#homepage #featuredVideo .returnIcon:before {
+#homepage #featuredVideo .returnIcon:before,
+#homepage #labSection .returnIcon:before {
   height: 130%;
   width: 1vw;
   border-left: 1px solid var(--returnIconColor);
   border-bottom: 1px solid var(--returnIconColor);
 }
 
-#homepage #featuredVideo .returnIcon:after {
+#homepage #featuredVideo .returnIcon:after,
+#homepage #labSection .returnIcon:after {
   position: absolute;
   width: 0.5vw;
   height: 0.5vw;
@@ -276,15 +284,18 @@ ul, li{
   #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: 4.5vw;
   }
-  #homepage #featuredVideo .returnIcon {    
+  #homepage #featuredVideo .returnIcon,
+  #homepage #labSection .returnIcon {    
     padding-left: 1vw;
     margin: 0 1em 0 0.5em;
     top: -0.5em;
   }
-  #homepage #featuredVideo .returnIcon:before {
+  #homepage #featuredVideo .returnIcon:before,
+  #homepage #labSection .returnIcon:before {
     width: 0;
   }
-  #homepage #featuredVideo .returnIcon:after {
+  #homepage #featuredVideo .returnIcon:after,
+  #homepage #labSection .returnIcon:after {
     width: 3vw;
     height: 3vw;
     border-width: 2px;

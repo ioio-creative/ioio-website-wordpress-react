@@ -248,7 +248,7 @@ const LabSection = props => {
           <div className="desc" dangerouslySetInnerHTML={{
             __html: desc
           }} />
-          <div className="interaction-hint">{interactionHint}</div>
+          <div className="interaction-hint"><span class="returnIcon"></span>{interactionHint}</div>
         </div>
         <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
           <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>

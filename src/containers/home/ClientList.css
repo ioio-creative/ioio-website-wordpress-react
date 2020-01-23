@@ -6,6 +6,10 @@
 
 }
 
+.home-client-list .title-first-half{
+  font-family: 'Semibold';
+}
+
 .home-client-list .client-container {
   display: flex;
   align-items: center;

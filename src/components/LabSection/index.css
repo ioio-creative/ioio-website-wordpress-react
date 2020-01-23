@@ -19,7 +19,7 @@
 }
 
 .lab-section-container #labSection .video-text-container {
-  max-width: 400px;
+  max-width: 440px;
   position: absolute;
   bottom: 55px;
   right: 15%;
@@ -28,9 +28,12 @@
 }
 
 .lab-section-container #labSection .desc {
-
+  line-height: 51px;
+  font-weight: bold;
 }
 
 .lab-section-container #labSection .interaction-hint {
-
+  font-family: 'Semibold';
+  font-size:24px;
+  padding-top:20px;
 }
