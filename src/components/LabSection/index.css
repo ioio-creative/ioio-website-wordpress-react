@@ -1,5 +1,7 @@
 .lab-section-container #labSection {
   position: relative;
+
+  height: 500px;
 }
 
 .lab-section-container .title {
@@ -19,12 +21,18 @@
 }
 
 .lab-section-container #labSection .video-text-container {
+  --videoTextContainerFontColor: #fff;
+
   max-width: 440px;
   position: absolute;
   bottom: 55px;
   right: 15%;
-  color: #fff;
+  color: var(--videoTextContainerFontColor);
   font-size: 47px;
+}
+
+.lab-section-container #labSection .video-text-container a {
+  color: var(--videoTextContainerFontColor);
 }
 
 .lab-section-container #labSection .desc {
@@ -40,8 +48,8 @@
 
 
 @media only screen and (max-width: 768px) {
-  #labSection{
-    height:355px !important;
+  .lab-section-container #labSection{
+    height: 355px;
   }
   .lab-section-container .title{
     font-size:46px;

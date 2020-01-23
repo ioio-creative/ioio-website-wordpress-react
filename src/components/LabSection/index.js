@@ -1,6 +1,7 @@
 import './index.css';
 
 import React, {useEffect,useRef} from 'react';
+import {Link} from 'react-router-dom';
 import * as THREE from 'three';
 //import OrbitControls from 'three-orbitcontrols';
 import {EffectComposer} from './EffectComposer';
@@ -11,11 +12,11 @@ import {MaskPass, ClearMaskPass} from './postprocessing/MaskPass';
 import {GlitchPass} from './postprocessing/GlitchPass';
 import {CopyShader} from './shaders/CopyShader';
 
-const LabSection = props => {
-  const defaultHeight = 500;
+import routes from 'globals/routes';
 
+
+const LabSection = props => {
   const {
-    videoHeight,
     title,
     desc,
     interactionHint
@@ -37,7 +38,7 @@ const LabSection = props => {
         scale:{ value:10, min:0, max:50 }
     }
 
-    const init = function(){
+    const init = function () {
         const fov = 40;
         const near = 0.1;
         const far = 1000;
@@ -103,7 +104,7 @@ const LabSection = props => {
         // var controls = new OrbitControls( camera );
     }
 
-    const initLights = function(){
+    const initLights = function () {
         const ambientLight = new THREE.AmbientLight( 0x999999 );
         scene.add( ambientLight );
         const light = new THREE.PointLight( 0xffffff, 1 );
@@ -111,7 +112,7 @@ const LabSection = props => {
         scene.add(light);
     }
 
-    const initMesh = function(){
+    const initMesh = function () {
       const size = 1.1;
       const pos = [
         {x:-4,y:-1},
@@ -162,7 +163,7 @@ const LabSection = props => {
         return mesh;
     }
 
-    const draw = function(){
+    const draw = function () {
         var time = performance.now() * 0.0005;
 
         for(let i=0;i<ioio.length;i++){
@@ -232,9 +233,9 @@ const LabSection = props => {
 
     init();
 
-    window.addEventListener( 'resize', onWindowResize, false );
-    return () => {
-      window.removeEventListener( 'resize', onWindowResize, false );
+    window.addEventListener('resize', onWindowResize, false);
+    return _ => {
+      window.removeEventListener('resize', onWindowResize, false);
     }
   }, [labSection])
 
@@ -243,12 +244,19 @@ const LabSection = props => {
       <div className="title" dangerouslySetInnerHTML={{
         __html: title
       }} />
-      <div ref={labSection} id="labSection" style={{height: videoHeight || defaultHeight}}> 
+      <div ref={labSection} id="labSection"> 
         <div className="video-text-container">
           <div className="desc" dangerouslySetInnerHTML={{
             __html: desc
           }} />
-          <div className="interaction-hint"><span class="returnIcon"></span>{interactionHint}</div>
+          <Link 
+            to={routes.lab(true)}        
+          >
+            <div>
+              <span className="returnIcon" />
+              {interactionHint}
+            </div>
+          </Link>          
         </div>
         <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
           <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>

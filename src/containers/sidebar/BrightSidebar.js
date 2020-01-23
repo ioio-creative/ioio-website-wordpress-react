@@ -19,9 +19,11 @@ function SocialMedia(props) {
     return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
   });
 
-  return (<div>
-    {social_media_items}
-  </div>);
+  return (
+    <div>
+      {social_media_items}
+    </div>
+  );
 }
 
 class BrightSidebar extends Component {
@@ -84,7 +86,7 @@ class BrightSidebar extends Component {
               />
             </h3>
           </div>
-          <div className="close-symbol"></div>
+          <div className="close-symbol" />
         </a>
 
         <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home(true)} onClick={this.handleMenuClose}>
@@ -113,14 +115,14 @@ class BrightSidebar extends Component {
               defaultMessage="About"
             /> 
           </Link>
-          <br/>
+          <br />
           <Link className="menu-item menu-transition menu-close" to={routes.projects(true)} onClick={this.handleMenuClose}>
             <FormattedMessage
               id="BrightSidebar.projectsButton"
               defaultMessage="Project"
             />
           </Link>
-          <br/>
+          <br />
           <Link className="menu-item menu-transition menu-close" to={routes.contacts(true)} onClick={this.handleMenuClose}>
             <FormattedMessage
               id="BrightSidebar.contactButton"
@@ -128,9 +130,9 @@ class BrightSidebar extends Component {
             />          
           </Link>
           
-          <br/>
+          <br />
           <LanguageSelectors />
-          <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
+          <canvas id="menu-canvas" width="1000px" height="500px" />
 
           <div className="info-section container-fluid">
             <div className="row">

@@ -4,15 +4,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
-
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 
 
 function Project(props) {
   const {
     project,
-    projectClassName,
-    projectCategoryIdNamePairs
+    projectClassName
   } = props;
 
   if (!project) {
@@ -43,7 +41,7 @@ function Project(props) {
       <Link to={detailRoutePath}>
         <div className="project-name clearfix">
           <span className="return-icon" />
-          <p dangerouslySetInnerHTML={{__html: name}}></p>
+          <p dangerouslySetInnerHTML={{__html: name}} />
         </div>
       </Link>
       <div className="project-category">{categoriesCorrespondingToProj}</div>      
@@ -55,7 +53,8 @@ function Project(props) {
 function ProjectList(props) {
   const { 
     projects,
-    sectionDesc,    
+    sectionDesc,
+    sectionInteractionHint,  
   } = props;
 
   const project1 = isNonEmptyArray(projects) ? projects[0] : null;
@@ -78,8 +77,16 @@ function ProjectList(props) {
         />      
       </div>
       <div className='row-2'>
-        <div className='section-desc'>
-          {sectionDesc}
+        <div className='section-text-container'>
+          <div className='section-desc'>
+            {sectionDesc}
+          </div>
+          <Link to={routes.about(true)}>
+            <div className="section-interaction-hint">
+              <span className="return-icon" />
+              <span>{sectionInteractionHint}</span>
+            </div>
+          </Link>
         </div>
         <Project
           project={project3}

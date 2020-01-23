@@ -10,6 +10,10 @@
   font-family: 'Semibold';
 }
 
+.home-client-list .title-second-half{
+  font-weight: bold;
+}
+
 .home-client-list .client-container {
   display: flex;
   align-items: center;

@@ -339,6 +339,7 @@
     top: 17px;
     opacity: 1;
   }
+  #menu-toggle,
   #menu-toggle-div {
     position: fixed;
     left: auto;
@@ -346,9 +347,6 @@
     height: 55px;
     width: 55px;
     right: 0;
-  }
-  #menu-toggle {
-    width: 100%;
   }
   #sidebar {
     height: 55px;

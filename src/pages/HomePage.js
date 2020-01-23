@@ -70,10 +70,8 @@ class HomePage extends Component {
     this.state = {      
       openVideo: false,
       homepageData: null,
-      allProjects: [],      
-      highlightedProjectSectionDesc: null,
-      highlightedProjects: [],
-      highlightedClients: [],      
+      allProjects: [],
+      highlightedProjects: [], 
     };
 
     [
@@ -143,9 +141,7 @@ class HomePage extends Component {
       highlighted_project_3,
       highlighted_project_4,
       highlighted_project_5,
-      highlighted_project_6,
-      highlighted_project_section_desc: highlightedProjectSectionDesc,
-      highlighted_clients: highlightedClients,
+      highlighted_project_6,     
     } = homepageData;
     
     const projectIdSlugPairs = createIdSlugPairs(allProjects);    
@@ -179,10 +175,8 @@ class HomePage extends Component {
       };
     });
 
-    this.setState({      
-      highlightedProjectSectionDesc: highlightedProjectSectionDesc,
-      highlightedProjects: highlightedProjects,
-      highlightedClients: highlightedClients,      
+    this.setState({
+      highlightedProjects: highlightedProjects,    
     });  
   }
   
@@ -238,10 +232,8 @@ class HomePage extends Component {
   render() {
     const {      
       openVideo,
-      homepageData,                
-      highlightedProjectSectionDesc,
+      homepageData,
       highlightedProjects,
-      highlightedClients,
     } = this.state;        
 
     if (!this.isDataFetchComplete()) {
@@ -253,9 +245,12 @@ class HomePage extends Component {
       showreel_video_title: showreelVideoTitle,
       showreel_video_interaction_hint: showreelVideoInteractionHint,
       showreel_video_button: showreelVideoButton,
+      highlighted_project_section_desc: highlightedProjectSectionDesc,
+      highlighted_project_section_interaction_hint: highlightedProjectSectionInteractionHint,
       lab_section_title: labSectionTitle,
       lab_section_desc: labSectionDesc,
       lab_section_interaction_hint: labSectionInteractionHint,
+      highlighted_clients: highlightedClients,
     } = homepageData;    
 
     return (
@@ -290,12 +285,12 @@ class HomePage extends Component {
           </div>         
           <section id="highlighted-project">
             <ProjectList 
-              projects={highlightedProjects}    
-              sectionDesc={highlightedProjectSectionDesc}              
+              projects={highlightedProjects}
+              sectionDesc={highlightedProjectSectionDesc}
+              sectionInteractionHint={highlightedProjectSectionInteractionHint}              
             />
           </section>
-          <LabSection 
-            videoHeight={500}
+          <LabSection            
             title={labSectionTitle}
             desc={labSectionDesc}
             interactionHint={labSectionInteractionHint}
