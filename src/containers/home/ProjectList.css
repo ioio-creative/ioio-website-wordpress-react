@@ -146,7 +146,6 @@
   ---------------------------*/
 
   /* return-icon */
-
   .home-project-list .return-icon {
     padding-left: 1vw;
     margin: 0 1em 0 0.5em;
@@ -154,13 +153,34 @@
   }
   .home-project-list .return-icon:before {
     width: 0;
+    border-width: 2px;
   }
-  .home-project-list .return-icon:after {
+  .home-project-list .row-2 .section-desc{
+    font-size:30px;
+    padding-bottom:67px;
+  }
+  .home-project-list .row-2 .project{
+    padding:0;
+    padding-bottom:67px;
+  }
+  .home-project-list .row-1-right .project{
+    flex-basis: 100%;
+    padding:0;
+  }
+  .home-project-list .project .project-name {
+    padding-left: 10px;
+  }
+  .home-project-list .project .project-name p{
+    padding-top: 15px;
+  }
+  .home-project-list .project .return-icon:after {
     width: 3vw;
     height: 3vw;
     border-width: 2px;
-    transform: translate(-1px, 1px) rotate(135DEG) ;
+    transform: rotate(45deg) translate(0, -1px);
   }
-
+  .home-project-list .project .project-category {
+    padding-left: 73px;
+  }
   /* end of return-icon */
 }

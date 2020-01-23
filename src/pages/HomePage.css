@@ -282,24 +282,26 @@ ul, li{
     font-size: 6vw;
   }
   #homepage #featuredVideo .videoDescription .scrollHint {
-    font-size: 4.5vw;
+    font-size: 24px;
   }
   #homepage #featuredVideo .returnIcon,
   #homepage #labSection .returnIcon {    
     padding-left: 1vw;
-    margin: 0 1em 0 0.5em;
+    margin: 0 .5em 0 0em;
     top: -0.5em;
   }
   #homepage #featuredVideo .returnIcon:before,
   #homepage #labSection .returnIcon:before {
-    width: 0;
+    width: 20px;
+    height: 31px;
+    border-width: 2px;
   }
   #homepage #featuredVideo .returnIcon:after,
   #homepage #labSection .returnIcon:after {
     width: 3vw;
     height: 3vw;
     border-width: 2px;
-    transform: translate(-1px, 1px) rotate(135DEG) ;
+    transform: translate(0, -1px) rotate(45DEG);
   }
   #labSection {
     background-color: #000;
@@ -313,6 +315,14 @@ ul, li{
   }
   #popupVideo .videoWrap {
     width: 100%;
+  }
+  .home-project-list .row-2{flex-wrap: wrap;}
+  .home-project-list .row-2 .project, 
+  .home-project-list .row-2 .section-desc{
+    flex-basis: 100%;
+  }
+  .home-project-list .project .project-name p{
+    font-size:18px;
   }
 }
 

@@ -37,3 +37,18 @@
   font-size:24px;
   padding-top:20px;
 }
+
+
+@media only screen and (max-width: 768px) {
+  #labSection{
+    height:355px !important;
+  }
+  .lab-section-container .title{
+    font-size:46px;
+    line-height: 65px;
+  }
+  .lab-section-container #labSection .desc{
+    font-size:30px;
+    line-height: 40px;
+  }
+}
