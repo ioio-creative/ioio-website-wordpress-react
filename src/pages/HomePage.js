@@ -10,13 +10,12 @@ import ProjectList from 'containers/home/ProjectList';
 import ClientList from 'containers/home/ClientList';
 import Footer from 'containers/footer/Footer';
 
-import $ from 'jquery';
 import TweenMax, { TimelineMax, Elastic } from 'gsap';
 
-import {fetchActiveHomePage, fetchProjectCategories, fetchProjects} from 'websiteApi';
+import {fetchActiveHomePage, fetchProjects} from 'websiteApi';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
-import {createIdSlugPairs, createIdNamePairs} from 'utils/generalMapper';
+import {createIdSlugPairs} from 'utils/generalMapper';
 
 import './HomePage.css';
 import './HomePageSE.css';

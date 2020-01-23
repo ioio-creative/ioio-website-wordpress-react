@@ -24,7 +24,7 @@ function Clients(props) {
       <div className="row">
         {
           clients.map((client) => (
-            <div className="col-md-4 col-xs-6 col-sm-6 wow fadeIn client-container" key={client.my_name}>
+            <div className="col-md-4 col-xs-4 col-sm-4 wow fadeIn client-container" key={client.my_name}>
               <Client
                 name={client.my_name}
                 imgSrc={client.image.guid}
