@@ -12,6 +12,8 @@ import {MaskPass, ClearMaskPass} from './postprocessing/MaskPass';
 import {GlitchPass} from './postprocessing/GlitchPass';
 import {CopyShader} from './shaders/CopyShader';
 
+import ReturnIcon from 'components/ReturnIcon';
+
 import routes from 'globals/routes';
 
 
@@ -29,13 +31,13 @@ const LabSection = props => {
     let scene, sceneMask, camera, renderer, composer, rtMain, rtMask,
         w = labSection.current.offsetWidth,
         h = labSection.current.offsetHeight,
-        ioio=[];
+        ioio = [];
 
     const rotateDir = [];
     const speed = [];
     const options = {
-        cameraZ:{ value:7, min:0, max:20 },
-        scale:{ value:10, min:0, max:50 }
+        cameraZ: { value:7, min:0, max:20 },
+        scale: { value:10, min:0, max:50 }
     }
 
     const init = function () {
@@ -254,7 +256,7 @@ const LabSection = props => {
             to={routes.lab(true)}        
           >
             <div>
-              <span className="returnIcon" />
+              <ReturnIcon />
               {interactionHint}
             </div>
           </Link>          

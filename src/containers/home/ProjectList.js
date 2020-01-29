@@ -1,10 +1,24 @@
-import './ProjectList.css';
+import './ProjectList.scss';
 
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import routes from 'globals/routes';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
+
+import ReturnIcon from 'components/ReturnIcon';
+
+
+function ProjectListReturnIcon(props) {
+  return (
+    <ReturnIcon
+      color='#000'
+      beforeWidth='2.43vw'
+      beforeHeight='1.5vw'
+      arrowSize='1vw'
+    />
+  );
+}
 
 
 function Project(props) {
@@ -12,6 +26,17 @@ function Project(props) {
     project,
     projectClassName
   } = props;
+
+  const projectReturnIconContainerRef = useRef(null);
+
+  const [projectReturnIconContainerWidth, setProjectReturnIconContainerWidth] = useState(56);
+
+  useEffect(_ => {
+    if (project) {
+      const returnIconContainerRefWidth = projectReturnIconContainerRef.current.getBoundingClientRect().width;
+      setProjectReturnIconContainerWidth(returnIconContainerRefWidth);
+    }
+  }, [project]);
 
   if (!project) {
     return null;
@@ -31,7 +56,15 @@ function Project(props) {
           {categoryName}
         </span>
       );
-    }); 
+    });
+
+  const projectCategoryStyle = {
+    paddingLeft: projectReturnIconContainerWidth
+  };
+
+  const projectNameStyle = {
+    width: `calc(100% - ${projectReturnIconContainerWidth + 1}px)`
+  };
 
   return (    
     <div className={`project ${projectClassName}`}>
@@ -40,11 +73,16 @@ function Project(props) {
       </Link>
       <Link to={detailRoutePath}>
         <div className="project-name clearfix">
-          <span className="return-icon" />
-          <p dangerouslySetInnerHTML={{__html: name}} />
+          <span className='project-return-icon-container' ref={projectReturnIconContainerRef}>
+            <ProjectListReturnIcon />
+          </span>
+          <p
+            style={projectNameStyle} 
+            dangerouslySetInnerHTML={{__html: name}}
+          />
         </div>
       </Link>
-      <div className="project-category">{categoriesCorrespondingToProj}</div>      
+      <div className="project-category" style={projectCategoryStyle}>{categoriesCorrespondingToProj}</div>      
     </div>
   );
 }
@@ -83,7 +121,9 @@ function ProjectList(props) {
           </div>
           <Link to={routes.about(true)}>
             <div className="section-interaction-hint">
-              <span className="return-icon" />
+              <span className='interaction-hint-return-icon-container'>
+                <ProjectListReturnIcon />
+              </span>
               <span>{sectionInteractionHint}</span>
             </div>
           </Link>

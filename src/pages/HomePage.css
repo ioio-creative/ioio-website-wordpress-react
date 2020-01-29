@@ -25,8 +25,8 @@ ul, li{
 #popupVideo .videoWrap{
   width: 60%;
   position: absolute;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate3d(-50%,-50%,0);
 }
 #popupVideo .videoWrap:before{
@@ -120,141 +120,15 @@ ul, li{
   margin-top: 1em;
   font-family: serif;
 }
-#homepage #featuredVideo .returnIcon,
-#homepage #labSection .returnIcon{
-  --returnIconColor: #FFF;
 
-  height: 1em;
-  display: inline-block;
+#homepage .top-video-scrollHint-return-icon-container {
   position: relative;
-  padding-left: 0.4em;
-  padding-right: 1vw;
-  top: -13px;
+  top: -1.3vw;
 }
+
 #homepage #labSection .returnIcon{
   height: .6em;
 }
-#homepage #featuredVideo .returnIcon:before,
-#homepage #featuredVideo .returnIcon:after,
-#homepage #labSection .returnIcon:before,
-#homepage #labSection .returnIcon:after  {
-  content: '';
-  display: block;
-}
-#homepage #featuredVideo .returnIcon:before,
-#homepage #labSection .returnIcon:before {
-  height: 130%;
-  width: 1vw;
-  border-left: 1px solid var(--returnIconColor);
-  border-bottom: 1px solid var(--returnIconColor);
-}
-
-#homepage #featuredVideo .returnIcon:after,
-#homepage #labSection .returnIcon:after {
-  position: absolute;
-  width: 0.5vw;
-  height: 0.5vw;
-  border-top: 1px solid var(--returnIconColor);
-  border-right: 1px solid var(--returnIconColor);
-  transform: rotate(45deg) translate(1px, -1px);
-  transform-origin: top right;
-  right: 1vw;
-}
-/* #homepage #featuredProjects{
-  padding:80px 0 0;
-}
-#homepage #featuredProjects ul{
-  padding-left:0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  margin-top:-70px;
-}
-#homepage #featuredProjects li{
-  width:50%;
-  padding-left:67px;
-  float: left;
-  position: relative;
-  margin-top:70px;
-}
-#homepage #featuredProjects .others{
-  margin:0;
-  padding:0 80px 0 0;
-}
-#homepage #featuredProjects .others li{
-  margin-top:70px;
-  padding-left:67px;
-}
-#homepage #featuredProjects li img{
-  width: 100%;
-}
-#homepage #featuredProjects li p{
-  padding-top: 10px;
-  margin:0;
-}
-#homepage #featuredProjects li.full{
-  width:100%;
-  padding:0;
-  background:#999;
-}
-#homepage #featuredProjects li.full p{
-  position: absolute;
-  bottom:30px;
-  left:50px;
-  color:#fff;
-  font-size: 40px;
-  font-weight: bold;
-}
-#homepage #featuredProjects li.big{
-  width:70%;
-  float: right;
-  padding:0;
-}
-#homepage #featuredProjects li.big p{
-  font-weight: bold;
-  font-size: 26px;
-} */
-
-
-
-
-
-/* #homepage-core-value {
-  text-align: center;
-  padding: 50px 0;
-  margin: 0 auto;
-}
-
-#homepage-core-value div {
-  padding: 0 0;
-  margin: 0 auto;
-}
-
-#homepage-core-value h4 {
-  position: absolute;
-  padding: 20px 40px;
-  color: white;
-  font-size: 18px;
-  z-index: 2;
-  opacity: 0.4;
-}
-
-#homepage-core-value img {
-  width: 100%;
-  padding: 0 20px;
-}
-#homepage-core-value img.hover-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.5s;
-  vertical-align: top;
-}
-#homepage-core-value:hover img.hover-img {
-  opacity: 1;
-} */
 
 
 
@@ -284,63 +158,7 @@ ul, li{
   #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: 24px;
   }
-  #homepage #featuredVideo .returnIcon,
-  #homepage #labSection .returnIcon {    
-    padding-left: 1vw;
-    margin: 0 .5em 0 0em;
-    top: -0.5em;
-  }
-  #homepage #featuredVideo .returnIcon:before,
-  #homepage #labSection .returnIcon:before {
-    width: 20px;
-    height: 31px;
-    border-width: 2px;
-  }
-  #homepage #featuredVideo .returnIcon:after,
-  #homepage #labSection .returnIcon:after {
-    width: 3vw;
-    height: 3vw;
-    border-width: 2px;
-    transform: translate(0, -1px) rotate(45DEG);
-  }
-  #labSection {
-    background-color: #000;
-  }
-  #labSection #content {
-    bottom: 20px;
-    font-size: 30px;
-    left: auto;
-    right: 20px;
-    width: 8em;
-  }
-  #popupVideo .videoWrap {
+  #homepage #popupVideo .videoWrap {
     width: 100%;
-  }
-  .home-project-list .row-2{flex-wrap: wrap;}
-  .home-project-list .row-2 .project, 
-  .home-project-list .row-2 .section-desc{
-    flex-basis: 100%;
-  }
-  .home-project-list .project .project-name p{
-    font-size:18px;
-  }
+  }  
 }
-
-
-html[lang=zh] #homepage-top .homepage-showreel-text,
-html[lang=tc] #homepage-top .homepage-showreel-text,
-html[lang=zh] #homepage-selected-project #portfolio-flters,
-html[lang=tc] #homepage-selected-project #portfolio-flters {
-  letter-spacing: 0.05em;
-}
-
-html[lang=zh] .about-section-right p,
-html[lang=tc] .about-section-right p {
-  padding: 40px 80px 0 20px;
-  line-height: 1.7em;
-}
-html[lang=zh] #pop-up-terms,
-html[lang=tc] #pop-up-terms {
-  margin-left: 37px;
-}
-

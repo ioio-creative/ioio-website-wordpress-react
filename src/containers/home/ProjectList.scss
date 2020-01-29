@@ -1,3 +1,6 @@
+@import 'functions.scss';
+
+
 .home-project-list {
 
 }
@@ -24,12 +27,12 @@
 }
 
 .home-project-list .section-desc {
-  font-size: 43px;
+  font-size: em(43);
   font-weight: bold;
 }
 
 .home-project-list .section-interaction-hint {
-  font-size: 1.5vw;
+  font-size: em(23);
   margin-top: 1em;
   font-family: serif;
   font-weight: 600;
@@ -51,37 +54,21 @@
 }
 .home-project-list .project .project-name{
   width: 100%;
-  padding-top: 10px;
+  padding-top: 0.5vw;
 }
 .home-project-list .project .project-name span {
   float: left;
 }
 .home-project-list .project .project-name p {
-  width: calc(100% - 67px);
   float: left;
-  margin:0;
-  font-size: 26px;
+  margin: 0;
+  font-size: em(26);
   font-weight: bold;
-  padding-top:10px;
+  padding-top: 0.5vw;
 }
-.home-project-list .project .return-icon{
-  padding-left:0;
-  padding-right: 11px;
-  margin-right:10px;
-  top:9px;
-}
-.home-project-list .project .return-icon:before{
-  width: 34px;
-  height: 21px;
-}
-.home-project-list .project .return-icon:after{
-  width: 1vw;
-  height: 1vw;
-  right: 10px;
-}
-.home-project-list .project .project-category{
-  padding-left: 56px;
-  padding-top: 5px;
+.home-project-list .project .project-category {
+  padding-top: 0.5vw;
+  font-size: em(26);
 }
 
 .home-project-list .project-1 {
@@ -109,66 +96,42 @@
 }
 
 
-/* return-icon */
+/* return-icon-container */
 
-.home-project-list .return-icon {
-  --returnIconColor: #000;
-
-  height: 1em;
-  display: inline-block;
+.home-project-list .project-return-icon-container {
   position: relative;
-  padding-left: 0.4em;
-  padding-right: 1vw;
-  top: -13px;
-}
-.home-project-list .return-icon:before,
-.home-project-list .return-icon:after {
-  content: '';
-  display: block;
-}
-.home-project-list .return-icon:before {
-  height: 130%;
-  width: 1vw;
-  border-left: 1px solid var(--returnIconColor);
-  border-bottom: 1px solid var(--returnIconColor);
+  top: 0.5vw;
 }
 
-.home-project-list .return-icon:after {
-  position: absolute;
-  width: 0.5vw;
-  height: 0.5vw;
-  border-top: 1px solid var(--returnIconColor);
-  border-right: 1px solid var(--returnIconColor);
-  transform: rotate(45deg) translate(1px, -1px);
-  transform-origin: top right;
-  right: 1vw;
+.home-project-list .interaction-hint-return-icon-container {
+  position: relative;
+  top: -0.5vw;
 }
 
-/* end of return-icon */
+/* end of return-icon-container */
 
 
 @media only screen and (max-width: 768px) {
   /*----------------------------
   [ Mobile styles go here]
-  ---------------------------*/
-
-  /* return-icon */
-  .home-project-list .return-icon {
-    padding-left: 1vw;
-    margin: 0 1em 0 0.5em;
-    top: -0.5em;
+  ---------------------------*/  
+  .home-project-list .row-2 {
+    flex-wrap: wrap;
   }
-  .home-project-list .return-icon:before {
-    width: 0;
-    border-width: 2px;
+  .home-project-list .row-2 .project, 
+  .home-project-list .row-2 .section-desc{
+    flex-basis: 100%;
+  }
+  .home-project-list .project .project-name p {
+    font-size: 18px;
   }
   .home-project-list .row-2 .section-desc{
-    font-size:30px;
-    padding-bottom:67px;
+    font-size: 30px;
+    padding-bottom: 67px;
   }
   .home-project-list .row-2 .project{
-    padding:0;
-    padding-bottom:67px;
+    padding: 0;
+    padding-bottom: 67px;
   }
   .home-project-list .row-1-right .project{
     flex-basis: 100%;
@@ -180,17 +143,10 @@
   .home-project-list .project .project-name p{
     padding-top: 15px;
   }
-  .home-project-list .project .return-icon:after {
-    width: 3vw;
-    height: 3vw;
-    border-width: 2px;
-    transform: rotate(45deg) translate(0, -1px);
-  }
   .home-project-list .project .project-category {
     padding-left: 73px;
   }
   .home-project-list .section-interaction-hint {
     font-size: 24px;
   }
-  /* end of return-icon */
 }
