@@ -50,7 +50,6 @@ function SocialMedia(props) {
 }
 
 class ContactsPage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +64,6 @@ class ContactsPage extends Component {
   }
 
   render() {
-
     const contact = this.state.contact;
     if (contact === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
