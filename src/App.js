@@ -25,9 +25,13 @@ import scriptjs from 'scriptjs';
 import {getAbsoluteUrlsFromRelativeUrls} from 'utils/setStaticResourcesPath';
 import initializeReactGa from 'utils/reactGa/initializeReactGa';
 import getSearchObjectFromLocation from 'utils/queryString/getSearchObjectFromLocation';
+import {invokeIfIsFunction} from 'utils/js/function/isFunction';
 
-function loadJSFiles() {
-  console.log('loadJSFiles');
+import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+
+
+function loadJSFiles(callback) {
+  console.log('loadJSFiles started.');
   const loadScriptsAsync = getAbsoluteUrlsFromRelativeUrls(['lib/jquery/jquery.min.js', 'lib/wow/wow.min.js']);
 
   const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls([
@@ -42,10 +46,11 @@ function loadJSFiles() {
 
   const loadScriptLast = getAbsoluteUrlsFromRelativeUrls(['js/loadByPage.js', 'lib/jqueryvide/jquery.vide.js']);
 
-  scriptjs(loadScriptsAsync, () => {
-    scriptjs(loadScriptsLater, () => {
-      scriptjs(loadScriptLast, () => {
-        console.log("Global JS Files Loaded");
+  scriptjs(loadScriptsAsync, _ => {
+    scriptjs(loadScriptsLater, _ => {
+      scriptjs(loadScriptLast, _ => {
+        console.log('loadJSFiles finished.');
+        invokeIfIsFunction(callback);
       })
     })
   });
@@ -113,14 +118,19 @@ class App extends Component {
     super(props);
     this.state = {
       language: globalLanguage,
-      messages: localeData[globalLanguage.locale]
+      messages: localeData[globalLanguage.locale],
+      isGlobalJsLoaded: false
     }
     this.changeGlobalLocaleAndLanguage = this.changeGlobalLocaleAndLanguage.bind(this);
     initializeReactGa();
   }
 
   componentDidMount() {
-    loadJSFiles();
+    loadJSFiles(_ => {
+      this.setState({
+        isGlobalJsLoaded: true
+      });
+    });
 
     // setTimeout(_ => {
     //   if (console.clear) {
@@ -133,7 +143,11 @@ class App extends Component {
   }
 
   changeGlobalLocaleAndLanguage(newLanguage) {
-    if (this.state.language.code !== newLanguage.code) {
+    const {
+      language
+    } = this.state;
+
+    if (language.code !== newLanguage.code) {
       globalLanguage = newLanguage;
       changeHtmlLang(newLanguage.code);
       //loadGlobalLanugageFont();
@@ -146,7 +160,13 @@ class App extends Component {
   }
 
   render() {
-    const state = this.state;
+    const {
+      language, messages, isGlobalJsLoaded
+    } = this.state;
+
+    if (!isGlobalJsLoaded) {
+      return <MyFirstLoadingComponent isLoading={true} />;    
+    }
 
     /*
       Note: 
@@ -154,17 +174,17 @@ class App extends Component {
       It does not work when IntlProvider is inside BrowserRouter.
     */
     return (      
-      <IntlProvider locale={state.language.locale} messages={state.messages}>  
+      <IntlProvider locale={language.locale} messages={messages}>  
         <BrowserRouter>
           {/*console.log(this.props.location.pathname)*/}                 
           <LanguageContextProvider 
-            language={state.language}
+            language={language}
             multilingualMessages={localeData}
             changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}            
           >
-            <Sidebar languageCode={state.language.code} />  
-            <Header languageCode={state.language.code} /> 
-            <Main languageCode={state.language.code} />
+            <Sidebar languageCode={language.code} />  
+            <Header languageCode={language.code} /> 
+            <Main languageCode={language.code} />
             {/* <TestLanguageSelector /> */}
           </LanguageContextProvider>
         </BrowserRouter>

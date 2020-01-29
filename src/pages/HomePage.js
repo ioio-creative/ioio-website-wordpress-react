@@ -185,7 +185,7 @@ class HomePage extends Component {
   /* event handlers */
 
   onMouseEnter(){
-    if(this.cursor){
+    if (this.cursor) {
       var tl = new TimelineMax({delay:.1});
       tl.to(this.cursor.querySelector('span:nth-child(1)'), 1, {width:70,height:70,ease:Elastic.easeOut.config(1.5, .5)});
       tl.to(this.cursor.querySelector('span:nth-child(2)'), 1, {width:50,height:50,ease:Elastic.easeOut.config(1.2, .5)},'-=.9');
@@ -193,13 +193,13 @@ class HomePage extends Component {
   }
 
   onMouseLeave(){
-    if(this.cursor){
+    if (this.cursor) {
       TweenMax.to(this.cursor.querySelectorAll('span'), .6, {width:0,height:0,ease:'Power4.easeOut'}); 
     }
   }
 
   onMouseMove(e){
-    if(this.cursor){
+    if (this.cursor) {
       TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideo.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
     }
   }  
@@ -211,7 +211,7 @@ class HomePage extends Component {
   onCloseVideo(){
     this.setState({openVideo: false});
     const video = document.querySelector('#popupVideo video');
-    if(!video.paused){
+    if (!video.paused) {
       video.pause();
     }
   }
