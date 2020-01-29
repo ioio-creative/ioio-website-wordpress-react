@@ -225,6 +225,7 @@ const LabSection = props => {
     
     const onWindowResize = () => {
       w = labSection.current.offsetWidth;
+      h = labSection.current.offsetHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize( w, h );

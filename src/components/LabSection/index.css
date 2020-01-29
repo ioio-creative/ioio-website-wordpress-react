@@ -1,7 +1,12 @@
+.lab-section-container {
+  --labSectionContainerNormalHeight: 500px;
+  --labSectionContainerMobileHeight: 355px;
+}
+
 .lab-section-container #labSection {
   position: relative;
 
-  height: 500px;
+  height: var(--labSectionContainerNormalHeight);
 }
 
 .lab-section-container .title {
@@ -14,8 +19,8 @@
   width: 300px;
   
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   
   visibility: hidden;  
 }
@@ -42,17 +47,17 @@
 
 .lab-section-container #labSection .interaction-hint {
   font-family: 'Semibold';
-  font-size:24px;
-  padding-top:20px;
+  font-size: 24px;
+  padding-top: 20px;
 }
 
 
 @media only screen and (max-width: 768px) {
   .lab-section-container #labSection{
-    height: 355px;
+    height: var(--labSectionContainerMobileHeight);
   }
   .lab-section-container .title{
-    font-size:46px;
+    font-size: 46px;
     line-height: 65px;
   }
   .lab-section-container #labSection .desc{
