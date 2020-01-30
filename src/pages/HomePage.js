@@ -215,12 +215,15 @@ class HomePage extends Component {
 
     const {
       showreel_video_company_name: showreelVideoCompanyName,
+      showreel_video_background_video: showreelVideoBackgroundVideo,
+      showreel_video_popup_video: showreelVideoPopupVideo,
       showreel_video_title: showreelVideoTitle,
       showreel_video_interaction_hint: showreelVideoInteractionHint,
       showreel_video_button: showreelVideoButton,
       highlighted_project_section_desc: highlightedProjectSectionDesc,
       highlighted_project_section_interaction_hint: highlightedProjectSectionInteractionHint,
       lab_section_title: labSectionTitle,
+      lab_section_background_video: labSectionBackgroundVideo,
       lab_section_desc: labSectionDesc,
       lab_section_interaction_hint: labSectionInteractionHint,
       highlighted_clients: highlightedClients,
@@ -231,7 +234,7 @@ class HomePage extends Component {
         <div id="popupVideo" className={openVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video controls>
-              <source src="./video/website_video_s.mp4" type="video/mp4"/>
+              <source src={showreelVideoPopupVideo.guid} type="video/mp4"/>
             </video>
           </div>
           <div className="bg" onClick={this.onCloseVideo} />
@@ -240,7 +243,7 @@ class HomePage extends Component {
           <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.onClickVideo}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
-              <source src="./video/website_video_s.mp4" type="video/mp4" />
+              <source src={showreelVideoBackgroundVideo.guid} type="video/mp4" />
             </video>
             <div ref={this.setCursor} id="cursor">
               <span />
@@ -277,14 +280,8 @@ class HomePage extends Component {
             title={labSectionTitle}
             desc={labSectionDesc}
             interactionHint={labSectionInteractionHint}
+            backgroundVideoSrc={labSectionBackgroundVideo.guid}
           />      
-          {/* <section id="homepage-core-value">
-            <div className="container">
-              <Link to={routes.about(true)}>
-                <Items abouts={homepageData}/>
-              </Link>
-            </div>
-          </section> */}
           {
             isNonEmptyArray(highlightedClients) &&
             <section id="clients">

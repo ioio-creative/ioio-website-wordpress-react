@@ -21,7 +21,8 @@ const LabSection = props => {
   const {
     title,
     desc,
-    interactionHint
+    interactionHint,
+    backgroundVideoSrc
   } = props;
 
   const labSection = useRef(null);
@@ -240,7 +241,7 @@ const LabSection = props => {
     return _ => {
       window.removeEventListener('resize', onWindowResize, false);
     }
-  }, [labSection])
+  }, [labSection]);
 
   return (
     <div className="lab-section-container">
@@ -256,13 +257,18 @@ const LabSection = props => {
             to={routes.lab(true)}        
           >
             <div>
-              <ReturnIcon />
+              <ReturnIcon
+                color='#FFF'
+                beforeWidth='1.5vw'
+                beforeHeight='2.5vw'
+                arrowSize='1vw'
+              />
               {interactionHint}
             </div>
           </Link>          
         </div>
         <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
-          <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/>
+          <source src={backgroundVideoSrc} type='video/mp4;'/>
         </video>
       </div>
     </div>
