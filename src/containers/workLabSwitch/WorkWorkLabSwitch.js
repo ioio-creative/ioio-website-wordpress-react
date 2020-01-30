@@ -46,9 +46,9 @@ export default function WorkWorkLabSwitch(props) {
     }, showTimeoutInMillis);
 
     window.addEventListener('scroll', handleWindowScroll);
-    return function cleanup() {
+    return _ => {
       window.removeEventListener('scroll', handleWindowScroll);
-    }
+    };
   }, []);
 
   const circleStyle = {
