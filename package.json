@@ -2,13 +2,14 @@
   "name": "ioio-website-wordpress-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://ioio-creative.github.io/ioio-website-wordpress-react",
   "dependencies": {
     "aframe": "^0.9.2",
     "aframe-react": "^4.4.0",
     "ajv": "^6.4.0",
     "ajv-keywords": "^3.1.0",
     "flickity": "^2.2.1",
+    "gh-pages": "^2.2.0",
     "gmail-send": "^1.2.14",
     "gsap": "^2.1.2",
     "jquery": "^3.4.1",
@@ -44,7 +45,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
