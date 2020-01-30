@@ -1,0 +1,6 @@
+{
+    // https://stackoverflow.com/questions/29972396/how-to-set-tab-space-style
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false       
+}

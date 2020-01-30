@@ -1,0 +1,46 @@
+.home-client-list {
+  padding: 5% 0 5% 0;
+}
+
+.home-client-list .clients {
+
+}
+
+.home-client-list .title-first-half{
+  font-family: 'Semibold';
+}
+
+.home-client-list .title-second-half{
+  font-weight: bold;
+}
+
+.home-client-list .client-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-client-list .client {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.home-client-list .client img {
+  object-fit: contain;
+  object-position: center;
+
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .home-client-list .clients .row {
+    justify-content: center;
+  }
+  
+  .home-client-list .client-container {
+    width: 33%;
+  }
+}

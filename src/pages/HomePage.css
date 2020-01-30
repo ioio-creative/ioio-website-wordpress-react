@@ -1,0 +1,164 @@
+body{
+  white-space: initial;
+}
+ul, li{
+  list-style: none;
+}
+#main{
+  margin:0;
+}
+#popupVideo{
+  width:100%;
+  height:100%;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 999;
+  opacity: 1;
+  visibility: visible;
+  transition: all .3s;
+}
+#popupVideo.hide{
+  opacity: 0;
+  visibility: hidden;
+}
+#popupVideo .videoWrap{
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+}
+#popupVideo .videoWrap:before{
+  content:'';
+  display:block;
+  padding-top:56.25%;
+}
+#popupVideo .videoWrap video{
+  width:100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  background: black;
+}
+#popupVideo .bg{
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.7);
+}
+#homepage #featuredVideo{
+  width:100vw;
+  height:100vh;
+  background:#999;
+  overflow: hidden;
+  position: relative;
+  left: -55px;
+}
+#homepage #featuredVideo #cursor{
+  width:0;
+  height:0;
+  position: absolute;
+  top:0;
+  left:0;
+  mix-blend-mode: exclusion;
+}
+#homepage #featuredVideo #cursor span{
+  width:0px;
+  height:0px;
+  border-radius: 50%;
+  background:#fff;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(-50%,-50%,0);
+  font-size: 12px;
+  font-weight: bold;
+  overflow: hidden;
+}
+#homepage #featuredVideo #cursor span:nth-child(1){
+  position: absolute;
+  top: 0;
+  mix-blend-mode: exclusion;
+}
+#homepage #featuredVideo video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#homepage #featuredVideo video:hover{
+  cursor: none;
+}
+#homepage #featuredVideo .companyLogo {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 40px;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+#homepage #featuredVideo .videoDescription {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  color: #FFFFFF;
+}
+
+#homepage #featuredVideo .videoDescription .videoTitle {
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+#homepage #featuredVideo .videoDescription .scrollHint {
+  font-size: 1.5vw;
+  margin-top: 1em;
+  font-family: serif;
+}
+
+#homepage .top-video-scrollHint-return-icon-container {
+  position: relative;
+  top: -1.3vw;
+}
+
+#homepage #labSection .returnIcon{
+  height: .6em;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  /*----------------------------
+  [ Mobile styles go here]
+  ---------------------------*/
+
+  #homepage #featuredVideo {
+    left: 0;
+  }
+  #homepage #featuredVideo .companyLogo {
+    display: none;
+  }
+  #homepage #featuredVideo .videoDescription {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+  #homepage #featuredVideo .videoDescription .videoTitle {
+    font-size: 6vw;
+  }
+  #homepage #featuredVideo .videoDescription .scrollHint {
+    font-size: 24px;
+  }
+  #homepage #popupVideo .videoWrap {
+    width: 100%;
+  }  
+}

@@ -1,0 +1,1690 @@
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/MyriadPro-Regular.woff2') format('woff2'),
+      url('./fonts/MyriadPro-Regular.woff') format('woff'),
+      url('./fonts/MyriadPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/MyriadPro-Bold.woff2') format('woff2'),
+      url('./fonts/MyriadPro-Bold.woff') format('woff'),
+      url('./fonts/MyriadPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('./fonts/AcuminPro-Regular.woff2') format('woff2'),
+      url('./fonts/AcuminPro-Regular.woff') format('woff'),
+      url('./fonts/AcuminPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+h1{ font-size:calc(55 / 16 * 1rem); line-height:calc(55 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; }
+h2, .bigTitle{ font-size:calc(40 / 16 * 1rem); line-height:calc(40 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; letter-spacing:calc(1.5 / 16 * 1rem);  }
+h3, .title{ font-size:calc(28 / 16 * 1rem); line-height:calc(36 / 16 * 1rem); font-family: 'Myriad Pro'; font-weight: bold; }
+h4, .h4{ font-size:calc(19 / 16 * 1rem); line-height:calc(30 / 16 * 1rem); }
+h5, .h5{ font-size:calc(16 / 16 * 1rem); line-height:calc(23 / 16 * 1rem); }
+h6, .h6{ font-size:calc(13 / 16 * 1rem); line-height:calc(23 / 16 * 1rem); }
+.s{ font-size:calc(11 / 16 * 1rem); line-height:calc(18 / 16 * 1rem); }
+.bold{font-family: 'Myriad Pro'; font-weight: bold;}
+
+a{ color:#fff; outline: none; }
+a:hover{ color:#fff; }
+html, body{ width:100%; height:100%; overflow: hidden; }
+body{
+  white-space: initial;
+  font-size:calc(15 / 16 * 1rem);
+  line-height:calc(23 / 16 * 1rem);
+  font-family: 'Acumin Pro';
+}
+#root,
+#scroller,
+#main,
+#main > div{
+  height: 100%;
+}
+.schoolVR *, #scroller, #main{
+  margin:0;
+  padding:0;
+}
+#scroll{
+  background: #142326;
+}
+.schoolVR ul li{
+  margin-left:calc(30 / 16 * 1rem);
+}
+.schoolVR #svrIcon{
+  color:#fff;
+  position: fixed;
+  top:calc(83 / 16 * 1rem);
+  right:6%;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* .schoolVR #svrIcon.small{
+  transition-duration: .8s;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+} */
+.schoolVR #svrIcon.hide{
+  opacity: 0;
+  visibility: hidden;
+}
+.schoolVR #svrIcon p{
+  float: left;
+  padding-right:calc(14 / 16 * 1rem);
+  line-height: calc(21 / 16 * 1rem);
+}
+.schoolVR #svrIcon > span{
+  width:calc(31 / 16 * 1rem);
+  height:calc(17 / 16 * 1rem);
+  background:url('../../images/schoolVR/s_vr_icon.svg') center no-repeat;
+  display: inline-block;
+}
+.schoolVR #sschoolvrIcon{
+  display: none;
+  width: 50%;
+  position: fixed;
+  top:150px;
+  right:50%;
+  z-index: 9;
+  transform: translate3d(50%,0,0);
+  transition: all .4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.schoolVR #sschoolvrIcon.small{
+  transition-duration: .8s;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.schoolVR #sschoolvrIcon span{
+  width:100%;
+  background: url('../../images/schoolVR/schoolvr_icon.png') center top no-repeat;
+  background-size:100%;
+  display: inline-block;
+}
+.schoolVR #sschoolvrIcon span:before{
+  content: '';
+  padding-top: 14.5%;
+  display: block;
+}
+.schoolVR #logo{
+  width:calc(65 / 16 * 1rem);
+  height:calc(22 / 16 * 1rem);
+  position: fixed;
+  bottom:calc(40 / 16 * 1rem);
+  right:6%;
+  z-index: 2;
+}
+.schoolVR #logo path{
+  fill:#27c8fa;
+  transition: all .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.schoolVR #logo.w path{
+  fill:#fff;
+}
+.schoolVR #copyright{
+  position: fixed;
+  bottom:calc(40 / 16 * 1rem);
+  left:6%;
+  z-index: 2;
+  color:#27C8FA;
+  transition: all .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  line-height: calc(11 / 16 * 1rem);
+  overflow: hidden;
+}
+.schoolVR #copyright .copyrightWrap{
+  display: flex;
+  transform: translate3d(calc(-49 / 16 * 1rem), 0, 0);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.schoolVR #copyright .copyrightWrap > span{
+  padding-top: calc(4 / 16 * 1rem);
+  padding-left: calc(15 / 16 * 1rem);
+  line-height: calc(10 / 16 * 1rem);
+}
+.schoolVR #copyright .pages{
+  border-right: calc(1 / 16 * 1rem) solid rgba(39,200,250,.5);
+  margin-top: calc(2 / 16 * 1rem);
+  padding-right: calc(15 / 16 * 1rem);
+  line-height: calc(11 / 16 * 1rem);
+}
+.schoolVR #copyright .pages .pageNumWrap{
+  width: calc(9 / 16 * 1rem);
+  height: calc(14 / 16 * 1rem);
+  display: inline-block;
+  overflow: hidden;
+  line-height: calc(14 / 16 * 1rem);
+}
+.schoolVR #copyright .pages .pageNumWrap span{
+  display: inline-block;
+}
+.schoolVR #copyright .pages .pageNumWrap .pageNum{
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.schoolVR #copyright.w{
+  color:#fff;
+}
+.schoolVR #copyright.w .pages{
+  border-color:rgba(255,255,255,.5);
+}
+
+
+/* Common */
+.schoolVR .section{
+  width:100%;
+  /* height:100vh; */
+  position: relative;
+  color:#fff;
+  padding:0 30px;
+}
+#section01{
+  z-index: 9;
+}
+#section02{
+  transform: translateY(calc(-1 / 16 * 1rem));
+  z-index: 8;
+}
+#section03{
+  transform: translateY(calc(-2 / 16 * 1rem));
+  z-index: 7;
+}
+#section04{
+  transform: translateY(calc(-3 / 16 * 1rem));
+  z-index: 6;
+}
+#section05{
+  transform: translateY(calc(-4 / 16 * 1rem));
+  z-index: 5;
+}
+#section06{
+  transform: translateY(calc(-5 / 16 * 1rem));
+  z-index: 4;
+}
+#section07{
+  transform: translateY(calc(-6 / 16 * 1rem));
+  z-index: 3;
+}
+#section08{
+  transform: translateY(calc(-7 / 16 * 1rem));
+  z-index: 2;
+}
+#mobileContact{
+  transform: translateY(calc(-8 / 16 * 1rem));
+  z-index: 1;
+}
+.schoolVR #scene3d{
+  position: relative;
+  width:100%;
+  height: 100vh;
+}
+.schoolVR .section .content{
+  height: 100%;
+  padding:calc(75 / 16 * 1rem) 6% 11% 6%;
+}
+.schoolVR .section .content.halfWrap{
+  display: flex;
+}
+.schoolVR .section .content .half{
+  width:50%;
+}
+
+
+/* section 01 */
+.schoolVR #section01{
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  padding:0;
+  position: sticky;
+  top:0;
+  left:0;
+}
+.btn{
+  width:auto !important;
+  height:auto;
+  min-width: 188px;
+  line-height:calc(46 / 16 * 1rem);
+  white-space: nowrap;
+  position: absolute;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  z-index: 9;
+  cursor: pointer;
+  text-align: center;
+}
+.btn div{
+  border-radius: calc(28 /16 * 1rem);
+  padding-top:calc(2 / 16 * 1rem);
+  font-size:calc(14 / 16 * 1rem);
+  transform: translate3d(0,0,0) scale(1);
+  display: block;
+  border:1px solid #fff;
+  transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.btn div:active{
+  transform: translate3d(0,0,0) scale(.95);
+}
+.schoolVR #section01 #sd{
+  bottom: calc(44 / 16 * 1rem);
+}
+.schoolVR #section01 #sd_icon{
+  width:12px;
+  height:9px;
+  background:url('../../images/schoolVR/scroll_down.svg') no-repeat;
+  background-size: 100%;
+  position: absolute;
+  bottom:16px;
+  left:50%;
+  transform: translate3d(-50%,0,0);
+}
+.schoolVR #section01 #video{
+  bottom:calc(105 / 16 * 1rem);
+  color:#333;
+  font-size:calc(14 / 16 * 1rem);
+  display: none;
+}
+.schoolVR #section01 #video div{
+  background:#fff;
+}
+.schoolVR #section01 #video div:before{
+  content:'';
+  width: calc(12 / 16 * 1rem);
+  height: calc(16 / 16 * 1rem);
+  background:#fff url('../../images/schoolVR/play_btn.svg') center no-repeat;
+  display: inline-block;
+  position: relative;
+  top: calc(3 / 16 * 1rem);
+  margin-right: calc(20 / 16 * 1rem);
+}
+.schoolVR #section01 #sd.hide,
+.schoolVR #section01 #video.hide{
+  display: none;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.schoolVR #section01:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.schoolVR #section01 .wrap{
+  width:26%;
+  min-width: calc(320 / 16 * 1rem);
+  position: absolute;
+  top:20%;
+  left:50%;
+  z-index: 2;
+  transform: translate3d(-50%,0,0);
+  pointer-events: none;
+}
+.schoolVR #section01 .wrap .row{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.schoolVR #section01 .wrap #vrIcon{
+  width: 27%;
+  background:url('../../images/schoolVR/vr_icon.svg') center top no-repeat;
+  padding-bottom:calc(35 / 16 * 1rem);
+  opacity: 1;
+  /* transition: width 1s cubic-bezier(0.19, 1, 0.22, 1), top 1s cubic-bezier(0.19, 1, 0.22, 1); */
+}
+.schoolVR #section01 .wrap #vrIcon:before{
+  content:'';
+  padding-top:55%;
+  display: block;
+}
+.schoolVR #section01 .wrap #schoolvrIcon{
+  width:100%;
+  background:url('../../images/schoolVR/schoolvr_icon.png') center top no-repeat;
+  background-size:100%;
+  padding-bottom:calc(25 / 16 * 1rem);
+}
+.schoolVR #section01 .wrap #schoolvrIcon:before{
+  content:'';
+  padding-top:14.5%;
+  display: block;
+}
+.schoolVR #section01 .wrap .des{
+  color:#7BEFEC;
+  font-size:1.59vw;
+}
+.schoolVR canvas{
+  display: block;
+}
+
+
+ /* section 02 */
+.schoolVR #section02{
+  /* margin-top: 100vh; */
+  background: rgb(110,133,157);
+  background: linear-gradient(155deg, rgba(110,133,157,1) 0%, rgba(65,177,188,1) 100%);
+  /* background-size:cover; */
+}
+.schoolVR #section02 .wrap{
+  width: calc(600 / 16 * 1rem);
+  position: absolute;
+  top:48%;
+  left:50%;
+  transform: translate3d(-50%,-50%,0);
+}
+.schoolVR #section02 .wrap .bigTitle{
+  text-align: center;
+  padding-bottom:calc(54  / 16 * 1rem);
+}
+.schoolVR #section02 svg{
+  width: 85%;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: -100%;
+  bottom: -100%;
+  margin: auto;
+}
+.schoolVR #section02 svg{
+  mix-blend-mode: screen;
+}
+
+
+ /* section 03 */
+.schoolVR #section03{
+  background: rgb(255,119,116);
+  background: linear-gradient(45deg, rgba(255,119,116,1) 0%, rgba(255,208,175,1) 100%);
+}
+.schoolVR #section03:before{
+  content:'';
+  width:45%;
+  padding-top:50%;
+  position: absolute;
+  top:5%;
+  right: 3%;
+  background:url('../../images/schoolVR/section02_1.png') center no-repeat;
+  background-size:100%;
+  z-index: 2;
+  animation: fly 6s infinite;
+  z-index: 1;
+}
+.schoolVR #section03:after{
+  content:'';
+  width:30%;
+  padding-top:22%;
+  position: absolute;
+  top:5%;
+  right: 30%;
+  background:url('../../images/schoolVR/section02_2.png') center no-repeat;
+  background-size:100%;
+  animation: fly 6s infinite 1s;
+  z-index: 0;
+}
+@keyframes fly{
+  0%,100%{
+    transform: translate3d(0,0,0);
+  }
+  50%{
+    transform: translate3d(0,-3%,0);
+  }
+}
+.schoolVR #section03 .content .wrap{
+  padding-top:5%;
+}
+.schoolVR #section03 .content > *{
+  width:100%;
+}
+.schoolVR #section03 .content ul{
+  width:50%;
+  padding-top: calc(10 / 16 * 1rem);
+}
+
+
+.schoolVR #section04,
+.schoolVR #section05,
+.schoolVR #section06,
+.schoolVR #section07,
+.schoolVR #section08{
+  background:#142326;
+}
+
+
+.schoolVR #section04 #bg{
+  width:55%;
+  position: absolute;
+  top:45%;
+  right:0;
+  transform: translate3d(0,-50%,0);
+}
+.schoolVR #section04 #bg:before{
+  content:'';
+  padding-top:52.25%;
+  display: block;
+}
+.schoolVR #section04 #bg img{
+  position: absolute;
+  transition: all .7s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.schoolVR #section04 #bg img#_01{
+  right: 2%;
+  width: 100%;
+  top:0%;
+}
+.schoolVR #section04 #bg img#_02{
+  right: 2%;
+  width: 100%;
+  top: 0%;
+}
+.schoolVR #section04 #bg img#_03{
+  right: 4%;
+  width: 65%;
+  top:29%;
+  transition-delay: .4s;
+}
+.schoolVR #section04 #bg img#_04{
+  right: 18%;
+  width: 18%;
+  top: 22%;
+  transition-delay: .3s;
+}
+.schoolVR #section04 #bg img#_05{
+  right: 26%;
+  width: 21%;
+  top: 8%;
+  transition-delay: .2s;
+}
+.schoolVR #section04 #bg.active img#_01{
+  top: 50%;
+}
+.schoolVR #section04 #bg.active img#_03{
+  top: 14%;
+}
+.schoolVR #section04 #bg.active img#_04{
+  top: -1%;
+}
+.schoolVR #section04 #bg.active img#_05{
+  top: -19%;
+}
+
+.schoolVR #section04 svg{
+  width: calc( 75  / 16 * 1rem);
+  font-size:40px;
+  fill: none;
+  stroke: #fff;
+  stroke-width:calc(.2 / 16 * 1rem);
+  stroke-linejoin: round;
+  font-family: 'Myriad Pro';
+  font-weight: bold;
+}
+.schoolVR #section04 .outerGroupWrap{
+  display: flex;
+  padding-top: calc(84 / 16 * 1rem);
+}
+.schoolVR #section04 .groupWrap{
+  width:calc(335 / 16 * 1rem);
+  margin-left:calc(-12 / 16 * 1rem);
+  position: relative;
+  left:calc(110 / 16 * 1rem);
+}
+.schoolVR #section04 .groupWrap:first-child{
+  left:0;
+}
+.schoolVR #section04 .groupWrap .wrap{
+  display: flex;
+  padding-top: calc(45 / 16 * 1rem);
+}
+.schoolVR #section04 .groupWrap .col{
+  width: 100%;
+}
+.schoolVR #section04 .groupWrap .col:first-child{
+  flex: 0;
+  padding-right: calc(20 / 16 * 1rem);
+}
+.schoolVR #section04 .t{
+  color:#41DDF7;
+  padding-bottom:calc(8 / 16 * 1rem);
+}
+
+
+/* section 05 */
+.schoolVR #section05 .content .wrap{
+  max-height: calc(600 / 16 * 1rem);
+  padding-top:calc(40 / 16 * 1rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.schoolVR #section05 .content .col .itemWrap{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.schoolVR #section05 .half{
+  width:100%;
+  display: flex;
+}
+.schoolVR #section05 .item{
+  width:20%;
+  position: relative;
+}
+.schoolVR #section05 .item:nth-child(3n+1){
+  width:37%;
+}
+.schoolVR #section05 .item:nth-child(3n+2){
+  width:43%;
+}
+/* .schoolVR #section05 .content #col01{
+  flex: 2.8;
+}
+.schoolVR #section05 .content #col02{
+  flex: 3;
+}
+.schoolVR #section05 .content #col03{
+  flex: 1.6;
+}
+.schoolVR #section05 .content #col01 .itemWrap{
+  padding-right:27%;
+}
+.schoolVR #section05 .content #col02 .itemWrap{
+  padding-right:24%;
+}
+.schoolVR #section05 .content #col03 .itemWrap{
+  padding-right:6%;
+} */
+.schoolVR #section05 .content #item04,
+.schoolVR #section05 .content #item05{
+  margin-top:calc(40 / 16 * 1rem);
+}
+.schoolVR #section05 .content #item06{
+  margin-top: calc(20 / 16 * 1rem);
+}
+.schoolVR #section05 .content img{
+  height: auto;
+}
+.schoolVR #section05 .content #item01 img{
+  width:72%;
+}
+.schoolVR #section05 .content #item02 img{
+  width:38%;
+}
+.schoolVR #section05 .content #item03 img{
+  width:49%;
+}
+.schoolVR #section05 .content #item04 img{
+  width:59%;
+}
+.schoolVR #section05 .content #item05 img{
+  width:67%;
+}
+.schoolVR #section05 .content #item06 img{
+  width:73%;
+}
+.schoolVR #section05 .content #item07 img{
+  width:20%;
+}
+.schoolVR #section05 .content #item08 img{
+  width:60%;
+}
+.schoolVR #section05 .content #item08{
+  padding-left: 23%;
+}
+/* .schoolVR #section05 .content .col img{
+  width:100%;
+} */
+.schoolVR #section05 .content .des{
+  padding-top:calc(25 / 16 * 1rem);
+  padding-left:calc(20 / 16 * 1rem);
+}
+/* .schoolVR #section05 .content .des .h4{
+  padding-bottom:calc(5 / 16 * 1rem);
+} */
+.schoolVR #section05 .content .des.half{
+  padding-right: 20%;
+}
+.schoolVR #section05 .content .des.half .h4{
+  width: 60%;
+}
+/* .schoolVR #section05 .content #item03 .des{
+  padding-top:0;
+  padding-left:calc(25 / 16 * 1rem);
+} */
+.schoolVR #section05 .content #item02 .des,
+.schoolVR #section05 .content #item07 .des{
+  padding-left:calc(30 / 16 * 1rem);
+  padding-top:0;
+  padding-right:20%;
+}
+.schoolVR #section05 .content #item04{
+  padding-bottom:calc(30 / 16 * 1rem);
+}
+.schoolVR #section05 .content #item07{
+  padding-top: calc(20 / 16 * 1rem);
+}
+.schoolVR #section05 .content #item05 .des{
+  position: absolute;
+  padding-right:48%;
+}
+.schoolVR #section05 .content button{
+  width: calc(40 / 16 * 1rem);
+  background: none;
+  border: none;
+  position: absolute;
+  top:50%;
+  transform: translate3d(0,-50%,0);
+}
+.schoolVR #section05 .content button.previous{
+  left:calc(20 / 16 * 1rem);
+}
+.schoolVR #section05 .content button.next{
+  right:calc(20 / 16 * 1rem);
+}
+.schoolVR #section05 .content button path{
+  fill: #fff;
+}
+.schoolVR #section05 .flickity-page-dots{
+  width:100%;
+  white-space: nowrap;
+  text-align: center;
+  padding-top:calc(30 / 16 * 1rem);
+}
+.schoolVR #section05 .flickity-page-dots li{
+  display: inline-block;
+  list-style: none;
+  width:calc(5 / 16 * 1rem);
+  height:calc(5 / 16 * 1rem);
+  margin:calc(3 / 16 * 1rem);
+  background:#fff;
+  border-radius: 50%;
+  opacity: .3;
+}
+.schoolVR #section05 .flickity-page-dots li.is-selected{
+  opacity: 1;
+}
+/* .schoolVR #section05 .content .col .half{
+  width:100%;
+  display: flex;
+} */
+/* .schoolVR #section05 .content #col01 .half > *:first-child{
+  width:37%;
+  padding:0;
+} */
+/* .schoolVR #section05 .content #col01 .half > *{
+  width:63%;
+}
+.schoolVR #section05 .content #col02 .half > *{
+  width:50%;
+} */
+
+
+/* section 06 */
+.schoolVR #section06 .wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(-40 / 16 * 1rem);
+  flex-direction: row-reverse;
+}
+.schoolVR #section06 .wrap img{
+  width:60%;
+  margin-right: 8%;
+}
+.schoolVR #section06 .wrap .des{
+  display: flex;
+  align-items: flex-end;
+}
+.schoolVR #section06 .wrap .des p{
+  max-width: calc(210 / 16 * 1rem);
+}
+
+/* section 07 */
+.schoolVR #section07 .wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(-40 / 16 * 1rem);
+  flex-direction: row-reverse;
+}
+.schoolVR #section07 .wrap img{
+  width:60%;
+  margin-right: 8%;
+}
+.schoolVR #section07 .wrap .des{
+  display: flex;
+  align-items: flex-end;
+}
+.schoolVR #section07 .wrap .des p{
+  max-width: calc(210 / 16 * 1rem);
+}
+
+
+/* section 08 */
+.schoolVR #section08 .specList{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(80 / 16 * 1rem);
+}
+.schoolVR #section08 li{
+  list-style: none;
+  margin:0;
+  border-bottom: calc(1 / 16 * 1rem) solid #7C7C7C;
+}
+.schoolVR #section08 .specList li{
+  padding: calc(26 / 16 * 1rem) 0 calc(23 / 16 * 1rem);
+}
+.schoolVR #section08 .specList li.t{
+  font-size: calc(22 / 16 * 1rem);
+}
+.schoolVR #section08 .specList li.t:after{
+  content:'';
+  width:calc(16 / 16 * 1rem);
+  height:calc(16 / 16 * 1rem);
+  background:url('../../images/schoolVR/window.svg') center no-repeat;
+  display: inline-block;
+  position: relative;
+  top:calc(2 / 16 * 1rem);
+  margin-left:calc(40 / 16 * 1rem);
+}
+.schoolVR #section08 .contact ul{
+  max-width: calc(420 / 16 * 1rem);
+  padding-top:calc(110 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li{
+  padding: calc(30 / 16 * 1rem) 0 calc(46 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li:last-child{
+  border:0;
+}
+.schoolVR #section08 .contact li:last-child p:last-child{
+  padding-top:calc(25 / 16 * 1rem);
+}
+.schoolVR #section08 .contact li p{
+  line-height: calc(20 / 16 * 1rem);
+}
+.schoolVR #section08 .t{
+  color:#41DDF7;
+}
+.schoolVR #section08 .contact .t{
+  padding-bottom:calc(15 / 16 * 1rem);
+}
+
+
+.schoolVR #section09{
+  padding:0;
+}
+.schoolVR #footer3d{
+  position: relative;
+}
+.schoolVR #footer3d #bookingBtn{
+  width:calc(150 / 16 * 1rem);
+  height:calc(50 / 16 * 1rem);
+  border-radius: calc(25 /16 * 1rem);
+  background:#fff;
+  position: absolute;
+  bottom:calc(60 / 16 * 1rem);
+  left:50%;
+  transform: translate3d(-50%,0,0);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1)
+}
+.schoolVR #footer3d #bookingBtn:active{
+  transform: translate3d(-50%,0,0) scale(.9);
+}
+.schoolVR #footer3d #bookingBtn .wrap{
+  white-space: nowrap;
+}
+.schoolVR #footer3d #bookingBtn span{
+  width:100%;
+  height: 100%;
+  display: inline-block;
+  text-align:center;
+  padding-top:calc(4 / 16 * 1rem);
+  line-height:calc(46 / 16 * 1rem);
+  color:#1E373A;
+}
+
+
+/* scroll bar */
+#scrollBarWrap{
+	width:calc(6 / 16 * 1rem); height:100vh; position: fixed; top:0px; right:calc(3 / 16 * 1rem); -webkit-animation: fadeIn .3s cubic-bezier(0.215, 0.61, 0.355, 1); animation: fadeIn .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1); transition: opacity 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: 999;
+}
+#scrollBarWrap.hide{
+  opacity: 0;
+}
+#scrollBarWrap #scrollBar{
+  width:100%; height:auto; background-color:rgba(255,255,255,0.4); border-radius: calc(5 / 16 * 1rem); position: absolute; top:0px; right:0px;
+
+  -webkit-transition: background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), height 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition:         background-color 300ms cubic-bezier(0.215, 0.61, 0.355, 1), height 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+#scrollBarWrap #scrollBar.active,
+#scrollBarWrap #scrollBar:hover{
+  background-color:rgba(255,255,255,0.7);
+}
+#mobileContact{
+  display: none;
+  width:100%;
+  height:120vh;
+  background:#142326;
+}
+#mobileContactBg{
+  width:100vw;
+  height:100%;
+  background: rgba(0,0,0,.3);
+  position: fixed;
+  top:0;
+  left:0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+#mobileContactBg.active{
+  opacity: 1;
+  visibility: visible;
+  transition-duration: 1s;
+}
+#mobileContact.fixed{
+  width:calc(500 / 16 * 1rem);
+  height:100%;
+  position: fixed;
+  top:0;
+  right:0;
+  z-index:999 !important;
+  background: rgb(255,119,116);
+  background: linear-gradient(0deg, rgba(255,119,116,1) -20%, rgba(255,208,175,1) 100%);
+  transform: translate3d(100%,0%,0);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  margin-bottom:0px;
+  display: block;
+}
+#mobileContact.fixed .ioio{
+  color:#cf5c5c;
+}
+#mobileContact.fixed.active{
+  transform: translate3d(0,0%,0);
+}
+#mobileContact.fixed .content{
+  padding-top:calc(50 / 16 * 1rem);
+}
+#mobileContact.fixed .btn{
+  bottom:calc(50 / 16 * 1rem);
+}
+#mobileContact.fixed .address{
+  border-color:#fff;
+}
+#mobileContact .ioio{
+  font-size: 2vw;
+  color: #41DDF7;
+  margin-bottom: calc(10 / 16 * 1rem);
+}
+#mobileContact h1{
+  padding-right:20%;
+  padding-bottom: calc(20 / 16 * 1rem);
+  color:#fff;
+}
+#mobileContact a{
+  display: inline-block;
+}
+#mobileContact .content{
+  padding-top: calc(100 / 16 * 1rem);
+  padding-bottom: calc(50 / 16 * 1rem);
+}
+#mobileContact .content > *{
+  width:100%;
+}
+#mobileContact .content .wrap{
+  padding-top: calc(40 / 16 * 1rem);
+}
+/* #mobileContact .content .t{
+  text-transform:  uppercase;
+  padding-bottom:15px;
+  margin-bottom:20px;
+  border-bottom: 1px solid #fff;
+} */
+#mobileContact .wrap div a{
+  font-size: calc(18 / 16 * 1rem);
+  line-height: calc(23 / 16 * 1rem);
+}
+#mobileContact .address{
+  padding-right:10%;
+  padding-top:calc(40 / 16 * 1rem);
+  border-top:calc(1 / 16 * 1rem) solid #7C7C7C;
+  font-size: calc(18 / 16 * 1rem);
+  line-height: calc(23 / 16 * 1rem);
+}
+#mobileContact .btn{
+  color:#333;
+  bottom:calc(70 / 16 * 1rem);
+}
+#mobileContact .btn div{
+  background:#fff;
+}
+#mobileContactBtn{
+  /* display: none; */
+  position: fixed;
+  bottom:calc(44 / 16 * 1rem);
+  right:6%;
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0,0,0) scale(0);
+  z-index: 99;
+  background:#fff;
+  border-radius: calc(58 / 2 / 16 * 1rem);
+  box-shadow: 0px calc(2 / 16 * 1rem) calc(10 / 16 * 1rem) rgba(0,0,0,.2);
+  /* transition: width .6s cubic-bezier(0.19, 1, 0.22, 1); */
+}
+#mobileContactBtn a{
+  width:calc(188 / 16 * 1rem);
+  opacity: 0;
+  visibility: hidden;
+  display: inline-block;
+  color:#333;
+  border-radius: calc(58 / 2 / 16 * 1rem);
+  border:0;
+  width:calc(58 / 16 * 1rem);
+  height:calc(58 / 16 * 1rem);
+  transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+  position: absolute;
+  top:0;
+}
+#mobileContactBtn a div{
+  border:0;
+}
+#mobileContactBtn.big{
+  width:calc(188 / 16 * 1rem);
+  padding-left:30px;
+}
+#mobileContactBtn.big span{
+}
+#mobileContactBtn.big a{
+  opacity: 1;
+  visibility: visible;
+  padding-left: 25%;
+}
+#mobileContactBtn.big a div{
+  padding-top: calc(7 / 16 * 1rem);
+}
+#mobileContactBtn span{
+  display: inline-block;
+  width:calc(58 / 16 * 1rem);
+  height:calc(58 / 16 * 1rem);
+  background: url('../../images/schoolVR/contact_icon.svg') center 55% no-repeat;
+  background-size: 58%;
+  transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: translate3d(0,0,0) scale(1);
+  display: block;
+}
+#mobileContactBtn span:active{
+  transform: translate3d(0,0,0) scale(.95);
+}
+/* #mobileContactBtn.hide{
+  opacity: 0;
+  visibility: hidden;
+} */
+#mobileContactCloseBtn{
+  width:calc(24 /16 * 1rem);
+  height:calc(24 /16 * 1rem);
+  position: absolute;
+  top:0px;
+  right:0px;
+  padding:calc(40 / 16 * 1rem);
+  background:url('../../images/schoolVR/close_btn.svg') center no-repeat;
+  background-size: calc(24 / 16 * 1rem);
+}
+
+
+/* tablet */
+@media only screen and (max-width: 1024px){
+  .s{
+    font-size: calc(15 / 16 * 1rem);
+    line-height: calc(22 / 16 * 1rem);
+  }
+  h4, .h4 {
+    font-size: calc(24 / 16 * 1rem);
+    line-height: calc(34 / 16 * 1rem);
+  }
+  html{
+    position:fixed;
+    top:0;
+  }
+  #scroll{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important;
+  }
+  #scrollBarWrap{
+    display: none;
+  }
+  /* .schoolVR canvas{
+    width:100% !important;
+  } */
+
+  #section01{
+    z-index: auto;
+  }
+  /* .schoolVR #svrIcon.small{
+    width: 4%;
+    top: 60px;
+    left: calc(4% / 2 + 48px);
+  } */
+  /* .schoolVR #sschoolvrIcon{
+    display: inline-block;
+    width: 30%;
+    top:200px;
+  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 14%;
+    top: 60px;
+    right: calc(14% / 2 + 48px);
+  } */
+  .schoolVR #svrIcon.blue span{
+    background:url('../../images/schoolVR/s_b_vr_icon.svg') top no-repeat;
+  }
+  .schoolVR #svrIcon{
+    width:calc(100% - 80px);
+    right:40px;
+    top:60px;
+  }
+  .schoolVR #svrIcon p{
+    width: 14%;
+    float: right;
+    padding:0;
+    background:url('../../images/schoolVR/schoolvr_icon.png') no-repeat;
+    background-size:100%;
+  }
+  .schoolVR #svrIcon span{
+    width:4%;
+    height:20px;
+    float: left;
+  }
+  .schoolVR #svrIcon p:before{
+    content:'';
+    display: block;
+    padding-top:15%;
+  }
+  .schoolVR #svrIcon p span{
+    display: none;
+  }
+  /* .schoolVR #svrIcon > span{
+    width:100%;
+    height:auto;
+    display: block;
+  } */
+  /* .schoolVR #svrIcon span:before{
+    content:'';
+    display:block;
+    padding-top: 55%;
+  } */
+  .schoolVR #scroll{
+    /* width:50%; */
+  }
+  .schoolVR .section{
+    width:100vw;
+    z-index: 1 !important;
+  }
+  .schoolVR .section:not(.fixed){
+    transform: none !important;
+  }
+  .schoolVR .section .content {
+    padding-left:10px;
+    padding-right:10px;
+  }
+  .schoolVR .section .content.halfWrap{
+    width: 100%;
+    display: inline-block;
+  }
+  .schoolVR .section .content .half {
+    width:100%;
+  }
+  .schoolVR #section01 #sd_icon{
+    display: none;
+  }
+  .schoolVR #section01 .wrap #vrIcon{
+    width:27%;
+    background:url('../../images/schoolVR/s_vr_icon.svg') top no-repeat;
+  }
+  /* .schoolVR #section01 .wrap #vrIcon,
+  .schoolVR #section01 .wrap #schoolvrIcon{
+    display: none;
+  } */
+  .schoolVR #section01 .wrap .des {
+    font-size: 1.89vw;
+    /* padding-top:75px; */
+  }
+  .schoolVR #section01 .wrap{
+    top: 140px;
+    left: calc(50% - 160px);
+    transform: none;
+  }
+  .schoolVR #section02{
+    background: linear-gradient(-110deg, #678fae 0%, #3bacbc 70%);
+  }
+  .schoolVR #section02 svg {
+    width: 90%;
+    display: none;
+  }
+  .schoolVR #section02 .wrap{
+    width:100%;
+    max-width: calc(600 / 16 * 1rem);
+  }
+  .schoolVR #section03{
+    height:auto;
+  }
+  .schoolVR #section03 .content{
+    padding-top: 70%;
+  }
+  .schoolVR #section03 .content ul{
+    width: 100%;
+  }
+  .schoolVR #section03:before {
+    width: 50%;
+    padding-top: 70%;
+    right: 21%;
+    top:3%;
+  }
+  .schoolVR #section03:after{
+    width: 30%;
+    padding-top: 32%;
+    right:55%;
+    top:12%;
+  }
+  .schoolVR #section03 h1{
+    text-align: center;
+  }
+  .schoolVR #section04{
+    height:auto;
+    padding-top:200px;
+  }
+  .schoolVR .content h2{
+    text-align: center;
+    padding: 0 10%;
+  }
+  .schoolVR .content h2 br{
+    display: none;
+  }
+  .schoolVR #section04 .content{
+    padding-top: 270px;
+  }
+  .schoolVR #section04 br{
+    display: none;
+  }
+  .schoolVR #section04 .content .s{
+    padding:0 5%;
+  }
+  .schoolVR #section04 #bg{
+    width: 70%;
+    position: relative;
+    top: 60px;
+    transform: none;
+    margin: auto;
+  }
+  .schoolVR #section04 .outerGroupWrap{
+    display: inline-block;
+    padding-top: 0
+  }
+  .schoolVR #section04 .groupWrap{
+    width:100%;
+    margin-left:0;
+    left:0;
+  }
+  .schoolVR #section04 .empty{
+    display: none !important;
+  }
+    
+  .flickity-slider{
+    height: 100%;
+  }
+  .schoolVR #section05{
+    height:auto;
+    overflow: hidden;
+    background:#0f414b;
+  }
+  .schoolVR #section05 .item {
+    width:100% !important;
+    /* height: 500px; */
+    text-align: center;
+    transform: translate3d(0,-50%,0);
+    top: 50%;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center; */
+  }
+  .schoolVR #section05 .content h2{
+    /* font-size: 7vw;
+    line-height: 8vw; */
+    text-align: center;
+    padding: 0 10%;
+  }
+  .schoolVR #section05 .content .wrap{
+    width: 100%;
+    display: inline-block;
+    max-height: initial;
+    outline: none;
+  }
+  .schoolVR #section05 .half{
+    display: inline-block;
+  }
+  .schoolVR #section05 .content .item{
+    margin-top:0 !important;
+  }
+  .schoolVR #section05 .content .des.half .h4{
+    width:auto;
+  }
+  .schoolVR #section05 .content #item02 .des, 
+  .schoolVR #section05 .content #item07 .des,
+  .schoolVR #section05 .content #item05 .des,
+  .schoolVR #section05 .content .des{
+    padding: 30px 20% 0;
+    position: relative;
+    width: 100%;
+    text-align: left;
+  }
+  .schoolVR #section05 .content #item03 img{
+    width:40%;
+  }
+  .schoolVR #section05 .content #item06 img{
+    width:60%;
+  }
+  .schoolVR #section05 .content #item07 img{
+    width:50%;
+  }
+  .schoolVR #section05 .content #item08 img{
+    width:60%;
+  }
+  .schoolVR #section05 .content #item07,
+  .schoolVR #section05 .content #item08{
+    padding:0;
+  }
+
+  .schoolVR #section06 .content{
+    padding-top:150px;
+  }
+  .schoolVR #section06,
+  .schoolVR #section07{
+    height: auto;
+  }
+  .schoolVR #section06 .wrap,
+  .schoolVR #section07 .wrap{
+    flex-wrap: wrap;
+    margin-top:0;
+    padding-top:calc(30 / 16 * 1rem);
+  }
+  .schoolVR #section06 .wrap img,
+  .schoolVR #section07 .wrap img{
+    width: 100%;
+    height:auto;
+    margin-right: 0%;
+  }
+  .schoolVR #section06 .wrap .des p,
+  .schoolVR #section07 .wrap .des p{
+    max-width: initial;
+    padding-top:calc(20 / 16 * 1rem);
+  }
+  .schoolVR #section07 .content h2{
+    display: none;
+  }
+  /* .schoolVR #section08{
+    height:auto;
+  } */
+  .schoolVR #section08{
+    display: flex;
+    align-items: center;
+    background: #122022;
+  }
+  .schoolVR #section08 .content{
+    height:auto;
+  }
+  .schoolVR #section08 h2{
+    width: 60%;
+    margin: auto;
+  }
+  .schoolVR #section08 .specList{
+    max-width: initial;
+    padding-top:calc(30 / 16 * 1rem);
+  }
+  .schoolVR #section08 .contact{
+    display: none;
+  }
+  .schoolVR #copyright{
+    display: none;
+  }
+  #mobileContact{
+    display: inline-block;
+    height:100vh;
+    /* margin-bottom:300px; */
+  }
+  #mobileContact h1{
+    padding-right:30%;
+  }
+  #mobileContact.fixed{
+    width:100%;
+    transform: translate3d(0,100%,0);
+  }
+  #mobileContact .ioio{
+    font-size:40px;
+    margin-bottom: 20px;
+  }
+  #mobileContact .content{
+    padding-top:100px;
+  }
+  #mobileContact .content .wrap{
+    font-size: 20px;
+  }
+  #mobileContact .wrap div a{
+    font-size: 20px;
+    line-height: 30px;
+  }
+  #mobileContact .address{
+    font-size: 20px;
+    line-height: 30px;
+    padding-right: calc(100% - 400px);
+  }
+  #mobileContactBtn{
+    display: inline-block;
+    right: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .schoolVR #svrIcon{
+    width:calc(100% - 80px);
+    right:40px;
+    top:50px;
+  }
+  .schoolVR #svrIcon span{
+    width:5.5%;
+    /* top:40px; */
+  }
+  .schoolVR #svrIcon p {
+    width: 20%;
+  }
+  /* .schoolVR #svrIcon.small{
+    width: 7%;
+    top: 70px;
+    left: calc(7% / 2 + 6%);
+  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 19%;
+    top:70px;
+    right: calc(19% / 2 + 6%);
+  } */
+  /* .schoolVR #section01 .wrap .des {
+    padding-top: 60px;
+  } */
+  .schoolVR #section01 .wrap .des{
+    font-size: 2.55vw;
+  }
+  .schoolVR #section03 .content{
+    padding-top: 750px;
+  }
+  .schoolVR #section03:before {
+    width: 75%;
+    right:7%;
+    top:13%;
+  }
+  .schoolVR #section03:after{
+    top: 9%;
+  }
+  .schoolVR #section04 #bg{
+    width:100%;
+  }
+  .schoolVR #section08 h2{
+    width: 80%;
+  }
+  #mobileContact{
+    /* height:auto; */
+    padding-bottom:100px;
+    /* margin-bottom:400px; */
+  }
+}
+
+/* mobile */
+@media only screen and (max-width: 700px){
+  .s{
+    font-size: calc(14 / 16 * 1rem);
+    line-height: calc(22 / 16 * 1rem);
+  }
+  h1 {
+    font-size: calc(24 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
+  }
+  h2, .bigTitle {
+    font-size: calc(22 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
+  }
+  h3, .title {
+    font-size: calc(20 / 16 * 1rem);
+    line-height: calc(28 / 16 * 1rem);
+  }
+  h4, .h4 {
+    font-size: calc(14 / 16 * 1rem);
+    line-height: calc(22 / 16 * 1rem);
+  }
+  h5, .h5 {
+    font-size: calc(12 / 16 * 1rem);
+    line-height: calc(19 / 16 * 1rem);
+  }
+  .schoolVR ul li {
+    margin-left: calc(15 / 16 * 1rem);
+  }
+  .schoolVR .section{
+    padding:0 30px;
+  }
+  .schoolVR .section .content {
+    padding: calc(60 / 16 * 1rem) 0% 11% 0%;
+  }
+  /* .schoolVR #svrIcon{
+    width:13%;
+    top: 100px;
+  } */
+  .schoolVR #logo{
+    bottom:20px;
+  }
+  .schoolVR #section01 .wrap{
+    top:90px;
+  }
+  .schoolVR #section01 .wrap #vrIcon {
+    width: 16%;
+    padding-bottom:20px;
+  }
+  .schoolVR #svrIcon {
+    width: calc(100% - 60px);
+    right: 30px;
+    top: 40px;
+  }
+  .schoolVR #svrIcon span {
+    width: 7%;
+    height: 12px;
+  }
+  .schoolVR #svrIcon p {
+    width:23%;
+  }
+  /* .schoolVR #svrIcon{
+    width:13%;
+    top: 100px;
+  }
+  .schoolVR #svrIcon.small {
+    width: 6%;
+    top:40px;
+    left: calc(6% / 2 + 30px);
+  }
+  .schoolVR #sschoolvrIcon{
+    width: 52%;
+    top: 150px;
+  }
+  .schoolVR #sschoolvrIcon.small{
+    width: 19%;
+    top:40px;
+    right: calc(19% / 2 + 30px);
+  } */
+  .schoolVR #section01 .wrap #schoolvrIcon {
+    width: 60%;
+    padding-bottom: 10px;
+  }
+  .schoolVR #section01 .wrap .des{
+    font-size:12px;
+    /* padding-top: 35px; */
+  }
+  .schoolVR #section02 .wrap {
+    /* position: relative;
+    top:0;
+    left:0;
+    transform:translate3d(0,0,0); */
+    padding: 50px 30px;
+  }
+  .schoolVR #section02 .wrap .bigTitle{
+    padding-bottom:30px;
+  }
+  .schoolVR #section03{
+    height:auto;
+  }
+  .schoolVR #section03:before{
+    width: 75%;
+    padding-top:75vw;
+    right:7%;
+    top:100px;
+  }
+  .schoolVR #section03:after{
+    right: 53%;
+    top:90px;
+  }
+  .schoolVR #section03 .content{
+    padding-top:650px;
+    padding-bottom: 80px;
+  }
+  .schoolVR #section03 .content .wrap {
+    padding-top:40px;
+  }
+  .schoolVR #section03 .content .wrap:last-child{
+    border-top:1px solid #fff;
+    margin-top: 40px;
+  }
+  .schoolVR #section03 .content .wrap .title{
+    font-size: calc(16 / 16 * 1rem);
+    line-height: calc(24 / 16 * 1rem);
+  }
+  .schoolVR #section03 .content ul {
+    width: 100%;
+  }
+  .schoolVR #section04 {
+    padding-top: 80px;
+  }
+  .schoolVR #section04 .content{
+    padding-top:140px;
+    padding-bottom: 60px;
+  }
+  .schoolVR #section05 .content button{
+    width: calc(20 / 16 * 1rem);
+  }
+  .schoolVR #section04 svg{
+    font-weight: normal;
+    font-size: 24px;
+    margin-left: 36px;
+  }
+  .schoolVR #section04 .groupWrap .wrap{
+    flex-wrap: wrap;
+    text-align: center;
+    border-top: 1px solid #7C7C7C;
+    padding-top: 20px;
+    margin-top: 50px;
+  }
+  .schoolVR #section04 .groupWrap .wrap:first-child{
+    border:0;
+    margin-top:0;
+  }
+  .schoolVR #section04 .t{
+    font-size: 16px;
+    padding-top:15px;
+    padding-bottom:15px;
+  }
+  .schoolVR #section04 .groupWrap .col:first-child{
+    flex: auto;
+    padding-right:0;
+    width: 100%;
+  }
+  .schoolVR #section04 .groupWrap .col .s{
+    text-align: left;
+  }
+  .schoolVR #section06 .content{
+    padding-top:100px;
+  }
+  .schoolVR #section06,
+  .schoolVR #section07{
+    height:auto;
+  }
+  .schoolVR #section06 .wrap,
+  .schoolVR #section07 .wrap{
+    display: inline-block;
+  }
+  .schoolVR #section08 .content{
+    padding-top: 100px;
+  }
+  .schoolVR #section08 h2{
+    width:100%;
+  }
+  .schoolVR #section08 .specList {
+    padding-top:10px;
+  }
+  .schoolVR #section08 .specList li{
+    padding: 21px 0 18px;
+  }
+  .schoolVR #section08 .specList li.t{
+    font-size: 18px;
+  }
+  #mobileContact{
+    /* height: 120vh; */
+    /* margin-bottom:200px; */
+  }
+  #mobileContact h1{
+    font-size: 33px;
+    line-height: 38px;
+  }
+  #mobileContact .ioio{
+    font-size:25px;
+    margin-bottom:10px;
+  }
+  #mobileContact .wrap div a{
+    font-size: 13px;
+    line-height: 20px;
+  }
+  #mobileContact .address {
+    font-size: 13px;
+    line-height: 20px;
+    padding-right: calc(100% - 250px);
+  }
+  #mobileContactBtn{
+    right: 30px;
+    bottom:30px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .schoolVR #section03 .content {
+    padding-top: 550px;
+  }
+}
+@media only screen and (max-width: 500px){
+  .schoolVR #section03 .content {
+    padding-top: 450px;
+  }
+}
+/* iphone 6,7,8 */
+@media only screen and (device-width : 375px) and (device-height : 667px) and (-webkit-device-pixel-ratio : 2){ 
+}
+/* iphone 8+ */
+@media only screen and (device-width : 414px) and (device-height : 736px) and (-webkit-device-pixel-ratio : 3){
+}
+/* iphone X */
+@media (device-width: 375px) and (device-height: 812px) and (-webkit-min-device-pixel-ratio: 3){
+}

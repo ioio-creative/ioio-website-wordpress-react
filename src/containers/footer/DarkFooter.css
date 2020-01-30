@@ -1,0 +1,165 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#dark-footer {
+  background: #1A1A1A;
+  padding: 0 0 30px 0;
+  color: #fff;
+  font-size: 14px;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  /* font-family: "FuturaLT", sans-serif; */
+  height: 500px;
+  overflow: hidden;
+}
+
+#dark-footer .footer-top {
+  padding: 60px 0 30px 0;
+  z-index: 2;
+}
+
+#dark-footer .footer-top .footer-info {
+  margin-bottom: 30px;
+
+}
+
+#dark-footer .footer-slogan {
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 22px;
+
+}
+
+#dark-footer .footer-contact {
+  font-size: 16px;
+  padding-left: 20px;
+
+}
+
+#dark-footer .footer-top .social-links {
+  text-align: left;
+}
+
+#dark-footer .social-media-img {
+  width: 30px;
+  margin: 0 0 0 15px;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+#dark-footer .footer-top .social-links a {
+  font-size: 16px;
+  display: inline-block;
+  text-decoration: underline;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+#dark-footer .footer-top .social-links a:hover {
+  color: #fff;
+}
+
+#dark-footer .footer-top h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#dark-footer .footer-hotpot-img {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: 600px;
+  z-index: 0;
+}
+
+#dark-footer .footer-bottom-copyright {
+  position: relative;
+  top: 220px;
+  height: 50px;
+}
+
+#dark-footer .footer-bottom-links {
+  position: relative;
+  top: 220px;
+  height: 50px;
+}
+
+#dark-footer .footer-bottom-links a {
+  color: white;
+  padding: 5px;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#dark-footer .back-to-top-button {}
+
+#dark-footer .terms-div {
+  overflow: scroll;
+}
+
+#dark-footer #footer-join-us {
+  display: none;
+}
+
+.ReactModalPortal div div {
+  background: white;
+}
+
+@media only screen and (max-width: 992px) {
+  /*--[ Mobile styles go here]---------------------------*/
+}
+
+@media only screen and (max-width: 767px) {
+  #dark-footer {
+    min-height: 750px;
+  }
+  #dark-footer .footer-top .social-links {
+    text-align: center;
+  }
+  #dark-footer .footer-hotpot-img {
+    position: absolute;
+    top: 330px;
+    width: 350px;
+    left: 50%;
+    margin-left: -220px;
+  }
+  #dark-footer {
+
+    padding: 0 0 30px 0;
+    color: #fff;
+    font-size: 14px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0;
+    /* font-family: "FuturaLT", sans-serif; */
+    height: 100%;
+    position: relative;
+  }
+  #dark-footer .social-media-img {
+    width: 60px;
+    margin: 0 10px;
+  }
+  #dark-footer .footer-bottom-copyright {
+    position: absolute;
+    top: auto;
+    bottom: 15px;
+    height: auto;
+  }
+  #dark-footer .footer-bottom-links {
+    position: absolute;
+    top: auto;
+    bottom: 15px;
+    height: auto;
+    right: 0px;
+    width: auto;
+  }
+  #dark-footer .footer-bottom-links a {}
+  #dark-footer .back-to-top-button {}
+}

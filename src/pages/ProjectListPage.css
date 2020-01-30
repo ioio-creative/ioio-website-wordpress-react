@@ -1,0 +1,188 @@
+/* Portfolio Section
+--------------------------------*/
+
+#portfolio {
+  padding: 75px 0 50px 0;
+  white-space: nowrap;
+}
+
+#portfolio #portfolio-flters{
+  white-space: pre-line;
+  display: block;
+  padding: 0;
+  margin: 5px 0 35px 0;
+  list-style: none;
+  text-align: left;
+}
+
+#portfolio #portfolio-flters li {
+  font-weight: bold;
+  /* TODO: uncommmented by Chris */
+  cursor: pointer;
+  margin: 0 15px 0 0;
+  display: inline-block;
+  padding: 5px 10px 0 0;
+  font-size: 16px;
+  color: #000;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #fff;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#portfolio #portfolio-flters li span {
+  display: none;
+  font-weight: 100;
+  font-size: 11px;
+  position: absolute;
+  margin-bottom: 8px;
+}
+
+#portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
+  /*color: #FFE000;*/
+  text-decoration: underline;
+  background: #FFF;
+}
+
+#portfolio #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+#portfolio .portfolio-wrap {
+  /*box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);*/
+  transition: 0.3s;
+  width: 100%;
+}
+
+#portfolio .portfolio-wrap:hover {
+  cursor: pointer;
+  transition: 0.2s linear;
+  /*box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);*/
+}
+
+#portfolio .portfolio-item {
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 20px 20px;
+}
+
+/*
+#portfolio .portfolio-item img {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+#portfolio .portfolio-item img:hover {
+  opacity: 0.4;
+  transition: 0.3s;
+}
+*/
+
+.portfolio-container .img-container {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding: 60% 0 0 0;
+  /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+}
+
+.portfolio-container .img-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#portfolio .portfolio-item a:hover {
+  opacity: 1;
+  left: calc(50% - 44px);
+}
+
+#portfolio .portfolio-item .portfolio-info {
+  position: relative;
+  text-align: left;
+  padding: 25px 0px;
+  height: 90px;
+  /*border-radius: 0 0 3px 3px;*/
+}
+
+#portfolio .portfolio-item .portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-bottom: 0;
+}
+
+#portfolio .portfolio-item .portfolio-info p {
+  padding: 0;
+  margin: 0;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#portfolio {
+  margin: 0 auto;
+}
+
+#portfolio .section-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 45px;
+}
+
+@media only screen and (max-width: 1279px) {
+  #portfolio .portfolio-item .portfolio-info h4 {
+    font-size: 18px;
+  }
+  #portfolio .portfolio-item .portfolio-info p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  #portfolio .portfolio-item .portfolio-info h4 {
+    font-size: 14px;
+  }
+  #portfolio .portfolio-item .portfolio-info p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /*--[ Mobile styles go here]---------------------------*/
+  #portfolio {
+    padding-top: 50px;
+  }
+  #portfolio .section-title {
+    font-size: 30px;
+  }
+  #portfolio a {
+    text-decoration: none;
+  }
+  #portfolio .portfolio-item .portfolio-info p {
+    letter-spacing: 0.05em;
+  }
+}
+
+html[lang=zh] #portfolio .section-title,
+html[lang=tc] #portfolio .section-title {
+  letter-spacing: 0.1em;
+  font-weight: 900;
+}
+html[lang=zh] #portfolio #portfolio-flters,
+html[lang=tc] #portfolio #portfolio-flters {
+  letter-spacing: 0.05em;
+}

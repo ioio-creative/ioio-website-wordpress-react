@@ -1,0 +1,14 @@
+[
+  {
+    "id": "DarkFooter.copyRightLabel",
+    "defaultMessage": "©2019 IOIO LIMITED"
+  },
+  {
+    "id": "DarkFooter.termsAndConditionsLabel",
+    "defaultMessage": "TERMS & CONDITIONS"
+  },
+  {
+    "id": "DarkFooter.joinUsLabel",
+    "defaultMessage": "JOIN US"
+  }
+]

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "FuturaLT";
+  src: url('assets/futura_lt_bold1.ttf');
+  font-weight: bold;
+}
+
+p {
+  font-family: "FuturaLT", "Trebuchet MS", Arial, sans-serif;
+  font-weight: bold;
+}
+
+.text {
+  font-family: "FuturaLT", "Trebuchet MS", Arial, sans-serif;
+  font-weight: bold;
+}
+
+html, body {
+  font-family: "FuturaLT", "Trebuchet MS", Arial, sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}

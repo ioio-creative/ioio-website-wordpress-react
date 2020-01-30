@@ -1,0 +1,99 @@
+/*==============
+.slideshow
+==============*/
+
+.slideshow {
+  white-space: normal;
+  position: relative;
+}
+
+.slideshow img {
+  display: block;
+  object-fit: cover;
+  min-width: 100%;
+}
+
+.slideshow .slideshow-text {
+  max-height: 500px;  /* todo */
+}
+
+.slideshow h2 {
+  color: #000;
+  text-transform: uppercase;
+  padding-top: 5%;
+  padding-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+  font-weight: bold;
+}
+
+.slideshow p {
+  width: 100%;
+  height: 100%;
+  padding: 0 0;
+  color: #000;
+  text-align: left;
+}
+
+.slideshow .owl-dot {
+  display: inline-block;
+  margin: 0 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.slideshow .owl-dot.active {
+  color: #18d26e;
+}
+
+.slideshow .owl-nav, .slideshow .owl-dots {}
+
+.slideshow .the-team-text img {
+  width: 100%;
+}
+
+.slideshow .the-team-text h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.slideshow .the-team-text p {
+  text-align: center;
+  font-size: 15px;
+}
+
+@media (max-width: 767px) {
+  .slideshow {
+    margin: 50px 0 50px 0;
+    padding: 0 0 0 0;
+  }
+  .slideshow div {
+    margin: 0 0 0 0;
+  }
+  .slideshow img {
+
+  }
+  .slideshow h2 {
+    padding-top: 5%;
+    padding-bottom: 5px;
+    font-size: 20px;
+  }
+  .slideshow p {}
+  .slideshow .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .owl-theme .owl-dots .owl-dot span {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+html[lang=zh] .slideshow p,
+html[lang=tc] .slideshow p {
+  line-height: 1.7em;
+}

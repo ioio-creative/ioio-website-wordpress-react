@@ -1,0 +1,84 @@
+@media screen and (max-width: 767px) {
+	#video-landing {
+		height: 48vh;
+	}
+	.video-landing-div,
+	.video-landing-div .container-fluid,
+	.cover-bg,
+	.player-wrapper {
+		height: 100%;
+	}
+	#video-landing .player-wrapper {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	#video-landing img {
+		height: 100%;
+	}
+	.video-landing-title {
+		padding: 0;
+		position: absolute;
+		bottom: 100%;
+		width: 100%;
+		z-index: 10;
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.video-landing-title .cover-text {
+		color: #fff;
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.video-landing-title .cover-text h1 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+	.video-landing-title .cover-text h2 {
+		font-size: 12px;
+		color: #fccd05;
+	}
+	.video-landing-title .additional-info {
+		margin-bottom: 20px;
+	}
+	.video-landing-title .additional-info ul {
+		margin: 0;
+		padding: 0;
+		display: inline-flex;
+		flex-direction: row-reverse;
+	}
+	.video-landing-title .additional-info .year,
+	.video-landing-title .additional-info .date {
+		font-size: 12px;
+		color: #FFF;
+		font-weight: normal;
+	}
+	.video-landing-title .additional-info .year:after {
+		content: '/';
+	}
+	.video-landing-detail {
+		padding: 25px 0;
+	}
+	#lab-related-project {
+		padding: 50px 0;
+	}
+	#lab-related-project h1 {
+		font-size: 24px;
+	}
+	#lab-related-project h3 {
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+	/* about page move into menu? */
+	#root #sidebar.active #lab-about {
+		position: relative;
+		top: auto;
+		left: auto;
+	}
+	#root #sidebar.active #lab-about .container {
+		height: auto;
+	}
+	#root #sidebar.active #lab-about span {
+		font-size: 20px;
+	}
+}

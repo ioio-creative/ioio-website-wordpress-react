@@ -1,0 +1,152 @@
+@import 'functions.scss';
+
+
+.home-project-list {
+
+}
+
+.home-project-list .row-2 {
+  display: flex;
+  align-items: center;  
+
+  padding: 5% 0 5% 0;
+}
+
+.home-project-list .row-1-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 5% 0 5% 0;
+}
+
+.home-project-list .row-2 .project,
+.home-project-list .row-2 .section-text-container { 
+  flex: 1 1 50%;
+  padding: 0 5% 0 5%;
+}
+
+.home-project-list .section-desc {
+  font-size: em(43);
+  font-weight: bold;
+}
+
+.home-project-list .section-interaction-hint {
+  font-size: em(23);
+  margin-top: 1em;
+  font-family: serif;
+  font-weight: 600;
+}
+
+.home-project-list .row-1-right .project { 
+  flex: 0 0 75%;
+  padding: 0 5% 0 5%;
+}
+
+.home-project-list .project {
+
+}
+
+.home-project-list .project img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.home-project-list .project .project-name{
+  width: 100%;
+  padding-top: 0.5vw;
+}
+.home-project-list .project .project-name span {
+  float: left;
+}
+.home-project-list .project .project-name p {
+  float: left;
+  margin: 0;
+  font-size: em(26);
+  font-weight: bold;
+  padding-top: 0.5vw;
+}
+.home-project-list .project .project-category {
+  padding-top: 0.5vw;
+  font-size: em(26);
+}
+
+.home-project-list .project-1 {
+
+}
+
+.home-project-list .project-2 {
+
+}
+
+.home-project-list .project-3 {
+
+}
+
+.home-project-list .project-4 {
+
+}
+
+.home-project-list .project-5 {
+
+}
+
+.home-project-list .project-6 {
+  padding-right: 0 !important;
+}
+
+
+/* return-icon-container */
+
+.home-project-list .project-return-icon-container {
+  position: relative;
+  top: 0.5vw;
+}
+
+.home-project-list .interaction-hint-return-icon-container {
+  position: relative;
+  top: -0.5vw;
+}
+
+/* end of return-icon-container */
+
+
+@media only screen and (max-width: 768px) {
+  /*----------------------------
+  [ Mobile styles go here]
+  ---------------------------*/  
+  .home-project-list .row-2 {
+    flex-wrap: wrap;
+  }
+  .home-project-list .row-2 .project, 
+  .home-project-list .row-2 .section-desc{
+    flex-basis: 100%;
+  }
+  .home-project-list .project .project-name p {
+    font-size: 18px;
+  }
+  .home-project-list .row-2 .section-desc{
+    font-size: 30px;
+    padding-bottom: 67px;
+  }
+  .home-project-list .row-2 .project{
+    padding: 0;
+    padding-bottom: 67px;
+  }
+  .home-project-list .row-1-right .project{
+    flex-basis: 100%;
+    padding: 0;
+  }
+  .home-project-list .project .project-name {
+    padding-left: 10px;
+  }
+  .home-project-list .project .project-name p{
+    padding-top: 15px;
+  }
+  .home-project-list .project .project-category {
+    padding-left: 73px;
+  }
+  .home-project-list .section-interaction-hint {
+    font-size: 24px;
+  }
+}

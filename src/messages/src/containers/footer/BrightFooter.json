@@ -1,0 +1,14 @@
+[
+  {
+    "id": "BrightFooter.copyRightLabel",
+    "defaultMessage": "©2019 IOIO LIMITED"
+  },
+  {
+    "id": "BrightFooter.termsAndConditionsLabel",
+    "defaultMessage": "TERMS & CONDITIONS"
+  },
+  {
+    "id": "BrightFooter.joinUsLabel",
+    "defaultMessage": "JOIN US"
+  }
+]

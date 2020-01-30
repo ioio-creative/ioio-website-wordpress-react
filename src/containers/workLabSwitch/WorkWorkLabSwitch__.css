@@ -1,0 +1,58 @@
+.work-to-lab-switch {
+  position: absolute;
+  display: block;
+  top: 18px;
+  right: 0;
+  z-index: 900;
+}
+
+.work-to-lab-switch-txt {
+  position: absolute;
+  right: 40px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.work-to-lab-switch:hover .work-to-lab-switch-txt {
+  animation-name: bounce;
+  transform-origin: center;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+#sidebar .work-to-lab-switch-txt {
+  display: none;
+}
+
+#sidebar.active .work-to-lab-switch-txt {
+  display: block;
+}
+
+/* turn white in project details page */
+#root.project-details-page .work-to-lab-switch {
+  color: #FFFFFF;
+}
+
+@media only screen and (max-width: 767px) {
+  #sidebar.active .work-to-lab-switch-txt {
+    right: 80px;
+  }
+
+  .work-to-lab-switch-txt {
+    display: none;
+  }
+}
+
+/* animate.css */
+@keyframes bounce {
+  0%,20%,53%,80%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1);transform:translateZ(0)}
+  /* 20%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.3)} */
+  30%,43%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.2)}
+  70%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.15)}
+  90%{transform:scale(1.05)}
+}
+
+html[lang=zh] .work-to-lab-switch-txt,
+html[lang=tc] .work-to-lab-switch-txt {
+  margin-right: -0.3em;
+}

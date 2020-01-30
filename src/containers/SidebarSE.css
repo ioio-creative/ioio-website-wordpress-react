@@ -1,0 +1,16 @@
+/*** iphone 5/SE ***/
+@media screen and (max-width:320px) {
+	#sidebar.active .menu-item {
+		font-size: 30px;
+	}
+	#sidebar.active .info-section {
+		top: auto;
+		bottom: 15px;
+	}
+	#sidebar.active .info-section h4 {
+		margin-bottom: 10px;
+	}
+	#sidebar.active .info-section p {
+		margin-bottom: 15px;
+	}
+}

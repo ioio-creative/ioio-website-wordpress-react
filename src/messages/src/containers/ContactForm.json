@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ContactForm.firstNameLabel",
+    "defaultMessage": "First Name"
+  },
+  {
+    "id": "ContactForm.lastNameLabel",
+    "defaultMessage": "Last Name"
+  },
+  {
+    "id": "ContactForm.emailLabel",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "ContactForm.phoneLabel",
+    "defaultMessage": "Phone"
+  },
+  {
+    "id": "ContactForm.companyNameLabel",
+    "defaultMessage": "Company Name"
+  },
+  {
+    "id": "ContactForm.titleOrRoleLabel",
+    "defaultMessage": "Your title / role"
+  },
+  {
+    "id": "ContactForm.messageLabel",
+    "defaultMessage": "Message"
+  },
+  {
+    "id": "ContactForm.submitButton",
+    "defaultMessage": "Submit"
+  },
+  {
+    "id": "ContactForm.messageSendSuccessMessage",
+    "defaultMessage": "Your message has been sent!"
+  },
+  {
+    "id": "ContactForm.messageSendErrorMessage",
+    "defaultMessage": "An error occured while submitting the form."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "HomePage.companyName",
+    "defaultMessage": "IOIO CREATIVE"
+  },
+  {
+    "id": "HomePage.shortCompanyNameInTopCanvas",
+    "defaultMessage": "IOIO"
+  },
+  {
+    "id": "HomePage.labItemTitle",
+    "defaultMessage": "Tapping"
+  },
+  {
+    "id": "HomePage.sharingItemTitle",
+    "defaultMessage": "Bible Consipiracy"
+  }
+]

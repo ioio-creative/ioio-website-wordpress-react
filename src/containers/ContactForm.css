@@ -1,0 +1,91 @@
+form{
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-size: 16px;
+}
+
+input:focus {
+  border: 1px solid #000;
+}
+
+textarea{
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-size: 16px;
+
+}
+
+.contact-form .label-content {
+  margin-bottom: 15px;
+}
+
+label{
+  width: 40%;
+  font-weight:bold;
+  padding-bottom: 0px;
+}
+
+.form-l{
+    padding-right: 10px;
+}
+
+.form-r{
+  position: absolute;
+  right: 0;
+  padding-left: 10px;
+
+}
+
+.sendBtn {
+  background-color: black;
+  color: white;
+  padding: 10px 50px;
+  font-weight: 500;
+  transition: all 0.4s;
+}
+.sendBtn:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.contact-form {
+  width: 100%;
+  margin: 0 0;
+  display: block;
+  padding: 0 0 0 0;
+}
+
+.contact-form> :not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.contact-form .form-field {
+  position: relative;
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 10px 10px 0 0;
+  font-size: 12px;
+}
+
+
+
+.contact-form input, .contact-form textarea {
+
+  width: 100%;
+  max-width: 100%;
+}

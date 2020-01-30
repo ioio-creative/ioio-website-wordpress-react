@@ -1,0 +1,466 @@
+body {
+  white-space: normal;
+  background: #000000;
+}
+#root.sonar-2019-page {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Gotham', Arial, Helvetica, sans-serif;
+}
+#root.sonar-2019-page #main {
+  margin: 0;
+  background-color: transparent;
+}
+#root.sonar-2019-page #scroller {
+  margin: 0;
+}
+#sonar-2019 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  /* ios "momentum" style scrolling fix */
+  /* https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements/ */
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+#sonar-2019 *::selection {
+  background: #ffd800;
+  /* color: #F00; */
+}
+#sonar-2019 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+#sonar-2019 .background-layer {
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  /* position: relative; */
+  z-index: -1;
+  background-color: #000;
+}
+#sonar-2019 .background-layer .canvas-wrapper {
+  width: 100%;
+  height: 200vh;
+  position: fixed;
+  /* filter: blur(5px); */
+}
+#sonar-2019 .background-layer .canvas-wrapper canvas {
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#sonar-2019 .background-layer .background-color-layer {
+  mix-blend-mode: screen;
+  top: 100vh;
+  width: 100%;
+}
+#sonar-2019 .background-layer .background-color-layer .bg {
+  background-color: #000000;
+}
+#sonar-2019 .background-layer .background-color-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#sonar-2019 .background-layer .background-color-layer .section-explore {
+  background-color: #170076;
+}
+
+#sonar-2019 .background-layer .trigger-point {
+  position: absolute;
+  top: 800px;
+  left: 600px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+#sonar-2019 .background-layer .trigger-point .circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #FFF;
+  transform: scale(1.3);
+}
+#sonar-2019 .foreground-layer {
+  position: relative;
+  z-index: 1;
+  color: #FFFFFF;
+  min-height: 200vh;
+}
+#sonar-2019 .logo {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  font-size: 24px;
+}
+#sonar-2019 .logo .company-link {
+  text-decoration: none;
+  color: #FFF;
+  font-family: 'Futura', Arial, Helvetica, sans-serif;
+}
+
+#sonar-2019 .foreground-layer .section {
+  position: relative;
+}
+#sonar-2019 .foreground-layer .section.section-title,
+#sonar-2019 .foreground-layer .section.section-general {
+  height: 100vh;
+  display: flex;
+}
+#sonar-2019 .foreground-layer .section.section-title {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+#sonar-2019 .foreground-layer .section.section-title .title {
+  font-size: 150px;
+  font-weight: bold;
+  padding-bottom: 50px;
+  line-height: 1em;
+}
+#sonar-2019 .foreground-layer .section.section-title .rotating-text-wrapper {
+  position: relative;
+  padding-bottom: 50px;
+}
+#sonar-2019 .foreground-layer .section.section-title .rotating-text-size-wrapper {
+  width: 170px;
+  height: 170px;
+  transform: scale(0.7);
+  transform-origin: bottom right;
+  position: relative;
+}
+#sonar-2019 .foreground-layer .section.section-title .rotating-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  animation: rotation 10s infinite linear;
+  font-size: 12px;
+}
+#sonar-2019 .foreground-layer .section.section-general {
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+#sonar-2019 .foreground-layer .section.section-general .title {
+  font-size: 30px;
+  line-height: 42px;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+#sonar-2019 .foreground-layer .section.section-general .title .highlight {
+  color: #fc1866;
+}
+#sonar-2019 .foreground-layer .section.section-general .description {
+  font-size: 14px;
+  line-height: 23px;
+}
+#sonar-2019 .foreground-layer .section.section-general .description u {
+  white-space: nowrap;
+}
+#sonar-2019 .foreground-layer .section.section-board {
+  padding: 50px 0 100px;
+}
+#sonar-2019 .foreground-layer .section.section-board .top-column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20vh;
+}
+#sonar-2019 .foreground-layer .section.section-board .top-column .title {
+  font-size: 24px;
+  width: 33%;
+  margin-bottom: 30px;
+}
+#sonar-2019 .foreground-layer .section.section-board .top-column .line {
+  width: 25%;
+  height: 1px;
+  background-color: #FFFFFF;
+  font-size: 25px;
+  margin-top: 0.75em;
+}
+#sonar-2019 .foreground-layer .section.section-board .top-column .description {
+  font-size: 14px;
+  width: 33%;
+  padding-top: 0.5em;
+}
+#sonar-2019 .foreground-layer .section.section-board .bottom-column {
+  padding: 0 30px;
+}
+#sonar-2019 .foreground-layer .section.section-board .bottom-column .boards {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+#sonar-2019 .foreground-layer .section.section-board .bottom-column .boards .board {
+  width: 20%;
+  text-align: center;
+  color: #00FFFF;
+  font-size: 24px;
+  line-height: 25px;
+  font-weight: bold;
+}
+#sonar-2019 .foreground-layer .section.section-board .bottom-column .boards .board .board-image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  margin-bottom: 20px;
+}
+#sonar-2019 .foreground-layer .section.section-board .bottom-column .boards .board .board-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+#sonar-2019 .foreground-layer .section.section-explore {
+  padding-bottom: 50px;
+}
+#sonar-2019 .foreground-layer .section.section-explore .top-column .title {
+  font-size: 24px;
+  font-weight: bold;
+  width: 357px;
+  margin: 0 auto;
+  padding: 60px 0 46px;
+  text-align: center;
+}
+#sonar-2019 .foreground-layer .section.section-explore .bottom-column .slides-wrapper {
+  overflow: hidden;
+  user-select: none;
+}
+#sonar-2019 .foreground-layer .section.section-explore .bottom-column .slides-wrapper .photos {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  /* transform: translate(-300%); */
+  list-style: none;
+  padding: 0;
+  /* transition: all 0.4s; */
+}
+#sonar-2019 .foreground-layer .section.section-explore .bottom-column .slides-wrapper .photos .photo {
+  flex: 0 0 100%;
+  padding-top: 60%;
+  position: relative;
+}
+#sonar-2019 .foreground-layer .section.section-explore .bottom-column .slides-wrapper .photos .photo img {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#sonar-2019 .foreground-layer .section.section-explore .background-text {
+  font-size: 132px;
+  margin-top: -60px;
+  line-height: 1em;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+#sonar-2019 .foreground-layer .section-about {
+  padding: 100px 0 50px;
+  font-size: 26px;
+}
+#sonar-2019 .foreground-layer .section-about p {
+  margin-bottom: 0;
+}
+#sonar-2019 .foreground-layer .section-about .highlight {
+  color: #ffd800;
+}
+#sonar-2019 .foreground-layer .section-about .logo-wrapper {
+  position: absolute;
+  left: 50%;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translate(-50%);
+  margin-top: 90px;
+  height: 200px;
+}
+#sonar-2019 .foreground-layer .section-about .logo-wrapper a {
+  display: flex;
+  justify-content: space-between;
+}
+#sonar-2019 .foreground-layer .section-about .logo-wrapper img {
+  width: 49%;
+  /* width: 100%; */
+}
+#sonar-2019 .foreground-layer .section-about .rotating-text-wrapper {
+  position: relative;
+  height: 200px;
+  margin: 90px auto;
+}
+#sonar-2019 .foreground-layer .section-about .rotating-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  animation: rotation 10s infinite linear;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+#sonar-2019 .foreground-layer .section-special {
+  padding: 0px 30px 100px;
+}
+#sonar-2019 .foreground-layer .section-special .maze-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 500px;
+  cursor: grab;
+  user-select: none;
+}
+#sonar-2019 .foreground-layer .section-special .maze {
+  max-width: 600px;
+  margin: 0 auto;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+#sonar-2019 .foreground-layer .section-special .maze canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  vertical-align: top;
+}
+#sonar-2019 .foreground-layer .section-special .maze-hints {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 30px;
+}
+.rotating-text > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  text-align: center;
+  width: 8px;
+  height: 18px;
+  margin-left: -4px;
+  margin-top: -9px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0DEG);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360DEG);
+  }
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+  #sonar-2019 .background-layer {
+    height: 100%;
+  }
+  #sonar-2019 .background-layer .canvas-wrapper {
+    height: 100vh;
+  }
+  #sonar-2019 .background-layer .background-color-layer {
+    top: 0;
+    mix-blend-mode: normal;
+  }
+  #sonar-2019 .foreground-layer .section.section-title {
+    /* height: 50vh; */
+  }
+  #sonar-2019 .foreground-layer .section.section-title .title {
+    font-size: 80px;
+    width: 60%;
+  }
+  #sonar-2019 .foreground-layer .section.section-title .rotating-text-wrapper {
+    display: none;
+  }
+  #sonar-2019 .foreground-layer .section.section-general {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 1px 0 30px;
+  }
+  #sonar-2019 .foreground-layer .section.section-general .title {
+    font-size: 22px;
+    line-height: 34px;
+  }
+  #sonar-2019 .foreground-layer .section.section-board {
+    padding: 50px 0 70px;
+  }
+  #sonar-2019 .foreground-layer .section.section-board .top-column {
+    margin-bottom: 15vh;
+  }
+  #sonar-2019 .foreground-layer .section.section-board .top-column .title,
+  #sonar-2019 .foreground-layer .section.section-board .top-column .description {
+    width: 100%;
+  }
+  #sonar-2019 .foreground-layer .section.section-board .top-column .line {
+    display: none;
+  }
+    
+  #sonar-2019 .foreground-layer .section.section-board .bottom-column .boards .board {
+    width: 40%;
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+  #sonar-2019 .foreground-layer .section.section-explore {
+    padding-bottom: 70px;
+  }
+  #sonar-2019 .foreground-layer .section.section-explore .top-column .title {
+    width: auto;
+  }
+  #sonar-2019 .foreground-layer .section.section-explore .bottom-column .slides-wrapper .photos {
+    width: 100%;
+  }
+  #sonar-2019 .foreground-layer .section.section-explore .background-text {
+    font-size: 40px;
+    margin-top: -20px;
+  }
+  #sonar-2019 .foreground-layer .section.section-about {
+    font-size: 22px;
+    line-height: 34px;
+  }
+}
+/* se */
+@media screen and (max-width: 320px) {
+  #sonar-2019 .foreground-layer .section.section-title .title {
+    font-size: 50px;
+  }
+  #sonar-2019 .foreground-layer .section.section-title .rotating-text-wrapper {
+    transform: scale(0.5);
+    padding-bottom: 15px;
+  }
+  #sonar-2019 .foreground-layer .section.section-title .rotating-text-size-wrapper {
+    transform: scale(1);
+  }
+}
+/* ipx */
+@media (-webkit-min-device-pixel-ratio: 2.5) { 
+  #sonar-2019 .foreground-layer .section.section-title .title {
+    font-size: 55px;
+  }
+  #sonar-2019 .foreground-layer .section.section-title {
+    height: calc(100vh - 110px);
+  }
+}

@@ -1,0 +1,17 @@
+@media screen and (max-width: 767px) {
+	#lab-about {
+		position: fixed;
+		top: 55px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: auto;
+		overflow: auto;
+	}
+	#lab-about .container {
+		height: 100%;
+	}
+	#lab-about span {
+		font-size: 24px;
+	}
+}

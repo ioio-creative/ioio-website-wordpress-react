@@ -1,0 +1,508 @@
+/* =======================
+Cover Video Part
+ ======================= */
+
+ #lab-video-landing {
+   padding-top: 56.25%;
+
+ }
+
+#lab-video-landing .lab-bg {
+  background-color: #000000;
+  color: white;
+  padding-top: 56.25%;
+
+}
+
+#lab-video-landing, #lab-video-landing div, #lab-video-landing div div {
+
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+#lab-top {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+#lab-video-landing .video-text h3 {
+  color: #888;
+  z-index: 10;
+  font-size: 24px;
+  letter-spacing: 0.05em;
+  padding: 5px 0 5px 0;
+  text-transform: uppercase;
+  text-align: left;
+  position: absolute;
+  top: -220px;
+}
+
+#lab-video-landing .video-text h1 {
+  color: white;
+  font-weight: bold;
+  z-index: 10;
+  line-height: 1.4em;
+  font-size: 50px;
+  text-align: left;
+  padding: 5px 0 5px 0;
+  position: absolute;
+  text-transform: uppercase;
+  top: -180px;
+}
+
+#lab-video-landing .lab-item {
+  width: 100%;
+  margin: 0 0;
+  padding: 20px;
+  text-align: left;
+  vertical-align: bottom;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* =======================
+Lab List
+ ======================= */
+
+#portfolio-flters.lab-categories {
+  white-space: pre-line;
+  display: block;
+  padding: 0;
+  margin: 5px 0 35px 0;
+  padding-left: 0;
+  list-style: none;
+  text-align: left;
+}
+
+#portfolio-flters.lab-categories div {
+  padding-left: 5px;
+}
+
+.lab-categories #portfolio-flters li {
+  font-weight: bold;
+  /* TODO: uncommmented by Chris */
+  cursor: pointer;
+  margin: 0 15px 0 0;
+  display: inline-block;
+  padding: 5px 10px 0 0;
+  font-size: 16px;
+  color: #FFF;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #000;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/*
+ .lab-categories #portfolio-flters li:first-child {
+   padding: 5px 10px 0 0;
+   margin: 0 15px 0 0;
+ }
+*/
+
+.lab-categories #portfolio-flters li span {
+  display: none;
+  font-weight: 100;
+  font-size: 11px;
+  position: absolute;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.lab-categories #portfolio-flters li a {
+  color: white;
+}
+
+.lab-categories #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
+  /*color: #FFE000;*/
+  text-decoration: underline;
+  background: #000;
+}
+
+.lab-categories #portfolio-flters li:last-child {
+  margin-right: 0;
+}
+
+#hover-cover {
+  display: block;
+  position: fixed;
+  opacity: 0;
+  top: -100%;
+  left: 55px;
+  bottom: 0;
+  right: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#hover-cover.active {
+  z-index: 10;
+  display: block;
+  position: fixed;
+  opacity: 1;
+  top: 0;
+  left: 55px;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 9;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#hover-cover.active div {
+  opacity: 1;
+  position: relative;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#hover-cover.active .hover-text {
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+  color: white;
+}
+
+#hover-cover .hover-text {
+  position: relative;
+  z-index: 10;
+  opacity: 0;
+  color: white;
+}
+
+#lab-list {
+  background: black;
+  padding-bottom: 20px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#lab-list div .col-md-1 {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -20px;
+  /*balance out padding 20 in lab-item*/
+}
+
+#lab-list.active {}
+
+.lab-item {
+  padding: 20px;
+}
+
+.lab-item.active {
+  z-index: 10;
+}
+
+.sub-lab-item {
+  cursor: pointer;
+  z-index: 10;
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+
+}
+
+.lab-item.fade .sub-lab-item {
+  cursor: pointer;
+  z-index: 9;
+  opacity: 0.3;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item.active .sub-lab-item {
+  opacity: 1;
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item .lab-item-detail {
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item.active .lab-item-detail {
+  display: block;
+  opacity: 1;
+  color: white;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item-cat {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fccd05;
+}
+
+.lab-item-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+}
+
+.lab-item-desc {
+  color: white;
+}
+
+.lab-item.active .img-container {
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.lab-item .img-container {
+  z-index: 10;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+.lab-item span {
+  color: #fccd05;
+  position: absolute;
+  margin: 0 0;
+  top: 25px;
+  bottom: 100px;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 2;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-desc-from-top {
+  top: 150px;
+}
+
+.lab-title-from-top {
+  width: 80%;
+  top: 70px;
+}
+
+.lab-desc-from-bottom {
+  bottom: 50px;
+}
+
+.lab-title-from-bottom {
+  bottom: 90px;
+}
+
+.lab-item h1 {
+  color: white;
+  position: absolute;
+  margin: 0 0;
+  padding-left: 25px;
+  letter-spacing: 0.05em;
+  font-size: 16px;
+  text-transform: uppercase;
+  z-index: 2;
+  text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item h3 {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  margin: 0 0;
+  padding-left: 25px;
+  font-size: 20px;
+  line-height: 1.5em;
+  z-index: 2;
+  text-align: left;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.lab-item .img-container {
+  /*display: table;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  padding: 50% 0 0 0;*/
+  /* 56.25% = 100 / (w / h) = 100 / (1920 / 1080) */
+}
+
+.lab-item .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /*  padding: 50% 0 0 0;*/
+}
+
+.lab-item.active img {
+  opacity: 1;
+}
+
+.lab-item img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.sharing {
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.sharing:hover {
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#lab-bottom {
+  background-color: black;
+  color: white;
+  padding: 100px 0 100px 0;
+}
+
+#ioio-text-l {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  font-size: 60px;
+  padding: 10px;
+}
+
+#ioio-text-r {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+  font-size: 60px;
+  padding: 10px;
+  text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
+}
+
+#lab-bottom-detail-desc {
+  font-weight: bold;
+  padding-right: 70px;
+}
+
+
+#lab-list.active .lab-sharing-presenter{
+  display: none;
+}
+
+#lab-list.active .template-type-7 .lab-title-from-top{
+  display: none;
+}
+
+
+.lab-sharing-presenter {
+  display: block;
+  position: absolute;
+  bottom: 15px;
+  left: 25px;
+  width: 100%;
+}
+
+.lab-sharing-presenter .medium-arrow{
+  position: absolute;
+  bottom: 8px;
+  right: 50px;
+  text-align: right;
+  width:200%;
+  font-size: 30px;
+}
+
+
+
+.presenter-img-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.presenter-img-container img {
+  position: absolute;
+  width: 100%;
+  right: 0;
+}
+
+.lab-sharing-presenter span {
+  position: absolute;
+  top: 9px;
+  left: 60px;
+  color: black;
+  font-size: 12px;
+}
+
+.lab-sharing-presenter h5 {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  color: black;
+  font-size: 12px;
+}
+
+
+.hover-mobile{
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .hover-mobile{
+    display: block;
+  }
+  .hover-left,.hover-middle,.hover-right{
+    display: none;
+  }
+  /*--[ Mobile styles go here]---------------------------*/
+}
