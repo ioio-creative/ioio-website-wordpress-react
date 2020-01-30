@@ -1,16 +1,20 @@
 .home-client-list {
-  padding: 5% 0 5% 0;
+  padding: 2.5% 0 2.5% 0;
 }
 
 .home-client-list .clients {
 
 }
 
-.home-client-list .title-first-half{
-  font-family: 'Semibold';
+.home-client-list .section-header {
+  padding-top: 10%;
 }
 
-.home-client-list .title-second-half{
+.home-client-list .title-first-half {
+  font-family: serif;
+}
+
+.home-client-list .title-second-half {
   font-weight: bold;
 }
 

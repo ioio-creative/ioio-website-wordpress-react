@@ -32,10 +32,20 @@ function Project(props) {
   const [projectReturnIconContainerWidth, setProjectReturnIconContainerWidth] = useState(56);
 
   useEffect(_ => {
-    if (project) {
+    function handleWindowResize() {
       const returnIconContainerRefWidth = projectReturnIconContainerRef.current.getBoundingClientRect().width;
       setProjectReturnIconContainerWidth(returnIconContainerRefWidth);
     }
+
+    if (project) {
+      handleWindowResize();
+
+      window.addEventListener('resize', handleWindowResize);
+    }
+
+    return _ => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }, [project]);
 
   if (!project) {

@@ -18,7 +18,7 @@ import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
 import {createIdSlugPairs} from 'utils/generalMapper';
 
-import './HomePage.css';
+import './HomePage.scss';
 import './HomePageSE.css';
 
 import Modal from 'react-modal';
@@ -261,7 +261,7 @@ class HomePage extends Component {
                   <ReturnIcon
                     color='#FFF'
                     beforeWidth='1.5vw'
-                    beforeHeight='2.5vw'
+                    beforeHeight='1.9vw'
                     arrowSize='1vw'
                   />
                 </span>

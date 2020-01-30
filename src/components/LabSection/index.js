@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 
 import React, {useEffect,useRef} from 'react';
 import {Link} from 'react-router-dom';
@@ -256,13 +256,15 @@ const LabSection = props => {
           <Link 
             to={routes.lab(true)}        
           >
-            <div>
-              <ReturnIcon
-                color='#FFF'
-                beforeWidth='1.5vw'
-                beforeHeight='2.5vw'
-                arrowSize='1vw'
-              />
+            <div className='interaction-hint'>
+              <span className='interaction-hint-return-icon-container'>
+                <ReturnIcon
+                  color='#FFF'
+                  beforeWidth='1.5vw'
+                  beforeHeight='1.9vw'
+                  arrowSize='1vw'
+                />
+              </span>
               {interactionHint}
             </div>
           </Link>          

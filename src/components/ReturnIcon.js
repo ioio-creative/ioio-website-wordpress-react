@@ -1,4 +1,3 @@
-import './ReturnIcon.css';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,7 +6,7 @@ const ReturnIconStyleComponent = styled.span`
   height: 1em;
   display: inline-block;
   position: relative;
-  padding-left: 0.4em;
+  padding-left: 0.1em;
   padding-right: 1vw;
 
   /*

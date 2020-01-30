@@ -1,3 +1,6 @@
+@import 'functions.scss';
+
+
 .lab-section-container {
   --labSectionContainerNormalHeight: 500px;
   --labSectionContainerMobileHeight: 355px;
@@ -10,9 +13,9 @@
 }
 
 .lab-section-container .title {
-  font-size: 70px;
+  font-size: em(70);
   font-weight: bold;
-  padding: 5% 10% 5% 10%;
+  padding: 5% 10% 2.5% 10%;
 }
 
 .lab-section-container #labSection #video {
@@ -30,10 +33,10 @@
 
   max-width: 440px;
   position: absolute;
-  bottom: 55px;
-  right: 15%;
+  bottom: 10%;
+  right: 5%;
   color: var(--videoTextContainerFontColor);
-  font-size: 47px;
+  font-size: 3vw;
 }
 
 .lab-section-container #labSection .video-text-container a {
@@ -41,14 +44,19 @@
 }
 
 .lab-section-container #labSection .desc {
-  line-height: 51px;
+  line-height: 3.7vw;
   font-weight: bold;
 }
 
+.lab-section-container #labSection .interaction-hint-return-icon-container {
+  position: relative;
+  top: -0.9vw;
+}
+
 .lab-section-container #labSection .interaction-hint {
-  font-family: 'Semibold';
-  font-size: 24px;
-  padding-top: 20px;
+  font-size: 1.5vw;
+  margin-top: 1em;
+  font-family: serif;
 }
 
 
