@@ -82,6 +82,10 @@
   transition: var(--default-transition);
 }
 
+html[lang=tc] .work-to-lab-switch .text {
+  left: 36px;
+}
+
 .work-to-lab-switch.show .text {
   opacity: 1;
   visibility: visible;
