@@ -1,4 +1,4 @@
-@import 'functions.scss';
+@import 'globals.scss';
 
 
 .home-project-list {
@@ -114,10 +114,7 @@
 /* end of return-icon-container */
 
 
-@media only screen and (max-width: 768px) {
-  /*----------------------------
-  [ Mobile styles go here]
-  ---------------------------*/  
+@include media-breakpoint-down(sm) {
   .home-project-list .row-2 {
     flex-wrap: wrap;
     padding: 0;

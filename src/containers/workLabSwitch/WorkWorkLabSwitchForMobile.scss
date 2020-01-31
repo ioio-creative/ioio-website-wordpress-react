@@ -1,3 +1,6 @@
+@import 'globals.scss';
+
+
 .work-to-lab-switch-for-mobile {
   position: absolute;
   display: block;
@@ -33,7 +36,7 @@
   color: #FFFFFF;
 }
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   #sidebar.active .work-to-lab-switch-for-mobile .work-to-lab-switch-txt {
     right: 80px;
   }

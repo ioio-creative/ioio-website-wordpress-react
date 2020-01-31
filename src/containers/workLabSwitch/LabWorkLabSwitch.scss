@@ -1,3 +1,6 @@
+@import 'globals.scss';
+
+
 .lab-to-work-switch {
   position: absolute;
   display: block;
@@ -28,14 +31,6 @@
   display: block;
 }
 
-@media only screen and (max-width: 767px) {
-  #dark-sidebar.active .lab-to-work-switch-txt {
-    right: 80px;
-  }
-  .lab-to-work-switch-txt {
-    display: none;
-  }
-}
 
 /* animate.css */
 @keyframes bounce {
@@ -44,4 +39,14 @@
   30%,43%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.2)}
   70%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.15)}
   90%{transform:scale(1.05)}
+}
+
+
+@include media-breakpoint-down(sm) {
+  #dark-sidebar.active .lab-to-work-switch-txt {
+    right: 80px;
+  }
+  .lab-to-work-switch-txt {
+    display: none;
+  }
 }

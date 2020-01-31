@@ -12,7 +12,7 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 import routes from 'globals/routes';
 import {fetchActiveDarkSidebar, fetchActiveAboutLab} from 'websiteApi';
 
-import './DarkSidebar.css';
+import './DarkSidebar.scss';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {

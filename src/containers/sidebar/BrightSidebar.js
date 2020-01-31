@@ -13,7 +13,10 @@ import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 import routes from 'globals/routes';
 import {fetchActiveBrightSidebar} from 'websiteApi';
 
-import './BrightSidebar.css';
+import {isSmallerThanOrEqualToSmallViewport} from 'utils/ui/viewport';
+
+import './BrightSidebar.scss';
+
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -32,17 +35,58 @@ class BrightSidebar extends Component {
     super(props);
     this.state = {
       sidebar: null,
-      isOpenSidebar: false
+      isOpenSidebar: false,
+      isUseMobileWorkWorkLabSwitch: false
     };
 
-    this.handleMenuToggle = this.handleMenuToggle.bind(this);
-    this.handleMenuClose = this.handleMenuClose.bind(this);
+    [
+      // methods
+      'checkIsUseMobileWorkWorkLabSwitch',
+
+      // event handlers
+      'handleWindowResize',
+      'handleMenuToggle',
+      'handleMenuClose',
+    ].forEach(methodName => {
+      this[methodName] = this[methodName].bind(this);
+    });    
   }
+
+
+  /* react lifecycles */
 
   componentDidMount() {
     fetchActiveBrightSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
-    });    
+    });
+
+    this.checkIsUseMobileWorkWorkLabSwitch();
+    
+    window.addEventListener('resize', this.handleWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowResize);
+  }
+
+  /* end of react lifecycles */
+
+
+  /* methods */
+
+  checkIsUseMobileWorkWorkLabSwitch() {
+    this.setState({
+      isUseMobileWorkWorkLabSwitch: isSmallerThanOrEqualToSmallViewport()
+    });
+  }
+
+  /* end of methods */
+
+
+  /* event handlers */
+
+  handleWindowResize() {
+    this.checkIsUseMobileWorkWorkLabSwitch();
   }
 
   handleMenuToggle(e) {
@@ -64,12 +108,14 @@ class BrightSidebar extends Component {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"});
     }, 0);
-
   }
+
+  /* end of event handlers */
+
 
   render() {
     const {
-      sidebar, isOpenSidebar
+      sidebar, isOpenSidebar, isUseMobileWorkWorkLabSwitch
     } = this.state;
     
     if (sidebar === null) {
@@ -91,7 +137,7 @@ class BrightSidebar extends Component {
         </a>
 
         <Link id="logo-toggle" role="button" className="menu-transition" to={routes.home(true)} onClick={this.handleMenuClose}>
-          <img className="logo menu-transition" src={sidebar.logo_image.guid} alt=""/>
+          <img className="logo menu-transition" src={sidebar.logo_image.guid} alt="IOIO logo" />
           <h4 id="sidebar-top-logo-text">
             <FormattedMessage
               id="BrightSidebar.companyName"
@@ -101,15 +147,18 @@ class BrightSidebar extends Component {
         </Link>
 
         {
-          // isOpenSidebar &&          
-          // <WorkWorkLabSwitch
-          //   backgroundColor='white'
-          //   color='black'
-          //   onClick={this.handleMenuClose}
-          // />          
+          !isUseMobileWorkWorkLabSwitch && isOpenSidebar &&          
+          <WorkWorkLabSwitch
+            backgroundColor='white'
+            color='black'
+            onClick={this.handleMenuClose}
+          />          
         }
 
-        <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />    
+        {
+          isUseMobileWorkWorkLabSwitch &&
+          <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />
+        }        
 
         <div className="container-fluid ">
           <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>

@@ -1,4 +1,4 @@
-import './ClientList.css';
+import './ClientList.scss';
 
 import React from 'react';
 import {FormattedMessage} from 'react-intl';

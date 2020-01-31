@@ -1,3 +1,6 @@
+@import 'globals.scss';
+
+
 .work-to-lab-switch {
   --circle-diameter: 200px;
   --default-transition: all 0.4s;
@@ -107,6 +110,7 @@ html[lang=tc] .work-to-lab-switch .text {
   animation-fill-mode: both;
 }
 
+
 /* animate.css */
 @keyframes bounce {
   0%,20%,53%,80%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1);transform:translateZ(0) skewY(-20deg)}
@@ -116,7 +120,8 @@ html[lang=tc] .work-to-lab-switch .text {
   90%{transform:scale(1.05)}
 }
 
-@media screen and (max-width: 767px) {
+
+@include media-breakpoint-down(sm) {
   .work-to-lab-switch {
     display: none;
   }

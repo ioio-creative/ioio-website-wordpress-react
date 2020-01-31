@@ -3,9 +3,10 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
-import {invokeIfIsFunction} from 'utils/js/function/isFunction';
+import isFunction from 'utils/js/function/isFunction';
 
-import './WorkWorkLabSwitch.css';
+import './WorkWorkLabSwitch.scss';
+
 
 export default function WorkWorkLabSwitch(props) {
   const showTimeoutInMillis = 1500;
@@ -14,9 +15,12 @@ export default function WorkWorkLabSwitch(props) {
     onClick, backgroundColor, color
   } = props;
 
-  const onClickFunc = _ => {
-    invokeIfIsFunction(onClick);
-  };
+  let onClickFunc = _ => {};
+  if (isFunction(onClick)) {
+    onClickFunc = _ => {
+      onClick();
+    };
+  }
 
   const [isShow, setIsShow] = useState(false);
   const workToLabSwitchRef = useRef(null);

@@ -1,3 +1,5 @@
+@import 'globals.scss';
+
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
@@ -354,7 +356,7 @@
 
 @media (min-width: 1330px) {}
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   /*--[ Mobile styles go here]---------------------------*/
   #dark-sidebar #sidebar-top-logo-text {
     left: 15px;

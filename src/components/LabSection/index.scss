@@ -1,4 +1,4 @@
-@import 'functions.scss';
+@import 'globals.scss';
 
 
 .lab-section-container {
@@ -60,7 +60,7 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@include media-breakpoint-down(sm) {
   .lab-section-container #labSection{
     height: var(--labSectionContainerMobileHeight);
     background-color: #000;

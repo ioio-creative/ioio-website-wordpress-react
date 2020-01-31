@@ -1,3 +1,6 @@
+@import 'globals.scss';
+
+
 .home-client-list {
   padding: 2.5% 0 2.5% 0;
 }
@@ -39,7 +42,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   .home-client-list .section-header {
     padding-left: 5%;
   }

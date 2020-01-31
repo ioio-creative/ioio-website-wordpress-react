@@ -1,3 +1,57 @@
+// https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
+$xs: 0;
+$sm: 576;
+$md: 768;
+$lg: 992;
+$xl: 1200;
+
+$sizeToMinPixelsMap: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl
+);
+
+$sizeToMaxPixelsMap: (
+  xs: $sm - 1,
+  sm: $md - 1,
+  md: $lg - 1,
+  lg: $xl - 1
+);
+
+//@include media-breakpoint-up(sm) {
+  // Styles
+//}
+// Compiled:
+//   @media (min-width: 544px) {}
+@mixin media-breakpoint-up($size) {
+  $pixelToUse: map-get($sizeToMinPixelsMap, $size);  
+  @media (min-width: #{$pixelToUse}px) { @content; }
+}
+
+//@include media-breakpoint-down(sm) {
+  // Styles
+//}
+// Compiled:
+//  @media (min-width: 576px) and (max-width: 768px) {}
+@mixin media-breakpoint-down($size) {
+  $pixelToUse: map-get($sizeToMaxPixelsMap, $size);
+  @media (max-width: #{$pixelToUse}px) { @content; }
+}
+
+//@include media-breakpoint-between(sm, md) {
+  // your code
+//}
+//  Compiled:
+//    @media (min-width: 576px) and (max-width: 992px) {}
+@mixin media-breakpoint-between($size1, $size2) {
+  $pixelToUse1: map-get($sizeToMinPixelsMap, $size1);
+  $pixelToUse2: map-get($sizeToMaxPixelsMap, $size2);
+  @media (min-width: $pixelToUse1) and (max-width: $pixelToUse2) { @content; }
+}
+
+
 $browser-context: 16;
 
 // https://css-tricks.com/snippets/sass/px-to-em-functions/

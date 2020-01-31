@@ -5,12 +5,13 @@ import {FormattedMessage} from 'react-intl';
 import routes from 'globals/routes';
 import isFunction from 'utils/js/function/isFunction';
 
-import './WorkWorkLabSwitchForMobile.css';
+import './WorkWorkLabSwitchForMobile.scss';
 
 export default function WorkWorkLabSwitchForMobile(props) {  
   const {
     onClick
   } = props;
+  
   let onClickFunc = _ => {};
   if (isFunction(onClick)) {
     onClickFunc = _ => {

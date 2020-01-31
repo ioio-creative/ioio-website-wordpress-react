@@ -1,4 +1,4 @@
-@import 'functions.scss';
+@import 'globals.scss';
 
 
 body{
@@ -130,15 +130,7 @@ ul, li{
 }
 
 
-@media only screen and (max-width: 1024px) {
-
-}
-
-@media only screen and (max-width: 768px) {
-  /*----------------------------
-  [ Mobile styles go here]
-  ---------------------------*/
-
+@include media-breakpoint-down(sm) {
   #homepage #featuredVideo {
     left: 0;
   }

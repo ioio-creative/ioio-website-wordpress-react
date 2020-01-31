@@ -3,14 +3,20 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
-import './LabWorkLabSwitch.css'
+import isFunction from 'utils/js/function/isFunction';
+
+import './LabWorkLabSwitch.scss'
+
 
 export default function LabWorkLabSwitch(props) {
-  //const props = this.props;
+  const {
+    onClick
+  } = this.props;
+
   let onClickFunc = _ => {};
-  if (props.onClick) {
+  if (isFunction(onClick)) {
     onClickFunc = _ => {
-      props.onClick();
+      onClick();
     };
   }
 
