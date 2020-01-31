@@ -71,15 +71,10 @@
   width: 600px;
 }
 
-#footer .footer-bottom-copyright {
-  position: relative;
-  top: 220px;
-  height: 50px;
-}
-
+#footer .footer-bottom-copyright,
 #footer .footer-bottom-links {
   position: relative;
-  top: 220px;
+  top: 17vw;
   height: 50px;
 }
 
@@ -137,17 +132,14 @@
     width: 60px;
     margin: 0 10px;
   }
-  #footer .footer-bottom-copyright {
+  #footer .footer-bottom-copyright,
+  #footer .footer-bottom-links {
     position: absolute;
     top: auto;
     bottom: 15px;
     height: auto;
   }
   #footer .footer-bottom-links {
-    position: absolute;
-    top: auto;
-    bottom: 15px;
-    height: auto;
     right: 0px;
     width: auto;
   }

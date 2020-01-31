@@ -10,12 +10,15 @@ import ReturnIcon from 'components/ReturnIcon';
 
 
 function ProjectListReturnIcon(props) {
+  const { scale } = props;
   return (
     <ReturnIcon
       color='#000'
-      beforeWidth='2.43vw'
-      beforeHeight='1.5vw'
-      arrowSize='1vw'
+      paddingRight='0.6em'
+      beforeWidth='2.43em'
+      beforeHeight='1.5em'
+      arrowSize='1em'
+      scale={scale || 1}
     />
   );
 }
@@ -132,9 +135,11 @@ function ProjectList(props) {
           <Link to={routes.about(true)}>
             <div className="section-interaction-hint">
               <span className='interaction-hint-return-icon-container'>
-                <ProjectListReturnIcon />
+                <ProjectListReturnIcon
+                  scale={0.65}
+                />
               </span>
-              <span>{sectionInteractionHint}</span>
+              <span className='interaction-hint-text'>{sectionInteractionHint}</span>
             </div>
           </Link>
         </div>
