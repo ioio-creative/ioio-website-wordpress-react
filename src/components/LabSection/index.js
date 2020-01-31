@@ -254,15 +254,15 @@ const LabSection = props => {
             __html: desc
           }} />
           <Link 
-            to={routes.lab(true)}        
+            to={routes.lab(true)}
           >
             <div className='interaction-hint'>
               <span className='interaction-hint-return-icon-container'>
                 <ReturnIcon
                   color='#FFF'
-                  beforeWidth='1.5vw'
-                  beforeHeight='1.9vw'
-                  arrowSize='1vw'
+                  beforeWidth='1em'
+                  beforeHeight='1.5em'
+                  arrowSize='0.75em'
                 />
               </span>
               {interactionHint}
