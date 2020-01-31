@@ -1,4 +1,5 @@
-.tapping-page .work-to-lab-switch {
+.tapping-page .work-to-lab-switch,
+.tapping-page .work-to-lab-switch-for-mobile {
   color: #FFFFFF;
 }
 .tapping-page .video-wrapper {

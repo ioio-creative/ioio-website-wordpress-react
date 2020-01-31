@@ -40,6 +40,7 @@
 }
 #root.canvas_activated .homepage-top-logo-div,
 #root.canvas_activated .work-to-lab-switch,
+#root.canvas_activated .work-to-lab-switch-for-mobile,
 #root.canvas_activated .homepage-showreel-text {
   color: #FFF;
 }
@@ -433,6 +434,7 @@ a#pop-up-vid {
   }
   #root.canvas_activated .homepage-top-logo-div,
   #root.canvas_activated .work-to-lab-switch,
+  #root.canvas_activated .work-to-lab-switch-for-mobile,
   #root.canvas_activated .homepage-showreel-text {
     color: #000;
   }

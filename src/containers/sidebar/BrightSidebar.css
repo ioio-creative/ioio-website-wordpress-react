@@ -495,18 +495,13 @@
   #sidebar.active #menu-toggle .close-symbol:after {
     transform: rotate(-45deg);
   }
-  #sidebar .work-to-lab-switch-txt,
-  #sidebar.active .work-to-lab-switch-txt {
-    display: block;
-    font-size: 14px;
-    top: 1px;
-    right: 55px;
-    border-right: 1px solid #3c3c3c;
-    padding-right: 10px;
-    color: #565656;
-    text-transform: uppercase;
-  }
 }
+
+
+
+
+
+
 #sidebar .info-section .social-links {
   visibility: hidden;
 }

@@ -6,6 +6,7 @@ import $ from 'jquery';
 
 import {menuCanvas} from 'containers/SidebarMenuCanvas';
 import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
+import WorkWorkLabSwitchForMobile from 'containers/workLabSwitch/WorkWorkLabSwitchForMobile';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 
@@ -100,13 +101,15 @@ class BrightSidebar extends Component {
         </Link>
 
         {
-          isOpenSidebar &&          
-          <WorkWorkLabSwitch
-            backgroundColor='white'
-            color='black'
-            onClick={this.handleMenuClose}
-          />          
-        }        
+          // isOpenSidebar &&          
+          // <WorkWorkLabSwitch
+          //   backgroundColor='white'
+          //   color='black'
+          //   onClick={this.handleMenuClose}
+          // />          
+        }
+
+        <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />    
 
         <div className="container-fluid ">
           <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>

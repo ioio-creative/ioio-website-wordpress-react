@@ -120,7 +120,7 @@ class DarkSidebar extends Component {
         
       </section>
 
-      <LabWorkLabSwitch onClick={this.handleMenuClose}/>
+      <LabWorkLabSwitch onClick={this.handleMenuClose} />
 
       <div className="container-fluid ">
         

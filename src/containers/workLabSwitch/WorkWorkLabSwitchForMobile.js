@@ -3,19 +3,23 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
-import './WorkWorkLabSwitch__.css';
+import isFunction from 'utils/js/function/isFunction';
 
-export default function WorkWorkLabSwitch(props) {  
-  //const props = this.props;
+import './WorkWorkLabSwitchForMobile.css';
+
+export default function WorkWorkLabSwitchForMobile(props) {  
+  const {
+    onClick
+  } = props;
   let onClickFunc = _ => {};
-  if (props.onClick) {
+  if (isFunction(onClick)) {
     onClickFunc = _ => {
-      props.onClick();
+      onClick();
     };
   }
 
   return (
-    <Link className="work-to-lab-switch"
+    <Link className="work-to-lab-switch-for-mobile"
       role="button"
       to={routes.lab(true)}
       onClick={onClickFunc}
