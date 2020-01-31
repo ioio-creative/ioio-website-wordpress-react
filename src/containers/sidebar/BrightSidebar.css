@@ -48,7 +48,7 @@
   left: 3vw;
   background-color: #fff;
   color: #000;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: 20px;
   border: 1px solid #E6E6E6;
 }
@@ -360,7 +360,7 @@
     top: 0;
     left: 0;
     background-color: #fff;
-    overflow-y: hidden;
+    overflow: hidden;
     color: #000;
     padding-top: 0;
     border-bottom: 0px solid #E6E6E6;
