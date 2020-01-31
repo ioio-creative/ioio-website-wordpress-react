@@ -7,9 +7,9 @@ import './WorkWorkLabSwitch__.css';
 
 export default function WorkWorkLabSwitch(props) {  
   //const props = this.props;
-  let onClickFunc = () => {};
+  let onClickFunc = _ => {};
   if (props.onClick) {
-    onClickFunc = () => {
+    onClickFunc = _ => {
       props.onClick();
     };
   }
