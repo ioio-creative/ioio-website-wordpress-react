@@ -61,17 +61,10 @@
 
 
 @media only screen and (max-width: 768px) {
-  // .lab-section-container #labSection{
-  //   height: var(--labSectionContainerMobileHeight);
-  //   background-color: #000;
-  // }
-  // .lab-section-container #labSection .video-text-container {
-  //   bottom: 20px;
-  //   font-size: 30px;
-  //   left: auto;
-  //   right: 20px;
-  //   width: 8em;
-  // }
+  .lab-section-container #labSection{
+    height: var(--labSectionContainerMobileHeight);
+    background-color: #000;
+  }
   // .lab-section-container #labSection .video-text-container {
   //   top: 0;
   //   left: 0;
