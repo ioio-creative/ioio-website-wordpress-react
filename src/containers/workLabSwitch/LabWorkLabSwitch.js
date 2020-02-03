@@ -11,7 +11,7 @@ import './LabWorkLabSwitch.scss'
 export default function LabWorkLabSwitch(props) {
   const {
     onClick
-  } = this.props;
+  } = props;
 
   let onClickFunc = _ => {};
   if (isFunction(onClick)) {

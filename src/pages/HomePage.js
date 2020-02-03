@@ -37,11 +37,13 @@ class HomePage extends Component {
     // refs
     this.featuredVideo = null;
     this.setFeaturedVideo = element => this.featuredVideo = element;
+    this.popupVideo = null;
+    this.setPopupVideo = element => this.popupVideo = element;
     this.cursor = null;
     this.setCursor = element => this.cursor = element;
 
     this.state = {      
-      openVideo: false,
+      isOpenVideo: false,
       homepageData: null,
       allProjects: [],
       highlightedProjects: [], 
@@ -58,7 +60,8 @@ class HomePage extends Component {
       'onMouseMove',
       'onClickVideo',
       'onCloseVideo',
-      'handleFetchCallback'
+      'handleFetchCallback',
+      'handlePopupVideoProgress'
     ].forEach(methodName => {
       this[methodName] = this[methodName].bind(this);
     });   
@@ -85,6 +88,9 @@ class HomePage extends Component {
 
   componentWillUnmount() {    
     document.removeEventListener('mousemove', this.onMouseMove);
+    if (this.popupVideo) {
+      this.popupVideo.removeEventListener('progress', this.handlePopupVideoProgress);
+    }
   }
 
   componentDidUpdate() {    
@@ -179,11 +185,11 @@ class HomePage extends Component {
   }  
 
   onClickVideo(){
-    this.setState({openVideo: true});
+    this.setState({isOpenVideo: true});
   }
 
   onCloseVideo(){
-    this.setState({openVideo: false});
+    this.setState({isOpenVideo: false});
     const video = document.querySelector('#popupVideo video');
     if (!video.paused) {
       video.pause();
@@ -196,7 +202,13 @@ class HomePage extends Component {
         homepageData, allProjects
       } = this.state;
       this.parseHomepageData(homepageData, allProjects);
+
+      this.popupVideo.addEventListener('progress', this.handlePopupVideoProgress);
     }     
+  }
+
+  handlePopupVideoProgress(event) {
+    //console.log(this.popupVideo);
   }
 
   /* end of event handlers */
@@ -204,7 +216,7 @@ class HomePage extends Component {
 
   render() {
     const {      
-      openVideo,
+      isOpenVideo,
       homepageData,
       highlightedProjects,
     } = this.state;        
@@ -231,11 +243,12 @@ class HomePage extends Component {
 
     return (
       <div>
-        <div id="popupVideo" className={openVideo ? '' : 'hide'}>
+        <div id="popupVideo" className={isOpenVideo ? '' : 'hide'}>
           <div className="videoWrap">
-            <video controls>
-              <source src={showreelVideoPopupVideo.guid} type="video/mp4"/>
+            <video ref={this.setPopupVideo} controls>
+              <source src={showreelVideoPopupVideo.guid} type="video/mp4"/>              
             </video>
+            <button className="close" onClick={this.onCloseVideo}>Hide</button>
           </div>
           <div className="bg" onClick={this.onCloseVideo} />
         </div>
