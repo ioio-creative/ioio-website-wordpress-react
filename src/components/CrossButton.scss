@@ -1,0 +1,25 @@
+/* cross button */
+/* https://codepen.io/brissmyr/pen/egidw */
+
+.cross-button .background {  
+  outline: 0;
+  position: relative;
+}
+
+.cross-button .first-stroke, 
+.cross-button .second-stroke {
+  display: block;  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.cross-button .first-stroke {
+  transform: translate(-50%, -50%) rotate(45DEG);
+}
+
+.cross-button .second-stroke {
+  transform: translate(-50%, -50%) rotate(-45DEG);
+}
+
+/* end of cross button */

@@ -36,6 +36,7 @@
   bottom: 10%;
   right: 5%;
   color: var(--videoTextContainerFontColor);
+  mix-blend-mode: exclusion;
 }
 
 .lab-section-container #labSection .video-text-container a {

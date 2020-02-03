@@ -52,6 +52,29 @@ ul, li{
   height: 100%;
   background:rgba(0,0,0,.7);
 }
+#popupVideo .popup-video-close {
+  transition: all 2s;
+
+  visibility: visible;
+  opacity: 1;
+  
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  background-color: transparent;
+  color: #efeff5;
+  mix-blend-mode: exclusion;
+  font-size: 1.25em;
+
+  cursor: pointer;
+}
+#popupVideo.hide .popup-video-close {
+  visibility: hidden;
+  opacity: 0;
+}
 #homepage #featuredVideo{
   width:100vw;
   height:100vh;
@@ -93,6 +116,8 @@ ul, li{
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  mix-blend-mode: multiply;
 }
 #homepage #featuredVideo video:hover{
   cursor: none;
@@ -106,6 +131,7 @@ ul, li{
   color: #FFF;
   font-weight: bold;
   letter-spacing: 0.04em;
+  mix-blend-mode: exclusion;
 }
 
 #homepage #featuredVideo .videoDescription {
@@ -113,6 +139,7 @@ ul, li{
   bottom: 100px;
   left: 50%;
   color: #FFFFFF;
+  mix-blend-mode: exclusion;
 }
 
 #homepage #featuredVideo .videoDescription .videoTitle {
@@ -136,6 +163,9 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
 
 
 @include media-breakpoint-down(sm) {
+  #popupVideo .popup-video-close {
+    left: 5%;
+  }
   #homepage #featuredVideo {
     left: 0;
   }
@@ -152,8 +182,5 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
   }
   #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: 24px;
-  }
-  #homepage #popupVideo .videoWrap {
-    width: 100%;
   }
 }

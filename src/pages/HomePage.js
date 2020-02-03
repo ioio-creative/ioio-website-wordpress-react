@@ -61,7 +61,6 @@ class HomePage extends Component {
       'onClickVideo',
       'onCloseVideo',
       'handleFetchCallback',
-      'handlePopupVideoProgress'
     ].forEach(methodName => {
       this[methodName] = this[methodName].bind(this);
     });   
@@ -88,9 +87,6 @@ class HomePage extends Component {
 
   componentWillUnmount() {    
     document.removeEventListener('mousemove', this.onMouseMove);
-    if (this.popupVideo) {
-      this.popupVideo.removeEventListener('progress', this.handlePopupVideoProgress);
-    }
   }
 
   componentDidUpdate() {    
@@ -202,13 +198,7 @@ class HomePage extends Component {
         homepageData, allProjects
       } = this.state;
       this.parseHomepageData(homepageData, allProjects);
-
-      this.popupVideo.addEventListener('progress', this.handlePopupVideoProgress);
     }     
-  }
-
-  handlePopupVideoProgress(event) {
-    //console.log(this.popupVideo);
   }
 
   /* end of event handlers */
@@ -248,7 +238,9 @@ class HomePage extends Component {
             <video ref={this.setPopupVideo} controls>
               <source src={showreelVideoPopupVideo.guid} type="video/mp4"/>              
             </video>
-            <button className="close" onClick={this.onCloseVideo}>Hide</button>
+            <button className="popup-video-close" onClick={this.onCloseVideo}>
+              X
+            </button>
           </div>
           <div className="bg" onClick={this.onCloseVideo} />
         </div>
