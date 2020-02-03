@@ -12,6 +12,8 @@
   height: var(--circle-diameter);
   
   z-index: 900;
+
+  mix-blend-mode: multiply;
 }
 
 .work-to-lab-switch.show {
@@ -117,7 +119,7 @@ html[lang=tc] .work-to-lab-switch .text {
   /* 20%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.3) skewY(-20deg)} */
   30%,43%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.2) skewY(-20deg)}
   70%{animation-timing-function:cubic-bezier(.755,.05,.855,.06);transform:scale(1.15) skewY(-20deg)}
-  90%{transform:scale(1.05)}
+  90%{transform:scale(1.05) skewY(0deg)}
 }
 
 

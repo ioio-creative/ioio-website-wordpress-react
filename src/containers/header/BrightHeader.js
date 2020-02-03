@@ -5,8 +5,8 @@ import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 export default function BrightHeader() {
   return (
     <WorkWorkLabSwitch
-      backgroundColor='black'
-      color='white'
+      backgroundColor='rgba(0, 0, 0, 1)'
+      color='rgba(255, 255, 255, 1)'
     />
   );
 };
