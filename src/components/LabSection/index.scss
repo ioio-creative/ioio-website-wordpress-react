@@ -44,8 +44,10 @@
 
 .lab-section-container #labSection .desc {  
   font-weight: bold;
-  font-size: 3vw;
-  line-height: 3.7vw;
+  // font-size: 3vw;
+  // line-height: 3.7vw;
+  font-size: 2.75em;
+  line-height: 1.35em;
 }
 
 .lab-section-container #labSection .interaction-hint-return-icon-container {
@@ -56,7 +58,8 @@
 .lab-section-container #labSection .interaction-hint {  
   margin-top: 1em;
   font-family: serif;
-  font-size: 1.5vw;
+  // font-size: 1.5vw;
+  font-size: 1.375em;
 }
 
 
