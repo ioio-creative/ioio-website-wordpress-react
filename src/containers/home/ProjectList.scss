@@ -30,9 +30,12 @@
 
 .home-project-list .section-interaction-hint {
   font-size: em(26);
-  margin-top: 1em;
-  font-family: serif;
+  margin-top: 1em;  
   font-weight: 600;
+}
+
+html[lang=en] .home-project-list .section-interaction-hint {
+  font-family: serif;
 }
 
 .home-project-list .row-1-right .project { 
@@ -66,6 +69,8 @@
 .home-project-list .project .project-category {
   padding-top: 0.5vw;
   font-size: em(26);
+}
+html[lang=en] .home-project-list .project .project-category {
   font-family: serif;
 }
 

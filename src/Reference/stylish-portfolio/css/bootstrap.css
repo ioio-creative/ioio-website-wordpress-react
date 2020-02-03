@@ -5527,6 +5527,9 @@ button.close {
   height: 20px;
   margin-top: -10px;
   margin-left: -10px;
+}
+html[lang=en] .carousel-control .icon-prev,
+html[lang=en] .carousel-control .icon-next {
   font-family: serif;
 }
 .carousel-control .icon-prev:before {

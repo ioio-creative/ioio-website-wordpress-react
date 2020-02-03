@@ -123,6 +123,9 @@ ul, li{
 #homepage #featuredVideo .videoDescription .scrollHint {
   font-size: 1.5vw;
   margin-top: 1em;
+}
+
+html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
   font-family: serif;
 }
 
