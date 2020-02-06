@@ -90,7 +90,7 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
     --videoTextInnerContainerTopBottomPadding: 10%;
     --videoTextInnerContainerLeftPadding: 5%;
     
-    --videoTextInnerContainDefaultTransition: all 0.4s;
+    --videoTextInnerContainDefaultTransition: var(--defaultTransition);
   }
   .lab-section-container .title {
     font-size: em(30);

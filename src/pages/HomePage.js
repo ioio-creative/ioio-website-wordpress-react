@@ -54,14 +54,18 @@ class HomePage extends Component {
     [
       // methods
       'isDataFetchComplete',
-      'parseHomepageData',         
+      'parseHomepageData',
+      'openPopupVideo',
+      'closePopupVideo',        
 
       // event handlers
-      'onMouseEnter',
-      'onMouseLeave',
-      'onMouseMove',
-      'onClickVideo',
-      'onCloseVideo',
+      'handleFeaturedVideoMouseEnter',
+      'handleFeaturedVideoMouseLeave',
+      'handleDocumentMouseMove',
+      'handleFeaturedVideoClick',
+      'handlePopupVideoOpenButtonClick',
+      'handlePopupVideoCloseButtonClick',
+      'handlePopupVideoBackgroundClick',
       'handleFetchCallback',
     ].forEach(methodName => {
       this[methodName] = this[methodName].bind(this);
@@ -84,17 +88,19 @@ class HomePage extends Component {
       }, this.handleFetchCallback);
     });     
 
-    document.addEventListener('mousemove', this.onMouseMove);
+    document.addEventListener('mousemove', this.handleDocumentMouseMove);
   }
 
-  componentWillUnmount() {    
-    document.removeEventListener('mousemove', this.onMouseMove);
+  componentWillUnmount() {
+    document.removeEventListener('mousemove', this.handleDocumentMouseMove);
+    this.featuredVideo.removeEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
+    this.featuredVideo.removeEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
   }
 
   componentDidUpdate() {    
     if (this.isDataFetchComplete()) {
-      this.featuredVideo.addEventListener('mouseenter', this.onMouseEnter);
-      this.featuredVideo.addEventListener('mouseleave', this.onMouseLeave);
+      this.featuredVideo.addEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
+      this.featuredVideo.addEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
     }
   }  
 
@@ -156,13 +162,24 @@ class HomePage extends Component {
       highlightedProjects: highlightedProjects,    
     });  
   }
+
+  openPopupVideo() {
+    this.setState({isOpenVideo: true});
+  }
+
+  closePopupVideo() {
+    this.setState({isOpenVideo: false});
+    if (this.popupVideo && !this.popupVideo.paused) {
+      this.popupVideo.pause();
+    }
+  }
   
   /* end of methods */
 
 
   /* event handlers */
 
-  onMouseEnter(){
+  handleFeaturedVideoMouseEnter(){
     if (this.cursor) {
       var tl = new TimelineMax({delay:.1});
       tl.to(this.cursor.querySelector('span:nth-child(1)'), 1, {width:70,height:70,ease:Elastic.easeOut.config(1.5, .5)});
@@ -170,27 +187,32 @@ class HomePage extends Component {
     }
   }
 
-  onMouseLeave(){
+  handleFeaturedVideoMouseLeave(){
     if (this.cursor) {
       TweenMax.to(this.cursor.querySelectorAll('span'), .6, {width:0,height:0,ease:'Power4.easeOut'}); 
     }
   }
 
-  onMouseMove(e){
+  handleDocumentMouseMove(e){
     if (this.cursor) {
       TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideo.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
     }
   }  
 
-  onClickVideo(){
-    this.setState({isOpenVideo: true});
+  handleFeaturedVideoClick(){
+    this.openPopupVideo();
   }
 
-  onCloseVideo(){
-    this.setState({isOpenVideo: false});
-    if (this.popupVideo && !this.popupVideo.paused) {
-      this.popupVideo.pause();
-    }
+  handlePopupVideoOpenButtonClick() {
+    this.openPopupVideo();
+  }
+
+  handlePopupVideoCloseButtonClick(){
+    this.closePopupVideo();
+  }
+
+  handlePopupVideoBackgroundClick() {
+    this.closePopupVideo();
   }
 
   handleFetchCallback() {    
@@ -225,6 +247,7 @@ class HomePage extends Component {
       showreel_video_title: showreelVideoTitle,
       showreel_video_interaction_hint: showreelVideoInteractionHint,
       showreel_video_button: showreelVideoButton,
+      showreel_video_button_for_mobile: showreelVideoButtonForMobile,
       highlighted_project_section_desc: highlightedProjectSectionDesc,
       highlighted_project_section_interaction_hint: highlightedProjectSectionInteractionHint,
       lab_section_title: labSectionTitle,
@@ -244,14 +267,14 @@ class HomePage extends Component {
             <video ref={this.setPopupVideo} controls>
               <source src={showreelVideoPopupVideoToUseSrc} />              
             </video>
-            <button className="popup-video-close" onClick={this.onCloseVideo}>
+            <button className="popup-video-close-button" onClick={this.handlePopupVideoCloseButtonClick}>
               X
             </button>
           </div>
-          <div className="bg" onClick={this.onCloseVideo} />
+          <div className="popup-video-bg" onClick={this.handlePopupVideoBackgroundClick} />
         </div>
         <div id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
-          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.onClickVideo}>
+          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.handleFeaturedVideoClick}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
               <source src={showReelVideoBackgroundVideoToUseSrc} />
@@ -279,7 +302,23 @@ class HomePage extends Component {
                 {showreelVideoInteractionHint}
               </div>
             </div>
-          </div>         
+          </div>
+          <div className='pop-up-video-open-container'>
+            <div className='popup-video-open'>
+              <div className='popup-video-open-button' onClick={this.handlePopupVideoOpenButtonClick}>
+                <div className='popup-video-open-button-text'>
+                  {showreelVideoButtonForMobile}
+                </div>
+                <div className='popup-video-open-play-icon'>
+                  <div className='popup-video-open-play-icon-triangle-container'>
+                    <div className='popup-video-open-play-icon-triangle'>
+                      &#9658;
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <section id="highlighted-project">
             <ProjectList 
               projects={highlightedProjects}

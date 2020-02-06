@@ -47,12 +47,12 @@ ul, li{
   left:0;
   background: black;
 }
-#popupVideo .bg{
+#popupVideo .popup-video-bg{
   width: 100%;
   height: 100%;
   background:rgba(0,0,0,.7);
 }
-#popupVideo .popup-video-close {
+#popupVideo .popup-video-close-button {
   transition: all 2s;
 
   visibility: visible;
@@ -71,7 +71,7 @@ ul, li{
 
   cursor: pointer;
 }
-#popupVideo.hide .popup-video-close {
+#popupVideo.hide .popup-video-close-button {
   visibility: hidden;
   opacity: 0;
 }
@@ -161,9 +161,16 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
   top: -0.7em;
 }
 
+#homepage .pop-up-video-open-container {
+  transition: var(--defaultTransition);
+
+  opacity: 0;
+  visibility: hidden;
+}
+
 
 @include media-breakpoint-down(sm) {
-  #popupVideo .popup-video-close {
+  #popupVideo .popup-video-close-button {
     right: 5%;
   }
   #homepage #featuredVideo {
@@ -182,5 +189,66 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
   }
   #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: 24px;
+  }
+
+  #homepage .pop-up-video-open-container {
+    opacity: 1;
+    visibility: visible;
+  }
+  #homepage .popup-video-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10%;
+  }
+  #homepage .popup-video-open-button {
+    width: em(312);
+    height: em(76);
+    border-radius: em(8);
+    border: solid em(1) #000000;
+    background-color: #ffffff;
+    
+    position: relative;
+
+    cursor: pointer;
+  }
+  #homepage .popup-video-open-button-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: em(24);
+    font-weight: bold;
+  }
+  html[lang=en] #homepage .popup-video-open-button-text {
+    font-family: serif;
+  }
+  #homepage .popup-video-open-play-icon {
+    --size: 36px;
+
+    width: var(--size);
+    height: var(--size);
+
+    position: absolute;
+    top: 50%;
+    right: 7.5%;
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+    border: solid em(1) #000000;
+    background-color: #ffffff;    
+  }
+  #homepage .popup-video-open-play-icon-triangle-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #homepage .popup-video-open-play-icon-triangle {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
   }
 }

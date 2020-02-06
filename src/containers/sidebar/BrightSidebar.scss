@@ -317,14 +317,14 @@
 }
 
 #sidebar .work-work-lab-switch-container {
-  transition: all 0.4s;
+  transition: var(--defaultTransition);
 
   opacity: 1;
   visibility: visible;
 }
 
 #sidebar .work-work-lab-switch-for-mobile-container {
-  transition: all 0.4s;
+  transition: var(--defaultTransition);
 
   opacity: 0;
   visibility: hidden;
