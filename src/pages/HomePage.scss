@@ -117,7 +117,7 @@ ul, li{
   height: 100%;
   object-fit: cover;
 
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
 }
 #homepage #featuredVideo video:hover{
   cursor: none;
@@ -131,7 +131,7 @@ ul, li{
   color: #FFF;
   font-weight: bold;
   letter-spacing: 0.04em;
-  mix-blend-mode: exclusion;
+  // mix-blend-mode: exclusion;
 }
 
 #homepage #featuredVideo .videoDescription {
@@ -139,7 +139,7 @@ ul, li{
   bottom: 100px;
   left: 50%;
   color: #FFFFFF;
-  mix-blend-mode: exclusion;
+  // mix-blend-mode: exclusion;
 }
 
 #homepage #featuredVideo .videoDescription .videoTitle {
