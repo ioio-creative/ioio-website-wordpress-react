@@ -35,16 +35,13 @@ class BrightSidebar extends Component {
     super(props);
     this.state = {
       sidebar: null,
-      isOpenSidebar: false,
-      isUseMobileWorkWorkLabSwitch: false
+      isOpenSidebar: false
     };
 
     [
       // methods
-      'checkIsUseMobileWorkWorkLabSwitch',
 
       // event handlers
-      'handleWindowResize',
       'handleMenuToggle',
       'handleMenuClose',
     ].forEach(methodName => {
@@ -58,15 +55,7 @@ class BrightSidebar extends Component {
   componentDidMount() {
     fetchActiveBrightSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
-    });
-
-    this.checkIsUseMobileWorkWorkLabSwitch();
-    
-    window.addEventListener('resize', this.handleWindowResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowResize);
+    });    
   }
 
   /* end of react lifecycles */
@@ -74,20 +63,10 @@ class BrightSidebar extends Component {
 
   /* methods */
 
-  checkIsUseMobileWorkWorkLabSwitch() {
-    this.setState({
-      isUseMobileWorkWorkLabSwitch: isSmallerThanOrEqualToSmallViewport()
-    });
-  }
-
   /* end of methods */
 
 
   /* event handlers */
-
-  handleWindowResize() {
-    this.checkIsUseMobileWorkWorkLabSwitch();
-  }
 
   handleMenuToggle(e) {
     e.preventDefault();
@@ -146,19 +125,17 @@ class BrightSidebar extends Component {
           </h4>
         </Link>
 
-        {
-          !isUseMobileWorkWorkLabSwitch && isOpenSidebar &&          
+        <div className={`work-work-lab-switch-container ${isOpenSidebar ? '' : 'hide'}`}>
           <WorkWorkLabSwitch
             backgroundColor='white'
             color='black'
             onClick={this.handleMenuClose}
-          />          
-        }
+          />
+        </div>
 
-        {
-          isUseMobileWorkWorkLabSwitch &&
+        <div className='work-work-lab-switch-for-mobile-container'>
           <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />
-        }        
+        </div>   
 
         <div className="container-fluid ">
           <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>

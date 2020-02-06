@@ -88,7 +88,9 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
   }
   .lab-section-container .lab-section .video-text-inner-container {
     --videoTextInnerContainerTopBottomPadding: 10%;
-    --videoTextInnerContainerLeftPadding: 5%;    
+    --videoTextInnerContainerLeftPadding: 5%;
+    
+    --videoTextInnerContainDefaultTransition: all 0.4s;
   }
   .lab-section-container .title {
     font-size: em(30);
@@ -98,6 +100,8 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
     position: absolute;
     top: var(--videoTextInnerContainerTopBottomPadding);
     left: var(--videoTextInnerContainerLeftPadding);
+
+    transition: var(--videoTextInnerContainDefaultTransition);
   }
   .lab-section-container .lab-section .desc {
     font-size: 30px;
@@ -109,5 +113,7 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
     position: absolute;
     bottom: var(--videoTextInnerContainerTopBottomPadding);
     left: var(--videoTextInnerContainerLeftPadding);
+
+    transition: var(--videoTextInnerContainDefaultTransition);
   }
 }

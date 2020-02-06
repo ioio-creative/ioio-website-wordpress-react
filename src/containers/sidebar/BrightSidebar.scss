@@ -316,6 +316,28 @@
   width: 80%;
 }
 
+#sidebar .work-work-lab-switch-container {
+  transition: all 0.4s;
+
+  opacity: 1;
+  visibility: visible;
+}
+
+#sidebar .work-work-lab-switch-for-mobile-container {
+  transition: all 0.4s;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+#sidebar .work-work-lab-switch-container.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+
 
 /*
 /* Extra small devices (phones, less than 768px) */
@@ -496,6 +518,16 @@
   }
   #sidebar.active #menu-toggle .close-symbol:after {
     transform: rotate(-45deg);
+  }
+
+  #sidebar .work-work-lab-switch-container {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #sidebar .work-work-lab-switch-for-mobile-container {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
