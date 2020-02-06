@@ -234,15 +234,15 @@ class HomePage extends Component {
     } = homepageData;
     
     const isMobileBrowser = getIsMobileBrowser();
-    const showReelVideoBackgroundVideoToUse = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile : showreelVideoBackgroundVideo;
-    const showreelVideoPopupVideoToUse = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile : showreelVideoPopupVideo;
+    const showReelVideoBackgroundVideoToUseSrc = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile.guid : showreelVideoBackgroundVideo.guid;
+    const showreelVideoPopupVideoToUseSrc = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile.guid : showreelVideoPopupVideo.guid;
 
     return (
       <div>
         <div id="popupVideo" className={isOpenVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
-              <source src={showreelVideoPopupVideoToUse.guid} />              
+              <source src={showreelVideoPopupVideoToUseSrc} />              
             </video>
             <button className="popup-video-close" onClick={this.onCloseVideo}>
               X
@@ -254,7 +254,7 @@ class HomePage extends Component {
           <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.onClickVideo}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
-              <source src={showReelVideoBackgroundVideoToUse.guid} />
+              <source src={showReelVideoBackgroundVideoToUseSrc} />
             </video>
             <div ref={this.setCursor} id="cursor">
               <span />

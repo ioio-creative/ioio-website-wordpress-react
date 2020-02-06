@@ -1,6 +1,6 @@
 import './index.scss';
 
-import React, {useEffect,useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import * as THREE from 'three';
 //import OrbitControls from 'three-orbitcontrols';
@@ -15,6 +15,7 @@ import {CopyShader} from './shaders/CopyShader';
 import ReturnIcon from 'components/ReturnIcon';
 
 import routes from 'globals/routes';
+import {isSmallerThanOrEqualToSmallViewport} from 'utils/ui/viewport';
 
 
 const LabSection = props => {
@@ -26,6 +27,7 @@ const LabSection = props => {
   } = props;
 
   const labSection = useRef(null);
+  const labVideo = useRef(null);
 
   useEffect(_ => {
 
@@ -70,7 +72,7 @@ const LabSection = props => {
         effectGlitch.uniforms.col_s.value = 0;
         // console.log(effectGlitch)
 
-        const video = document.getElementById( 'video' );
+        const video = labVideo.current;
         // if(video)
 				// video.play();
         var texture =  new THREE.VideoTexture( video );
@@ -241,37 +243,63 @@ const LabSection = props => {
     return _ => {
       window.removeEventListener('resize', onWindowResize, false);
     }
-  }, [labSection]);
+  }, [labSection, labVideo]);
+
+  const [isSmallViewport, setIsSmallViewport] = useState(false);
+
+  useEffect(_ => {
+    const checkIsSmallViewport = _ => {
+      setIsSmallViewport(isSmallerThanOrEqualToSmallViewport());
+    };
+    checkIsSmallViewport();
+    window.addEventListener('resize', checkIsSmallViewport);
+    return _ => {
+      window.removeEventListener('resize', checkIsSmallViewport);
+    };
+  }, []);
+
+  const interactionHintElement = (
+    <Link 
+      to={routes.lab(true)}      
+    >
+      <div className='interaction-hint'>
+        <span className='interaction-hint-return-icon-container'>
+          <ReturnIcon
+            color='#FFF'
+            beforeWidth='1em'
+            beforeHeight='1.5em'
+            arrowSize='0.75em'
+          />
+        </span>
+        {interactionHint}
+      </div>
+    </Link>
+  );
 
   return (
     <div className="lab-section-container">
       <div className="title" dangerouslySetInnerHTML={{
         __html: title
       }} />
-      <div ref={labSection} id="labSection"> 
-        <div className="video-text-container">
-          <div className="desc" dangerouslySetInnerHTML={{
-            __html: desc
-          }} />
-          <Link 
-            to={routes.lab(true)}
-          >
-            <div className='interaction-hint'>
-              <span className='interaction-hint-return-icon-container'>
-                <ReturnIcon
-                  color='#FFF'
-                  beforeWidth='1em'
-                  beforeHeight='1.5em'
-                  arrowSize='0.75em'
-                />
-              </span>
-              {interactionHint}
-            </div>
-          </Link>          
-        </div>
-        <video id="video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
-          <source src={backgroundVideoSrc} type='video/mp4;'/>
+      <div ref={labSection} className="lab-section">        
+        <video ref={labVideo} className="lab-video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
+          <source src={backgroundVideoSrc} />
         </video>
+        <div className="video-text-outer-container">
+          <div className="video-text-inner-container">
+            <div className='desc-container'>
+              <div className="desc" dangerouslySetInnerHTML={{
+                __html: desc
+              }} />
+              {
+                !isSmallViewport && interactionHintElement
+              }
+            </div>
+            {
+              isSmallViewport && interactionHintElement
+            }           
+          </div>
+        </div>
       </div>
     </div>
   );
