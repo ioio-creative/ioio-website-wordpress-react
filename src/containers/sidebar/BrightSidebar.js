@@ -13,8 +13,6 @@ import LanguageSelectors from 'containers/i18n/LanguageSelectors';
 import routes from 'globals/routes';
 import {fetchActiveBrightSidebar} from 'websiteApi';
 
-import {isSmallerThanOrEqualToSmallViewport} from 'utils/ui/viewport';
-
 import './BrightSidebar.scss';
 
 
@@ -94,7 +92,7 @@ class BrightSidebar extends Component {
 
   render() {
     const {
-      sidebar, isOpenSidebar, isUseMobileWorkWorkLabSwitch
+      sidebar, isOpenSidebar
     } = this.state;
     
     if (sidebar === null) {
