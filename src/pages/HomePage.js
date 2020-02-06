@@ -18,6 +18,7 @@ import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
 import {createIdSlugPairs} from 'utils/generalMapper';
 import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
+import {getIsMobileBrowser} from 'utils/getIsMobileBrowser';
 
 import './HomePage.scss';
 import './HomePageSE.css';
@@ -218,7 +219,9 @@ class HomePage extends Component {
     const {
       showreel_video_company_name: showreelVideoCompanyName,
       showreel_video_background_video: showreelVideoBackgroundVideo,
+      showreel_video_background_video_for_mobile: showreelVideoBackgroundVideoForMobile,
       showreel_video_popup_video: showreelVideoPopupVideo,
+      showreel_video_popup_video_for_mobile: showreelVideoPopupVideoForMobile,
       showreel_video_title: showreelVideoTitle,
       showreel_video_interaction_hint: showreelVideoInteractionHint,
       showreel_video_button: showreelVideoButton,
@@ -228,14 +231,18 @@ class HomePage extends Component {
       lab_section_desc: labSectionDesc,
       lab_section_interaction_hint: labSectionInteractionHint,
       highlighted_clients: highlightedClients,
-    } = homepageData;    
+    } = homepageData;
+    
+    const isMobileBrowser = getIsMobileBrowser();
+    const showReelVideoBackgroundVideoToUse = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile : showreelVideoBackgroundVideo;
+    const showreelVideoPopupVideoToUse = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile : showreelVideoPopupVideo;
 
     return (
       <div>
         <div id="popupVideo" className={isOpenVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
-              <source src={showreelVideoPopupVideo.guid} type="video/mp4"/>              
+              <source src={showreelVideoPopupVideoToUse.guid} />              
             </video>
             <button className="popup-video-close" onClick={this.onCloseVideo}>
               X
@@ -247,7 +254,7 @@ class HomePage extends Component {
           <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.onClickVideo}>
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
-              <source src={showreelVideoBackgroundVideo.guid} type="video/mp4" />
+              <source src={showReelVideoBackgroundVideoToUse.guid} />
             </video>
             <div ref={this.setCursor} id="cursor">
               <span />
