@@ -164,7 +164,7 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
 
 @include media-breakpoint-down(sm) {
   #popupVideo .popup-video-close {
-    left: 5%;
+    right: 5%;
   }
   #homepage #featuredVideo {
     left: 0;
