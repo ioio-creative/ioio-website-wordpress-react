@@ -17,6 +17,7 @@ import {fetchActiveHomePage, fetchProjects} from 'websiteApi';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
 import {createIdSlugPairs} from 'utils/generalMapper';
+import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 
 import './HomePage.scss';
 import './HomePageSE.css';
@@ -186,9 +187,8 @@ class HomePage extends Component {
 
   onCloseVideo(){
     this.setState({isOpenVideo: false});
-    const video = document.querySelector('#popupVideo video');
-    if (!video.paused) {
-      video.pause();
+    if (this.popupVideo && !this.popupVideo.paused) {
+      this.popupVideo.pause();
     }
   }
 
@@ -225,7 +225,6 @@ class HomePage extends Component {
       highlighted_project_section_desc: highlightedProjectSectionDesc,
       highlighted_project_section_interaction_hint: highlightedProjectSectionInteractionHint,
       lab_section_title: labSectionTitle,
-      lab_section_background_video: labSectionBackgroundVideo,
       lab_section_desc: labSectionDesc,
       lab_section_interaction_hint: labSectionInteractionHint,
       highlighted_clients: highlightedClients,
@@ -285,7 +284,7 @@ class HomePage extends Component {
             title={labSectionTitle}
             desc={labSectionDesc}
             interactionHint={labSectionInteractionHint}
-            backgroundVideoSrc={labSectionBackgroundVideo.guid}
+            backgroundVideoSrc={getAbsoluteUrlFromRelativeUrl('video/tapping.mp4')}
           />      
           {
             isNonEmptyArray(highlightedClients) &&
