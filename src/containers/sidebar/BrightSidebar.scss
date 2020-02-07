@@ -13,6 +13,11 @@
   transition: all 0.4s ease 0s;
 }
 
+#sidebar.menu-transition.active {
+  // transition: left 0.4s ease, top 0.4s ease, height 0.4s ease, width 0.4s ease 0.4s;
+  transition: padding-top 0.4s ease 0.6s;
+}
+
 #sidebar #sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
@@ -89,13 +94,7 @@
   /* display: none; */
   visibility: hidden;
 }
-#sidebar.menu-transition.active {
-  transition: left 0.4s ease, top 0.4s ease, height 0.4s ease, width 0.4s ease 0.4s;
-}
-.scrolled #sidebar.menu-transition.active,
-#sidebar.menu-transition {
-  transition: all 0.4s ease;
-}
+
 #sidebar .menu-item {
   color: #fff;
   /* font-family: "FuturaLT", sans-serif; */
