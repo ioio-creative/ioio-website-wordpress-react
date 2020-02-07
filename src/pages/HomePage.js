@@ -93,8 +93,10 @@ class HomePage extends Component {
 
   componentWillUnmount() {
     document.removeEventListener('mousemove', this.handleDocumentMouseMove);
-    this.featuredVideo.removeEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
-    this.featuredVideo.removeEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
+    if (this.featuredVideo) {
+      this.featuredVideo.removeEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
+      this.featuredVideo.removeEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
+    }
   }
 
   componentDidUpdate() {    
