@@ -43,7 +43,7 @@ class DarkSidebar extends Component {
     fetchActiveDarkSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
     });
-    //  $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#sidebar").parent().find('.menu-item').last());
+    //  $('<canvas id="menu-canvas" width="1000px" height="500px"></canvas>').insertAfter($("#dark-sidebar").parent().find('.menu-item').last());
 
     fetchActiveAboutLab((anAbout) => {
       this.setState({about: anAbout});

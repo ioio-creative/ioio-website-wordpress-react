@@ -1,6 +1,6 @@
 //jQuery(document).ready(function($) {
-console.log("Loadbypage script Loaded")
-reloadJS()
+console.log("Loadbypage script Loaded");
+reloadJS();
 function reloadJS() {
 
   //  trying()
@@ -9,7 +9,7 @@ function reloadJS() {
   //    console.log("wait for dom")
   //    window.requestAnimationFrame(trying);
   //  } else {
-  console.log("DOM OK!")
+  console.log("DOM OK!");
   // Back to top button
   /*
   $(window).scroll(function() {
@@ -58,7 +58,7 @@ function reloadJS() {
 
   function sideBarLogoTransistion() {
     if ($(window).width() <= 767) {} else {
-      $('#sidebar-top-logo-text').css("opacity", 0);
+      $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("opacity", 0);
       $('#sidebar .logo,#dark-sidebar .logo').css("opacity", 1);
       $('#sidebar .logo,#dark-sidebar .logo').css("top", "15px");
       $('#sidebar .logo,#dark-sidebar .logo').css("left", "8px");
@@ -95,13 +95,13 @@ function reloadJS() {
 
         $('#sidebar .logo,#dark-sidebar .logo').css("transition", "none");
 
-        $('#sidebar-top-logo-text').css("transition", "none");
+        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("transition", "none");
 
         $('#sidebar .logo,#dark-sidebar .logo').css("top", (val * 10) + "px");
 
         $('#sidebar .logo,#dark-sidebar .logo').css("opacity", val3);
-        $('#sidebar-top-logo-text').css("opacity", 1 - val2);
-        $('#sidebar-top-logo-text').css("top", ((1 - val) * 17) + "px");
+        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("opacity", 1 - val2);
+        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("top", ((1 - val) * 17) + "px");
         if (scrollVal < 200) {
           $('#sidebar,#dark-sidebar').css("border-bottom", "0px solid #FFFFFF");
         } else {
