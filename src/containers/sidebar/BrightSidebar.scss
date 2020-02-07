@@ -4,7 +4,15 @@
 # Sidebar
 --------------------------------------------------------------*/
 
-#sidebar-top-logo-text {
+#sidebar.menu-transition {
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar #sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
   top: 25px;
@@ -16,22 +24,14 @@
   filter: invert(0%);
 }
 
-#menu-toggle-div {
+#sidebar #menu-toggle-div {
   position: fixed;
   bottom: 0;
   width: 55px;
   height: 100%;
 }
 
-.menu-transition {
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
-
-#menu-toggle {
+#sidebar #menu-toggle {
   cursor: pointer;
   height: 100%;
   /* width: 100%; */
@@ -39,6 +39,14 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#sidebar #menu-toggle:hover .close-symbol:before {
+  transform: translateX(-2px);
+}
+
+#sidebar #menu-toggle:hover .close-symbol:after {
+  transform: translateX(2px);
 }
 
 #sidebar {
@@ -195,8 +203,7 @@
   font-size: 14px;
 }
 
-#sidebar.active .sidebar-info p {
-  
+#sidebar.active .sidebar-info p {  
   margin-top: -12px;
 }
 
@@ -288,12 +295,6 @@
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
 }
-#menu-toggle:hover .close-symbol:before {
-  transform: translateX(-2px);
-}
-#menu-toggle:hover .close-symbol:after {
-  transform: translateX(2px);
-}
 #sidebar.active .close-symbol:before {
   transform: rotate(45deg);
 }
@@ -362,19 +363,25 @@
 
 @include media-breakpoint-down(sm) {
   /*--[ Mobile styles go here]---------------------------*/
-  #sidebar-top-logo-text {
+  #sidebar #sidebar-top-logo-text {
     left: 15px;
     top: 17px;
     opacity: 1;
   }
-  #menu-toggle,
-  #menu-toggle-div {
+  #sidebar #menu-toggle,
+  #sidebar #menu-toggle-div {
     position: fixed;
     left: auto;
     top: 0;
     height: 55px;
     width: 55px;
     right: 0;
+  }
+  #sidebar #menu-toggle:hover .close-symbol:before {
+    transform: translateY(-1px) rotate(90deg);
+  }
+  #sidebar #menu-toggle:hover .close-symbol:after {
+    transform: translateY(1px) rotate(-90deg);
   }
   #sidebar {
     height: 55px;
@@ -507,13 +514,7 @@
   }
   #sidebar .close-symbol:after {
     transform: rotate(-90deg);
-  }
-  #menu-toggle:hover .close-symbol:before {
-    transform: translateY(-1px) rotate(90deg);
-  }
-  #menu-toggle:hover .close-symbol:after {
-    transform: translateY(1px) rotate(-90deg);
-  }
+  }  
   #sidebar.active #menu-toggle .close-symbol:before {
     transform: rotate(45deg);
   }

@@ -4,6 +4,14 @@
 # Sidebar
 --------------------------------------------------------------*/
 
+#dark-sidebar.menu-transition {
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
 #dark-sidebar #sidebar-top-logo-text {
   position: absolute;
   font-weight: bold;
@@ -20,14 +28,6 @@
   bottom: 0;
   width: 55px;
   height: 100%;
-}
-
-#dark-sidebar.menu-transition {
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
 }
 
 #dark-sidebar #menu-toggle {
