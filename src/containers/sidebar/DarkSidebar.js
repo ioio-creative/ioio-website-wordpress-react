@@ -61,10 +61,10 @@ class DarkSidebar extends Component {
     menuCanvas(true);
     if (attr.length === 1){
       //console.log("close");
-      $("#lab-about span").removeClass("active");
+      $("#dark-sidebar #lab-about span").removeClass("active");
     } else {
       //console.log("open");
-      $("#lab-about span").toggleClass("active");
+      $("#dark-sidebar #lab-about span").toggleClass("active");
     }
   }
 
