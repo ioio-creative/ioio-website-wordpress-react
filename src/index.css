@@ -4,7 +4,7 @@
 #root {
   --defaultTransitionDuration: 0.4s;
   --defaultTransition: all var(--defaultTransitionDuration);
-  --defaultVisibilityTransition: opacity var(--defaultVisibilityTransition), visibility var(--defaultVisibilityTransition);
+  --defaultVisibilityTransition: opacity var(--defaultTransition), visibility var(--defaultTransition);
 }
 
 /* fonts */
