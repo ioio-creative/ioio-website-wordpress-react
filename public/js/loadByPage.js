@@ -56,7 +56,7 @@ function reloadJS() {
 
   /* Sidebar */
 
-  function sideBarLogoTransistion() {
+  function sideBarLogoTransition() {
     if ($(window).width() <= 767) {} else {
       $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("opacity", 0);
       $('#sidebar .logo,#dark-sidebar .logo').css("opacity", 1);
@@ -112,9 +112,9 @@ function reloadJS() {
     })
 
   }
-  sideBarLogoTransistion();
+  sideBarLogoTransition();
   $(window).resize(function() {
-    sideBarLogoTransistion();
+    sideBarLogoTransition();
   });
 
   /* Sidebar End */

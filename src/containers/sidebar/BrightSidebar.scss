@@ -4,7 +4,8 @@
 # Sidebar
 --------------------------------------------------------------*/
 
-#sidebar.menu-transition {
+#sidebar.menu-transition,
+#sidebar .menu-transition {
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -ms-transition: all 0.4s ease 0s;
@@ -41,14 +42,6 @@
   left: 0;
 }
 
-#sidebar #menu-toggle:hover .close-symbol:before {
-  transform: translateX(-2px);
-}
-
-#sidebar #menu-toggle:hover .close-symbol:after {
-  transform: translateX(2px);
-}
-
 #sidebar {
   height: 90%;
   width: 55px;
@@ -80,6 +73,16 @@
 #sidebar.active .logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
+}
+
+#sidebar.active .menu-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+#sidebar .menu-content {
+  opacity: 0;
+  visibility: hidden;
 }
 
 #sidebar .menu-item {
@@ -118,24 +121,6 @@
 
 #sidebar.active a:hover {
   color: #FFE000;
-}
-#sidebar.active .language-selector {
-  padding-left: 100px;
-  margin-top: 0.5em;
-}
-#sidebar.active .language-selector a {
-  font-size: 14px;
-  margin-left: 0;
-  margin-right: 20px;
-  font-weight: normal;
-  opacity: 0.6;
-}
-#sidebar.active .language-selector a:hover {
-  opacity: 1;
-}
-#sidebar.active .language-selector a.current-language {
-  text-decoration: underline;
-  opacity: 1;
 }
 #sidebar h3 {
   /* font-family: "FuturaLT", sans-serif; */
@@ -310,6 +295,23 @@
 #sidebar .close-symbol:after {
   transform: rotate(-0deg);
 }
+
+#sidebar #menu-toggle:hover .close-symbol:before {
+  transform: translateX(-2px);
+}
+
+#sidebar #menu-toggle:hover .close-symbol:after {
+  transform: translateX(2px);
+}
+
+#sidebar.active #menu-toggle:hover .close-symbol:before {
+  transform: rotate(55deg);
+}
+
+#sidebar.active #menu-toggle:hover .close-symbol:after {
+  transform: rotate(-55deg);
+}
+
 #sidebar .sidebar-hiring {
   display: none;
 }
@@ -318,21 +320,21 @@
   width: 80%;
 }
 
-#sidebar .work-work-lab-switch-container {
+#sidebar.active .work-work-lab-switch-container {
   transition: var(--defaultTransition);
 
   opacity: 1;
   visibility: visible;
 }
 
-#sidebar .work-work-lab-switch-for-mobile-container {
-  transition: var(--defaultTransition);
-
+#sidebar .work-work-lab-switch-container {
   opacity: 0;
   visibility: hidden;
 }
 
-#sidebar .work-work-lab-switch-container.hide {
+#sidebar .work-work-lab-switch-for-mobile-container {
+  transition: var(--defaultTransition);
+
   opacity: 0;
   visibility: hidden;
 }
@@ -376,13 +378,7 @@
     height: 55px;
     width: 55px;
     right: 0;
-  }
-  #sidebar #menu-toggle:hover .close-symbol:before {
-    transform: translateY(-1px) rotate(90deg);
-  }
-  #sidebar #menu-toggle:hover .close-symbol:after {
-    transform: translateY(1px) rotate(-90deg);
-  }
+  }  
   #sidebar {
     height: 55px;
     width: 100%;
@@ -407,9 +403,6 @@
     color: #fff;
     height: 100%;
     padding-top: 100px;
-  }
-  #sidebar.active .language-selector {
-    padding-left: 0;
   }
   #sidebar h3 {
     font-size: 16px;
@@ -521,6 +514,12 @@
   #sidebar.active #menu-toggle .close-symbol:after {
     transform: rotate(-45deg);
   }
+  #sidebar #menu-toggle:hover .close-symbol:before {
+    transform: translateY(-1px) rotate(90deg);
+  }
+  #sidebar #menu-toggle:hover .close-symbol:after {
+    transform: translateY(1px) rotate(-90deg);
+  }
 
   #sidebar .work-work-lab-switch-container {
     opacity: 0;
@@ -550,4 +549,3 @@ html[lang=tc] #sidebar h3 {
   margin-left: 4px;
   white-space: nowrap;
 }
-

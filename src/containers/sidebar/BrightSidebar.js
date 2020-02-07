@@ -123,7 +123,7 @@ class BrightSidebar extends Component {
           </h4>
         </Link>
 
-        <div className={`work-work-lab-switch-container ${isOpenSidebar ? '' : 'hide'}`}>
+        <div className='work-work-lab-switch-container'>
           <WorkWorkLabSwitch
             backgroundColor='white'
             color='black'
@@ -135,7 +135,7 @@ class BrightSidebar extends Component {
           <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />
         </div>   
 
-        <div className="container-fluid ">
+        <div className="container-fluid menu-content">
           <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>
             <FormattedMessage
               id="BrightSidebar.aboutButton"
@@ -194,7 +194,6 @@ class BrightSidebar extends Component {
               </div>
             </div>
           </div>
-
         </div>
       </nav>
     );

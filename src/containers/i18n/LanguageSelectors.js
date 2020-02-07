@@ -1,22 +1,30 @@
+import './LanguageSelector.scss';
+
 import React from 'react';
 import LanguageSelectorRenderer from 'components/i18n/LanguageSelectorRenderer';
 import {languages} from 'globals/config';
 
 function LanguageSelector(props) {
   // LanguageSelectorRenderer uses a render prop.
-  return <LanguageSelectorRenderer
-    language={props.language}
-    render={({currentLanguage, selectLanguageFunc}) => {
-      const isCurrentLanguageClass = (currentLanguage.code === props.language.code? 'current-language ':'');
-      return (
-        <a 
-          className={isCurrentLanguageClass + "menu-item menu-transition menu-language menu-close"}
-          onClick={selectLanguageFunc}>
-          {props.labelText}
-        </a>
-      );
-    }}
-  />;
+  const {
+    language, labelText
+  } = props;
+  return (
+    <LanguageSelectorRenderer
+      language={language}
+      render={({currentLanguage, selectLanguageFunc}) => {
+        const isCurrentLanguageClass = (currentLanguage.code === language.code? 'current-language ':'');
+        const allClassName = isCurrentLanguageClass + "menu-item menu-transition menu-close menu-language";
+        return (
+          <a 
+            className={allClassName}
+            onClick={selectLanguageFunc}>
+            {labelText}
+          </a>
+        );
+      }}
+    />
+  );
 }
 
 export default function LanguageSelectors() { 

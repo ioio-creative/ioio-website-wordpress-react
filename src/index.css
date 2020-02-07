@@ -2,7 +2,8 @@
 # General
 --------------------------------------------------------------*/
 #root {
-  --defaultTransition: all 0.4s;
+  --defaultTransitionDuration: 0.4s;
+  --defaultTransition: all var(--defaultTransitionDuration);
 }
 
 /* fonts */

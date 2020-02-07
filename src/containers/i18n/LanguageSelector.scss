@@ -1,0 +1,80 @@
+@import 'globals.scss';
+
+
+/* in BrightSidebar */
+
+#sidebar.active .language-selector {
+  padding-left: 100px;
+  margin-top: 0.5em;
+}
+#sidebar .language-selector a {
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity var(--defaultTransitionDuration), visibility var(--defaultTransitionDuration);
+}
+#sidebar.active .language-selector a {
+  opacity: 1;
+  visibility: visible;
+
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 20px;
+  font-weight: normal;
+  opacity: 0.6;
+}
+#sidebar.active .language-selector a:hover {
+  opacity: 1;
+}
+#sidebar.active .language-selector a.current-language {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+#sidebar a.menu-language {
+  // transition: none;
+}
+
+
+
+@include media-breakpoint-down(sm) {
+  #sidebar.active .language-selector {
+    padding-left: 0;
+  }
+}
+
+/* end of in BrightSidebar */
+
+
+/* in DarkSidebar */
+
+#dark-sidebar.active .language-selector {
+  padding-left: 100px;
+  position: absolute;
+  pointer-events: all;
+  left: 0;
+  right: 0;
+}
+#dark-sidebar.active .language-selector a {
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 20px;
+  font-weight: normal;
+  opacity: 0.6;
+}
+#dark-sidebar.active .language-selector a:hover {
+  opacity: 1;
+}
+#dark-sidebar.active .language-selector a.current-language {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+
+@include media-breakpoint-down(sm) {
+  #dark-sidebar.active .language-selector {
+    padding-left: 0;
+  }
+}
+
+/* end of in DarkSidebar */

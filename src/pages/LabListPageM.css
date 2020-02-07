@@ -227,15 +227,15 @@
 		display: block;
 	}
 	/* about page move into menu? */
-	#root #sidebar.active #lab-about {
+	#root #dark-sidebar.active #lab-about {
 		position: relative;
 		top: auto;
 		left: auto;
 	}
-	#root #sidebar.active #lab-about .container {
+	#root #dark-sidebar.active #lab-about .container {
 		height: auto;
 	}
-	#root #sidebar.active #lab-about span {
+	#root #dark-sidebar.active #lab-about span {
 		font-size: 20px;
 	}
 }

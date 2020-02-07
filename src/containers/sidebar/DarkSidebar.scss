@@ -4,7 +4,8 @@
 # Sidebar
 --------------------------------------------------------------*/
 
-#dark-sidebar.menu-transition {
+#dark-sidebar.menu-transition,
+#dark-sidebar .menu-transition {
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -ms-transition: all 0.4s ease 0s;
@@ -150,27 +151,6 @@
   margin-top: -20px;
   font-size: 14px;
 }
-#dark-sidebar.active .language-selector {
-  padding-left: 100px;
-  position: absolute;
-  pointer-events: all;
-  left: 0;
-  right: 0;
-}
-#dark-sidebar.active .language-selector a {
-  font-size: 14px;
-  margin-left: 0;
-  margin-right: 20px;
-  font-weight: normal;
-  opacity: 0.6;
-}
-#dark-sidebar.active .language-selector a:hover {
-  opacity: 1;
-}
-#dark-sidebar.active .language-selector a.current-language {
-  text-decoration: underline;
-  opacity: 1;
-}
 #dark-sidebar.active .info-section .social-links a {
   display: block;
 }
@@ -256,6 +236,22 @@
 
 #dark-sidebar .close-symbol:after {
   transform: rotate(-0deg);
+}
+
+#dark-sidebar #menu-toggle:hover .close-symbol:before {  
+  transform: translateX(-2px);
+}
+
+#dark-sidebar #menu-toggle:hover .close-symbol:after {  
+  transform: translateX(2px);
+}
+
+#dark-sidebar.active #menu-toggle:hover .close-symbol:before {
+  transform: rotate(55deg);
+}
+
+#dark-sidebar.active #menu-toggle:hover .close-symbol:after {
+  transform: rotate(-55deg);
 }
 
 #dark-sidebar .sidebar-hiring p {
@@ -394,10 +390,7 @@
     color: #fff;
     height: 100%;
     padding-top: 100px;
-  }
-  #dark-sidebar.active .language-selector {
-    padding-left: 0;
-  }
+  }  
   #dark-sidebar h3 {
     font-size: 16px;
     letter-spacing: 2px;
@@ -436,10 +429,7 @@
   }
   #dark-sidebar.active #lab-about .container {
     padding-left: 15px;
-  }
-  #dark-sidebar.active .language-selector {
-    padding-left: 0px;
-  }
+  }  
   #dark-sidebar.active .info-section h4 {
     margin-top: 0px;
     font-size: 14px;
@@ -486,6 +476,21 @@
   }
   #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
+  }
+  #dark-sidebar #menu-toggle:hover .close-symbol:before {
+    transform: rotate(90deg) translateX(-2px);    
+  }
+  
+  #dark-sidebar #menu-toggle:hover .close-symbol:after {
+    transform: rotate(-90deg) translateX(-2px);    
+  }
+  
+  #dark-sidebar.active #menu-toggle:hover .close-symbol:before {
+    transform: rotate(55deg);
+  }
+  
+  #dark-sidebar.active #menu-toggle:hover .close-symbol:after {
+    transform: rotate(-55deg);
   }
   #dark-sidebar.active #lab-about {
     top: -20vh;
