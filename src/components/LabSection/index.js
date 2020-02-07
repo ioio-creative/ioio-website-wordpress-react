@@ -15,7 +15,6 @@ import {CopyShader} from './shaders/CopyShader';
 import ReturnIcon from 'components/ReturnIcon';
 
 import routes from 'globals/routes';
-import {isSmallerThanOrEqualToSmallViewport} from 'utils/ui/viewport';
 
 
 const LabSection = props => {
@@ -245,19 +244,6 @@ const LabSection = props => {
     }
   }, [labSection, labVideo]);
 
-  const [isSmallViewport, setIsSmallViewport] = useState(false);
-
-  useEffect(_ => {
-    const checkIsSmallViewport = _ => {
-      setIsSmallViewport(isSmallerThanOrEqualToSmallViewport());
-    };
-    checkIsSmallViewport();
-    window.addEventListener('resize', checkIsSmallViewport);
-    return _ => {
-      window.removeEventListener('resize', checkIsSmallViewport);
-    };
-  }, []);
-
   const interactionHintElement = (
     <Link 
       to={routes.lab(true)}      
@@ -291,13 +277,13 @@ const LabSection = props => {
               <div className="desc" dangerouslySetInnerHTML={{
                 __html: desc
               }} />
-              {
-                !isSmallViewport && interactionHintElement
-              }
+              <div className='interation-hint-container'>
+                {interactionHintElement}
+              </div>
             </div>
-            {
-              isSmallViewport && interactionHintElement
-            }           
+            <div className='interation-hint-container-for-mobile'>
+              {interactionHintElement}
+            </div>
           </div>
         </div>
       </div>

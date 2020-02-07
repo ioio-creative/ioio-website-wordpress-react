@@ -70,6 +70,18 @@
   top: -0.7em;
 }
 
+.lab-section-container .lab-section .interation-hint-container {
+  transition: var(--defaultTransition);
+  opacity: 1;
+  visibility: visible;
+}
+
+.lab-section-container .lab-section .interation-hint-container-for-mobile {
+  transition: var(--defaultTransition);
+  opacity: 0;
+  visibility: hidden;
+}
+
 .lab-section-container .lab-section .interaction-hint {  
   margin-top: 1em;
   // font-size: 1.5vw;
@@ -106,6 +118,15 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
   .lab-section-container .lab-section .desc {
     font-size: 30px;
     line-height: 40px;
+  }
+  .lab-section-container .lab-section .interation-hint-container {    
+    opacity: 0;
+    visibility: hidden;
+  }  
+  .lab-section-container .lab-section .interation-hint-container-for-mobile {
+    transition: var(--defaultTransition);
+    opacity: 1;
+    visibility: visible;
   }
   .lab-section-container .lab-section .interaction-hint {  
     font-size: 15px;

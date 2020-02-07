@@ -53,7 +53,9 @@ ul, li{
   background:rgba(0,0,0,.7);
 }
 #popupVideo .popup-video-close-button {
-  transition: all 2s;
+  --size: 32px;
+
+  transition: var(--defaultTransition);
 
   visibility: visible;
   opacity: 1;
@@ -65,15 +67,42 @@ ul, li{
   top: 7.5%;
   right: 2%;
   background-color: transparent;
-  color: #efeff5;
   mix-blend-mode: exclusion;
-  font-size: 1.25em;
+
+  width: var(--size);
+  height: var(--size);
 
   cursor: pointer;
+
+  transform: scale(0.75);
+}
+#popupVideo .popup-video-close-button:before,
+#popupVideo .popup-video-close-button:after {
+  transition: var(--defaultTransition);
+
+  display: block;
+  content: ' ';
+  width: 2px;
+  height: 28px;
+  background-color: #efeff5;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+#popupVideo .popup-video-close-button:before {
+  transform: rotate(-45deg);
+}
+#popupVideo .popup-video-close-button:after {
+  transform: rotate(45deg);
 }
 #popupVideo.hide .popup-video-close-button {
   visibility: hidden;
   opacity: 0;
+}
+#popupVideo.hide .popup-video-close-button:before,
+#popupVideo.hide .popup-video-close-button:after {
+  transform: rotate(90deg);
 }
 #homepage #featuredVideo{
   width:100vw;
@@ -172,6 +201,7 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
 @include media-breakpoint-down(sm) {
   #popupVideo .popup-video-close-button {
     right: 5%;
+    transform: scale(0.5);
   }
   #homepage #featuredVideo {
     left: 0;

@@ -238,12 +238,13 @@
   cursor: pointer;
 }
 
-#sidebar.active .close-symbol:before, #sidebar.active .close-symbol:after {
+#sidebar.active .close-symbol:before,
+#sidebar.active .close-symbol:after {
   position: absolute;
-  left: 30px;
+  // left: 30px;
   left: 15px;
   top: 0px;
-  content: ' ';
+  content: '';
   width: 2px;
   height: 28px;
   background-color: white;
@@ -256,7 +257,7 @@
 
 #sidebar .close-symbol:before {
   position: absolute;
-  left: 25px;
+  // left: 25px;
   left: 12px;
   content: ' ';
   width: 2px;
@@ -273,7 +274,7 @@
 
 #sidebar .close-symbol:after {
   position: absolute;
-  left: 32px;
+  // left: 32px;
   left: 20px;
   content: ' ';
   width: 2px;

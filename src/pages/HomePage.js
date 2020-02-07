@@ -267,9 +267,7 @@ class HomePage extends Component {
             <video ref={this.setPopupVideo} controls>
               <source src={showreelVideoPopupVideoToUseSrc} />              
             </video>
-            <button className="popup-video-close-button" onClick={this.handlePopupVideoCloseButtonClick}>
-              X
-            </button>
+            <button className="popup-video-close-button" onClick={this.handlePopupVideoCloseButtonClick} />
           </div>
           <div className="popup-video-bg" onClick={this.handlePopupVideoBackgroundClick} />
         </div>
