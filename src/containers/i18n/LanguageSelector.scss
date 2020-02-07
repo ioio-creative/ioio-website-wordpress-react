@@ -31,11 +31,6 @@
   opacity: 1;
 }
 
-#sidebar a.menu-language {
-  // transition: none;
-}
-
-
 
 @include media-breakpoint-down(sm) {
   #sidebar.active .language-selector {

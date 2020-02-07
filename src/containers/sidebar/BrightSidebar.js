@@ -135,7 +135,7 @@ class BrightSidebar extends Component {
           <WorkWorkLabSwitchForMobile onClick={this.handleMenuClose} />
         </div>   
 
-        <div className="container-fluid menu-content">
+        <div className="container-fluid">
           <Link className="menu-item menu-transition menu-close" to={routes.about(true)} onClick={this.handleMenuClose}>
             <FormattedMessage
               id="BrightSidebar.aboutButton"
@@ -161,7 +161,7 @@ class BrightSidebar extends Component {
           <LanguageSelectors />
           <canvas id="menu-canvas" width="1000px" height="500px" />
 
-          <div className="info-section container-fluid">
+          <div className="container-fluid info-section">
             <div className="row">
               <div className="col-lg-3 col-md-3 sidebar-info">
                 <h4 dangerouslySetInnerHTML={{
@@ -174,9 +174,9 @@ class BrightSidebar extends Component {
               <div className="col-lg-3 col-md-3 sidebar-contact-method">
                 <p>
                   <strong>{sidebar.phone}</strong>
-                  <br/>
+                  <br />
                   <strong>{sidebar.email}</strong>
-                  <br/>
+                  <br />
                 </p>
               </div>
               <div className="col-lg-3 col-md-3 ">

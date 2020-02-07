@@ -1,9 +1,10 @@
+import './BrightFooter.scss';
+
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Modal from 'react-modal';
 import {FormattedMessage} from 'react-intl';
 
-import './BrightFooter.css'
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 import $ from 'jquery'
