@@ -56,17 +56,17 @@
 
   background-color: black;
   
-  transition: var(--default-transition);
+  transition: var(--defaultTransition);
 }
 
 .work-to-lab-switch.show .circle {
-  /* transform: scale(1); */
+  transform: scale(1);
   opacity: 1;
   visibility: visible;
 }
 
 .work-to-lab-switch.hide .circle {
-  /* transform: scale(0); */
+  transform: scale(0);
   opacity: 0;
   visibility: hidden;
 }

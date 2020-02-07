@@ -321,7 +321,7 @@
 }
 
 #sidebar.active .work-work-lab-switch-container {
-  transition: var(--defaultTransition);
+  transition: all var(--defaultTransitionDuration) ease 1s;
 
   opacity: 1;
   visibility: visible;

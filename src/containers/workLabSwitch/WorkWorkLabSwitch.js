@@ -4,6 +4,7 @@ import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
 import isFunction from 'utils/js/function/isFunction';
+import {getViewportHeight} from 'utils/ui/viewport';
 
 import './WorkWorkLabSwitch.scss';
 
@@ -28,9 +29,10 @@ export default function WorkWorkLabSwitch(props) {
   useEffect (_ => {
     function handleWindowScroll(event) {
       const bufferPercentage = 0.1;
-      const threshold = bufferPercentage * (window.innerHeight || document.documentElement.clientHeight);
-      const positionBottom = workToLabSwitchRef.current.getBoundingClientRect().bottom;      
-      if (isShow) {
+      const threshold = bufferPercentage * getViewportHeight();
+      const positionBottom = workToLabSwitchRef.current.getBoundingClientRect().bottom;
+
+      if (isShow) {        
         const isMovingOut = (positionBottom < (0 + threshold));
         if (isMovingOut) {
           setIsShow(false);
@@ -53,7 +55,7 @@ export default function WorkWorkLabSwitch(props) {
     return _ => {
       window.removeEventListener('scroll', handleWindowScroll);
     };
-  }, []);
+  }, [isShow]);
 
   const circleStyle = {
     backgroundColor: backgroundColor || 'black'
