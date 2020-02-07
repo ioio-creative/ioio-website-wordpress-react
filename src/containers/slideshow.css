@@ -48,7 +48,10 @@
   color: #18d26e;
 }
 
-.slideshow .owl-nav, .slideshow .owl-dots {}
+.slideshow .owl-nav,
+.slideshow .owl-dots {
+
+}
 
 .slideshow .the-team-text img {
   width: 100%;

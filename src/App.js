@@ -37,7 +37,7 @@ function loadJSFiles(callback) {
   const loadScriptsLater = getAbsoluteUrlsFromRelativeUrls([
     'lib/jquery/jquery-migrate.min.js',
     'lib/bootstrap/js/bootstrap.bundle.min.js',
-    'lib/owlcarousel/owl.carousel.min.js',
+    //'lib/owlcarousel/owl.carousel.min.js',
     'lib/easing/easing.min.js',
     'lib/superfish/hoverIntent.js',
     'lib/scrollspy/scrollspy.js',

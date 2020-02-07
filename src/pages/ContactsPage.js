@@ -85,12 +85,12 @@ class ContactsPage extends Component {
       <div>
         <section id="contact-top" className="wow contact-section-bg">
           <div className="container-fluid row text-left">
-            <div className="col-md-1"></div>
+            <div className="col-md-1" />
             <div className="col-md-10">
               <h3 className="contactpage-title">{contact.page_title}</h3>
               <h1>{contact.page_subtitle}</h1>
             </div>
-            <div className="col-md-1"></div>
+            <div className="col-md-1" />
           </div>
         </section>
 
@@ -103,12 +103,12 @@ class ContactsPage extends Component {
         <section id="contact-social-media">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-10"><h3 className="contactpage-title">{contact.social_media_title}</h3>
-              <SocialMedia items={contact.social_media}
-              />
-            </div>
-              <div className="col-md-1"></div>
+              <div className="col-md-1" />
+              <div className="col-md-10">
+                <h3 className="contactpage-title">{contact.social_media_title}</h3>
+                <SocialMedia items={contact.social_media} />
+              </div>
+              <div className="col-md-1" />
             </div>
           </div>
         </section>
@@ -116,9 +116,13 @@ class ContactsPage extends Component {
         <section id="contact-form">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-10"><h3 className="contactpage-title">{contact.contact_form_title}</h3><h2>{contact.contact_form_desc}</h2><ContactForm/></div>
-              <div className="col-md-1"></div>
+              <div className="col-md-1" />
+              <div className="col-md-10">
+                <h3 className="contactpage-title">{contact.contact_form_title}</h3>
+                <h2>{contact.contact_form_desc}</h2>
+                <ContactForm />
+              </div>
+              <div className="col-md-1" />
               {/* <ContactForm data={dict} ></ContactForm> */}
             </div>
           </div>

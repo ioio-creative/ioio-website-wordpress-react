@@ -1,31 +1,35 @@
 import React, {Component} from 'react';
 
 import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 import 'containers/slideshow.css';
 
 function Slideshow(props) {
   const member_items = props.members.map((member, id) => {
-    return (<div className="item" key={id}>
-      <div className="the-team-text">
-        <img className="the-team-img" alt="alt" src={member.image.guid}/>
-        <h3 className="the-team-name">{member.my_name}</h3>
-        <p className="the-team-title">{member.my_title}</p>
+    return (
+      <div className="item" key={id}>
+        <div className="the-team-text">
+          <img className="the-team-img" alt="alt" src={member.image.guid}/>
+          <h3 className="the-team-name">{member.my_name}</h3>
+          <p className="the-team-title">{member.my_title}</p>
+        </div>
       </div>
-    </div>);
+    );
   });
 
   // TODO: autoplay changed to false by Chris
-  return (<OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={false} dots={true} dotsEach={true} items={4.5} margin={5} slideBy={1} autoplayTimeout={2500} responsive={{0:{items:3},768:{items:4.5}}}>
-    {member_items}
-  </OwlCarousel>);
+  return (
+    <OwlCarousel className="slideshow owl-theme the-team" loop={true} nav={false} autoplay={false} dots={true} dotsEach={true} items={4.5} margin={5} slideBy={1} autoplayTimeout={2500} responsive={{0:{items:3},768:{items:4.5}}}>
+      {member_items}
+    </OwlCarousel>
+  );
 }
 
 class About05 extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      about: {}
-    };
   }
 
   componentDidMount() {
@@ -126,39 +130,45 @@ class About05 extends Component {
       var slide = $(Parent).attr("data-slide");
       ResCarousel(ell, Parent, slide);
     }
-*/
+    */
   }
 
   render() {
-    let a = this.props.about
-    let members = a.team_members
-    return (<section id="the-team" className="about-section-bg wow fadeIn">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-1"></div>
-          <div className="col-md-10">
-            <header className="section-header">
-              <h3>{a.team_section_title}</h3>
-              <p>{a.team_section_desc}</p>
-            </header>
-            <div className="row"></div>
-          </div>
-          <div className="col-md-1"></div>
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <div className="row">
-              {/* Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6" Change data slide for slides per click Ex:data-slide="1"
-                                  <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>*/
-              }
-              <Slideshow members={members}/>
+    const {
+      about: a
+    } = this.props;
+    const {
+      team_members: members
+    } = a;
+    return (
+      <section id="the-team" className="about-section-bg wow fadeIn">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <header className="section-header">
+                <h3>{a.team_section_title}</h3>
+                <p>{a.team_section_desc}</p>
+              </header>
+              <div className="row"></div>
             </div>
+            <div className="col-md-1"></div>
           </div>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="row">
+                {/* Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6" Change data slide for slides per click Ex:data-slide="1"
+                                    <div className="MultiCarousel" data-items="1,1.5,2.5,3.5" data-slide={1} id="MultiCarousel" data-interval={1000}>*/
+                }
+                <Slideshow members={members}/>
+              </div>
+            </div>
 
+          </div>
         </div>
-      </div>
 
-    </section>);
+      </section>
+    );
   }
 }
 

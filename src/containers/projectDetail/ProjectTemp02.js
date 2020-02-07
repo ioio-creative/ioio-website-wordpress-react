@@ -1,24 +1,29 @@
 import React, {Component} from 'react';
 
 import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
 import 'containers/slideshow.css';
 
 function Slideshow(props) {
   const member_items = props.slides.map((slide, id) => {
 
-    return (<div className="slideshow-item" key={id}>
-      <div className="img-container">
-            <img src={slide.guid} className="slideshow-img" alt="alt"/>
+    return (
+      <div className="slideshow-item" key={id}>
+        <div className="img-container">
+          <img src={slide.guid} className="slideshow-img" alt="alt"/>
+        </div>
       </div>
-    </div>);
+    );
   });
 
   // TODO: autoplay changed to false by Chris
-  return (<OwlCarousel className="owl-theme" loop={true} autoplay={false} dots={true} items={1}>
-
-    {member_items}
-
-  </OwlCarousel>);
+  return (
+    <OwlCarousel className="owl-theme" loop={true} autoplay={false} dots={true} items={1}>
+      {member_items}
+    </OwlCarousel>
+  );
 }
 
 class ProjectTemp02 extends Component {
