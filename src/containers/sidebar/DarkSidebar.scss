@@ -15,7 +15,7 @@
   color: #FFFFFF;
 }
 
-#menu-toggle-div {
+#dark-sidebar #menu-toggle-div {
   position: fixed;
   bottom: 0;
   width: 55px;
@@ -30,7 +30,7 @@
   transition: all 0.4s ease 0s;
 }
 
-#menu-toggle {
+#dark-sidebar #menu-toggle {
   cursor: pointer;
   height: 100%;
   /* width: 100%; */
@@ -309,7 +309,7 @@
   padding-left: 40px;
 }
 
-#lab-about span.active {
+#dark-sidebar #lab-about span.active {
   display: table-cell;
   vertical-align: middle;
   color: white;
@@ -325,7 +325,7 @@
   transition: opacity 1.4s 0.3s;
 }
 
-#lab-about span {
+#dark-sidebar #lab-about span {
   display: table-cell;
   opacity: 0;
   -webkit-transition: opacity 1.4s;
@@ -367,7 +367,7 @@
   #dark-sidebar.active #sidebar-top-logo-text {
     color: #FFFFFF;
   }
-  #menu-toggle-div {
+  #dark-sidebar #menu-toggle-div {
     position: fixed;
     left: auto;
     top: 0;
@@ -395,7 +395,7 @@
     height: 100%;
     padding-top: 100px;
   }
-  #sidebar.active .language-selector {
+  #dark-sidebar.active .language-selector {
     padding-left: 0;
   }
   #dark-sidebar h3 {
@@ -494,9 +494,6 @@
     font-size: 20px;
     padding: 0;
   }
-  .lab-to-work-switch {
-    /* display: none; */
-  }
   #dark-sidebar .lab-to-work-switch-txt,
   #dark-sidebar.active .lab-to-work-switch-txt {
     display: block;
@@ -516,5 +513,3 @@ html[lang=tc] #dark-sidebar h3 {
   /* margin-left: 4px; */
   white-space: nowrap;
 }
-
-
