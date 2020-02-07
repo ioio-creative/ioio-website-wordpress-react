@@ -477,20 +477,19 @@
   #dark-sidebar .close-symbol:after {
     transform: rotate(-90deg);
   }
+  // keep at translateX(0) as hover state will remain after click in mobile
   #dark-sidebar #menu-toggle:hover .close-symbol:before {
-    transform: rotate(90deg) translateX(-2px);    
+    transform: rotate(90deg) translateX(0);    
   }
-  
   #dark-sidebar #menu-toggle:hover .close-symbol:after {
-    transform: rotate(-90deg) translateX(-2px);    
+    transform: rotate(-90deg) translateX(0);    
   }
-  
+  // keep at 45 deg as hover state will remain after click in mobile
   #dark-sidebar.active #menu-toggle:hover .close-symbol:before {
-    transform: rotate(55deg);
-  }
-  
+    transform: rotate(45deg);
+  }  
   #dark-sidebar.active #menu-toggle:hover .close-symbol:after {
-    transform: rotate(-55deg);
+    transform: rotate(-45deg);
   }
   #dark-sidebar.active #lab-about {
     top: -20vh;

@@ -6,11 +6,7 @@
 
 #sidebar.menu-transition,
 #sidebar .menu-transition {
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
+  transition: var(--defaultTransition);
 }
 
 #sidebar.menu-transition.active {
@@ -205,6 +201,56 @@
   font-size: 14px;
 }
 
+#sidebar .close-symbol {
+  position: absolute;
+  left: 12px;
+  bottom: 15px;
+  z-index: 999;
+  width: 32px;
+  height: 32px;
+
+  transition: var(--defaultTransition);
+}
+
+#sidebar .close-symbol:before,
+#sidebar .close-symbol:after {
+  transition: var(--defaultTransition);
+}
+
+#sidebar .close-symbol:before {
+  position: absolute;  
+  left: 12px;
+  content: '';
+  width: 2px;
+  height: 28px;
+  top: 92%;
+  top: 0;
+  background-color: black;
+
+  transform: rotate(0deg);
+}
+
+#sidebar .close-symbol:after {
+  position: absolute;
+  left: 20px;
+  content: '';
+  width: 2px;
+  height: 28px;
+  top: 92%;
+  top: 0;
+  background-color: black;
+  
+  transform: rotate(-0deg);
+}
+
+#sidebar #menu-toggle:hover .close-symbol:before {
+  transform: translateX(-2px);
+}
+
+#sidebar #menu-toggle:hover .close-symbol:after {
+  transform: translateX(2px);
+}
+
 #sidebar.active .close-symbol {
   position: absolute;
   left: 15px;
@@ -215,92 +261,23 @@
   z-index: 999;
 }
 
-#sidebar .close-symbol {
-  position: absolute;
-  left: 12px;
-  bottom: 15px;
-  z-index: 999;
-  width: 32px;
-  height: 32px;
-}
-
-#sidebar .close-symbol:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
 #sidebar.active .close-symbol:before,
 #sidebar.active .close-symbol:after {
   position: absolute;
-  // left: 30px;
   left: 15px;
   top: 0px;
   content: '';
   width: 2px;
   height: 28px;
   background-color: white;
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
 }
 
-#sidebar .close-symbol:before {
-  position: absolute;
-  // left: 25px;
-  left: 12px;
-  content: ' ';
-  width: 2px;
-  height: 28px;
-  top: 92%;
-  top: 0;
-  background-color: black;
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
-
-#sidebar .close-symbol:after {
-  position: absolute;
-  // left: 32px;
-  left: 20px;
-  content: ' ';
-  width: 2px;
-  height: 28px;
-  top: 92%;
-  top: 0;
-  background-color: black;
-  -webkit-transition: all 0.4s ease 0s;
-  -moz-transition: all 0.4s ease 0s;
-  -ms-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
 #sidebar.active .close-symbol:before {
   transform: rotate(45deg);
 }
 
 #sidebar.active .close-symbol:after {
   transform: rotate(-45deg);
-}
-
-#sidebar .close-symbol:before {
-  transform: rotate(0deg);
-}
-
-#sidebar .close-symbol:after {
-  transform: rotate(-0deg);
-}
-
-#sidebar #menu-toggle:hover .close-symbol:before {
-  transform: translateX(-2px);
-}
-
-#sidebar #menu-toggle:hover .close-symbol:after {
-  transform: translateX(2px);
 }
 
 #sidebar.active #menu-toggle:hover .close-symbol:before {
@@ -470,20 +447,6 @@
   #sidebar .sidebar-hiring {
     display: none;
   }
-  #sidebar.active .close-symbol:before,
-  #sidebar.active .close-symbol:after {
-    left: auto;
-    right: 28px;
-    width: 2px;
-    height: 22px;
-    top: 17px;
-  }
-  #sidebar.active .close-symbol {
-    left: auto;
-    right: 0;
-    bottom: auto;
-    top: 0;
-  }
   #sidebar .close-symbol {
     left: auto;
     right: 10px;
@@ -494,24 +457,16 @@
     right: 13px;
     height: 22px;
     top: 1px;
+
+    transform: rotate(90deg);
   }
   #sidebar .close-symbol:after {
     left: auto;
     right: 13px;
     height: 22px;
     top: 8px;
-  }
-  #sidebar .close-symbol:before {
-    transform: rotate(90deg);
-  }
-  #sidebar .close-symbol:after {
+
     transform: rotate(-90deg);
-  }  
-  #sidebar.active #menu-toggle .close-symbol:before {
-    transform: rotate(45deg);
-  }
-  #sidebar.active #menu-toggle .close-symbol:after {
-    transform: rotate(-45deg);
   }
   #sidebar #menu-toggle:hover .close-symbol:before {
     transform: translateY(-1px) rotate(90deg);
@@ -519,7 +474,31 @@
   #sidebar #menu-toggle:hover .close-symbol:after {
     transform: translateY(1px) rotate(-90deg);
   }
+  #sidebar.active .close-symbol {
+    // left: auto;
+    // right: 0;
+    // bottom: auto;
+    // top: 0;
 
+    top: 16px;
+  }
+  #sidebar.active .close-symbol:before,
+  #sidebar.active .close-symbol:after {
+    // left: auto;
+    // right: 28px;
+    // top: 17px;
+
+    width: 2px;
+    height: 22px;
+  }
+  // keep at 45 deg as hover state will remain after click in mobile
+  #sidebar.active #menu-toggle:hover .close-symbol:before {
+    transform: rotate(45deg);
+  }
+  #sidebar.active #menu-toggle:hover .close-symbol:after {
+    transform: rotate(-45deg);
+  }
+  
   #sidebar .work-work-lab-switch-container {
     opacity: 0;
     visibility: hidden;
