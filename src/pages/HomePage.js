@@ -293,6 +293,12 @@ class HomePage extends Component {
 
     return (
       <div>
+        {
+          /*
+            Note:  
+            remove #popupVideo visibility: hidden, before video fullscreen can be triggered 
+          */
+        }
         <div id="popupVideo" className={isOpenPopupVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
