@@ -9,6 +9,7 @@
     "ajv": "^6.4.0",
     "ajv-keywords": "^3.1.0",
     "flickity": "^2.2.1",
+    "fscreen": "^1.0.2",
     "gh-pages": "^2.2.0",
     "gmail-send": "^1.2.14",
     "gsap": "^2.1.2",
@@ -46,7 +47,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

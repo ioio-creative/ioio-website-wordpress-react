@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {injectIntl} from 'react-intl';
+import fscreen from 'fscreen';
 
 import routes from 'globals/routes';
 
@@ -45,7 +46,7 @@ class HomePage extends Component {
     this.setCursor = element => this.cursor = element;
 
     this.state = {      
-      isOpenVideo: false,
+      isOpenPopupVideo: false,
       homepageData: null,
       allProjects: [],
       highlightedProjects: [], 
@@ -67,6 +68,8 @@ class HomePage extends Component {
       'handlePopupVideoCloseButtonClick',
       'handlePopupVideoBackgroundClick',
       'handleFetchCallback',
+      'handleFullScreenChange',
+      'handleFullScreenError',
     ].forEach(methodName => {
       this[methodName] = this[methodName].bind(this);
     });   
@@ -166,14 +169,25 @@ class HomePage extends Component {
   }
 
   openPopupVideo() {
-    this.setState({isOpenVideo: true});
+    this.setState({isOpenPopupVideo: true}, _ => {
+      if (fscreen.fullscreenEnabled) {
+        fscreen.addEventListener('fullscreenchange', this.handleFullScreenChange, false);
+        fscreen.addEventListener('fullscreenerror', this.handleFullScreenError, false);
+        fscreen.requestFullscreen(this.popupVideo);
+      }
+    });
   }
 
   closePopupVideo() {
-    this.setState({isOpenVideo: false});
     if (this.popupVideo && !this.popupVideo.paused) {
       this.popupVideo.pause();
     }
+    if (fscreen.fullscreenEnabled && fscreen.fullscreenElement !== null) {
+      fscreen.exitFullscreen();
+      fscreen.removeEventListener('fullscreenchange', this.handleFullScreenChange, false);
+      fscreen.removeEventListener('fullscreenerror', this.handleFullScreenError, false);
+    }
+    this.setState({isOpenPopupVideo: false});        
   }
   
   /* end of methods */
@@ -226,12 +240,27 @@ class HomePage extends Component {
     }     
   }
 
+  handleFullScreenChange() {
+    if (fscreen.fullscreenElement !== null) {
+      console.log('Entered fullscreen mode');      
+    } else {
+      if (this.state.isOpenPopupVideo) {
+        this.closePopupVideo();
+      }
+      console.log('Exited fullscreen mode');      
+    }
+  }
+
+  handleFullScreenError(err) {
+    console.error(err);
+  }
+
   /* end of event handlers */
 
 
   render() {
     const {      
-      isOpenVideo,
+      isOpenPopupVideo,
       homepageData,
       highlightedProjects,
     } = this.state;        
@@ -264,7 +293,7 @@ class HomePage extends Component {
 
     return (
       <div>
-        <div id="popupVideo" className={isOpenVideo ? '' : 'hide'}>
+        <div id="popupVideo" className={isOpenPopupVideo ? '' : 'hide'}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
               <source src={showreelVideoPopupVideoToUseSrc} />              
