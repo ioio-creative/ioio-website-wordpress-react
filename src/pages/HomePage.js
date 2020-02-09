@@ -37,6 +37,9 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
 
+    // constants
+    this.isMakePopupVideoFullScreenOnFirstClick = true;
+
     // refs
     this.featuredVideo = null;
     this.setFeaturedVideo = element => this.featuredVideo = element;
@@ -168,12 +171,21 @@ class HomePage extends Component {
     });  
   }
 
-  openPopupVideo() {
+  openPopupVideo(isRequireFullScreen = false) {
     this.setState({isOpenPopupVideo: true}, _ => {
       if (fscreen.fullscreenEnabled) {
+        /**
+         * Note:
+         * handleFullScreenChange() seems not called if full screen is not
+         * triggered by fscreen.requestFullscreen()
+         * https://stackoverflow.com/questions/21103478/fullscreenchange-event-not-firing-in-chrome
+         */
         fscreen.addEventListener('fullscreenchange', this.handleFullScreenChange, false);
         fscreen.addEventListener('fullscreenerror', this.handleFullScreenError, false);
-        fscreen.requestFullscreen(this.popupVideo);
+
+        if (isRequireFullScreen) {
+          fscreen.requestFullscreen(this.popupVideo);
+        }
       }
     });
   }
@@ -182,8 +194,10 @@ class HomePage extends Component {
     if (this.popupVideo && !this.popupVideo.paused) {
       this.popupVideo.pause();
     }
-    if (fscreen.fullscreenEnabled && fscreen.fullscreenElement !== null) {
-      fscreen.exitFullscreen();
+    if (fscreen.fullscreenEnabled) {
+      if (fscreen.fullscreenElement !== null) {
+        fscreen.exitFullscreen();
+      }
       fscreen.removeEventListener('fullscreenchange', this.handleFullScreenChange, false);
       fscreen.removeEventListener('fullscreenerror', this.handleFullScreenError, false);
     }
@@ -215,12 +229,12 @@ class HomePage extends Component {
     }
   }  
 
-  handleFeaturedVideoClick(){
-    this.openPopupVideo();
+  handleFeaturedVideoClick() {
+    this.openPopupVideo(this.isMakePopupVideoFullScreenOnFirstClick);
   }
 
   handlePopupVideoOpenButtonClick() {
-    this.openPopupVideo();
+    this.openPopupVideo(this.isMakePopupVideoFullScreenOnFirstClick);
   }
 
   handlePopupVideoCloseButtonClick(){
