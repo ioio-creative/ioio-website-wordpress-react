@@ -47,8 +47,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeployghpages": "npm run build",
+    "deployghpages": "npm run deployghpagesonly",
+    "deployghpagesonly": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

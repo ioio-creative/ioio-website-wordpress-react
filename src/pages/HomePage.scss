@@ -105,9 +105,10 @@ ul, li{
   transform: rotate(90deg);
 }
 #homepage #featuredVideo{
-  width:100vw;
-  height:100vh;
-  background:#999;
+  width: 100vw;
+  height: 100vh;
+  // background:#999;
+  background:#000;
   overflow: hidden;
   position: relative;
   left: -55px;
