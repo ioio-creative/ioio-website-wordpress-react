@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {injectIntl} from 'react-intl';
 import fscreen from 'fscreen';
+import TweenMax, {TimelineMax, Elastic} from 'gsap';
 
 import routes from 'globals/routes';
 
@@ -12,13 +13,10 @@ import ProjectList from 'containers/home/ProjectList';
 import ClientList from 'containers/home/ClientList';
 import Footer from 'containers/footer/Footer';
 
-import TweenMax, { TimelineMax, Elastic } from 'gsap';
-
 import {fetchActiveHomePage, fetchProjects} from 'websiteApi';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
 import {createIdSlugPairs} from 'utils/generalMapper';
-import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
 import {getIsMobileBrowser} from 'utils/getIsMobileBrowser';
 
 import './HomePage.scss';
@@ -296,6 +294,8 @@ class HomePage extends Component {
       highlighted_project_section_desc: highlightedProjectSectionDesc,
       highlighted_project_section_interaction_hint: highlightedProjectSectionInteractionHint,
       lab_section_title: labSectionTitle,
+      lab_section_background_video: labSectionBackgroundVideo,
+      lab_section_background_video_for_mobile: labSectionBackgroundVideoForMobile,
       lab_section_desc: labSectionDesc,
       lab_section_interaction_hint: labSectionInteractionHint,
       highlighted_clients: highlightedClients,
@@ -304,6 +304,7 @@ class HomePage extends Component {
     const isMobileBrowser = getIsMobileBrowser();
     const showReelVideoBackgroundVideoToUseSrc = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile.guid : showreelVideoBackgroundVideo.guid;
     const showreelVideoPopupVideoToUseSrc = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile.guid : showreelVideoPopupVideo.guid;
+    const labSectionBackgroundVideoToUseSrc = (isMobileBrowser && labSectionBackgroundVideoForMobile.guid) ? labSectionBackgroundVideoForMobile.guid : labSectionBackgroundVideo.guid;
 
     return (
       <div>
@@ -379,7 +380,7 @@ class HomePage extends Component {
             title={labSectionTitle}
             desc={labSectionDesc}
             interactionHint={labSectionInteractionHint}
-            backgroundVideoSrc={getAbsoluteUrlFromRelativeUrl('video/tapping.mp4')}
+            backgroundVideoSrc={labSectionBackgroundVideoToUseSrc}
           />      
           {
             isNonEmptyArray(highlightedClients) &&

@@ -54,7 +54,7 @@ function isSmallerThanOrEqualToLargeViewport(viewportWidth = getViewportWidth())
 }
 
 
-export {
+const myViewport = {
   getViewportWidth,
   getViewportHeight,
   isInViewport,
@@ -68,4 +68,6 @@ export {
   isSmallerThanOrEqualToSmallViewport,
   isSmallerThanOrEqualToMediumViewport,
   isSmallerThanOrEqualToLargeViewport,
-}
+};
+
+export default myViewport;

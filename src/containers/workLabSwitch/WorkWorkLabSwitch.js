@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 
 import routes from 'globals/routes';
 import isFunction from 'utils/js/function/isFunction';
-import {getViewportHeight} from 'utils/ui/viewport';
+import viewport from 'utils/ui/viewport';
 
 import './WorkWorkLabSwitch.scss';
 
@@ -29,7 +29,7 @@ export default function WorkWorkLabSwitch(props) {
   useEffect (_ => {
     function handleWindowScroll(event) {
       const bufferPercentage = 0.1;
-      const threshold = bufferPercentage * getViewportHeight();
+      const threshold = bufferPercentage * viewport.getViewportHeight();
       const positionBottom = workToLabSwitchRef.current.getBoundingClientRect().bottom;
 
       if (isShow) {        
