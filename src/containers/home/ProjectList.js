@@ -7,6 +7,7 @@ import routes from 'globals/routes';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 
 import ReturnIcon from 'components/ReturnIcon';
+import LazyProgressiveImage from 'components/LazyProgressiveImage';
 
 
 function ProjectListReturnIcon(props) {
@@ -27,7 +28,8 @@ function ProjectListReturnIcon(props) {
 function Project(props) {
   const {
     project,
-    projectClassName
+    projectClassName,
+    imgPlaceHolderAspectRatio
   } = props;
 
   const projectReturnIconContainerRef = useRef(null);
@@ -81,8 +83,13 @@ function Project(props) {
 
   return (    
     <div className={`project ${projectClassName}`}>
-      <Link to={detailRoutePath}>      
-        <img src={imgSrc} alt={name} />
+      <Link to={detailRoutePath}>     
+        {/* <img src={imgSrc} alt={name} /> */}
+        <LazyProgressiveImage
+          src={imgSrc}
+          placeHolderAspectRatio={imgPlaceHolderAspectRatio}
+          imgContainerClassName='special-img-hover'
+        />
       </Link>
       <Link to={detailRoutePath}>
         <div className="project-name clearfix">
@@ -102,6 +109,9 @@ function Project(props) {
 
 
 function ProjectList(props) {
+  const projectImgPlaceholderHorizontalAspectRatio = 4 / 3;
+  const projectImgPlaceholderVerticalAspectRatio = 3 / 4;
+
   const { 
     projects,
     sectionDesc,
@@ -120,11 +130,13 @@ function ProjectList(props) {
       <div className='row-2'>
         <Project
           project={project1}
-          projectClassName='project-1'      
+          projectClassName='project-1'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}   
         />
         <Project
           project={project2}
-          projectClassName='project-2'          
+          projectClassName='project-2'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
         />      
       </div>
       <div className='row-2'>
@@ -145,23 +157,27 @@ function ProjectList(props) {
         </div>
         <Project
           project={project3}
-          projectClassName='project-3'          
+          projectClassName='project-3'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
         />
       </div>
       <div className='row-2'>
         <Project
           project={project4}
-          projectClassName='project-4'          
+          projectClassName='project-4'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
         />
         <Project
           project={project5}
-          projectClassName='project-5'          
+          projectClassName='project-5'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
         />
       </div>
       <div className='row-1-right'>
         <Project
           project={project6}
-          projectClassName='project-6'          
+          projectClassName='project-6'
+          imgPlaceHolderAspectRatio={projectImgPlaceholderHorizontalAspectRatio}
         />
       </div>
     </div>

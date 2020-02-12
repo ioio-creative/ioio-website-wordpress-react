@@ -11,7 +11,7 @@
 
 #sidebar.menu-transition.active {
   // transition: left 0.4s ease, top 0.4s ease, height 0.4s ease, width 0.4s ease 0.4s;
-  transition: padding-top 0.4s ease 0.6s;
+  transition: padding-top 0.4s ease 0.6s, width 0.4s;
 }
 
 #sidebar #sidebar-top-logo-text {
@@ -314,11 +314,20 @@ html[lang=tc] #sidebar h3 {
 
   opacity: 1;
   visibility: visible;
+
+  display: block;
 }
 
 #sidebar .work-work-lab-switch-container {
   opacity: 0;
   visibility: hidden;
+
+  /*
+  somehow even if visibility: hidden,
+  the button in children still clickable,
+  so have to resort to display: none
+  */
+  display: none;
 }
 
 #sidebar .work-work-lab-switch-for-mobile-container {

@@ -25,6 +25,9 @@ function useViewportSize() {
       setViewportSize(getSize());
     }
 
+    // TODO:
+    // https://css-tricks.com/debouncing-throttling-explained-examples/
+    // may have to use debounce and throttle techniques
     window.addEventListener('resize', handleResize);
     return _ => {
       window.removeEventListener('resize', handleResize);

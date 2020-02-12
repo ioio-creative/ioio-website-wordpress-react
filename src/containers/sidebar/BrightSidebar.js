@@ -18,7 +18,11 @@ import './BrightSidebar.scss';
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
-    return (<a href={item.link} key={index} className="youtube">{item.my_name}</a>);
+    return (
+      <a href={item.link} key={index} className="youtube">
+        {item.my_name}
+      </a>
+    );
   });
 
   return (
@@ -128,6 +132,7 @@ class BrightSidebar extends Component {
             backgroundColor='white'
             color='black'
             onClick={this.handleMenuClose}
+            showDelay='1s'
           />
         </div>
 

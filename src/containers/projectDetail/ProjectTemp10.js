@@ -38,7 +38,7 @@ class ProjectTemp10 extends Component {
 
     showPlayButton(e) {
       /* https://stackoverflow.com/questions/40584563/html5-video-fires-pause-event-while-seeked */
-      if (this.video.readyState === 4) {
+      if (this.video && this.video.readyState === 4) {
         this.playButton.style.visibility = 'visible';
         this.playButton.style.opacity = 1;
         this.video.controls = false;

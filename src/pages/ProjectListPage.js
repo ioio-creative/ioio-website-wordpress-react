@@ -1,7 +1,7 @@
+import './ProjectListPage.scss';
+
 import React, {Component} from 'react';
 import {FormattedMessage, injectIntl} from 'react-intl';
-
-import './ProjectListPage.css';
 
 import {fetchProjectListOrderByProjectDateDesc, fetchProjectCategories, fetchProjectTags} from 'websiteApi.js';
 import getSearchObjectFromHistory from 'utils/queryString/getSearchObjectFromHistory';
@@ -17,60 +17,53 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 import withShuffle from 'components/WithShuffle';
 
 
-class ProjectCategoriesAndItemsContainer extends Component {
-  render() {
-    const props = this.props;
-
-    return (
-      <section id="portfolio" className="section-bg wow fadeIn">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-1" />
-            <div className="col-md-10">
-              <header className="section-header">                
-                <h3 className="section-title">
-                  <FormattedMessage
-                    id="ProjectListPage.pageTitle"
-                    defaultMessage="Case Studies"
-                  />
-                </h3>
-              </header>              
-              {props.categories}
-              {props.items}
-            </div>
-            <div className="col-md-1" />
+function ProjectCategoriesAndItemsContainer(props) {
+  return (
+    <section id="portfolio" className="section-bg wow fadeIn">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-1" />
+          <div className="col-md-10">
+            <header className="section-header">                
+              <h3 className="section-title">
+                <FormattedMessage
+                  id="ProjectListPage.pageTitle"
+                  defaultMessage="Case Studies"
+                />
+              </h3>
+            </header>              
+            {props.categories}
+            {props.items}
           </div>
+          <div className="col-md-1" />
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
 }
 
 
-class ProjectCategoriesAndItemsWithShuffle extends Component {
-  render() {
-    const props = this.props;    
-    const formatMessage = (msgId, defaultMsg) => {
-      return props.intl.formatMessage({
-        id: msgId,
-        defaultMessage: defaultMsg
-      });
-    };
-    return (
-      <CategoriesAndItemsWithShuffle
-        categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
-        itemsComponent={ProjectItems}
-        categoriesComponent={ProjectCategories}
-        shuffleSelectorClass='portfolio-item'
-        allCategoryName={formatMessage('ProjectListPage.allCategoryLabel', 'All')}
-        items={props.projects}
-        categories={props.categories}
-        categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
-        setShuffleRefFunc={props.setShuffleRefFunc}
-        setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
-      />
-    );
-  }
+function ProjectCategoriesAndItemsWithShuffle(props) {
+  const formatMessage = (msgId, defaultMsg) => {
+    return props.intl.formatMessage({
+      id: msgId,
+      defaultMessage: defaultMsg
+    });
+  };
+  return (
+    <CategoriesAndItemsWithShuffle
+      categoriesAndItemsComponent={ProjectCategoriesAndItemsContainer}
+      itemsComponent={ProjectItems}
+      categoriesComponent={ProjectCategories}
+      shuffleSelectorClass='portfolio-item'
+      allCategoryName={formatMessage('ProjectListPage.allCategoryLabel', 'All')}
+      items={props.projects}
+      categories={props.categories}
+      categoryFilterSlugFromQuery={props.categoryFilterSlugFromQuery}
+      setShuffleRefFunc={props.setShuffleRefFunc}
+      setWithShuffleParamsFunc={props.setWithShuffleParamsFunc}        
+    />
+  );
 }
 
 

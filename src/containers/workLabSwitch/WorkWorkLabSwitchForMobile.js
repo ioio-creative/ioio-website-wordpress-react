@@ -12,12 +12,7 @@ export default function WorkWorkLabSwitchForMobile(props) {
     onClick
   } = props;
   
-  let onClickFunc = _ => {};
-  if (isFunction(onClick)) {
-    onClickFunc = _ => {
-      onClick();
-    };
-  }
+  const onClickFunc = isFunction(onClick) ? onClick : null;
 
   return (
     <Link className="work-to-lab-switch-for-mobile"

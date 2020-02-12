@@ -30,6 +30,8 @@ import "./video-react.css";
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0,0,0,0.75)';
 
+const isMobileBrowser = getIsMobileBrowser();
+
 
 class HomePage extends Component {
   constructor(props) {
@@ -63,7 +65,7 @@ class HomePage extends Component {
       // event handlers
       'handleFeaturedVideoMouseEnter',
       'handleFeaturedVideoMouseLeave',
-      'handleDocumentMouseMove',
+      'handleFeaturedVideoMouseMove',
       'handleFeaturedVideoClick',
       'handlePopupVideoOpenButtonClick',
       'handlePopupVideoCloseButtonClick',
@@ -90,25 +92,8 @@ class HomePage extends Component {
       this.setState({
         allProjects: projects
       }, this.handleFetchCallback);
-    });     
-
-    document.addEventListener('mousemove', this.handleDocumentMouseMove);
+    });
   }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousemove', this.handleDocumentMouseMove);
-    if (this.featuredVideo) {
-      this.featuredVideo.removeEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
-      this.featuredVideo.removeEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
-    }
-  }
-
-  componentDidUpdate() {    
-    if (this.isDataFetchComplete()) {
-      this.featuredVideo.addEventListener('mouseenter', this.handleFeaturedVideoMouseEnter);
-      this.featuredVideo.addEventListener('mouseleave', this.handleFeaturedVideoMouseLeave);
-    }
-  }  
 
   /* end of react lifecycles */
 
@@ -221,7 +206,7 @@ class HomePage extends Component {
     }
   }
 
-  handleDocumentMouseMove(e){
+  handleFeaturedVideoMouseMove(e){
     if (this.cursor) {
       TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideo.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
     }
@@ -301,7 +286,6 @@ class HomePage extends Component {
       highlighted_clients: highlightedClients,
     } = homepageData;
     
-    const isMobileBrowser = getIsMobileBrowser();
     const showReelVideoBackgroundVideoToUseSrc = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile.guid : showreelVideoBackgroundVideo.guid;
     const showreelVideoPopupVideoToUseSrc = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile.guid : showreelVideoPopupVideo.guid;
     const labSectionBackgroundVideoToUseSrc = (isMobileBrowser && labSectionBackgroundVideoForMobile.guid) ? labSectionBackgroundVideoForMobile.guid : labSectionBackgroundVideo.guid;
@@ -324,7 +308,11 @@ class HomePage extends Component {
           <div className="popup-video-bg" onClick={this.handlePopupVideoBackgroundClick} />
         </div>
         <div id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
-          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.handleFeaturedVideoClick}>
+          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.handleFeaturedVideoClick}
+            onMouseEnter={this.handleFeaturedVideoMouseEnter}
+            onMouseLeave={this.handleFeaturedVideoMouseLeave}
+            onMouseMove={this.handleFeaturedVideoMouseMove}
+          >
             <video muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
               <source src={showReelVideoBackgroundVideoToUseSrc} />

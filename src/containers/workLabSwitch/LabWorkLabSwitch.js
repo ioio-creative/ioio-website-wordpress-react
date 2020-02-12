@@ -13,12 +13,7 @@ export default function LabWorkLabSwitch(props) {
     onClick
   } = props;
 
-  let onClickFunc = _ => {};
-  if (isFunction(onClick)) {
-    onClickFunc = _ => {
-      onClick();
-    };
-  }
+  const onClickFunc = isFunction(onClick) ? onClick : null;
 
   return (
     <Link className="lab-to-work-switch"

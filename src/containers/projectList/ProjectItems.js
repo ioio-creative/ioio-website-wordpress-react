@@ -1,9 +1,12 @@
+import './ProjectItems.scss';
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import routes from 'globals/routes';
+import 'components/LazyProgressiveImage';
 
-import './ProjectItems.css';
+import routes from 'globals/routes';
+import LazyProgressiveImage from 'components/LazyProgressiveImage';
 
 export default function ProjectItems(props) {
   //console.log('ProjectItems: render');
@@ -32,9 +35,15 @@ export default function ProjectItems(props) {
         data-category-ids={project.project_categories.join(',')}>
         <Link to={routes.projectBySlugWithValue(project.slug)}>
           <div className="portfolio-wrap">
-            <div className="img-container">
-              <img src={project.thumbnail.guid} className="img-fluid" alt="alt" />
-            </div>
+            {/* <div className="img-container">              
+              <img src={project.thumbnail.guid} className="img-fluid" alt={project.project_name} />
+            </div> */}
+            <LazyProgressiveImage
+              imgContainerClassName='img-container special-img-hover'
+              imgClassName='img-fluid'
+              src={project.thumbnail.guid}
+              placeholderAspectRatio={16/9}        
+            />
             <div className="portfolio-info">
               <h4>
                 {project.project_name}

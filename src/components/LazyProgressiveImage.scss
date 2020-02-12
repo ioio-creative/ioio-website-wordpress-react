@@ -1,0 +1,35 @@
+@import 'globals.scss';
+
+
+.lazy-progressive-image {
+  --lazyProgressiveImageDefaultTransition: all 0.4s;
+
+  transition: var(--lazyProgressiveImageDefaultTransition);
+}
+
+.lazy-progressive-image.blur {
+  filter: blur(30px);
+}
+
+.lazy-progressive-image.clear {
+  filter: blur(0px);
+}
+
+
+
+.lazy-progressive-image img {
+  position: absolute;
+  top: 0;
+
+  transition: var(--lazyProgressiveImageDefaultTransition);
+}
+
+.lazy-progressive-image img.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.lazy-progressive-image.not-in-view img.show {
+  opacity: 1;
+  visibility: visible;
+}

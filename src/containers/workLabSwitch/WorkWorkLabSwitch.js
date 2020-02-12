@@ -1,74 +1,50 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
+import {useInView} from 'react-intersection-observer'
 
 import routes from 'globals/routes';
 import isFunction from 'utils/js/function/isFunction';
-import viewport from 'utils/ui/viewport';
 
 import './WorkWorkLabSwitch.scss';
 
+const showTimeoutInMillis = 1500;
 
-export default function WorkWorkLabSwitch(props) {
-  const showTimeoutInMillis = 1500;
-  
+export default function WorkWorkLabSwitch(props) {  
   const {
-    onClick, backgroundColor, color
+    onClick, backgroundColor, color, showDelay
   } = props;
 
-  let onClickFunc = _ => {};
-  if (isFunction(onClick)) {
-    onClickFunc = _ => {
-      onClick();
-    };
-  }
+  const onClickFunc = isFunction(onClick) ? onClick : null;
 
-  const [isShow, setIsShow] = useState(false);
-  const workToLabSwitchRef = useRef(null);
+  const [isShowTimeoutInMillisPassed, setShowTimeoutInMillisPassed] = useState(false);
+  const [workToLabSwitchRef, inView, workToLabSwitchInViewEntry] = useInView({
+    threshold: 0,
+  });
 
-  useEffect (_ => {
-    function handleWindowScroll(event) {
-      const bufferPercentage = 0.1;
-      const threshold = bufferPercentage * viewport.getViewportHeight();
-      const positionBottom = workToLabSwitchRef.current.getBoundingClientRect().bottom;
+  const isShow = isShowTimeoutInMillisPassed && inView;
 
-      if (isShow) {        
-        const isMovingOut = (positionBottom < (0 + threshold));
-        if (isMovingOut) {
-          setIsShow(false);
-        }
-      }
-
-      if (!isShow) {
-        const isMovingIn = (positionBottom >= (0 + threshold));
-        if (isMovingIn) {
-          setIsShow(true);
-        }
-      }
-    }
-
+  useEffect (_ => {   
     setTimeout(_ => {
-      setIsShow(true);
+      setShowTimeoutInMillisPassed(true);
     }, showTimeoutInMillis);
 
-    window.addEventListener('scroll', handleWindowScroll);
-    return _ => {
-      window.removeEventListener('scroll', handleWindowScroll);
-    };
-  }, [isShow]);
+    return _ => {};
+  }, []);
 
   const circleStyle = {
-    backgroundColor: backgroundColor || 'black'
+    backgroundColor: backgroundColor || 'black',
+    transitionDelay: showDelay || '0s'
   };
 
   const textStyle = {
     color: color || 'white'
-  }
+  };
 
   return (
     <div 
       ref={workToLabSwitchRef}
-      className={`work-to-lab-switch ${isShow ? "show" : "hide"}`}
+      className={`work-to-lab-switch ${isShow ? "show" : "hide"}`}      
     >
       <div className='switch-outer-container'>
         <div className='switch-inner-container'>
@@ -82,7 +58,7 @@ export default function WorkWorkLabSwitch(props) {
                 <FormattedMessage
                   id="WorkWorkLabSwitch.switchDestination"
                   defaultMessage="LAB!"
-                />         
+                />
               </div>
             </div>
           </Link>

@@ -326,7 +326,37 @@ class LabItems extends Component {
                     classNameDesc = "lab-desc-from-bottom";
                     sharingPresenterStyle = hideSharingPresenterStyle;
                   }
+                  //console.log(item.link)
+                  /**
+                   * TODO: <Link /> somehow doesn't understand external url
+                   * the following is just hack 
+                   */                  
+                  const labItemClickChildren = (
+                    <>
+                      <div onClick={null} className="hover-mobile">
+                        <div className='lab-item-detail-mobile'>
+                          <h3 className='lab-item-cat'>
+                            {item.lab_categories[0].name}
+                          </h3>
+                          <h2 className='lab-item-title'>
+                            {item.lab_item_title}
+                          </h2>
+                          <p className='lab-item-desc'>
+                            {item.hover_description}
+                          </p>
+                        </div>
+                      </div>
 
+                      <span style={categoryColor}>{item.lab_categories[0].name}</span>
+                      <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
+                      <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
+                      <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
+                      <div onClick={null} className="img-container" style={containerStyle}>
+                        <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
+                      </div>
+                    </>
+                  );
+                  
                   return (
                     <div className="sub-lab-item wow fadeInUp"
                       data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
@@ -337,34 +367,36 @@ class LabItems extends Component {
                       onMouseOut={(e) => {
                         this.handleMouseOut(e,templateType);
                       }}>
-                      <Link className="lab-item-click"
-                        to={item.link !== '' ? item.link : 'javascript:;'}
-                        target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : '_self'}
-                        onClick={this.handleMenuClose}
-                        style={item.link !== '' ? {cursor: 'pointer'} : {cursor: 'none'}}>
 
-                        <div onClick={null} className="hover-mobile">
-                          <div className='lab-item-detail-mobile'>
-                            <h3 className='lab-item-cat'>
-                              {item.lab_categories[0].name}
-                            </h3>
-                            <h2 className='lab-item-title'>
-                              {item.lab_item_title}
-                            </h2>
-                            <p className='lab-item-desc'>
-                              {item.hover_description}
-                            </p>
+                      {
+                        item.link && item.link[0] === '/' ?
+                        <Link className="lab-item-click"
+                          to={item.link}                          
+                          target={labCategories === "Feed" || labCategories === "Perspective"? '_blank' : '_self'}
+                          onClick={this.handleMenuClose}
+                          style={item.link ? {cursor: 'pointer'} : {cursor: 'none'}}
+                        >
+                          {labItemClickChildren}                          
+                        </Link>
+                        :
+                        (
+                          item.link ?
+                          <a className="lab-item-click"                          
+                            href={item.link || '#'}
+                            target={item.link ? '_blank' : ''}                          
+                            style={item.link ? {cursor: 'pointer'} : {cursor: 'none'}}
+                          >
+                            {labItemClickChildren}                          
+                          </a>
+                          :
+                          <div className="lab-item-click"                          
+                            style={{cursor: 'none'}}
+                          >
+                            {labItemClickChildren}                          
                           </div>
-                        </div>
-
-                        <span style={categoryColor}>{item.lab_categories[0].name}</span>
-                        <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
-                        <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
-                        <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
-                        <div onClick={null} className="img-container" style={containerStyle}>
-                          <img className={classNameImg} src={item.image.guid} alt="" style={imgStyle}/>
-                        </div>
-                      </Link>
+                        )                        
+                      }
+                      
                     </div>
                   );
                 }
@@ -416,6 +448,12 @@ class LabListPage extends Component {
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
     };
+
+    [
+      'handleResize'
+    ].forEach(methodName => {
+      this[methodName] = this[methodName].bind(this);
+    });
   }
 
   handleResize(){
@@ -440,14 +478,14 @@ class LabListPage extends Component {
       this.setState({labCategories: categories});
     });
 
-    window.addEventListener("resize", this.handleResize.bind(this));
+    window.addEventListener("resize", this.handleResize);
   }
 
   /**
   * Remove event listener
   */
   componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize.bind(this));
+    window.removeEventListener("resize", this.handleResize);
   }
 
 

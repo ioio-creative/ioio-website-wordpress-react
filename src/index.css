@@ -262,6 +262,20 @@ section {
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
 }
+
+
+div.special-img-hover {
+  overflow: hidden;
+}
+
+div.special-img-hover img:hover {
+  transform: scale(1.1);
+  filter: contrast(150%);
+}
+
+
+
+
 @media screen and (max-width: 767px) {
   .owl-carousel .owl-stage-outer {
     margin: 0 2px;

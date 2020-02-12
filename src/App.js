@@ -9,10 +9,11 @@ import zh from "react-intl/locale-data/zh";
 import ja from "react-intl/locale-data/ja";
 
 // Our translated strings
-import localeData from '../src/locales/data.json';
+import localeData from 'locales/data.json';
 
 //import WebFont from 'webfontloader';
 
+import addPolyfills from 'addPolyfills';
 import {LanguageContextProvider} from 'globals/contexts/languageContext';
 import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config';
 
@@ -116,21 +117,32 @@ addLocaleData([...en, ...zh, ...ja]);
 class App extends Component {
   constructor(props) {
     super(props);
+    // constants
+    this.isWaitForGlobalJsLoaded = true;
+    this.isWaitForAddPolyfills = true;
     this.state = {
       language: globalLanguage,
       messages: localeData[globalLanguage.locale],
-      isGlobalJsLoaded: false
-    }
-    this.changeGlobalLocaleAndLanguage = this.changeGlobalLocaleAndLanguage.bind(this);
+      isGlobalJsLoaded: this.isWaitForGlobalJsLoaded ? false : true,
+      isPolyfillsAdded: this.isWaitForAddPolyfills ? false : true
+    };
+    [
+      'changeGlobalLocaleAndLanguage'
+    ].forEach(methodName => {
+      this[methodName] = this[methodName].bind(this);
+    });
     initializeReactGa();
   }
 
-  componentDidMount() {
-    loadJSFiles(_ => {
-      this.setState({
-        isGlobalJsLoaded: true
-      });
-    });
+  async componentDidMount() {
+    loadJSFiles(
+      this.isWaitForGlobalJsLoaded ?
+      (_ => {
+        this.setState({
+          isGlobalJsLoaded: true
+        });
+      }) : null
+    );
 
     // setTimeout(_ => {
     //   if (console.clear) {
@@ -140,6 +152,14 @@ class App extends Component {
     //     console.log('  ██    ██████\n  ██    ██  ██\n  ██    ██████\n\n  ██    ██████\n██████    ██ ▄\n  ██      ██');
     //   }
     // }, 1000);
+
+    await addPolyfills();
+
+    if (this.isWaitForAddPolyfills) {
+      this.setState({
+        isPolyfillsAdded: true
+      });
+    }
   }
 
   changeGlobalLocaleAndLanguage(newLanguage) {
@@ -164,7 +184,7 @@ class App extends Component {
       language, messages, isGlobalJsLoaded
     } = this.state;
 
-    if (!isGlobalJsLoaded) {
+    if (!isGlobalJsLoaded && !this.isPolyfillsAdded) {
       return <MyFirstLoadingComponent isLoading={true} />;    
     }
 
