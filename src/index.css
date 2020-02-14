@@ -270,7 +270,8 @@ div.special-img-hover {
 
 div.special-img-hover img:hover {
   transform: scale(1.1);
-  filter: contrast(150%);
+  /* filter: contrast(150%); */
+  transition: all 1.6s;
 }
 
 
