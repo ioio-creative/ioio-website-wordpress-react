@@ -137,7 +137,7 @@ function ProjectList(props) {
           project={project2}
           projectClassName='project-2'
           imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
-        />      
+        />
       </div>
       <div className='row-2'>
         <div className='section-text-container'>
