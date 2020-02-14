@@ -41,6 +41,8 @@ class HomePage extends Component {
     this.isMakePopupVideoFullScreenOnFirstClick = true;
 
     // refs
+    this.featuredVideoContainer = null;
+    this.setFeaturedVideoContainer = element => this.featuredVideoContainer = element;
     this.featuredVideo = null;
     this.setFeaturedVideo = element => this.featuredVideo = element;
     this.popupVideo = null;
@@ -208,7 +210,7 @@ class HomePage extends Component {
 
   handleFeaturedVideoMouseMove(e){
     if (this.cursor) {
-      TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideo.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
+      TweenMax.to(this.cursor, .6, {x: e.clientX - this.featuredVideoContainer.offsetLeft, y: e.clientY + window.pageYOffset, ease:'Power4.easeOut'});
     }
   }  
 
@@ -293,8 +295,14 @@ class HomePage extends Component {
     } = homepageData;
     
     const showReelVideoBackgroundVideoToUseSrc = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile.guid : showreelVideoBackgroundVideo.guid;
+    //const showReelVideoBackgroundVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
+    //const showReelVideoBackgroundVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2020/01/30180148/website_video_s.mp4';
     const showreelVideoPopupVideoToUseSrc = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile.guid : showreelVideoPopupVideo.guid;
+    //const showreelVideoPopupVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
+    //const showreelVideoPopupVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2020/01/30144231/IO_Showreel_compress.mp4'
     const labSectionBackgroundVideoToUseSrc = (isMobileBrowser && labSectionBackgroundVideoForMobile.guid) ? labSectionBackgroundVideoForMobile.guid : labSectionBackgroundVideo.guid;
+    //const labSectionBackgroundVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
+    //const labSectionBackgroundVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2019/12/11124950/cover_video4.mp4';
 
     return (
       <div className='home-page-container'>
@@ -315,12 +323,12 @@ class HomePage extends Component {
         </div>
         {/* <div className="home-page section-bg wow fadeIn" data-wow-delay="0.5s"> */}
         <div className="home-page">
-          <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.handleFeaturedVideoClick}
+          <div ref={this.setFeaturedVideoContainer} className='featured-video-container' onClick={this.handleFeaturedVideoClick}
             onMouseEnter={this.handleFeaturedVideoMouseEnter}
             onMouseLeave={this.handleFeaturedVideoMouseLeave}
             onMouseMove={this.handleFeaturedVideoMouseMove}
           >
-            <video muted autoPlay loop playsInline>
+            <video ref={this.setFeaturedVideo} muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
               <source src={showReelVideoBackgroundVideoToUseSrc} />
             </video>
@@ -330,11 +338,7 @@ class HomePage extends Component {
             </div>
             <div className="companyLogo">{showreelVideoCompanyName}</div>
             <div className="videoDescription">
-              <div className="videoTitle"
-                dangerouslySetInnerHTML={{
-                  __html: showreelVideoTitle
-                }}
-              />
+              <div className="videoTitle">{showreelVideoTitle}</div>
               <div className="scrollHint">
                 <span className='top-video-scrollHint-return-icon-container'>
                   <ReturnIcon

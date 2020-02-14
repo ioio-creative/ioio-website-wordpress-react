@@ -4,9 +4,10 @@ import Footer from 'containers/footer/Footer';
 
 import $ from 'jquery';
 
+import {getAbsoluteUrlFromRelativeUrl} from 'utils/setStaticResourcesPath';
+
 import './Tapping.css';
 
-const publicUrl = process.env.PUBLIC_URL;
 
 class TappingPage extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class TappingPage extends Component {
     return (
       <div className="wow fadeIn">
         <div className="video-wrapper">
-          <video src={publicUrl + "/video/tapping.mp4"} controls />
+          <video src={getAbsoluteUrlFromRelativeUrl("video/tapping.mp4")} controls />
         </div>
         <div className="details">
           <p><i>Tapping</i> is a wind-powered artificial landscape instrument, assembled by an expandable modular sculpture system.</p>

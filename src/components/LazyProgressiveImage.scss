@@ -8,15 +8,16 @@
   width: 100%;
 }
 
-.lazy-progressive-image .background {
+
+.lazy-progressive-image {
   transition: var(--lazyProgressiveImageDefaultTransition);
 }
 
-.lazy-progressive-image .background.blur {
+.lazy-progressive-image.blur {
   filter: blur(30px);
 }
 
-.lazy-progressive-image .background.clear {
+.lazy-progressive-image.clear {
   filter: blur(0px);
 }
 

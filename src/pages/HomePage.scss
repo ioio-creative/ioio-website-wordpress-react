@@ -11,7 +11,7 @@
 //   margin:0;
 // }
 .home-page-container {
-  white-space: initial;
+  // white-space: initial;
 }
 .home-page-container ul, li {
   list-style: none;
@@ -136,7 +136,7 @@
 .home-page-container .popup-video.hide .popup-video-close-button:after {
   transform: rotate(90deg);
 }
-.home-page-container .home-page #featuredVideo{
+.home-page-container .home-page .featured-video-container {
   width: 100vw;
   height: 100vh;
   // background:#999;
@@ -145,8 +145,10 @@
 
   /* counter --scrollerMarginLeft */
   margin-left: calc(-1 * var(--scrollerMarginLeft));
+
+  position: relative;
 }
-.home-page-container .home-page #featuredVideo #cursor{
+.home-page-container .home-page .featured-video-container #cursor{
   width:0;
   height:0;
   position: absolute;
@@ -154,7 +156,7 @@
   left:0;
   mix-blend-mode: exclusion;
 }
-.home-page-container .home-page #featuredVideo #cursor span{
+.home-page-container .home-page .featured-video-container #cursor span{
   width:0px;
   height:0px;
   border-radius: 50%;
@@ -170,22 +172,22 @@
   font-weight: bold;
   overflow: hidden;
 }
-.home-page-container .home-page #featuredVideo #cursor span:nth-child(1){
+.home-page-container .home-page .featured-video-container #cursor span:nth-child(1){
   position: absolute;
   top: 0;
   mix-blend-mode: exclusion;
 }
-.home-page-container .home-page #featuredVideo video{
+.home-page-container .home-page .featured-video-container video{
   width: 100%;
   height: 100%;
   object-fit: cover;
 
   // mix-blend-mode: multiply;
 }
-.home-page-container .home-page #featuredVideo video:hover{
+.home-page-container .home-page .featured-video-container video:hover{
   cursor: none;
 }
-.home-page-container .home-page #featuredVideo .companyLogo {
+.home-page-container .home-page .featured-video-container .companyLogo {
   position: absolute;
   top: 30px;
   left: 50%;
@@ -197,25 +199,27 @@
   // mix-blend-mode: exclusion;
 }
 
-.home-page-container .home-page #featuredVideo .videoDescription {
+.home-page-container .home-page .featured-video-container .videoDescription {
   position: absolute;
-  bottom: 100px;
-  left: 50%;
+  right: 5%;
+  bottom: 10%;
   color: #FFFFFF;
   // mix-blend-mode: exclusion;
 }
 
-.home-page-container .home-page #featuredVideo .videoDescription .videoTitle {
-  font-size: 3vw;
+.home-page-container .home-page .featured-video-container .videoDescription .videoTitle {
+  // font-size: 3vw;
+  font-size: 2.75em;
   font-weight: bold;
 }
 
-.home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
-  font-size: 1.5vw;
+.home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
+  // font-size: 1.5vw;
+  font-size: 1.375em;
   margin-top: 1em;
 }
 
-html[lang=en] .home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
+html[lang=en] .home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
   font-family: serif;
 }
 
@@ -240,21 +244,21 @@ html[lang=en] .home-page-container .home-page #featuredVideo .videoDescription .
     right: 5%;
     transform: scale(0.5);
   }
-  .home-page-container .home-page #featuredVideo {
-    left: 0;
+  .home-page-container .home-page .featured-video-container {
+    margin-left: 0;
   }
-  .home-page-container .home-page #featuredVideo .companyLogo {
+  .home-page-container .home-page .featured-video-container .companyLogo {
     display: none;
   }
-  .home-page-container .home-page #featuredVideo .videoDescription {
+  .home-page-container .home-page .featured-video-container .videoDescription {
     bottom: 20px;
     left: 20px;
     right: 20px;
   }
-  .home-page-container .home-page #featuredVideo .videoDescription .videoTitle {
+  .home-page-container .home-page .featured-video-container .videoDescription .videoTitle {
     font-size: 6vw;
   }
-  .home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
+  .home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
     font-size: 24px;
   }
 

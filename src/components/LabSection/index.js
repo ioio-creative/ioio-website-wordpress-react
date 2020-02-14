@@ -264,9 +264,7 @@ const LabSection = props => {
 
   return (
     <div className="lab-section-container">
-      <div className="title" dangerouslySetInnerHTML={{
-        __html: title
-      }} />
+      <div className="title">{title}</div>
       <div ref={labSection} className="lab-section">        
         <video ref={labVideo} className="lab-video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
           <source src={backgroundVideoSrc} />
@@ -274,9 +272,7 @@ const LabSection = props => {
         <div className="video-text-outer-container">
           <div className="video-text-inner-container">
             <div className='desc-container'>
-              <div className="desc" dangerouslySetInnerHTML={{
-                __html: desc
-              }} />
+              <div className="desc">{desc}</div>
               <div className='interation-hint-container'>
                 {interactionHintElement}
               </div>

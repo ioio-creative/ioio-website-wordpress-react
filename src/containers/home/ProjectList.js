@@ -87,6 +87,7 @@ function Project(props) {
         {/* <img src={imgSrc} alt={name} /> */}
         <LazyProgressiveImage
           src={imgSrc}
+          isRequirePaddingTopForPlaceHolder={true}
           placeHolderAspectRatio={imgPlaceHolderAspectRatio}
           imgContainerClassName='special-img-hover'
         />
@@ -96,10 +97,7 @@ function Project(props) {
           <span className='project-return-icon-container' ref={projectReturnIconContainerRef}>
             <ProjectListReturnIcon />
           </span>
-          <p
-            style={projectNameStyle} 
-            dangerouslySetInnerHTML={{__html: name}}
-          />
+          <p style={projectNameStyle}>{name}</p>
         </div>
       </Link>
       <div className="project-category" style={projectCategoryStyle}>{categoriesCorrespondingToProj}</div>      

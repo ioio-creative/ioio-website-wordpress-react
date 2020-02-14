@@ -21,9 +21,7 @@ function Items(props) {
         <div className="text-center">
           <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
         </div>
-        <p className="description text-center" dangerouslySetInnerHTML={{
-          __html: dna.desc
-        }} />
+        <p className="description text-center">{dna.desc}</p>
       </div>
     );
   });

@@ -42,7 +42,7 @@ export default function ProjectItems(props) {
               imgContainerClassName='img-container special-img-hover'
               imgClassName='img-fluid'
               src={project.thumbnail.guid}
-              placeholderAspectRatio={16/9}        
+              isRequirePaddingTopForPlaceHolder={false}    
             />
             <div className="portfolio-info">
               <h4>

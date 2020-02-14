@@ -71,37 +71,39 @@ function VideoLanding(props) {
   const publicUrl = process.env.PUBLIC_URL;
   const svgURL = publicUrl + '/img/Play_btn-14.svg'
 
-  return (<section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
-    <div className="video-landing-div">
-      <div className="container-fluid">
-        <div className="player-wrapper">
-          <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
-            <source className="wow fadeIn" src={video_url} type="video/mp4" /> {/* //TODO add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
-            <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag" />
-          </video>
-        </div>
-        {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
-        <div className="video-text wow fadeIn">
-          <div className="row">
-            <div className="offset-md-1 col-md-5 project-title-div">
-              <h1 className="container-fluid">{props.project.project_title}</h1>
-              <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+  return (
+    <section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
+      <div className="video-landing-div">
+        <div className="container-fluid">
+          <div className="player-wrapper">
+            <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
+              <source className="wow fadeIn" src={video_url} type="video/mp4" /> {/* // TODO: add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+              <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag" />
+            </video>
+          </div>
+          {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
+          <div className="video-text wow fadeIn">
+            <div className="row">
+              <div className="offset-md-1 col-md-5 project-title-div">
+                <h1 className="container-fluid">{props.project.project_title}</h1>
+                <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+              </div>
+              <div className="pop-up-vid-div">
+                <Link to="#" onClick={props.modalClick} id="pop-up-vid">
+                  <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
+                  <FormattedMessage
+                    id="ProjectDetailPage.showreelButton"
+                    defaultMessage="SHOWREEL"
+                  />
+                </Link>
+              </div>
+              <div className="col-md-1" />
             </div>
-            <div className="pop-up-vid-div">
-              <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-                <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
-                <FormattedMessage
-                  id="ProjectDetailPage.showreelButton"
-                  defaultMessage="SHOWREEL"
-                />
-              </Link>
-            </div>
-            <div className="col-md-1"></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>);
+    </section>
+  );
 }
 
 

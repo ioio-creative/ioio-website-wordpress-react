@@ -8,8 +8,8 @@ import {useInView} from 'react-intersection-observer';
 // http://www.chrisjhill.co.uk/article/gracefully-loading-images
 function LazyProgressiveImage(props) {
   const {
-    src, alt, imgContainerClassName, imgClassName, width, height, placeHolderColor, placeHolderAspectRatio,
-    inViewRootMargin
+    src, alt, imgContainerClassName, imgClassName, width, height, placeHolderColor,
+    isRequirePaddingTopForPlaceHolder, placeHolderAspectRatio, inViewRootMargin
   } = props;
 
   const [isFirstInViewPassed, setIsFirstInViewPassed] = useState(false);
@@ -21,13 +21,13 @@ function LazyProgressiveImage(props) {
   // so can't use rootMargin: '0 0 500px 0'
   const [inViewRef, inView, inViewEntry] = useInView({
     trigger: 0,
-    rootMargin: inViewRootMargin || '0px 0px 0px 0px',
+    rootMargin: inViewRootMargin || '0px 0px 500px 0px',
     triggerOnce: true
   });
 
   // if (src.length >= 3 && src.substr(src.length - 3) === 'gif') {  // special gif case
   //   if (inViewEntry && inViewEntry.target) {
-  //     const img = inViewEntry.target;  // now inViewRef refers to container rather than img
+  //     //const img = inViewEntry.target;  // now inViewRef refers to background rather than img
   //     const img = imgRef.current;
   //     img.src = img.dataset.src;
   //     if (!isImgLoaded) {
@@ -38,7 +38,7 @@ function LazyProgressiveImage(props) {
     if (inView) {
       if (!isFirstInViewPassed) {
         setIsFirstInViewPassed(true);
-        //const img = inViewEntry.target;  // now inViewRef refers to container rather than img
+        //const img = inViewEntry.target;  // now inViewRef refers to background rather than img
         const img = imgRef.current;
         img.src = img.dataset.src;
 
@@ -61,17 +61,21 @@ function LazyProgressiveImage(props) {
     }
   // }
 
-  const backgroundAspectRatio = placeHolderAspectRatio ? 1/placeHolderAspectRatio : 9/16;
+  const backgroundPaddingTopRatio = placeHolderAspectRatio ? 1/placeHolderAspectRatio : 9/16;
 
-  const backgroundStyle = {
-    padding: (backgroundAspectRatio * 100) + '% 0 0 0',
+  const backgroundStyle = {    
     backgroundColor: placeHolderColor || 'rgba(204, 204, 204, 125)'
   };
 
+  if (isRequirePaddingTopForPlaceHolder) {
+    backgroundStyle.padding = (backgroundPaddingTopRatio * 100) + '% 0 0 0';
+  }
+
   const isImgLoaded = Boolean(renderedImgSize);
   if (isImgLoaded) {
-    backgroundStyle.padding = (renderedImgSize.height / renderedImgSize.width * 100) + '% 0 0 0';
-    backgroundStyle.color = 'rgba(204, 204, 204, 0)'
+    if (isRequirePaddingTopForPlaceHolder) {
+      backgroundStyle.padding = (renderedImgSize.height / renderedImgSize.width * 100) + '% 0 0 0';
+    }
   }
 
   /**
@@ -82,14 +86,16 @@ function LazyProgressiveImage(props) {
    */
 
   return (
-    <div      
+    <div
+      ref={inViewRef}
       className={`${imgContainerClassName || ''} lazy-progressive-image ${isImgLoaded ? 'clear' : 'blur'}`}
+      style={backgroundStyle}
     >
-      <div
+      {/* <div
         ref={inViewRef}
-        className={`background ${isImgLoaded ? 'clear' : 'blur'}`}
+        className={`background `}
         style={backgroundStyle}
-      />
+      /> */}
       <img
         ref={imgRef}    
         className={`${imgClassName || ''} ${isImgLoaded ? 'show' : 'hide'}`}        
