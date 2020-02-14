@@ -33,7 +33,7 @@ class TestLanguageSelector extends Component {
     return (
       <LanguageContext.Consumer>
         {value => (
-          <div id="lang-switch">
+          <div className="lang-switch">
             {
               usedLanguagesArray.map(lang => (
                 <TestLanguageButton 

@@ -21,7 +21,7 @@ function LazyProgressiveImage(props) {
   // so can't use rootMargin: '0 0 500px 0'
   const [inViewRef, inView, inViewEntry] = useInView({
     trigger: 0,
-    rootMargin: inViewRootMargin || '0px 0px 500px 0px',
+    rootMargin: inViewRootMargin || '0px 0px 0px 0px',
     triggerOnce: true
   });
 
@@ -47,7 +47,7 @@ function LazyProgressiveImage(props) {
             width: img.width,
             height: img.height
           });
-        } 
+        }
 
         // Images can sometimes be loaded from cache. In this case we need to
         // tell the image it has loaded, otherwise it might not fade in.
@@ -71,21 +71,25 @@ function LazyProgressiveImage(props) {
   const isImgLoaded = Boolean(renderedImgSize);
   if (isImgLoaded) {
     backgroundStyle.padding = (renderedImgSize.height / renderedImgSize.width * 100) + '% 0 0 0';
+    backgroundStyle.color = 'rgba(204, 204, 204, 0)'
   }
 
   /**
    * !!!Important!!!
-   * Use container instead of img as inViewRef
+   * Use background instead of img as inViewRef
    * as initially img may not have correct size for IntersectionObserver to observe
    * because the image is not loaded yet.
    */
 
   return (
-    <div
-      ref={inViewRef}
+    <div      
       className={`${imgContainerClassName || ''} lazy-progressive-image ${isImgLoaded ? 'clear' : 'blur'}`}
-      style={backgroundStyle}      
     >
+      <div
+        ref={inViewRef}
+        className={`background ${isImgLoaded ? 'clear' : 'blur'}`}
+        style={backgroundStyle}
+      />
       <img
         ref={imgRef}    
         className={`${imgClassName || ''} ${isImgLoaded ? 'show' : 'hide'}`}        

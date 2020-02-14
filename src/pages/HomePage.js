@@ -5,7 +5,7 @@ import TweenMax, {TimelineMax, Elastic} from 'gsap';
 
 import routes from 'globals/routes';
 
-import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
+//import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 import LabSection from 'components/LabSection';
 import ReturnIcon from 'components/ReturnIcon';
 
@@ -254,7 +254,6 @@ class HomePage extends Component {
 
   /* end of event handlers */
 
-
   render() {
     const {      
       isOpenPopupVideo,
@@ -263,7 +262,14 @@ class HomePage extends Component {
     } = this.state;        
 
     if (!this.isDataFetchComplete()) {
-      return <MyFirstLoadingComponent isLoading={true} />;    
+      //return <MyFirstLoadingComponent isLoading={true} />;
+      return (
+        <div className='home-page-container'>
+          <div className='loading'>
+            <div className='spinner' />
+          </div>
+        </div>
+      );
     }
 
     const {
@@ -291,14 +297,14 @@ class HomePage extends Component {
     const labSectionBackgroundVideoToUseSrc = (isMobileBrowser && labSectionBackgroundVideoForMobile.guid) ? labSectionBackgroundVideoForMobile.guid : labSectionBackgroundVideo.guid;
 
     return (
-      <div>
+      <div className='home-page-container'>
         {
           /*
             Note:  
-            remove #popupVideo visibility: hidden, before video fullscreen can be triggered 
+            remove .popup-video visibility: hidden, before video fullscreen can be triggered 
           */
         }
-        <div id="popupVideo" className={isOpenPopupVideo ? '' : 'hide'}>
+        <div className={`popup-video ${isOpenPopupVideo ? '' : 'hide'}`}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
               <source src={showreelVideoPopupVideoToUseSrc} />              
@@ -307,7 +313,8 @@ class HomePage extends Component {
           </div>
           <div className="popup-video-bg" onClick={this.handlePopupVideoBackgroundClick} />
         </div>
-        <div id="homepage" className="section-bg wow fadeIn" data-wow-delay="0.5s">
+        {/* <div className="home-page section-bg wow fadeIn" data-wow-delay="0.5s"> */}
+        <div className="home-page">
           <div ref={this.setFeaturedVideo} id="featuredVideo" onClick={this.handleFeaturedVideoClick}
             onMouseEnter={this.handleFeaturedVideoMouseEnter}
             onMouseLeave={this.handleFeaturedVideoMouseLeave}
@@ -377,7 +384,7 @@ class HomePage extends Component {
                 clients={highlightedClients}
               />
             </section>
-          }          
+          }
           <Footer />
         </div>        
       </div>

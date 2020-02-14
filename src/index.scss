@@ -1,10 +1,16 @@
+@import 'globals.scss';
+
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 #root {
   --defaultTransitionDuration: 0.4s;
   --defaultTransition: all var(--defaultTransitionDuration);
   --defaultVisibilityTransition: opacity var(--defaultTransition), visibility var(--defaultTransition);
+
+  --scrollerMarginLeft: 55px;
 }
 
 /* fonts */
@@ -14,27 +20,11 @@ body {
 }
 /* end of fonts */
 /* lang switch */
-#lang-switch {
+.lang-switch {
   position: fixed;
   top: 0;
   left: 50px;
   z-index: 10;
-}
-#loading-screen {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  height: 18em;
-  margin-top: -9em;
-  margin-left: -15em;
-  border: 3px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 3px solid #000000;
-  width: 25px;
-  height: 25px;
-  margin: 0 auto;
-  -webkit-animation: spin 1s linear infinite;
-  animation: spin 1s linear infinite;
 }
 .wow {
   opacity: 0;
@@ -127,12 +117,11 @@ Modal
 */
 
 .ReactModalPortal {
-      background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.75);
 }
 
 
 .ReactModalPortal div {
-
   z-index: 1999;
 }
 
@@ -205,7 +194,7 @@ section {
 }
 
 #scroller {
-  margin: 0 0 0 55px;
+  margin: 0 0 0 var(--scrollerMarginLeft);
   padding: 0 0 0 0;
   /*update sidebar width as well*/
 }
@@ -219,7 +208,7 @@ section {
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
   /* lang switch */
-  #lang-switch {
+  .lang-switch {
     position: fixed;
     top: 55px;
     left: 0px;

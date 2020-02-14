@@ -4,14 +4,19 @@
 .lazy-progressive-image {
   --lazyProgressiveImageDefaultTransition: all 0.4s;
 
+  position: relative;
+  width: 100%;
+}
+
+.lazy-progressive-image .background {
   transition: var(--lazyProgressiveImageDefaultTransition);
 }
 
-.lazy-progressive-image.blur {
+.lazy-progressive-image .background.blur {
   filter: blur(30px);
 }
 
-.lazy-progressive-image.clear {
+.lazy-progressive-image .background.clear {
   filter: blur(0px);
 }
 
@@ -29,7 +34,7 @@
   visibility: hidden;
 }
 
-.lazy-progressive-image.not-in-view img.show {
+.lazy-progressive-image img.show {
   opacity: 1;
   visibility: visible;
 }

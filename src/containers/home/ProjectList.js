@@ -111,6 +111,7 @@ function Project(props) {
 function ProjectList(props) {
   const projectImgPlaceholderHorizontalAspectRatio = 4 / 3;
   const projectImgPlaceholderVerticalAspectRatio = 3 / 4;
+  const projectImgPlaceholderSquareAspectRatio = 1;
 
   const { 
     projects,
@@ -136,7 +137,7 @@ function ProjectList(props) {
         <Project
           project={project2}
           projectClassName='project-2'
-          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
+          imgPlaceHolderAspectRatio={projectImgPlaceholderSquareAspectRatio}
         />
       </div>
       <div className='row-2'>
@@ -170,7 +171,7 @@ function ProjectList(props) {
         <Project
           project={project5}
           projectClassName='project-5'
-          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
+          imgPlaceHolderAspectRatio={projectImgPlaceholderSquareAspectRatio}
         />
       </div>
       <div className='row-1-right'>

@@ -1,16 +1,48 @@
 @import 'globals.scss';
 
 
-body{
+// body {
+//   white-space: initial;
+// }
+// ul, li{
+//   list-style: none;
+// }
+// #main {
+//   margin:0;
+// }
+.home-page-container {
   white-space: initial;
 }
-ul, li{
+.home-page-container ul, li {
   list-style: none;
 }
-#main{
-  margin:0;
+
+
+.home-page-container .loading {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
-#popupVideo{
+.home-page-container .spinner {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  height: 18em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 3px solid #555555;
+  border-radius: 50%;
+  border-top: 3px solid #f3f3f3;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+.home-page-container .popup-video{
   width:100%;
   height:100%;
   position: fixed;
@@ -21,11 +53,11 @@ ul, li{
   visibility: visible;
   transition: all .3s;
 }
-#popupVideo.hide{
+.home-page-container .popup-video.hide{
   opacity: 0;
   visibility: hidden;
 }
-#popupVideo .videoWrap{
+.home-page-container .popup-video .videoWrap{
   // width: 60%;
   // position: absolute;
   // top: 50%;
@@ -34,12 +66,12 @@ ul, li{
   width: 100%;
   height: 100%;
 }
-// #popupVideo .videoWrap:before{
+// .home-page-container .popup-video .videoWrap:before{
 //   content: '';
 //   display: block;
 //   padding-top: 56.25%;
 // }
-#popupVideo .videoWrap video{
+.home-page-container .popup-video .videoWrap video{
   width:100%;
   height:100%;
   position: absolute;
@@ -47,12 +79,12 @@ ul, li{
   left:0;
   background: black;
 }
-#popupVideo .popup-video-bg{
+.home-page-container .popup-video .popup-video-bg{
   width: 100%;
   height: 100%;
   background:rgba(0,0,0,.7);
 }
-#popupVideo .popup-video-close-button {
+.home-page-container .popup-video .popup-video-close-button {
   --size: 32px;
 
   transition: var(--defaultTransition);
@@ -76,8 +108,8 @@ ul, li{
 
   transform: scale(0.75);
 }
-#popupVideo .popup-video-close-button:before,
-#popupVideo .popup-video-close-button:after {
+.home-page-container .popup-video .popup-video-close-button:before,
+.home-page-container .popup-video .popup-video-close-button:after {
   transition: var(--defaultTransition);
 
   display: block;
@@ -90,30 +122,31 @@ ul, li{
   top: 0;
   left: 50%;
 }
-#popupVideo .popup-video-close-button:before {
+.home-page-container .popup-video .popup-video-close-button:before {
   transform: rotate(-45deg);
 }
-#popupVideo .popup-video-close-button:after {
+.home-page-container .popup-video .popup-video-close-button:after {
   transform: rotate(45deg);
 }
-#popupVideo.hide .popup-video-close-button {
+.home-page-container .popup-video.hide .popup-video-close-button {
   visibility: hidden;
   opacity: 0;
 }
-#popupVideo.hide .popup-video-close-button:before,
-#popupVideo.hide .popup-video-close-button:after {
+.home-page-container .popup-video.hide .popup-video-close-button:before,
+.home-page-container .popup-video.hide .popup-video-close-button:after {
   transform: rotate(90deg);
 }
-#homepage #featuredVideo{
+.home-page-container .home-page #featuredVideo{
   width: 100vw;
   height: 100vh;
   // background:#999;
   background:#000;
   overflow: hidden;
-  position: relative;
-  left: -55px;
+
+  /* counter --scrollerMarginLeft */
+  margin-left: calc(-1 * var(--scrollerMarginLeft));
 }
-#homepage #featuredVideo #cursor{
+.home-page-container .home-page #featuredVideo #cursor{
   width:0;
   height:0;
   position: absolute;
@@ -121,7 +154,7 @@ ul, li{
   left:0;
   mix-blend-mode: exclusion;
 }
-#homepage #featuredVideo #cursor span{
+.home-page-container .home-page #featuredVideo #cursor span{
   width:0px;
   height:0px;
   border-radius: 50%;
@@ -137,22 +170,22 @@ ul, li{
   font-weight: bold;
   overflow: hidden;
 }
-#homepage #featuredVideo #cursor span:nth-child(1){
+.home-page-container .home-page #featuredVideo #cursor span:nth-child(1){
   position: absolute;
   top: 0;
   mix-blend-mode: exclusion;
 }
-#homepage #featuredVideo video{
+.home-page-container .home-page #featuredVideo video{
   width: 100%;
   height: 100%;
   object-fit: cover;
 
   // mix-blend-mode: multiply;
 }
-#homepage #featuredVideo video:hover{
+.home-page-container .home-page #featuredVideo video:hover{
   cursor: none;
 }
-#homepage #featuredVideo .companyLogo {
+.home-page-container .home-page #featuredVideo .companyLogo {
   position: absolute;
   top: 30px;
   left: 50%;
@@ -164,7 +197,7 @@ ul, li{
   // mix-blend-mode: exclusion;
 }
 
-#homepage #featuredVideo .videoDescription {
+.home-page-container .home-page #featuredVideo .videoDescription {
   position: absolute;
   bottom: 100px;
   left: 50%;
@@ -172,26 +205,26 @@ ul, li{
   // mix-blend-mode: exclusion;
 }
 
-#homepage #featuredVideo .videoDescription .videoTitle {
+.home-page-container .home-page #featuredVideo .videoDescription .videoTitle {
   font-size: 3vw;
   font-weight: bold;
 }
 
-#homepage #featuredVideo .videoDescription .scrollHint {
+.home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
   font-size: 1.5vw;
   margin-top: 1em;
 }
 
-html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
+html[lang=en] .home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
   font-family: serif;
 }
 
-#homepage .top-video-scrollHint-return-icon-container {
+.home-page-container .home-page .top-video-scrollHint-return-icon-container {
   position: relative;
   top: -0.7em;
 }
 
-#homepage .pop-up-video-open-container {
+.home-page-container .home-page .pop-up-video-open-container {
   transition: var(--defaultTransition);
 
   opacity: 0;
@@ -200,40 +233,43 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
 
 
 @include media-breakpoint-down(sm) {
-  #popupVideo .popup-video-close-button {
+  .home-page-container {
+    margin-left: 0;
+  }
+  .home-page-container .popup-video .popup-video-close-button {
     right: 5%;
     transform: scale(0.5);
   }
-  #homepage #featuredVideo {
+  .home-page-container .home-page #featuredVideo {
     left: 0;
   }
-  #homepage #featuredVideo .companyLogo {
+  .home-page-container .home-page #featuredVideo .companyLogo {
     display: none;
   }
-  #homepage #featuredVideo .videoDescription {
+  .home-page-container .home-page #featuredVideo .videoDescription {
     bottom: 20px;
     left: 20px;
     right: 20px;
   }
-  #homepage #featuredVideo .videoDescription .videoTitle {
+  .home-page-container .home-page #featuredVideo .videoDescription .videoTitle {
     font-size: 6vw;
   }
-  #homepage #featuredVideo .videoDescription .scrollHint {
+  .home-page-container .home-page #featuredVideo .videoDescription .scrollHint {
     font-size: 24px;
   }
 
-  #homepage .pop-up-video-open-container {
+  .home-page-container .home-page .pop-up-video-open-container {
     opacity: 1;
     visibility: visible;
   }
-  #homepage .popup-video-open {
+  .home-page-container .home-page .popup-video-open {
     display: flex;
     align-items: center;
     justify-content: center;
 
     padding: 10%;
   }
-  #homepage .popup-video-open-button {
+  .home-page-container .home-page .popup-video-open-button {
     width: em(312);
     height: em(76);
     border-radius: em(8);
@@ -244,7 +280,7 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
 
     cursor: pointer;
   }
-  #homepage .popup-video-open-button-text {
+  .home-page-container .home-page .popup-video-open-button-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -253,10 +289,10 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
     font-size: em(24);
     font-weight: bold;
   }
-  html[lang=en] #homepage .popup-video-open-button-text {
+  html[lang=en] .home-page-container .home-page .popup-video-open-button-text {
     font-family: serif;
   }
-  #homepage .popup-video-open-play-icon {
+  .home-page-container .home-page .popup-video-open-play-icon {
     --size: 36px;
 
     width: var(--size);
@@ -271,12 +307,12 @@ html[lang=en] #homepage #featuredVideo .videoDescription .scrollHint {
     border: solid em(1) #000000;
     background-color: #ffffff;    
   }
-  #homepage .popup-video-open-play-icon-triangle-container {
+  .home-page-container .home-page .popup-video-open-play-icon-triangle-container {
     position: relative;
     width: 100%;
     height: 100%;
   }
-  #homepage .popup-video-open-play-icon-triangle {
+  .home-page-container .home-page .popup-video-open-play-icon-triangle {
     position: absolute;
     top: 50%;
     left: 55%;

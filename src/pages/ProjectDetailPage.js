@@ -199,7 +199,6 @@ class ProjectDetailPage extends Component {
     }
 
     if (project === null) {
-      // return <div id="loading-screen"></div>;
       return <MyFirstLoadingComponent isLoading={true} />;
     }
 
