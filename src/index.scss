@@ -11,6 +11,7 @@
   --defaultVisibilityTransition: opacity var(--defaultTransition), visibility var(--defaultTransition);
 
   --scrollerMarginLeft: 55px;
+  white-space: pre-line;
 }
 
 /* fonts */
@@ -52,7 +53,7 @@ body {
   color: #000;
   margin: 0 auto;
   position: relative;
-  white-space: pre-line;  
+  // white-space: pre-line;  
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   /* //TODO */
@@ -179,7 +180,8 @@ Modal
 #main {
   background-color: white;
   /*hack: //todo achang bg to check padding / margin*/
-  margin: -55px 0 0 0;
+  // margin: -55px 0 0 0;
+  margin: 0;
   /*hack: //todo adjust after sidebar*/
   padding: 0 0 0 0;
   display: block;

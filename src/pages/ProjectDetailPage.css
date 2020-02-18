@@ -243,6 +243,13 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  .ReactModalPortal div div {
+    width: 100%;
+    height: 100%;
+  }
+  #video-landing {
+    margin-left: 0;
+  }
   #video-landing .player-wrapper {
     overflow: hidden;
   }

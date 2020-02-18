@@ -34,16 +34,16 @@
 
 #footer .footer-contact {
   font-size: 16px;
-  padding-left: 20px;
+  // padding-left: 5%;
 }
 
 #footer .footer-top .social-links {
-  text-align: left;
+  text-align: right;
 }
+
 
 #footer .social-media-img {
   width: 30px;
-  margin: 0 0 0 15px;
 }
 
 #footer .footer-top .social-links a {
@@ -52,6 +52,7 @@
   text-decoration: underline;
   line-height: 1;
   transition: 0.3s;
+  margin: 0 0 0 10px;
 }
 
 #footer .footer-top .social-links a:hover {
@@ -131,9 +132,18 @@
     height: 100%;
     position: relative;
   }
+  #footer .footer-top .social-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  #footer .footer-top .social-links a {
+    flex: 0 0 20%;
+    margin: 0;
+    padding: 0 10px;
+  }
   #footer .social-media-img {
-    width: 60px;
-    margin: 0 10px;
+    width: 100%;
+    // margin: 0 10px;
   }
   #footer .footer-bottom-copyright,
   #footer .footer-bottom-links {

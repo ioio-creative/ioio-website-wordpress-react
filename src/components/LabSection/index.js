@@ -117,7 +117,7 @@ const LabSection = props => {
     }
 
     const initMesh = function () {
-      const size = 1.1;
+      const size = 1.5;
       const pos = [
         {x:-4,y:-1},
         {x:-2.3,y:1.1},
@@ -125,9 +125,9 @@ const LabSection = props => {
         {x:2,y:-1}
       ]
       ioio.push(generateO(size-.4));
-      ioio.push(generateI(size-.55,size+.1));
+      ioio.push(generateI(size-.85,size+.1));
       ioio.push(generateO(size-.4));
-      ioio.push(generateI(size-.55,size+.1));
+      ioio.push(generateI(size-.85,size+.1));
       for(let i=0;i<ioio.length;i++){
         rotateDir[i] = {x:Math.random()*.5+.5, y: Math.random()*.5+.5};
         speed[i] = {x: Math.random()*0.03-0.015, y:Math.random()*0.03-0.015};

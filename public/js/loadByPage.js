@@ -65,7 +65,7 @@ function reloadJS() {
 
     }
     $(window).scroll(function() {
-      if ($(window).width() <= 767) {
+      if (false && $(window).width() <= 767) {
         let scrollVal = $(this).scrollTop();
         let val = convertRange(scrollVal, [
           0, 400

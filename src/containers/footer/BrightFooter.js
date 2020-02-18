@@ -22,9 +22,9 @@ function SocialMedia(props) {
     );
   });
 
-  return (<div>
+  return (<>
     {social_media_items}
-  </div>);
+  </>);
 }
 
 

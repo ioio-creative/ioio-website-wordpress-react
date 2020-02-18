@@ -2,7 +2,7 @@
 
 
 .lab-section-container {
-  --labSectionContainerNormalHeight: 500px;
+  --labSectionContainerNormalHeight: 60vh;
   --labSectionContainerMobileHeight: 355px;
 }
 
@@ -13,9 +13,10 @@
 }
 
 .lab-section-container .title {
-  font-size: 6.5vw;
+  font-size: 5.5vw;
   font-weight: bold;
-  padding: 5% 10% 2.5% 10%;
+  padding: 10% 10% 5.5% 5%;
+  line-height: 1.3em;
 }
 
 .lab-section-container .lab-section .lab-video {
@@ -54,13 +55,18 @@
   right: 5%;
 
   max-width: 440px;
+
+  left: 50%;
+  padding-left: 15px;
+  right: 0;
+  max-width: 50%;
 }
 
 .lab-section-container .lab-section .desc {  
   font-weight: bold;
-  // font-size: 3vw;
+  font-size: 2.5vw;
   // line-height: 3.7vw;
-  font-size: 2.75em;
+  // font-size: 2.5em;
   line-height: 1.35em;
   color: var(--videoTextContainerFontColor);  
 }
@@ -84,8 +90,8 @@
 
 .lab-section-container .lab-section .interaction-hint {  
   margin-top: 1em;
-  // font-size: 1.5vw;
-  font-size: 1.375em;
+  font-size: 1.5vw;
+  // font-size: 1.375em;
 }
 
 html[lang=en] .lab-section-container .lab-section .interaction-hint {  
@@ -106,13 +112,15 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
   }
   .lab-section-container .title {
     font-size: em(30);
-    padding: 5% 5% 5% 5%;
+    padding: 20% 5% 10% 5%;
   }
   .lab-section-container .lab-section .desc-container {
     position: absolute;
     top: var(--videoTextInnerContainerTopBottomPadding);
     left: var(--videoTextInnerContainerLeftPadding);
-
+    right: var(--videoTextInnerContainerLeftPadding);
+    max-width: 100%;
+    padding-left: 0;
     transition: var(--videoTextInnerContainDefaultTransition);
   }
   .lab-section-container .lab-section .desc {
@@ -129,7 +137,7 @@ html[lang=en] .lab-section-container .lab-section .interaction-hint {
     visibility: visible;
   }
   .lab-section-container .lab-section .interaction-hint {  
-    font-size: 15px;
+    font-size: 30px;
 
     position: absolute;
     bottom: var(--videoTextInnerContainerTopBottomPadding);

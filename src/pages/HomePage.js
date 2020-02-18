@@ -340,14 +340,7 @@ class HomePage extends Component {
             <div className="videoDescription">
               <div className="videoTitle">{showreelVideoTitle}</div>
               <div className="scrollHint">
-                <span className='top-video-scrollHint-return-icon-container'>
-                  <ReturnIcon
-                    color='#FFF'
-                    beforeWidth='1em'
-                    beforeHeight='1.5em'
-                    arrowSize='0.75em'
-                  />
-                </span>
+                <span className='top-video-scrollHint-return-icon-container' />
                 {showreelVideoInteractionHint}
               </div>
             </div>

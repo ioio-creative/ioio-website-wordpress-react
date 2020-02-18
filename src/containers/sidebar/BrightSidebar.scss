@@ -385,11 +385,11 @@ html[lang=tc] #sidebar h3 {
     z-index: 999;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: transparent;
     overflow: hidden;
-    color: #000;
+    color: #FFF;
     padding-top: 0;
-    border-bottom: 0px solid #E6E6E6;
+    border: 0px solid #E6E6E6;
   }
   
   .scrolled #sidebar {
@@ -401,6 +401,64 @@ html[lang=tc] #sidebar h3 {
     color: #fff;
     height: 100%;
     padding-top: 100px;
+  }
+  #sidebar {
+    border: 0px solid #E6E6E6;
+    border-bottom: 2px solid rgba(230, 230, 230, 0);
+    transition: var(--defaultTransition);
+    #menu-toggle,
+    #logo-toggle,
+    .work-work-lab-switch-for-mobile-container {
+      color: inherit;
+      transition: none;
+    }
+    .logo.menu-transition {
+      top: 0px;
+      opacity: 0;
+    }
+    #menu-toggle {
+      .close-symbol {
+        color: inherit;
+        transition: none;
+        &:before,
+        &:after {
+          background-color: currentColor;
+          transition: none;
+        }
+      }
+    }
+
+    .work-work-lab-switch-for-mobile-container {
+      color: inherit;
+      transition: none;
+
+      .work-to-lab-switch-for-mobile {
+        color: inherit;
+        transition: none;
+
+        .work-to-lab-switch-txt {
+          color: inherit;
+          transition: none;
+          border-right-color: currentColor;
+        }
+      }
+    }
+  }
+  body.scrolled {
+    #sidebar {
+      color: #000;
+      background-color: #FFF;
+      border-bottom: 2px solid rgba(230, 230, 230, 1);
+      .logo.menu-transition {
+        top: 10px;
+        opacity: 1;
+      }
+      #sidebar-top-logo-text {
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--defaultTransition);
+      }
+    }
   }
   #sidebar h3 {
     font-size: 16px;
