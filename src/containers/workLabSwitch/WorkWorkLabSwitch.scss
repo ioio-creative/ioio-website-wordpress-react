@@ -64,6 +64,9 @@
   opacity: 1;
   visibility: visible;
 }
+.work-to-lab-switch.show:hover .circle {
+  transform: scale(1.2);
+}
 
 .work-to-lab-switch.hide .circle {
   transform: scale(0);
