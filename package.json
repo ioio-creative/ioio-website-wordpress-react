@@ -48,14 +48,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy-gh-pages": "npm run build",
-    "deploy-gh-pages": "npm run deploy-gh-pages-only",
-    "deploy-gh-pages-only": "gh-pages -d build"
+    "predeploy-gh-pages": "yarn run build",
+    "deploy-gh-pages": "yarn run deploy-gh-pages-only",
+    "deploy-gh-pages-only": "gh-pages -d build",
+    "preserve-build": "yarn run build",
+    "serve-build": "serve -s build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-react-intl": "^3.0.0",
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "serve": "^11.3.0"
   },
   "browserslist": [
     ">0.2%",
