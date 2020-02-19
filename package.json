@@ -52,8 +52,8 @@
     "deploy-gh-pages": "yarn run deploy-gh-pages-only",
     "deploy-gh-pages-only": "gh-pages -d build",
     "preserve-build": "yarn run build",
-    "serve-build": "serve -s build",
-    "serve-build-only": "yarn run serve-build"
+    "serve-build": "yarn run serve-build-only",
+    "serve-build-only": "serve -s build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
