@@ -1,6 +1,6 @@
 import './BrightFooter.scss';
 
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Modal from 'react-modal';
 import {FormattedMessage} from 'react-intl';
@@ -22,9 +22,9 @@ function SocialMedia(props) {
     );
   });
 
-  return (<Fragment>
+  return (<>
     {social_media_items}
-  </Fragment>);
+  </>);
 }
 
 

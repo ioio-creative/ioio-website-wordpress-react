@@ -4,9 +4,12 @@
 # Sidebar
 --------------------------------------------------------------*/
 
-#sidebar.menu-transition,
 #sidebar .menu-transition {
   transition: var(--defaultTransition);
+}
+
+#sidebar.menu-transition {
+  transition: width 0.4s;
 }
 
 #sidebar.menu-transition.active {
