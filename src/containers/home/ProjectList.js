@@ -29,7 +29,8 @@ function Project(props) {
   const {
     project,
     projectClassName,
-    imgPlaceHolderAspectRatio
+    imgPlaceHolderAspectRatio,
+    imgPlaceHolderAspectRatioForMobile
   } = props;
 
   const projectReturnIconContainerRef = useRef(null);
@@ -89,6 +90,8 @@ function Project(props) {
           src={imgSrc}
           isRequirePaddingTopForPlaceHolder={true}
           placeHolderAspectRatio={imgPlaceHolderAspectRatio}
+          placeHolderAspectRatioForMobile={imgPlaceHolderAspectRatioForMobile}
+          isForceUsePlaceHolderAspectRatioAfterLoad={true}
           imgContainerClassName='special-img-hover'
         />
       </Link>
@@ -130,12 +133,14 @@ function ProjectList(props) {
         <Project
           project={project1}
           projectClassName='project-1'
-          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}   
+          imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio} 
         />
         <Project
           project={project2}
           projectClassName='project-2'
           imgPlaceHolderAspectRatio={projectImgPlaceholderSquareAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
         />
       </div>
       <div className='row-2'>
@@ -158,6 +163,7 @@ function ProjectList(props) {
           project={project3}
           projectClassName='project-3'
           imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
         />
       </div>
       <div className='row-2'>
@@ -165,11 +171,13 @@ function ProjectList(props) {
           project={project4}
           projectClassName='project-4'
           imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
         />
         <Project
           project={project5}
           projectClassName='project-5'
           imgPlaceHolderAspectRatio={projectImgPlaceholderSquareAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
         />
       </div>
       <div className='row-1-right'>
@@ -177,6 +185,7 @@ function ProjectList(props) {
           project={project6}
           projectClassName='project-6'
           imgPlaceHolderAspectRatio={projectImgPlaceholderHorizontalAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
         />
       </div>
     </div>
