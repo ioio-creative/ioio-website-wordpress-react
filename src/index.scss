@@ -259,10 +259,16 @@ div.special-img-hover {
   overflow: hidden;
 }
 
+div.special-img-hover img {
+  transition: all 0.8s;
+}
+
 div.special-img-hover img:hover {
-  transform: scale(1.1);
+  // transform: scale(1.1);
+  transform: scale(1.04);
   /* filter: contrast(150%); */
-  transition: all 1.6s;
+  //transition: all 1.6s;
+  transition: all 0.8s;
 }
 
 

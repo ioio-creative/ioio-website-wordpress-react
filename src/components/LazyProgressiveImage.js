@@ -64,7 +64,7 @@ function LazyProgressiveImage(props) {
   const backgroundPaddingTopRatio = placeHolderAspectRatio ? 1/placeHolderAspectRatio : 9/16;
 
   const backgroundStyle = {    
-    backgroundColor: placeHolderColor || 'rgba(204, 204, 204, 125)'
+    backgroundColor: placeHolderColor || 'rgba(227, 228, 229, 1)'
   };
 
   if (isRequirePaddingTopForPlaceHolder) {
