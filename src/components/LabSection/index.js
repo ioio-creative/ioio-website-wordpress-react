@@ -15,6 +15,10 @@ import {CopyShader} from './shaders/CopyShader';
 import ReturnIcon from 'components/ReturnIcon';
 
 import routes from 'globals/routes';
+import {getIsMobileBrowser} from 'utils/getIsMobileBrowser';
+
+
+const isMobileBrowser = getIsMobileBrowser();
 
 
 const LabSection = props => {
@@ -22,7 +26,8 @@ const LabSection = props => {
     title,
     desc,
     interactionHint,
-    backgroundVideoSrc
+    backgroundVideoSrc,
+    backgroundVideoSrcForMobile
   } = props;
 
   const labSection = useRef(null);
@@ -267,6 +272,22 @@ const LabSection = props => {
       <div className="title">{title}</div>
       <div ref={labSection} className="lab-section">        
         <video ref={labVideo} className="lab-video" loop crossOrigin="anonymous" playsInline autoPlay muted controls>
+          {
+            isMobileBrowser ?
+            (
+              <>
+                <source src={backgroundVideoSrcForMobile} />
+                <source src={backgroundVideoSrc} />
+              </>
+            )
+            :
+            (
+              <>
+                <source src={backgroundVideoSrc} />
+                <source src={backgroundVideoSrcForMobile} />
+              </>
+            )
+          }
           <source src={backgroundVideoSrc} />
         </video>
         <div className="video-text-outer-container">
