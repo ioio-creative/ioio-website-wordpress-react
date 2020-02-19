@@ -168,9 +168,13 @@ class BrightSidebar extends Component {
 
           <div className="container-fluid info-section">
             <div className="row">
-              <div className="col-lg-3 col-md-3 sidebar-info">
+            <div className="col-lg-3 col-md-3 sidebar-info">
                 <h4>{sidebar.bottom_section_left_title}</h4>
                 <p>{sidebar.address}</p>
+              </div>
+              <div className="col-lg-3 col-md-3 sidebar-info">
+                <h4>&nbsp;</h4>
+                <p>{sidebar.tw_address}</p>
               </div>
               <div className="col-lg-3 col-md-3 sidebar-contact-method">
                 <p>
@@ -185,14 +189,14 @@ class BrightSidebar extends Component {
                   <SocialMedia items={sidebar.social_media}/>
                 </div>
               </div>
-              <div className="col-lg-3 col-md-3 sidebar-hiring">
+              {/* <div className="col-lg-3 col-md-3 sidebar-hiring">
                 <h4>
                   {sidebar.hiring_title}
                 </h4>
                 <p>
                   {sidebar.hiring_description}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

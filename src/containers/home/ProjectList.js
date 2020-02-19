@@ -134,13 +134,13 @@ function ProjectList(props) {
           project={project1}
           projectClassName='project-1'
           imgPlaceHolderAspectRatio={projectImgPlaceholderVerticalAspectRatio}
-          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio} 
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderSquareAspectRatio} 
         />
         <Project
           project={project2}
           projectClassName='project-2'
           imgPlaceHolderAspectRatio={projectImgPlaceholderSquareAspectRatio}
-          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderHorizontalAspectRatio}
+          imgPlaceHolderAspectRatioForMobile={projectImgPlaceholderSquareAspectRatio}
         />
       </div>
       <div className='row-2'>

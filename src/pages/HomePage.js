@@ -357,7 +357,7 @@ class HomePage extends Component {
                 <div className='popup-video-open-play-icon'>
                   <div className='popup-video-open-play-icon-triangle-container'>
                     <div className='popup-video-open-play-icon-triangle'>
-                      &#9658;
+                      {/* &#9658; */}
                     </div>
                   </div>
                 </div>

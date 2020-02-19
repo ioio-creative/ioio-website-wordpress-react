@@ -443,12 +443,26 @@ html[lang=tc] #sidebar h3 {
         }
       }
     }
+    .info-section {
+      p {
+        margin-bottom: 0;
+      }
+      .social-links {
+        display: none;
+      }
+    }
+    .sidebar-contact-method {
+      margin-top: 25px;
+    }
   }
   body.scrolled {
     #sidebar {
       color: #000;
       background-color: #FFF;
       border-bottom: 2px solid rgba(230, 230, 230, 1);
+      &.active {
+        color: #FFF;
+      }
       .logo.menu-transition {
         top: 10px;
         opacity: 1;

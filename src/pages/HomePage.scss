@@ -337,4 +337,11 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
     left: 55%;
     transform: translate(-50%, -50%);
   }
+  .home-page-container .home-page .popup-video-open-play-icon-triangle:after {
+    display: block;
+    content: '';
+    border-left: 14px solid #000;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+  }
 }
