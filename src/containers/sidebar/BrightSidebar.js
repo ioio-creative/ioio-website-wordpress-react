@@ -173,7 +173,7 @@ class BrightSidebar extends Component {
                 <p>{sidebar.address}</p>
               </div>
               <div className="col-lg-3 col-md-3 sidebar-info">
-                <h4>&nbsp;</h4>
+                <h4>{sidebar.bottom_section_right_title}</h4>
                 <p>{sidebar.tw_address}</p>
               </div>
               <div className="col-lg-3 col-md-3 sidebar-contact-method">

@@ -10,14 +10,18 @@
 #sidebar .language-selector a {
   opacity: 0;
   visibility: hidden;
-
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 20px;
+  font-weight: normal;
   transition: opacity var(--defaultTransitionDuration), visibility var(--defaultTransitionDuration);
 }
 #sidebar.active .language-selector a {
   opacity: 1;
   visibility: visible;
-
   font-size: 14px;
+
+  
   margin-left: 0;
   margin-right: 20px;
   font-weight: normal;
