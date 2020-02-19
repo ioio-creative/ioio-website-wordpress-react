@@ -172,6 +172,7 @@ class HomePage extends Component {
           fscreen.requestFullscreen(this.popupVideo);
         }
       }
+      this.popupVideo.play();
     });
   }
 
@@ -215,7 +216,12 @@ class HomePage extends Component {
   }  
 
   handleFeaturedVideoClick() {
-    this.openPopupVideo(this.isMakePopupVideoFullScreenOnFirstClick);
+    // https://stackoverflow.com/questions/1248081/how-to-get-the-browser-viewport-dimensions
+    // useViewport if updated
+    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (vw > 767) {
+      this.openPopupVideo(this.isMakePopupVideoFullScreenOnFirstClick);
+    }
   }
 
   handlePopupVideoOpenButtonClick() {

@@ -258,6 +258,9 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
     margin-left: 0;
     height: calc(100vh - 150px);
   }
+  .home-page-container .home-page .featured-video-container #cursor {
+    display: none;
+  }
   .home-page-container .home-page .featured-video-container .companyLogo {
     top: 10vh;
     font-size: 15vw;
