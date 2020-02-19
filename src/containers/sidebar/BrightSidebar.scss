@@ -9,6 +9,7 @@
 }
 
 #sidebar.menu-transition {
+  // transition: var(--defaultTransition);
   transition: width 0.4s;
 }
 
