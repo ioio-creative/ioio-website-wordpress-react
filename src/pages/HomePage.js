@@ -7,7 +7,6 @@ import routes from 'globals/routes';
 
 //import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 import LabSection from 'components/LabSection';
-import ReturnIcon from 'components/ReturnIcon';
 
 import ProjectList from 'containers/home/ProjectList';
 import ClientList from 'containers/home/ClientList';
@@ -18,6 +17,7 @@ import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
 import firstOrDefault from 'utils/js/array/firstOrDefault';
 import {createIdSlugPairs} from 'utils/generalMapper';
 import {getIsMobileBrowser} from 'utils/getIsMobileBrowser';
+import viewport from 'utils/ui/viewport';
 
 import './HomePage.scss';
 import './HomePageSE.css';
@@ -216,10 +216,7 @@ class HomePage extends Component {
   }  
 
   handleFeaturedVideoClick() {
-    // https://stackoverflow.com/questions/1248081/how-to-get-the-browser-viewport-dimensions
-    // useViewport if updated
-    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    if (vw > 767) {
+    if (!viewport.isSmallerThanOrEqualToSmallViewport()) {
       this.openPopupVideo(this.isMakePopupVideoFullScreenOnFirstClick);
     }
   }
