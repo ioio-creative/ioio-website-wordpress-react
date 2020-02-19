@@ -2,6 +2,7 @@ import './LazyProgressiveImage.scss';
 
 import React, {useState, useRef} from 'react';
 import {useInView} from 'react-intersection-observer';
+import {useIsSmallerThanOrEqualToSmallViewport} from 'hooks/ui/viewport';
 
 
 // https://css-tricks.com/the-complete-guide-to-lazy-loading-images/
@@ -9,7 +10,8 @@ import {useInView} from 'react-intersection-observer';
 function LazyProgressiveImage(props) {
   const {
     src, alt, imgContainerClassName, imgClassName, width, height, placeHolderColor,
-    isRequirePaddingTopForPlaceHolder, placeHolderAspectRatio, inViewRootMargin
+    isRequirePaddingTopForPlaceHolder, placeHolderAspectRatio, placeHolderAspectRatioForMobile, isForceUsePlaceHolderAspectRatioAfterLoad,
+    inViewRootMargin
   } = props;
 
   const [isFirstInViewPassed, setIsFirstInViewPassed] = useState(false);
@@ -24,6 +26,8 @@ function LazyProgressiveImage(props) {
     rootMargin: inViewRootMargin || '0px 0px 500px 0px',
     triggerOnce: true
   });
+
+  const isSmallerThanOrEqualToSmallViewport = useIsSmallerThanOrEqualToSmallViewport();
 
   // if (src.length >= 3 && src.substr(src.length - 3) === 'gif') {  // special gif case
   //   if (inViewEntry && inViewEntry.target) {
@@ -61,7 +65,8 @@ function LazyProgressiveImage(props) {
     }
   // }
 
-  const backgroundPaddingTopRatio = placeHolderAspectRatio ? 1/placeHolderAspectRatio : 9/16;
+  const placeHolderAspectRatioToUse = (isSmallerThanOrEqualToSmallViewport && Boolean(placeHolderAspectRatioForMobile)) ? placeHolderAspectRatioForMobile : placeHolderAspectRatio;
+  const backgroundPaddingTopRatio = placeHolderAspectRatioToUse ? 1/placeHolderAspectRatioToUse : 9/16;
 
   const backgroundStyle = {    
     backgroundColor: placeHolderColor || 'rgba(227, 228, 229, 1)'
@@ -74,7 +79,9 @@ function LazyProgressiveImage(props) {
   const isImgLoaded = Boolean(renderedImgSize);
   if (isImgLoaded) {
     if (isRequirePaddingTopForPlaceHolder) {
-      backgroundStyle.padding = (renderedImgSize.height / renderedImgSize.width * 100) + '% 0 0 0';
+      if (!isForceUsePlaceHolderAspectRatioAfterLoad) {
+        backgroundStyle.padding = (renderedImgSize.height / renderedImgSize.width * 100) + '% 0 0 0';
+      }      
     }
   }
 
