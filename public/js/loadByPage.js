@@ -65,7 +65,7 @@ function reloadJS() {
 
     }
     $(window).scroll(function() {
-      if (false && $(window).width() <= 767) {
+      if ($(window).width() <= 767) {
         let scrollVal = $(this).scrollTop();
         let val = convertRange(scrollVal, [
           0, 400
@@ -93,19 +93,18 @@ function reloadJS() {
           val3 = 0;
         }
 
-        $('#sidebar .logo,#dark-sidebar .logo').css("transition", "none");
+        $('#dark-sidebar .logo').css("transition", "none");
 
-        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("transition", "none");
+        $('#dark-sidebar #sidebar-top-logo-text').css("transition", "none");
 
-        $('#sidebar .logo,#dark-sidebar .logo').css("top", (val * 10) + "px");
+        $('#dark-sidebar .logo').css("top", (val * 10) + "px");
 
-        $('#sidebar .logo,#dark-sidebar .logo').css("opacity", val3);
-        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("opacity", 1 - val2);
-        $('#sidebar #sidebar-top-logo-text,#dark-sidebar #sidebar-top-logo-text').css("top", ((1 - val) * 17) + "px");
+        $('#dark-sidebar .logo').css("opacity", val3);
+        $('#dark-sidebar #sidebar-top-logo-text').css("opacity", 1 - val2);
+        $('#dark-sidebar #sidebar-top-logo-text').css("top", ((1 - val) * 17) + "px");
         if (scrollVal < 200) {
-          $('#sidebar,#dark-sidebar').css("border-bottom", "0px solid #FFFFFF");
-        } else {
-          $('#sidebar').css("border-bottom", "2px solid #E6E6E6");
+          $('#dark-sidebar').css("border-bottom", "0px solid #FFFFFF");
+        } else {          
           $('#dark-sidebar').css("border-bottom", "2px solid #656565");
         }
       }
@@ -130,11 +129,11 @@ function reloadJS() {
       $('body').removeClass('scrolled');
 
       /*
-                  $('.wow').removeClass('animated');
-                  $('.wow').removeAttr('style');
-                  new WOW().init();
-                  console.log($(this).scrollTop());
-            */
+            $('.wow').removeClass('animated');
+            $('.wow').removeAttr('style');
+            new WOW().init();
+            console.log($(this).scrollTop());
+      */
     }
 
     if ($(this).scrollTop() < 1500) {
