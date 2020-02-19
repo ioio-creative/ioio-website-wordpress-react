@@ -243,10 +243,7 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
-  .ReactModalPortal div div {
-    width: 100%;
-    height: 100%;
-  }
+  
   #video-landing {
     margin-left: 0;
   }
@@ -674,6 +671,7 @@ video {
   display: inline-block;
   border:1px solid #d5d5d5;
   margin-left:10px;
+  margin-bottom: 10px;
   padding:4px 5px 3px;
 }
 
