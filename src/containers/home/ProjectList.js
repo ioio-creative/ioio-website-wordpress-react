@@ -15,7 +15,7 @@ function ProjectListReturnIcon(props) {
   return (
     <ReturnIcon
       color='#000'
-      paddingRight='0.6em'
+      paddingRight='1.5vw'
       beforeWidth='2.43em'
       beforeHeight='1.5em'
       arrowSize='1em'
@@ -93,14 +93,14 @@ function Project(props) {
         />
       </Link>
       <Link to={detailRoutePath}>
-        <div className="project-name clearfix">
+        <div className='project-name clearfix'>
           <span className='project-return-icon-container' ref={projectReturnIconContainerRef}>
             <ProjectListReturnIcon />
           </span>
           <p style={projectNameStyle}>{name}</p>
         </div>
       </Link>
-      <div className="project-category" style={projectCategoryStyle}>{categoriesCorrespondingToProj}</div>      
+      <div className='project-category' style={projectCategoryStyle}>{categoriesCorrespondingToProj}</div>      
     </div>
   );
 }
