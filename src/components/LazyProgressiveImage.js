@@ -59,7 +59,8 @@ function LazyProgressiveImage(props) {
         if (img.complete) {
           handleImgLoad();
         } else {
-          img.addEventListener('load', handleImgLoad);
+          // https://stackoverflow.com/questions/44728228/are-onload-event-handlers-automatically-released-after-execution
+          img.addEventListener('load', handleImgLoad, { once: true });
         }      
       }
     }
