@@ -57,9 +57,11 @@ function LazyProgressiveImage(props) {
         // tell the image it has loaded, otherwise it might not fade in.
         // https://www.w3schools.com/jsref/prop_img_complete.asp
         if (img.complete) {
+          //console.log('Image load complete:', img.src);
           handleImgLoad();
         } else {
-          img.addEventListener('load', handleImgLoad);
+          // https://stackoverflow.com/questions/44728228/are-onload-event-handlers-automatically-released-after-execution
+          img.addEventListener('load', handleImgLoad, { once: true });
         }      
       }
     }
