@@ -296,16 +296,6 @@ class HomePage extends Component {
       lab_section_interaction_hint: labSectionInteractionHint,
       highlighted_clients: highlightedClients,
     } = homepageData;
-    
-    const showReelVideoBackgroundVideoToUseSrc = (isMobileBrowser && showreelVideoBackgroundVideoForMobile.guid) ? showreelVideoBackgroundVideoForMobile.guid : showreelVideoBackgroundVideo.guid;
-    //const showReelVideoBackgroundVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
-    //const showReelVideoBackgroundVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2020/01/30180148/website_video_s.mp4';
-    const showreelVideoPopupVideoToUseSrc = (isMobileBrowser && showreelVideoPopupVideoForMobile.guid) ? showreelVideoPopupVideoForMobile.guid : showreelVideoPopupVideo.guid;
-    //const showreelVideoPopupVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
-    //const showreelVideoPopupVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2020/01/30144231/IO_Showreel_compress.mp4'
-    const labSectionBackgroundVideoToUseSrc = (isMobileBrowser && labSectionBackgroundVideoForMobile.guid) ? labSectionBackgroundVideoForMobile.guid : labSectionBackgroundVideo.guid;
-    //const labSectionBackgroundVideoToUseSrc = 'https://ioio-website-static.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2020/02/06151537/moodvid_1_1.webm';
-    //const labSectionBackgroundVideoToUseSrc = 'https://s3-ap-southeast-1.amazonaws.com/ioio-website-static/wp-content/uploads/2019/12/11124950/cover_video4.mp4';
 
     return (
       <div className='home-page-container'>
@@ -318,7 +308,22 @@ class HomePage extends Component {
         <div className={`popup-video ${isOpenPopupVideo ? '' : 'hide'}`}>
           <div className="videoWrap">
             <video ref={this.setPopupVideo} controls>
-              <source src={showreelVideoPopupVideoToUseSrc} />              
+              {
+                isMobileBrowser ?
+                (
+                  <>
+                    <source src={showreelVideoPopupVideoForMobile.guid} />
+                    <source src={showreelVideoPopupVideo.guid} />
+                  </>
+                )
+                :
+                (
+                  <>
+                    <source src={showreelVideoPopupVideo.guid} />
+                    <source src={showreelVideoPopupVideoForMobile.guid} />
+                  </>
+                )
+              }
             </video>
             <button className="popup-video-close-button" onClick={this.handlePopupVideoCloseButtonClick} />
           </div>
@@ -333,7 +338,22 @@ class HomePage extends Component {
           >
             <video ref={this.setFeaturedVideo} muted autoPlay loop playsInline>
               {/* <source src="https://player.vimeo.com/external/340322136.hd.mp4?s=718521cadf91addeb9b0ce9bb300306b7b86479a&amp;profile_id=175" type='video/mp4;'/> */}
-              <source src={showReelVideoBackgroundVideoToUseSrc} />
+              {
+                isMobileBrowser ?
+                (
+                  <>
+                    <source src={showreelVideoBackgroundVideoForMobile.guid} />
+                    <source src={showreelVideoBackgroundVideo.guid} />
+                  </>
+                )
+                :
+                (
+                  <>
+                    <source src={showreelVideoBackgroundVideo.guid} />
+                    <source src={showreelVideoBackgroundVideoForMobile.guid} />
+                  </>
+                )
+              }
             </video>
             <div ref={this.setCursor} id="cursor">
               <span />
@@ -375,7 +395,8 @@ class HomePage extends Component {
             title={labSectionTitle}
             desc={labSectionDesc}
             interactionHint={labSectionInteractionHint}
-            backgroundVideoSrc={labSectionBackgroundVideoToUseSrc}
+            backgroundVideoSrc={labSectionBackgroundVideo.guid}
+            backgroundVideoSrcForMobile={labSectionBackgroundVideoForMobile.guid}
           />      
           {
             isNonEmptyArray(highlightedClients) &&

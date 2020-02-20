@@ -10,11 +10,13 @@
 
 #sidebar.menu-transition {
   // transition: var(--defaultTransition);
+  // transition: width 0.4s, background-color 0.4s;
   transition: width 0.4s;
 }
 
 #sidebar.menu-transition.active {
   // transition: left 0.4s ease, top 0.4s ease, height 0.4s ease, width 0.4s ease 0.4s;
+  // transition: padding-top 0.4s ease 0.6s, width 0.4s, background-color 0.4s;
   transition: padding-top 0.4s ease 0.6s, width 0.4s;
 }
 
