@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
 import $ from 'jquery';
@@ -37,18 +37,20 @@ class BrightSidebar extends Component {
     super(props);
     this.state = {
       sidebar: null,
-      isOpenSidebar: false
+      isOpenSidebar: false,
+      whiteBg: false
     };
-
+    // console.log(this.props.location.pathname);
     [
       // methods
 
       // event handlers
       'handleMenuToggle',
       'handleMenuClose',
+      'checkCurrentPageNeedWhiteBg',
     ].forEach(methodName => {
       this[methodName] = this[methodName].bind(this);
-    });    
+    });   
   }
 
 
@@ -57,14 +59,36 @@ class BrightSidebar extends Component {
   componentDidMount() {
     fetchActiveBrightSidebar((aSidebar) => {
       this.setState({sidebar: aSidebar});
-    });    
+    });
+    this.checkCurrentPageNeedWhiteBg();
   }
-
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.checkCurrentPageNeedWhiteBg();
+    }
+  }
   /* end of react lifecycles */
 
 
   /* methods */
-
+  checkCurrentPageNeedWhiteBg() {
+    console.log(routes.about(false));
+    switch (this.props.location.pathname) {
+      case routes.about(false):
+      case routes.contacts(false):
+      case routes.projects(false):
+        this.setState({
+          whiteBg: true
+        }, _=>{
+          console.log(this.state);
+        })
+        break;
+      default: 
+        this.setState({
+          whiteBg: false
+        })
+    }
+  }
   /* end of methods */
 
 
@@ -96,7 +120,7 @@ class BrightSidebar extends Component {
 
   render() {
     const {
-      sidebar, isOpenSidebar
+      sidebar, isOpenSidebar, whiteBg
     } = this.state;
     
     if (sidebar === null) {
@@ -104,7 +128,7 @@ class BrightSidebar extends Component {
     }
     
     return (
-      <nav id="sidebar" className={`menu-transition ${isOpenSidebar ? 'active' : ''}`} role="navigation">        
+      <nav id="sidebar" className={`menu-transition${isOpenSidebar ? ' active' : ''}${whiteBg? ' white-bg': ''}`} role="navigation">        
         <a id="menu-toggle" role="button" className="menu-transition" onClick={this.handleMenuToggle}>
           <div id="menu-toggle-div">
             <h3>
@@ -205,4 +229,4 @@ class BrightSidebar extends Component {
   }
 }
 
-export default BrightSidebar;
+export default withRouter(BrightSidebar);

@@ -5,6 +5,9 @@
   padding: 50px 0 0 0;
 }
 
+#contact-top {
+  padding-top: 50px;
+}
 #contact-top h1 {
   color: #000;
   font-size: 45px;

@@ -327,6 +327,9 @@ slideshow
 }
 
 @media only screen and (max-width: 767px) {
+  .about-page #about01 {
+    padding-top: 80px;
+  }
   .about-page #the-team .section-header p {
     width: auto;
   }
