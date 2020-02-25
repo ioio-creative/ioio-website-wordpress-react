@@ -166,7 +166,7 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   /*--[ Mobile styles go here]---------------------------*/
   #portfolio {
     padding-top: 100px;
