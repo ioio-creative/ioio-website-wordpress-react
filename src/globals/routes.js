@@ -62,6 +62,6 @@ export default {
   },
   tapping: "/tapping",
   hopping: "/hopping",
-  sonar2019: "/sonar2019",
+  sonar2019: "/polarpolar",
   schoolVR: "/schoolVR"
 };

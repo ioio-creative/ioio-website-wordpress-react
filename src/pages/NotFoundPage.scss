@@ -1,0 +1,21 @@
+@import 'globals.scss';
+
+
+.not-found-page {
+
+}
+
+.not-found-page .content-container {
+  padding-left: var(--scrollerMarginLeft);
+  padding-top: 5%;
+}
+
+
+@include media-breakpoint-down(sm) {
+  .not-found-page .content-container {
+    --padding-side: 5%;
+    padding-top: 7.5%;
+    padding-left: var(--padding-side);
+    padding-right: var(--padding-side);
+  }
+}
