@@ -264,6 +264,7 @@ video {
     position: absolute;
     left: 50%;
     top: 50%;
+    bottom: auto;
     transform: translate(-50%, -50%);
   }
   #video-landing .video-text h1 {
@@ -742,6 +743,7 @@ video {
   }
   .slideshow-img-in-middle .img-container img {
     top: 50%;
+    bottom: auto;
     transform: translateY(-50%);
   }
   #project-info .title{
