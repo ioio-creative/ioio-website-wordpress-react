@@ -87,16 +87,16 @@ function VideoLanding(props) {
               <div className="offset-md-1 col-md-5 project-title-div">
                 <h1 className="container-fluid">{props.project.project_title}</h1>
                 <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+                {props.project.showreel.guid && <div className="pop-up-vid-div">
+                  <Link to="#" onClick={props.modalClick} id="pop-up-vid">
+                    <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
+                    <FormattedMessage
+                      id="ProjectDetailPage.showreelButton"
+                      defaultMessage="SHOWREEL"
+                    />
+                  </Link>
+                </div>}
               </div>
-              {props.project.showreel.guid && <div className="pop-up-vid-div">
-                <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-                  <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
-                  <FormattedMessage
-                    id="ProjectDetailPage.showreelButton"
-                    defaultMessage="SHOWREEL"
-                  />
-                </Link>
-              </div>}
               <div className="col-md-1" />
             </div>
           </div>

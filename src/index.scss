@@ -280,4 +280,10 @@ div.special-img-hover img:hover {
   .owl-carousel .owl-stage-outer {
     margin: 0 2px;
   }
+  .owl-carousel button.owl-dot {
+    outline: 0;
+  }
+  .owl-theme .owl-dots .owl-dot span {
+    margin: 0!important;
+  }
 }
