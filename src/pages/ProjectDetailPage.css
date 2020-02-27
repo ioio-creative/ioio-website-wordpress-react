@@ -82,10 +82,6 @@ pop-up
   width: auto;
   bottom: 0;
 }
-#video-landing .project-title-div {
-  position: absolute;
-  bottom: 0;
-}
 #video-landing .video-text h1 {
   position: static;
   /* top: 39vh; */
@@ -105,6 +101,7 @@ pop-up
   text-align: left;
   letter-spacing: 0.05em;
   margin-bottom: 46px;
+  /* margin-bottom: 22px; */
 }
 
 #video-landing .video-text a {
@@ -261,11 +258,11 @@ video {
     max-height: 60vh;
   }
   #video-landing .col-md-5 {
-    position: absolute;
+    position: static;
     left: 50%;
     top: 50%;
     bottom: auto;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
   }
   #video-landing .video-text h1 {
     position: static;
@@ -679,6 +676,15 @@ video {
 
 @media only screen and (max-width: 767px) {
   /*--[ Mobile styles go here]---------------------------*/
+  
+  #video-landing .project-title-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+  }
   .project-section-bg {
     padding: 20px 0;
   }

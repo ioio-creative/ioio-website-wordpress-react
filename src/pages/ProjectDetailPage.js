@@ -84,9 +84,11 @@ function VideoLanding(props) {
           {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
           <div className="video-text wow fadeIn">
             <div className="row">
-              <div className="offset-md-1 col-md-5 project-title-div">
-                <h1 className="container-fluid">{props.project.project_title}</h1>
-                <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+              <div className="offset-md-1 col-md-11 project-title-div">
+                <div className="col-md-5">
+                  <h1 className="container-fluid">{props.project.project_title}</h1>
+                  <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+                </div>
                 {props.project.showreel.guid && <div className="pop-up-vid-div">
                   <Link to="#" onClick={props.modalClick} id="pop-up-vid">
                     <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
