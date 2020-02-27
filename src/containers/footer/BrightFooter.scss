@@ -16,6 +16,7 @@
   /* font-family: "FuturaLT", sans-serif; */
   height: 600px;
   overflow: hidden;
+  position: relative;
 }
 
 #footer .footer-top {
@@ -77,11 +78,17 @@
 
 #footer .footer-bottom-copyright,
 #footer .footer-bottom-links {
-  position: relative;
-  top: 17vw;
+  position: absolute;
+  bottom: 0;
   height: 50px;
 }
-
+#footer .footer-bottom-copyright {
+  left: 8.33333333%;
+}
+#footer .footer-bottom-links {
+  right: 8.33333333%;
+  white-space: nowrap;
+}
 #footer .footer-bottom-links a {
   padding: 5px;
   width: 100%;
@@ -151,6 +158,9 @@
     top: auto;
     bottom: 15px;
     height: auto;
+  }
+  #footer .footer-bottom-copyright {
+    left: 0;
   }
   #footer .footer-bottom-links {
     right: 0px;
