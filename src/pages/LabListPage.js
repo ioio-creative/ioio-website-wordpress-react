@@ -336,7 +336,7 @@ class LabItems extends Component {
                       <div onClick={null} className="hover-mobile">
                         <div className='lab-item-detail-mobile'>
                           <h3 className='lab-item-cat'>
-                            {item.lab_categories[0].name}
+                            {labCategories}
                           </h3>
                           <h2 className='lab-item-title'>
                             {item.lab_item_title}
@@ -347,7 +347,7 @@ class LabItems extends Component {
                         </div>
                       </div>
 
-                      <span style={categoryColor}>{item.lab_categories[0].name}</span>
+                      <span style={categoryColor}>{labCategories}</span>
                       <h1 className={classNameDesc} style={textDescStyle}>{item.description}</h1>
                       <h3 className={classNameTitle} style={textTitleStyle}>{item.lab_item_title}</h3>
                       <div className={classSharingPresenter} style={sharingPresenterStyle}><div style={templateType == 7 ? {borderRadius: '50%'} : {borderRadius: '0%'}} className="presenter-img-container"><img className="lab-item-icon" src={templateType == 6 ? mediumLogo : item.sharing_presenter_icon.guid} alt="" /></div><span>{item.sharing_presenter_name}</span><h5>{templateType == 6 ? 'Medium Post' : item.sharing_presenter_title}</h5><i className="medium-arrow ion ion-android-arrow-forward" style={templateType == 6 ? {display:'block'} : {display:'none'}}></i></div>
@@ -362,7 +362,7 @@ class LabItems extends Component {
                       data-wow-delay={Math.random() * (1 - 0.1) + id * 0.05 + 's'}
                       style={itemStyle}
                       onMouseOver={(e) => {
-                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, item.lab_categories[0].name );
+                        this.handleMouseOver(e, containerWidth, templateType , item.lab_item_title, item.hover_description, labCategories );
                       }}
                       onMouseOut={(e) => {
                         this.handleMouseOut(e,templateType);
