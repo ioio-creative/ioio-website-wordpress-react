@@ -187,7 +187,7 @@ class LabItems extends Component {
                   7. Sharing
                   */
 
-                  let labCategories = item.lab_categories && item.lab_categories[0] && item.lab_categories[0].name;
+                  let labCategories = (item.lab_categories && item.lab_categories[0] && item.lab_categories[0].name) || '';
                   if (labCategories == "Feed"){
 
                   }
