@@ -157,11 +157,11 @@ class DarkSidebar extends Component {
                   <br/>
                 </p>
               </div>
-              <div className="col-lg-3 col-md-3 ">
+              {/* <div className="col-lg-3 col-md-3 ">
                 <div className="social-links">
                   <SocialMedia items={sidebar.social_media}/>
                 </div>
-              </div>
+              </div> */}
               {/* <div className="col-lg-3 col-md-3 sidebar-hiring">
                 <h4>
                   {sidebar.hiring_title}
