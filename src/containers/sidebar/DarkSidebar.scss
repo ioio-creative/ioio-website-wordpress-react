@@ -51,7 +51,7 @@
   left: 0;
   background-color: #000;
   color: #fff;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding-top: 20px;
   border-right: 1px solid #656565;
 }
@@ -447,8 +447,10 @@
     top: 55%;
     text-align: left;
     padding-left: 15px;
-    padding-right: 65px;
+    padding-right: 15px;
     bottom: 0;
+
+    overflow-x: hidden;
   }
   #dark-sidebar.active .info-section .social-links {
     display: none;

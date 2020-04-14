@@ -135,7 +135,7 @@ class DarkSidebar extends Component {
 
           <canvas id="menu-canvas" width="1000px" height="500px"></canvas>
 
-          <div className="info-section container-fluid">
+          <div className="container-fluid info-section">
             <div className="row">
             <div className="col-lg-3 col-md-3 sidebar-info">
                 <h4>{sidebar.address_title}</h4>
