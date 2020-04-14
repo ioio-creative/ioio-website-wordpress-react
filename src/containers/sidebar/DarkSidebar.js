@@ -138,12 +138,16 @@ class DarkSidebar extends Component {
           <div className="info-section container-fluid">
             <div className="row">
             <div className="col-lg-3 col-md-3 sidebar-info">
-                <h4>{sidebar.bottom_section_left_title}</h4>
+                <h4>{sidebar.address_title}</h4>
                 <p>{sidebar.address}</p>
               </div>
               <div className="col-lg-3 col-md-3 sidebar-info">
-                <h4>{sidebar.bottom_section_right_title}</h4>
+                <h4>{sidebar.tw_address_title}</h4>
                 <p>{sidebar.tw_address}</p>
+              </div>
+              <div className="col-lg-3 col-md-3 sidebar-info">
+                <h4>{sidebar.ny_address_title}</h4>
+                <p>{sidebar.ny_address}</p>
               </div>
               <div className="col-lg-3 col-md-3 sidebar-contact-method">
                 <p>
