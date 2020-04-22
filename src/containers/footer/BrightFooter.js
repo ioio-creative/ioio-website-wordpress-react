@@ -10,8 +10,11 @@ import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent'
 import $ from 'jquery'
 
 import {fetchActiveBrightFooter} from 'websiteApi';
+import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
+
 
 Modal.setAppElement('#root');
+
 
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
@@ -37,11 +40,15 @@ class BrightFooter extends Component {
       footer: null
     };
 
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    [
+      'openModal', 
+      'afterOpenModal', 
+      'closeModal', 
 
-    this.backToTop = this.backToTop.bind(this);
+      'backToTop', 
+    ].forEach(methodName => {
+      this[methodName] = this[methodName].bind(this);
+    });    
   }
 
   componentDidMount() {
@@ -64,7 +71,7 @@ class BrightFooter extends Component {
   }
 
   backToTop(){
-    console.log("go")
+    //console.log("go");
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"},1500);
@@ -72,7 +79,13 @@ class BrightFooter extends Component {
   }
 
   render() {
-    const footerInfo = this.state.footer;
+    const { 
+      footer: footerInfo 
+    } = this.state;
+
+    const {
+      addresses
+    } = this.props;
     
     if (footerInfo === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
@@ -104,15 +117,28 @@ class BrightFooter extends Component {
               </div>
               <div className="col-md-2 footer-img"></div>
               <div className="col-md-3 footer-contact">
-                <p>
-                  <span>{footerInfo.address}</span>
+                <div>
+                  {/* <span>{footerInfo.address}</span> */}
+                  <span>
+                    {
+                      isNonEmptyArray(addresses) &&
+                      addresses.map(address => {
+                        return (
+                          <div key={address.display_title}>
+                            <div>{address.display_title}</div>
+                            <div>{address.detail}</div>
+                          </div>
+                        );
+                      })
+                    }
+                  </span>
                   <br/>
                   <br/>
                   <strong>{footerInfo.phone}</strong>
                   <br/>
                   <strong>{footerInfo.email}</strong>
                   <br/>
-                </p>
+                </div>
               </div>
 
               <div className="col-md-2 footer-social">

@@ -32,6 +32,7 @@ const activeEntities = {
   darkSidebar: 1424,
   contact: 1008,
   lab: 1348,
+  allAddressList: 2859
 };
 
 
@@ -97,6 +98,10 @@ function orderProjectsByDateDescending(projects) {
 
 
 /* General */
+
+function fetchAllAddressList(callback) {
+  passJsonResultToCallback("address_lists", callback, activeEntities.allAddressList);
+}
 
 function fetchBrightSidebar(callback) {
     passJsonResultToCallback("sidebars", callback);
@@ -322,6 +327,7 @@ function fetchLabDetailPageById(id, callback) {
 
 export {
   // general
+  fetchAllAddressList,
   fetchBrightSidebar,
   fetchActiveBrightSidebar,
   fetchDarkSidebar,

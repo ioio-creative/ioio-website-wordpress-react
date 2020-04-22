@@ -72,7 +72,7 @@ class BrightSidebar extends Component {
 
   /* methods */
   checkCurrentPageNeedWhiteBg() {
-    console.log(routes.about(false));
+    //console.log(routes.about(false));
     switch (this.props.location.pathname) {
       case routes.about(false):
       case routes.contacts(false):
