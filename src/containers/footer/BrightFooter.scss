@@ -39,9 +39,9 @@
 }
 
 #footer .footer-top .social-links {
-  text-align: right;
+  text-align: left;
+  margin-bottom: 40px;
 }
-
 
 #footer .social-media-img {
   width: 30px;
@@ -53,7 +53,7 @@
   text-decoration: underline;
   line-height: 1;
   transition: 0.3s;
-  margin: 0 0 0 10px;
+  margin: 0 10px 0 0;
 }
 
 #footer .footer-top .social-links a:hover {
@@ -110,25 +110,14 @@
   background: white;
 }
 
-@media only screen and (max-width: 992px) {
+@include media-breakpoint-down(md) {
   /*--[ Mobile styles go here]---------------------------*/
 }
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   #footer {
     min-height: 750px;
-  }
-  #footer .footer-top .social-links {
-    text-align: center;
-  }
-  #footer .footer-hotpot-img {
-    position: absolute;
-    top: 380px;
-    width: 350px;
-    left: 50%;
-    margin-left: -220px;
-  }
-  #footer {
+
     padding: 0 0 30px 0;
     color: #000;
     font-size: 14px;
@@ -139,6 +128,12 @@
     height: 100%;
     position: relative;
   }
+  #footer .footer-top {
+    padding-top: 30px;
+  }
+  #footer .footer-top .social-links {
+    text-align: center;
+  }  
   #footer .footer-top .social-links {
     display: flex;
     justify-content: space-between;
@@ -147,6 +142,9 @@
     flex: 0 0 20%;
     margin: 0;
     padding: 0 10px;
+  }
+  #footer .footer-top .footer-info {
+    margin-bottom: 0;
   }
   #footer .social-media-img {
     width: 100%;
@@ -168,6 +166,15 @@
   }
   #footer .footer-bottom-links a {}
   #footer .back-to-top-button {}
+  #footer .footer-hotpot-img {
+    position: absolute;
+    top: 380px;
+    width: 350px;
+    left: 50%;
+    margin-left: -220px;
+
+    opacity: 0.5;
+  }
 }
 
 html[lang=zh] #footer .footer-slogan,

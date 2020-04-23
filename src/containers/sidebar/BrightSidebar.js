@@ -122,6 +122,10 @@ class BrightSidebar extends Component {
     const {
       sidebar, isOpenSidebar, whiteBg
     } = this.state;
+
+    const {
+      addresses
+    } = this.props;
     
     if (sidebar === null) {
       return <MyFirstLoadingComponent isLoading={true} />;      

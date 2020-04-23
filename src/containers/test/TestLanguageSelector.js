@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import {usedLanguagesArray} from 'globals/config';
 
-import {LanguageContext} from 'globals/contexts/languageContext';
+import {LanguageContextConsumer} from 'globals/contexts/languageContext';
 
 import nav from 'utils/history/nav';
 import insertParamToQueryInCurrentUrl from 'utils/queryString/insertParamToQueryInCurrentUrl';
@@ -31,21 +31,23 @@ class TestLanguageSelector extends Component {
 
   render() {
     return (
-      <LanguageContext.Consumer>
-        {value => (
-          <div className="lang-switch">
-            {
-              usedLanguagesArray.map(lang => (
-                <TestLanguageButton 
-                  key={lang.code}
-                  language={lang}
-                  handleLanguageButtonClickFunc={() => this.handleLanguageButtonClick(lang, value.changeLanguageContextFunc)}
-                />
-              ))
-            }
-          </div>
-        )}
-      </LanguageContext.Consumer>
+      <LanguageContextConsumer>
+        { 
+          value => (
+            <div className="lang-switch">
+              {
+                usedLanguagesArray.map(lang => (
+                  <TestLanguageButton 
+                    key={lang.code}
+                    language={lang}
+                    handleLanguageButtonClickFunc={() => this.handleLanguageButtonClick(lang, value.changeLanguageContextFunc)}
+                  />
+                ))
+              }
+            </div>
+          )
+        }
+      </LanguageContextConsumer>
     );
   }
 }

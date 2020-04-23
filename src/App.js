@@ -15,6 +15,7 @@ import localeData from 'locales/data.json';
 
 import addPolyfills from 'addPolyfills';
 import {LanguageContextProvider} from 'globals/contexts/languageContext';
+import {AddressListContextProvider} from 'globals/contexts/addressListContext';
 import {config, getLanguageFromBrowserLangIdCode, getLanguageFromLanguageCode} from 'globals/config';
 
 import Main from 'containers/Main';
@@ -202,10 +203,12 @@ class App extends Component {
             multilingualMessages={localeData}
             changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}            
           >
-            <Sidebar languageCode={language.code} />  
-            <Header languageCode={language.code} /> 
-            <Main languageCode={language.code} />
-            {/* <TestLanguageSelector /> */}
+            <AddressListContextProvider>
+              <Sidebar languageCode={language.code} />  
+              <Header languageCode={language.code} /> 
+              <Main languageCode={language.code} />
+              {/* <TestLanguageSelector /> */}
+            </AddressListContextProvider>
           </LanguageContextProvider>
         </BrowserRouter>
       </IntlProvider>      

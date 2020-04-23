@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 
-import {LanguageContext} from 'globals/contexts/languageContext';
+import {LanguageContextConsumer} from 'globals/contexts/languageContext';
 
 class LanguageContextMessagesConsumer extends Component {
   constructor(props) {
@@ -19,11 +19,13 @@ class LanguageContextMessagesConsumer extends Component {
   render() {
     const props = this.props;
     return (
-      <LanguageContext.Consumer>
-        {value => {
-          return props.render(value.messages);
-        }}
-      </LanguageContext.Consumer>
+      <LanguageContextConsumer>
+        {
+          value => {
+            return props.render(value.messages);
+          }
+        }
+      </LanguageContextConsumer>
     );
   }
 }

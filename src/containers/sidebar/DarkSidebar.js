@@ -78,12 +78,18 @@ class DarkSidebar extends Component {
   }
 
   render() {
-    const sidebar = this.state.sidebar;
+    const {
+      sidebar, about
+    } = this.state;
+
+    const {
+      addresses
+    } = this.props;
+
     if (sidebar === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
     }
 
-    const about = this.state.about;
     if (about === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
     }

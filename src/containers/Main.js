@@ -4,7 +4,7 @@ import asyncLoadingComponentWithTracker from 'components/loading/AsyncLoadingCom
 
 import './Main.css';
 
-import {LanguageContext, passLanguageToAsyncLoadingComponentFunc} from 'globals/contexts/languageContext';
+import {LanguageContextConsumer, passLanguageToAsyncLoadingComponentFunc} from 'globals/contexts/languageContext';
 
 import routes from 'globals/routes';
 
@@ -34,7 +34,7 @@ class Main extends Component {
 
   render() {
     return (
-      <LanguageContext.Consumer>
+      <LanguageContextConsumer>
         {value => {
           const langCode = value.language.code;          
           return (
@@ -74,7 +74,7 @@ class Main extends Component {
             </main>
           </div>
         );}}
-      </LanguageContext.Consumer>
+      </LanguageContextConsumer>
     );
   }
 }

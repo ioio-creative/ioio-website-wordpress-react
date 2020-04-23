@@ -45,16 +45,18 @@ class LanguageContextProvider extends React.Component {
           language: state.language,
           messages: props.multilingualMessages[state.language.locale],
           changeLanguageContextFunc: this.changeLanguageContext 
-        }}>
+        }}
+      >
         {props.children}
       </LanguageContext.Provider>          
     );
   }
 }
 
+const LanguageContextConsumer = LanguageContext.Consumer;
+
 export {  
-  LanguageContext,
   LanguageContextProvider,
+  LanguageContextConsumer,
   passLanguageToAsyncLoadingComponentFunc
 };
-

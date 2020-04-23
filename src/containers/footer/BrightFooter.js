@@ -7,6 +7,8 @@ import {FormattedMessage} from 'react-intl';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
+import viewport from 'utils/ui/viewport';
+
 import $ from 'jquery'
 
 import {fetchActiveBrightFooter} from 'websiteApi';
@@ -85,11 +87,10 @@ class BrightFooter extends Component {
 
     const {
       addresses
-    } = this.props;
-    
+    } = this.props;    
+
     if (footerInfo === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
-      // return null;
     }
 
     const customStyles = {
@@ -105,6 +106,16 @@ class BrightFooter extends Component {
       }
     };
 
+    let firstHalfAddresses = null;
+    let secondHalfAddresses = null;
+    if (isNonEmptyArray(addresses)) {
+      const dividingPoint = Math.ceil(addresses.length * 0.5);
+      firstHalfAddresses = addresses.slice(0, dividingPoint);
+      secondHalfAddresses = addresses.slice(dividingPoint);
+    }
+    
+    const isSmViewport = viewport.isSmallerThanOrEqualToSmallViewport();
+
     return (
       <footer id="footer" className="wow fadeIn" data-wow-delay="0.5s">
         <div className="footer-top">
@@ -112,42 +123,102 @@ class BrightFooter extends Component {
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-info">
-                <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="alt"/>
+                <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="hotpot" />                
                 <h3 className="footer-slogan">{footerInfo.slogan}</h3>
               </div>
-              <div className="col-md-2 footer-img"></div>
-              <div className="col-md-3 footer-contact">
-                <div>
-                  {/* <span>{footerInfo.address}</span> */}
-                  <span>
-                    {
-                      isNonEmptyArray(addresses) &&
-                      addresses.map(address => {
-                        return (
-                          <div key={address.display_title}>
-                            <div>{address.display_title}</div>
-                            <div>{address.detail}</div>
-                          </div>
-                        );
-                      })
-                    }
-                  </span>
-                  <br/>
-                  <br/>
-                  <strong>{footerInfo.phone}</strong>
-                  <br/>
-                  <strong>{footerInfo.email}</strong>
-                  <br/>
-                </div>
-              </div>
-
-              <div className="col-md-2 footer-social">
-                <div className="social-links">
-                  <SocialMedia items={footerInfo.social_media}/>
-                </div>
-              </div>
+              <div className="col-md-1 footer-img"></div>
+              {
+                !isSmViewport
+                ?
+                (
+                  <>
+                    <div className="col-md-3 footer-contact">
+                      <div>
+                        <strong>{footerInfo.phone}</strong>
+                        <br />
+                        <strong>{footerInfo.email}</strong>
+                        <br />
+                        <br />                  
+                        <span>
+                          {
+                            isNonEmptyArray(firstHalfAddresses) &&
+                            firstHalfAddresses.map(address => {
+                              return (
+                                <React.Fragment key={address.display_title}>
+                                  <div>
+                                    <div>{address.display_title}</div>
+                                    <div>{address.detail}</div>
+                                  </div>
+                                  <br />
+                                </React.Fragment>
+                              );
+                            })
+                          }
+                        </span>
+                      </div>
+                    </div>
+                    <div className="col-md-3 footer-social">
+                      <div className="social-links">
+                        <SocialMedia items={footerInfo.social_media}/>
+                      </div>
+                      <span className='footer-contact'>
+                        {
+                          isNonEmptyArray(secondHalfAddresses) &&
+                          secondHalfAddresses.map(address => {
+                            return (
+                              <React.Fragment key={address.display_title}>
+                                <div>
+                                  <div>{address.display_title}</div>
+                                  <div>{address.detail}</div>
+                                </div>
+                                <br />
+                              </React.Fragment>
+                            );
+                          })
+                        }
+                      </span>
+                    </div>
+                  </>
+                )
+                :
+                (
+                  <>
+                    <div className="col-md-3 footer-contact">
+                      <div>
+                        <span>
+                          {
+                            isNonEmptyArray(addresses) &&
+                            addresses.map(address => {
+                              return (
+                                <React.Fragment key={address.display_title}>
+                                  <div>
+                                    <div>{address.display_title}</div>
+                                    <div>{address.detail}</div>
+                                  </div>
+                                  <br />
+                                </React.Fragment>
+                              );
+                            })
+                          }
+                        </span>
+                        <br/>
+                        <br/>
+                        <strong>{footerInfo.phone}</strong>
+                        <br/>
+                        <strong>{footerInfo.email}</strong>
+                        <br/>
+                      </div>
+                    </div>
+                    <div className="col-md-2 footer-social">
+                      <div className="social-links">
+                        <SocialMedia items={footerInfo.social_media}/>
+                      </div>                      
+                    </div>
+                  </>
+                )
+              }              
               <div className="col-md-1"></div>
-            </div>
+            </div>            
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-3 footer-bottom-copyright">

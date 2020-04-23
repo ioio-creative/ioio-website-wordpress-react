@@ -1,3 +1,6 @@
+@import 'globals.scss';
+
+
 .contactpage-title {
   color: #c6c6c6;
   font-size: 22px;
@@ -93,7 +96,7 @@
   font-size: 40px;
 }
 
-@media only screen and (max-width: 767px) {
+@include media-breakpoint-down(sm) {
   /*--[ Mobile styles go here]---------------------------*/
   #contact-top .contactpage-title {
     font-size: 20px;

@@ -1,29 +1,64 @@
+import './ContactsPage.scss';
+
 import React, {Component} from 'react';
 
-import './ContactsPage.css';
+import {AddressListContextConsumer} from 'globals/contexts/addressListContext';
+
 import ContactForm from 'containers/ContactForm'
+import Footer from 'containers/footer/Footer';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
-import Footer from 'containers/footer/Footer';
 import {fetchActiveContact} from 'websiteApi';
 
 
-function Items(props) {
-  //let id = 0;
-  const social_media_items = props.dnas.map((dna, id) => {
-    let h
-    h = "col-lg-4 box-bg-0" + (
-    id + 1)
-    return (
-      <div className={h} key={id}>
-        <h4 className="core-value-title text-left">{dna.my_name}</h4>
-        <div className="text-center">
-          <img src={dna.image.guid} alt="alt" className="img-fluid core-value-img"/>
-        </div>
-        <p className="description text-center">{dna.desc}</p>
+function Item(props) {
+  const {
+    containerClassName, name, imgSrc, desc
+  } = props;
+  return (
+    <div className={containerClassName}>
+      <h4 className="core-value-title text-left">{name}</h4>
+      <div className="text-center">
+        <img src={imgSrc} alt="alt" className="img-fluid core-value-img"/>
       </div>
-    );
+      <p className="description text-center">{desc}</p>
+    </div>
+  );
+}
+
+function Items(props) {
+  const {
+    dnas, addresses
+  } = props;
+  const social_media_items = dnas.map((dna, id) => {
+    const h = "col-lg-4 box-bg-0" + (id + 1);
+    if (id === 0) {
+      // if it's first item,
+      // use addresses instead of dna.desc
+      const addressStr = addresses.map(address => {
+        return address.display_title + '\n' + address.detail + '\n\n';
+      }).join('');
+      return (
+        <Item
+          key={id}
+          containerClassName={h}
+          name={dna.my_name}
+          imgSrc={dna.image.guid}
+          desc={addressStr}
+        />
+      );
+    } else {
+      return (
+        <Item
+          key={id}
+          containerClassName={h}
+          name={dna.my_name}
+          imgSrc={dna.image.guid}
+          desc={dna.desc}
+        />
+      );
+    }
   });
 
   return (
@@ -36,7 +71,9 @@ function Items(props) {
 function SocialMedia(props) {
   const social_media_items = props.items.map((item, index) => {
     return (
-      <a href={item.link} key={index} className="youtube"><img src={item.icon.guid} alt={item.my_name} /></a>
+      <a href={item.link} key={index} className="youtube">
+        <img src={item.icon.guid} alt={item.my_name} />
+      </a>
     );
   });
 
@@ -62,11 +99,13 @@ class ContactsPage extends Component {
   }
 
   render() {
-    const contact = this.state.contact;
+    const { contact } = this.state;
+    
     if (contact === null) {
       return <MyFirstLoadingComponent isLoading={true} />;
       // return null;
     }
+
     if (contact.facebook_og_images && contact.facebook_og_images.length) {
       const ogimage = document.querySelectorAll('[property="og:image"]');
       contact.facebook_og_images.forEach(ogimgobj => {
@@ -79,6 +118,7 @@ class ContactsPage extends Component {
         oldmeta.parentNode.removeChild(oldmeta);
       })
     }
+
     return (
       <div>
         <section id="contact-top" className="wow contact-section-bg">
@@ -94,7 +134,16 @@ class ContactsPage extends Component {
 
         <section id="contact-core-value">
           <div className="container-fluid">
-            <Items dnas={contact.dnas}/>
+            <AddressListContextConsumer>
+              {
+                value => (
+                  <Items 
+                    dnas={contact.dnas}
+                    addresses={value.addresses}
+                  />
+                )
+              }
+            </AddressListContextConsumer>
           </div>
         </section>
 
