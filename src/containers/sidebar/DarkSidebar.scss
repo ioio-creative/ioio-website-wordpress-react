@@ -141,7 +141,8 @@
   display: inline;
   position: fixed;
   bottom: 20px;
-  margin-left: 100px;
+  margin-left: 0;
+  padding-left: 100px;
   padding-right: 55px;
   font-size: 14px;
 }
@@ -332,18 +333,16 @@
   display: none;
 }
 
-#dark-sidebar.active .sidebar-info {  
-  --sidebarInfoWidth: 75%;
+#dark-sidebar.active .sidebar-info {
+
 }
 
 #dark-sidebar.active .sidebar-info .sidebar-info-title  {
-  width: var(--sidebarInfoWidth);
+
 }
 
 #dark-sidebar.active .sidebar-info .sidebar-info-detail {  
   margin-top: -12px;
-  
-  width: var(--sidebarInfoWidth);
 }
 
 /*

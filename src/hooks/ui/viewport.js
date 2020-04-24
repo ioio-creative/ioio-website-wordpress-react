@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 
 import viewport from 'utils/ui/viewport';
 
@@ -16,13 +16,18 @@ function useViewportSize() {
 
   const [viewportSize, setViewportSize] = useState(getSize);
 
+  const handleResizeRafRef = useRef(null);
+
   useEffect(_ => {
     if (!isClient) {
       return false;
     }
 
     function handleResize() {
-      setViewportSize(getSize());
+      cancelAnimationFrame(handleResizeRafRef.current);
+      handleResizeRafRef.current = requestAnimationFrame(_ => {
+        setViewportSize(getSize());
+      });      
     }
 
     // TODO:
