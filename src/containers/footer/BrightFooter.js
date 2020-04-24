@@ -1,13 +1,13 @@
 import './BrightFooter.scss';
 
-import React, {Component} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Link} from 'react-router-dom'
 import Modal from 'react-modal';
 import {FormattedMessage} from 'react-intl';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
-import viewport from 'utils/ui/viewport';
+import {useIsSmallerThanOrEqualToSmallViewport} from 'hooks/ui/viewport';
 
 import $ from 'jquery'
 
@@ -19,7 +19,8 @@ Modal.setAppElement('#root');
 
 
 function SocialMedia(props) {
-  const social_media_items = props.items.map((item, index) => {
+  const { items } = props;
+  const social_media_items = items.map((item, index) => {
     return (
       <a target={'_blank'} href={item.link} key={index} className="youtube">
         <img className="social-media-img" src={item.icon.guid} alt={item.my_name} />
@@ -27,144 +28,102 @@ function SocialMedia(props) {
     );
   });
 
-  return (<>
-    {social_media_items}
-  </>);
+  return (
+    <>
+      {social_media_items}
+    </>
+  );
 }
 
 
-class BrightFooter extends Component {
-  constructor(props) {
-    super(props);
+function BrightFooter(props) {
+  const {
+    addresses
+  } = props; 
 
-    this.state = {
-      modalIsOpen: false,
-      footer: null
-    };
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [footerInfo, setFooterInfo] = useState(null);
 
-    [
-      'openModal', 
-      'afterOpenModal', 
-      'closeModal', 
-
-      'backToTop', 
-    ].forEach(methodName => {
-      this[methodName] = this[methodName].bind(this);
-    });    
-  }
-
-  componentDidMount() {
+  useEffect(_ => {
     fetchActiveBrightFooter((aFooter) => {
-      this.setState({footer: aFooter});
+      setFooterInfo(aFooter);
     });
-  }
+  }, []);
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
+  const openModal = useCallback(_ => {
+    setModalIsOpen(true);
+  });
 
-  afterOpenModal() {
+  const afterOpenModal = useCallback(_ => {
     // references are now sync'd and can be accessed.
     //this.subtitle.style.color = '#f00';
-  }
+  });
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
+  const closeModal = useCallback(_ => {
+    setModalIsOpen(false);
+  });
 
-  backToTop(){
-    //console.log("go");
+  const backToTop = useCallback(_ => {  
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
-      $('html, body').animate({scrollTop: "0"},1500);
+      $('html, body').animate({scrollTop: "0"}, 1500);
     }, 0);
+  });
+
+  const isSmViewport = useIsSmallerThanOrEqualToSmallViewport();
+
+  if (footerInfo === null) {
+    return <MyFirstLoadingComponent isLoading={true} />;
   }
 
-  render() {
-    const { 
-      footer: footerInfo 
-    } = this.state;
-
-    const {
-      addresses
-    } = this.props;    
-
-    if (footerInfo === null) {
-      return <MyFirstLoadingComponent isLoading={true} />;
+  const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      width                 : '60%',
+      height                : '80vh',
     }
+  };
 
-    const customStyles = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        width                 : '60%',
-        height                : '80vh',
-      }
-    };
+  let firstHalfAddresses = null;
+  let secondHalfAddresses = null;
+  if (isNonEmptyArray(addresses)) {
+    const dividingPoint = Math.ceil(addresses.length * 0.5);
+    firstHalfAddresses = addresses.slice(0, dividingPoint);
+    secondHalfAddresses = addresses.slice(dividingPoint);
+  }
 
-    let firstHalfAddresses = null;
-    let secondHalfAddresses = null;
-    if (isNonEmptyArray(addresses)) {
-      const dividingPoint = Math.ceil(addresses.length * 0.5);
-      firstHalfAddresses = addresses.slice(0, dividingPoint);
-      secondHalfAddresses = addresses.slice(dividingPoint);
-    }
-    
-    const isSmViewport = viewport.isSmallerThanOrEqualToSmallViewport();
-
-    return (
-      <footer id="footer" className="wow fadeIn" data-wow-delay="0.5s">
-        <div className="footer-top">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-3 footer-info">
-                <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="hotpot" />                
-                <h3 className="footer-slogan">{footerInfo.slogan}</h3>
-              </div>
-              <div className="col-md-1 footer-img"></div>
-              {
-                !isSmViewport
-                ?
-                (
-                  <>
-                    <div className="col-md-3 footer-contact">
-                      <div>
-                        <strong>{footerInfo.phone}</strong>
-                        <br />
-                        <strong>{footerInfo.email}</strong>
-                        <br />
-                        <br />                  
-                        <span>
-                          {
-                            isNonEmptyArray(firstHalfAddresses) &&
-                            firstHalfAddresses.map(address => {
-                              return (
-                                <React.Fragment key={address.display_title}>
-                                  <div>
-                                    <div>{address.display_title}</div>
-                                    <div>{address.detail}</div>
-                                  </div>
-                                  <br />
-                                </React.Fragment>
-                              );
-                            })
-                          }
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-md-3 footer-social">
-                      <div className="social-links">
-                        <SocialMedia items={footerInfo.social_media}/>
-                      </div>
-                      <span className='footer-contact'>
+  return (
+    <footer id="footer" className="wow fadeIn" data-wow-delay="0.5s">
+      <div className="footer-top">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-3 footer-info">
+              <img className="footer-hotpot-img" src={footerInfo.hotpot_image.guid} alt="hotpot" />                
+              <h3 className="footer-slogan">{footerInfo.slogan}</h3>
+            </div>
+            <div className="col-md-1 footer-img"></div>
+            {
+              !isSmViewport
+              ?
+              (
+                <>
+                  <div className="col-md-3 footer-contact">
+                    <div>
+                      <strong>{footerInfo.phone}</strong>
+                      <br />
+                      <strong>{footerInfo.email}</strong>
+                      <br />
+                      <br />                  
+                      <span>
                         {
-                          isNonEmptyArray(secondHalfAddresses) &&
-                          secondHalfAddresses.map(address => {
+                          isNonEmptyArray(firstHalfAddresses) &&
+                          firstHalfAddresses.map(address => {
                             return (
                               <React.Fragment key={address.display_title}>
                                 <div>
@@ -178,89 +137,110 @@ class BrightFooter extends Component {
                         }
                       </span>
                     </div>
-                  </>
-                )
-                :
-                (
-                  <>
-                    <div className="col-md-3 footer-contact">
-                      <div>
-                        <span>
-                          {
-                            isNonEmptyArray(addresses) &&
-                            addresses.map(address => {
-                              return (
-                                <React.Fragment key={address.display_title}>
-                                  <div>
-                                    <div>{address.display_title}</div>
-                                    <div>{address.detail}</div>
-                                  </div>
-                                  <br />
-                                </React.Fragment>
-                              );
-                            })
-                          }
-                        </span>
-                        <br/>
-                        <br/>
-                        <strong>{footerInfo.phone}</strong>
-                        <br/>
-                        <strong>{footerInfo.email}</strong>
-                        <br/>
-                      </div>
+                  </div>
+                  <div className="col-md-3 footer-social">
+                    <div className="social-links">
+                      <SocialMedia items={footerInfo.social_media}/>
                     </div>
-                    <div className="col-md-2 footer-social">
-                      <div className="social-links">
-                        <SocialMedia items={footerInfo.social_media}/>
-                      </div>                      
+                    <span className='footer-contact'>
+                      {
+                        isNonEmptyArray(secondHalfAddresses) &&
+                        secondHalfAddresses.map(address => {
+                          return (
+                            <React.Fragment key={address.display_title}>
+                              <div>
+                                <div>{address.display_title}</div>
+                                <div>{address.detail}</div>
+                              </div>
+                              <br />
+                            </React.Fragment>
+                          );
+                        })
+                      }
+                    </span>
+                  </div>
+                </>
+              )
+              :
+              (
+                <>
+                  <div className="col-md-3 footer-contact">
+                    <div>
+                      <span>
+                        {
+                          isNonEmptyArray(addresses) &&
+                          addresses.map(address => {
+                            return (
+                              <React.Fragment key={address.display_title}>
+                                <div>
+                                  <div>{address.display_title}</div>
+                                  <div>{address.detail}</div>
+                                </div>
+                                <br />
+                              </React.Fragment>
+                            );
+                          })
+                        }
+                      </span>
+                      <br/>
+                      <br/>
+                      <strong>{footerInfo.phone}</strong>
+                      <br/>
+                      <strong>{footerInfo.email}</strong>
+                      <br/>
                     </div>
-                  </>
-                )
-              }              
-              <div className="col-md-1"></div>
-            </div>            
-            <div className="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-3 footer-bottom-copyright">
-                <FormattedMessage
-                  id="BrightFooter.copyRightLabel"
-                  defaultMessage="&copy;2019 IOIO LIMITED"
-                />
-              </div>
-              <div className="col-md-3"></div>
-              <div className="col-md-2"></div>
-              <div className="col-md-2 footer-bottom-links">
-                <Link to="#" onClick={this.openModal} id="pop-up-terms">
-                  <FormattedMessage
-                    id="BrightFooter.termsAndConditionsLabel"
-                    defaultMessage="TERMS & CONDITIONS"
-                  />
-                </Link>
-                <a id="footer-join-us">
-                  <FormattedMessage
-                    id="BrightFooter.joinUsLabel"
-                    defaultMessage="JOIN US"
-                  />
-                </a>
-                <a className="footer-back-to-top" onClick={this.backToTop}>
-                  <i className="ion ion-android-arrow-up"></i>
-                </a>
-              </div>
-              <div className="col-md-1"></div>
+                  </div>
+                  <div className="col-md-2 footer-social">
+                    <div className="social-links">
+                      <SocialMedia items={footerInfo.social_media}/>
+                    </div>                      
+                  </div>
+                </>
+              )
+            }              
+            <div className="col-md-1"></div>
+          </div>            
+          <div className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-3 footer-bottom-copyright">
+              <FormattedMessage
+                id="BrightFooter.copyRightLabel"
+                defaultMessage="&copy;2019 IOIO LIMITED"
+              />
             </div>
+            <div className="col-md-3"></div>
+            <div className="col-md-2"></div>
+            <div className="col-md-2 footer-bottom-links">
+              <Link to="#" onClick={openModal} id="pop-up-terms">
+                <FormattedMessage
+                  id="BrightFooter.termsAndConditionsLabel"
+                  defaultMessage="TERMS & CONDITIONS"
+                />
+              </Link>
+              <a id="footer-join-us">
+                <FormattedMessage
+                  id="BrightFooter.joinUsLabel"
+                  defaultMessage="JOIN US"
+                />
+              </a>
+              <a className="footer-back-to-top" onClick={backToTop}>
+                <i className="ion ion-android-arrow-up"></i>
+              </a>
+            </div>
+            <div className="col-md-1"></div>
           </div>
         </div>
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Terms Modal" style={customStyles}>
-          <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
-            <i className="ion ion-android-close" />
-          </button>
-          <div className="terms-div" contenteditable={"true"}>
-            {footerInfo.terms_and_condition}
-          </div>
-        </Modal>
-      </footer>
-    );
-  }
+      </div>
+      <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} contentLabel="Terms Modal" style={customStyles}>
+        <button className="video-close-btn" ion-button="ion-button" round="round" onClick={closeModal}>
+          <i className="ion ion-android-close" />
+        </button>
+        <div className="terms-div" contenteditable={"true"}>
+          {footerInfo.terms_and_condition}
+        </div>
+      </Modal>
+    </footer>
+  );  
 }
 
 export default BrightFooter;
