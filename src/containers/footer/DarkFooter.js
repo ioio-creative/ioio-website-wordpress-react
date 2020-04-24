@@ -30,38 +30,42 @@ function SocialMedia(props) {
 }
 
 function DarkFooter(props) {
+  // props
   const {
     addresses
   } = props;
 
+  // state
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [footerInfo, setFooterInfo] = useState(null);
 
+  // component did mount
   useEffect(_ => {
     fetchActiveDarkFooter((aFooter) => {
       setFooterInfo(aFooter);
     });
   }, []);
 
+  // methods
   const openModal = useCallback(_ => {
     setModalIsOpen(true);
-  });
+  }, [setModalIsOpen]);
 
   const afterOpenModal = useCallback(_ => {
     // references are now sync'd and can be accessed.
     //this.subtitle.style.color = '#f00';
-  });
+  }, []);
 
   const closeModal = useCallback(_ => {
     setModalIsOpen(false);
-  });
+  }, [setModalIsOpen]);
 
   const backToTop = useCallback(_ => {  
     window.setTimeout(function() {
       //$('html, body').scrollTop(0);
       $('html, body').animate({scrollTop: "0"}, 1500);
     }, 0);
-  });
+  }, []);
 
   const isSmViewport = useIsSmallerThanOrEqualToSmallViewport();
 
