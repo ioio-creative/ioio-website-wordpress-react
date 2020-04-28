@@ -33,14 +33,17 @@
   font-size: 22px;
 }
 
-#footer .footer-contact {
+#footer .footer-top .footer-contact {
   font-size: 16px;
-  // padding-left: 5%;
+}
+
+#footer .footer-top .footer-contact .phone-and-email,
+#footer .footer-top .footer-social .social-links {
+  height: 70px;
 }
 
 #footer .footer-top .social-links {
   text-align: left;
-  margin-bottom: 40px;
 }
 
 #footer .social-media-img {

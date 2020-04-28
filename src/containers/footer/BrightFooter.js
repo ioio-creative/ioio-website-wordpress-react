@@ -118,29 +118,25 @@ function BrightFooter(props) {
               (
                 <>
                   <div className="col-md-3 footer-contact">
-                    <div>
+                    <div className='phone-and-email'>
                       <strong>{footerInfo.phone}</strong>
                       <br />
-                      <strong>{footerInfo.email}</strong>
-                      <br />
-                      <br />                  
-                      <span>
-                        {
-                          isNonEmptyArray(firstHalfAddresses) &&
-                          firstHalfAddresses.map(address => {
-                            return (
-                              <React.Fragment key={address.display_title}>
-                                <div>
-                                  <div>{address.display_title}</div>
-                                  <div>{address.detail}</div>
-                                </div>
-                                <br />
-                              </React.Fragment>
-                            );
-                          })
-                        }
-                      </span>
+                      <strong>{footerInfo.email}</strong>              
                     </div>
+                    {
+                      isNonEmptyArray(firstHalfAddresses) &&
+                      firstHalfAddresses.map(address => {
+                        return (
+                          <React.Fragment key={address.display_title}>
+                            <div>
+                              <div>{address.display_title}</div>
+                              <div>{address.detail}</div>
+                            </div>
+                            <br />
+                          </React.Fragment>
+                        );
+                      })
+                    }
                   </div>
                   <div className="col-md-3 footer-social">
                     <div className="social-links">
@@ -169,29 +165,28 @@ function BrightFooter(props) {
               (
                 <>
                   <div className="col-md-3 footer-contact">
-                    <div>
-                      <span>
-                        {
-                          isNonEmptyArray(addresses) &&
-                          addresses.map(address => {
-                            return (
-                              <React.Fragment key={address.display_title}>
-                                <div>
-                                  <div>{address.display_title}</div>
-                                  <div>{address.detail}</div>
-                                </div>
-                                <br />
-                              </React.Fragment>
-                            );
-                          })
-                        }
-                      </span>
-                      <br/>
-                      <br/>
+                    <span>
+                      {
+                        isNonEmptyArray(addresses) &&
+                        addresses.map(address => {
+                          return (
+                            <React.Fragment key={address.display_title}>
+                              <div>
+                                <div>{address.display_title}</div>
+                                <div>{address.detail}</div>
+                              </div>
+                              <br />
+                            </React.Fragment>
+                          );
+                        })
+                      }
+                    </span>
+                    <br />
+                    <br />
+                    <div className='phone-and-email'>
                       <strong>{footerInfo.phone}</strong>
-                      <br/>
+                      <br />
                       <strong>{footerInfo.email}</strong>
-                      <br/>
                     </div>
                   </div>
                   <div className="col-md-2 footer-social">

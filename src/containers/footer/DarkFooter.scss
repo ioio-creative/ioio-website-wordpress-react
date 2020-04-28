@@ -34,15 +34,17 @@
 
 }
 
-#dark-footer .footer-contact {
-  font-size: 16px;
-  padding-left: 20px;
+#dark-footer .footer-top .footer-contact .phone-and-email,
+#dark-footer .footer-top .footer-social .social-links {
+  height: 70px;
+}
 
+#dark-footer .footer-top .footer-contact {
+  font-size: 16px;
 }
 
 #dark-footer .footer-top .social-links {
   text-align: left;
-  margin-bottom: 17px;
 }
 
 #dark-footer .social-media-img {
