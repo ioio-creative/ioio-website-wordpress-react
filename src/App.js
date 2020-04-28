@@ -203,6 +203,9 @@ class App extends Component {
             multilingualMessages={localeData}
             changeGlobalLocaleAndLanguageFunc={this.changeGlobalLocaleAndLanguage}            
           >
+            {/**
+             * Note: AddressListContext is a consumer of LanguageContext
+             */}
             <AddressListContextProvider>
               <Sidebar languageCode={language.code} />  
               <Header languageCode={language.code} /> 
