@@ -60,14 +60,14 @@
   color: #000;
   overflow: hidden;
   padding-top: 20px;
-  border: 1px solid #E6E6E6;
+  border: 1px solid #e6e6e6;
 }
 .scrolled #sidebar,
 #sidebar.active {
   left: 0;
   top: 0;
   height: 100%;
-  border: 0px solid #E6E6E6;
+  border: 0px solid #e6e6e6;
   // border-right-width: 1px;
 }
 #sidebar.active {
@@ -104,7 +104,7 @@
   display: inline;
   cursor: pointer;
   /* display: none; */
-  font-size: 20px;  
+  font-size: 20px;
 }
 
 #sidebar.active a {
@@ -115,7 +115,7 @@
 }
 
 #sidebar.active a:hover {
-  color: #FFE000;
+  color: #ffe000;
 }
 
 #sidebar h3 {
@@ -135,8 +135,8 @@
   transform: rotate(270deg);
 }
 
-html[lang=zh] #sidebar h3,
-html[lang=tc] #sidebar h3 {
+html[lang='zh'] #sidebar h3,
+html[lang='tc'] #sidebar h3 {
   font-weight: 500;
   margin-left: 4px;
   white-space: nowrap;
@@ -194,16 +194,20 @@ html[lang=tc] #sidebar h3 {
   font-size: 14px;
 }
 
-#sidebar.active .sidebar-info {  
-
+#sidebar.active .sidebar-contact-method {
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 
-#sidebar.active .sidebar-info .sidebar-info-title  {
-
+#sidebar.active .sidebar-info {
+  margin-top: 15px;
 }
 
-#sidebar.active .sidebar-info .sidebar-info-detail {  
-  margin-top: -12px;
+#sidebar.active .sidebar-info .sidebar-info-title,
+#sidebar.active .sidebar-info .sidebar-info-detail,
+#sidebar.active .sidebar-info .sidebar-info-phone {
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 #sidebar .info-section .social-links {
@@ -246,7 +250,7 @@ html[lang=tc] #sidebar h3 {
 }
 
 #sidebar .close-symbol:before {
-  position: absolute;  
+  position: absolute;
   left: 12px;
   content: '';
   width: 2px;
@@ -267,7 +271,7 @@ html[lang=tc] #sidebar h3 {
   top: 92%;
   top: 0;
   background-color: black;
-  
+
   transform: rotate(-0deg);
 }
 
@@ -352,10 +356,6 @@ html[lang=tc] #sidebar h3 {
   visibility: hidden;
 }
 
-
-
-
-
 /*
 /* Extra small devices (phones, less than 768px) */
 
@@ -374,7 +374,8 @@ html[lang=tc] #sidebar h3 {
 
 /* .....NavBar: Fully showing nav bar..... */
 
-@media (min-width: 1330px) {}
+@media (min-width: 1330px) {
+}
 
 @include media-breakpoint-down(sm) {
   /*--[ Mobile styles go here]---------------------------*/
@@ -391,7 +392,7 @@ html[lang=tc] #sidebar h3 {
     height: 55px;
     width: 55px;
     right: 0;
-  }  
+  }
   #sidebar {
     height: 55px;
     width: 100%;
@@ -402,9 +403,9 @@ html[lang=tc] #sidebar h3 {
     left: 0;
     background-color: transparent;
     overflow: hidden;
-    color: #FFF;
+    color: #fff;
     padding-top: 0;
-    border: 0px solid #E6E6E6;
+    border: 0px solid #e6e6e6;
   }
   #sidebar.white-bg {
     color: #000;
@@ -420,7 +421,7 @@ html[lang=tc] #sidebar h3 {
     padding-top: 100px;
   }
   #sidebar {
-    border: 0px solid #E6E6E6;
+    border: 0px solid #e6e6e6;
     border-bottom: 2px solid rgba(230, 230, 230, 0);
     transition: var(--defaultTransition);
     #menu-toggle,
@@ -475,10 +476,10 @@ html[lang=tc] #sidebar h3 {
   body.scrolled {
     #sidebar {
       color: #000;
-      background-color: #FFF;
+      background-color: #fff;
       border-bottom: 2px solid rgba(230, 230, 230, 1);
       &.active {
-        color: #FFF;
+        color: #fff;
       }
       .logo.menu-transition {
         top: 10px;
@@ -537,7 +538,7 @@ html[lang=tc] #sidebar h3 {
   }
   #sidebar .info-section a {
     font-size: 14px;
-    color: #FFF;
+    color: #fff;
     opacity: 0;
   }
   #sidebar.active .info-section a {
@@ -608,12 +609,12 @@ html[lang=tc] #sidebar h3 {
   #sidebar.active #menu-toggle:hover .close-symbol:after {
     transform: rotate(-45deg);
   }
-  
+
   #sidebar .work-work-lab-switch-container {
     opacity: 0;
     visibility: hidden;
   }
-  
+
   #sidebar .work-work-lab-switch-for-mobile-container {
     opacity: 1;
     visibility: visible;

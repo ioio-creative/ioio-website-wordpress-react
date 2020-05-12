@@ -333,16 +333,20 @@
   display: none;
 }
 
+#dark-sidebar.active .sidebar-contact-method {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
 #dark-sidebar.active .sidebar-info {
-
+  margin-top: 15px;
 }
 
-#dark-sidebar.active .sidebar-info .sidebar-info-title  {
-
-}
-
-#dark-sidebar.active .sidebar-info .sidebar-info-detail {  
-  margin-top: -12px;
+#dark-sidebar.active .sidebar-info .sidebar-info-title,
+#dark-sidebar.active .sidebar-info .sidebar-info-detail,
+#dark-sidebar.active .sidebar-info .sidebar-info-phone {  
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 /*
@@ -469,7 +473,7 @@
     display: none;
   }
   #dark-sidebar.active .sidebar-contact-method {
-    // margin-top: 25px;  
+    // margin-top: 25px;
   }
 
   #dark-sidebar .sidebar-hiring {
