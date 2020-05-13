@@ -1,26 +1,22 @@
-import React, {useState, useEffect} from 'react';
-import {LanguageContextConsumer} from 'globals/contexts/languageContext';
-import {fetchAllAddressList} from 'websiteApi';
+import React, { useState, useEffect } from 'react';
+import { LanguageContextConsumer } from 'globals/contexts/languageContext';
+import { fetchAllAddressList } from 'websiteApi';
 import isNonEmptyArray from 'utils/js/array/isNonEmptyArray';
-
 
 const AddressListContext = React.createContext();
 
-
-function AddressListContextProviderCore(props) {
-  const {
-    languageCode,
-    children
-  } = props;
-
+function AddressListContextProviderCore({ languageCode, children }) {
   const [addresses, setAddresses] = useState(null);
-  useEffect(_ => {
-    fetchAllAddressList((addressList) => {      
-      if (isNonEmptyArray(addressList.addresses)) {
-        setAddresses(addressList.addresses);
-      }      
-    });
-  }, [languageCode]);
+  useEffect(
+    _ => {
+      fetchAllAddressList(addressList => {
+        if (isNonEmptyArray(addressList.addresses)) {
+          setAddresses(addressList.addresses);
+        }
+      });
+    },
+    [languageCode]
+  );
 
   return (
     <AddressListContext.Provider
@@ -33,33 +29,23 @@ function AddressListContextProviderCore(props) {
   );
 }
 
-
 function AddressListContextProvider(props) {
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   return (
     <LanguageContextConsumer>
-      {
-        value => {
-          const langCode = value.language.code;
-          return (
-            <AddressListContextProviderCore languageCode={langCode}>
-              {children}
-            </AddressListContextProviderCore>
-          );
-        }
-      }
+      {value => {
+        const langCode = value.language.code;
+        return (
+          <AddressListContextProviderCore languageCode={langCode}>
+            {children}
+          </AddressListContextProviderCore>
+        );
+      }}
     </LanguageContextConsumer>
   );
 }
 
+export default AddressListContext;
 
-const AddressListContextConsumer = AddressListContext.Consumer;
-
-
-export {  
-  AddressListContextProvider,
-  AddressListContextConsumer    
-};
+export { AddressListContextProvider };
