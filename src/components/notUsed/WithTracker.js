@@ -1,6 +1,12 @@
 /**
  * From ReactGA Community Wiki Page https://github.com/react-ga/react-ga/wiki/React-Router-v4-withTracker
  */
+/**
+ * !!!Note!!!
+ * No need to use withTracker any more as Google Tag Manager automatically do it for me!
+ * https://www.twinword.com/blog/google-tag-manager-need-website/
+ * Tag Manager can listen to browser history changes!
+ */
 
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
@@ -8,7 +14,7 @@ import ReactGA from 'react-ga';
 import getDisplayName from 'utils/react/getDisplayName';
 
 export default function withTracker(WrappedComponent, options = {}) {
-  const trackPage = (page) => {
+  const trackPage = page => {
     ReactGA.set({
       page,
       ...options
@@ -17,7 +23,7 @@ export default function withTracker(WrappedComponent, options = {}) {
   };
 
   const HOC = class extends Component {
-    componentDidMount() {      
+    componentDidMount() {
       const page = this.props.location.pathname;
       trackPage(page);
     }
@@ -27,7 +33,7 @@ export default function withTracker(WrappedComponent, options = {}) {
       const currentPage = this.props.location.pathname;
 
       // this case almost never happens
-      if (currentPage !== previousPage) {        
+      if (currentPage !== previousPage) {
         trackPage(currentPage);
       }
     }
@@ -41,4 +47,4 @@ export default function withTracker(WrappedComponent, options = {}) {
   HOC.displayName = `WithTracker(${getDisplayName(WrappedComponent)})`;
 
   return HOC;
-};
+}

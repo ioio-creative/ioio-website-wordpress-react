@@ -6,14 +6,16 @@ function trackProjectListPageFilterByCategory(categorySlug) {
   trackEvent({
     category: 'Project List Page - Filter Projects by Category',
     action: `Filter Projects by Category - ${categorySlug}`,
-    label: `Projects - ${categorySlug}`,
+    label: `Projects - ${categorySlug}`
     //value: value,
     //nonInteraction: nonInteraction,
   });
-};
+}
 
-export default function trackProjectListPageFilterByCategoryIfNotNull(categorySlug) {
+export default function trackProjectListPageFilterByCategoryIfNotNull(
+  categorySlug
+) {
   if (categorySlug) {
     trackProjectListPageFilterByCategory(categorySlug);
   }
-};
+}

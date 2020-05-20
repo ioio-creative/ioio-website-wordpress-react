@@ -1,13 +1,37 @@
 // have to map language names to the [react-intl locale, api query param options] pairs
 const languages = {
-  english: {code: 'en', locale: 'en', isUsed: true, isFontLoaded: true, fontFamily: ''}, 
-  traditionalChinese: {code: 'tc', locale: 'zh-Hant', isUsed: true, isFontLoaded: false, fontFamily: 'Noto Sans TC'},
-  simplifiedChinese: {code: 'zh', locale: 'zh', isUsed: false, isFontLoaded: false, fontFamily: 'Noto Sans SC'},
-  japanese: {code: 'ja', locale: 'ja', isUsed: false, isFontLoaded: false, fontFamily: ''}
+  english: {
+    code: 'en',
+    locale: 'en',
+    isUsed: true,
+    isFontLoaded: true,
+    fontFamily: ''
+  },
+  traditionalChinese: {
+    code: 'tc',
+    locale: 'zh-Hant',
+    isUsed: true,
+    isFontLoaded: false,
+    fontFamily: 'Noto Sans TC'
+  },
+  simplifiedChinese: {
+    code: 'zh',
+    locale: 'zh',
+    isUsed: false,
+    isFontLoaded: false,
+    fontFamily: 'Noto Sans SC'
+  },
+  japanese: {
+    code: 'ja',
+    locale: 'ja',
+    isUsed: false,
+    isFontLoaded: false,
+    fontFamily: ''
+  }
 };
 
 const languageCodeToLanguageMap = {};
-Object.keys(languages).forEach((key) => {
+Object.keys(languages).forEach(key => {
   languageCodeToLanguageMap[languages[key].code] = languages[key];
 });
 
@@ -24,7 +48,7 @@ function getLanguageFromLanguageCode(languageCode) {
 
 // https://www.metamodpro.com/browser-language-codes
 const browserLangIdCodeToMyLangCodeMapper = {
-  'en': languages.english,
+  en: languages.english,
   'en-au': languages.english,
   'en-bz': languages.english,
   'en-ca': languages.english,
@@ -37,20 +61,23 @@ const browserLangIdCodeToMyLangCodeMapper = {
   'en-us': languages.english,
   'en-zw': languages.english,
 
-  'zh': languages.traditionalChinese,
+  zh: languages.traditionalChinese,
   'zh-hk': languages.traditionalChinese,
-  'zh-cn': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
-  'zh-sg': languages.simplifiedChinese.isUsed ? languages.simplifiedChinese : languages.traditionalChinese,
+  'zh-cn': languages.simplifiedChinese.isUsed
+    ? languages.simplifiedChinese
+    : languages.traditionalChinese,
+  'zh-sg': languages.simplifiedChinese.isUsed
+    ? languages.simplifiedChinese
+    : languages.traditionalChinese,
   'zh-tw': languages.traditionalChinese,
 
-  'ja': languages.japanese.isUsed ? languages.japanese : languages.english,
+  ja: languages.japanese.isUsed ? languages.japanese : languages.english
   // 'ja': languages.japanese
 };
 
 function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
   return browserLangIdCodeToMyLangCodeMapper[browserLangIdCode];
 }
-
 
 const config = {
   gaTrackingId: 'UA-66792466-2',
@@ -61,15 +88,17 @@ const config = {
     //   userId: 123
     // }
   },
+  googleTagManagerOptions: {
+    gtmId: 'GTM-TBPBCCX'
+  },
   defaultLanguage: languages.english,
   defaultFontFamily: 'sans-serif'
-}
-
+};
 
 export {
   config,
   languages,
   usedLanguagesArray,
   getLanguageFromBrowserLangIdCode,
-  getLanguageFromLanguageCode,
+  getLanguageFromLanguageCode
 };
