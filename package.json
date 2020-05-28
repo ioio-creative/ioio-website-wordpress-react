@@ -54,7 +54,10 @@
     "deploy-gh-pages-only": "gh-pages -d build",
     "preserve-build": "yarn run build",
     "serve-build": "yarn run serve-build-only",
-    "serve-build-only": "serve -s build"
+    "serve-build-only": "serve -s build",
+    "predeploy-aws-s3": "yarn run build",
+    "deploy-aws-s3": "yarn run deploy-aws-s3-only",
+    "deploy-aws-s3-only": "aws s3 sync build/ s3://ohkf-artstech --profile OHKF-ohkf"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
