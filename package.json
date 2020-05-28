@@ -57,7 +57,7 @@
     "serve-build-only": "serve -s build",
     "predeploy-aws-s3": "yarn run build",
     "deploy-aws-s3": "yarn run deploy-aws-s3-only",
-    "deploy-aws-s3-only": "aws s3 sync build/ s3://ohkf-artstech --profile OHKF-ohkf"
+    "deploy-aws-s3-only": "aws s3 sync build/ s3://ohkf-artstech --delete --profile OHKF-ohkf"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
