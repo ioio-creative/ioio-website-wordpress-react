@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import './fonts/font.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render((
-  <App />
-), document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
-registerServiceWorker();
+//registerServiceWorker();
 
 //TODO
 //load new page on social links
