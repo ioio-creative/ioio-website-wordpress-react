@@ -57,6 +57,7 @@
     "serve-build-only": "serve -s build",
     "predeploy-aws-s3": "yarn run build",
     "deploy-aws-s3": "yarn run deploy-aws-s3-only",
+    "postdeploy-aws-s3": "aws cloudfront create-invalidation --distribution-id E1PKUB00QCB6CD --paths \"/*\" --profile ioio-programmer",
     "deploy-aws-s3-only": "aws s3 sync build/ s3://www.ioiocreative.com --delete --profile ioio-programmer"
   },
   "devDependencies": {
