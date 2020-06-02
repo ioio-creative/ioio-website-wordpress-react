@@ -1,8 +1,6 @@
 @import 'globals.scss';
 
-
 .my-first-loading {
-
 }
 
 .my-first-loading .loading-screen {
@@ -19,4 +17,8 @@
   height: 25px;
   margin: 0 auto;
   animation: spin 1s linear infinite;
+}
+
+.my-first-loading .loading-error {
+  padding: 5%;
 }

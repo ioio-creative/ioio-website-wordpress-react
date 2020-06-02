@@ -1,6 +1,5 @@
 @import 'globals.scss';
 
-
 // body {
 //   white-space: initial;
 // }
@@ -13,10 +12,10 @@
 .home-page-container {
   // white-space: initial;
 }
-.home-page-container ul, li {
+.home-page-container ul,
+li {
   list-style: none;
 }
-
 
 .home-page-container .loading {
   background-color: black;
@@ -30,9 +29,6 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  height: 18em;
-  margin-top: -9em;
-  margin-left: -15em;
   border: 3px solid #555555;
   border-radius: 50%;
   border-top: 3px solid #f3f3f3;
@@ -42,22 +38,22 @@
   animation: spin 1s linear infinite;
 }
 
-.home-page-container .popup-video{
-  width:100%;
-  height:100%;
+.home-page-container .popup-video {
+  width: 100%;
+  height: 100%;
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 999;
   opacity: 1;
   visibility: visible;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-.home-page-container .popup-video.hide{
+.home-page-container .popup-video.hide {
   opacity: 0;
   visibility: hidden;
 }
-.home-page-container .popup-video .videoWrap{
+.home-page-container .popup-video .videoWrap {
   // width: 60%;
   // position: absolute;
   // top: 50%;
@@ -71,18 +67,18 @@
 //   display: block;
 //   padding-top: 56.25%;
 // }
-.home-page-container .popup-video .videoWrap video{
-  width:100%;
-  height:100%;
-  position: absolute;
-  top:0;
-  left:0;
-  background: black;
-}
-.home-page-container .popup-video .popup-video-bg{
+.home-page-container .popup-video .videoWrap video {
   width: 100%;
   height: 100%;
-  background:rgba(0,0,0,.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+}
+.home-page-container .popup-video .popup-video-bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
 }
 .home-page-container .popup-video .popup-video-close-button {
   --size: 32px;
@@ -91,7 +87,7 @@
 
   visibility: visible;
   opacity: 1;
-  
+
   margin: 0;
   padding: 0;
   border: 0;
@@ -140,7 +136,7 @@
   width: 100vw;
   height: 100vh;
   // background:#999;
-  background:#000;
+  background: #000;
   overflow: hidden;
 
   /* counter --scrollerMarginLeft */
@@ -148,43 +144,47 @@
 
   position: relative;
 }
-.home-page-container .home-page .featured-video-container #cursor{
-  width:0;
-  height:0;
+.home-page-container .home-page .featured-video-container #cursor {
+  width: 0;
+  height: 0;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   mix-blend-mode: exclusion;
 }
-.home-page-container .home-page .featured-video-container #cursor span{
-  width:0px;
-  height:0px;
+.home-page-container .home-page .featured-video-container #cursor span {
+  width: 0px;
+  height: 0px;
   border-radius: 50%;
-  background:#fff;
+  background: #fff;
   z-index: 2;
   display: block;
   pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translate3d(-50%,-50%,0);
+  transform: translate3d(-50%, -50%, 0);
   font-size: 12px;
   font-weight: bold;
   overflow: hidden;
 }
-.home-page-container .home-page .featured-video-container #cursor span:nth-child(1){
+.home-page-container
+  .home-page
+  .featured-video-container
+  #cursor
+  span:nth-child(1) {
   position: absolute;
   top: 0;
   mix-blend-mode: exclusion;
 }
-.home-page-container .home-page .featured-video-container video{
+.home-page-container .home-page .featured-video-container video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 
   // mix-blend-mode: multiply;
 }
-.home-page-container .home-page .featured-video-container video:hover{
+.home-page-container .home-page .featured-video-container video:hover {
   cursor: none;
 }
 .home-page-container .home-page .featured-video-container .companyLogo {
@@ -193,7 +193,7 @@
   left: 50%;
   transform: translate(-50%);
   font-size: 40px;
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   letter-spacing: 0.1em;
   // mix-blend-mode: exclusion;
@@ -203,25 +203,38 @@
   position: absolute;
   right: 5%;
   bottom: 10%;
-  color: #FFFFFF;
+  color: #ffffff;
   // mix-blend-mode: exclusion;
 }
 
-.home-page-container .home-page .featured-video-container .videoDescription .videoTitle {
+.home-page-container
+  .home-page
+  .featured-video-container
+  .videoDescription
+  .videoTitle {
   // font-size: 3vw;
   font-size: 2.75em;
   font-weight: bold;
   line-height: 1.3em;
 }
 
-.home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
+.home-page-container
+  .home-page
+  .featured-video-container
+  .videoDescription
+  .scrollHint {
   // font-size: 1.5vw;
   font-size: 1.375em;
   margin-top: 1em;
   line-height: 1.3em;
 }
 
-html[lang=en] .home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
+html[lang='en']
+  .home-page-container
+  .home-page
+  .featured-video-container
+  .videoDescription
+  .scrollHint {
   font-family: serif;
 }
 
@@ -244,7 +257,6 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
   opacity: 0;
   visibility: hidden;
 }
-
 
 @include media-breakpoint-down(sm) {
   .home-page-container {
@@ -270,10 +282,18 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
     left: 20px;
     right: 20px;
   }
-  .home-page-container .home-page .featured-video-container .videoDescription .videoTitle {
+  .home-page-container
+    .home-page
+    .featured-video-container
+    .videoDescription
+    .videoTitle {
     font-size: 6vw;
   }
-  .home-page-container .home-page .featured-video-container .videoDescription .scrollHint {
+  .home-page-container
+    .home-page
+    .featured-video-container
+    .videoDescription
+    .scrollHint {
     font-size: 24px;
   }
 
@@ -294,7 +314,7 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
     border-radius: em(8);
     border: solid em(1) #000000;
     background-color: #ffffff;
-    
+
     position: relative;
 
     cursor: pointer;
@@ -308,7 +328,10 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
     font-size: em(24);
     font-weight: bold;
   }
-  html[lang=en] .home-page-container .home-page .popup-video-open-button-text {
+  html[lang='en']
+    .home-page-container
+    .home-page
+    .popup-video-open-button-text {
     // font-family: serif;
   }
   .home-page-container .home-page .popup-video-open-play-icon {
@@ -324,9 +347,11 @@ html[lang=en] .home-page-container .home-page .featured-video-container .videoDe
 
     border-radius: 50%;
     border: solid em(1) #000000;
-    background-color: #ffffff;    
+    background-color: #ffffff;
   }
-  .home-page-container .home-page .popup-video-open-play-icon-triangle-container {
+  .home-page-container
+    .home-page
+    .popup-video-open-play-icon-triangle-container {
     position: relative;
     width: 100%;
     height: 100%;

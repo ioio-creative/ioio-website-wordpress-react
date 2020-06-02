@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Unity, { UnityContent } from 'react-unity-webgl';
 import { getAbsoluteUrlFromRelativeUrl } from 'utils/setStaticResourcesPath';
 import {
@@ -24,24 +24,26 @@ const unityLoaderPath = unityBuildDirPath + 'UnityLoader.js';
 const unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
 
 function CovBattle() {
-  const handleFullScreenClicked = useCallback(_ => {
-    unityContent.unityInstance.SetFullscreen(1);
-  }, []);
+  const [isUnityLoaded, setIsUnityLoaded] = useState(false);
 
   useEffect(_ => {
-    const linkFunc = async _ => {
+    unityContent.on('loaded', async () => {
+      setIsUnityLoaded(true);
       await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
       await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
-    };
-    linkFunc();
+    });
     return _ => {
       unlinkFirebaseBattleSaveManagerToUnity();
     };
   }, []);
 
+  const handleFullScreenClicked = useCallback(_ => {
+    unityContent.unityInstance.SetFullscreen(1);
+  }, []);
+
   return (
     <div className='cov-battle'>
-      <div className='webgl-content'>
+      <div className={`webgl-content ${isUnityLoaded ? 'show' : 'hide'}`}>
         <div id='gameContainer'>
           <Unity unityContent={unityContent} />
         </div>
@@ -53,6 +55,9 @@ function CovBattle() {
             Flu 14日後
           </div>
         </div>
+      </div>
+      <div className={`loading ${isUnityLoaded ? 'hide' : 'show'}`}>
+        <div className='spinner' />
       </div>
     </div>
   );
