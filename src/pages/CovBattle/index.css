@@ -1,0 +1,30 @@
+.cov-battle {
+  width: 100vw;
+  height: 100vh;
+}
+
+.cov-battle #gameContainer,
+.cov-battle #gameContainer canvas {
+  --covBattleAspect: calc(16 / 9);
+  --covBattleMaxWidth: 960px;
+  --covBattleMinWidth: 480px;
+  --covBattleWidth: 85vw;
+
+  max-width: var(--covBattleMaxWidth);
+  max-height: calc(var(--covBattleMaxWidth) / var(--covBattleAspect));
+
+  min-width: var(--covBattleMinWidth);
+  min-height: calc(var(--covBattleMinWidth) / var(--covBattleAspect));
+
+  width: var(--covBattleWidth);
+  height: calc(var(--covBattleWidth) / var(--covBattleAspect));
+}
+
+.cov-battle .game-icon {
+  width: 38px;
+}
+
+.cov-battle .fullscreen {
+  width: 38px;
+  cursor: pointer;
+}

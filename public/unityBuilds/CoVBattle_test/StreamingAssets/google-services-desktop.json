@@ -1,0 +1,37 @@
+{
+  "project_info": {
+    "project_number": "695913108559",
+    "firebase_url": "https://cov-battle.firebaseio.com",
+    "project_id": "cov-battle",
+    "storage_bucket": "cov-battle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695913108559:ios:bfbb6fdb34af4cf22cc63a",
+        "android_client_info": {
+          "package_name": "com.ioiocreative.CoVBattle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695913108559-3supr2okq4qq3rmdngnl2hkcaoed3rro.apps.googleusercontent.com"
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDXgpV4mwY6HebtyocGSN726bYKLph1YI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

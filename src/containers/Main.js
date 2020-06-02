@@ -55,6 +55,9 @@ const AsyncSonar2019Page = asyncLoadingComponent(() =>
   import('pages/Sonar2019Page')
 );
 const AsyncSchoolVR = asyncLoadingComponent(() => import('pages/SchoolVR'));
+const AsyncCovBattle = asyncLoadingComponent(() =>
+  import('pages/CovBattle/index')
+);
 const AsyncNotFoundPage = asyncLoadingComponent(() =>
   import('pages/NotFoundPage')
 );
@@ -180,6 +183,10 @@ class Main extends Component {
                       langCode,
                       AsyncSchoolVR
                     )}
+                  />
+                  <Route
+                    path={routes.winningTheFlu(false)}
+                    component={AsyncCovBattle}
                   />
                   <Route path='/trial' component={P5SketchTrialPage} />
                   <Route component={AsyncNotFoundPage} />

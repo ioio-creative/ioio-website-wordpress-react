@@ -1,4 +1,4 @@
-import {globalLanguage} from 'App';
+import { globalLanguage } from 'App';
 
 /*
     Notes:
@@ -28,7 +28,12 @@ export default {
     return this.projectsByCategory('all');
   },
   projectsByCategory: function (categorySlug) {
-    return '/projects?category=' + categorySlug + '&' + langQuery(globalLanguage.code);
+    return (
+      '/projects?category=' +
+      categorySlug +
+      '&' +
+      langQuery(globalLanguage.code)
+    );
   },
   projectBySlug: '/projects/:projectSlug',
   projectBySlugWithValue: function (slugValue) {
@@ -60,8 +65,11 @@ export default {
   notFound: function (isLink) {
     return '/notfound' + addLangQueryIfIsLink(isLink);
   },
-  tapping: "/tapping",
-  hopping: "/hopping",
-  sonar2019: "/polarpolar",
-  schoolVR: "/schoolVR"
+  tapping: '/tapping',
+  hopping: '/hopping',
+  sonar2019: '/polarpolar',
+  schoolVR: '/schoolVR',
+  winningTheFlu: function (isLink) {
+    return '/winningTheFlu' + addLangQueryIfIsLink(isLink);
+  }
 };
