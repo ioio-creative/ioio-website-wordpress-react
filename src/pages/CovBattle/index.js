@@ -40,12 +40,15 @@ function CovBattle() {
     return _ => {
       unlinkFirebaseBattleSaveManagerToUnity();
 
+      // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
+      unityContent.remove();
       unityContent = null;
     };
   }, []);
 
   const handleFullScreenClicked = useCallback(_ => {
-    unityContent.unityInstance.SetFullscreen(1);
+    // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
+    unityContent.setFullscreen(true);
   }, []);
 
   return (
