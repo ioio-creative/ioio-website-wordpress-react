@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import {fetchLabDetailPageById, fetchProjectByIdAsync} from 'websiteApi';
+import { fetchLabDetailPageById, fetchProjectByIdAsync } from 'websiteApi';
 
-import {getLabDetailPageIdBySlugAsync} from 'utils/mapLabDetailPageSlugNameToIds';
-import {Redirect} from 'react-router-dom'
+import { getLabDetailPageIdBySlugAsync } from 'utils/mapLabDetailPageSlugNameToIds';
+import { Redirect } from 'react-router-dom';
 import routes from 'globals/routes';
 
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 
 //import {Player} from 'video-react'; todo Remove video-react
-import "./video-react.css"; // import css
+import './video-react.css'; // import css
 
 import './LabDetailPage.css';
 import './LabDetailPageM.css';
@@ -42,24 +42,32 @@ const labTemplateMap = {
 function VideoLanding(props) {
   //const publicUrl = process.env.PUBLIC_URL;
 
-  return (<section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
-    <div className="video-landing-div">
-      <div className="container-fluid">
-        <div className="player-wrapper">
-          {/*
+  return (
+    <section
+      id='video-landing'
+      className='section-bg wow fadeIn'
+      data-wow-delay='0.8s'
+    >
+      <div className='video-landing-div'>
+        <div className='container-fluid'>
+          <div className='player-wrapper'>
+            {/*
             <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
             <source className="wow fadeIn" src={video_url} type="video/mp4"/>
           </video>
-          */
-          }
-          <img className="wow fadeIn" src={props.lab.cover_thumbnail.guid} title=""/>
+          */}
+            <img
+              className='wow fadeIn'
+              src={props.lab.cover_thumbnail.guid}
+              alt='cover thumbnail'
+            />
+          </div>
+          {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
         </div>
-        {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
       </div>
-    </div>
-    <div className="cover-bg wow fadeIn"></div>
-
-  </section>);
+      <div className='cover-bg wow fadeIn'></div>
+    </section>
+  );
 }
 
 function VideoLandingDesc(props) {
@@ -67,49 +75,52 @@ function VideoLandingDesc(props) {
     backgroundColor: props.lab.background_mood_color
   };
   var str = props.lab.project_date;
-  var res = str.split("-");
+  var res = str.split('-');
 
-  return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
-
-    <div className="container-fluid">
-      <div className="row video-landing-title">
-        <div className="col-md-1"></div>
-        <div className="col-md-2 additional-info">
-          <ul>
-            <li className="date">
-              {res[2]}/{res[1]}
-            </li>
-            <li className="year">
-              {res[0]}
-            </li>
-          </ul>
-        </div>
-        <div className="col-md-8">
-          <div className="cover-text">
-            <h1 className="container-fluid">{props.lab.project_short_desc}</h1>
-            <h2 className="container-fluid">{props.lab.project_name}</h2>
+  return (
+    <section
+      id='video-landing-caption'
+      className='project-section-bg'
+      style={bg}
+    >
+      <div className='container-fluid'>
+        <div className='row video-landing-title'>
+          <div className='col-md-1'></div>
+          <div className='col-md-2 additional-info'>
+            <ul>
+              <li className='date'>
+                {res[2]}/{res[1]}
+              </li>
+              <li className='year'>{res[0]}</li>
+            </ul>
           </div>
+          <div className='col-md-8'>
+            <div className='cover-text'>
+              <h1 className='container-fluid'>
+                {props.lab.project_short_desc}
+              </h1>
+              <h2 className='container-fluid'>{props.lab.project_name}</h2>
+            </div>
+          </div>
+          <div className='col-md-1'></div>
         </div>
-        <div className="col-md-1"></div>
+        <div className='row video-landing-detail'>
+          <div className='col-md-1'></div>
+          <div className='col-md-2 additional-info'>
+            <ul>
+              <li>{props.lab.left_column_description}</li>
+            </ul>
+          </div>
+          <div className='col-md-8'>
+            <p className='lab-key-message'>{props.lab.key_message}</p>
+            <p className='lab-overview'>{props.lab.overview}</p>
+          </div>
+          <div className='col-md-1'></div>
+        </div>
+        <div className='clearfix'></div>
       </div>
-      <div className="row video-landing-detail">
-        <div className="col-md-1"></div>
-        <div className="col-md-2 additional-info">
-          <ul>
-            <li>
-              {props.lab.left_column_description}
-            </li>
-          </ul>
-        </div>
-        <div className="col-md-8">
-          <p className="lab-key-message">{props.lab.key_message}</p>
-          <p className="lab-overview">{props.lab.overview}</p>
-        </div>
-        <div className="col-md-1"></div>
-      </div>
-      <div className="clearfix"></div>
-    </div>
-  </section>);
+    </section>
+  );
 }
 
 class LabDetailPage extends Component {
@@ -119,7 +130,7 @@ class LabDetailPage extends Component {
       isReturnNotFound: false,
       lab: null,
       relatedProjects: []
-    }
+    };
   }
 
   async componentDidMount() {
@@ -129,23 +140,27 @@ class LabDetailPage extends Component {
 
     // if no corresponding project id entry for the slug got from query
     if (isNaN(labIdNum)) {
-      this.setState({isReturnNotFound: true});
+      this.setState({ isReturnNotFound: true });
       return;
     }
 
-    fetchLabDetailPageById(labIdNum, (aLab) => {
+    fetchLabDetailPageById(labIdNum, aLab => {
       if (aLab === null) {
-        this.setState({isReturnNotFound: true});
+        this.setState({ isReturnNotFound: true });
       } else {
-        this.setState({lab: aLab});
-        if (aLab.related_projects && aLab.related_projects > 0) {       
-          const relatedProjectPromises = aLab.related_projects.map(async (relatedProj) => {
-            const relatedProjWhole = await fetchProjectByIdAsync(relatedProj.id);
-            return relatedProjWhole;
-          });
+        this.setState({ lab: aLab });
+        if (aLab.related_projects && aLab.related_projects > 0) {
+          const relatedProjectPromises = aLab.related_projects.map(
+            async relatedProj => {
+              const relatedProjWhole = await fetchProjectByIdAsync(
+                relatedProj.id
+              );
+              return relatedProjWhole;
+            }
+          );
 
-          Promise.all(relatedProjectPromises).then((relatedProjectObjs) => {
-            this.setState({relatedProjects: relatedProjectObjs});
+          Promise.all(relatedProjectPromises).then(relatedProjectObjs => {
+            this.setState({ relatedProjects: relatedProjectObjs });
           });
         }
       }
@@ -160,7 +175,7 @@ class LabDetailPage extends Component {
     // should check isReturnNotFound first
     // before checking lab === null
     if (state.isReturnNotFound) {
-      return (<Redirect to={routes.notFound}/>);
+      return <Redirect to={routes.notFound} />;
     }
 
     if (lab === null) {
@@ -182,47 +197,41 @@ class LabDetailPage extends Component {
     // };
 
     const labTemplates = lab.sections;
-    const labTemplateContainer = labTemplates.map((templateData) => {
+    const labTemplateContainer = labTemplates.map(templateData => {
       const templateType = parseInt(templateData.template_type, 10);
       const TemplateToUse = labTemplateMap[templateType];
-      return <TemplateToUse key={templateData.id} {...templateData}/>
+      return <TemplateToUse key={templateData.id} {...templateData} />;
     });
 
     const isDisplayRelatedProjects = relatedProjects.length > 0;
-    const relatedProjectElements = relatedProjects.map((relatedProject) => {
+    const relatedProjectElements = relatedProjects.map(relatedProject => {
       return (
-        <Link key={relatedProject.id}
+        <Link
+          key={relatedProject.id}
           to={routes.projectBySlugWithValue(relatedProject.slug)}
-          className="related-hover">
+          className='related-hover'
+        >
           <h1>Related Projects</h1>
-          <h3>
-            {relatedProject.project_name}
-          </h3>
+          <h3>{relatedProject.project_name}</h3>
         </Link>
       );
     });
 
     return (
-      <div className="wow fadeIn">
-        <VideoLanding lab={lab}/>
-        <VideoLandingDesc lab={lab}/>
-        <div className="container-fluid">
-          <div className="row ">
-            <div className="col-md-1"></div>
-            <div className="col-md-10">
-              {labTemplateContainer}
-            </div>
-            <div className="col-md-1"></div>
+      <div className='wow fadeIn'>
+        <VideoLanding lab={lab} />
+        <VideoLandingDesc lab={lab} />
+        <div className='container-fluid'>
+          <div className='row '>
+            <div className='col-md-1'></div>
+            <div className='col-md-10'>{labTemplateContainer}</div>
+            <div className='col-md-1'></div>
           </div>
         </div>
-        {
-          isDisplayRelatedProjects && (
-            <section id="lab-related-project">
-              {relatedProjectElements}
-            </section>
-          )
-        }
-        <Footer/>
+        {isDisplayRelatedProjects && (
+          <section id='lab-related-project'>{relatedProjectElements}</section>
+        )}
+        <Footer />
       </div>
     );
   }

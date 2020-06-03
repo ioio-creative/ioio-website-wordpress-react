@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { fetchProjectWithNextIdById } from 'websiteApi';
 
 import { getProjectIdBySlugAsync } from 'utils/mapProjectSlugNameToIds';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import routes from 'globals/routes';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ import $ from 'jquery';
 import Modal from 'react-modal';
 
 import { Player } from 'video-react'; //todo Remove video-react
-import "./video-react.css"; // import css
+import './video-react.css'; // import css
 import { FormattedMessage } from 'react-intl';
 
 Modal.setAppElement('#root');
@@ -50,10 +50,9 @@ const projectTemplateMap = {
   8: ProjectTemp08,
   9: ProjectTemp09,
   10: ProjectTemp10,
-  11: ProjectTemp11,
+  11: ProjectTemp11
   // 12: ProjectTemp12,
 };
-
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 
@@ -67,39 +66,67 @@ function VideoLanding(props) {
   //const video_url_shorten = video_url.replace(".mp4", "") //TODO use replace ''
   //const data_vid = 'mp4:' + video_url_shorten + ', webm: video/ocean, ogv:' + video_url_shorten + ', poster: video/ocean" data-vide-options="position: 0% 50%'
 
-
   const publicUrl = process.env.PUBLIC_URL;
-  const svgURL = publicUrl + '/img/Play_btn-14.svg'
+  const svgURL = publicUrl + '/img/Play_btn-14.svg';
 
   return (
-    <section id="video-landing" className="section-bg wow fadeIn" data-wow-delay="0.8s">
-      <div className="video-landing-div">
-        <div className="container-fluid">
-          <div className="player-wrapper">
-            <video className="react-player" width={'100%'} height={'auto'} poster={poster_url} autoPlay={"autoPlay"} loop={"loop"} muted="muted" playsInline={"playsInline"}>
-              <source className="wow fadeIn" src={video_url} type="video/mp4" /> {/* // TODO: add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
-              <img className="wow fadeIn" src={poster_url} title="Your browser does not support the <video> tag" />
+    <section
+      id='video-landing'
+      className='section-bg wow fadeIn'
+      data-wow-delay='0.8s'
+    >
+      <div className='video-landing-div'>
+        <div className='container-fluid'>
+          <div className='player-wrapper'>
+            <video
+              className='react-player'
+              width={'100%'}
+              height={'auto'}
+              poster={poster_url}
+              autoPlay={'autoPlay'}
+              loop={'loop'}
+              muted='muted'
+              playsInline={'playsInline'}
+            >
+              <source className='wow fadeIn' src={video_url} type='video/mp4' />{' '}
+              {/* // TODO: add webm <source src="https://multicdn.synq.fm/projects/bb/56/bb56f28429b942c08dc5128e4b7ba48c/derivatives/videos/71/43/71439ccd73c74ecc8bbab7abd3bb98bc/webm_720/71439ccd73c74ecc8bbab7abd3bb98bc_webm_720.webm" type="video/webm"/> */}
+              <img
+                className='wow fadeIn'
+                src={poster_url}
+                title='Your browser does not support the <video> tag'
+                alt='Your browser does not support the <video> tag'
+              />
             </video>
           </div>
           {/* <ReactPlayer className='react-player' playing={true} loop={true} playsinline={true} volume={0} muted={true} width='100%' height='auto' url={full_url} /> */}
-          <div className="video-text wow fadeIn">
-            <div className="row">
-              <div className="offset-md-1 col-md-11 project-title-div">
-                <div className="col-md-5">
-                  <h1 className="container-fluid">{props.project.project_title}</h1>
-                  <h2 className="container-fluid">{props.project.project_subtitle}</h2>
+          <div className='video-text wow fadeIn'>
+            <div className='row'>
+              <div className='offset-md-1 col-md-11 project-title-div'>
+                <div className='col-md-5'>
+                  <h1 className='container-fluid'>
+                    {props.project.project_title}
+                  </h1>
+                  <h2 className='container-fluid'>
+                    {props.project.project_subtitle}
+                  </h2>
                 </div>
-                {props.project.showreel.guid && <div className="pop-up-vid-div">
-                  <Link to="#" onClick={props.modalClick} id="pop-up-vid">
-                    <img className="projectlist-showreel-img" src={svgURL} alt="showreel" />
-                    <FormattedMessage
-                      id="ProjectDetailPage.showreelButton"
-                      defaultMessage="SHOWREEL"
-                    />
-                  </Link>
-                </div>}
+                {props.project.showreel.guid && (
+                  <div className='pop-up-vid-div'>
+                    <Link to='#' onClick={props.modalClick} id='pop-up-vid'>
+                      <img
+                        className='projectlist-showreel-img'
+                        src={svgURL}
+                        alt='showreel'
+                      />
+                      <FormattedMessage
+                        id='ProjectDetailPage.showreelButton'
+                        defaultMessage='SHOWREEL'
+                      />
+                    </Link>
+                  </div>
+                )}
               </div>
-              <div className="col-md-1" />
+              <div className='col-md-1' />
             </div>
           </div>
         </div>
@@ -108,30 +135,34 @@ function VideoLanding(props) {
   );
 }
 
-
 function VideoLandingDesc(props) {
   const bg = {
     backgroundColor: props.project.background_mood_color
   };
-  return (<section id="video-landing-caption" className="project-section-bg" style={bg}>
-    <div className="container-fluid">
-      <div className="row video-landing-text">
-        <div className="col-md-1"></div>
-        <div className="col-md-4 wow fadeIn">
-          <p className="video-landing-text-l">{props.project.key_message}</p>
-        </div>
+  return (
+    <section
+      id='video-landing-caption'
+      className='project-section-bg'
+      style={bg}
+    >
+      <div className='container-fluid'>
+        <div className='row video-landing-text'>
+          <div className='col-md-1'></div>
+          <div className='col-md-4 wow fadeIn'>
+            <p className='video-landing-text-l'>{props.project.key_message}</p>
+          </div>
 
-        <div className="col-md-2"></div>
-        <div className="col-md-4 wow fadeIn">
-          <p className="video-landing-text-r">{props.project.overview}</p>
+          <div className='col-md-2'></div>
+          <div className='col-md-4 wow fadeIn'>
+            <p className='video-landing-text-r'>{props.project.overview}</p>
+          </div>
+          <div className='col-md-1'></div>
         </div>
-        <div className="col-md-1"></div>
+        <div className='clearfix'></div>
       </div>
-      <div className="clearfix"></div>
-    </div>
-  </section>);
+    </section>
+  );
 }
-
 
 class ProjectDetailPage extends Component {
   constructor(props) {
@@ -144,7 +175,7 @@ class ProjectDetailPage extends Component {
     this.state = {
       modalIsOpen: false,
       project: null,
-      isReturnNotFound: false,
+      isReturnNotFound: false
     };
   }
 
@@ -172,7 +203,7 @@ class ProjectDetailPage extends Component {
       return;
     }
 
-    fetchProjectWithNextIdById(projectIdNum, (aProject) => {
+    fetchProjectWithNextIdById(projectIdNum, aProject => {
       if (aProject === null) {
         this.setState({ isReturnNotFound: true });
       } else {
@@ -182,7 +213,7 @@ class ProjectDetailPage extends Component {
 
     window.setTimeout(function () {
       //$('html, body').scrollTop(0);
-      $('html, body').animate({ scrollTop: "0" });
+      $('html, body').animate({ scrollTop: '0' });
     }, 0);
 
     $('#root').addClass('project-details-page');
@@ -199,7 +230,7 @@ class ProjectDetailPage extends Component {
     // should check isReturnNotFound first
     // before checking project === null
     if (state.isReturnNotFound) {
-      return (<Redirect to={routes.notFound(false)} />);
+      return <Redirect to={routes.notFound(false)} />;
     }
 
     if (project === null) {
@@ -220,71 +251,96 @@ class ProjectDetailPage extends Component {
     };
 
     const projectTemplates = project.project_sections;
-    const projectTemplateContainer = projectTemplates.map((templateData, idx) => {
-      const TemplateToUse = projectTemplateMap[parseInt(templateData.template_type, 10)];
-      if (TemplateToUse)
-        return <TemplateToUse key={idx + '_' + templateData.id} {...templateData} />;
-      else
-        return null;
-    });
+    const projectTemplateContainer = projectTemplates.map(
+      (templateData, idx) => {
+        const TemplateToUse =
+          projectTemplateMap[parseInt(templateData.template_type, 10)];
+        if (TemplateToUse)
+          return (
+            <TemplateToUse
+              key={idx + '_' + templateData.id}
+              {...templateData}
+            />
+          );
+        else return null;
+      }
+    );
 
     return (
-      <div className="wow fadeIn">
+      <div className='wow fadeIn'>
         <VideoLanding project={project} modalClick={this.openModal} />
-        <VideoLandingDesc project={project} /> {/*
+        <VideoLandingDesc project={project} />{' '}
+        {/*
           <ReactPlayer className='react-player' controls playing loop playsinline volume='1' width='100%' url="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
           <Player canBeClicked="false" playsInline="playsInline" poster="/assets/poster.png" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" autoPlay="true" fluid="true" muted="true" preload="auto" />
-      */
-        }
+      */}
         {/* <ProjectTemp11 /> */}
         {projectTemplateContainer}
-
-        <section id="project-info" className="project-section-bg">
-          <div className="container-fluid"><div className="row video-landing-text">
-            <div className="col-md-1" />
-            <div className="col-md-10 wow fadeIn">
-              <div id="summary" className="wrap">
-                <div className="title">{project.project_summary_label}</div>
-                <div className="content">
-                {
-                  project.project_summary_rows.map((s, idx)=>{
-                    return <div key={idx} className="item"><span>{s.header}</span><span>{s.content}</span></div>
-                  })
-                }
+        <section id='project-info' className='project-section-bg'>
+          <div className='container-fluid'>
+            <div className='row video-landing-text'>
+              <div className='col-md-1' />
+              <div className='col-md-10 wow fadeIn'>
+                <div id='summary' className='wrap'>
+                  <div className='title'>{project.project_summary_label}</div>
+                  <div className='content'>
+                    {project.project_summary_rows.map((s, idx) => {
+                      return (
+                        <div key={idx} className='item'>
+                          <span>{s.header}</span>
+                          <span>{s.content}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div id='tag' className='wrap'>
+                  <div className='title'>Tech Tag</div>
+                  <div className='content'>
+                    {project.tags.map((t, idx) => {
+                      return <span key={idx}>{t.name}</span>;
+                    })}
+                  </div>
                 </div>
               </div>
-              <div id="tag" className="wrap">
-                <div className="title">Tech Tag</div>
-                <div className="content">
-                  {
-                    project.tags.map((t, idx)=>{
-                      return <span key={idx}>{t.name}</span>
-                    })
-                  }
-                </div>
-              </div>
+              <div className='col-md-1'></div>
             </div>
-            <div className="col-md-1"></div>
+            <div className='clearfix'></div>
           </div>
-          <div className="clearfix"></div></div>
         </section>
-
-        <div id="project-detail-page-space-buffer"></div>
+        <div id='project-detail-page-space-buffer'></div>
         {/* next project link, maybe useful for "scroll down and load next" */}
         {/*
         <div className="next-project-block">
           <Link to={routes.projectBySlugWithValue(project.next_project.slug)}>Next Project</Link>
         </div>
         */}
-        <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal} contentLabel="Showreel Modal" style={customStyles}>
-          <button className="video-close-btn" ion-button="ion-button" round="round" onClick={this.closeModal}>
-            <i className="ion ion-android-close"></i>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          contentLabel='Showreel Modal'
+          style={customStyles}
+        >
+          <button
+            className='video-close-btn'
+            ion-button='ion-button'
+            round='round'
+            onClick={this.closeModal}
+          >
+            <i className='ion ion-android-close'></i>
           </button>
-          <div className="vid-player">
-            <Player poster="/assets/poster.png" src={project.showreel.guid} autoPlay={true} fluid={true} volume={1} preload={'auto'} />
+          <div className='vid-player'>
+            <Player
+              poster='/assets/poster.png'
+              src={project.showreel.guid}
+              autoPlay={true}
+              fluid={true}
+              volume={1}
+              preload={'auto'}
+            />
           </div>
         </Modal>
-
         <Footer />
       </div>
     );

@@ -80,7 +80,7 @@ function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
 }
 
 const config = {
-  gaTrackingId: 'UA-66792466-2',
+  gaTrackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   gaOptions: {
     // debug: true,
     // titleCase: false,
@@ -89,7 +89,7 @@ const config = {
     // }
   },
   googleTagManagerOptions: {
-    gtmId: 'GTM-TBPBCCX'
+    gtmId: process.env.GOOGLE_TAG_MANAGER_ID
   },
   defaultLanguage: languages.english,
   defaultFontFamily: 'sans-serif'

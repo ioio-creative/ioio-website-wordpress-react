@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import asyncLoadingComponent from 'components/loading/AsyncLoadingComponent';
 /**
@@ -62,20 +62,15 @@ const AsyncNotFoundPage = asyncLoadingComponent(() =>
   import('pages/NotFoundPage')
 );
 
-class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <LanguageContextConsumer>
-        {value => {
-          const langCode = value.language.code;
-          return (
-            <div id='scroller'>
-              <main id='main'>
-                {/*
+const Main = _ => {
+  return (
+    <LanguageContextConsumer>
+      {value => {
+        const langCode = value.language.code;
+        return (
+          <div id='scroller'>
+            <main id='main'>
+              {/*
                     Switch component behaves similarly to the "switch" construct
                     in programming. Once a Route is matched, subsequent Routes
                     will be ignored. So we should use "exact" keyword on more
@@ -89,115 +84,114 @@ class Main extends Component {
                     Route is necessary to trigger re-render of the elements when 
                     language changes
                 */}
-                <Switch>
-                  <Route
-                    exact
-                    path={routes.home(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncHomePage
-                    )}
-                  />
-                  <Route
-                    path={routes.about(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncAboutPage
-                    )}
-                  />
-                  <Route
-                    path={routes.labAbout(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncAboutLabPage
-                    )}
-                  />
-                  <Route
-                    path={routes.labContacts(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncContactsLabPage
-                    )}
-                  />
-                  <Route
-                    exact
-                    path={routes.projectBySlug}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncProjectDetailPage
-                    )}
-                  />
-                  <Route
-                    path={routes.projects(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncProjectListPage
-                    )}
-                  />
-                  <Route
-                    exact
-                    path={routes.labBySlug}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncLabDetailPage
-                    )}
-                  />
-                  <Route
-                    path={routes.lab(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncLabListPage
-                    )}
-                  />
-                  <Route
-                    path={routes.contacts(false)}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncContactsPage
-                    )}
-                  />
-                  <Route
-                    path={routes.tapping}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncTappingPage
-                    )}
-                  />
-                  <Route
-                    path={routes.hopping}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncHoppingPage
-                    )}
-                  />
-                  <Route
-                    path={routes.sonar2019}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncSonar2019Page
-                    )}
-                  />
-                  <Route
-                    path={routes.schoolVR}
-                    render={passLanguageToAsyncLoadingComponentFunc(
-                      langCode,
-                      AsyncSchoolVR
-                    )}
-                  />
-                  <Route
-                    path={routes.winningTheFlu(false)}
-                    component={AsyncCovBattle}
-                  />
-                  <Route path='/trial' component={P5SketchTrialPage} />
-                  <Route component={AsyncNotFoundPage} />
-                </Switch>
-              </main>
-            </div>
-          );
-        }}
-      </LanguageContextConsumer>
-    );
-  }
-}
+              <Switch>
+                <Route
+                  exact
+                  path={routes.home(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncHomePage
+                  )}
+                />
+                <Route
+                  path={routes.about(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncAboutPage
+                  )}
+                />
+                <Route
+                  path={routes.labAbout(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncAboutLabPage
+                  )}
+                />
+                <Route
+                  path={routes.labContacts(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncContactsLabPage
+                  )}
+                />
+                <Route
+                  exact
+                  path={routes.projectBySlug}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncProjectDetailPage
+                  )}
+                />
+                <Route
+                  path={routes.projects(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncProjectListPage
+                  )}
+                />
+                <Route
+                  exact
+                  path={routes.labBySlug}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncLabDetailPage
+                  )}
+                />
+                <Route
+                  path={routes.lab(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncLabListPage
+                  )}
+                />
+                <Route
+                  path={routes.contacts(false)}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncContactsPage
+                  )}
+                />
+                <Route
+                  path={routes.tapping}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncTappingPage
+                  )}
+                />
+                <Route
+                  path={routes.hopping}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncHoppingPage
+                  )}
+                />
+                <Route
+                  path={routes.sonar2019}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncSonar2019Page
+                  )}
+                />
+                <Route
+                  path={routes.schoolVR}
+                  render={passLanguageToAsyncLoadingComponentFunc(
+                    langCode,
+                    AsyncSchoolVR
+                  )}
+                />
+                <Route
+                  path={routes.winningTheFlu(false)}
+                  component={AsyncCovBattle}
+                />
+                <Route path='/trial' component={P5SketchTrialPage} />
+                <Route component={AsyncNotFoundPage} />
+              </Switch>
+            </main>
+          </div>
+        );
+      }}
+    </LanguageContextConsumer>
+  );
+};
 
 export default Main;
