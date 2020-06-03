@@ -23,7 +23,7 @@ const unityLoaderPath = unityBuildDirPath + 'UnityLoader.js';
 
 let unityContent = null;
 
-function CovBattle() {
+const CovBattle = _ => {
   if (unityContent === null) {
     unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
   }
@@ -71,6 +71,6 @@ function CovBattle() {
       </div>
     </div>
   );
-}
+};
 
 export default CovBattle;

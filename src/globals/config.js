@@ -80,7 +80,7 @@ function getLanguageFromBrowserLangIdCode(browserLangIdCode) {
 }
 
 const config = {
-  gaTrackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+  gaTrackingId: process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID,
   gaOptions: {
     // debug: true,
     // titleCase: false,
@@ -89,11 +89,14 @@ const config = {
     // }
   },
   googleTagManagerOptions: {
-    gtmId: process.env.GOOGLE_TAG_MANAGER_ID
+    gtmId: process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID
   },
   defaultLanguage: languages.english,
   defaultFontFamily: 'sans-serif'
 };
+
+// console.log('GA', config.gaTrackingId);
+// console.log('Google Tag Manager', config.googleTagManagerOptions.gtmId);
 
 export {
   config,
