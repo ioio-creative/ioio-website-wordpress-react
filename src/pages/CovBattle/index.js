@@ -33,6 +33,7 @@ const CovBattle = _ => {
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
   useEffect(_ => {
+    unityContent = null;
     return _ => {
       if (isLoadGame) {
         unlinkFirebaseBattleSaveManagerToUnity();
@@ -53,26 +54,24 @@ const CovBattle = _ => {
     async _ => {
       if (!isLoadGame) {
         setIsLoadGame(true);
-        if (unityContent === null) {
-          unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
+        unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
 
-          const unityLoadProgressPromise = _ => {
-            return new Promise((res, rej) => {
-              unityContent.on('progress', progression => {
-                setUnityLoadProgress(progression);
-                if (progression === 1) {
-                  res();
-                }
-              });
+        const unityLoadProgressPromise = _ => {
+          return new Promise((res, rej) => {
+            unityContent.on('progress', progression => {
+              setUnityLoadProgress(progression);
+              if (progression === 1) {
+                res();
+              }
             });
-          };
+          });
+        };
 
-          await unityLoadProgressPromise();
+        await unityLoadProgressPromise();
 
-          console.log('[CovBattle] UnityContent loaded');
-          await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
-          await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
-        }
+        console.log('[CovBattle] UnityContent loaded');
+        await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
+        await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
       }
     },
     [isLoadGame]
