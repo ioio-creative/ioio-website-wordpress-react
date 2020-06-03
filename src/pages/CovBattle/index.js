@@ -23,26 +23,24 @@ const unityLoaderPath = unityBuildDirPath + 'UnityLoader.js';
 
 let unityContent = null;
 
-const CovBattle = _ => {
-  if (unityContent === null) {
-    unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
-  }
+const uiWordings = {
+  gameTitle: 'Winning the Flu 14日後',
+  loadGameButton: 'Load Game!'
+};
 
-  const [isUnityLoaded, setIsUnityLoaded] = useState(false);
+const CovBattle = _ => {
+  const [isLoadGame, setIsLoadGame] = useState(false);
+  const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
   useEffect(_ => {
-    unityContent.on('loaded', async () => {
-      console.log('[CovBattle] UnityContent loaded');
-      setIsUnityLoaded(true);
-      await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
-      await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
-    });
     return _ => {
-      unlinkFirebaseBattleSaveManagerToUnity();
+      if (isLoadGame) {
+        unlinkFirebaseBattleSaveManagerToUnity();
 
-      // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
-      unityContent.remove();
-      unityContent = null;
+        // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
+        unityContent.remove();
+        unityContent = null;
+      }
     };
   }, []);
 
@@ -51,24 +49,76 @@ const CovBattle = _ => {
     unityContent.setFullscreen(true);
   }, []);
 
+  const handleLoadGameButtonClicked = useCallback(
+    async _ => {
+      if (!isLoadGame) {
+        setIsLoadGame(true);
+        if (unityContent === null) {
+          unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
+
+          const unityLoadProgressPromise = _ => {
+            return new Promise((res, rej) => {
+              unityContent.on('progress', progression => {
+                setUnityLoadProgress(progression);
+                if (progression === 1) {
+                  res();
+                }
+              });
+            });
+          };
+
+          await unityLoadProgressPromise();
+
+          console.log('[CovBattle] UnityContent loaded');
+          await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
+          await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
+        }
+      }
+    },
+    [isLoadGame]
+  );
+
+  const isUnityLoaded = unityLoadProgress === 1;
+  const unityLoadProgressPercentStr = `${Math.ceil(unityLoadProgress * 100)}%`;
+
   return (
     <div className='cov-battle'>
-      <div className={`webgl-content ${isUnityLoaded ? 'show' : 'hide'}`}>
-        <div id='gameContainer'>
-          <Unity unityContent={unityContent} />
+      {!isLoadGame ? (
+        <div className='before-game'>
+          <button onClick={handleLoadGameButtonClicked}>
+            {uiWordings.loadGameButton}
+          </button>
         </div>
-        <div className='footer'>
-          <div className='webgl-logo' />
-          <div className='fullscreen' onClick={handleFullScreenClicked} />
-          <div className='title'>
-            <img className='game-icon' src={gameIcon} alt='logo' /> Winning the
-            Flu 14日後
+      ) : (
+        <div className='game-container'>
+          <div className={`webgl-content ${isUnityLoaded ? 'show' : 'hide'}`}>
+            <div id='gameContainer'>
+              <Unity unityContent={unityContent} />
+            </div>
+            <div className='footer'>
+              <div className='webgl-logo' />
+              <div className='fullscreen' onClick={handleFullScreenClicked} />
+              <div className='title'>
+                <img className='game-icon' src={gameIcon} alt='logo' />{' '}
+                {uiWordings.gameTitle}
+              </div>
+            </div>
+          </div>
+          <div className={`loading ${isUnityLoaded ? 'hide' : 'show'}`}>
+            <div className='progress-container'>
+              <div className='progress-text'>{unityLoadProgressPercentStr}</div>
+              <br />
+              {/* https://www.w3schools.com/howto/howto_js_progressbar.asp */}
+              <div id='myProgress'>
+                <div
+                  id='myBar'
+                  style={{ width: unityLoadProgressPercentStr }}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={`loading ${isUnityLoaded ? 'hide' : 'show'}`}>
-        <div className='spinner' />
-      </div>
+      )}
     </div>
   );
 };

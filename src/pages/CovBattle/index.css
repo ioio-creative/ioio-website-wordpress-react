@@ -1,32 +1,60 @@
 .cov-battle {
-  --covBattleDefaultTransition: all 0.4s;
+  --covBattleDefaultTransition: all 1s;
 
   width: 100vw;
   height: 100vh;
 }
 
+.cov-battle .before-game,
 .cov-battle .loading {
-  transition: var(--covBattleDefaultTransition);
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cov-battle .game-container {
+  width: 100%;
+  height: 100%;
+}
+
+.cov-battle .loading {
+  /* does not seem good */
+  /* transition: var(--covBattleDefaultTransition); */
 }
 
 .cov-battle .loading.show {
+  opacity: 1;
   visibility: visible;
 }
 
 .cov-battle .loading.hide {
+  opacity: 0;
   visibility: hidden;
 }
 
-.cov-battle .loading .spinner {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  border: 3px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 3px solid #555555;
-  width: 25px;
-  height: 25px;
-  animation: spin 1s linear infinite;
+.cov-battle .loading .progress-container {
+  width: 50%;
+  height: 50px;
+}
+
+.cov-battle .loading .progress-text {
+  text-align: center;
+}
+
+/* https://www.w3schools.com/howto/howto_js_progressbar.asp */
+
+.cov-battle .loading #myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+.cov-battle .loading #myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #6dd400;
 }
 
 .cov-battle .webgl-content {
@@ -34,10 +62,12 @@
 }
 
 .cov-battle .webgl-content.show {
+  opacity: 1;
   visibility: visible;
 }
 
 .cov-battle .webgl-content.hide {
+  opacity: 0;
   visibility: hidden;
 }
 
