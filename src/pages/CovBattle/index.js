@@ -21,19 +21,26 @@ const unityBuildDirPath = getAbsoluteUrlFromRelativeUrl(
 const unityBuildJsonPath = unityBuildDirPath + 'CoVBattle_test.json';
 const unityLoaderPath = unityBuildDirPath + 'UnityLoader.js';
 
-const unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
+let unityContent = null;
 
 function CovBattle() {
+  if (unityContent === null) {
+    unityContent = new UnityContent(unityBuildJsonPath, unityLoaderPath);
+  }
+
   const [isUnityLoaded, setIsUnityLoaded] = useState(false);
 
   useEffect(_ => {
     unityContent.on('loaded', async () => {
+      console.log('[CovBattle] UnityContent loaded');
       setIsUnityLoaded(true);
       await linkFirebaseRoomSaveManagerToUnityAsync(unityContent);
       await linkFirebaseBattleSaveManagerToUnityAsync(unityContent);
     });
     return _ => {
       unlinkFirebaseBattleSaveManagerToUnity();
+
+      unityContent = null;
     };
   }, []);
 
