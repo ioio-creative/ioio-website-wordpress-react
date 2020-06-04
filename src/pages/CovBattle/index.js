@@ -138,14 +138,14 @@ const CovBattle = _ => {
   /* end of event handlers */
 
   const isUnityLoaded = unityLoadProgress === 1;
-  // when isMobileBrowser, allow UnityGame to show warning message
-  const isShowUnityGame = isMobileBrowser
-    ? unityLoadProgress === 0 || unityLoadProgress === 1
-    : isUnityLoaded;
+  let isShowUnityGame = isUnityLoaded;
   const isShowUnityGameFooter = isUnityLoaded;
-  const isShowGameLoadProgress = isMobileBrowser
-    ? unityLoadProgress !== 0 && !isUnityLoaded
-    : !isUnityLoaded;
+  let isShowGameLoadProgress = !isUnityLoaded;
+  // when isMobileBrowser, allow UnityGame to show warning message
+  if (isMobileBrowser) {
+    isShowUnityGame = unityLoadProgress === 0 || isUnityLoaded;
+    isShowGameLoadProgress = !isShowUnityGame;
+  }
 
   return (
     <div className='cov-battle'>
