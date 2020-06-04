@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Unity, { UnityContent } from 'react-unity-webgl';
 import { getAbsoluteUrlFromRelativeUrl } from 'utils/setStaticResourcesPath';
+import { isMobileBrowser } from 'utils/getIsMobileBrowser';
 import {
   linkFirebaseBattleSaveManagerToUnityAsync,
   unlinkFirebaseBattleSaveManagerToUnity
 } from './multiplayer/linkFirebaseBattleSaveManagerToUnity';
 import { linkFirebaseRoomSaveManagerToUnityAsync } from './multiplayer/linkFirebaseRoomSaveManagerToUnity';
 import gameIcon from './images/covbattle-icon.png';
+import uiWordings from './uiWordings';
 import './TemplateData/style.css';
-import './index.css';
+import './index.scss';
 
 /**
  * !!!Important!!!
@@ -23,9 +25,43 @@ const unityLoaderPath = unityBuildDirPath + 'UnityLoader.js';
 
 let unityContent = null;
 
-const uiWordings = {
-  gameTitle: 'Winning the Flu 14日後',
-  loadGameButton: 'Load Game!'
+const GameLoadProgress = ({ isShow, normedProgress }) => {
+  const progressPercentStr = `${Math.ceil(normedProgress * 100)}%`;
+  return (
+    <div className={`loading ${isShow ? 'show' : 'hide'}`}>
+      <div className='progress-container'>
+        <div className='progress-text'>{progressPercentStr}</div>
+        <div className='progress-msg'>
+          {normedProgress > 0.5
+            ? uiWordings.loadGameAboveHalf
+            : uiWordings.loadGameBelowHalf}
+        </div>
+        <br />
+        {/* https://www.w3schools.com/howto/howto_js_progressbar.asp */}
+        <div id='myProgress'>
+          <div id='myBar' style={{ width: progressPercentStr }} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const UnityGame = ({ unityContent, isShow, handleFullScreenClicked, icon }) => {
+  return (
+    <div className={`webgl-content ${isShow ? 'show' : 'hide'}`}>
+      <div id='gameContainer'>
+        <Unity unityContent={unityContent} />
+      </div>
+      <div className='footer'>
+        {/* <div className='webgl-logo' /> */}
+        <div className='fullscreen' onClick={handleFullScreenClicked} />
+        <div className='title'>
+          <img className='game-icon' src={icon} alt='logo' />{' '}
+          {uiWordings.gameTitle}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const CovBattle = _ => {
@@ -33,7 +69,15 @@ const CovBattle = _ => {
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
   useEffect(_ => {
-    unityContent = null;
+    const init = async _ => {
+      unityContent = null;
+      if (isMobileBrowser) {
+        await startLoadGameAsync();
+      }
+    };
+
+    init();
+
     return _ => {
       if (isLoadGame) {
         unlinkFirebaseBattleSaveManagerToUnity();
@@ -45,12 +89,9 @@ const CovBattle = _ => {
     };
   }, []);
 
-  const handleFullScreenClicked = useCallback(_ => {
-    // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
-    unityContent.setFullscreen(true);
-  }, []);
+  /* methods */
 
-  const handleLoadGameButtonClicked = useCallback(
+  const startLoadGameAsync = useCallback(
     async _ => {
       if (!isLoadGame) {
         setIsLoadGame(true);
@@ -77,8 +118,27 @@ const CovBattle = _ => {
     [isLoadGame]
   );
 
+  /* end of methods
+
+  /* event handlers */
+
+  const handleFullScreenClicked = useCallback(_ => {
+    // https://github.com/elraccoone/react-unity-webgl/blob/master/source/UnityContent.ts
+    unityContent.setFullscreen(true);
+  }, []);
+
+  const handleLoadGameButtonClicked = startLoadGameAsync;
+
+  /* end of event handlers */
+
   const isUnityLoaded = unityLoadProgress === 1;
-  const unityLoadProgressPercentStr = `${Math.ceil(unityLoadProgress * 100)}%`;
+  // when isMobileBrowser, allow UnityGame to show warning message
+  const isShowUnityGame = isMobileBrowser
+    ? unityLoadProgress === 0 || unityLoadProgress === 1
+    : isUnityLoaded;
+  const isShowGameLoadProgress = isMobileBrowser
+    ? unityLoadProgress !== 0 && !isUnityLoaded
+    : !isUnityLoaded;
 
   return (
     <div className='cov-battle'>
@@ -90,32 +150,16 @@ const CovBattle = _ => {
         </div>
       ) : (
         <div className='game-container'>
-          <div className={`webgl-content ${isUnityLoaded ? 'show' : 'hide'}`}>
-            <div id='gameContainer'>
-              <Unity unityContent={unityContent} />
-            </div>
-            <div className='footer'>
-              <div className='webgl-logo' />
-              <div className='fullscreen' onClick={handleFullScreenClicked} />
-              <div className='title'>
-                <img className='game-icon' src={gameIcon} alt='logo' />{' '}
-                {uiWordings.gameTitle}
-              </div>
-            </div>
-          </div>
-          <div className={`loading ${isUnityLoaded ? 'hide' : 'show'}`}>
-            <div className='progress-container'>
-              <div className='progress-text'>{unityLoadProgressPercentStr}</div>
-              <br />
-              {/* https://www.w3schools.com/howto/howto_js_progressbar.asp */}
-              <div id='myProgress'>
-                <div
-                  id='myBar'
-                  style={{ width: unityLoadProgressPercentStr }}
-                />
-              </div>
-            </div>
-          </div>
+          <UnityGame
+            unityContent={unityContent}
+            isShow={isShowUnityGame}
+            handleFullScreenClicked={handleFullScreenClicked}
+            icon={gameIcon}
+          />
+          <GameLoadProgress
+            isShow={isShowGameLoadProgress}
+            normedProgress={unityLoadProgress}
+          />
         </div>
       )}
     </div>

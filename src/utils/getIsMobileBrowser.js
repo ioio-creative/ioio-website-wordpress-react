@@ -15,4 +15,4 @@ const getIsMobileBrowser = _ => {
   })(navigator.userAgent || navigator.vendor || window.opera);
 };
 
-export { getIsMobileBrowser };
+export const isMobileBrowser = getIsMobileBrowser();

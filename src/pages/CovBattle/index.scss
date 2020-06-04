@@ -1,3 +1,5 @@
+@import 'globals.scss';
+
 .cov-battle {
   --covBattleDefaultTransition: all 1s;
 
@@ -36,18 +38,22 @@
 }
 
 .cov-battle .loading .progress-container {
-  width: 50%;
-  height: 50px;
+  width: 100%;
+  height: 150px;
 }
 
-.cov-battle .loading .progress-text {
+.cov-battle .loading .progress-text,
+.cov-battle .loading .progress-msg {
+  width: 75%;
+  margin: 0 auto;
   text-align: center;
 }
 
 /* https://www.w3schools.com/howto/howto_js_progressbar.asp */
 
 .cov-battle .loading #myProgress {
-  width: 100%;
+  width: 75%;
+  margin: 0 auto;
   background-color: grey;
 }
 
@@ -57,18 +63,18 @@
   background-color: #6dd400;
 }
 
-.cov-battle .webgl-content {
-  transition: var(--covBattleDefaultTransition);
-}
-
 .cov-battle .webgl-content.show {
   opacity: 1;
   visibility: visible;
+
+  transition: var(--covBattleDefaultTransition);
 }
 
 .cov-battle .webgl-content.hide {
   opacity: 0;
   visibility: hidden;
+
+  /* no need transition when hide */
 }
 
 .cov-battle #gameContainer,
@@ -96,4 +102,29 @@
 .cov-battle .fullscreen {
   width: 38px;
   cursor: pointer;
+}
+
+.cov-battle .webgl-content .footer .title {
+  float: left;
+}
+
+@include media-breakpoint-down(sm) {
+  .cov-battle #gameContainer,
+  .cov-battle #gameContainer canvas {
+    --covBattleAspect: calc(16 / 9);
+    --covBattleWidth: 100vw;
+
+    max-width: var(--covBattleWidth);
+    max-height: calc(var(--covBattleMaxWidth) / var(--covBattleAspect));
+
+    min-width: var(--covBattleWidth);
+    min-height: calc(var(--covBattleMinWidth) / var(--covBattleAspect));
+
+    width: var(--covBattleWidth);
+    height: calc(var(--covBattleWidth) / var(--covBattleAspect));
+  }
+
+  .cov-battle .webgl-content .footer {
+    padding: 0 20px;
+  }
 }
