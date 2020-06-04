@@ -104,6 +104,20 @@
   cursor: pointer;
 }
 
+.cov-battle .webgl-content .footer {
+  transition: var(--covBattleDefaultTransition);
+}
+
+.cov-battle .webgl-content .footer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cov-battle .webgl-content .footer.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .cov-battle .webgl-content .footer .title {
   float: left;
 }

@@ -46,13 +46,19 @@ const GameLoadProgress = ({ isShow, normedProgress }) => {
   );
 };
 
-const UnityGame = ({ unityContent, isShow, handleFullScreenClicked, icon }) => {
+const UnityGame = ({
+  unityContent,
+  isShow,
+  isShowFooter,
+  handleFullScreenClicked,
+  icon
+}) => {
   return (
     <div className={`webgl-content ${isShow ? 'show' : 'hide'}`}>
       <div id='gameContainer'>
         <Unity unityContent={unityContent} />
       </div>
-      <div className='footer'>
+      <div className={`footer ${isShowFooter ? 'show' : 'hide'}`}>
         {/* <div className='webgl-logo' /> */}
         <div className='fullscreen' onClick={handleFullScreenClicked} />
         <div className='title'>
@@ -136,6 +142,7 @@ const CovBattle = _ => {
   const isShowUnityGame = isMobileBrowser
     ? unityLoadProgress === 0 || unityLoadProgress === 1
     : isUnityLoaded;
+  const isShowUnityGameFooter = isUnityLoaded;
   const isShowGameLoadProgress = isMobileBrowser
     ? unityLoadProgress !== 0 && !isUnityLoaded
     : !isUnityLoaded;
@@ -153,6 +160,7 @@ const CovBattle = _ => {
           <UnityGame
             unityContent={unityContent}
             isShow={isShowUnityGame}
+            isShowFooter={isShowUnityGameFooter}
             handleFullScreenClicked={handleFullScreenClicked}
             icon={gameIcon}
           />
