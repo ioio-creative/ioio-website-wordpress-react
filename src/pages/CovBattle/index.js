@@ -32,7 +32,7 @@ const GameLoadProgress = ({ isShow, normedProgress }) => {
       <div className='progress-container'>
         <div className='progress-text'>{progressPercentStr}</div>
         <div className='progress-msg'>
-          {normedProgress > 0.5
+          {normedProgress > 0.85
             ? uiWordings.loadGameAboveHalf
             : uiWordings.loadGameBelowHalf}
         </div>
