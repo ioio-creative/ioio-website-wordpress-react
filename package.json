@@ -14,7 +14,7 @@
     "flickity": "^2.2.1",
     "fscreen": "^1.0.2",
     "gmail-send": "^1.2.14",
-    "gsap": "^2.1.2",
+    "gsap": "^3.6.0",
     "intersection-observer": "^0.7.0",
     "jquery": "^3.5.1",
     "matter-js": "^0.14.2",
