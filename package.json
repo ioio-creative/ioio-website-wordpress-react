@@ -44,7 +44,7 @@
     "scriptjs": "^2.5.8",
     "shufflejs": "^5.1.2",
     "styled-components": "^5.0.0",
-    "three": "^0.111.0",
+    "three": "^0.125.0",
     "three-orbitcontrols": "^2.102.2",
     "video-react": "^0.10.5"
   },
