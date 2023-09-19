@@ -122,7 +122,7 @@ function BrightSidebar({
         <div className='close-symbol' />
       </a>
 
-      <Link
+      {/* <Link
         id='logo-toggle'
         role='button'
         className='menu-transition'
@@ -140,7 +140,7 @@ function BrightSidebar({
             defaultMessage='IOIO CREATIVE'
           />
         </h4>
-      </Link>
+      </Link> */}
 
       <div className='work-work-lab-switch-container'>
         <WorkWorkLabSwitch
