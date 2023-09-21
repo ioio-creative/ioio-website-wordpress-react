@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import $ from 'jquery';
 
-import { menuCanvas } from 'containers/SidebarMenuCanvas';
+// import { menuCanvas } from 'containers/SidebarMenuCanvas';
 import WorkWorkLabSwitch from 'containers/workLabSwitch/WorkWorkLabSwitch';
 import WorkWorkLabSwitchForMobile from 'containers/workLabSwitch/WorkWorkLabSwitchForMobile';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
@@ -41,9 +41,9 @@ function BrightSidebar({
       e.preventDefault();
 
       setIsOpenSidebar(currentState => !currentState);
-      menuCanvas(true);
+      // menuCanvas(true);
     },
-    [setIsOpenSidebar, menuCanvas]
+    [setIsOpenSidebar]
   );
 
   const handleMenuClose = useCallback(
@@ -122,12 +122,13 @@ function BrightSidebar({
         <div className='close-symbol' />
       </a>
 
-      {/* <Link
+      <Link
         id='logo-toggle'
         role='button'
         className='menu-transition'
         to={routes.home(true)}
         onClick={handleMenuClose}
+        style={{display:"none"}}
       >
         <img
           className='logo menu-transition'
@@ -140,7 +141,7 @@ function BrightSidebar({
             defaultMessage='IOIO CREATIVE'
           />
         </h4>
-      </Link> */}
+      </Link>
 
       <div className='work-work-lab-switch-container'>
         <WorkWorkLabSwitch

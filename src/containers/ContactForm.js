@@ -20,7 +20,7 @@ const ContactForm = ({ intl }) => {
     <form
       className='contact-form'
       method='POST'
-      action='https://formspree.io/info@ioioproduction.com'
+      action='https://formspree.io/info@ioiostudio.co'
     >
       <div className='form-field'>
         <label htmlFor='fname' className='form-l'>
@@ -69,7 +69,6 @@ const ContactForm = ({ intl }) => {
           </div>
           <input
             type='email'
-            name='_replyto'
             name='email'
             placeholder={formatMessage(
               'ContactForm.emailTextBoxPlaceHolder',

@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import $ from 'jquery';
 
-import { menuCanvas } from 'containers/SidebarMenuCanvas';
+// import { menuCanvas } from 'containers/SidebarMenuCanvas';
 import LabWorkLabSwitch from 'containers/workLabSwitch/LabWorkLabSwitch';
 import MyFirstLoadingComponent from 'components/loading/MyFirstLoadingComponent';
 //import LanguageSelectors from 'containers/i18n/LanguageSelectors';
@@ -52,7 +52,7 @@ function DarkSidebar({ addresses }) {
 
       $('#dark-sidebar').toggleClass('active');
 
-      menuCanvas(true);
+      // menuCanvas(true);
       if (attr.length === 1) {
         //console.log("close");
         $('#dark-sidebar #lab-about span').removeClass('active');
@@ -60,9 +60,7 @@ function DarkSidebar({ addresses }) {
         //console.log("open");
         $('#dark-sidebar #lab-about span').toggleClass('active');
       }
-    },
-    [menuCanvas]
-  );
+    }, []);
 
   const handleMenuClose = useCallback(e => {
     $('#dark-sidebar').removeClass('active');
