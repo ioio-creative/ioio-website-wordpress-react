@@ -20,7 +20,7 @@ const ContactForm = ({ intl }) => {
     <form
       className='contact-form'
       method='POST'
-      action='https://formspree.io/info@ioiostudio.co'
+      action='https://formspree.io/info@ioioproduction.com'
     >
       <div className='form-field'>
         <label htmlFor='fname' className='form-l'>

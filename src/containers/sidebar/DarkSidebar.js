@@ -105,6 +105,7 @@ function DarkSidebar({ addresses }) {
         className='menu-transition'
         to={routes.lab(true)}
         onClick={handleMenuClose}
+        style={{display:"none"}}
       >
         <img
           className='logo menu-transition'
